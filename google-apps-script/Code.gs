@@ -1,10 +1,10 @@
 // Google Apps Script — deploy as Web App (Execute as: Me, Anyone access)
 // Replace SHEET_ID, DRIVE_FOLDER_ID, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
 
-var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID';
-var DRIVE_FOLDER_ID = 'YOUR_DRIVE_FOLDER_ID';
-var TELEGRAM_TOKEN = 'YOUR_BOT_TOKEN';
-var TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID';
+var SHEET_ID = '1g4iY6uzawhTIuZfkQpBPwOF4dw9pLqkWkpTgTyIbV1Y';
+var DRIVE_FOLDER_ID = '1cmmwk80uOziGi6Tydj3ojz5yNnNVVJbv';
+var TELEGRAM_TOKEN = '8848364278:AAFHElPLYL-jv8lBFWWXoCtnw6ntxFz8sIw';
+var TELEGRAM_CHAT_ID = '6740351282';
 
 function doPost(e) {
   var data = JSON.parse(e.postData.contents);

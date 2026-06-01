@@ -1,4 +1,4 @@
-var APPS_SCRIPT_URL = 'YOUR_WEB_APP_URL_HERE';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpeXNbe7xY5JPuCpuaA6TcRi9YnakWplBJw5WnAq8JmaUEQk9PsNW5dK41ooh0IxtNyg/exec';
 
 async function submitForm() {
   const btn = document.querySelector('.btn-submit');
