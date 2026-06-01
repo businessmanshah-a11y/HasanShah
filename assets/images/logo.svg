@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" width="400" height="80">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e5c100;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0d060;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Persian name top -->
+  <text x="200" y="32" text-anchor="middle"
+        font-family="'Vazirmatn', 'Tahoma', serif"
+        font-size="26" font-weight="700"
+        fill="url(#gold)" letter-spacing="2">حسن شاهمرادی</text>
+  <!-- Divider line -->
+  <line x1="60" y1="42" x2="340" y2="42" stroke="#e5c100" stroke-width="0.8" opacity="0.5"/>
+  <!-- English name bottom -->
+  <text x="200" y="66" text-anchor="middle"
+        font-family="'Cormorant Garamond', 'Georgia', serif"
+        font-size="18" font-weight="400"
+        fill="#e5c100" letter-spacing="6">HASAN SHAHMORADI</text>
+</svg>
