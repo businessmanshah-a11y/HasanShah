@@ -1,0 +1,25 @@
+/* Entrance classes — initial state (GSAP sets these, then animates to visible) */
+.fade-up   { opacity: 0; transform: translateY(40px); }
+.fade-in   { opacity: 0; }
+.fade-left { opacity: 0; transform: translateX(-40px); }
+.fade-right{ opacity: 0; transform: translateX(40px); }
+
+/* Gold shimmer on headline */
+@keyframes goldShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #e5c100 0%, #f0d060 40%, #fff 50%, #f0d060 60%, #e5c100 100%);
+  background-size: 800px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 3s linear infinite;
+}
+
+/* Pulse on CTA */
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,193,0,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(229,193,0,0); }
+}
+.pulse { animation: pulseBorder 2s ease-in-out infinite; }
