@@ -16,6 +16,7 @@ export async function POST(request: Request) {
       businessType: raw.businessType,
       businessDescription: raw.businessDescription,
       hasSite: raw.hasSite,
+      siteUrl: raw.siteUrl ?? "",
       // Step 2
       instagramLoss: raw.instagramLoss,
       competitorIncome: raw.competitorIncome,

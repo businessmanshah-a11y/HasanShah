@@ -263,6 +263,15 @@ export default function LeadForm() {
                       value={data.hasSite as string}
                       onChange={(v) => set("hasSite", v)}
                     />
+                    {(data.hasSite === "آره دارم" || data.hasSite === "داشتم ولی فعال نیست") && (
+                      <input
+                        dir="ltr"
+                        className="mt-3 w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 text-right"
+                        placeholder="آدرس سایت (اختیاری) — مثلاً: mysite.com"
+                        value={(data.siteUrl as string) ?? ""}
+                        onChange={(e) => set("siteUrl", e.target.value)}
+                      />
+                    )}
                   </Field>
                 </div>
               )}
