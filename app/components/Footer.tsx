@@ -35,7 +35,7 @@ export default function Footer() {
       </div>
 
       {/* ── محتوا ── */}
-      <div className="flex flex-col items-center text-center gap-6 px-6 pt-8 pb-2">
+      <div className="flex flex-col items-center text-center gap-6 px-6 pt-8 pb-8">
 
         {/* لوگو — ۱.۷× */}
         <Image

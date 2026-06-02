@@ -164,6 +164,10 @@
 }
 section { padding: clamp(80px, 12vw, 140px) 0; }
 
+body > section[aria-label^="Notifications"] {
+  padding: 0;
+}
+
 /* ── Chip / tag ── */
 .chip {
   display: inline-flex;
