@@ -90,7 +90,6 @@ const GlowCard: React.FC<GlowCardProps> = ({
       backgroundAttachment: 'fixed',
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative',
-      touchAction: 'none',
     };
 
     if (width !== undefined) {
@@ -116,12 +115,10 @@ const GlowCard: React.FC<GlowCardProps> = ({
       background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
-      mask-clip: padding-box, border-box;
-      mask-composite: intersect;
-      -webkit-mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
-      -webkit-mask-clip: padding-box, border-box;
-      -webkit-mask-composite: source-in;
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
+      -webkit-mask-composite: xor;
     }
 
     [data-glow]::before {
