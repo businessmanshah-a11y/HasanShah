@@ -6,6 +6,7 @@ docs/
 
 # Next.js build output
 .next/
+out/
 
 # Claude Code / AI tool state (machine-local, not source)
 .agents/
