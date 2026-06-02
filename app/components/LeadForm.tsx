@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Send, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "../hooks/use-reveal";
 import {
@@ -45,40 +45,42 @@ function Field({
   );
 }
 
-function Radio({
+function Select({
   name,
   options,
   value,
   onChange,
+  placeholder = "انتخاب کن...",
 }: {
   name: string;
   options: readonly string[];
   value?: string;
   onChange: (v: string) => void;
+  placeholder?: string;
 }) {
   return (
-    <div className="grid sm:grid-cols-2 gap-2">
-      {options.map((opt) => {
-        const active = value === opt;
-        return (
-          <button
-            type="button"
-            key={opt}
-            onClick={() => onChange(opt)}
-            className={`text-right rounded-xl border px-4 py-3 text-sm transition ${
-              active
-                ? "border-gold bg-gold/15 text-foreground shadow-gold"
-                : "border-gold/15 bg-surface hover:border-gold/40 text-muted-foreground"
-            }`}
-          >
-            <div className="flex items-center justify-between gap-2">
-              <span>{opt}</span>
-              {active && <Check className="h-4 w-4 text-gold" />}
-            </div>
-          </button>
-        );
-      })}
-      <input type="hidden" name={name} value={value ?? ""} readOnly />
+    <div className="relative">
+      <select
+        name={name}
+        dir="rtl"
+        value={value ?? ""}
+        onChange={(e) => e.target.value && onChange(e.target.value)}
+        className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gold/20 appearance-none cursor-pointer transition pl-10 ${
+          value
+            ? "border-gold/40 text-foreground focus:border-gold"
+            : "border-gold/15 text-muted-foreground focus:border-gold"
+        }`}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((opt) => (
+          <option key={opt} value={opt} className="bg-[#0d0d0d] text-foreground">
+            {opt}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gold/50" />
     </div>
   );
 }
@@ -204,8 +206,7 @@ export default function LeadForm() {
                         s.num <= step ? "text-gold font-semibold" : "text-muted-foreground"
                       }`}
                     >
-                      <span className="hidden sm:block">{s.title}</span>
-                      <span className="sm:hidden">مرحله {s.num.toLocaleString("fa-IR")}</span>
+                      {s.title}
                     </div>
                   ))}
                 </div>
@@ -238,7 +239,7 @@ export default function LeadForm() {
                     />
                   </Field>
                   <Field label="نوع کسب‌وکارت چیه؟" error={errors.businessType}>
-                    <Radio
+                    <Select
                       name="businessType"
                       options={businessTypes}
                       value={data.businessType as string}
@@ -246,7 +247,7 @@ export default function LeadForm() {
                     />
                   </Field>
                   <Field label="الان سایت داری؟" error={errors.hasSite}>
-                    <Radio
+                    <Select
                       name="hasSite"
                       options={hasSiteOptions}
                       value={data.hasSite as string}
@@ -263,7 +264,7 @@ export default function LeadForm() {
                     label="اگر اینستاگرام چند روز در دسترس نباشد، فروش تو چقدر تحت تاثیر قرار می‌گیرد؟"
                     error={errors.instagramLoss}
                   >
-                    <Radio
+                    <Select
                       name="instagramLoss"
                       options={instagramLossOptions}
                       value={data.instagramLoss as string}
@@ -274,7 +275,7 @@ export default function LeadForm() {
                     label="فکر می‌کنی سایت برای رقبای جدی تو چه نقشی دارد؟"
                     error={errors.competitorIncome}
                   >
-                    <Radio
+                    <Select
                       name="competitorIncome"
                       options={competitorIncomeOptions}
                       value={data.competitorIncome as string}
@@ -285,7 +286,7 @@ export default function LeadForm() {
                     label="چرا تا الان سایت نداشتی (یا چی آوردت اینجا)؟"
                     error={errors.whyNow}
                   >
-                    <Radio
+                    <Select
                       name="whyNow"
                       options={whyNowOptions}
                       value={data.whyNow as string}
@@ -299,7 +300,7 @@ export default function LeadForm() {
               {step === 3 && (
                 <div className="space-y-5">
                   <Field label="مشتریات بیشتر چه رده سنی‌ای هستن؟" error={errors.ageRange}>
-                    <Radio
+                    <Select
                       name="ageRange"
                       options={ageRangeOptions}
                       value={data.ageRange as string}
@@ -307,7 +308,7 @@ export default function LeadForm() {
                     />
                   </Field>
                   <Field label="مشتری ایده‌آلت کجاست؟" error={errors.audienceLocation}>
-                    <Radio
+                    <Select
                       name="audienceLocation"
                       options={audienceLocationOptions}
                       value={data.audienceLocation as string}
@@ -318,7 +319,7 @@ export default function LeadForm() {
                     label="از سایت انتظار داری بیشتر روی کدام بازه فروش اثر بگذارد؟"
                     error={errors.expectedIncome}
                   >
-                    <Radio
+                    <Select
                       name="expectedIncome"
                       options={expectedIncomeOptions}
                       value={data.expectedIncome as string}
@@ -332,7 +333,7 @@ export default function LeadForm() {
               {step === 4 && (
                 <div className="space-y-5">
                   <Field label="لوگو داری؟" error={errors.hasLogo}>
-                    <Radio
+                    <Select
                       name="hasLogo"
                       options={hasLogoOptions}
                       value={data.hasLogo as string}
@@ -405,7 +406,7 @@ export default function LeadForm() {
                   </Field>
 
                   <Field label="مهم‌ترین هدفت از داشتن سایت؟" error={errors.mainGoal}>
-                    <Radio
+                    <Select
                       name="mainGoal"
                       options={mainGoalOptions}
                       value={data.mainGoal as string}
