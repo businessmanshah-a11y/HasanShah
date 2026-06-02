@@ -1,114 +1,75 @@
 import { z } from "zod";
 
-export const businessTypes = [
-  "فروشگاه",
-  "خدماتی",
-  "استارتاپ",
-  "پرسونال برند",
-  "رستوران",
-  "آموزشی",
-  "دیگه",
-] as const;
+// Option values are stable, language-independent keys. The visible labels for
+// each key live in the i18n dictionaries (form.options.*). On submit, LeadForm
+// maps the selected keys to localized labels.
 
-export const hasSiteOptions = ["آره دارم", "نه ندارم", "داشتم ولی فعال نیست"] as const;
+export const businessTypeKeys = ["shop", "service", "startup", "personal", "restaurant", "education", "other"] as const;
+export const hasSiteKeys = ["yes", "no", "inactive"] as const;
+export const instagramLossKeys = ["low", "some", "major", "critical"] as const;
+export const competitorIncomeKeys = ["brand", "leads", "directSales", "trust"] as const;
+export const whyNowKeys = ["justStarted", "tiredOfInsta", "professional", "organized"] as const;
+export const ageRangeKeys = ["under25", "from25to35", "from35to50", "over50", "mixed"] as const;
+export const audienceLocationKeys = ["local", "iran", "abroad", "everywhere"] as const;
+export const expectedIncomeKeys = ["small", "leads", "orders", "big"] as const;
+export const hasLogoKeys = ["yes", "no", "redesign"] as const;
+export const vibesKeys = ["luxury", "modern", "friendly", "bold", "simple", "trust"] as const;
+export const mainGoalKeys = ["sales", "leads", "brand", "trust", "booking"] as const;
 
-export const instagramLossOptions = [
-  "تاثیر زیادی ندارد",
-  "کمی فروش و ارتباطم کند می‌شود",
-  "بخش مهمی از فروشم عقب می‌افتد",
-  "تقریباً مسیر اصلی فروشم مختل می‌شود",
-] as const;
+/** Custom-color sentinel for the brand palette field. */
+export const OTHER_COLOR = "other";
 
-export const competitorIncomeOptions = [
-  "بیشتر برای معرفی برند",
-  "برای جذب لید و تماس",
-  "برای فروش مستقیم",
-  "برای اعتمادسازی کنار اینستاگرام",
-] as const;
-
-export const whyNowOptions = [
-  "تازه شروع کردم",
-  "خسته شدم از وابستگی به اینستاگرام",
-  "می‌خوام برند حرفه‌ای داشته باشم",
-  "می‌خوام مسیر فروش و لیدم منظم‌تر بشه",
-] as const;
-
-export const ageRangeOptions = [
-  "زیر ۲۵ سال",
-  "۲۵ تا ۳۵ سال",
-  "۳۵ تا ۵۰ سال",
-  "بالای ۵۰ سال",
-  "متنوع",
-] as const;
-
-export const audienceLocationOptions = [
-  "محلی (یک شهر)",
-  "سراسر ایران",
-  "خارج از کشور",
-  "همه جا",
-] as const;
-
-export const expectedIncomeOptions = [
-  "فروش‌های کوچک و منظم",
-  "لیدهای جدی‌تر برای پیگیری",
-  "سفارش‌های مستقیم بیشتر",
-  "قراردادها یا فروش‌های بزرگ‌تر",
-] as const;
-
-export const hasLogoOptions = ["آره دارم", "نه ندارم", "دارم ولی نیاز به طراحی مجدد داره"] as const;
-
-export const palettePresets = [
-  { name: "طلایی-مشکی لوکس",     colors: ["#0a0a0a", "#d4af5f", "#1a1a1a"] },
-  { name: "آبی-سفید اعتمادساز",   colors: ["#0f3a6e", "#3b82f6", "#ffffff"] },
-  { name: "سبز-کرم طبیعی",        colors: ["#2d4a3e", "#a8c0a0", "#f5f0e8"] },
-  { name: "قرمز-مشکی جسورانه",    colors: ["#0d0d0d", "#dc2626", "#fafafa"] },
-  { name: "بنفش-صورتی مدرن",      colors: ["#1e1b4b", "#a855f7", "#ec4899"] },
-  { name: "خاکستری-نارنجی گرم",   colors: ["#1f2937", "#f97316", "#f3f4f6"] },
+export const palettePresets: { key: string; colors: string[] }[] = [
+  { key: "luxGoldBlack", colors: ["#0a0a0a", "#d4af5f", "#1a1a1a"] },
+  { key: "blueWhite", colors: ["#0f3a6e", "#3b82f6", "#ffffff"] },
+  { key: "greenCream", colors: ["#2d4a3e", "#a8c0a0", "#f5f0e8"] },
+  { key: "redBlack", colors: ["#0d0d0d", "#dc2626", "#fafafa"] },
+  { key: "purplePink", colors: ["#1e1b4b", "#a855f7", "#ec4899"] },
+  { key: "grayOrange", colors: ["#1f2937", "#f97316", "#f3f4f6"] },
 ];
 
-export const vibesOptions = ["لوکس", "مدرن", "صمیمی", "جسورانه", "ساده", "اعتمادساز"];
+/** Localized validation messages, supplied from the active dictionary. */
+export type FormErrors = {
+  required: string;
+  fullName: string;
+  contact: string;
+  businessDescription: string;
+  brandColor: string;
+  vibes: string;
+  firstAction: string;
+};
 
-export const mainGoalOptions = [
-  "افزایش فروش",
-  "جذب لید",
-  "معرفی برند",
-  "اعتمادسازی",
-  "گرفتن نوبت/رزرو",
-] as const;
+/** Build the per-step Zod schemas with localized error messages. */
+export function getStepSchemas(errs: FormErrors) {
+  const step1 = z.object({
+    fullName: z.string().trim().min(2, errs.fullName).max(100),
+    contact: z.string().trim().min(8, errs.contact).max(60),
+    businessType: z.enum(businessTypeKeys, { error: errs.required }),
+    businessDescription: z.string().trim().min(5, errs.businessDescription).max(500),
+    hasSite: z.enum(hasSiteKeys, { error: errs.required }),
+  });
 
-export const step1Schema = z.object({
-  fullName:            z.string().trim().min(2, "نام رو کامل وارد کن").max(100),
-  contact:             z.string().trim().min(8, "شماره تماس یا آیدی تلگرام معتبر وارد کن").max(60),
-  businessType:        z.enum(businessTypes),
-  businessDescription: z.string().trim().min(5, "یه توضیح کوتاه بنویس").max(500),
-  hasSite:             z.enum(hasSiteOptions),
-});
+  const step2 = z.object({
+    instagramLoss: z.enum(instagramLossKeys, { error: errs.required }),
+    competitorIncome: z.enum(competitorIncomeKeys, { error: errs.required }),
+    whyNow: z.enum(whyNowKeys, { error: errs.required }),
+  });
 
-export const step2Schema = z.object({
-  instagramLoss:     z.enum(instagramLossOptions),
-  competitorIncome:  z.enum(competitorIncomeOptions),
-  whyNow:            z.enum(whyNowOptions),
-});
+  const step3 = z.object({
+    ageRange: z.enum(ageRangeKeys, { error: errs.required }),
+    audienceLocation: z.enum(audienceLocationKeys, { error: errs.required }),
+    expectedIncome: z.enum(expectedIncomeKeys, { error: errs.required }),
+  });
 
-export const step3Schema = z.object({
-  ageRange:          z.enum(ageRangeOptions),
-  audienceLocation:  z.enum(audienceLocationOptions),
-  expectedIncome:    z.enum(expectedIncomeOptions),
-});
+  const step4 = z.object({
+    hasLogo: z.enum(hasLogoKeys, { error: errs.required }),
+    logoFileName: z.string().optional(),
+    brandColor: z.string().min(1, errs.brandColor),
+    customColor: z.string().optional(),
+    vibes: z.array(z.string()).min(1, errs.vibes).max(4),
+    mainGoal: z.enum(mainGoalKeys, { error: errs.required }),
+    firstAction: z.string().trim().min(3, errs.firstAction).max(300),
+  });
 
-export const step4Schema = z.object({
-  hasLogo:      z.enum(hasLogoOptions),
-  logoFileName: z.string().optional(),
-  brandColor:   z.string().min(1, "یک پالت انتخاب کن"),
-  customColor:  z.string().optional(),
-  vibes:        z.array(z.string()).min(1, "حداقل یک حس انتخاب کن").max(4),
-  mainGoal:     z.enum(mainGoalOptions),
-  firstAction:  z.string().trim().min(3, "یک جمله کوتاه بنویس").max(300),
-});
-
-export const fullSchema = step1Schema
-  .extend(step2Schema.shape)
-  .extend(step3Schema.shape)
-  .extend(step4Schema.shape);
-
-export type FormData = z.infer<typeof fullSchema>;
+  return [step1, step2, step3, step4] as const;
+}

@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import { Phone, Send } from "lucide-react";
+import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Footer() {
+  const { t } = useI18n();
   return (
     <footer id="contact" className="relative overflow-hidden bg-surface/30">
 
@@ -40,7 +43,7 @@ export default function Footer() {
         {/* لوگو — ۱.۷× */}
         <Image
           src="/images/logo.png"
-          alt="HSH"
+          alt={t.brand.name}
           width={190}
           height={190}
           className="h-[190px] w-[190px] object-contain"
@@ -50,10 +53,10 @@ export default function Footer() {
         {/* اسم و توضیح */}
         <div className="flex flex-col items-center gap-1.5">
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
-            حسن شاهمرادی
+            {t.brand.name}
           </h2>
           <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-            طراح سایت و استراتژیست رشد دیجیتال
+            {t.brand.role}
           </p>
         </div>
 
@@ -66,7 +69,7 @@ export default function Footer() {
             className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-6 py-2.5 text-sm font-bold text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
           >
             <Send className="h-4 w-4" />
-            تلگرام
+            {t.footer.telegram}
           </a>
           <a
             href="tel:09120870095"
@@ -74,7 +77,7 @@ export default function Footer() {
             className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-6 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
             <Phone className="h-4 w-4" />
-            ۰۹۱۲ ۰۸۷ ۰۰۹۵
+            {t.footer.phone}
           </a>
         </div>
 
@@ -83,9 +86,9 @@ export default function Footer() {
 
         {/* کپی‌رایت */}
         <p className="text-xs text-muted-foreground/55">
-          © ۱۴۰۴ — تمامی حقوق محفوظ است.
+          {t.footer.rights}
           <span className="mx-2 opacity-40">·</span>
-          طراحی و اجرا توسط حسن شاهمرادی
+          {t.footer.credit}
         </p>
 
       </div>

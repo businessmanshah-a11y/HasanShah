@@ -32,6 +32,7 @@ function doPost(e) {
   var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
   sheet.appendRow([
     data.timestamp,
+    data.lang,
     // Step 1
     data.name,
     data.contact,
@@ -61,6 +62,7 @@ function doPost(e) {
   var siteInfo = data.siteUrl ? '\n🌐 سایت فعلی: ' + data.siteUrl : '';
   var msg =
     '🔔 لید جدید!\n' +
+    '🌐 زبان فرم: '     + (data.lang           || '—') + '\n' +
     '👤 نام: '          + (data.name           || '—') + '\n' +
     '📱 تماس: '         + (data.contact         || '—') + '\n' +
     '🏢 نوع کسب‌وکار: ' + (data.businessType    || '—') + '\n' +
@@ -95,8 +97,8 @@ function doPost(e) {
 // Run once manually to create header row in Sheet
 function setupHeaders() {
   var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
-  sheet.getRange(1, 1, 1, 20).setValues([[
-    'زمان', 'نام', 'تماس', 'نوع کسب‌وکار', 'توضیح کسب‌وکار',
+  sheet.getRange(1, 1, 1, 21).setValues([[
+    'زمان', 'زبان فرم', 'نام', 'تماس', 'نوع کسب‌وکار', 'توضیح کسب‌وکار',
     'سایت دارد؟', 'آدرس سایت',
     'وابستگی اینستاگرام', 'نقش سایت رقبا', 'چرا الان',
     'رده سنی', 'موقعیت مشتری', 'انتظار فروش',

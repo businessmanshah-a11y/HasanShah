@@ -1,15 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
-const links = [
-  { href: "#about",     label: "درباره من" },
-  { href: "#services",  label: "خدمات" },
-  { href: "#portfolio", label: "نمونه‌کارها" },
-  { href: "#form",      label: "فرم تماس" },
-];
+import { useI18n } from "../i18n/LanguageProvider";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Nav() {
+  const { t } = useI18n();
+  const links = [
+    { href: "#about",     label: t.nav.about },
+    { href: "#services",  label: t.nav.services },
+    { href: "#portfolio", label: t.nav.portfolio },
+    { href: "#form",      label: t.nav.contact },
+  ];
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -56,20 +59,25 @@ export default function Nav() {
         className="flex items-center justify-between"
         style={{
           padding: s ? "10px 20px" : "16px 24px",
-          transition: "padding 600ms cubic-bezier(.4,0,.2,1)",
+          background:            open ? "rgba(0, 0, 0, 0.7)" : "transparent",
+          backdropFilter:        open ? "blur(18px) saturate(160%)" : "none",
+          WebkitBackdropFilter:  open ? "blur(18px) saturate(160%)" : "none",
+          transition:
+            "padding 600ms cubic-bezier(.4,0,.2,1), " +
+            "background 300ms ease, backdrop-filter 300ms ease",
         }}
       >
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2 shrink-0">
           <Image
             src="/images/logo.png"
-            alt="لوگو حسن شاهمرادی"
+            alt={t.brand.name}
             width={36}
             height={36}
             className="h-9 w-9 object-contain"
           />
           <span className="hidden sm:block font-bold text-foreground text-base leading-none">
-            حسن شاهمرادی
+            {t.brand.name}
           </span>
         </a>
 
@@ -86,32 +94,35 @@ export default function Nav() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <a
-          href="#form"
-          className="hidden md:inline-flex items-center justify-center rounded-full bg-gradient-gold px-5 py-2 text-sm font-semibold text-gold-foreground shadow-gold hover:opacity-90 transition-opacity shrink-0"
-        >
-          سایت رایگان
-        </a>
+        {/* CTA + language + burger — always visible in the header */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <LanguageSwitcher />
+          <a
+            href="#form"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-4 py-2 text-xs sm:text-sm font-semibold text-gold-foreground shadow-gold hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            {t.nav.cta}
+          </a>
 
-        {/* Mobile burger */}
-        <button
-          aria-label="منو"
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 text-white/60 hover:text-white transition-colors"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open
-              ? <path d="M6 6l12 12M6 18L18 6" />
-              : <path d="M4 7h16M4 12h16M4 17h16" />
-            }
-          </svg>
-        </button>
+          {/* Mobile burger */}
+          <button
+            aria-label={t.nav.menu}
+            onClick={() => setOpen((v) => !v)}
+            className="md:hidden -me-1 p-2 text-white/60 hover:text-white transition-colors"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open
+                ? <path d="M6 6l12 12M6 18L18 6" />
+                : <path d="M4 7h16M4 12h16M4 17h16" />
+              }
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur-xl rounded-b-2xl">
+        <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur-xl rounded-b-2xl shadow-[0_24px_48px_rgba(0,0,0,0.5)]">
           <nav className="flex flex-col gap-1 px-5 py-5">
             {links.map((l) => (
               <a
@@ -123,13 +134,6 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
-            <a
-              href="#form"
-              onClick={() => setOpen(false)}
-              className="mt-3 text-center rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground"
-            >
-              سایت رایگان
-            </a>
           </nav>
         </div>
       )}

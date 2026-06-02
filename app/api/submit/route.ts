@@ -7,9 +7,11 @@ export async function POST(request: Request) {
   try {
     const raw = await request.json();
 
-    // Map form field names to what the Apps Script expects
+    // Map form field names to what the Apps Script expects.
+    // Option values arrive already localized to the language the user filled in.
     const payload = {
       timestamp: new Date().toISOString(),
+      lang: raw.lang ?? "",
       // Step 1
       name: raw.fullName,
       contact: raw.contact,
@@ -29,7 +31,7 @@ export async function POST(request: Request) {
       hasLogo: raw.hasLogo,
       logoFileName: raw.logoFileName ?? "",
       logoBase64: raw.logoBase64 ?? "",
-      color: raw.brandColor === "سایر" ? (raw.customColor ?? "سایر") : raw.brandColor,
+      color: raw.brandColor ?? "",
       vibes: Array.isArray(raw.vibes) ? raw.vibes.join(", ") : raw.vibes,
       goal: raw.mainGoal,
       firstAction: raw.firstAction,

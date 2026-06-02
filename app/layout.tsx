@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
+import { cookies } from "next/headers";
+import { Inter } from "next/font/google";
+import { LanguageProvider } from "./i18n/LanguageProvider";
+import LocalizedToaster from "./components/LocalizedToaster";
+import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf, isLocale } from "./i18n/config";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "swap" });
 
 export const metadata: Metadata = {
   title: "حسن شاهمرادی — کمپین سایت رایگان",
@@ -24,28 +30,33 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// Runs before hydration: picks the locale from the cookie or the browser language
+// and sets <html lang/dir> + the cookie, so direction is correct on first paint.
+const NO_FLASH_SCRIPT = `(function(){try{var s=['fa','en','ar'];var m=document.cookie.match(/(?:^|; )${LOCALE_STORAGE_KEY}=([^;]+)/);var l=m&&m[1];if(!l||s.indexOf(l)<0){var n=(navigator.language||'fa').toLowerCase().split('-')[0];l=s.indexOf(n)>=0?n:'fa';}document.documentElement.lang=l;document.documentElement.dir=l==='en'?'ltr':'rtl';document.cookie='${LOCALE_STORAGE_KEY}='+l+';path=/;max-age=31536000;samesite=lax';}catch(e){}})();`;
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get(LOCALE_STORAGE_KEY)?.value;
+  const initialLocale: Locale = isLocale(cookieLocale) ? cookieLocale : defaultLocale;
+
   return (
-    <html lang="fa" dir="rtl">
+    <html
+      lang={initialLocale}
+      dir={dirOf(initialLocale)}
+      className={inter.variable}
+      suppressHydrationWarning
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: NO_FLASH_SCRIPT }} />
         <link rel="preload" href="/fonts/PeydaWebFaNum-Black.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PeydaWebFaNum-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
-        {children}
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            style: {
-              background: "oklch(0.19 0.015 230)",
-              color: "oklch(0.95 0.006 210)",
-              border: "1px solid oklch(0.57 0.07 208 / 0.3)",
-              fontFamily: "'Peyda', Tahoma, sans-serif",
-              direction: "rtl",
-            },
-          }}
-        />
+        <LanguageProvider initialLocale={initialLocale}>
+          {children}
+          <LocalizedToaster />
+        </LanguageProvider>
       </body>
     </html>
   );

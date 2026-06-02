@@ -4,11 +4,15 @@ import Image from "next/image";
 import { ExternalLink, EyeOff } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
 import { filters, getVisibleProjects, type Category } from "./portfolio-data";
+import { useI18n } from "../i18n/LanguageProvider";
+import { Highlight } from "../i18n/Highlight";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<Category>("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useReveal<HTMLDivElement>();
+  const { t } = useI18n();
+  const filterLabel = (key: Category) => t.portfolio.filters[key as keyof typeof t.portfolio.filters];
 
   const visible = getVisibleProjects(filter);
   const tracks = visible.map((_, index) => (index === activeIndex ? "5fr" : "1fr")).join(" ");
@@ -27,10 +31,10 @@ export default function Portfolio() {
       <div className="container mx-auto px-4">
         <div ref={ref} className="mx-auto max-w-3xl text-center mb-10">
           <h2 className="text-3xl md:text-5xl font-black mb-5 leading-tight">
-            پروژه‌هایی که <span className="text-gold">واقعی اجرا شدن</span>
+            <Highlight text={t.portfolio.title} />
           </h2>
           <p className="text-muted-foreground text-lg">
-            پنج پروژه کامل با نیازهای متفاوت، فیچرهای اختصاصی و تمرکز روی تجربه واقعی کاربر.
+            {t.portfolio.desc}
           </p>
         </div>
 
@@ -45,7 +49,7 @@ export default function Portfolio() {
                   : "border border-gold/20 text-muted-foreground hover:border-gold/50 hover:text-gold"
               }`}
             >
-              {f.label}
+              {filterLabel(f.key)}
             </button>
           ))}
         </div>
@@ -62,7 +66,7 @@ export default function Portfolio() {
                 key={p.title}
                 role="button"
                 tabIndex={0}
-                aria-label={`باز کردن ${p.title}`}
+                aria-label={`${t.portfolio.openPrefix} ${p.title}`}
                 aria-expanded={isActive}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => setActiveIndex(index)}
@@ -119,7 +123,7 @@ export default function Portfolio() {
                 >
                   <div className="flex flex-col items-start gap-3">
                     <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
-                      {filters.find((item) => item.key === p.category)?.label ?? "پروژه"}
+                      {filterLabel(p.category) ?? t.portfolio.fallbackCategory}
                     </span>
                     <div className="flex w-full flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
                       <div>
@@ -127,7 +131,7 @@ export default function Portfolio() {
                           {p.title}
                         </h3>
                         <p className="mt-2 max-w-md text-sm leading-loose text-white/70 md:text-base">
-                          {p.desc}
+                          {t.portfolio.projects[p.title] ?? p.desc}
                         </p>
                       </div>
                       {p.url ? (
@@ -138,7 +142,7 @@ export default function Portfolio() {
                           onClick={(event) => event.stopPropagation()}
                           className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-extrabold text-gold transition hover:bg-gold hover:text-gold-foreground active:translate-y-px"
                         >
-                          دیدن
+                          {t.portfolio.view}
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       ) : (
@@ -148,7 +152,7 @@ export default function Portfolio() {
                           onClick={(event) => event.stopPropagation()}
                           className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-gold/15 bg-white/5 px-4 py-2 text-sm font-extrabold text-white/45"
                         >
-                          دیدن
+                          {t.portfolio.view}
                           <EyeOff className="h-4 w-4" />
                         </button>
                       )}

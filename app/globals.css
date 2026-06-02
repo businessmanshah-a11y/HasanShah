@@ -113,14 +113,12 @@
 
   html {
     scroll-behavior: smooth;
-    direction: rtl;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    direction: rtl;
     overflow-x: hidden;
     background-image:
       var(--gradient-hero),
@@ -128,6 +126,15 @@
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     line-height: 1.75;
+  }
+
+  /* English uses a clean Latin face; Peyda stays the fallback for shared glyphs. */
+  html[lang="en"] body,
+  html[lang="en"] button,
+  html[lang="en"] input,
+  html[lang="en"] textarea,
+  html[lang="en"] select {
+    font-family: var(--font-latin), "Peyda", Tahoma, ui-sans-serif, system-ui, sans-serif;
   }
 
   @media (max-width: 768px) {

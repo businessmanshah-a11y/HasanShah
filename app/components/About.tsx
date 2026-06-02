@@ -2,36 +2,27 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { useCounter, useReveal } from "../hooks/use-reveal";
-
-const numbers = [
-  { value: 7,  suffix: " سال",    label: "تجربه دیجیتال و سوشال مارکتینگ" },
-  { value: 2,  suffix: " برند",   label: "فروش روزانه میلیاردی در اینستاگرام" },
-  { value: 20, suffix: " همکاری", label: "همکاری موفق با مجموعه‌ها" },
-  { value: 5,  suffix: " پروژه",  label: "پروژه کامل با فیچرهای اختصاصی" },
-];
-
-const expertise = [
-  { name: "طراحی تجربه کاربری",   note: "مسیر ساده‌تر برای اعتماد و خرید" },
-  { name: "توسعه وب مدرن",       note: "React · Next.js · TypeScript" },
-  { name: "مارکتینگ و رشد",      note: "سوشال، محتوا و مسیر فروش" },
-  { name: "پوزیشنینگ برند",      note: "لحن، هویت و پیشنهاد واضح‌تر" },
-];
+import { useI18n } from "../i18n/LanguageProvider";
+import { Highlight } from "../i18n/Highlight";
+import { type Locale, formatNum } from "../i18n/config";
 
 function StatBlock({
   value,
   suffix,
   label,
+  locale,
 }: {
   value: number;
   suffix: string;
   label: string;
+  locale: Locale;
 }) {
-  const ref = useCounter(value);
+  const ref = useCounter(value, locale);
   return (
     <div className="rounded-xl border border-gold/15 bg-surface p-4 text-center">
       <div className="flex items-baseline justify-center gap-1">
         <span ref={ref} className="text-3xl font-black text-gold">
-          ۰
+          {formatNum(0, locale)}
         </span>
         <span className="text-sm text-gold font-semibold">{suffix}</span>
       </div>
@@ -42,6 +33,7 @@ function StatBlock({
 
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
+  const { t, locale } = useI18n();
   return (
     <section id="about" className="relative py-20 md:py-28 bg-surface/40">
       <div className="container mx-auto px-4">
@@ -52,9 +44,10 @@ export default function About() {
             <div className="relative overflow-hidden rounded-3xl border border-gold/25 shadow-elegant aspect-[3/4] max-w-md mx-auto">
               <Image
                 src="/images/Shah2.webp"
-                alt="حسن شاهمرادی"
+                alt={t.brand.name}
                 fill
                 loading="lazy"
+                sizes="(max-width: 1024px) 90vw, 28rem"
                 className="object-cover"
                 style={{ objectPosition: "center 30%", transform: "scale(1.08)" }}
               />
@@ -67,9 +60,9 @@ export default function About() {
               />
               <div className="absolute bottom-0 right-0 left-0 p-5">
                 <div className="text-xs text-gold uppercase tracking-widest mb-1">
-                  Hasan Shahmoradi
+                  {t.about.nameEyebrow}
                 </div>
-                <div className="text-xl font-bold">طراح، توسعه‌دهنده و استراتژیست</div>
+                <div className="text-xl font-bold">{t.about.roleTitle}</div>
               </div>
             </div>
           </div>
@@ -77,32 +70,23 @@ export default function About() {
           {/* Text */}
           <div className="order-1 lg:order-2">
             <h2 className="text-3xl md:text-5xl font-black leading-tight mb-6" style={{textWrap: "balance"}}>
-              من فقط سایت{" "}
-              <span className="text-gold">نمی‌سازم</span>
-              <br />
-              کمک می‌کنم برندت{" "}
-              <span className="text-gold">جدی‌تر دیده بشه</span>
+              <Highlight text={t.about.title} />
             </h2>
             <p className="text-muted-foreground leading-loose mb-4 text-base md:text-lg">
-              هفت ساله با کسب‌وکارها در فضای دیجیتال، سوشال مدیا و فروش آنلاین
-              کار می‌کنم. تجربه‌ام فقط طراحی صفحه نیست؛ از ساخت مسیر اعتماد تا
-              کمک به فروش روزانه میلیاردی برای دو برند سرشناس اینستاگرامی کنار
-              تیم‌ها بوده‌ام.
+              {t.about.p1}
             </p>
             <p className="text-muted-foreground leading-loose mb-8">
-              برای من سایت وقتی ارزش دارد که با واقعیت کسب‌وکار هماهنگ باشد:
-              حرف درست بزند، سریع و تمیز اجرا شود و مشتری را بی‌دردسر به تصمیم
-              بعدی برساند.
+              {t.about.p2}
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-              {numbers.map((n) => (
-                <StatBlock key={n.label} {...n} />
+              {t.about.numbers.map((n) => (
+                <StatBlock key={n.label} {...n} locale={locale} />
               ))}
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {expertise.map((e) => (
+              {t.about.expertise.map((e) => (
                 <div
                   key={e.name}
                   className="flex items-start gap-2.5 rounded-xl border border-gold/12 bg-surface p-4"

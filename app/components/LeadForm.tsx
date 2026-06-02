@@ -3,26 +3,27 @@ import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Send, Sparkles, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "../hooks/use-reveal";
+import { useI18n } from "../i18n/LanguageProvider";
+import { Highlight } from "../i18n/Highlight";
 import {
-  businessTypes,
-  hasSiteOptions,
-  instagramLossOptions,
-  competitorIncomeOptions,
-  whyNowOptions,
-  ageRangeOptions,
-  audienceLocationOptions,
-  expectedIncomeOptions,
-  hasLogoOptions,
+  businessTypeKeys,
+  hasSiteKeys,
+  instagramLossKeys,
+  competitorIncomeKeys,
+  whyNowKeys,
+  ageRangeKeys,
+  audienceLocationKeys,
+  expectedIncomeKeys,
+  hasLogoKeys,
+  vibesKeys,
+  mainGoalKeys,
   palettePresets,
-  vibesOptions,
-  mainGoalOptions,
-  step1Schema,
-  step2Schema,
-  step3Schema,
-  step4Schema,
+  getStepSchemas,
+  OTHER_COLOR,
 } from "../lib/form-schema";
 
 type Data = Record<string, unknown>;
+type Option = { value: string; label: string };
 
 function Field({
   label,
@@ -47,22 +48,21 @@ function Select({
   options,
   value,
   onChange,
-  placeholder = "انتخاب کن...",
+  placeholder,
 }: {
   name: string;
-  options: readonly string[];
+  options: Option[];
   value?: string;
   onChange: (v: string) => void;
-  placeholder?: string;
+  placeholder: string;
 }) {
   return (
     <div className="relative">
       <select
         name={name}
-        dir="rtl"
         value={value ?? ""}
         onChange={(e) => e.target.value && onChange(e.target.value)}
-        className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gold/20 appearance-none cursor-pointer transition pl-10 ${
+        className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gold/20 appearance-none cursor-pointer transition pe-10 ${
           value
             ? "border-gold/40 text-foreground focus:border-gold"
             : "border-gold/15 text-muted-foreground focus:border-gold"
@@ -72,31 +72,35 @@ function Select({
           {placeholder}
         </option>
         {options.map((opt) => (
-          <option key={opt} value={opt} className="bg-[#0d0d0d] text-foreground">
-            {opt}
+          <option key={opt.value} value={opt.value} className="bg-[#0d0d0d] text-foreground">
+            {opt.label}
           </option>
         ))}
       </select>
-      <ChevronDown className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gold/50" />
+      <ChevronDown className="pointer-events-none absolute end-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gold/50" />
     </div>
   );
 }
 
-const steps = [
-  { num: 1, title: "اطلاعات اولیه" },
-  { num: 2, title: "روانشناختی" },
-  { num: 3, title: "مخاطب و بازار" },
-  { num: 4, title: "هویت بصری" },
-];
-
 export default function LeadForm() {
   const ref = useReveal<HTMLDivElement>();
+  const { t, locale, dir } = useI18n();
   const [step, setStep] = useState(1);
   const [data, setData] = useState<Data>({ vibes: [] });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const submittedRef = useRef(false);
+
+  const opt = t.form.options;
+  const PrevIcon = dir === "rtl" ? ArrowRight : ArrowLeft;
+  const NextIcon = dir === "rtl" ? ArrowLeft : ArrowRight;
+  const phoneAlign = dir === "rtl" ? "text-right" : "text-left";
+
+  const toOptions = (
+    keys: readonly string[],
+    labels: Record<string, string>
+  ): Option[] => keys.map((k) => ({ value: k, label: labels[k] }));
 
   const set = (k: string, v: unknown) => {
     setData((d) => ({ ...d, [k]: v }));
@@ -105,23 +109,22 @@ export default function LeadForm() {
 
   const toggleVibe = (v: string) => {
     const cur = (data.vibes as string[]) ?? [];
-    const next =
-      cur.includes(v)
-        ? cur.filter((x) => x !== v)
-        : cur.length >= 4
-        ? cur
-        : [...cur, v];
+    const next = cur.includes(v)
+      ? cur.filter((x) => x !== v)
+      : cur.length >= 4
+      ? cur
+      : [...cur, v];
     set("vibes", next);
   };
 
   const validate = () => {
-    const schemas = [step1Schema, step2Schema, step3Schema, step4Schema];
+    const schemas = getStepSchemas(t.form.errors);
     const res = schemas[step - 1].safeParse(data);
     if (!res.success) {
       const errs: Record<string, string> = {};
       for (const issue of res.error.issues) errs[issue.path.join(".")] = issue.message;
       setErrors(errs);
-      toast.error("لطفاً فیلدهای الزامی رو کامل کن");
+      toast.error(t.form.toasts.incomplete);
       return false;
     }
     return true;
@@ -133,6 +136,44 @@ export default function LeadForm() {
     else submit();
   };
 
+  // Resolve the selected keys to the labels the user actually saw, so the lead
+  // is stored in their chosen language. `lang` records which language that is.
+  const localizedPayload = () => {
+    const brandColorKey = data.brandColor as string | undefined;
+    const brandColorLabel =
+      brandColorKey === OTHER_COLOR
+        ? ((data.customColor as string) || t.form.color.otherShort)
+        : brandColorKey
+        ? opt.palettes[brandColorKey as keyof typeof opt.palettes]
+        : "";
+    const vibeLabels = ((data.vibes as string[]) ?? []).map(
+      (v) => opt.vibes[v as keyof typeof opt.vibes]
+    );
+
+    return {
+      lang: locale,
+      fullName: data.fullName ?? "",
+      contact: data.contact ?? "",
+      businessType: data.businessType ? opt.businessType[data.businessType as keyof typeof opt.businessType] : "",
+      businessDescription: data.businessDescription ?? "",
+      hasSite: data.hasSite ? opt.hasSite[data.hasSite as keyof typeof opt.hasSite] : "",
+      siteUrl: data.siteUrl ?? "",
+      instagramLoss: data.instagramLoss ? opt.instagramLoss[data.instagramLoss as keyof typeof opt.instagramLoss] : "",
+      competitorIncome: data.competitorIncome ? opt.competitorIncome[data.competitorIncome as keyof typeof opt.competitorIncome] : "",
+      whyNow: data.whyNow ? opt.whyNow[data.whyNow as keyof typeof opt.whyNow] : "",
+      ageRange: data.ageRange ? opt.ageRange[data.ageRange as keyof typeof opt.ageRange] : "",
+      audienceLocation: data.audienceLocation ? opt.audienceLocation[data.audienceLocation as keyof typeof opt.audienceLocation] : "",
+      expectedIncome: data.expectedIncome ? opt.expectedIncome[data.expectedIncome as keyof typeof opt.expectedIncome] : "",
+      hasLogo: data.hasLogo ? opt.hasLogo[data.hasLogo as keyof typeof opt.hasLogo] : "",
+      logoFileName: data.logoFileName ?? "",
+      logoBase64: data.logoBase64 ?? "",
+      brandColor: brandColorLabel,
+      vibes: vibeLabels,
+      mainGoal: data.mainGoal ? opt.mainGoal[data.mainGoal as keyof typeof opt.mainGoal] : "",
+      firstAction: data.firstAction ?? "",
+    };
+  };
+
   const submit = async () => {
     if (submittedRef.current) return;
     submittedRef.current = true;
@@ -141,13 +182,13 @@ export default function LeadForm() {
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(localizedPayload()),
       });
       if (!res.ok) throw new Error("server error");
       setDone(true);
     } catch {
       submittedRef.current = false;
-      toast.error("خطا در ارسال. لطفاً دوباره امتحان کن یا مستقیم تماس بگیر.");
+      toast.error(t.form.toasts.error);
     } finally {
       setSubmitting(false);
     }
@@ -161,12 +202,9 @@ export default function LeadForm() {
         <div ref={ref} className="mx-auto max-w-3xl">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-black mb-4">
-              فرم دریافت <span className="text-gold">سایت رایگان</span>
+              <Highlight text={t.form.title} />
             </h2>
-            <p className="text-muted-foreground">
-              چند سوال کوتاه تا تیم فنی ما بتواند سایت تک‌صفحه‌ای اختصاصی تو را
-              تا ۷۲ ساعت روی دامنه آزمایشی آماده کند.
-            </p>
+            <p className="text-muted-foreground">{t.form.subtitle}</p>
           </div>
 
           {done ? (
@@ -174,12 +212,8 @@ export default function LeadForm() {
               <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-gold shadow-gold">
                 <Sparkles className="h-8 w-8 text-gold-foreground" />
               </div>
-              <h3 className="text-2xl font-black mb-3">پاسخ‌هات ثبت شد!</h3>
-              <p className="text-muted-foreground leading-loose mb-6">
-                ممنون که با حوصله جواب دادی. اطلاعاتت برای شروع طراحی سایت
-                ثبت شد و از همان راه ارتباطی که وارد کردی، درباره تحویل نسخه
-                آزمایشی و زمان‌بندی با تو هماهنگ می‌شویم.
-              </p>
+              <h3 className="text-2xl font-black mb-3">{t.form.done.title}</h3>
+              <p className="text-muted-foreground leading-loose mb-6">{t.form.done.desc}</p>
               <button
                 onClick={() => {
                   setDone(false);
@@ -189,7 +223,7 @@ export default function LeadForm() {
                 }}
                 className="rounded-xl border border-gold/40 px-6 py-2.5 text-sm text-gold hover:bg-gold/10"
               >
-                ارسال یک فرم دیگه
+                {t.form.done.again}
               </button>
             </div>
           ) : (
@@ -197,14 +231,14 @@ export default function LeadForm() {
               {/* Progress bar */}
               <div className="mb-8">
                 <div className="flex justify-between mb-3">
-                  {steps.map((s) => (
+                  {t.form.steps.map((title, i) => (
                     <div
-                      key={s.num}
+                      key={i}
                       className={`flex-1 text-center text-xs ${
-                        s.num <= step ? "text-gold font-semibold" : "text-muted-foreground"
+                        i + 1 <= step ? "text-gold font-semibold" : "text-muted-foreground"
                       }`}
                     >
-                      {s.title}
+                      {title}
                     </div>
                   ))}
                 </div>
@@ -219,55 +253,54 @@ export default function LeadForm() {
               {/* Step 1 */}
               {step === 1 && (
                 <div className="space-y-5">
-                  <Field label="اسم و نام خانوادگی" error={errors.fullName}>
+                  <Field label={t.form.labels.fullName} error={errors.fullName}>
                     <input
                       className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"
-                      placeholder="مثلاً: علی محمدی"
+                      placeholder={t.form.placeholders.fullName}
                       value={(data.fullName as string) ?? ""}
                       onChange={(e) => set("fullName", e.target.value)}
                     />
                   </Field>
-                  <Field label="شماره تماس / آیدی تلگرام" error={errors.contact}>
+                  <Field label={t.form.labels.contact} error={errors.contact}>
                     <input
                       dir="ltr"
-                      className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 text-right"
-                      placeholder="09120000000 یا @username"
+                      className={`w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 ${phoneAlign}`}
+                      placeholder={t.form.placeholders.contact}
                       value={(data.contact as string) ?? ""}
                       onChange={(e) => set("contact", e.target.value)}
                     />
                   </Field>
-                  <Field label="نوع کسب‌وکارت چیه؟" error={errors.businessType}>
+                  <Field label={t.form.labels.businessType} error={errors.businessType}>
                     <Select
                       name="businessType"
-                      options={businessTypes}
+                      options={toOptions(businessTypeKeys, opt.businessType)}
                       value={data.businessType as string}
                       onChange={(v) => set("businessType", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
-                  <Field
-                    label="کسب‌وکارت رو در یکی دو جمله توضیح بده — چی می‌فروشی یا چه خدماتی ارائه می‌دی؟"
-                    error={errors.businessDescription}
-                  >
+                  <Field label={t.form.labels.businessDescription} error={errors.businessDescription}>
                     <textarea
                       rows={3}
                       className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 resize-none"
-                      placeholder="مثلاً: فروش پوشاک زنانه آنلاین | کلینیک پوست و زیبایی | تدریس خصوصی ریاضی..."
+                      placeholder={t.form.placeholders.businessDescription}
                       value={(data.businessDescription as string) ?? ""}
                       onChange={(e) => set("businessDescription", e.target.value)}
                     />
                   </Field>
-                  <Field label="الان سایت داری؟" error={errors.hasSite}>
+                  <Field label={t.form.labels.hasSite} error={errors.hasSite}>
                     <Select
                       name="hasSite"
-                      options={hasSiteOptions}
+                      options={toOptions(hasSiteKeys, opt.hasSite)}
                       value={data.hasSite as string}
                       onChange={(v) => set("hasSite", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
-                    {(data.hasSite === "آره دارم" || data.hasSite === "داشتم ولی فعال نیست") && (
+                    {(data.hasSite === "yes" || data.hasSite === "inactive") && (
                       <input
                         dir="ltr"
-                        className="mt-3 w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 text-right"
-                        placeholder="آدرس سایت (اختیاری) — مثلاً: mysite.com"
+                        className={`mt-3 w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 ${phoneAlign}`}
+                        placeholder={t.form.placeholders.siteUrl}
                         value={(data.siteUrl as string) ?? ""}
                         onChange={(e) => set("siteUrl", e.target.value)}
                       />
@@ -279,37 +312,31 @@ export default function LeadForm() {
               {/* Step 2 */}
               {step === 2 && (
                 <div className="space-y-5">
-                  <Field
-                    label="اگر اینستاگرام چند روز در دسترس نباشد، فروش تو چقدر تحت تاثیر قرار می‌گیرد؟"
-                    error={errors.instagramLoss}
-                  >
+                  <Field label={t.form.labels.instagramLoss} error={errors.instagramLoss}>
                     <Select
                       name="instagramLoss"
-                      options={instagramLossOptions}
+                      options={toOptions(instagramLossKeys, opt.instagramLoss)}
                       value={data.instagramLoss as string}
                       onChange={(v) => set("instagramLoss", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
-                  <Field
-                    label="فکر می‌کنی سایت برای رقبای جدی تو چه نقشی دارد؟"
-                    error={errors.competitorIncome}
-                  >
+                  <Field label={t.form.labels.competitorIncome} error={errors.competitorIncome}>
                     <Select
                       name="competitorIncome"
-                      options={competitorIncomeOptions}
+                      options={toOptions(competitorIncomeKeys, opt.competitorIncome)}
                       value={data.competitorIncome as string}
                       onChange={(v) => set("competitorIncome", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
-                  <Field
-                    label="چرا تا الان سایت نداشتی (یا چی آوردت اینجا)؟"
-                    error={errors.whyNow}
-                  >
+                  <Field label={t.form.labels.whyNow} error={errors.whyNow}>
                     <Select
                       name="whyNow"
-                      options={whyNowOptions}
+                      options={toOptions(whyNowKeys, opt.whyNow)}
                       value={data.whyNow as string}
                       onChange={(v) => set("whyNow", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
                 </div>
@@ -318,31 +345,31 @@ export default function LeadForm() {
               {/* Step 3 */}
               {step === 3 && (
                 <div className="space-y-5">
-                  <Field label="مشتریات بیشتر چه رده سنی‌ای هستن؟" error={errors.ageRange}>
+                  <Field label={t.form.labels.ageRange} error={errors.ageRange}>
                     <Select
                       name="ageRange"
-                      options={ageRangeOptions}
+                      options={toOptions(ageRangeKeys, opt.ageRange)}
                       value={data.ageRange as string}
                       onChange={(v) => set("ageRange", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
-                  <Field label="مشتری ایده‌آلت کجاست؟" error={errors.audienceLocation}>
+                  <Field label={t.form.labels.audienceLocation} error={errors.audienceLocation}>
                     <Select
                       name="audienceLocation"
-                      options={audienceLocationOptions}
+                      options={toOptions(audienceLocationKeys, opt.audienceLocation)}
                       value={data.audienceLocation as string}
                       onChange={(v) => set("audienceLocation", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
-                  <Field
-                    label="از سایت انتظار داری بیشتر روی کدام بازه فروش اثر بگذارد؟"
-                    error={errors.expectedIncome}
-                  >
+                  <Field label={t.form.labels.expectedIncome} error={errors.expectedIncome}>
                     <Select
                       name="expectedIncome"
-                      options={expectedIncomeOptions}
+                      options={toOptions(expectedIncomeKeys, opt.expectedIncome)}
                       value={data.expectedIncome as string}
                       onChange={(v) => set("expectedIncome", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
                 </div>
@@ -351,21 +378,22 @@ export default function LeadForm() {
               {/* Step 4 */}
               {step === 4 && (
                 <div className="space-y-5">
-                  <Field label="لوگو داری؟" error={errors.hasLogo}>
+                  <Field label={t.form.labels.hasLogo} error={errors.hasLogo}>
                     <Select
                       name="hasLogo"
-                      options={hasLogoOptions}
+                      options={toOptions(hasLogoKeys, opt.hasLogo)}
                       value={data.hasLogo as string}
                       onChange={(v) => set("hasLogo", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
-                    {data.hasLogo === "آره دارم" && (
+                    {data.hasLogo === "yes" && (
                       <label className="mt-3 flex items-center gap-3 rounded-xl border border-dashed border-gold/30 bg-surface px-4 py-3 cursor-pointer hover:border-gold/50 transition">
                         <Upload className="h-4 w-4 text-gold/60 shrink-0" />
                         <span className="text-xs text-muted-foreground flex-1 truncate">
-                          {(data.logoFileName as string) || "فایل لوگو را انتخاب کن..."}
+                          {(data.logoFileName as string) || t.form.logo.choose}
                         </span>
                         <span className="rounded-lg bg-gradient-gold px-3 py-1.5 text-xs font-semibold text-gold-foreground shrink-0">
-                          انتخاب
+                          {t.form.logo.pick}
                         </span>
                         <input
                           type="file"
@@ -384,16 +412,16 @@ export default function LeadForm() {
                     )}
                   </Field>
 
-                  <Field label="پالت رنگی برند" error={errors.brandColor}>
+                  <Field label={t.form.labels.brandColor} error={errors.brandColor}>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {palettePresets.map((p) => {
-                        const active = data.brandColor === p.name;
+                        const active = data.brandColor === p.key;
                         return (
                           <button
                             type="button"
-                            key={p.name}
-                            onClick={() => set("brandColor", p.name)}
-                            className={`rounded-xl border p-3 text-right transition ${
+                            key={p.key}
+                            onClick={() => set("brandColor", p.key)}
+                            className={`rounded-xl border p-3 text-start transition ${
                               active
                                 ? "border-gold bg-gold/15 shadow-gold"
                                 : "border-gold/15 bg-surface hover:border-gold/40"
@@ -408,16 +436,18 @@ export default function LeadForm() {
                                 />
                               ))}
                             </div>
-                            <div className="text-xs">{p.name}</div>
+                            <div className="text-xs">
+                              {opt.palettes[p.key as keyof typeof opt.palettes]}
+                            </div>
                           </button>
                         );
                       })}
                       {/* Other / custom color option */}
                       <button
                         type="button"
-                        onClick={() => set("brandColor", "سایر")}
-                        className={`rounded-xl border p-3 text-right transition flex flex-col justify-between ${
-                          data.brandColor === "سایر"
+                        onClick={() => set("brandColor", OTHER_COLOR)}
+                        className={`rounded-xl border p-3 text-start transition flex flex-col justify-between ${
+                          data.brandColor === OTHER_COLOR
                             ? "border-gold bg-gold/15 shadow-gold"
                             : "border-gold/15 bg-surface hover:border-gold/40"
                         }`}
@@ -425,25 +455,22 @@ export default function LeadForm() {
                         <div className="flex gap-1.5 mb-2 items-center h-6">
                           <span className="text-lg leading-none text-muted-foreground">+</span>
                         </div>
-                        <div className="text-xs text-muted-foreground">سایر (رنگ دلخواه)</div>
+                        <div className="text-xs text-muted-foreground">{t.form.color.otherTitle}</div>
                       </button>
                     </div>
-                    {data.brandColor === "سایر" && (
+                    {data.brandColor === OTHER_COLOR && (
                       <input
                         className="mt-3 w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"
-                        placeholder="کد رنگ یا توضیح رنگ — مثلاً #2563eb یا آبی تیره و طلایی"
+                        placeholder={t.form.placeholders.customColor}
                         value={(data.customColor as string) ?? ""}
                         onChange={(e) => set("customColor", e.target.value)}
                       />
                     )}
                   </Field>
 
-                  <Field
-                    label="حس و حال سایتت چجوری باشه؟ (حداکثر ۴ تا)"
-                    error={errors.vibes}
-                  >
+                  <Field label={t.form.labels.vibes} error={errors.vibes}>
                     <div className="flex flex-wrap gap-2">
-                      {vibesOptions.map((v) => {
+                      {vibesKeys.map((v) => {
                         const active = ((data.vibes as string[]) ?? []).includes(v);
                         return (
                           <button
@@ -456,30 +483,28 @@ export default function LeadForm() {
                                 : "border-gold/20 text-muted-foreground hover:border-gold/50"
                             }`}
                           >
-                            {v}
+                            {opt.vibes[v]}
                           </button>
                         );
                       })}
                     </div>
                   </Field>
 
-                  <Field label="مهم‌ترین هدفت از داشتن سایت؟" error={errors.mainGoal}>
+                  <Field label={t.form.labels.mainGoal} error={errors.mainGoal}>
                     <Select
                       name="mainGoal"
-                      options={mainGoalOptions}
+                      options={toOptions(mainGoalKeys, opt.mainGoal)}
                       value={data.mainGoal as string}
                       onChange={(v) => set("mainGoal", v)}
+                      placeholder={t.form.selectPlaceholder}
                     />
                   </Field>
 
-                  <Field
-                    label="وقتی سایت رایگانت روی دامنه آزمایشی آماده شد، اولین جایی که لینکش را استفاده می‌کنی کجاست؟"
-                    error={errors.firstAction}
-                  >
+                  <Field label={t.form.labels.firstAction} error={errors.firstAction}>
                     <textarea
                       rows={3}
                       className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 resize-none"
-                      placeholder="مثلاً: لینک را در بیو اینستاگرام می‌گذارم یا برای مشتری‌های جدی می‌فرستم..."
+                      placeholder={t.form.placeholders.firstAction}
                       value={(data.firstAction as string) ?? ""}
                       onChange={(e) => set("firstAction", e.target.value)}
                     />
@@ -495,8 +520,8 @@ export default function LeadForm() {
                   disabled={step === 1}
                   className="inline-flex items-center gap-2 rounded-xl border border-gold/30 px-5 py-2.5 text-sm font-semibold text-foreground disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gold/10"
                 >
-                  <ArrowRight className="h-4 w-4" />
-                  قبلی
+                  <PrevIcon className="h-4 w-4" />
+                  {t.form.buttons.prev}
                 </button>
                 <button
                   type="button"
@@ -506,13 +531,13 @@ export default function LeadForm() {
                 >
                   {step === 4 ? (
                     <>
-                      {submitting ? "در حال ارسال..." : "ارسال نهایی"}
+                      {submitting ? t.form.buttons.submitting : t.form.buttons.submit}
                       <Send className="h-4 w-4" />
                     </>
                   ) : (
                     <>
-                      مرحله بعد
-                      <ArrowLeft className="h-4 w-4" />
+                      {t.form.buttons.next}
+                      <NextIcon className="h-4 w-4" />
                     </>
                   )}
                 </button>

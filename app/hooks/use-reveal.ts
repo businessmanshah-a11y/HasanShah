@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { type Locale, formatNum } from "../i18n/config";
 
 export function useReveal<T extends HTMLElement = HTMLDivElement>() {
   const ref = useRef<T | null>(null);
@@ -26,7 +27,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
   return ref;
 }
 
-export function useCounter(target: number, duration = 1800) {
+export function useCounter(target: number, locale: Locale = "fa", duration = 1800) {
   const ref = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export function useCounter(target: number, duration = 1800) {
               const p = Math.min(1, (now - start) / duration);
               const eased = 1 - Math.pow(1 - p, 3);
               const val = Math.floor(eased * target);
-              if (el) el.textContent = val.toLocaleString("fa-IR");
+              if (el) el.textContent = formatNum(val, locale);
               if (p < 1) requestAnimationFrame(tick);
             };
             requestAnimationFrame(tick);
@@ -55,7 +56,7 @@ export function useCounter(target: number, duration = 1800) {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [target, duration]);
+  }, [target, locale, duration]);
 
   return ref;
 }

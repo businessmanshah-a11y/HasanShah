@@ -1,18 +1,14 @@
 "use client";
-import { Check, Gift, ArrowLeft } from "lucide-react";
+import { Check, Gift, ArrowLeft, ArrowRight } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
-
-const features = [
-  "طراحی و اجرای سایت تک‌صفحه‌ای اختصاصی",
-  "تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی",
-  "ریسپانسیو روی موبایل، تبلت و دسکتاپ",
-  "دیزاین اختصاصی با توجه به برند، مخاطب و هدف فروش",
-  "فرم تماس یا مسیر ارتباطی مناسب برای جذب لید",
-  "یک ماه فرصت بررسی و تصمیم برای همکاری بعدی",
-];
+import { useI18n } from "../i18n/LanguageProvider";
+import { Highlight } from "../i18n/Highlight";
 
 export default function Offer() {
   const ref = useReveal<HTMLDivElement>();
+  const { t, dir } = useI18n();
+  const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
+  const arrowHover = dir === "rtl" ? "group-hover:-translate-x-1" : "group-hover:translate-x-1";
   return (
     <section id="offer" className="relative py-20 md:py-28">
       <div className="container mx-auto px-4">
@@ -38,30 +34,21 @@ export default function Offer() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-4 py-1.5 text-xs font-bold text-gold-foreground mb-5">
                 <Gift className="h-3.5 w-3.5" />
-                کمپین ویژه — سایت تک‌صفحه‌ای رایگان
+                {t.offer.badge}
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black leading-tight mb-5" style={{textWrap: "balance"}}>
-                یک سایت واقعی تحویل بگیر،{" "}
-                <span className="text-gold">بعد تصمیم بگیر</span>
-                <br />
-                ادامه همکاری می‌خوای یا نه
+                <Highlight text={t.offer.title} />
               </h2>
 
               <p className="text-muted-foreground text-lg leading-loose mb-6">
-                فرم را پر کن تا تیم فنی ما بر اساس برند، مخاطب و هدفت یک سایت
-                تک‌صفحه‌ای اختصاصی طراحی و اجرا کند. حداکثر تا ۷۲ ساعت، نسخه آماده
-                روی دامنه آزمایشی تحویل می‌شود؛ بدون پیش‌پرداخت، بدون قرارداد و
-                بدون هیچ پیش‌شرطی.
+                {t.offer.desc}
               </p>
 
               <div className="rounded-xl border border-gold/20 bg-gold/5 p-5 mb-6">
-                <h4 className="font-bold text-gold mb-2">بعد از تحویل چه اتفاقی می‌افته؟</h4>
+                <h4 className="font-bold text-gold mb-2">{t.offer.afterTitle}</h4>
                 <p className="text-sm text-muted-foreground leading-loose">
-                  سایت روی دامنه آزمایشی تا یک ماه قابل بررسی است. اگر کیفیت
-                  کار، سرعت اجرا و مسیر پیشنهادی به کارت آمد، درباره همکاری
-                  بلندمدت یا توسعه نسخه کامل‌تر صحبت می‌کنیم؛ اگر هم نه، هیچ
-                  تعهدی برای تو ایجاد نمی‌شود.
+                  {t.offer.afterDesc}
                 </p>
               </div>
 
@@ -69,15 +56,15 @@ export default function Offer() {
                 href="#form"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold-lg transition hover:-translate-y-0.5"
               >
-                فرم سایت رایگان
-                <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
+                {t.offer.cta}
+                <Arrow className={`h-5 w-5 transition-transform ${arrowHover}`} />
               </a>
             </div>
 
             {/* Features list */}
             <div className="space-y-3">
-              <h3 className="text-xl font-bold mb-4 text-gold">این کمپین شامل چیه؟</h3>
-              {features.map((f) => (
+              <h3 className="text-xl font-bold mb-4 text-gold">{t.offer.featuresTitle}</h3>
+              {t.offer.features.map((f) => (
                 <div
                   key={f}
                   className="flex items-start gap-3 rounded-xl bg-surface/60 border border-gold/10 p-4 hover:border-gold/30 transition"
