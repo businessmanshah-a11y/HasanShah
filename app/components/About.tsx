@@ -4,17 +4,17 @@ import { Check } from "lucide-react";
 import { useCounter, useReveal } from "../hooks/use-reveal";
 
 const numbers = [
-  { value: 120, suffix: "+",      label: "پروژه موفق" },
-  { value: 7,   suffix: "",       label: "سال تجربه" },
-  { value: 95,  suffix: "٪",      label: "رضایت مشتری" },
-  { value: 48,  suffix: " ساعت",  label: "میانگین تحویل MVP" },
+  { value: 7,  suffix: " سال",    label: "تجربه دیجیتال و سوشال مارکتینگ" },
+  { value: 2,  suffix: " برند",   label: "فروش روزانه میلیاردی در اینستاگرام" },
+  { value: 20, suffix: " همکاری", label: "همکاری موفق با مجموعه‌ها" },
+  { value: 5,  suffix: " پروژه",  label: "پروژه کامل با فیچرهای اختصاصی" },
 ];
 
 const expertise = [
-  { name: "طراحی UI/UX لوکس",    note: "فرانت‌اند + تجربه کاربری" },
+  { name: "طراحی تجربه کاربری",   note: "مسیر ساده‌تر برای اعتماد و خرید" },
   { name: "توسعه وب مدرن",       note: "React · Next.js · TypeScript" },
-  { name: "سئو و مارکتینگ",      note: "محتوا + گوگل + رشد" },
-  { name: "استراتژی برندینگ",    note: "هویت + پوزیشنینگ" },
+  { name: "مارکتینگ و رشد",      note: "سوشال، محتوا و مسیر فروش" },
+  { name: "پوزیشنینگ برند",      note: "لحن، هویت و پیشنهاد واضح‌تر" },
 ];
 
 function StatBlock({
@@ -80,18 +80,19 @@ export default function About() {
               من فقط سایت{" "}
               <span className="text-gold">نمی‌سازم</span>
               <br />
-              من برندِ تو رو{" "}
-              <span className="text-gold">می‌سازم</span>
+              کمک می‌کنم برندت{" "}
+              <span className="text-gold">جدی‌تر دیده بشه</span>
             </h2>
             <p className="text-muted-foreground leading-loose mb-4 text-base md:text-lg">
-              هفت ساله که با کسب‌وکارها کار می‌کنم — از فروشگاه‌های لوکس تا
-              استارتاپ‌های نوپا. تخصصم اینه که سایتی بسازم که نه فقط زیبا باشه،
-              بلکه{" "}
-              <span className="text-gold font-semibold">بفروشه</span>.
+              هفت ساله با کسب‌وکارها در فضای دیجیتال، سوشال مدیا و فروش آنلاین
+              کار می‌کنم. تجربه‌ام فقط طراحی صفحه نیست؛ از ساخت مسیر اعتماد تا
+              کمک به فروش روزانه میلیاردی برای دو برند سرشناس اینستاگرامی کنار
+              تیم‌ها بوده‌ام.
             </p>
             <p className="text-muted-foreground leading-loose mb-8">
-              هر پروژه یک امضای شخصیه — با وسواس روی جزئیات، تجربه کاربری
-              بی‌نقص و کدنویسی تمیز.
+              برای من سایت وقتی ارزش دارد که با واقعیت کسب‌وکار هماهنگ باشد:
+              حرف درست بزند، سریع و تمیز اجرا شود و مشتری را بی‌دردسر به تصمیم
+              بعدی برساند.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">

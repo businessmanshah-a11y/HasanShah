@@ -23,7 +23,7 @@ const projects = [
   },
   {
     title: "Startup MVP",
-    desc: "لندینگ پیج استارتاپ هوش مصنوعی",
+    desc: "سایت تک‌صفحه‌ای استارتاپ با ساختار معرفی محصول",
     image: "/images/portfolio/portfolio-startup.jpg",
     category: "service" as const,
   },
@@ -60,10 +60,10 @@ export default function Portfolio() {
       <div className="container mx-auto px-4">
         <div ref={ref} className="mx-auto max-w-3xl text-center mb-10">
           <h2 className="text-3xl md:text-5xl font-black mb-5 leading-tight">
-            کارهایی که <span className="text-gold">حرف می‌زنن</span>
+            پروژه‌هایی که <span className="text-gold">واقعی اجرا شدن</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            هر پروژه یک داستان — هر داستان یک نتیجه.
+            پنج پروژه کامل با نیازهای متفاوت، فیچرهای اختصاصی و تمرکز روی تجربه واقعی کاربر.
           </p>
         </div>
 

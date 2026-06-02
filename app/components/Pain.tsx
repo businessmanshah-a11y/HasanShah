@@ -3,17 +3,17 @@ import { TrendingDown, Users, ShoppingBag, AlertTriangle } from "lucide-react";
 import { useCounter, useReveal } from "../hooks/use-reveal";
 
 const stats = [
-  { value: 73,  suffix: "٪",    label: "کسب‌وکارهایی که فقط با اینستاگرام می‌فروشن",  icon: ShoppingBag },
-  { value: 4,   suffix: " برابر", label: "اعتماد مشتری به برند دارای سایت اختصاصی",    icon: Users },
-  { value: 89,  suffix: "٪",    label: "ضرر فروش هنگام قطعی اینستاگرام",              icon: TrendingDown },
-  { value: 1,   suffix: " از ۳", label: "خریدار قبل از خرید سایت رو چک می‌کنه",       icon: AlertTriangle },
+  { value: 1, suffix: " مسیر", label: "فروش مستقل کنار اینستاگرام", icon: ShoppingBag },
+  { value: 1, suffix: " صفحه", label: "معرفی حرفه‌ای برای مشتری جدی", icon: Users },
+  { value: 1, suffix: " فرم",  label: "جمع‌آوری لید بدون گم‌شدن در دایرکت", icon: TrendingDown },
+  { value: 1, suffix: " برند", label: "هویت قابل اعتماد و قابل جست‌وجو", icon: AlertTriangle },
 ];
 
 const questions = [
-  "وقتی اینستاگرام قطع شد، چقدر ضرر کردی؟",
-  "رقیبات دارن می‌فروشن، تو کجایی؟",
-  "مشتری گفت «سایت‌تون رو بفرستین» — چی فرستادی؟",
-  "تا کِی می‌خوای ۸۰٪ سهمت رو به الگوریتم بسپاری؟",
+  "اگر مشتری جدی لینک سایتت را بخواهد، چه چیزی برایش می‌فرستی؟",
+  "فروش تو فقط به دایرکت و حال‌وهوای الگوریتم وابسته است؟",
+  "مسیر معرفی، اعتمادسازی و سفارش برای مشتری چقدر روشن است؟",
+  "برندت بیرون از اینستاگرام هم همان‌قدر حرفه‌ای دیده می‌شود؟",
 ];
 
 function Stat({
@@ -49,11 +49,13 @@ export default function Pain() {
       <div className="container mx-auto px-4">
         <div ref={ref} className="mx-auto max-w-3xl text-center mb-14">
           <h2 className="text-3xl md:text-5xl font-black mb-5 leading-tight" style={{textWrap: "balance"}}>
-            داری ماهانه چقدر{" "}
-            <span className="text-gold">از دست می‌دی</span>؟
+            وقتی سایت نداری، فقط یک صفحه{" "}
+            <span className="text-gold">کم نداری</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-loose">
-            هر روزی که سایت نداری، رقبا یک قدم جلوتر می‌رن. آمارها حرف می‌زنن:
+            یک بخش مهم از اعتماد، معرفی و فروش برندت بیرون از کنترل تو می‌ماند.
+            سایت خوب قرار نیست جای اینستاگرام را بگیرد؛ قرار است ستون محکم‌تری
+            کنار آن بسازد.
           </p>
         </div>
 

@@ -16,7 +16,7 @@ export default function Footer() {
             />
             <div>
               <div className="font-bold text-foreground">حسن شاهمرادی</div>
-              <div className="text-xs text-muted-foreground">طراح سایت و استراتژیست دیجیتال</div>
+              <div className="text-xs text-muted-foreground">طراح سایت و استراتژیست رشد دیجیتال</div>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="text-center md:text-left text-xs text-muted-foreground">
             © ۱۴۰۴ — تمامی حقوق محفوظ است.
             <br />
-            ساخته شده با ❤️ توسط حسن شاهمرادی
+            طراحی و اجرا توسط حسن شاهمرادی
           </div>
         </div>
       </div>

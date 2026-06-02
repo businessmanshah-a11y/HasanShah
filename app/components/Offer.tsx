@@ -3,12 +3,12 @@ import { Check, Gift, ArrowLeft } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
 
 const features = [
-  "طراحی اختصاصی و کاملاً مطابق برند شما",
+  "طراحی و اجرای سایت تک‌صفحه‌ای اختصاصی",
+  "تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی",
   "ریسپانسیو روی موبایل، تبلت و دسکتاپ",
-  "بهینه‌سازی سرعت و سئو پایه",
-  "فرم تماس و اتصال به واتساپ/تلگرام",
-  "هاستینگ یک‌ماهه رایگان روی دامنه آزمایشی",
-  "آموزش مدیریت محتوا (ویدئویی)",
+  "دیزاین اختصاصی با توجه به برند، مخاطب و هدف فروش",
+  "فرم تماس یا مسیر ارتباطی مناسب برای جذب لید",
+  "یک ماه فرصت بررسی و تصمیم برای همکاری بعدی",
 ];
 
 export default function Offer() {
@@ -38,27 +38,30 @@ export default function Offer() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-4 py-1.5 text-xs font-bold text-gold-foreground mb-5">
                 <Gift className="h-3.5 w-3.5" />
-                پیشنهاد ویژه — ۱۰۰٪ رایگان
+                کمپین ویژه — سایت تک‌صفحه‌ای رایگان
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black leading-tight mb-5" style={{textWrap: "balance"}}>
-                یک لندینگ پیج{" "}
-                <span className="text-gold">کامل و حرفه‌ای</span>
+                یک سایت واقعی تحویل بگیر،{" "}
+                <span className="text-gold">بعد تصمیم بگیر</span>
                 <br />
-                هدیه من به کسب‌وکار توئه
+                ادامه همکاری می‌خوای یا نه
               </h2>
 
               <p className="text-muted-foreground text-lg leading-loose mb-6">
-                بدون شرط، بدون پیش‌پرداخت، بدون قرارداد. فقط فرم رو پر کن —
-                تا ۷۲ ساعت آینده، اولین نسخه سایتت آماده‌ست.
+                فرم را پر کن تا تیم فنی ما بر اساس برند، مخاطب و هدفت یک سایت
+                تک‌صفحه‌ای اختصاصی طراحی و اجرا کند. حداکثر تا ۷۲ ساعت، نسخه آماده
+                روی دامنه آزمایشی تحویل می‌شود؛ بدون پیش‌پرداخت، بدون قرارداد و
+                بدون هیچ پیش‌شرطی.
               </p>
 
               <div className="rounded-xl border border-gold/20 bg-gold/5 p-5 mb-6">
-                <h4 className="font-bold text-gold mb-2">چرا رایگانه؟</h4>
+                <h4 className="font-bold text-gold mb-2">بعد از تحویل چه اتفاقی می‌افته؟</h4>
                 <p className="text-sm text-muted-foreground leading-loose">
-                  چون می‌خوام کیفیت کارم رو ببینی، نه اینکه دربارش بشنوی.
-                  وقتی نتیجه رو دیدی، انتخاب با خودته که برای پروژه‌های
-                  بزرگ‌تر با هم همکاری کنیم یا نه.
+                  سایت روی دامنه آزمایشی تا یک ماه قابل بررسی است. اگر کیفیت
+                  کار، سرعت اجرا و مسیر پیشنهادی به کارت آمد، درباره همکاری
+                  بلندمدت یا توسعه نسخه کامل‌تر صحبت می‌کنیم؛ اگر هم نه، هیچ
+                  تعهدی برای تو ایجاد نمی‌شود.
                 </p>
               </div>
 
@@ -66,14 +69,14 @@ export default function Offer() {
                 href="#form"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold-lg transition hover:-translate-y-0.5"
               >
-                همین الان شروع کن
+                فرم سایت رایگان
                 <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
               </a>
             </div>
 
             {/* Features list */}
             <div className="space-y-3">
-              <h3 className="text-xl font-bold mb-4 text-gold">چی شامل می‌شه؟</h3>
+              <h3 className="text-xl font-bold mb-4 text-gold">این کمپین شامل چیه؟</h3>
               {features.map((f) => (
                 <div
                   key={f}

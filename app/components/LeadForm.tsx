@@ -162,10 +162,11 @@ export default function LeadForm() {
         <div ref={ref} className="mx-auto max-w-3xl">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-black mb-4">
-              بزن بریم <span className="text-gold">شروع کنیم</span>
+              فرم دریافت <span className="text-gold">سایت رایگان</span>
             </h2>
             <p className="text-muted-foreground">
-              ۱۵ سوال کوتاه — کمتر از ۳ دقیقه طول می‌کشه.
+              چند سوال کوتاه تا تیم فنی ما بتواند سایت تک‌صفحه‌ای اختصاصی تو را
+              تا ۷۲ ساعت روی دامنه آزمایشی آماده کند.
             </p>
           </div>
 
@@ -174,10 +175,11 @@ export default function LeadForm() {
               <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-gold shadow-gold">
                 <Sparkles className="h-8 w-8 text-gold-foreground" />
               </div>
-              <h3 className="text-2xl font-black mb-3">پاسخ‌هات ثبت شد! 🎉</h3>
+              <h3 className="text-2xl font-black mb-3">پاسخ‌هات ثبت شد!</h3>
               <p className="text-muted-foreground leading-loose mb-6">
-                خیلی ممنون که وقت گذاشتی. تا ۷۲ ساعت آینده، با شماره‌ای که
-                وارد کردی تماس می‌گیرم و اولین نسخه لندینگ پیجت رو نشونت می‌دم.
+                ممنون که با حوصله جواب دادی. اطلاعاتت برای شروع طراحی سایت
+                ثبت شد و از همان راه ارتباطی که وارد کردی، درباره تحویل نسخه
+                آزمایشی و زمان‌بندی با تو هماهنگ می‌شویم.
               </p>
               <button
                 onClick={() => {
@@ -258,7 +260,7 @@ export default function LeadForm() {
               {step === 2 && (
                 <div className="space-y-5">
                   <Field
-                    label="وقتی اینستاگرام قطع شد، چقدر ضرر کردی؟"
+                    label="اگر اینستاگرام چند روز در دسترس نباشد، فروش تو چقدر تحت تاثیر قرار می‌گیرد؟"
                     error={errors.instagramLoss}
                   >
                     <Radio
@@ -269,7 +271,7 @@ export default function LeadForm() {
                     />
                   </Field>
                   <Field
-                    label="فکر می‌کنی رقیبات از سایتشون ماهانه چقدر درمیارن؟"
+                    label="فکر می‌کنی سایت برای رقبای جدی تو چه نقشی دارد؟"
                     error={errors.competitorIncome}
                   >
                     <Radio
@@ -313,7 +315,7 @@ export default function LeadForm() {
                     />
                   </Field>
                   <Field
-                    label="با سایت ماهانه چقدر می‌تونی درآمد داشته باشی؟"
+                    label="از سایت انتظار داری بیشتر روی کدام بازه فروش اثر بگذارد؟"
                     error={errors.expectedIncome}
                   >
                     <Radio
@@ -412,13 +414,13 @@ export default function LeadForm() {
                   </Field>
 
                   <Field
-                    label="اگه سایتت تا ۷۲ ساعت دیگه آنلاین باشه، اولین کاری که می‌کنی چیه؟"
+                    label="وقتی سایت رایگانت روی دامنه آزمایشی آماده شد، اولین جایی که لینکش را استفاده می‌کنی کجاست؟"
                     error={errors.firstAction}
                   >
                     <textarea
                       rows={3}
                       className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 resize-none"
-                      placeholder="مثلاً: لینکش رو می‌فرستم برای ۵ تا مشتری خاصم..."
+                      placeholder="مثلاً: لینک را در بیو اینستاگرام می‌گذارم یا برای مشتری‌های جدی می‌فرستم..."
                       value={(data.firstAction as string) ?? ""}
                       onChange={(e) => set("firstAction", e.target.value)}
                     />

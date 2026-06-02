@@ -29,19 +29,20 @@ export default function Hero() {
 
           <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs text-gold mb-6">
             <Sparkles className="h-3.5 w-3.5" />
-            طراحی سایت + دیجیتال مارکتینگ
+            کمپین سایت تک‌صفحه‌ای رایگان
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.3] mb-6" style={{textWrap: "balance"}}>
-            کی از{" "}
-            <span className="text-gold">چشمه جاودان پول</span>
+            یک سایت تک‌صفحه‌ای{" "}
+            <span className="text-gold">رایگان</span>
             <br />
-            بدش میاد؟
+            برای برندت می‌سازیم
           </h1>
 
           <p className="text-base md:text-lg text-muted-foreground leading-loose mb-8 max-w-xl mx-auto md:mx-0">
-            چشمه‌ای که <span className="text-gold">با هم</span> می‌سازیمش —
-            با یک سایت حرفه‌ای، لوکس و دقیق که برندت رو هم‌سطح بزرگان بازار می‌کنه.
+            بدون پیش‌شرط و پیش‌پرداخت. تیم فنی ما حداکثر تا ۷۲ ساعت یک سایت
+            تک‌صفحه‌ای اختصاصی با دیزاین قوی روی دامنه آزمایشی تحویل می‌دهد؛ تو هم
+            یک ماه فرصت داری بررسی کنی و برای همکاری بعدی تصمیم بگیری.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
@@ -49,7 +50,7 @@ export default function Hero() {
               href="#form"
               className="group inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-7 py-3.5 font-bold text-gold-foreground shadow-gold-lg transition hover:-translate-y-0.5 animate-pulse-gold"
             >
-              لندینگ پیج رایگان
+              سایت رایگان
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             </a>
             <a
@@ -63,9 +64,9 @@ export default function Hero() {
           <div className="mt-10 flex items-center justify-center md:justify-start gap-6 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
-              آماده پذیرش پروژه جدید
+              تحویل روی دامنه آزمایشی
             </div>
-            <div className="hidden sm:block">۷ سال تجربه</div>
+            <div className="hidden sm:block">حداکثر ۷۲ ساعت</div>
           </div>
         </div>
 
@@ -96,7 +97,7 @@ export default function Hero() {
             />
             <div className="absolute bottom-4 right-4 left-4 rounded-2xl glass-card px-4 py-3">
               <div className="text-xs text-gold mb-0.5">حسن شاهمرادی</div>
-              <div className="text-sm font-semibold">طراح سایت و استراتژیست دیجیتال</div>
+              <div className="text-sm font-semibold">طراح سایت و استراتژیست رشد دیجیتال</div>
             </div>
           </div>
         </div>

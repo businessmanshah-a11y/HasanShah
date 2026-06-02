@@ -6,7 +6,7 @@ const links = [
   { href: "#about",     label: "درباره من" },
   { href: "#services",  label: "خدمات" },
   { href: "#portfolio", label: "نمونه‌کارها" },
-  { href: "#offer",     label: "پیشنهاد رایگان" },
+  { href: "#offer",     label: "سایت رایگان" },
   { href: "#contact",   label: "تماس" },
 ];
 
@@ -64,7 +64,7 @@ export default function Nav() {
           href="#form"
           className="hidden md:inline-flex items-center justify-center rounded-xl bg-gradient-gold px-5 py-2 text-sm font-semibold text-gold-foreground shadow-gold transition hover:opacity-90"
         >
-          لندینگ پیج رایگان
+          سایت رایگان
         </a>
 
         <button
@@ -99,7 +99,7 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="mt-2 text-center rounded-xl bg-gradient-gold px-5 py-2.5 font-semibold text-gold-foreground"
             >
-              لندینگ پیج رایگان
+              سایت رایگان
             </a>
           </nav>
         </div>
