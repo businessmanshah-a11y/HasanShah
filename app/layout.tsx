@@ -9,6 +9,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.vercel.app"),
   title: "حسن شاهمرادی — کمپین سایت رایگان",
   description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
   openGraph: {
