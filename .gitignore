@@ -2,3 +2,22 @@
 .DS_Store
 node_modules/
 *.log
+docs/
+
+# Next.js build output
+.next/
+
+# Claude Code / AI tool state (machine-local, not source)
+.agents/
+.claude/
+.impeccable/
+skills-lock.json
+
+# Duplicate assets — Next.js serves static files from public/, not assets/
+assets/fonts/
+assets/images/favicon.svg
+assets/images/logo.png
+assets/images/logo.svg
+assets/images/profile.jpg
+assets/images/profile.webp
+assets/images/portfolio/
