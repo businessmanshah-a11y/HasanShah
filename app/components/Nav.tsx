@@ -41,18 +41,18 @@ export default function Nav() {
         background:   s
           ? "rgba(10, 10, 10, 0.55)"
           : "transparent",
-        backdropFilter:       s ? "blur(18px) saturate(160%)" : "none",
-        WebkitBackdropFilter: s ? "blur(18px) saturate(160%)" : "none",
+        backdropFilter:       s ? "blur(8px)" : "none",
+        WebkitBackdropFilter: s ? "blur(8px)" : "none",
         boxShadow: s
           ? "0 0 0 1px rgba(255,255,255,0.07), 0 8px 32px rgba(0,0,0,0.45)"
           : "none",
+        willChange: "transform",
         transition:
-          "top 600ms cubic-bezier(.4,0,.2,1), " +
-          "width 600ms cubic-bezier(.4,0,.2,1), " +
-          "border-radius 600ms cubic-bezier(.4,0,.2,1), " +
-          "background 600ms cubic-bezier(.4,0,.2,1), " +
-          "backdrop-filter 600ms cubic-bezier(.4,0,.2,1), " +
-          "box-shadow 600ms cubic-bezier(.4,0,.2,1)",
+          "top 300ms ease, " +
+          "width 300ms ease, " +
+          "border-radius 350ms ease, " +
+          "background 300ms ease, " +
+          "box-shadow 300ms ease",
       }}
     >
       <div
@@ -60,11 +60,9 @@ export default function Nav() {
         style={{
           padding: s ? "10px 20px" : "16px 24px",
           background:            open ? "rgba(0, 0, 0, 0.7)" : "transparent",
-          backdropFilter:        open ? "blur(18px) saturate(160%)" : "none",
-          WebkitBackdropFilter:  open ? "blur(18px) saturate(160%)" : "none",
-          transition:
-            "padding 600ms cubic-bezier(.4,0,.2,1), " +
-            "background 300ms ease, backdrop-filter 300ms ease",
+          backdropFilter:        open ? "blur(8px)" : "none",
+          WebkitBackdropFilter:  open ? "blur(8px)" : "none",
+          transition: "padding 300ms ease, background 200ms ease",
         }}
       >
         {/* Logo */}

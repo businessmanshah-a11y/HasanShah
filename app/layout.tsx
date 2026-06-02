@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     images: ["/images/profile.webp"],
   },
   icons: {
-    icon: "/images/favicon.svg",
-    apple: "/images/favicon.svg",
+    icon: "/HasanShah/images/favicon.svg",
+    apple: "/HasanShah/images/favicon.svg",
   },
 };
 
@@ -46,9 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_SCRIPT }} />
-        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Black.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Black.woff2" as="font" type="font/woff2" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Bold.woff2" as="font" type="font/woff2" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" />
       </head>
       <body>
         <LanguageProvider initialLocale={initialLocale}>

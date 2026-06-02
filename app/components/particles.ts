@@ -17,7 +17,11 @@ export function createHeroSparkles(
 ): HeroSparkle[] {
   const cssWidth = width / dpr;
   const cssHeight = height / dpr;
-  const count = Math.min(520, Math.max(260, Math.floor((cssWidth * cssHeight) / 520)));
+  // Cap at 120 desktop / 60 mobile — lower count + simpler draw = smooth 30fps
+  const isMobile = cssWidth < 768;
+  const count = isMobile
+    ? Math.min(60, Math.max(30, Math.floor((cssWidth * cssHeight) / 4000)))
+    : Math.min(120, Math.max(60, Math.floor((cssWidth * cssHeight) / 2000)));
 
   return Array.from({ length: count }, () => {
     const depth = random();
