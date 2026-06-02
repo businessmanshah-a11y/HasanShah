@@ -46,7 +46,7 @@ export default function About() {
                 src="/images/Shah2.webp"
                 alt={t.brand.name}
                 fill
-                loading="lazy"
+                priority
                 sizes="(max-width: 1024px) 90vw, 28rem"
                 className="object-cover"
                 style={{ objectPosition: "center 30%", transform: "scale(1.08)" }}
