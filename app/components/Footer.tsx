@@ -3,71 +3,48 @@ import { Phone, Send } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-background">
+    <footer id="contact" className="relative overflow-hidden bg-surface/30">
 
-      {/* ── Funnel: سر باز (بالا) → ته بسته (پایین) ── */}
-      <svg
-        aria-hidden
-        viewBox="0 0 1200 480"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-0 w-full h-full"
-      >
-        {/* پر‌کردن داخل قیف با gradient ظریف */}
-        <defs>
-          <linearGradient id="funnelFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="oklch(0.83 0.105 72)" stopOpacity="0.04" />
-            <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0.00" />
-          </linearGradient>
-          <radialGradient id="tipGlow" cx="50%" cy="100%" r="18%">
-            <stop offset="0%"   stopColor="oklch(0.83 0.105 72)" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0"   />
-          </radialGradient>
-        </defs>
+      {/* ── جداکننده: خط طلایی + قیف장식ی فقط در بالا ── */}
+      <div className="relative">
+        {/* خط طلایی اصلی */}
+        <div className="gold-divider" />
 
-        {/* مثلث پر‌شده قیف */}
-        <polygon
-          points="0,0 1200,0 600,480"
-          fill="url(#funnelFill)"
-        />
-
-        {/* glow در نوک */}
-        <ellipse cx="600" cy="480" rx="220" ry="80" fill="url(#tipGlow)" />
-
-        {/* لبه چپ قیف */}
-        <line
-          x1="0"   y1="0"
-          x2="600" y2="480"
-          stroke="oklch(0.83 0.105 72 / 0.28)"
-          strokeWidth="1"
-          vectorEffect="non-scaling-stroke"
-        />
-        {/* لبه راست قیف */}
-        <line
-          x1="1200" y1="0"
-          x2="600"  y2="480"
-          stroke="oklch(0.83 0.105 72 / 0.28)"
-          strokeWidth="1"
-          vectorEffect="non-scaling-stroke"
-        />
-
-        {/* نوک قیف */}
-        <circle
-          cx="600" cy="480" r="3"
-          fill="oklch(0.83 0.105 72 / 0.70)"
-        />
-      </svg>
+        {/* دو خط قیف از گوشه‌ها به مرکز — فقط ۸۰px ارتفاع */}
+        <svg
+          aria-hidden
+          viewBox="0 0 1200 80"
+          preserveAspectRatio="none"
+          className="pointer-events-none w-full"
+          height="80"
+        >
+          <defs>
+            <linearGradient id="lineLeft" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"   stopColor="oklch(0.83 0.105 72)" stopOpacity="0" />
+              <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0.22" />
+            </linearGradient>
+            <linearGradient id="lineRight" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"   stopColor="oklch(0.83 0.105 72)" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <line x1="0"    y1="0" x2="600" y2="80" stroke="url(#lineLeft)"  strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <line x1="1200" y1="0" x2="600" y2="80" stroke="url(#lineRight)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <circle cx="600" cy="80" r="2.5" fill="oklch(0.83 0.105 72 / 0.6)" />
+        </svg>
+      </div>
 
       {/* ── محتوا ── */}
-      <div className="relative z-10 flex flex-col items-center text-center gap-7 px-6 pt-16 pb-6">
+      <div className="flex flex-col items-center text-center gap-6 px-6 pt-8 pb-8">
 
-        {/* لوگو */}
+        {/* لوگو — ۱.۷× */}
         <Image
           src="/images/logo.png"
           alt="HSH"
-          width={128}
-          height={128}
-          className="h-28 w-28 object-contain"
-          style={{ filter: "drop-shadow(0 0 20px oklch(0.83 0.105 72 / 0.35))" }}
+          width={190}
+          height={190}
+          className="h-[190px] w-[190px] object-contain"
+          style={{ filter: "drop-shadow(0 0 24px oklch(0.83 0.105 72 / 0.35))" }}
         />
 
         {/* اسم و توضیح */}
@@ -75,7 +52,7 @@ export default function Footer() {
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
             حسن شاهمرادی
           </h2>
-          <p className="text-sm text-muted-foreground max-w-[22rem] leading-relaxed">
+          <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
             طراح سایت و استراتژیست رشد دیجیتال
           </p>
         </div>
@@ -102,10 +79,10 @@ export default function Footer() {
         </div>
 
         {/* خط جداکننده */}
-        <div className="gold-divider w-32" />
+        <div className="gold-divider w-28" />
 
         {/* کپی‌رایت */}
-        <p className="text-xs text-muted-foreground/60">
+        <p className="text-xs text-muted-foreground/55">
           © ۱۴۰۴ — تمامی حقوق محفوظ است.
           <span className="mx-2 opacity-40">·</span>
           طراحی و اجرا توسط حسن شاهمرادی
