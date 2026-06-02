@@ -77,10 +77,11 @@ export const mainGoalOptions = [
 ] as const;
 
 export const step1Schema = z.object({
-  fullName:     z.string().trim().min(2, "نام رو کامل وارد کن").max(100),
-  contact:      z.string().trim().min(8, "شماره تماس یا آیدی تلگرام معتبر وارد کن").max(60),
-  businessType: z.enum(businessTypes),
-  hasSite:      z.enum(hasSiteOptions),
+  fullName:            z.string().trim().min(2, "نام رو کامل وارد کن").max(100),
+  contact:             z.string().trim().min(8, "شماره تماس یا آیدی تلگرام معتبر وارد کن").max(60),
+  businessType:        z.enum(businessTypes),
+  businessDescription: z.string().trim().min(5, "یه توضیح کوتاه بنویس").max(500),
+  hasSite:             z.enum(hasSiteOptions),
 });
 
 export const step2Schema = z.object({
@@ -99,6 +100,7 @@ export const step4Schema = z.object({
   hasLogo:      z.enum(hasLogoOptions),
   logoFileName: z.string().optional(),
   brandColor:   z.string().min(1, "یک پالت انتخاب کن"),
+  customColor:  z.string().optional(),
   vibes:        z.array(z.string()).min(1, "حداقل یک حس انتخاب کن").max(4),
   mainGoal:     z.enum(mainGoalOptions),
   firstAction:  z.string().trim().min(3, "یک جمله کوتاه بنویس").max(300),

@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, Send, Sparkles } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ChevronDown, Send, Sparkles, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "../hooks/use-reveal";
 import {
@@ -21,9 +21,6 @@ import {
   step3Schema,
   step4Schema,
 } from "../lib/form-schema";
-
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwpeXNbe7xY5JPuCpuaA6TcRi9YnakWplBJw5WnAq8JmaUEQk9PsNW5dK41ooh0IxtNyg/exec";
 
 type Data = Record<string, unknown>;
 
@@ -99,6 +96,7 @@ export default function LeadForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const submittedRef = useRef(false);
 
   const set = (k: string, v: unknown) => {
     setData((d) => ({ ...d, [k]: v }));
@@ -136,20 +134,19 @@ export default function LeadForm() {
   };
 
   const submit = async () => {
+    if (submittedRef.current) return;
+    submittedRef.current = true;
     setSubmitting(true);
     try {
-      await fetch(SCRIPT_URL, {
+      const res = await fetch("/api/submit", {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          ...data,
-          vibes: (data.vibes as string[]).join(", "),
-        }),
+        body: JSON.stringify(data),
       });
+      if (!res.ok) throw new Error("server error");
       setDone(true);
     } catch {
+      submittedRef.current = false;
       toast.error("خطا در ارسال. لطفاً دوباره امتحان کن یا مستقیم تماس بگیر.");
     } finally {
       setSubmitting(false);
@@ -188,6 +185,7 @@ export default function LeadForm() {
                   setDone(false);
                   setStep(1);
                   setData({ vibes: [] });
+                  submittedRef.current = false;
                 }}
                 className="rounded-xl border border-gold/40 px-6 py-2.5 text-sm text-gold hover:bg-gold/10"
               >
@@ -244,6 +242,18 @@ export default function LeadForm() {
                       options={businessTypes}
                       value={data.businessType as string}
                       onChange={(v) => set("businessType", v)}
+                    />
+                  </Field>
+                  <Field
+                    label="کسب‌وکارت رو در یکی دو جمله توضیح بده — چی می‌فروشی یا چه خدماتی ارائه می‌دی؟"
+                    error={errors.businessDescription}
+                  >
+                    <textarea
+                      rows={3}
+                      className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 resize-none"
+                      placeholder="مثلاً: فروش پوشاک زنانه آنلاین | کلینیک پوست و زیبایی | تدریس خصوصی ریاضی..."
+                      value={(data.businessDescription as string) ?? ""}
+                      onChange={(e) => set("businessDescription", e.target.value)}
                     />
                   </Field>
                   <Field label="الان سایت داری؟" error={errors.hasSite}>
@@ -340,12 +350,21 @@ export default function LeadForm() {
                       onChange={(v) => set("hasLogo", v)}
                     />
                     {data.hasLogo === "آره دارم" && (
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => set("logoFileName", e.target.files?.[0]?.name ?? "")}
-                        className="mt-3 block w-full text-sm text-muted-foreground file:ml-3 file:rounded-full file:border-0 file:bg-gradient-gold file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gold-foreground"
-                      />
+                      <label className="mt-3 flex items-center gap-3 rounded-xl border border-dashed border-gold/30 bg-surface px-4 py-3 cursor-pointer hover:border-gold/50 transition">
+                        <Upload className="h-4 w-4 text-gold/60 shrink-0" />
+                        <span className="text-xs text-muted-foreground flex-1 truncate">
+                          {(data.logoFileName as string) || "فایل لوگو را انتخاب کن..."}
+                        </span>
+                        <span className="rounded-lg bg-gradient-gold px-3 py-1.5 text-xs font-semibold text-gold-foreground shrink-0">
+                          انتخاب
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => set("logoFileName", e.target.files?.[0]?.name ?? "")}
+                        />
+                      </label>
                     )}
                   </Field>
 
@@ -377,7 +396,30 @@ export default function LeadForm() {
                           </button>
                         );
                       })}
+                      {/* Other / custom color option */}
+                      <button
+                        type="button"
+                        onClick={() => set("brandColor", "سایر")}
+                        className={`rounded-xl border p-3 text-right transition flex flex-col justify-between ${
+                          data.brandColor === "سایر"
+                            ? "border-gold bg-gold/15 shadow-gold"
+                            : "border-gold/15 bg-surface hover:border-gold/40"
+                        }`}
+                      >
+                        <div className="flex gap-1.5 mb-2 items-center h-6">
+                          <span className="text-lg leading-none text-muted-foreground">+</span>
+                        </div>
+                        <div className="text-xs text-muted-foreground">سایر (رنگ دلخواه)</div>
+                      </button>
                     </div>
+                    {data.brandColor === "سایر" && (
+                      <input
+                        className="mt-3 w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"
+                        placeholder="کد رنگ یا توضیح رنگ — مثلاً #2563eb یا آبی تیره و طلایی"
+                        value={(data.customColor as string) ?? ""}
+                        onChange={(e) => set("customColor", e.target.value)}
+                      />
+                    )}
                   </Field>
 
                   <Field
