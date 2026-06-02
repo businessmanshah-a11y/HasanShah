@@ -25,7 +25,7 @@ export default function Hero() {
         {/* Text side */}
         <div className="text-center md:text-start">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.png`}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.webp`}
             alt={t.brand.name}
             width={96}
             height={96}

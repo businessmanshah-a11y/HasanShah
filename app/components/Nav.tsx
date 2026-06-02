@@ -70,7 +70,7 @@ export default function Nav() {
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2 shrink-0">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.png`}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.webp`}
             alt={t.brand.name}
             width={36}
             height={36}

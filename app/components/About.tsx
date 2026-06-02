@@ -46,7 +46,6 @@ export default function About() {
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/Shah2.webp`}
                 alt={t.brand.name}
                 fill
-                priority
                 sizes="(max-width: 1024px) 90vw, 28rem"
                 className="object-cover"
                 style={{ objectPosition: "center 30%", transform: "scale(1.08)" }}
