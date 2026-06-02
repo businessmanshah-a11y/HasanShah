@@ -1,6 +1,7 @@
 "use client";
 import { ShoppingBag, Briefcase, Rocket, User, Megaphone } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
+import { GlowCard } from "./ui/spotlight-card";
 
 const services = [
   {
@@ -45,20 +46,20 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-6 gap-5">
           {services.map((s, i) => (
-            <article
+            <GlowCard
               key={s.title}
-              className={`group relative overflow-hidden rounded-2xl border border-gold/15 bg-surface p-7 transition-all hover:border-gold/50 hover:-translate-y-1 hover:shadow-gold ${
-                i === 4 ? "sm:col-span-2 lg:col-span-1" : ""
+              customSize
+              glowColor="gold"
+              className={`group transition-all hover:-translate-y-1 hover:shadow-gold ${
+                i < 2
+                  ? "col-span-6 sm:col-span-3"
+                  : "col-span-6 sm:col-span-2"
               }`}
             >
-              <div
-                className="absolute -top-12 -left-12 h-32 w-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity"
-                style={{ background: "oklch(0.83 0.105 72 / 0.15)" }}
-              />
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
                   <s.icon className="h-5 w-5 text-gold shrink-0 opacity-80" />
                   <h3 className="text-lg font-bold group-hover:text-gold transition-colors leading-snug">
                     {s.title}
@@ -66,7 +67,7 @@ export default function Services() {
                 </div>
                 <p className="text-muted-foreground text-sm leading-loose">{s.desc}</p>
               </div>
-            </article>
+            </GlowCard>
           ))}
         </div>
       </div>
