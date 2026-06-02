@@ -174,17 +174,44 @@ export default function LeadForm() {
     };
   };
 
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwpeXNbe7xY5JPuCpuaA6TcRi9YnakWplBJw5WnAq8JmaUEQk9PsNW5dK41ooh0IxtNyg/exec";
+
   const submit = async () => {
     if (submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
     try {
-      const res = await fetch("/api/submit", {
+      const raw = localizedPayload();
+      const payload = {
+        timestamp: new Date().toISOString(),
+        lang: raw.lang,
+        name: raw.fullName,
+        contact: raw.contact,
+        businessType: raw.businessType,
+        businessDescription: raw.businessDescription,
+        hasSite: raw.hasSite,
+        siteUrl: raw.siteUrl,
+        instagramLoss: raw.instagramLoss,
+        competitorIncome: raw.competitorIncome,
+        whyNow: raw.whyNow,
+        ageRange: raw.ageRange,
+        audienceLocation: raw.audienceLocation,
+        expectedIncome: raw.expectedIncome,
+        hasLogo: raw.hasLogo,
+        logoFileName: raw.logoFileName,
+        logoBase64: raw.logoBase64,
+        color: raw.brandColor,
+        vibes: Array.isArray(raw.vibes) ? raw.vibes.join(", ") : raw.vibes,
+        goal: raw.mainGoal,
+        firstAction: raw.firstAction,
+      };
+      await fetch(SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(localizedPayload()),
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("server error");
       setDone(true);
     } catch {
       submittedRef.current = false;

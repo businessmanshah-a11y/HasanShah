@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { Inter } from "next/font/google";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import LocalizedToaster from "./components/LocalizedToaster";
-import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf, isLocale } from "./i18n/config";
+import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf } from "./i18n/config";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "swap" });
@@ -35,10 +34,8 @@ export const metadata: Metadata = {
 // and sets <html lang/dir> + the cookie, so direction is correct on first paint.
 const NO_FLASH_SCRIPT = `(function(){try{var s=['fa','en','ar'];var m=document.cookie.match(/(?:^|; )${LOCALE_STORAGE_KEY}=([^;]+)/);var l=m&&m[1];if(!l||s.indexOf(l)<0){var n=(navigator.language||'fa').toLowerCase().split('-')[0];l=s.indexOf(n)>=0?n:'fa';}document.documentElement.lang=l;document.documentElement.dir=l==='en'?'ltr':'rtl';document.cookie='${LOCALE_STORAGE_KEY}='+l+';path=/;max-age=31536000;samesite=lax';}catch(e){}})();`;
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies();
-  const cookieLocale = cookieStore.get(LOCALE_STORAGE_KEY)?.value;
-  const initialLocale: Locale = isLocale(cookieLocale) ? cookieLocale : defaultLocale;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const initialLocale: Locale = defaultLocale;
 
   return (
     <html
