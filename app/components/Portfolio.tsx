@@ -1,59 +1,26 @@
 "use client";
-import { useState } from "react";
+import { type CSSProperties, useState } from "react";
 import Image from "next/image";
-import { ExternalLink, X } from "lucide-react";
+import { ExternalLink, EyeOff } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
-
-type Category = "all" | "shop" | "service" | "personal";
-
-const projects = [
-  {
-    title: "Lux Counter",
-    desc: "فروشگاه لوکس ساعت — دوزبانه با دو تم",
-    image: "/images/portfolio/portfolio-luxcounter.jpg",
-    category: "shop" as const,
-    url: "https://luxcounter.ir",
-  },
-  {
-    title: "Rubifo",
-    desc: "فروشگاه آنلاین چندمنظوره — فارسی با دو تم",
-    image: "/images/portfolio/portfolio-rubifo.jpg",
-    category: "shop" as const,
-    url: "https://rubifo.ir",
-  },
-  {
-    title: "Startup MVP",
-    desc: "سایت تک‌صفحه‌ای استارتاپ با ساختار معرفی محصول",
-    image: "/images/portfolio/portfolio-startup.jpg",
-    category: "service" as const,
-  },
-  {
-    title: "Personal Brand",
-    desc: "وب‌سایت پرسونال برندینگ یک متخصص",
-    image: "/images/portfolio/portfolio-personal.jpg",
-    category: "personal" as const,
-  },
-  {
-    title: "Service Business",
-    desc: "وب‌سایت معرفی خدمات حرفه‌ای",
-    image: "/images/portfolio/portfolio-service.jpg",
-    category: "service" as const,
-  },
-];
-
-const filters: { key: Category; label: string }[] = [
-  { key: "all",      label: "همه" },
-  { key: "shop",     label: "فروشگاهی" },
-  { key: "service",  label: "خدماتی" },
-  { key: "personal", label: "پرسونال" },
-];
+import { filters, getVisibleProjects, type Category } from "./portfolio-data";
 
 export default function Portfolio() {
-  const [filter, setFilter]   = useState<Category>("all");
-  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [filter, setFilter] = useState<Category>("all");
+  const [activeIndex, setActiveIndex] = useState(0);
   const ref = useReveal<HTMLDivElement>();
 
-  const visible = projects.filter((p) => filter === "all" || p.category === filter);
+  const visible = getVisibleProjects(filter);
+  const tracks = visible.map((_, index) => (index === activeIndex ? "5fr" : "1fr")).join(" ");
+  const accordionStyle = {
+    "--portfolio-rows": tracks,
+    "--portfolio-columns": tracks,
+  } as CSSProperties;
+
+  const selectFilter = (category: Category) => {
+    setFilter(category);
+    setActiveIndex(0);
+  };
 
   return (
     <section id="portfolio" className="relative py-20 md:py-28 bg-surface/30">
@@ -71,7 +38,7 @@ export default function Portfolio() {
           {filters.map((f) => (
             <button
               key={f.key}
-              onClick={() => setFilter(f.key)}
+              onClick={() => selectFilter(f.key)}
               className={`rounded-xl px-5 py-2 text-sm font-semibold transition ${
                 filter === f.key
                   ? "bg-gradient-gold text-gold-foreground shadow-gold"
@@ -83,74 +50,116 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {visible.map((p) => {
-            const realIdx = projects.indexOf(p);
+        <ul
+          className="mx-auto grid h-[700px] w-full max-w-7xl gap-3 transition-[grid-template-columns,grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [grid-template-rows:var(--portfolio-rows)] md:h-[500px] md:[grid-template-columns:var(--portfolio-columns)] md:[grid-template-rows:1fr]"
+          style={accordionStyle}
+        >
+          {visible.map((p, index) => {
+            const isActive = activeIndex === index;
+
             return (
-              <article
+              <li
                 key={p.title}
-                className="group relative overflow-hidden rounded-2xl border border-gold/15 bg-surface transition-all hover:border-gold/50 hover:-translate-y-1 hover:shadow-gold-lg"
+                role="button"
+                tabIndex={0}
+                aria-label={`باز کردن ${p.title}`}
+                aria-expanded={isActive}
+                onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
+                onFocus={() => setActiveIndex(index)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setActiveIndex(index);
+                  }
+                }}
+                data-active={isActive}
+                className={`group relative min-h-0 min-w-0 cursor-pointer overflow-hidden rounded-3xl border bg-surface outline-none transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-2 focus-visible:ring-gold/60 ${
+                  isActive
+                    ? "border-gold/50 shadow-gold-lg"
+                    : "border-gold/15 hover:border-gold/35"
+                }`}
               >
-                <button
-                  onClick={() => setLightbox(realIdx)}
-                  className="block w-full aspect-[4/3] overflow-hidden bg-background"
-                  aria-label={`دیدن ${p.title}`}
+                <Image
+                  src={p.image}
+                  alt={p.title}
+                  fill
+                  sizes="(min-width: 768px) 44vw, 100vw"
+                  loading="lazy"
+                  className={`object-cover object-top transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isActive ? "scale-105 opacity-100 grayscale-0" : "scale-100 opacity-85 grayscale"
+                  }`}
+                />
+                <div
+                  className={`absolute inset-0 transition-opacity duration-700 ${
+                    isActive
+                      ? "bg-gradient-to-t from-black/80 via-black/30 to-black/5"
+                      : "bg-gradient-to-t from-black/65 via-black/20 to-transparent"
+                  }`}
+                />
+
+                <div
+                  className={`absolute inset-0 flex items-end justify-center p-4 transition-opacity duration-300 ${
+                    isActive ? "opacity-0" : "opacity-100"
+                  }`}
                 >
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    width={1280}
-                    height={800}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                </button>
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-lg font-bold group-hover:text-gold transition-colors">
+                  <div className="flex items-center gap-2 text-white">
+                    <span className="text-sm font-bold md:rotate-180 md:[writing-mode:vertical-rl]">
                       {p.title}
-                    </h3>
-                    {p.url && (
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-shrink-0 inline-flex items-center gap-1 text-xs text-gold hover:underline"
-                      >
-                        مشاهده زنده
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
-                    )}
+                    </span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{p.desc}</p>
                 </div>
-              </article>
+
+                <div
+                  className={`absolute inset-0 z-10 flex flex-col justify-end p-5 transition-all duration-500 md:p-6 ${
+                    isActive
+                      ? "pointer-events-auto translate-y-0 opacity-100 delay-200"
+                      : "pointer-events-none translate-y-4 opacity-0"
+                  }`}
+                >
+                  <div className="flex flex-col items-start gap-3">
+                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
+                      {filters.find((item) => item.key === p.category)?.label ?? "پروژه"}
+                    </span>
+                    <div className="flex w-full flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <h3 className="text-2xl font-black leading-tight text-white md:text-3xl">
+                          {p.title}
+                        </h3>
+                        <p className="mt-2 max-w-md text-sm leading-loose text-white/70 md:text-base">
+                          {p.desc}
+                        </p>
+                      </div>
+                      {p.url ? (
+                        <a
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(event) => event.stopPropagation()}
+                          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-extrabold text-gold transition hover:bg-gold hover:text-gold-foreground active:translate-y-px"
+                        >
+                          دیدن
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          disabled
+                          onClick={(event) => event.stopPropagation()}
+                          className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-gold/15 bg-white/5 px-4 py-2 text-sm font-extrabold text-white/45"
+                        >
+                          دیدن
+                          <EyeOff className="h-4 w-4" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
-
-      {lightbox !== null && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-background/90 backdrop-blur-md p-4"
-          onClick={() => setLightbox(null)}
-        >
-          <button
-            className="absolute top-4 left-4 rounded-full bg-surface border border-gold/30 p-2 text-gold hover:bg-gold/10"
-            onClick={() => setLightbox(null)}
-            aria-label="بستن"
-          >
-            <X className="h-5 w-5" />
-          </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={projects[lightbox].image}
-            alt={projects[lightbox].title}
-            className="max-h-[90vh] max-w-[95vw] rounded-2xl border border-gold/30 shadow-elegant"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
     </section>
   );
 }
