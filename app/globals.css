@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 /* ── Peyda font faces ── */
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-ExtraLight.woff2') format('woff2'); font-weight: 200; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
-@font-face { font-family: 'Peyda'; src: url('/fonts/PeydaWebFaNum-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-ExtraLight.woff2') format('woff2'); font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Peyda'; src: url('/HasanShah/fonts/PeydaWebFaNum-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

@@ -43,7 +43,7 @@ export default function About() {
             <div className="absolute -inset-6 rounded-3xl opacity-60 blur-3xl bg-gradient-gold-soft" />
             <div className="relative overflow-hidden rounded-3xl border border-gold/25 shadow-elegant aspect-[3/4] max-w-md mx-auto">
               <Image
-                src="/images/Shah2.webp"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/Shah2.webp`}
                 alt={t.brand.name}
                 fill
                 priority

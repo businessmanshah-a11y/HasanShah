@@ -46,9 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_SCRIPT }} />
-        <link rel="preload" href="/fonts/PeydaWebFaNum-Black.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PeydaWebFaNum-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Black.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/HasanShah/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
         <LanguageProvider initialLocale={initialLocale}>

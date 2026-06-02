@@ -25,7 +25,7 @@ export default function Hero() {
         {/* Text side */}
         <div className="text-center md:text-start">
           <Image
-            src="/images/logo.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.png`}
             alt={t.brand.name}
             width={96}
             height={96}
@@ -81,7 +81,7 @@ export default function Hero() {
           />
           <div className="relative overflow-hidden rounded-3xl border border-gold/30 shadow-elegant">
             <Image
-              src="/images/profile.webp"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/profile.webp`}
               alt={t.brand.name}
               width={500}
               height={650}

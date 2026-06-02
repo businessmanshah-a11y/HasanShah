@@ -12,33 +12,33 @@ export const projects: Project[] = [
   {
     title: "Lux Counter",
     desc: "فروشگاه لوکس ساعت — دوزبانه با دو تم",
-    image: "/images/portfolio/portfolio-luxcounter.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-luxcounter.jpg`,
     category: "shop",
     url: "https://luxcounter.ir",
   },
   {
     title: "Rubifo",
     desc: "فروشگاه آنلاین چندمنظوره — فارسی با دو تم",
-    image: "/images/portfolio/portfolio-rubifo.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-rubifo.jpg`,
     category: "shop",
     url: "https://rubifo.ir",
   },
   {
     title: "Startup MVP",
     desc: "سایت تک‌صفحه‌ای استارتاپ با ساختار معرفی محصول",
-    image: "/images/portfolio/portfolio-startup.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-startup.jpg`,
     category: "service",
   },
   {
     title: "Personal Brand",
     desc: "وب‌سایت پرسونال برندینگ یک متخصص",
-    image: "/images/portfolio/portfolio-personal.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-personal.jpg`,
     category: "personal",
   },
   {
     title: "Service Business",
     desc: "وب‌سایت معرفی خدمات حرفه‌ای",
-    image: "/images/portfolio/portfolio-service.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-service.jpg`,
     category: "service",
   },
 ];
