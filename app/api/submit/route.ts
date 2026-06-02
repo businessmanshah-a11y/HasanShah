@@ -28,6 +28,7 @@ export async function POST(request: Request) {
       // Step 4
       hasLogo: raw.hasLogo,
       logoFileName: raw.logoFileName ?? "",
+      logoBase64: raw.logoBase64 ?? "",
       color: raw.brandColor === "سایر" ? (raw.customColor ?? "سایر") : raw.brandColor,
       vibes: Array.isArray(raw.vibes) ? raw.vibes.join(", ") : raw.vibes,
       goal: raw.mainGoal,

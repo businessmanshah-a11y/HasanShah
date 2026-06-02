@@ -371,7 +371,14 @@ export default function LeadForm() {
                           type="file"
                           accept="image/*"
                           className="hidden"
-                          onChange={(e) => set("logoFileName", e.target.files?.[0]?.name ?? "")}
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            set("logoFileName", file.name);
+                            const reader = new FileReader();
+                            reader.onload = () => set("logoBase64", reader.result as string);
+                            reader.readAsDataURL(file);
+                          }}
                         />
                       </label>
                     )}
