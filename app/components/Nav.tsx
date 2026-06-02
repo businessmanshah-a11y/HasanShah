@@ -6,7 +6,7 @@ const links = [
   { href: "#about",     label: "درباره من" },
   { href: "#services",  label: "خدمات" },
   { href: "#portfolio", label: "نمونه‌کارها" },
-  { href: "#offer",     label: "سایت رایگان" },
+  { href: "#form",      label: "فرم تماس" },
 ];
 
 export default function Nav() {
