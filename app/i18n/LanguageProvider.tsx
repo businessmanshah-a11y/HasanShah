@@ -61,10 +61,12 @@ export function LanguageProvider({
       /* ignore */
     }
     if (!resolved) {
-      const hasCookie = document.cookie
-        .split("; ")
-        .some((c) => c.startsWith(`${LOCALE_STORAGE_KEY}=`));
-      resolved = hasCookie ? initialLocale : matchLocale(navigator.language);
+      const cookieMatch = document.cookie.match(
+        new RegExp(`(?:^|; )${LOCALE_STORAGE_KEY}=([^;]+)`)
+      );
+      resolved = cookieMatch && isLocale(cookieMatch[1])
+        ? cookieMatch[1]
+        : matchLocale(navigator.language);
     }
     if (resolved !== initialLocale) setLocale(resolved);
     else persist(resolved);

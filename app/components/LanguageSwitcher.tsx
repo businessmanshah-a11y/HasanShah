@@ -2,12 +2,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Globe, Check } from "lucide-react";
 import { useI18n } from "../i18n/LanguageProvider";
-import { locales, localeNames } from "../i18n/config";
+import { locales, localeNames, LOCALE_STORAGE_KEY } from "../i18n/config";
 
 export default function LanguageSwitcher({ className = "" }: { className?: string }) {
   const { locale, setLocale } = useI18n();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem(LOCALE_STORAGE_KEY)) {
+        const t = setTimeout(() => setOpen(true), 700);
+        return () => clearTimeout(t);
+      }
+    } catch { /* ignore */ }
+  }, []);
 
   useEffect(() => {
     if (!open) return;

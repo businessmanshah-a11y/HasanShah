@@ -39,6 +39,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return;
     const syncPointer = (e: PointerEvent) => {
       const { clientX: x, clientY: y } = e;
       if (cardRef.current) {
@@ -160,7 +161,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       border-width: 10px;
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion: reduce), (hover: none) {
       [data-glow]::before,
       [data-glow]::after { display: none; }
     }
