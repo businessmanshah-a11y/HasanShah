@@ -3,7 +3,7 @@ import { Phone, Send } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-surface">
+    <footer id="contact" className="relative overflow-hidden bg-background">
 
       {/* ── Funnel: سر باز (بالا) → ته بسته (پایین) ── */}
       <svg
@@ -58,15 +58,15 @@ export default function Footer() {
       </svg>
 
       {/* ── محتوا ── */}
-      <div className="relative z-10 flex flex-col items-center text-center gap-7 px-6 pt-16 pb-10">
+      <div className="relative z-10 flex flex-col items-center text-center gap-7 px-6 pt-16 pb-6">
 
         {/* لوگو */}
         <Image
           src="/images/logo.png"
           alt="HSH"
-          width={96}
-          height={96}
-          className="h-20 w-20 object-contain"
+          width={128}
+          height={128}
+          className="h-28 w-28 object-contain"
           style={{ filter: "drop-shadow(0 0 20px oklch(0.83 0.105 72 / 0.35))" }}
         />
 
@@ -105,7 +105,7 @@ export default function Footer() {
         <div className="gold-divider w-32" />
 
         {/* کپی‌رایت */}
-        <p className="text-xs text-muted-foreground/60 pb-2">
+        <p className="text-xs text-muted-foreground/60">
           © ۱۴۰۴ — تمامی حقوق محفوظ است.
           <span className="mx-2 opacity-40">·</span>
           طراحی و اجرا توسط حسن شاهمرادی
