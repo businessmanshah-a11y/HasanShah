@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode } from 'react';
 
 interface GlowCardProps {
   children: ReactNode;
@@ -36,34 +36,44 @@ const GlowCard: React.FC<GlowCardProps> = ({
   customSize = false,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  // SSR-safe: assume pointer device; corrected on mount to avoid repaints on mobile
-  const [isPointerDevice, setIsPointerDevice] = useState(true);
-
-  useEffect(() => {
-    const isTouch = window.matchMedia('(hover: none)').matches;
-    setIsPointerDevice(!isTouch);
-    if (isTouch) return;
-
-    const syncPointer = (e: PointerEvent) => {
-      const { clientX: x, clientY: y } = e;
-      const card = cardRef.current;
-      if (!card) return;
-      card.style.setProperty('--x', x.toFixed(2));
-      card.style.setProperty('--xp', (x / window.innerWidth).toFixed(2));
-      card.style.setProperty('--y', y.toFixed(2));
-      card.style.setProperty('--yp', (y / window.innerHeight).toFixed(2));
-      // Local coords for Firefox: pseudo-element mask+fixed is broken in Firefox,
-      // so ::before/::after use scroll attachment with card-relative coordinates.
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--local-x', (x - rect.left).toFixed(2));
-      card.style.setProperty('--local-y', (y - rect.top).toFixed(2));
-    };
-    document.addEventListener('pointermove', syncPointer);
-    return () => document.removeEventListener('pointermove', syncPointer);
-  }, []);
 
   const { base, spread } = glowColorMap[glowColor];
+
+  useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return;
+    const card = cardRef.current;
+    if (!card) return;
+
+    const syncPointer = (e: PointerEvent) => {
+      const rect = card.getBoundingClientRect();
+      const localX = e.clientX - rect.left;
+      const localY = e.clientY - rect.top;
+      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
+      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+      const distance = Math.hypot(dx, dy);
+      const proximity = Number(getComputedStyle(card).getPropertyValue('--proximity')) || 120;
+      const opacity = Math.max(0, 1 - distance / proximity);
+
+      card.style.setProperty('--local-x', localX.toFixed(2));
+      card.style.setProperty('--local-y', localY.toFixed(2));
+      card.style.setProperty('--xp', Math.max(0, Math.min(1, localX / rect.width)).toFixed(2));
+      card.style.setProperty('--glow-opacity', opacity.toFixed(3));
+    };
+
+    const resetPointer = () => {
+      card.style.setProperty('--local-x', '-9999');
+      card.style.setProperty('--local-y', '-9999');
+      card.style.setProperty('--glow-opacity', '0');
+    };
+
+    document.addEventListener('pointermove', syncPointer);
+    document.addEventListener('pointerleave', resetPointer);
+
+    return () => {
+      document.removeEventListener('pointermove', syncPointer);
+      document.removeEventListener('pointerleave', resetPointer);
+    };
+  }, []);
 
   const getSizeClasses = () => {
     if (customSize) return '';
@@ -78,33 +88,31 @@ const GlowCard: React.FC<GlowCardProps> = ({
       '--border': '2',
       '--backdrop': 'oklch(0.17 0.040 258)',
       '--backup-border': 'oklch(0.83 0.105 72 / 0.25)',
-      '--size': '220',
-      '--outer': '1',
+      '--size': '180',
+      '--proximity': '120',
       '--saturation': '80',
-      '--lightness': '65',
-      '--bg-spot-opacity': '0.12',
-      '--border-spot-opacity': '1',
-      '--border-light-opacity': '0.7',
+      '--lightness': '66',
+      '--glow-opacity': '0',
       '--border-size': 'calc(var(--border, 2) * 1px)',
       '--spotlight-size': 'calc(var(--size, 150) * 1px)',
       '--hue': 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
-      backgroundColor: 'var(--backdrop, transparent)',
-      border: 'var(--border-size) solid var(--backup-border)',
+      backgroundImage: `
+        linear-gradient(var(--backdrop), var(--backdrop)),
+        radial-gradient(
+          var(--spotlight-size) var(--spotlight-size) at
+          calc(var(--local-x, -9999) * 1px)
+          calc(var(--local-y, -9999) * 1px),
+          hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 66) * 1%) / var(--glow-opacity, 0)),
+          transparent 68%
+        ),
+        linear-gradient(var(--backup-border), var(--backup-border))
+      `,
+      backgroundOrigin: 'border-box',
+      backgroundClip: 'padding-box, border-box, border-box',
+      border: 'var(--border-size) solid transparent',
       position: 'relative',
+      isolation: 'isolate',
     };
-
-    // Use local coords (relative to each card) instead of fixed viewport coords.
-    // background-attachment:fixed breaks in Firefox when the element also has
-    // backdrop-filter (which creates a new stacking context) — produces wrong glow.
-    // Scroll attachment + card-local --local-x/y is identical visually and cross-browser.
-    if (isPointerDevice) {
-      baseStyles.backgroundImage = `radial-gradient(
-        var(--spotlight-size) var(--spotlight-size) at
-        calc(var(--local-x, -9999) * 1px)
-        calc(var(--local-y, -9999) * 1px),
-        hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 65) * 1%) / var(--bg-spot-opacity, 0.12)), transparent
-      )`;
-    }
 
     if (width !== undefined) {
       baseStyles.width = typeof width === 'number' ? `${width}px` : width;
@@ -116,72 +124,35 @@ const GlowCard: React.FC<GlowCardProps> = ({
     return baseStyles as React.CSSProperties;
   };
 
-  // Pseudo-elements use background-attachment:scroll + local coordinates (--local-x/y).
-  // Using fixed+mask is broken in Firefox: the mask doesn't clip the gradient correctly,
-  // causing the glow to bleed across sibling cards. Local coords fix this cross-browser.
   const beforeAfterStyles = `
-    [data-glow]::before,
     [data-glow]::after {
       pointer-events: none;
       content: "";
       position: absolute;
-      inset: calc(var(--border-size) * -1);
-      border: var(--border-size) solid transparent;
       border-radius: inherit;
-      background-attachment: scroll;
-      background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
-      mask-composite: exclude;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
-      -webkit-mask-composite: xor;
-    }
-
-    [data-glow]::before {
-      background-image: radial-gradient(
-        calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
-        calc(var(--local-x, -9999) * 1px)
-        calc(var(--local-y, -9999) * 1px),
-        hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)), transparent 100%
-      );
-      filter: brightness(2);
+      opacity: var(--glow-opacity, 0);
+      transition: opacity 120ms ease;
     }
 
     [data-glow]::after {
-      background-image: radial-gradient(
-        calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+      inset: -18px;
+      z-index: -1;
+      background: radial-gradient(
+        calc(var(--spotlight-size) * 0.85) calc(var(--spotlight-size) * 0.85) at
         calc(var(--local-x, -9999) * 1px)
         calc(var(--local-y, -9999) * 1px),
-        hsl(0 100% 100% / var(--border-light-opacity, 0.7)), transparent 100%
+        hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 62) * 1%) / 0.28),
+        transparent 72%
       );
+      filter: blur(16px);
     }
 
-    [data-glow] [data-glow] {
-      position: absolute;
-      inset: 0;
-      opacity: var(--outer, 1);
-      border-radius: calc(var(--radius) * 1px);
-      border-width: calc(var(--border-size) * 20);
-      background: none;
-      pointer-events: none;
-      border: none;
-    }
-
-    [data-glow] > [data-glow]::before {
-      inset: -10px;
-      border-width: 10px;
-    }
-
-    @media (hover: hover) {
-      [data-glow] [data-glow] {
-        will-change: filter;
-        filter: blur(calc(var(--border-size) * 10));
-      }
+    [data-glow] > :not([data-glow]) {
+      position: relative;
+      z-index: 1;
     }
 
     @media (prefers-reduced-motion: reduce), (hover: none) {
-      [data-glow]::before,
       [data-glow]::after { display: none; }
     }
   `;
@@ -206,7 +177,6 @@ const GlowCard: React.FC<GlowCardProps> = ({
           ${className}
         `}
       >
-        <div ref={innerRef} data-glow />
         {children}
       </div>
     </>
