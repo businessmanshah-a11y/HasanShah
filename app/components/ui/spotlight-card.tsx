@@ -45,22 +45,28 @@ const GlowCard: React.FC<GlowCardProps> = ({
     setIsPointerDevice(!isTouch);
     if (isTouch) return;
 
-    const syncPointer = (e: PointerEvent) => {
-      const { clientX: x, clientY: y } = e;
-      const card = cardRef.current;
-      if (!card) return;
-      card.style.setProperty('--x', x.toFixed(2));
-      card.style.setProperty('--xp', (x / window.innerWidth).toFixed(2));
-      card.style.setProperty('--y', y.toFixed(2));
-      card.style.setProperty('--yp', (y / window.innerHeight).toFixed(2));
-      // Local coords for Firefox: pseudo-element mask+fixed is broken in Firefox,
-      // so ::before/::after use scroll attachment with card-relative coordinates.
+    const card = cardRef.current;
+    if (!card) return;
+
+    const onMove = (e: MouseEvent) => {
       const rect = card.getBoundingClientRect();
-      card.style.setProperty('--local-x', (x - rect.left).toFixed(2));
-      card.style.setProperty('--local-y', (y - rect.top).toFixed(2));
+      card.style.setProperty('--local-x', (e.clientX - rect.left).toFixed(2));
+      card.style.setProperty('--local-y', (e.clientY - rect.top).toFixed(2));
+      card.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(2));
     };
-    document.addEventListener('pointermove', syncPointer);
-    return () => document.removeEventListener('pointermove', syncPointer);
+
+    // Reset glow off-screen when cursor leaves the card — prevents bleed-in from above/below
+    const onLeave = () => {
+      card.style.setProperty('--local-x', '-9999');
+      card.style.setProperty('--local-y', '-9999');
+    };
+
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', onLeave);
+    return () => {
+      card.removeEventListener('mousemove', onMove);
+      card.removeEventListener('mouseleave', onLeave);
+    };
   }, []);
 
   const { base, spread } = glowColorMap[glowColor];
