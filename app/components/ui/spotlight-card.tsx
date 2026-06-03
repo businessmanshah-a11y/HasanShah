@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode } from 'react';
 
 interface GlowCardProps {
   children: ReactNode;
@@ -37,17 +37,27 @@ const GlowCard: React.FC<GlowCardProps> = ({
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  // SSR-safe: assume pointer device; corrected on mount to avoid repaints on mobile
+  const [isPointerDevice, setIsPointerDevice] = useState(true);
 
   useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return;
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    setIsPointerDevice(!isTouch);
+    if (isTouch) return;
+
     const syncPointer = (e: PointerEvent) => {
       const { clientX: x, clientY: y } = e;
-      if (cardRef.current) {
-        cardRef.current.style.setProperty('--x', x.toFixed(2));
-        cardRef.current.style.setProperty('--xp', (x / window.innerWidth).toFixed(2));
-        cardRef.current.style.setProperty('--y', y.toFixed(2));
-        cardRef.current.style.setProperty('--yp', (y / window.innerHeight).toFixed(2));
-      }
+      const card = cardRef.current;
+      if (!card) return;
+      card.style.setProperty('--x', x.toFixed(2));
+      card.style.setProperty('--xp', (x / window.innerWidth).toFixed(2));
+      card.style.setProperty('--y', y.toFixed(2));
+      card.style.setProperty('--yp', (y / window.innerHeight).toFixed(2));
+      // Local coords for Firefox: pseudo-element mask+fixed is broken in Firefox,
+      // so ::before/::after use scroll attachment with card-relative coordinates.
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--local-x', (x - rect.left).toFixed(2));
+      card.style.setProperty('--local-y', (y - rect.top).toFixed(2));
     };
     document.addEventListener('pointermove', syncPointer);
     return () => document.removeEventListener('pointermove', syncPointer);
@@ -78,30 +88,38 @@ const GlowCard: React.FC<GlowCardProps> = ({
       '--border-size': 'calc(var(--border, 2) * 1px)',
       '--spotlight-size': 'calc(var(--size, 150) * 1px)',
       '--hue': 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
-      backgroundImage: `radial-gradient(
-        var(--spotlight-size) var(--spotlight-size) at
-        calc(var(--x, 0) * 1px)
-        calc(var(--y, 0) * 1px),
-        hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 65) * 1%) / var(--bg-spot-opacity, 0.12)), transparent
-      )`,
       backgroundColor: 'var(--backdrop, transparent)',
       backgroundSize: 'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
       backgroundPosition: '50% 50%',
-      backgroundAttachment: 'fixed',
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative',
     };
 
+    // Only apply fixed-attachment radial gradient on pointer devices.
+    // background-attachment:fixed triggers a repaint on every scroll frame on mobile.
+    if (isPointerDevice) {
+      baseStyles.backgroundImage = `radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at
+        calc(var(--x, 0) * 1px)
+        calc(var(--y, 0) * 1px),
+        hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 65) * 1%) / var(--bg-spot-opacity, 0.12)), transparent
+      )`;
+      baseStyles.backgroundAttachment = 'fixed';
+    }
+
     if (width !== undefined) {
-      (baseStyles as Record<string, string | number>).width = typeof width === 'number' ? `${width}px` : width;
+      baseStyles.width = typeof width === 'number' ? `${width}px` : width;
     }
     if (height !== undefined) {
-      (baseStyles as Record<string, string | number>).height = typeof height === 'number' ? `${height}px` : height;
+      baseStyles.height = typeof height === 'number' ? `${height}px` : height;
     }
 
     return baseStyles as React.CSSProperties;
   };
 
+  // Pseudo-elements use background-attachment:scroll + local coordinates (--local-x/y).
+  // Using fixed+mask is broken in Firefox: the mask doesn't clip the gradient correctly,
+  // causing the glow to bleed across sibling cards. Local coords fix this cross-browser.
   const beforeAfterStyles = `
     [data-glow]::before,
     [data-glow]::after {
@@ -111,7 +129,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       inset: calc(var(--border-size) * -1);
       border: var(--border-size) solid transparent;
       border-radius: inherit;
-      background-attachment: fixed;
+      background-attachment: scroll;
       background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
       background-repeat: no-repeat;
       background-position: 50% 50%;
@@ -124,8 +142,8 @@ const GlowCard: React.FC<GlowCardProps> = ({
     [data-glow]::before {
       background-image: radial-gradient(
         calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
-        calc(var(--x, 0) * 1px)
-        calc(var(--y, 0) * 1px),
+        calc(var(--local-x, -9999) * 1px)
+        calc(var(--local-y, -9999) * 1px),
         hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)), transparent 100%
       );
       filter: brightness(2);
@@ -134,8 +152,8 @@ const GlowCard: React.FC<GlowCardProps> = ({
     [data-glow]::after {
       background-image: radial-gradient(
         calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
-        calc(var(--x, 0) * 1px)
-        calc(var(--y, 0) * 1px),
+        calc(var(--local-x, -9999) * 1px)
+        calc(var(--local-y, -9999) * 1px),
         hsl(0 100% 100% / var(--border-light-opacity, 0.7)), transparent 100%
       );
     }
@@ -143,11 +161,9 @@ const GlowCard: React.FC<GlowCardProps> = ({
     [data-glow] [data-glow] {
       position: absolute;
       inset: 0;
-      will-change: filter;
       opacity: var(--outer, 1);
       border-radius: calc(var(--radius) * 1px);
       border-width: calc(var(--border-size) * 20);
-      filter: blur(calc(var(--border-size) * 10));
       background: none;
       pointer-events: none;
       border: none;
@@ -156,6 +172,13 @@ const GlowCard: React.FC<GlowCardProps> = ({
     [data-glow] > [data-glow]::before {
       inset: -10px;
       border-width: 10px;
+    }
+
+    @media (hover: hover) {
+      [data-glow] [data-glow] {
+        will-change: filter;
+        filter: blur(calc(var(--border-size) * 10));
+      }
     }
 
     @media (prefers-reduced-motion: reduce), (hover: none) {
