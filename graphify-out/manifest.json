@@ -1,0 +1,312 @@
+{
+  "/Users/infinite/HasanShah/app/api/submit/route.ts": {
+    "mtime": 1780417552.084883,
+    "ast_hash": "6077807ea0cc57bf880ac55590a46585",
+    "semantic_hash": "6077807ea0cc57bf880ac55590a46585"
+  },
+  "/Users/infinite/HasanShah/app/components/About.tsx": {
+    "mtime": 1780431016.5020459,
+    "ast_hash": "51b26521a15a9dd166a14e177adf1206",
+    "semantic_hash": "51b26521a15a9dd166a14e177adf1206"
+  },
+  "/Users/infinite/HasanShah/app/components/Footer.tsx": {
+    "mtime": 1780430993.0707154,
+    "ast_hash": "5dbf356654650382fba8ee07cc28d8e3",
+    "semantic_hash": "5dbf356654650382fba8ee07cc28d8e3"
+  },
+  "/Users/infinite/HasanShah/app/components/Hero.tsx": {
+    "mtime": 1780430968.957015,
+    "ast_hash": "d717329675a3d8c5e176b56c5d1e51f8",
+    "semantic_hash": "d717329675a3d8c5e176b56c5d1e51f8"
+  },
+  "/Users/infinite/HasanShah/app/components/LanguageSwitcher.tsx": {
+    "mtime": 1780430323.912123,
+    "ast_hash": "a3e6c7023b8703cbcb953328011ecd96",
+    "semantic_hash": "a3e6c7023b8703cbcb953328011ecd96"
+  },
+  "/Users/infinite/HasanShah/app/components/LeadForm.tsx": {
+    "mtime": 1780427578.8761415,
+    "ast_hash": "b66b6380eed95b172ea6a0447793f186",
+    "semantic_hash": "b66b6380eed95b172ea6a0447793f186"
+  },
+  "/Users/infinite/HasanShah/app/components/LocalizedToaster.tsx": {
+    "mtime": 1780416990.045439,
+    "ast_hash": "6a09e89e683be46fd54afae07cd0b4c2",
+    "semantic_hash": "6a09e89e683be46fd54afae07cd0b4c2"
+  },
+  "/Users/infinite/HasanShah/app/components/Nav.tsx": {
+    "mtime": 1780432600.3616462,
+    "ast_hash": "0aa9d96282fe7c55815b3fb03e0f0062",
+    "semantic_hash": "0aa9d96282fe7c55815b3fb03e0f0062"
+  },
+  "/Users/infinite/HasanShah/app/components/Offer.tsx": {
+    "mtime": 1780417334.1731536,
+    "ast_hash": "999b4524d63a20fe06919d503f5902be",
+    "semantic_hash": "999b4524d63a20fe06919d503f5902be"
+  },
+  "/Users/infinite/HasanShah/app/components/Pain.tsx": {
+    "mtime": 1780417174.9301362,
+    "ast_hash": "7df2cde4a837b4a186fe54588f565cef",
+    "semantic_hash": "7df2cde4a837b4a186fe54588f565cef"
+  },
+  "/Users/infinite/HasanShah/app/components/ParticlesBackground.tsx": {
+    "mtime": 1780432290.1703947,
+    "ast_hash": "bd60a27b6ba98d3354165afc300f6fb9",
+    "semantic_hash": "bd60a27b6ba98d3354165afc300f6fb9"
+  },
+  "/Users/infinite/HasanShah/app/components/Portfolio.tsx": {
+    "mtime": 1780483575.3722386,
+    "ast_hash": "5ebaa131a92c1ce27352a123d6502f9e",
+    "semantic_hash": "5ebaa131a92c1ce27352a123d6502f9e"
+  },
+  "/Users/infinite/HasanShah/app/components/Services.tsx": {
+    "mtime": 1780417250.3665361,
+    "ast_hash": "a9f7775145acdaf682ba5222cb14c929",
+    "semantic_hash": "a9f7775145acdaf682ba5222cb14c929"
+  },
+  "/Users/infinite/HasanShah/app/components/particles.ts": {
+    "mtime": 1780432471.722223,
+    "ast_hash": "357877bf93f06901e4e81adf1c172446",
+    "semantic_hash": "357877bf93f06901e4e81adf1c172446"
+  },
+  "/Users/infinite/HasanShah/app/components/portfolio-data.ts": {
+    "mtime": 1780484158.273733,
+    "ast_hash": "f6791a22ba2a7a9ddf7b14d8342d8d78",
+    "semantic_hash": "f6791a22ba2a7a9ddf7b14d8342d8d78"
+  },
+  "/Users/infinite/HasanShah/app/components/ui/spotlight-card.tsx": {
+    "mtime": 1780481871.2437086,
+    "ast_hash": "6bbd87a2215c9a0106fa4fda2145430d",
+    "semantic_hash": "6bbd87a2215c9a0106fa4fda2145430d"
+  },
+  "/Users/infinite/HasanShah/app/hooks/use-reveal.ts": {
+    "mtime": 1780417147.9130912,
+    "ast_hash": "b6e43938980fab98ab73c703cddcded2",
+    "semantic_hash": "b6e43938980fab98ab73c703cddcded2"
+  },
+  "/Users/infinite/HasanShah/app/i18n/Highlight.tsx": {
+    "mtime": 1780416918.1239715,
+    "ast_hash": "28e6ca480207abd2af054339d477f7b6",
+    "semantic_hash": "28e6ca480207abd2af054339d477f7b6"
+  },
+  "/Users/infinite/HasanShah/app/i18n/LanguageProvider.tsx": {
+    "mtime": 1780430284.5460036,
+    "ast_hash": "674bfb44ed89bae7e1d5ab88dacf74b5",
+    "semantic_hash": "674bfb44ed89bae7e1d5ab88dacf74b5"
+  },
+  "/Users/infinite/HasanShah/app/i18n/config.ts": {
+    "mtime": 1780416649.7420022,
+    "ast_hash": "7e8afb705e43a10be7b464d47d10e5cd",
+    "semantic_hash": "7e8afb705e43a10be7b464d47d10e5cd"
+  },
+  "/Users/infinite/HasanShah/app/i18n/dictionaries/ar.ts": {
+    "mtime": 1780484158.276286,
+    "ast_hash": "bd28e0141ff9a8c1a81dbc22c342b6f9",
+    "semantic_hash": "bd28e0141ff9a8c1a81dbc22c342b6f9"
+  },
+  "/Users/infinite/HasanShah/app/i18n/dictionaries/en.ts": {
+    "mtime": 1780484158.2755291,
+    "ast_hash": "d176dea447826620049d91e4ae75e13f",
+    "semantic_hash": "d176dea447826620049d91e4ae75e13f"
+  },
+  "/Users/infinite/HasanShah/app/i18n/dictionaries/fa.ts": {
+    "mtime": 1780484158.2748203,
+    "ast_hash": "b02c1bf27df84b64f9aafbec3a0d177c",
+    "semantic_hash": "b02c1bf27df84b64f9aafbec3a0d177c"
+  },
+  "/Users/infinite/HasanShah/app/i18n/dictionaries/index.ts": {
+    "mtime": 1780416912.0872824,
+    "ast_hash": "e3065cf783efa02c92957663ab75c837",
+    "semantic_hash": "e3065cf783efa02c92957663ab75c837"
+  },
+  "/Users/infinite/HasanShah/app/layout.tsx": {
+    "mtime": 1780432723.5084918,
+    "ast_hash": "dc99d931dd6d41f416e0a4d0055c3543",
+    "semantic_hash": "dc99d931dd6d41f416e0a4d0055c3543"
+  },
+  "/Users/infinite/HasanShah/app/lib/form-schema.ts": {
+    "mtime": 1780417422.660276,
+    "ast_hash": "3b65b0472e7ca04ca7fb2b4d4568b27f",
+    "semantic_hash": "3b65b0472e7ca04ca7fb2b4d4568b27f"
+  },
+  "/Users/infinite/HasanShah/app/page.tsx": {
+    "mtime": 1780398684.1332867,
+    "ast_hash": "734c5d103012538c93279821b18b16fe",
+    "semantic_hash": "734c5d103012538c93279821b18b16fe"
+  },
+  "/Users/infinite/HasanShah/app/robots.ts": {
+    "mtime": 1780428935.9228988,
+    "ast_hash": "7bf1ccd94c49d174b329a153d85fa69c",
+    "semantic_hash": "7bf1ccd94c49d174b329a153d85fa69c"
+  },
+  "/Users/infinite/HasanShah/app/sitemap.ts": {
+    "mtime": 1780428931.6495187,
+    "ast_hash": "511e511e1f75603af588774aff145f19",
+    "semantic_hash": "511e511e1f75603af588774aff145f19"
+  },
+  "/Users/infinite/HasanShah/eslint.config.mjs": {
+    "mtime": 1780396245.9962263,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": "dfa1f5f6a7037bf39dc510f30b180002"
+  },
+  "/Users/infinite/HasanShah/next-env.d.ts": {
+    "mtime": 1780484323.1800017,
+    "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
+    "semantic_hash": "d0f8375ae1199dc7acd3977fc33b78b8"
+  },
+  "/Users/infinite/HasanShah/next.config.ts": {
+    "mtime": 1780428833.242581,
+    "ast_hash": "dc5ebce6516b90a90a4a376bf3ef0642",
+    "semantic_hash": "dc5ebce6516b90a90a4a376bf3ef0642"
+  },
+  "/Users/infinite/HasanShah/package.json": {
+    "mtime": 1780402814.1321368,
+    "ast_hash": "e60dff72404a5d8d83fa3d09aa812586",
+    "semantic_hash": "e60dff72404a5d8d83fa3d09aa812586"
+  },
+  "/Users/infinite/HasanShah/postcss.config.mjs": {
+    "mtime": 1780396245.9960468,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "/Users/infinite/HasanShah/tests/particles.test.mjs": {
+    "mtime": 1780409477.5090425,
+    "ast_hash": "e995e872fcf857457aa8605d9b308545",
+    "semantic_hash": "e995e872fcf857457aa8605d9b308545"
+  },
+  "/Users/infinite/HasanShah/tests/portfolio-data.test.mjs": {
+    "mtime": 1780484200.931845,
+    "ast_hash": "7fd290d612d84d79dc833ebfb67f83f9",
+    "semantic_hash": "7fd290d612d84d79dc833ebfb67f83f9"
+  },
+  "/Users/infinite/HasanShah/tsconfig.json": {
+    "mtime": 1780397522.1418865,
+    "ast_hash": "9d6b11898b33b2efc6e7bd3c4e6f6172",
+    "semantic_hash": "9d6b11898b33b2efc6e7bd3c4e6f6172"
+  },
+  "/Users/infinite/HasanShah/.github/workflows/deploy.yml": {
+    "mtime": 1780427604.7102098,
+    "ast_hash": "3a65d52b76cccf099b9e75ff7aa48e4d",
+    "semantic_hash": "3a65d52b76cccf099b9e75ff7aa48e4d"
+  },
+  "/Users/infinite/HasanShah/PRODUCT.md": {
+    "mtime": 1780353236.7941616,
+    "ast_hash": "7e964af3b3129b56671112a060b0e97e",
+    "semantic_hash": "7e964af3b3129b56671112a060b0e97e"
+  },
+  "/Users/infinite/HasanShah/README.md": {
+    "mtime": 1780350518.8842864,
+    "ast_hash": "0b51e26e5d9efab63be105adf88e75e2",
+    "semantic_hash": "0b51e26e5d9efab63be105adf88e75e2"
+  },
+  "/Users/infinite/HasanShah/public/file.svg": {
+    "mtime": 1780396245.992779,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "/Users/infinite/HasanShah/public/globe.svg": {
+    "mtime": 1780396245.993383,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "/Users/infinite/HasanShah/public/images/Shah2.webp": {
+    "mtime": 1780430929.29626,
+    "ast_hash": "01aa6d68e0df9db403c5b933e20e765b",
+    "semantic_hash": "01aa6d68e0df9db403c5b933e20e765b"
+  },
+  "/Users/infinite/HasanShah/public/images/favicon.svg": {
+    "mtime": 1780396816.7083542,
+    "ast_hash": "61758c13dfa4cef42afa614f4ef48ebb",
+    "semantic_hash": "61758c13dfa4cef42afa614f4ef48ebb"
+  },
+  "/Users/infinite/HasanShah/public/images/logo.webp": {
+    "mtime": 1780430865.169001,
+    "ast_hash": "d65aa2bc89e52c537d5c3b5b6bb2176f",
+    "semantic_hash": "d65aa2bc89e52c537d5c3b5b6bb2176f"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/luxcounter-1.jpg": {
+    "mtime": 1780397030.958525,
+    "ast_hash": "b30f585971f573804d85165c07e94f09",
+    "semantic_hash": "b30f585971f573804d85165c07e94f09"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-automarketing.webp": {
+    "mtime": 1780484111.0550575,
+    "ast_hash": "c8c6f5f385407f18b9faee1a1f7b11f6",
+    "semantic_hash": "c8c6f5f385407f18b9faee1a1f7b11f6"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-luxcounter.jpg": {
+    "mtime": 1780397030.9632347,
+    "ast_hash": "1a00a0192282d8dcd43ce7d450e2b295",
+    "semantic_hash": "1a00a0192282d8dcd43ce7d450e2b295"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-luxcounter.webp": {
+    "mtime": 1780484110.9486542,
+    "ast_hash": "3dc2a6cde969db1cb77b9ad8df0dc0f8",
+    "semantic_hash": "3dc2a6cde969db1cb77b9ad8df0dc0f8"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-personal.jpg": {
+    "mtime": 1780397030.96377,
+    "ast_hash": "5e1153f5e9a88ed4f570153a84058003",
+    "semantic_hash": "5e1153f5e9a88ed4f570153a84058003"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-rubifo.jpg": {
+    "mtime": 1780397030.9641984,
+    "ast_hash": "f7ba013dc68fb3a7d56f2b7330727135",
+    "semantic_hash": "f7ba013dc68fb3a7d56f2b7330727135"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-rubifo.webp": {
+    "mtime": 1780484111.0101562,
+    "ast_hash": "5643461e69360702785e8a51b2f6c66b",
+    "semantic_hash": "5643461e69360702785e8a51b2f6c66b"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-service.jpg": {
+    "mtime": 1780397030.9646127,
+    "ast_hash": "798be10d2d69ddd14b04205f2ee79d19",
+    "semantic_hash": "798be10d2d69ddd14b04205f2ee79d19"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-startup.jpg": {
+    "mtime": 1780397030.9650261,
+    "ast_hash": "373df85e06327968f9fd8ae4ca937abf",
+    "semantic_hash": "373df85e06327968f9fd8ae4ca937abf"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/project3-1.jpg": {
+    "mtime": 1780397030.9589145,
+    "ast_hash": "8fde78106e95783f7acb6f28cf919747",
+    "semantic_hash": "8fde78106e95783f7acb6f28cf919747"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/project4-1.jpg": {
+    "mtime": 1780397030.959256,
+    "ast_hash": "08d0f2f1266af71bc680373d596a5943",
+    "semantic_hash": "08d0f2f1266af71bc680373d596a5943"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/project5-1.jpg": {
+    "mtime": 1780397030.95951,
+    "ast_hash": "aae818cbbc6ca8316d82d42a83148755",
+    "semantic_hash": "aae818cbbc6ca8316d82d42a83148755"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/rubifo-1.jpg": {
+    "mtime": 1780397030.9598641,
+    "ast_hash": "b4f156c239f7d46d813456eec4975927",
+    "semantic_hash": "b4f156c239f7d46d813456eec4975927"
+  },
+  "/Users/infinite/HasanShah/public/images/profile.webp": {
+    "mtime": 1780430929.293187,
+    "ast_hash": "a554a5993dc0241a084e0f0818237a00",
+    "semantic_hash": "a554a5993dc0241a084e0f0818237a00"
+  },
+  "/Users/infinite/HasanShah/public/next.svg": {
+    "mtime": 1780396245.9932148,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "/Users/infinite/HasanShah/public/vercel.svg": {
+    "mtime": 1780396245.9930358,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "/Users/infinite/HasanShah/public/window.svg": {
+    "mtime": 1780396245.9935577,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": "a2760511c65806022ad20adf74370ff3"
+  }
+}
