@@ -70,9 +70,9 @@
     "semantic_hash": "357877bf93f06901e4e81adf1c172446"
   },
   "/Users/infinite/HasanShah/app/components/portfolio-data.ts": {
-    "mtime": 1780484158.273733,
-    "ast_hash": "f6791a22ba2a7a9ddf7b14d8342d8d78",
-    "semantic_hash": "f6791a22ba2a7a9ddf7b14d8342d8d78"
+    "mtime": 1780491031.6548457,
+    "ast_hash": "56f4fffa2574e81cf8cfc82e6b91ed90",
+    "semantic_hash": "56f4fffa2574e81cf8cfc82e6b91ed90"
   },
   "/Users/infinite/HasanShah/app/components/ui/spotlight-card.tsx": {
     "mtime": 1780481871.2437086,
@@ -100,19 +100,19 @@
     "semantic_hash": "7e8afb705e43a10be7b464d47d10e5cd"
   },
   "/Users/infinite/HasanShah/app/i18n/dictionaries/ar.ts": {
-    "mtime": 1780484158.276286,
-    "ast_hash": "bd28e0141ff9a8c1a81dbc22c342b6f9",
-    "semantic_hash": "bd28e0141ff9a8c1a81dbc22c342b6f9"
+    "mtime": 1780491099.4769356,
+    "ast_hash": "c2f8fe820183ea647ddda74d93a34c9c",
+    "semantic_hash": "c2f8fe820183ea647ddda74d93a34c9c"
   },
   "/Users/infinite/HasanShah/app/i18n/dictionaries/en.ts": {
-    "mtime": 1780484158.2755291,
-    "ast_hash": "d176dea447826620049d91e4ae75e13f",
-    "semantic_hash": "d176dea447826620049d91e4ae75e13f"
+    "mtime": 1780491074.8608212,
+    "ast_hash": "eef78cdfb5065f2adab278248a646308",
+    "semantic_hash": "eef78cdfb5065f2adab278248a646308"
   },
   "/Users/infinite/HasanShah/app/i18n/dictionaries/fa.ts": {
-    "mtime": 1780484158.2748203,
-    "ast_hash": "b02c1bf27df84b64f9aafbec3a0d177c",
-    "semantic_hash": "b02c1bf27df84b64f9aafbec3a0d177c"
+    "mtime": 1780491053.391701,
+    "ast_hash": "35ff0bd626acdc2e1d4760f9b0356167",
+    "semantic_hash": "35ff0bd626acdc2e1d4760f9b0356167"
   },
   "/Users/infinite/HasanShah/app/i18n/dictionaries/index.ts": {
     "mtime": 1780416912.0872824,
@@ -120,9 +120,9 @@
     "semantic_hash": "e3065cf783efa02c92957663ab75c837"
   },
   "/Users/infinite/HasanShah/app/layout.tsx": {
-    "mtime": 1780432723.5084918,
-    "ast_hash": "dc99d931dd6d41f416e0a4d0055c3543",
-    "semantic_hash": "dc99d931dd6d41f416e0a4d0055c3543"
+    "mtime": 1780492093.9907596,
+    "ast_hash": "b9d5850721af3699f79c27b2941380ba",
+    "semantic_hash": "b9d5850721af3699f79c27b2941380ba"
   },
   "/Users/infinite/HasanShah/app/lib/form-schema.ts": {
     "mtime": 1780417422.660276,
@@ -135,14 +135,14 @@
     "semantic_hash": "734c5d103012538c93279821b18b16fe"
   },
   "/Users/infinite/HasanShah/app/robots.ts": {
-    "mtime": 1780428935.9228988,
-    "ast_hash": "7bf1ccd94c49d174b329a153d85fa69c",
-    "semantic_hash": "7bf1ccd94c49d174b329a153d85fa69c"
+    "mtime": 1780492107.8632858,
+    "ast_hash": "789fe71ea366c6715dfeeab28cbd5b9a",
+    "semantic_hash": "789fe71ea366c6715dfeeab28cbd5b9a"
   },
   "/Users/infinite/HasanShah/app/sitemap.ts": {
-    "mtime": 1780428931.6495187,
-    "ast_hash": "511e511e1f75603af588774aff145f19",
-    "semantic_hash": "511e511e1f75603af588774aff145f19"
+    "mtime": 1780492109.0630553,
+    "ast_hash": "97cf90f2ad1c1fac3ed858524d5a5588",
+    "semantic_hash": "97cf90f2ad1c1fac3ed858524d5a5588"
   },
   "/Users/infinite/HasanShah/eslint.config.mjs": {
     "mtime": 1780396245.9962263,
@@ -155,9 +155,9 @@
     "semantic_hash": "d0f8375ae1199dc7acd3977fc33b78b8"
   },
   "/Users/infinite/HasanShah/next.config.ts": {
-    "mtime": 1780428833.242581,
-    "ast_hash": "dc5ebce6516b90a90a4a376bf3ef0642",
-    "semantic_hash": "dc5ebce6516b90a90a4a376bf3ef0642"
+    "mtime": 1780491857.9543295,
+    "ast_hash": "c416309fe267a1806002a3a12af8de91",
+    "semantic_hash": "c416309fe267a1806002a3a12af8de91"
   },
   "/Users/infinite/HasanShah/package.json": {
     "mtime": 1780402814.1321368,
@@ -308,5 +308,20 @@
     "mtime": 1780396245.9935577,
     "ast_hash": "a2760511c65806022ad20adf74370ff3",
     "semantic_hash": "a2760511c65806022ad20adf74370ff3"
+  },
+  "/Users/infinite/HasanShah/CLAUDE.md": {
+    "mtime": 1780488139.4142544,
+    "ast_hash": "c7e7bdf5b5bce9750da668771b9a8167",
+    "semantic_hash": "c7e7bdf5b5bce9750da668771b9a8167"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-loosipet.webp": {
+    "mtime": 1780489466.883884,
+    "ast_hash": "d84a6df3a1d669704a7d5dfa6dfa33cd",
+    "semantic_hash": "d84a6df3a1d669704a7d5dfa6dfa33cd"
+  },
+  "/Users/infinite/HasanShah/public/images/portfolio/portfolio-nadahair.webp": {
+    "mtime": 1780490156.765765,
+    "ast_hash": "7d6e8b441bb6d6550d4ff649b4a3762d",
+    "semantic_hash": "7d6e8b441bb6d6550d4ff649b4a3762d"
   }
 }
