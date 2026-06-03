@@ -9,24 +9,24 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "sw
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.vercel.app"),
-  title: "حسن شاهمرادی — کمپین سایت رایگان",
+  title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
   description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
   openGraph: {
     locale: "fa_IR",
     type: "website",
-    title: "حسن شاهمرادی — کمپین سایت رایگان",
+    title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
     description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
     images: ["/images/profile.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "حسن شاهمرادی — کمپین سایت رایگان",
+    title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
     description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
     images: ["/images/profile.webp"],
   },
   icons: {
-    icon: "/images/favicon.svg",
-    apple: "/images/favicon.svg",
+    icon: "/images/logo.webp",
+    apple: "/images/logo.webp",
   },
 };
 
