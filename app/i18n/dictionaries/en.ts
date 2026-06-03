@@ -79,14 +79,16 @@ const en: Dictionary = {
   portfolio: {
     title: "Projects that *actually shipped*",
     desc: "Selected builds with real screenshots, custom features, and a focus on the real user experience.",
-    filters: { all: "All", shop: "Shop", service: "Service", personal: "Personal" },
+    filters: { all: "All", shop: "Shop", service: "Service", startup: "Startup", personal: "Personal" },
     view: "Visit",
     openPrefix: "Open",
     fallbackCategory: "Project",
     projects: {
-      "Lux Counter": "Luxury watch store — bilingual with two themes",
-      "Rubifo": "Multi-purpose online store — Persian with two themes",
-      "AutoMarketing": "Multi-agent marketing automation and content dashboard",
+      "Lux Counter": "Corporate site for cabinet stone surfaces — 200+ products, bilingual with two themes",
+      "Rubifo": "Smart content upload bot for Rubika — integrated payment gateway and dedicated website",
+      "AutoMarketing": "Full-stack digital marketing system — from market research to AI-powered content, publishing and analytics",
+      "LoosiPet": "Pet digital identity platform — smart QR, real-time tracking and AI assistant for pet care",
+      "نداهیر": "Specialized hair care shop — personalized consultation, herbal products and hair loss treatment guide",
     },
   },
 

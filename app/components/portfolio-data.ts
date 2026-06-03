@@ -1,4 +1,4 @@
-export type Category = "all" | "shop" | "service" | "personal";
+export type Category = "all" | "shop" | "service" | "startup" | "personal";
 
 export type Project = {
   title: string;
@@ -11,9 +11,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "Lux Counter",
-    desc: "سایت معرفی و فروش تخصصی سنگ کابینت — بیش از ۲۰۰ محصول، دوزبانه با دو تم",
+    desc: "سایت شرکتی تخصصی صفحات سنگ کابینت — بیش از ۲۰۰ محصول، دوزبانه با دو تم",
     image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-luxcounter.webp`,
-    category: "shop",
+    category: "service",
     url: "https://luxcounter.ir",
   },
   {
@@ -25,15 +25,15 @@ export const projects: Project[] = [
   },
   {
     title: "AutoMarketing",
-    desc: "سیستم جامع دیجیتال مارکتینگ مبتنی بر هوش مصنوعی — از تحقیقات بازار تا تولید محتوا، بارگذاری و آنالیز",
+    desc: "سیستم جامع دیجیتال مارکتینگ — از تحقیقات بازار تا تولید محتوا، بارگذاری و آنالیز با هوش مصنوعی",
     image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-automarketing.webp`,
-    category: "service",
+    category: "startup",
   },
   {
     title: "LoosiPet",
     desc: "پلتفرم هویت دیجیتال پت — QR هوشمند، ردیابی لحظه‌ای و دستیار هوش مصنوعی برای مراقبت از حیوانات خانگی",
     image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-loosipet.webp`,
-    category: "service",
+    category: "startup",
   },
   {
     title: "نداهیر",
@@ -48,6 +48,7 @@ export const filters: { key: Category; label: string }[] = [
   { key: "all", label: "همه" },
   { key: "shop", label: "فروشگاهی" },
   { key: "service", label: "خدماتی" },
+  { key: "startup", label: "استارتاپ" },
   { key: "personal", label: "پرسونال" },
 ];
 
