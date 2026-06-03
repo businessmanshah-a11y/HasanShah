@@ -78,7 +78,7 @@ const en: Dictionary = {
 
   portfolio: {
     title: "Projects that *actually shipped*",
-    desc: "Five complete projects with different needs, custom features, and a focus on the real user experience.",
+    desc: "Selected builds with real screenshots, custom features, and a focus on the real user experience.",
     filters: { all: "All", shop: "Shop", service: "Service", personal: "Personal" },
     view: "Visit",
     openPrefix: "Open",
@@ -86,9 +86,7 @@ const en: Dictionary = {
     projects: {
       "Lux Counter": "Luxury watch store — bilingual with two themes",
       "Rubifo": "Multi-purpose online store — Persian with two themes",
-      "Startup MVP": "Startup one-pager with a product-intro structure",
-      "Personal Brand": "Personal branding website for an expert",
-      "Service Business": "A professional services showcase site",
+      "AutoMarketing": "Multi-agent marketing automation and content dashboard",
     },
   },
 

@@ -7,14 +7,14 @@ test("portfolio data keeps linked and unlinked projects for the visit button sta
   const linked = projects.filter((project) => Boolean(project.url));
   const unlinked = projects.filter((project) => !project.url);
 
-  assert.equal(projects.length, 5);
+  assert.equal(projects.length, 3);
   assert.deepEqual(
     linked.map((project) => project.title),
     ["Lux Counter", "Rubifo"],
   );
   assert.deepEqual(
     unlinked.map((project) => project.title),
-    ["Startup MVP", "Personal Brand", "Service Business"],
+    ["AutoMarketing"],
   );
 });
 
@@ -25,6 +25,6 @@ test("portfolio filters return an ordered list with a first active item availabl
   );
   assert.equal(getVisibleProjects("all")[0]?.title, "Lux Counter");
   assert.equal(getVisibleProjects("shop")[0]?.title, "Lux Counter");
-  assert.equal(getVisibleProjects("service")[0]?.title, "Startup MVP");
-  assert.equal(getVisibleProjects("personal")[0]?.title, "Personal Brand");
+  assert.equal(getVisibleProjects("service")[0]?.title, "AutoMarketing");
+  assert.equal(getVisibleProjects("personal").length, 0);
 });
