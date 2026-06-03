@@ -89,22 +89,21 @@ const GlowCard: React.FC<GlowCardProps> = ({
       '--spotlight-size': 'calc(var(--size, 150) * 1px)',
       '--hue': 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
       backgroundColor: 'var(--backdrop, transparent)',
-      backgroundSize: 'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
-      backgroundPosition: '50% 50%',
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative',
     };
 
-    // Only apply fixed-attachment radial gradient on pointer devices.
-    // background-attachment:fixed triggers a repaint on every scroll frame on mobile.
+    // Use local coords (relative to each card) instead of fixed viewport coords.
+    // background-attachment:fixed breaks in Firefox when the element also has
+    // backdrop-filter (which creates a new stacking context) — produces wrong glow.
+    // Scroll attachment + card-local --local-x/y is identical visually and cross-browser.
     if (isPointerDevice) {
       baseStyles.backgroundImage = `radial-gradient(
         var(--spotlight-size) var(--spotlight-size) at
-        calc(var(--x, 0) * 1px)
-        calc(var(--y, 0) * 1px),
+        calc(var(--local-x, -9999) * 1px)
+        calc(var(--local-y, -9999) * 1px),
         hsl(var(--hue, 40) calc(var(--saturation, 80) * 1%) calc(var(--lightness, 65) * 1%) / var(--bg-spot-opacity, 0.12)), transparent
       )`;
-      baseStyles.backgroundAttachment = 'fixed';
     }
 
     if (width !== undefined) {
