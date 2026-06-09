@@ -85,13 +85,9 @@ export default function ParticlesBackground() {
       }
       ctx.globalAlpha = 1;
     };
-    let startTimer: ReturnType<typeof setTimeout>;
-    startTimer = setTimeout(() => {
-      raf = requestAnimationFrame(loop);
-    }, 700);
+    raf = requestAnimationFrame(loop);
 
     return () => {
-      clearTimeout(startTimer);
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", setCanvasSize);
     };
