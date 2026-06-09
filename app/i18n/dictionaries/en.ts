@@ -262,6 +262,79 @@ const en: Dictionary = {
       },
     },
   },
+  vibeCoding: {
+    heroBadge: "Vibe coding — from zero to working product",
+    heroTitle: "Take your idea from words to a real product with AI",
+    heroDesc: "A straightforward roadmap for vibe coding: where to start, which accounts you need, and how to move an idea forward step by step with Cursor, Claude, and Codex.",
+    heroCtaWorkshop: "Free meetup — sign up",
+    heroCtaCurriculum: "See the curriculum",
+    heroSteps: ["Raw idea", "Pre-production and product map", "Build v1 with AI", "Test, fix, and ship"],
+
+    toolsSectionTitle: "The main tools",
+    tools: [
+      { name: "Cursor", desc: "An AI-first editor for working inside a real project — files, errors, and changes all in one place." },
+      { name: "Claude", desc: "Good for thinking through problems, analyzing text, writing product structure, and getting clean output." },
+      { name: "Codex", desc: "For precise code execution, reading a project, making file changes, running tests, and moving work forward like a technical teammate." },
+    ],
+
+    roadmapEyebrow: "Where do you start?",
+    roadmapTitle: "Keep the path small, real, and actually doable",
+    roadmap: [
+      "Pick one small, real problem. Not a huge idea.",
+      "Before writing code, describe the output you want — in words, a flow, a rough wireframe.",
+      "Get your tools ready: AI accounts, an editor, GitHub, and a simple place to deploy.",
+      "Build the first version very small — just enough for someone to try it.",
+      "After each change, test it, look at screenshots, and ask AI to find errors.",
+      "Once it works, then go after polish, speed, forms, and lead capture.",
+    ],
+
+    preprodEyebrow: "What is pre-production?",
+    preprodTitle: "Before AI writes code, it needs to know what's actually being built",
+    preprodDesc: "Successful vibe coding doesn't start with a magic prompt. It starts with clarifying the problem, the user, the output, the constraints, and what v1 looks like. The sharper the pre-production, the less the AI has to guess — and the cleaner the result.",
+    preprodItems: [
+      { title: "Product direction", desc: "Who is the user, what problem do they have, and why does this solution help them now?" },
+      { title: "Scope of v1", desc: "Which part gets built today, and which part waits for later?" },
+      { title: "Flow and content", desc: "Where does the user enter, what do they see, and what's their next step?" },
+    ],
+
+    lessonsEyebrow: "The curriculum",
+    lessonsTitle: "From tools to real execution",
+    lessonsCtaLabel: "Sign up above",
+    lessons: [
+      { title: "Starting right", items: ["What exactly is vibe coding?", "What is AI actually good at?", "Where shouldn't you trust it blindly?"] },
+      { title: "Tools and accounts", items: ["Cursor for working inside a project", "Claude for thinking and writing", "Codex for running changes and tests", "GitHub and Vercel for versioning and publishing"] },
+      { title: "Pre-production", items: ["Defining the user and the problem", "Writing usage scenarios", "Breaking the idea into v0, v1, and what comes next"] },
+      { title: "Practical techniques", items: ["Short prompts, but precise ones", "Giving AI real context", "Asking for tests, not just code", "Reviewing output before moving on"] },
+    ],
+
+    habitsTitle: "A few habits that move your work forward from day one",
+    habits: [
+      "Give AI a role, but make the final call yourself.",
+      "Write every request with a goal, a constraint, and a success criterion.",
+      "Ask AI to state its assumptions before it writes code.",
+      "Break big changes into a few small ones.",
+      "When the output goes wrong, don't argue — give more specific context.",
+      "For each screen, clarify the user experience first, then work on how it looks.",
+    ],
+
+    workshopReadyTitle: "Ready for the meetup?",
+    workshopReadyDesc: "If you made it this far and you're curious after reading the curriculum, you can sign up right here. Both forms go to the same list.",
+
+    workshopBadgeFree: "Free in-person meetup",
+    workshopBadgeCapacity: "Capacity opens Saturday, June 13",
+    workshopFormTitle: "Free sign-up for the vibe coding meetup",
+    workshopFormDesc: "Next week, we're going through vibe coding from scratch in plain language: from choosing your tools to turning a raw idea into something testable. Drop your name and number and we'll reach out as soon as spots open.",
+    workshopLabelName: "Full name",
+    workshopPlaceholderName: "e.g. Ali Mohammadi",
+    workshopLabelPhone: "Phone number",
+    workshopPlaceholderPhone: "09120000000",
+    workshopSubmitBtn: "Sign me up — it's free",
+    workshopDoneTitle: "You're in. We'll reach out when spots open.",
+    workshopDoneDesc: "If you made a mistake with the number, just fill out the form again.",
+    workshopValidationMsg: "Enter your name and phone number to continue.",
+    workshopSuccessMsg: "You're on the list. We'll be in touch to confirm.",
+    workshopErrorMsg: "Something went wrong. Try again or reach out directly.",
+  },
 };
 
 export default en;
