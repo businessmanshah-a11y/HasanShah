@@ -6,6 +6,8 @@ export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -13,13 +15,14 @@ export default function ParticlesBackground() {
 
     let raf = 0;
     let lastFrame = 0;
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = window.innerWidth < 768;
+    let dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
     let w = 0;
     let h = 0;
     let sparkles: HeroSparkle[] = [];
 
     const setCanvasSize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
       w = canvas.width = Math.floor(canvas.offsetWidth * dpr);
       h = canvas.height = Math.floor(canvas.offsetHeight * dpr);
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -82,9 +85,13 @@ export default function ParticlesBackground() {
       }
       ctx.globalAlpha = 1;
     };
-    raf = requestAnimationFrame(loop);
+    let startTimer: ReturnType<typeof setTimeout>;
+    startTimer = setTimeout(() => {
+      raf = requestAnimationFrame(loop);
+    }, 700);
 
     return () => {
+      clearTimeout(startTimer);
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", setCanvasSize);
     };

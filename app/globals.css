@@ -293,3 +293,11 @@ main > section { padding: clamp(80px, 12vw, 140px) 0; }
     .reveal.is-visible { opacity: 1; transform: none; }
   }
 }
+
+/* Skip paint for sections below the fold until they approach the viewport */
+#about,
+#services,
+#portfolio {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}

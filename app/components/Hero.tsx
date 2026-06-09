@@ -1,9 +1,11 @@
 "use client";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
-import ParticlesBackground from "./ParticlesBackground";
+import dynamic from "next/dynamic";
 import { useI18n } from "../i18n/LanguageProvider";
 import { Highlight } from "../i18n/Highlight";
+
+const ParticlesBackground = dynamic(() => import("./ParticlesBackground"), { ssr: false });
 
 export default function Hero() {
   const { t, dir } = useI18n();
@@ -29,6 +31,7 @@ export default function Hero() {
             alt={t.brand.name}
             width={96}
             height={96}
+            priority
             className="mx-auto md:mx-0 mb-6 h-24 w-24 object-contain animate-float drop-shadow-[0_0_30px_rgba(74,144,164,0.5)]"
           />
 
