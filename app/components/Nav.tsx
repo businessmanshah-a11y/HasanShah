@@ -7,6 +7,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function Nav() {
   const { t } = useI18n();
   const links = [
+    { href: "/vibe-coding", label: "آموزش وایب‌کدینگ" },
     { href: "#about",     label: t.nav.about },
     { href: "#services",  label: t.nav.services },
     { href: "#portfolio", label: t.nav.portfolio },

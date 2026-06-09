@@ -68,8 +68,11 @@ export function LanguageProvider({
         ? cookieMatch[1]
         : matchLocale(navigator.language);
     }
-    if (resolved !== initialLocale) setLocale(resolved);
-    else persist(resolved);
+    if (resolved !== initialLocale) {
+      const id = window.setTimeout(() => setLocale(resolved), 0);
+      return () => window.clearTimeout(id);
+    }
+    persist(resolved);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

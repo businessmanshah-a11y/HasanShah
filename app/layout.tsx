@@ -8,25 +8,76 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.vercel.app"),
-  title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
-  description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.ir"),
+  title: {
+    default: "حسن شاهمرادی | طراح وب، توسعه‌دهنده و آموزش وایب‌کدینگ",
+    template: "%s | حسن شاهمرادی",
+  },
+  description:
+    "حسن شاهمرادی — طراح وب و توسعه‌دهنده فرانت‌اند ایرانی. سایت تک‌صفحه‌ای رایگان در ۷۲ ساعت. آموزش وایب‌کدینگ با Cursor، Claude و Codex. بدون پیش‌پرداخت.",
+  keywords: [
+    "طراح وب ایرانی",
+    "توسعه‌دهنده فرانت‌اند",
+    "وایب‌کدینگ",
+    "آموزش وایب‌کدینگ",
+    "ساخت سایت با هوش مصنوعی",
+    "Cursor AI",
+    "Claude AI",
+    "سایت رایگان",
+    "حسن شاهمرادی",
+    "Next.js",
+    "React",
+  ],
+  authors: [{ name: "حسن شاهمرادی", url: "https://hasanshah.ir" }],
+  creator: "حسن شاهمرادی",
+  alternates: {
+    canonical: "https://hasanshah.ir",
+    languages: {
+      "fa": "https://hasanshah.ir",
+      "en": "https://hasanshah.ir",
+      "ar": "https://hasanshah.ir",
+      "x-default": "https://hasanshah.ir",
+    },
+  },
   openGraph: {
     locale: "fa_IR",
+    alternateLocale: ["en_US", "ar_SA"],
     type: "website",
-    title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
-    description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
-    images: ["/images/profile.webp"],
+    siteName: "حسن شاهمرادی",
+    title: "حسن شاهمرادی | طراح وب، توسعه‌دهنده و آموزش وایب‌کدینگ",
+    description:
+      "سایت تک‌صفحه‌ای رایگان در ۷۲ ساعت + آموزش وایب‌کدینگ با هوش مصنوعی. بدون پیش‌پرداخت.",
+    url: "https://hasanshah.ir",
+    images: [
+      {
+        url: "/images/profile.webp",
+        width: 1200,
+        height: 630,
+        alt: "حسن شاهمرادی — طراح وب و مدرس وایب‌کدینگ",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "حسن شاهمرادی | طراح، توسعه‌دهنده و استراتژیست",
-    description: "دریافت سایت تک‌صفحه‌ای اختصاصی رایگان؛ طراحی و تحویل حداکثر تا ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌شرط و پیش‌پرداخت.",
+    title: "حسن شاهمرادی | طراح وب، توسعه‌دهنده و آموزش وایب‌کدینگ",
+    description:
+      "سایت تک‌صفحه‌ای رایگان در ۷۲ ساعت + آموزش وایب‌کدینگ با هوش مصنوعی.",
     images: ["/images/profile.webp"],
+    creator: "@hasanshah",
   },
   icons: {
     icon: "/images/logo.webp",
     apple: "/images/logo.webp",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
