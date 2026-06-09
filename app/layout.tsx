@@ -25,10 +25,7 @@ export const metadata: Metadata = {
     images: ["/images/profile.webp"],
   },
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/images/logo.webp", type: "image/webp" },
-    ],
+    icon: "/images/logo.webp",
     apple: "/images/logo.webp",
   },
 };
