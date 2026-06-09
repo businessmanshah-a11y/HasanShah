@@ -274,18 +274,31 @@ export function VibeCodingEventJsonLd() {
     description:
       "A free in-person meetup to learn vibe coding from scratch — from choosing tools to turning a raw idea into a testable product with AI.",
     url: `${BASE}/vibe-coding#workshop`,
+    startDate: "2026-06-19T17:00:00+03:30",
+    endDate: "2026-06-19T20:00:00+03:30",
     inLanguage: ["fa", "en", "ar"],
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     isAccessibleForFree: true,
-    organizer: { "@id": `${BASE}/#person` },
+    organizer: {
+      "@type": "Person",
+      "@id": `${BASE}/#person`,
+      name: "Hasan Shahmoradi",
+      url: BASE,
+    },
+    performer: {
+      "@type": "Person",
+      "@id": `${BASE}/#person`,
+      name: "Hasan Shahmoradi",
+      url: BASE,
+    },
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "IRR",
       availability: "https://schema.org/InStock",
       url: `${BASE}/vibe-coding#workshop`,
-      validFrom: "2025-06-14",
+      validFrom: "2026-06-13",
     },
     location: {
       "@type": "Place",
