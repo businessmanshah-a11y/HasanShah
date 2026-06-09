@@ -9,6 +9,7 @@ const ar: Dictionary = {
   },
 
   nav: {
+    vibeCoding: "Vibe Coding",
     about: "من أنا",
     services: "الخدمات",
     portfolio: "أعمالي",

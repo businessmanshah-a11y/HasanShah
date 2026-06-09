@@ -8,6 +8,7 @@ const fa = {
   },
 
   nav: {
+    vibeCoding: "آموزش وایب‌کدینگ",
     about: "درباره من",
     services: "خدمات",
     portfolio: "نمونه‌کارها",

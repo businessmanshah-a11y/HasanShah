@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import VibeCodingPageContent from "./VibeCodingPageContent";
-import { VibeCodingCourseJsonLd, VibeCodingEventJsonLd, VibeCodingFaqJsonLd } from "../components/JsonLd";
+import { VibeCodingBreadcrumbJsonLd, VibeCodingCourseJsonLd, VibeCodingEventJsonLd, VibeCodingFaqJsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "آموزش وایب‌کدینگ از صفر تا ساخت محصول با هوش مصنوعی",
@@ -67,6 +67,7 @@ export const metadata: Metadata = {
 export default function VibeCodingPage() {
   return (
     <>
+      <VibeCodingBreadcrumbJsonLd />
       <VibeCodingCourseJsonLd />
       <VibeCodingEventJsonLd />
       <VibeCodingFaqJsonLd />

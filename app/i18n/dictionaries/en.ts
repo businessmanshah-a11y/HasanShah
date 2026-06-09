@@ -9,6 +9,7 @@ const en: Dictionary = {
   },
 
   nav: {
+    vibeCoding: "Vibe Coding",
     about: "About",
     services: "Services",
     portfolio: "Work",

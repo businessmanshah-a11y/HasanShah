@@ -6,28 +6,38 @@ export function PersonJsonLd() {
     "@type": "Person",
     "@id": `${BASE}/#person`,
     name: "حسن شاهمرادی",
-    alternateName: ["Hasan Shahmoradi", "Hassan Shahmoradi"],
+    alternateName: ["Hasan Shahmoradi", "Hassan Shahmoradi", "حسن شاهمرادي"],
     url: BASE,
     image: `${BASE}/images/Shah2.webp`,
     sameAs: [
       "https://linkedin.com/in/hasanshah",
       "https://github.com/hasanshah",
     ],
-    jobTitle: "طراح، توسعه‌دهنده و استراتژیست دیجیتال",
+    jobTitle: [
+      "طراح، توسعه‌دهنده و استراتژیست دیجیتال",
+      "Web Designer, Developer & Digital Strategist",
+      "مصمّم مواقع ومطوّر واستراتيجي رقمي",
+    ],
     description:
-      "حسن شاهمرادی طراح وب، توسعه‌دهنده فرانت‌اند و استراتژیست دیجیتال ایرانی است. بیش از ۸ سال تجربه در ساخت محصولات دیجیتال، فروشگاه‌های آنلاین، و آموزش وایب‌کدینگ با ابزارهای هوش مصنوعی.",
+      "Hasan Shahmoradi is an Iranian web designer, front-end developer, and digital strategist with over 8 years of experience building digital products, online stores, and teaching vibe coding with AI tools like Cursor, Claude, and Codex.",
     knowsAbout: [
+      "Web Design",
       "طراحی وب",
+      "Front-end Development",
       "توسعه فرانت‌اند",
+      "Vibe Coding",
       "وایب‌کدینگ",
+      "Artificial Intelligence",
       "هوش مصنوعی",
-      "استراتژی دیجیتال",
+      "Digital Strategy",
       "Next.js",
       "React",
+      "TypeScript",
       "Cursor",
       "Claude AI",
+      "Codex",
     ],
-    inLanguage: "fa",
+    inLanguage: ["fa", "en", "ar"],
     worksFor: {
       "@type": "Organization",
       name: "HSH Studio",
@@ -36,12 +46,13 @@ export function PersonJsonLd() {
     address: {
       "@type": "PostalAddress",
       addressCountry: "IR",
+      addressLocality: "Tehran",
     },
     offers: {
       "@type": "Offer",
-      name: "سایت تک‌صفحه‌ای اختصاصی رایگان",
+      name: "Free one-page website",
       description:
-        "طراحی و تحویل سایت تک‌صفحه‌ای اختصاصی رایگان حداکثر ظرف ۷۲ ساعت روی دامنه آزمایشی، بدون پیش‌پرداخت.",
+        "Custom one-page website designed and delivered in 72 hours on a staging domain. No upfront payment, no strings attached.",
       price: "0",
       priceCurrency: "IRR",
       availability: "https://schema.org/InStock",
@@ -63,9 +74,9 @@ export function WebSiteJsonLd() {
     "@type": "WebSite",
     "@id": `${BASE}/#website`,
     url: BASE,
-    name: "حسن شاهمرادی",
+    name: "Hasan Shahmoradi | حسن شاهمرادی",
     description:
-      "پورتفولیو، خدمات طراحی وب، و آموزش وایب‌کدینگ حسن شاهمرادی",
+      "Portfolio, web design services, and vibe coding education by Hasan Shahmoradi.",
     inLanguage: ["fa", "en", "ar"],
     author: { "@id": `${BASE}/#person` },
     potentialAction: {
@@ -91,6 +102,7 @@ export function MainPageFaqJsonLd() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
+      // Persian
       {
         "@type": "Question",
         name: "حسن شاهمرادی کیست؟",
@@ -109,19 +121,81 @@ export function MainPageFaqJsonLd() {
       },
       {
         "@type": "Question",
-        name: "چطور با حسن شاهمرادی کار کنیم؟",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "از طریق فرم تماس در سایت hasanshah.ir می‌توانید درخواست خود را ثبت کنید. پس از بررسی، نمونه اولیه سایت را ظرف ۷۲ ساعت دریافت خواهید کرد.",
-        },
-      },
-      {
-        "@type": "Question",
         name: "وایب‌کدینگ چیست؟",
         acceptedAnswer: {
           "@type": "Answer",
           text: "وایب‌کدینگ (Vibe Coding) روشی است که با کمک ابزارهای هوش مصنوعی مانند Cursor، Claude و Codex می‌توان بدون دانش عمیق برنامه‌نویسی ایده‌های دیجیتال را به محصول واقعی تبدیل کرد.",
         },
+      },
+      // English
+      {
+        "@type": "Question",
+        name: "Who is Hasan Shahmoradi?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Hasan Shahmoradi is an Iranian web designer, front-end developer, and digital strategist with over 8 years of experience. He builds digital products and online stores, and teaches vibe coding — building products using AI tools like Cursor, Claude, and Codex.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Hasan Shahmoradi's free website offer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Hasan designs and delivers a custom one-page website in 72 hours on a staging domain. No deposit, no contract, no strings attached. You get a full month to review it before deciding on any further collaboration.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is vibe coding?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vibe coding means building digital products with AI tools like Cursor, Claude, and Codex without needing deep programming knowledge. You describe what you want, give the AI context, and iterate on the output.",
+        },
+      },
+      // Arabic
+      {
+        "@type": "Question",
+        name: "من هو حسن شاهمرادي؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "حسن شاهمرادي مصمّم مواقع ومطوّر واجهات أمامية واستراتيجي رقمي إيراني بخبرة تتجاوز ثماني سنوات. يبني المنتجات الرقمية والمتاجر الإلكترونية، ويعلّم Vibe Coding — أي بناء المنتجات بمساعدة أدوات الذكاء الاصطناعي مثل Cursor وClaude وCodex.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "ما Vibe Coding؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vibe Coding يعني بناء منتجات رقمية بمساعدة أدوات الذكاء الاصطناعي مثل Cursor وClaude وCodex دون الحاجة إلى خبرة برمجية عميقة. تصف ما تريد، تعطي الذكاء الاصطناعي السياق، وتكرّر حتى تصل إلى النتيجة.",
+        },
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function VibeCodingBreadcrumbJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "حسن شاهمرادی",
+        item: BASE,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "آموزش وایب‌کدینگ",
+        item: `${BASE}/vibe-coding`,
       },
     ],
   };
@@ -140,26 +214,33 @@ export function VibeCodingCourseJsonLd() {
     "@type": "Course",
     "@id": `${BASE}/vibe-coding#course`,
     name: "آموزش وایب‌کدینگ از صفر تا ساخت محصول",
+    alternateName: [
+      "Vibe Coding Course — from zero to working product",
+      "تعلّم Vibe Coding من الصفر إلى منتج حقيقي",
+    ],
     description:
-      "یاد بگیر با ابزارهای هوش مصنوعی مانند Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال واقعی تبدیل کنی. از پیش‌تولید ایده تا پرامپت‌نویسی، تست و انتشار.",
+      "Learn to turn your ideas into real digital products using AI tools — Cursor, Claude, and Codex. Covers idea pre-production, prompt writing, testing, and publishing.",
     url: `${BASE}/vibe-coding`,
-    inLanguage: "fa",
+    inLanguage: ["fa", "en", "ar"],
     provider: { "@id": `${BASE}/#person` },
     author: { "@id": `${BASE}/#person` },
     educationalLevel: "Beginner",
     teaches: [
+      "Vibe Coding with AI tools",
       "وایب‌کدینگ با هوش مصنوعی",
+      "Idea pre-production",
       "پیش‌تولید ایده دیجیتال",
+      "Prompt writing",
       "پرامپت‌نویسی دقیق",
-      "استفاده از Cursor، Claude و Codex",
-      "ساخت و انتشار محصول با GitHub و Vercel",
+      "Using Cursor, Claude, and Codex",
+      "Publishing with GitHub and Vercel",
     ],
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "onsite",
-      name: "دورهمی حضوری رایگان وایب‌کدینگ",
+      name: "Free in-person vibe coding meetup — Tehran",
       description:
-        "دورهمی آموزشی حضوری رایگان وایب‌کدینگ با حسن شاهمرادی. ظرفیت از شنبه ۲۳ خرداد باز می‌شود.",
+        "Free in-person vibe coding meetup with Hasan Shahmoradi in Tehran. Capacity opens June 13.",
       offers: {
         "@type": "Offer",
         price: "0",
@@ -185,11 +266,15 @@ export function VibeCodingEventJsonLd() {
     "@context": "https://schema.org",
     "@type": "Event",
     "@id": `${BASE}/vibe-coding#event`,
-    name: "دورهمی آموزشی حضوری رایگان وایب‌کدینگ",
+    name: "Free In-Person Vibe Coding Meetup — Tehran",
+    alternateName: [
+      "دورهمی آموزشی حضوری رایگان وایب‌کدینگ — تهران",
+      "لقاء Vibe Coding الحضوري المجاني — طهران",
+    ],
     description:
-      "یک دورهمی حضوری رایگان برای آموختن وایب‌کدینگ از صفر. از انتخاب ابزار تا تبدیل ایده خام به محصول قابل تست با کمک هوش مصنوعی.",
+      "A free in-person meetup to learn vibe coding from scratch — from choosing tools to turning a raw idea into a testable product with AI.",
     url: `${BASE}/vibe-coding#workshop`,
-    inLanguage: "fa",
+    inLanguage: ["fa", "en", "ar"],
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     isAccessibleForFree: true,
@@ -204,10 +289,10 @@ export function VibeCodingEventJsonLd() {
     },
     location: {
       "@type": "Place",
-      name: "تهران",
+      name: "Tehran",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "تهران",
+        addressLocality: "Tehran",
         addressCountry: "IR",
       },
     },
@@ -227,6 +312,7 @@ export function VibeCodingFaqJsonLd() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
+      // Persian
       {
         "@type": "Question",
         name: "وایب‌کدینگ چیست؟",
@@ -240,7 +326,7 @@ export function VibeCodingFaqJsonLd() {
         name: "برای وایب‌کدینگ به چه ابزارهایی نیاز دارم؟",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "سه ابزار اصلی: Cursor (ادیتور AI-first برای کار روی پروژه)، Claude (برای طراحی ساختار و فکر کردن)، و Codex (برای اجرای تغییرات و تست). علاوه بر اینها GitHub برای نگهداری کد و Vercel برای انتشار سایت.",
+          text: "سه ابزار اصلی: Cursor (ادیتور AI-first)، Claude (برای طراحی ساختار)، و Codex (برای اجرای تغییرات). علاوه بر اینها GitHub برای نگهداری کد و Vercel برای انتشار.",
         },
       },
       {
@@ -248,23 +334,73 @@ export function VibeCodingFaqJsonLd() {
         name: "آیا برای وایب‌کدینگ باید برنامه‌نویسی بلد باشم؟",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "خیر. وایب‌کدینگ دقیقاً برای افرادی طراحی شده که می‌خواهند ایده‌هایشان را به محصول تبدیل کنند بدون اینکه کدنویسی حرفه‌ای بلد باشند. مهارت اصلی، توانایی توصیف دقیق مسئله و خروجی مطلوب است.",
+          text: "خیر. وایب‌کدینگ برای کسانی است که می‌خواهند ایده‌هایشان را به محصول تبدیل کنند بدون کدنویسی حرفه‌ای. مهارت اصلی توصیف دقیق مسئله و خروجی مطلوب است.",
         },
       },
       {
         "@type": "Question",
-        name: "دورهمی وایب‌کدینگ چه زمانی و کجا برگزار می‌شود؟",
+        name: "دورهمی وایب‌کدینگ کجاست؟",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "دورهمی حضوری رایگان وایب‌کدینگ در تهران برگزار می‌شود. ظرفیت از شنبه ۲۳ خرداد باز می‌شود. با پیش‌ثبت‌نام در صفحه آموزش وایب‌کدینگ، اول به شما خبر می‌دهیم.",
+          text: "دورهمی حضوری رایگان وایب‌کدینگ در تهران برگزار می‌شود. ظرفیت از شنبه ۲۳ خرداد باز می‌شود. با پیش‌ثبت‌نام اول خبر می‌گیری.",
+        },
+      },
+      // English
+      {
+        "@type": "Question",
+        name: "What is vibe coding?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vibe coding means building digital products using AI tools like Cursor, Claude, and Codex without needing deep programming knowledge. You describe what you want, give the AI context, and iterate on the output until it works.",
         },
       },
       {
         "@type": "Question",
-        name: "پیش‌تولید ایده در وایب‌کدینگ به چه معناست؟",
+        name: "What tools do I need for vibe coding?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "پیش‌تولید یعنی قبل از اینکه به AI کد بزنی، ابتدا کاربر هدف، مشکل، اسکوپ نسخه اول و فلو کاربری را مشخص کنی. هر چقدر پیش‌تولید دقیق‌تر باشد، AI کمتر حدس می‌زند و خروجی بهتری تولید می‌کند.",
+          text: "The three main tools are Cursor (an AI-first editor for working inside a real project), Claude (for thinking through structure and writing), and Codex (for executing changes and running tests). You also need GitHub for version control and Vercel to publish.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do I need to know programming to do vibe coding?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Vibe coding is designed for people who want to turn ideas into products without professional programming skills. The main skill is describing the problem and the desired output clearly enough for the AI to act on it.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is pre-production in vibe coding?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pre-production means clarifying who the user is, what problem they have, what v1 should include, and how the user flow works — before asking AI to write any code. The clearer the pre-production, the less the AI has to guess.",
+        },
+      },
+      // Arabic
+      {
+        "@type": "Question",
+        name: "ما Vibe Coding؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vibe Coding يعني بناء منتجات رقمية بمساعدة أدوات الذكاء الاصطناعي مثل Cursor وClaude وCodex دون الحاجة إلى خبرة برمجية عميقة. تصف ما تريد، تعطي الذكاء الاصطناعي السياق، وتكرّر حتى تصل إلى النتيجة.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "ما الأدوات التي أحتاجها لـVibe Coding؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "ثلاثة أدوات رئيسية: Cursor (محرّر AI-first للعمل داخل المشروع)، Claude (للتفكير والكتابة)، وCodex (لتنفيذ التغييرات والاختبارات). بالإضافة إلى GitHub لحفظ الكود وVercel للنشر.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "هل أحتاج إلى معرفة البرمجة لممارسة Vibe Coding؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "لا. Vibe Coding مصمَّم لمن يريد تحويل أفكاره إلى منتجات دون مهارات برمجية احترافية. المهارة الأساسية هي وصف المشكلة والناتج المطلوب بدقة كافية كي يتصرّف الذكاء الاصطناعي بناءً عليها.",
         },
       },
     ],
