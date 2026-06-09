@@ -8,10 +8,10 @@ export default function Nav() {
   const { t } = useI18n();
   const links = [
     { href: "/vibe-coding", label: "آموزش وایب‌کدینگ" },
-    { href: "#about",     label: t.nav.about },
-    { href: "#services",  label: t.nav.services },
-    { href: "#portfolio", label: t.nav.portfolio },
-    { href: "#form",      label: t.nav.contact },
+    { href: "/#about",     label: t.nav.about },
+    { href: "/#services",  label: t.nav.services },
+    { href: "/#portfolio", label: t.nav.portfolio },
+    { href: "/#form",      label: t.nav.contact },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +36,7 @@ export default function Nav() {
       className="fixed left-1/2 z-50"
       style={{
         top:          s ? "16px"  : "0px",
-        width:        s ? "min(92vw, 760px)" : "100%",
+        width:        s ? "min(96vw, 1080px)" : "100%",
         transform:    "translateX(-50%)",
         borderRadius: s ? "9999px" : "0px",
         background:   s
@@ -67,7 +67,7 @@ export default function Nav() {
         }}
       >
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2 shrink-0">
+        <a href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.webp`}
             alt={t.brand.name}
@@ -81,12 +81,12 @@ export default function Nav() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-5">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-white/45 hover:text-white/90 transition-colors duration-200"
+              className="text-sm text-white/45 hover:text-white/90 transition-colors duration-200 whitespace-nowrap"
             >
               {l.label}
             </a>
@@ -97,7 +97,7 @@ export default function Nav() {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <LanguageSwitcher />
           <a
-            href="#form"
+            href="/#form"
             className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-4 py-2 text-xs sm:text-sm font-semibold text-gold-foreground shadow-gold hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             {t.nav.cta}
