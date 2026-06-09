@@ -13,12 +13,10 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
-import dynamic from "next/dynamic";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import ParticlesBackground from "../components/ParticlesBackground";
 import WorkshopSignupCard from "./WorkshopSignupCard";
-
-const ParticlesBackground = dynamic(() => import("../components/ParticlesBackground"), { ssr: false });
 import { useI18n } from "../i18n/LanguageProvider";
 
 const toolIcons = [Code2, Brain, TerminalSquare];

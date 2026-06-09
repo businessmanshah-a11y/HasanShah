@@ -1,11 +1,9 @@
 "use client";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
+import ParticlesBackground from "./ParticlesBackground";
 import { useI18n } from "../i18n/LanguageProvider";
 import { Highlight } from "../i18n/Highlight";
-
-const ParticlesBackground = dynamic(() => import("./ParticlesBackground"), { ssr: false });
 
 export default function Hero() {
   const { t, dir } = useI18n();
