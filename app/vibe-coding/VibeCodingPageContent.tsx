@@ -13,10 +13,12 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import ParticlesBackground from "../components/ParticlesBackground";
 import WorkshopSignupCard from "./WorkshopSignupCard";
+
+const ParticlesBackground = dynamic(() => import("../components/ParticlesBackground"), { ssr: false });
 import { useI18n } from "../i18n/LanguageProvider";
 
 const toolIcons = [Code2, Brain, TerminalSquare];
@@ -33,10 +35,10 @@ export default function VibeCodingPageContent() {
       <section id="hero" className="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16">
         <ParticlesBackground />
         <div
-          className="absolute inset-0 -z-10 opacity-70"
+          className="absolute inset-0 -z-10 opacity-50"
           style={{
             background:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, oklch(0.27 0.080 248 / 0.55), transparent 72%)",
+              "radial-gradient(ellipse 60% 50% at 50% 0%, oklch(0.27 0.080 248 / 0.40), transparent 70%)",
           }}
         />
 
