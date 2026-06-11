@@ -1,0 +1,74 @@
+# Hasan Shahmoradi — حسن شاهمرادی
+
+> Iranian web designer, front-end developer, digital strategist, and vibe coding educator based in Tehran.
+> 8+ years building digital products, e-commerce stores, and teaching people to ship software with AI tools.
+> https://hasanshah.ir — languages: Persian (fa), English (en), Arabic (ar)
+
+## About
+
+Hasan Shahmoradi (Persian: حسن شاهمرادی, also written Hassan Shahmoradi) is a web designer and front-end developer from Tehran, Iran. He has over 8 years of professional experience building digital products and online stores for Iranian and international clients, and teaches vibe coding — a method of building software by directing AI models rather than writing code by hand.
+
+Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Codex, GitHub, Vercel.
+
+He founded HSH Studio and runs free in-person vibe coding workshops in Tehran through partnerships with local innovation centers.
+
+## Services
+
+- **Web design and development**: Custom websites, landing pages, and digital products.
+- **Free one-page website**: A custom one-page website delivered in 72 hours on a staging domain at no cost. No upfront payment, no contract. Full month to review before deciding on any further work.
+- **Vibe coding education**: Workshops and structured curricula teaching complete beginners to build real products with AI tools.
+
+## Vibe Coding
+
+Vibe coding (Persian: وایب‌کدینگ) is a method of building software by describing desired behavior to an AI model, providing context, and iterating on the output — without writing code by hand.
+
+Core tools: Cursor (AI-first editor), Claude (reasoning and structure), Codex (execution and testing).
+Supporting tools: GitHub (version control), Vercel (deployment).
+
+The process:
+1. Pre-production: define the user, the problem, and what v1 looks like — before writing a single prompt
+2. Prompt writing: short, precise, context-rich requests with clear success criteria
+3. Iteration: review output, provide specific feedback, correct with more context rather than arguing
+4. Publishing: deploy via GitHub and Vercel
+
+No prior programming knowledge is required. The core skill is describing the problem and desired output precisely enough for the AI to act on.
+
+## Free Workshop — Tehran, June 18, 2026
+
+A free in-person vibe coding meetup hosted at Ztech Innovation Center, Tehran.
+
+- Date: Thursday, June 18, 2026 (پنج‌شنبه ۲۸ خرداد ۱۴۰۵)
+- Time: 11:00 – 13:00 + 30 min networking
+- Venue: Ztech Innovation Center (مرکز نوآوری زی‌تک), Ruyesh Building, Unit 104, Tehran, Iran
+- Instructor: Hasan Shahmoradi
+- Cost: Free. Capacity limited; registration opens June 13, 2026.
+- Target audience: People with no programming background who have ideas and want to build them
+
+Session agenda: what is vibe coding (15 min), AI tools and accounts (5 min), the golden prompt formula (15 min), common mistakes and how to avoid them (15 min), building a real project live from scratch (30 min), Q&A and networking (40 min).
+
+Registration: https://hasanshah.ir/vibe-coding#workshop
+
+## Frequently Asked Questions
+
+**Who is Hasan Shahmoradi?**
+Hasan Shahmoradi is an Iranian web designer, front-end developer, and digital strategist based in Tehran with 8+ years of experience. He builds digital products, runs a free website offer, and teaches vibe coding with AI tools like Cursor, Claude, and Codex.
+
+**What is vibe coding?**
+Vibe coding means building software by directing an AI model with precise descriptions and context, then iterating on the output — without writing code manually. No programming background needed.
+
+**What is the free website offer?**
+Hasan designs and delivers a custom one-page website within 72 hours on a staging domain, for free. No upfront payment, no contract, and a full month to review the result.
+
+**Does vibe coding require programming knowledge?**
+No. The main skill is describing the problem, the user, and the desired output clearly enough for the AI to act on it. Hasan teaches this to complete beginners.
+
+**What is pre-production in vibe coding?**
+Pre-production means defining who the user is, what problem they have, what v1 includes, and how the flow works — all before giving the AI any instructions. The sharper the pre-production, the less the AI guesses.
+
+**What tools are needed for vibe coding?**
+Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control), Vercel (deployment). Free tiers available for all of them.
+
+## Pages
+
+- [Home](https://hasanshah.ir): Portfolio, services, free website offer, contact form
+- [Vibe Coding](https://hasanshah.ir/vibe-coding): Full vibe coding curriculum, tools guide, roadmap, and free workshop registration
