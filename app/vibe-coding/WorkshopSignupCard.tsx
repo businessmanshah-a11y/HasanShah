@@ -49,7 +49,7 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
           contact: cleanPhone,
           source: "vibe-coding-page",
           eventTitle: "دورهمی آموزشی حضوری رایگان وایب‌کدینگ",
-          registrationOpens: "شنبه ۲۳ خرداد",
+          registrationStatus: "open",
         }),
       });
       setDone(true);
@@ -75,6 +75,9 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
           </span>
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-muted-foreground">
             {vc.workshopBadgeCapacity}
+          </span>
+          <span className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-red-400">
+            {vc.workshopBadgeLimit}
           </span>
         </div>
 
