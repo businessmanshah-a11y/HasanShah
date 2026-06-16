@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import {
   ArrowLeft,
   Bot,
@@ -23,8 +24,12 @@ const toolIcons = [Code2, Brain, TerminalSquare];
 const preprodIcons = [Compass, FileText, Layers3];
 
 export default function VibeCodingPageContent() {
-  const { t, dir } = useI18n();
+  const { t, dir, locale } = useI18n();
   const vc = t.vibeCoding;
+
+  useEffect(() => {
+    document.title = `${vc.heroBadge} | ${t.brand.name}`;
+  }, [locale, vc.heroBadge, t.brand.name]);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground" dir={dir}>

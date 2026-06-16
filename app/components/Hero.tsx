@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import ParticlesBackground from "./ParticlesBackground";
@@ -6,7 +7,11 @@ import { useI18n } from "../i18n/LanguageProvider";
 import { Highlight } from "../i18n/Highlight";
 
 export default function Hero() {
-  const { t, dir } = useI18n();
+  const { t, dir, locale } = useI18n();
+
+  useEffect(() => {
+    document.title = `${t.brand.name} | ${t.brand.role}`;
+  }, [locale, t.brand.name, t.brand.role]);
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
   const arrowHover = dir === "rtl" ? "group-hover:-translate-x-1" : "group-hover:translate-x-1";
   return (
