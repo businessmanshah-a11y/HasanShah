@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { ArrowLeft, Calendar, CheckCircle2, Clock, Loader2, MapPin, Send, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "../i18n/LanguageProvider";
+import WorkshopCountdown from "./WorkshopCountdown";
+import WorkshopUrgencyBar from "./WorkshopUrgencyBar";
 
 type WorkshopSignupCardProps = {
   signupPlacement: "top" | "bottom";
@@ -11,6 +13,10 @@ type WorkshopSignupCardProps = {
 
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwpeXNbe7xY5JPuCpuaA6TcRi9YnakWplBJw5WnAq8JmaUEQk9PsNW5dK41ooh0IxtNyg/exec";
+
+const EVENT_START_ISO = "2026-06-18T11:00:00+03:30";
+const SEATS_TOTAL = 30;
+const SEATS_TAKEN = 25;
 
 export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCardProps) {
   const { t } = useI18n();
@@ -69,16 +75,33 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
       aria-label={vc.workshopFormTitle}
     >
       <div className="rounded-3xl border border-gold/25 bg-surface/90 p-5 shadow-elegant md:p-7">
-        <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-semibold text-gold">
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-gold">
           <span className="rounded-full border border-gold/30 bg-gold/10 px-3 py-1">
             {vc.workshopBadgeFree}
           </span>
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-muted-foreground">
             {vc.workshopBadgeCapacity}
           </span>
-          <span className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-red-400">
-            {vc.workshopBadgeLimit}
-          </span>
+        </div>
+
+        <div className="mb-6 grid gap-3 sm:grid-cols-2">
+          <WorkshopUrgencyBar
+            joinedLabel={vc.workshopUrgencyJoined}
+            spotsLeftLabel={vc.workshopUrgencySpotsLeft}
+            taken={SEATS_TAKEN}
+            total={SEATS_TOTAL}
+          />
+          <WorkshopCountdown
+            targetISO={EVENT_START_ISO}
+            label={vc.workshopCountdownLabel}
+            liveLabel={vc.workshopCountdownLive}
+            unitLabels={{
+              days: vc.workshopCountdownDays,
+              hours: vc.workshopCountdownHours,
+              minutes: vc.workshopCountdownMinutes,
+              seconds: vc.workshopCountdownSeconds,
+            }}
+          />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-end">

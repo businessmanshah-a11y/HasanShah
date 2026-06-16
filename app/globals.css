@@ -289,6 +289,7 @@ main > section { padding: clamp(80px, 12vw, 140px) 0; }
     .shimmer-gold,
     .animate-float,
     .animate-pulse-gold,
+    .animate-ping,
     .reveal { animation: none; opacity: 1; transform: none; }
     .reveal.is-visible { opacity: 1; transform: none; }
   }

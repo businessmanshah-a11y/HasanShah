@@ -117,6 +117,14 @@ const fa = {
     credit: "طراحی و اجرا توسط حسن شاهمرادی",
   },
 
+  vibeCodingPromo: {
+    ariaLabel: "آموزش وایب‌کدینگ",
+    badge: "دوره و دورهمی رایگان وایب‌کدینگ",
+    title: "می‌خوای یاد بگیری با AI ایده‌ات رو به محصول تبدیل کنی؟",
+    desc: "صفحه آموزش وایب‌کدینگ از صفر آماده شده؛ سرفصل‌ها، ابزارها و پیش‌ثبت‌نام دورهمی حضوری رایگان را همان اول ببین.",
+    cta: "ورود به آموزش",
+  },
+
   form: {
     title: "فرم دریافت *سایت رایگان*",
     subtitle: "چند سوال کوتاه تا تیم فنی ما بتواند سایت تک‌صفحه‌ای اختصاصی تو را تا ۷۲ ساعت روی دامنه آزمایشی آماده کند.",
@@ -322,7 +330,14 @@ const fa = {
 
     workshopBadgeFree: "دورهمی حضوری رایگان",
     workshopBadgeCapacity: "ثبت‌نام باز شد!",
-    workshopBadgeLimit: "ظرفیت محدود — فقط ۳۰ نفر",
+    workshopUrgencyJoined: "۲۵ نفر تا الان ثبت‌نام کردن",
+    workshopUrgencySpotsLeft: "فقط ۵ ظرفیت باقی مونده",
+    workshopCountdownLabel: "تا شروع دورهمی",
+    workshopCountdownDays: "روز",
+    workshopCountdownHours: "ساعت",
+    workshopCountdownMinutes: "دقیقه",
+    workshopCountdownSeconds: "ثانیه",
+    workshopCountdownLive: "دورهمی همین الان شروع شده",
     workshopFormTitle: "ثبت‌نام رایگان آموزش حضوری وایب‌کدینگ",
     workshopFormDesc: "پنجشنبه هفته آینده، وایب‌کدینگ را از صفر و با زبان ساده باز می‌کنیم: از انتخاب ابزار تا تبدیل ایده خام به محصول قابل تست. همین الان ثبت‌نام کن و جایت را رزرو کن.",
     workshopEventDate: "پنج‌شنبه ۲۸ خرداد ۱۴۰۵",

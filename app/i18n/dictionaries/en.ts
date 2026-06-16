@@ -118,6 +118,14 @@ const en: Dictionary = {
     credit: "Designed & built by Hasan Shahmoradi",
   },
 
+  vibeCodingPromo: {
+    ariaLabel: "Vibe coding course",
+    badge: "Free vibe coding course & meetup",
+    title: "Want to learn how to turn your idea into a product with AI?",
+    desc: "The vibe coding page is ready, from zero: the curriculum, the tools, and early registration for the free in-person meetup. Take a look.",
+    cta: "Go to the course",
+  },
+
   form: {
     title: "Claim your *free website*",
     subtitle: "A few quick questions so our team can have your custom one-page site ready on a staging domain within 72 hours.",
@@ -323,10 +331,17 @@ const en: Dictionary = {
 
     workshopBadgeFree: "Free in-person meetup",
     workshopBadgeCapacity: "Registration is open!",
-    workshopBadgeLimit: "Limited capacity — 30 spots only",
+    workshopUrgencyJoined: "25 people have signed up so far",
+    workshopUrgencySpotsLeft: "Only 5 spots left",
+    workshopCountdownLabel: "Until the meetup starts",
+    workshopCountdownDays: "days",
+    workshopCountdownHours: "hours",
+    workshopCountdownMinutes: "min",
+    workshopCountdownSeconds: "sec",
+    workshopCountdownLive: "The meetup has started",
     workshopFormTitle: "Free registration — vibe coding meetup",
     workshopFormDesc: "Next week, we're going through vibe coding from scratch in plain language: from choosing your tools to turning a raw idea into something testable. Sign up now and reserve your spot.",
-    workshopEventDate: "Thursday, June 18, 2025",
+    workshopEventDate: "Thursday, June 18, 2026",
     workshopEventTime: "11:00 – 13:00",
     workshopEventLocation: "Ztech Innovation Center, Tehran",
     workshopAgendaTitle: "Session agenda",

@@ -118,6 +118,14 @@ const ar: Dictionary = {
     credit: "تصميم وتنفيذ حسن شاهمرادي",
   },
 
+  vibeCodingPromo: {
+    ariaLabel: "دورة Vibe Coding",
+    badge: "دورة ولقاء مجاني في Vibe Coding",
+    title: "هل تريد أن تتعلم كيف تحوّل فكرتك إلى منتج باستخدام AI؟",
+    desc: "صفحة تعليم Vibe Coding جاهزة من الصفر؛ شاهد المنهج والأدوات والتسجيل المسبق للقاء الحضوري المجاني من الآن.",
+    cta: "الانتقال إلى الدورة",
+  },
+
   form: {
     title: "احصل على *موقعك المجاني*",
     subtitle: "بضعة أسئلة قصيرة كي يجهّز فريقنا التقني موقعك المخصّص من صفحة واحدة على نطاق تجريبي خلال 72 ساعة.",
@@ -323,10 +331,17 @@ const ar: Dictionary = {
 
     workshopBadgeFree: "لقاء حضوري مجاني",
     workshopBadgeCapacity: "التسجيل مفتوح الآن!",
-    workshopBadgeLimit: "أماكن محدودة — ٣٠ شخصًا فقط",
+    workshopUrgencyJoined: "سجّل ٢٥ شخصًا حتى الآن",
+    workshopUrgencySpotsLeft: "بقي ٥ أماكن فقط",
+    workshopCountdownLabel: "حتى بدء اللقاء",
+    workshopCountdownDays: "يوم",
+    workshopCountdownHours: "ساعة",
+    workshopCountdownMinutes: "دقيقة",
+    workshopCountdownSeconds: "ثانية",
+    workshopCountdownLive: "بدأ اللقاء الآن",
     workshopFormTitle: "تسجيل مجاني في لقاء Vibe Coding",
     workshopFormDesc: "الخميس المقبل، نفتح Vibe Coding من الصفر بلغة بسيطة: من اختيار الأدوات إلى تحويل الفكرة الخام إلى شيء قابل للاختبار. سجّل الآن واحجز مكانك.",
-    workshopEventDate: "الخميس، ١٨ يونيو ٢٠٢٥",
+    workshopEventDate: "الخميس، ١٨ يونيو ٢٠٢٦",
     workshopEventTime: "١١:٠٠ – ١٣:٠٠",
     workshopEventLocation: "مركز زتك للابتكار، طهران",
     workshopAgendaTitle: "محاور الجلسة",
