@@ -18,6 +18,7 @@ export const slides: SlideData[] = [
     number: 2,
     title: 'اصلا چرا باید مهارت جدیدی یاد بگیریم؟',
     sequential: true,
+    visual: 'idea-barrier',
     bullets: [
       'یه ایده داری که تا حالا اجراش نکردی؟',
       'آدم‌هایی دور و برتن که می‌تونی کمکشون کنی بهتر زندگی کنن؟',
@@ -31,6 +32,7 @@ export const slides: SlideData[] = [
     type: 'content',
     number: 3,
     title: 'ذهنیت مهم‌تر از دانش فنیه',
+    visual: 'mindset',
     bullets: [
       'لازم نیست بلد باشی کد بنویسی. مهم اینه که بلد باشی سوال بپرسی.',
       'AI می‌پرسه «چی می‌خوای؟» ولی تو باید بدونی «چرا می‌خوای؟»',
@@ -43,6 +45,7 @@ export const slides: SlideData[] = [
     type: 'content',
     number: 4,
     title: 'وایب‌کدینگ یعنی چه؟',
+    visual: 'vibe-coding',
     bullets: [
       'توسعه نرم‌افزار با زبان طبیعی، بدون نوشتن کد خام',
       'ایده‌ات رو با AI در میان می‌ذاری؛ AI ساختار، تکنولوژی و کد رو پیشنهاد می‌ده',
@@ -176,6 +179,7 @@ AI: آره، Vercel عالیه برات`,
     type: 'content',
     number: 10,
     title: 'پیش‌تولید ۵: میلستون‌ها',
+    visual: 'milestones',
     bullets: [
       'کل پروژه رو تقسیم کن به ۶-۷ مرحله کلی',
       'هر مرحله چند ریز تسک داره',

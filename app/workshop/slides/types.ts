@@ -17,6 +17,7 @@ export interface ContentSlideData {
   bullets: string[]
   sequential?: boolean  // each Space/Arrow reveals one more bullet
   logos?: import('../components/ToolLogos').ToolLogoName[]
+  visual?: 'idea-barrier' | 'mindset' | 'vibe-coding' | 'milestones'
 }
 
 export interface CodeSlideData {

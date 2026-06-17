@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import LocalizedToaster from "./components/LocalizedToaster";
 import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf } from "./i18n/config";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-latin", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.ir"),
@@ -92,7 +89,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={initialLocale}
       dir={dirOf(initialLocale)}
-      className={inter.variable}
       suppressHydrationWarning
     >
       <head>

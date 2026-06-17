@@ -1,5 +1,19 @@
 'use client'
 import { motion } from 'framer-motion'
+import {
+  Blocks,
+  Brain,
+  CheckCircle2,
+  Code2,
+  HeartHandshake,
+  Lightbulb,
+  MessageCircle,
+  Route,
+  Sparkles,
+  Target,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react'
 import { NavHint } from './NavHint'
 import { ToolLogo, ToolLogoRow } from './ToolLogos'
 import type { ContentSlideData } from '../slides/types'
@@ -218,6 +232,194 @@ function MultiLogoLayout({ slide, visibleCount }: { slide: ContentSlideData; vis
 
 // ─── Layout: default (no logos) ───────────────────────────────────────────────
 
+type SlideVisualKey = NonNullable<ContentSlideData['visual']>
+
+interface VisualItem {
+  icon: LucideIcon
+  label: string
+}
+
+const visualConfig: Record<SlideVisualKey, { hero: LucideIcon; items: VisualItem[] }> = {
+  'idea-barrier': {
+    hero: Lightbulb,
+    items: [
+      { icon: Target, label: 'ایده' },
+      { icon: HeartHandshake, label: 'کمک' },
+      { icon: Wrench, label: 'اجرا' },
+    ],
+  },
+  mindset: {
+    hero: Brain,
+    items: [
+      { icon: MessageCircle, label: 'سوال' },
+      { icon: Target, label: 'چرایی' },
+      { icon: Sparkles, label: 'شفافیت' },
+    ],
+  },
+  'vibe-coding': {
+    hero: Sparkles,
+    items: [
+      { icon: MessageCircle, label: 'زبان طبیعی' },
+      { icon: Brain, label: 'AI' },
+      { icon: Code2, label: 'کد' },
+    ],
+  },
+  milestones: {
+    hero: Route,
+    items: [
+      { icon: Blocks, label: 'مرحله' },
+      { icon: CheckCircle2, label: 'تست' },
+      { icon: Target, label: 'مسیر' },
+    ],
+  },
+}
+
+function SlideVisual({ visual, visibleCount }: { visual: SlideVisualKey; visibleCount: number }) {
+  const config = visualConfig[visual]
+  const HeroIcon = config.hero
+
+  return (
+    <motion.div
+      className="workshop-slide-visual"
+      initial={{ opacity: 0, x: -18, scale: 0.98 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      transition={{ delay: 0.18, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        position: 'relative',
+        display: 'grid',
+        placeItems: 'center',
+        overflow: 'hidden',
+      }}
+      aria-hidden
+    >
+      <div
+        style={{
+          position: 'absolute',
+          width: 'min(74%, 360px)',
+          aspectRatio: '1',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, oklch(0.83 0.105 72 / 0.14) 0%, oklch(0.27 0.080 248 / 0.14) 42%, transparent 72%)',
+          filter: 'blur(4px)',
+        }}
+      />
+
+      <div
+        className="workshop-slide-visual-core"
+        style={{
+          position: 'relative',
+          aspectRatio: '1',
+          borderRadius: '32px',
+          display: 'grid',
+          placeItems: 'center',
+          background:
+            'linear-gradient(145deg, oklch(0.23 0.055 252 / 0.68), oklch(0.13 0.022 272 / 0.72))',
+          border: '1px solid oklch(0.83 0.105 72 / 0.22)',
+          boxShadow:
+            'inset 0 1px 0 oklch(0.96 0.004 72 / 0.08), 0 24px 80px -42px oklch(0.83 0.105 72 / 0.58)',
+        }}
+      >
+        <HeroIcon
+          size={94}
+          strokeWidth={1.55}
+          color="var(--gold)"
+          style={{ filter: 'drop-shadow(0 14px 28px oklch(0.83 0.105 72 / 0.24))' }}
+        />
+      </div>
+
+      <div
+        className="workshop-slide-visual-items"
+        style={{
+          position: 'absolute',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+          gap: '10px',
+        }}
+      >
+        {config.items.map((item, i) => {
+          const Icon = item.icon
+          const active = i < Math.min(visibleCount, config.items.length)
+          return (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: active ? 1 : 0.44, y: 0 }}
+              transition={{ delay: 0.38 + i * 0.08, duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                minHeight: '82px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                borderRadius: '18px',
+                border: `1px solid ${
+                  active ? 'oklch(0.83 0.105 72 / 0.24)' : 'oklch(0.83 0.105 72 / 0.10)'
+                }`,
+                background: active
+                  ? 'oklch(0.83 0.105 72 / 0.075)'
+                  : 'oklch(0.17 0.040 258 / 0.36)',
+              }}
+            >
+              <Icon size={25} strokeWidth={1.6} color={active ? 'var(--gold)' : 'oklch(0.70 0.090 72 / 0.62)'} />
+              <span
+                style={{
+                  fontSize: 'clamp(11px, 1.2vw, 14px)',
+                  fontWeight: 500,
+                  color: active ? 'oklch(0.96 0.004 72)' : 'oklch(0.92 0.004 72 / 0.62)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {item.label}
+              </span>
+            </motion.div>
+          )
+        })}
+      </div>
+    </motion.div>
+  )
+}
+
+function VisualLayout({ slide, visibleCount }: { slide: ContentSlideData; visibleCount: number }) {
+  return (
+    <div
+      className="workshop-slide-visual-layout"
+      role="region"
+      aria-label={slide.title}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        display: 'grid',
+        direction: 'ltr',
+      }}
+    >
+      <BgGlow />
+
+      <SlideVisual visual={slide.visual!} visibleCount={visibleCount} />
+
+      <div
+        className="workshop-slide-visual-copy"
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          gap: '28px',
+          padding: 'clamp(32px, 5vw, 64px) clamp(40px, 7vw, 96px)',
+          direction: 'rtl',
+        }}
+      >
+        <SlideHeading number={slide.number} title={slide.title} />
+        <BulletList bullets={slide.bullets} visibleCount={visibleCount} />
+      </div>
+
+      <NavHint />
+    </div>
+  )
+}
+
 function DefaultLayout({ slide, visibleCount }: { slide: ContentSlideData; visibleCount: number }) {
   return (
     <div
@@ -254,5 +456,6 @@ export function ContentSlide({ slide, revealCount = 0 }: { slide: ContentSlideDa
 
   if (count === 1) return <SingleLogoLayout slide={slide} visibleCount={visibleCount} />
   if (count > 1)  return <MultiLogoLayout slide={slide} visibleCount={visibleCount} />
+  if (slide.visual) return <VisualLayout slide={slide} visibleCount={visibleCount} />
   return <DefaultLayout slide={slide} visibleCount={visibleCount} />
 }

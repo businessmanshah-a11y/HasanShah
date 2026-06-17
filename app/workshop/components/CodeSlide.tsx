@@ -84,7 +84,6 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
           justifyContent: 'center',
           padding: 'clamp(28px, 4vw, 56px) clamp(32px, 5vw, 64px)',
           gap: '20px',
-          borderLeft: '1px solid oklch(0.83 0.105 72 / 0.14)',
         }}
       >
         <h2

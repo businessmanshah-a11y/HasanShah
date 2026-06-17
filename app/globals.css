@@ -53,6 +53,7 @@
 
 :root {
   --radius: 0.75rem;
+  --font-latin: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* ── Deep navy + champagne gold — #1a1a2e · #16213e · #0f3460 · #efc07b ── */
   --background: oklch(0.13 0.022 272);      /* #1a1a2e */
@@ -257,6 +258,90 @@ main > section { padding: clamp(80px, 12vw, 140px) 0; }
   }
 
   .animate-float { animation: float 6s ease-in-out infinite; }
+
+  .workshop-slide-visual-layout {
+    grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .workshop-slide-visual {
+    min-height: min(58vh, 460px);
+  }
+
+  .workshop-slide-visual-core {
+    width: min(62%, 300px);
+  }
+
+  .workshop-slide-visual-items {
+    inset-inline: clamp(20px, 5vw, 58px);
+    bottom: clamp(24px, 6vh, 56px);
+  }
+
+  @media (max-width: 860px) {
+    .workshop-slide-visual-layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: minmax(190px, 34vh) 1fr;
+    }
+
+    .workshop-slide-visual {
+      min-height: 0;
+    }
+
+    .workshop-slide-visual-core {
+      width: min(28vh, 160px);
+      border-radius: 24px !important;
+    }
+
+    .workshop-slide-visual-core svg {
+      width: 58px;
+      height: 58px;
+    }
+
+    .workshop-slide-visual-items {
+      inset-inline: clamp(18px, 5vw, 40px);
+      bottom: 16px;
+    }
+
+    .workshop-slide-visual-items > div {
+      min-height: 58px !important;
+      gap: 5px !important;
+      border-radius: 14px !important;
+    }
+
+    .workshop-slide-visual-copy {
+      justify-content: flex-start !important;
+      padding: clamp(22px, 4vh, 34px) clamp(24px, 7vw, 56px) 64px !important;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .workshop-slide-visual-layout {
+      grid-template-rows: minmax(150px, 28vh) 1fr;
+    }
+
+    .workshop-slide-visual-core {
+      width: min(23vh, 118px);
+      border-radius: 20px !important;
+    }
+
+    .workshop-slide-visual-core svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .workshop-slide-visual-items {
+      inset-inline: 14px;
+      bottom: 10px;
+      gap: 6px !important;
+    }
+
+    .workshop-slide-visual-items > div {
+      min-height: 48px !important;
+    }
+
+    .workshop-slide-visual-items span {
+      font-size: 10px !important;
+    }
+  }
 
   @keyframes pulse-gold {
     0%, 100% { box-shadow: 0 0 0 0 oklch(0.83 0.105 72 / 0.45); }

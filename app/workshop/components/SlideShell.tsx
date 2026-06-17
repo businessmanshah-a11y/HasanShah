@@ -112,7 +112,7 @@ export function SlideShell() {
         fontFamily: 'var(--font-sans)',
       }}
     >
-      <GoldenThread current={index} total={total} />
+      {current.number !== 1 && <GoldenThread current={index} total={total} />}
 
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
