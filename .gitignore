@@ -5,6 +5,7 @@ node_modules/
 docs/
 videoedit/
 /workshop/
+texttospeachtesy/
 
 # Next.js build output
 .next/

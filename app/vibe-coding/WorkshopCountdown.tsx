@@ -40,10 +40,15 @@ export default function WorkshopCountdown({
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setMounted(true);
-    setTimeLeft(getTimeLeft(targetISO));
+    const start = setTimeout(() => {
+      setMounted(true);
+      setTimeLeft(getTimeLeft(targetISO));
+    }, 0);
     const id = setInterval(() => setTimeLeft(getTimeLeft(targetISO)), 1000);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(start);
+      clearInterval(id);
+    };
   }, [targetISO]);
 
   // Mounted with the event over: show the "live" state.

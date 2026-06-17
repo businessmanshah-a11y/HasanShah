@@ -12,7 +12,7 @@ export function NavHint() {
         direction: 'ltr',
       }}
     >
-      {(['←', '→', 'Space'] as const).map(k => (
+      {(['↑', '↓', 'Space'] as const).map(k => (
         <span
           key={k}
           style={{

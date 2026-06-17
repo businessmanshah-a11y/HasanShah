@@ -7,6 +7,44 @@ function toPersianNum(n: number): string {
   return String(n).padStart(2, '0').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[Number(d)])
 }
 
+function DialogueLines({ text, done }: { text: string; done: boolean }) {
+  const lines = text.split('\n')
+  const annotatedLines = lines.reduce<Array<{ line: string; speaker: 'ai' | 'me' | null }>>((acc, line) => {
+    const previousSpeaker = acc.length ? acc[acc.length - 1].speaker : null
+    const speaker = line.startsWith('AI:') ? 'ai' : line.startsWith('من:') ? 'me' : previousSpeaker
+    acc.push({ line, speaker })
+    return acc
+  }, [])
+
+  return (
+    <>
+      {annotatedLines.map(({ line, speaker }, i) => {
+        const color =
+          speaker === 'ai'
+            ? 'var(--gold)'
+            : speaker === 'me'
+            ? 'oklch(0.94 0.006 72)'
+            : 'oklch(0.60 0.008 240)'
+
+        const isLast = i === lines.length - 1
+        return (
+          <span key={i} style={{ color, display: 'block' }}>
+            {line}
+            {isLast && !done && (
+              <span
+                aria-hidden
+                style={{ display: 'inline-block', color: 'var(--gold)', animation: 'blink 1s step-end infinite' }}
+              >
+                ▌
+              </span>
+            )}
+          </span>
+        )
+      })}
+    </>
+  )
+}
+
 export function CodeSlide({ slide }: { slide: CodeSlideData }) {
   const { displayed, done } = useTypewriter(slide.code, 28, 500)
 
@@ -123,8 +161,8 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
             fontSize: 'clamp(10px, 1.2vw, 14px)',
             lineHeight: 1.75,
             color: 'var(--foreground)',
-            direction: 'ltr',
-            textAlign: 'left',
+            direction: slide.dir ?? 'ltr',
+            textAlign: slide.dir === 'rtl' ? 'right' : 'left',
             margin: 0,
             whiteSpace: 'pre',
             overflowX: 'auto',
@@ -132,19 +170,20 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
           aria-live="polite"
           aria-label="کد نمونه"
         >
-          {displayed}
-          {!done && (
-            <span
-              aria-hidden
-              style={{
-                display: 'inline-block',
-                color: 'var(--gold)',
-                animation: 'blink 1s step-end infinite',
-              }}
-            >
-              ▌
-            </span>
-          )}
+          {slide.dir === 'rtl'
+            ? <DialogueLines text={displayed} done={done} />
+            : <>
+                {displayed}
+                {!done && (
+                  <span
+                    aria-hidden
+                    style={{ display: 'inline-block', color: 'var(--gold)', animation: 'blink 1s step-end infinite' }}
+                  >
+                    ▌
+                  </span>
+                )}
+              </>
+          }
         </motion.pre>
         <style>{`@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
       </div>

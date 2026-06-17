@@ -6,12 +6,12 @@ export function useTypewriter(text: string, speed = 32, startDelay = 400) {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
-    setDisplayed('')
-    setDone(false)
     let i = 0
     let interval: ReturnType<typeof setInterval> | null = null
 
     const timeout = setTimeout(() => {
+      setDisplayed('')
+      setDone(false)
       interval = setInterval(() => {
         i++
         setDisplayed(text.slice(0, i))
