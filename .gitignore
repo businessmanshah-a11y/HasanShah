@@ -4,6 +4,7 @@ node_modules/
 *.log
 docs/
 videoedit/
+/workshop/
 
 # Next.js build output
 .next/
@@ -14,6 +15,7 @@ out/
 .claude/
 .impeccable/
 skills-lock.json
+.codex/
 
 # Duplicate assets — Next.js serves static files from public/, not assets/
 assets/fonts/
