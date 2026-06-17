@@ -1,8 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { ArrowLeft, Calendar, CheckCircle2, Clock, Loader2, MapPin, Send, UserRound } from "lucide-react";
-import { toast } from "sonner";
+import { Calendar, CheckCircle2, Clock, MapPin, Send } from "lucide-react";
 import { useI18n } from "../i18n/LanguageProvider";
 import WorkshopCountdown from "./WorkshopCountdown";
 import WorkshopUrgencyBar from "./WorkshopUrgencyBar";
@@ -11,62 +9,26 @@ type WorkshopSignupCardProps = {
   signupPlacement: "top" | "bottom";
 };
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwpeXNbe7xY5JPuCpuaA6TcRi9YnakWplBJw5WnAq8JmaUEQk9PsNW5dK41ooh0IxtNyg/exec";
-
 const EVENT_START_ISO = "2026-06-18T11:00:00+03:30";
 const SEATS_TOTAL = 30;
-const SEATS_TAKEN = 25;
+const SEATS_TAKEN = 30;
+
+const INSTAGRAM_URL = "https://www.instagram.com/shahbusinessman";
+const TELEGRAM_URL = "https://t.me/shahbusinessman";
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.01" strokeWidth="3" />
+    </svg>
+  );
+}
 
 export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCardProps) {
   const { t } = useI18n();
   const vc = t.vibeCoding;
-
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [done, setDone] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const submittedRef = useRef(false);
-
-  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const cleanName = fullName.trim();
-    const cleanPhone = phone.trim();
-
-    if (cleanName.length < 3 || cleanPhone.length < 8) {
-      toast.error(vc.workshopValidationMsg);
-      return;
-    }
-    if (submittedRef.current) return;
-
-    submittedRef.current = true;
-    setSubmitting(true);
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          lang: "fa",
-          leadType: "vibeCodingWorkshop",
-          placement: signupPlacement,
-          name: cleanName,
-          contact: cleanPhone,
-          source: "vibe-coding-page",
-          eventTitle: "دورهمی آموزشی حضوری رایگان وایب‌کدینگ",
-          registrationStatus: "open",
-        }),
-      });
-      setDone(true);
-      toast.success(vc.workshopSuccessMsg);
-    } catch {
-      submittedRef.current = false;
-      toast.error(vc.workshopErrorMsg);
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   return (
     <section
@@ -79,7 +41,7 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
           <span className="rounded-full border border-gold/30 bg-gold/10 px-3 py-1">
             {vc.workshopBadgeFree}
           </span>
-          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-muted-foreground">
+          <span className="rounded-full border border-gold/20 bg-gold/[0.06] px-3 py-1 text-gold/80">
             {vc.workshopBadgeCapacity}
           </span>
         </div>
@@ -90,6 +52,7 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
             spotsLeftLabel={vc.workshopUrgencySpotsLeft}
             taken={SEATS_TAKEN}
             total={SEATS_TOTAL}
+            soldOut
           />
           <WorkshopCountdown
             targetISO={EVENT_START_ISO}
@@ -141,53 +104,56 @@ export default function WorkshopSignupCard({ signupPlacement }: WorkshopSignupCa
             </div>
           </div>
 
-          {done ? (
-            <div className="rounded-2xl border border-gold/25 bg-gradient-gold-soft p-5 text-center">
-              <CheckCircle2 className="mx-auto mb-3 h-10 w-10 text-gold" />
-              <p className="font-bold">{vc.workshopDoneTitle}</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {vc.workshopDoneDesc}
+          {/* Sold-out panel */}
+          <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-b from-gold/[0.12] to-gold/[0.04] p-5 text-center">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-30"
+              style={{
+                background:
+                  "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.83 0.105 72 / 0.25), transparent 70%)",
+              }}
+            />
+
+            <div className="relative">
+              <span className="text-4xl" role="img" aria-hidden="true">🔥</span>
+
+              <h3 className="mt-3 text-lg font-black leading-snug">
+                {vc.workshopSoldOutTitle}
+              </h3>
+              <p className="mt-1 text-xs font-semibold text-gold">
+                {vc.workshopSoldOutDemand}
               </p>
-            </div>
-          ) : (
-            <form onSubmit={submit} className="grid gap-3">
-              <label className="grid gap-1.5">
-                <span className="text-xs font-semibold text-muted-foreground">{vc.workshopLabelName}</span>
-                <div className="relative">
-                  <UserRound className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/55" />
-                  <input
-                    value={fullName}
-                    onChange={(event) => setFullName(event.target.value)}
-                    className="w-full rounded-xl border border-gold/15 bg-background py-3 pe-4 ps-4 pr-10 text-sm outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
-                    placeholder={vc.workshopPlaceholderName}
-                  />
-                </div>
-              </label>
-              <label className="grid gap-1.5">
-                <span className="text-xs font-semibold text-muted-foreground">{vc.workshopLabelPhone}</span>
-                <input
-                  dir="ltr"
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
-                  className="w-full rounded-xl border border-gold/15 bg-background px-4 py-3 text-right text-sm outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20"
-                  placeholder={vc.workshopPlaceholderPhone}
-                />
-              </label>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="group mt-1 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-gold px-5 py-3 text-sm font-black text-gold-foreground shadow-gold transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {submitting ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
+
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                {vc.workshopSoldOutDesc}
+              </p>
+
+              <p className="mt-4 mb-3 text-xs font-semibold text-gold/80">
+                {vc.workshopSoldOutFollowLabel}
+              </p>
+
+              <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gold/30 bg-white/[0.04] px-4 py-2.5 text-sm font-bold text-white/80 transition hover:border-gold/60 hover:bg-gold/10 hover:text-white"
+                >
+                  <InstagramIcon className="h-4 w-4" />
+                  {vc.workshopSoldOutInstagram}
+                </a>
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-gold px-4 py-2.5 text-sm font-black text-gold-foreground shadow-gold transition hover:-translate-y-0.5"
+                >
                   <Send className="h-4 w-4" />
-                )}
-                {vc.workshopSubmitBtn}
-                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              </button>
-            </form>
-          )}
+                  {vc.workshopSoldOutTelegram}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
