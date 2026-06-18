@@ -35,7 +35,7 @@ export function SummarySlide({ slide }: { slide: SummarySlideData }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          fontSize: 'clamp(20px, 2.8vw, 36px)',
+          fontSize: 'clamp(28px, 3.8vw, 50px)',
           fontWeight: 700,
           color: 'var(--foreground)',
           margin: 0,
@@ -77,7 +77,7 @@ export function SummarySlide({ slide }: { slide: SummarySlideData }) {
           >
             <span
               style={{
-                fontSize: 'clamp(18px, 2vw, 28px)',
+                fontSize: 'clamp(24px, 2.8vw, 38px)',
                 fontWeight: 800,
                 color: 'var(--gold)',
                 lineHeight: 1,
@@ -87,7 +87,7 @@ export function SummarySlide({ slide }: { slide: SummarySlideData }) {
             </span>
             <span
               style={{
-                fontSize: 'clamp(10px, 1.2vw, 14px)',
+                fontSize: 'clamp(14px, 1.7vw, 20px)',
                 color: 'oklch(0.88 0.004 72)',
                 lineHeight: 1.4,
               }}
@@ -104,10 +104,10 @@ export function SummarySlide({ slide }: { slide: SummarySlideData }) {
         transition={{ delay: 0.7, duration: 0.5 }}
         style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}
       >
-        <span style={{ fontSize: 'clamp(12px, 1.4vw, 16px)', color: 'var(--gold)', letterSpacing: '0.02em' }}>
+        <span style={{ fontSize: 'clamp(16px, 1.9vw, 22px)', color: 'var(--gold)', letterSpacing: '0.02em' }}>
           {slide.url}
         </span>
-        <span style={{ fontSize: 'clamp(11px, 1.2vw, 14px)', color: 'oklch(0.65 0.012 230)' }}>
+        <span style={{ fontSize: 'clamp(14px, 1.6vw, 19px)', color: 'oklch(0.65 0.012 230)' }}>
           {slide.closing} · سوالات؟
         </span>
       </motion.div>

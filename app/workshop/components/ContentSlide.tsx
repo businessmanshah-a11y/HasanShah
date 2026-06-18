@@ -41,7 +41,7 @@ function SlideHeading({ number, title }: { number: number; title: string }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       style={{
-        fontSize: 'clamp(20px, 2.8vw, 38px)',
+        fontSize: 'clamp(28px, 3.8vw, 52px)',
         fontWeight: 700,
         color: 'var(--foreground)',
         lineHeight: 1.3,
@@ -79,7 +79,7 @@ function BulletList({ bullets, visibleCount }: { bullets: string[]; visibleCount
             display: 'flex',
             alignItems: 'flex-start',
             gap: '14px',
-            fontSize: 'clamp(13px, 1.7vw, 18px)',
+            fontSize: 'clamp(18px, 2.3vw, 26px)',
             color: 'oklch(0.92 0.004 72)',
             lineHeight: 1.55,
           }}
@@ -219,7 +219,6 @@ function MultiLogoLayout({ slide, visibleCount }: { slide: ContentSlideData; vis
           position: 'relative',
           zIndex: 1,
           paddingTop: 'clamp(12px, 2vw, 24px)',
-          borderTop: '1px solid oklch(0.83 0.105 72 / 0.12)',
         }}
       >
         <ToolLogoRow names={slide.logos!} size={50} />
@@ -364,7 +363,7 @@ function SlideVisual({ visual, visibleCount }: { visual: SlideVisualKey; visible
               <Icon size={25} strokeWidth={1.6} color={active ? 'var(--gold)' : 'oklch(0.70 0.090 72 / 0.62)'} />
               <span
                 style={{
-                  fontSize: 'clamp(11px, 1.2vw, 14px)',
+                  fontSize: 'clamp(14px, 1.6vw, 20px)',
                   fontWeight: 500,
                   color: active ? 'oklch(0.96 0.004 72)' : 'oklch(0.92 0.004 72 / 0.62)',
                   whiteSpace: 'nowrap',

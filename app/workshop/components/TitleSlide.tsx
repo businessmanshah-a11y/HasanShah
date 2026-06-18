@@ -60,7 +60,7 @@ export function TitleSlide({ slide }: { slide: TitleSlideData }) {
             padding: '6px 16px',
             border: '1px solid oklch(0.83 0.105 72 / 0.30)',
             borderRadius: '100px',
-            fontSize: '11px',
+            fontSize: '15px',
             color: 'var(--gold)',
             letterSpacing: '1px',
           }}
@@ -71,7 +71,7 @@ export function TitleSlide({ slide }: { slide: TitleSlideData }) {
         <motion.h1
           variants={item}
           style={{
-            fontSize: 'clamp(32px, 5vw, 64px)',
+            fontSize: 'clamp(48px, 6.5vw, 88px)',
             fontWeight: 800,
             color: 'var(--foreground)',
             lineHeight: 1.2,
@@ -98,7 +98,7 @@ export function TitleSlide({ slide }: { slide: TitleSlideData }) {
         <motion.p
           variants={item}
           style={{
-            fontSize: 'clamp(13px, 1.6vw, 17px)',
+            fontSize: 'clamp(18px, 2.2vw, 26px)',
             color: 'oklch(0.65 0.012 230)',
             maxWidth: '480px',
             lineHeight: 1.7,
@@ -111,7 +111,7 @@ export function TitleSlide({ slide }: { slide: TitleSlideData }) {
         <motion.span
           variants={item}
           style={{
-            fontSize: '12px',
+            fontSize: '16px',
             color: 'oklch(0.83 0.105 72 / 0.55)',
             marginTop: '8px',
           }}

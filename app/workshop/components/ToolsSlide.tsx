@@ -44,7 +44,7 @@ export function ToolsSlide({ slide }: { slide: ToolsSlideData }) {
         style={{
           position: 'relative',
           zIndex: 1,
-          fontSize: 'clamp(18px, 2.4vw, 32px)',
+          fontSize: 'clamp(26px, 3.2vw, 44px)',
           fontWeight: 700,
           color: 'var(--foreground)',
           margin: 0,
@@ -154,7 +154,7 @@ function ToolCard({
       {/* Name */}
       <span
         style={{
-          fontSize: 'clamp(9px, 1vw, 11px)',
+          fontSize: 'clamp(12px, 1.3vw, 16px)',
           fontWeight: 700,
           color: 'var(--gold)',
           letterSpacing: '0.14em',
@@ -169,7 +169,7 @@ function ToolCard({
       {tool.badge && (
         <span
           style={{
-            fontSize: 'clamp(8px, 0.85vw, 10px)',
+            fontSize: 'clamp(11px, 1.1vw, 13px)',
             fontWeight: 500,
             color: 'oklch(0.83 0.105 72 / 0.65)',
             background: 'oklch(0.83 0.105 72 / 0.08)',
@@ -187,7 +187,7 @@ function ToolCard({
       {/* Personal note */}
       <p
         style={{
-          fontSize: 'clamp(10px, 1.1vw, 13px)',
+          fontSize: 'clamp(13px, 1.5vw, 17px)',
           color: 'oklch(0.62 0.012 230)',
           lineHeight: 1.55,
           margin: 0,
