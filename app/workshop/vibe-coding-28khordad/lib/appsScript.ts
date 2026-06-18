@@ -21,8 +21,10 @@ export interface FollowupEntry {
 }
 
 async function post<T>(body: Record<string, unknown>): Promise<T> {
+  if (!SCRIPT_URL) throw new Error("NEXT_PUBLIC_APPS_SCRIPT_URL not configured");
   const res = await fetch(SCRIPT_URL, {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -32,6 +34,7 @@ async function post<T>(body: Record<string, unknown>): Promise<T> {
 }
 
 async function get<T>(action: string): Promise<T> {
+  if (!SCRIPT_URL) throw new Error("NEXT_PUBLIC_APPS_SCRIPT_URL not configured");
   const res = await fetch(`${SCRIPT_URL}?action=${action}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json() as Promise<T>;
