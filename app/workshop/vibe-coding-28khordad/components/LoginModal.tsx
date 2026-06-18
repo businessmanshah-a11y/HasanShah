@@ -14,8 +14,8 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
   const [step, setStep] = useState<Step>("phone");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [confirmPwd, setConfirmPwd] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -46,11 +46,11 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
 
   async function handleNewPassword() {
     setError("");
-    if (password.length < 6) { setError("رمز باید حداقل ۶ کاراکتر باشد"); return; }
-    if (password !== confirmPassword) { setError("رمزها با هم مطابقت ندارند"); return; }
+    if (pwd.length < 6) { setError("رمز باید حداقل ۶ کاراکتر باشد"); return; }
+    if (pwd !== confirmPwd) { setError("رمزها با هم مطابقت ندارند"); return; }
     setLoading(true);
     try {
-      const res = await setPassword(phone, password);
+      const res = await setPassword(phone, pwd);
       if (!res.success || !res.token) { setError("خطا در ثبت رمز. دوباره تلاش کنید."); return; }
       onSuccess(phone, res.token, res.name ?? name);
       onClose();
@@ -63,10 +63,10 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
 
   async function handleLogin() {
     setError("");
-    if (!password) { setError("رمز را وارد کنید"); return; }
+    if (!pwd) { setError("رمز را وارد کنید"); return; }
     setLoading(true);
     try {
-      const res = await login(phone, password);
+      const res = await login(phone, pwd);
       if (!res.success || !res.token) {
         setError(res.error === "wrong_password" ? "رمز اشتباه است" : "خطا در ورود");
         return;
@@ -126,8 +126,8 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
         {step === "new-password" && (
           <div className="space-y-4">
             <p className="text-sm text-muted-foreground">یه رمز برای خودت بساز</p>
-            <PasswordField value={password} onChange={setPassword} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="رمز (حداقل ۶ کاراکتر)" />
-            <PasswordField value={confirmPassword} onChange={setConfirmPassword} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="تکرار رمز" onEnter={handleNewPassword} />
+            <PasswordField value={pwd} onChange={setPwd} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="رمز (حداقل ۶ کاراکتر)" />
+            <PasswordField value={confirmPwd} onChange={setConfirmPwd} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="تکرار رمز" onEnter={handleNewPassword} />
             {error && <p className="text-destructive text-xs">{error}</p>}
             <button onClick={handleNewPassword} disabled={loading} className="w-full rounded-xl bg-gradient-gold px-4 py-3 text-sm font-bold text-gold-foreground disabled:opacity-50 transition hover:-translate-y-0.5">
               {loading ? "در حال ثبت..." : "ساخت رمز و ورود"}
@@ -138,7 +138,7 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
         {step === "existing-password" && (
           <div className="space-y-4">
             <p className="text-sm text-muted-foreground">رمزت رو وارد کن</p>
-            <PasswordField value={password} onChange={setPassword} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="رمز عبور" onEnter={handleLogin} />
+            <PasswordField value={pwd} onChange={setPwd} show={showPassword} onToggle={() => setShowPassword(!showPassword)} placeholder="رمز عبور" onEnter={handleLogin} />
             {error && <p className="text-destructive text-xs">{error}</p>}
             <button onClick={handleLogin} disabled={loading} className="w-full rounded-xl bg-gradient-gold px-4 py-3 text-sm font-bold text-gold-foreground disabled:opacity-50 transition hover:-translate-y-0.5">
               {loading ? "در حال ورود..." : "ورود"}
