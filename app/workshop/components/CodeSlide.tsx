@@ -88,7 +88,7 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
       >
         <h2
           style={{
-            fontSize: 'clamp(24px, 3.2vw, 42px)',
+            fontSize: 'clamp(31px, 4.2vw, 55px)',
             fontWeight: 700,
             color: 'var(--foreground)',
             lineHeight: 1.3,
@@ -112,7 +112,7 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '10px',
-                fontSize: 'clamp(15px, 1.9vw, 22px)',
+                fontSize: 'clamp(20px, 2.5vw, 29px)',
                 color: 'oklch(0.88 0.004 72)',
                 lineHeight: 1.5,
               }}
@@ -157,7 +157,7 @@ export function CodeSlide({ slide }: { slide: CodeSlideData }) {
             borderRadius: '10px',
             padding: 'clamp(16px, 2vw, 28px)',
             fontFamily: "'JetBrains Mono', 'Courier New', monospace",
-            fontSize: 'clamp(13px, 1.6vw, 18px)',
+            fontSize: 'clamp(17px, 2.1vw, 23px)',
             lineHeight: 1.75,
             color: 'var(--foreground)',
             direction: slide.dir ?? 'ltr',
