@@ -6,6 +6,8 @@ export interface Attendee {
   linkedin: string;
   specialty: string;
   bio: string;
+  phone?: string;
+  registered?: boolean;
 }
 
 export interface Comment {
@@ -24,8 +26,8 @@ async function post<T>(body: Record<string, unknown>): Promise<T> {
   if (!SCRIPT_URL) throw new Error("NEXT_PUBLIC_APPS_SCRIPT_URL not configured");
   const res = await fetch(SCRIPT_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
+    redirect: "follow",
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
@@ -34,10 +36,7 @@ async function post<T>(body: Record<string, unknown>): Promise<T> {
 }
 
 async function get<T>(action: string): Promise<T> {
-  if (!SCRIPT_URL) throw new Error("NEXT_PUBLIC_APPS_SCRIPT_URL not configured");
-  const res = await fetch(`${SCRIPT_URL}?action=${action}`);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json() as Promise<T>;
+  return post<T>({ action });
 }
 
 export async function hashPassword(password: string): Promise<string> {
@@ -83,7 +82,8 @@ export async function updateProfile(
   token: string,
   linkedin: string,
   specialty: string,
-  bio: string
+  bio: string,
+  showPhone: boolean
 ) {
   return post<{ success: boolean; error?: string }>({
     action: "updateProfile",
@@ -92,11 +92,20 @@ export async function updateProfile(
     linkedin,
     specialty,
     bio,
+    show_phone: showPhone,
   });
 }
 
 export async function getComments(): Promise<Comment[]> {
   return get<Comment[]>("getComments");
+}
+
+export async function editComment(phone: string, token: string, timestamp: string, text: string) {
+  return post<{ success: boolean; error?: string }>({ action: "editComment", phone, token, timestamp, text });
+}
+
+export async function deleteComment(phone: string, token: string, timestamp: string) {
+  return post<{ success: boolean; error?: string }>({ action: "deleteComment", phone, token, timestamp });
 }
 
 export async function addComment(phone: string, token: string, text: string) {

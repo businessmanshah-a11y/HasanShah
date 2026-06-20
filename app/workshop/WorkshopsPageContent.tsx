@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import Link from "next/link";
 import { useI18n } from "../i18n/LanguageProvider";
 import Nav from "../components/Nav";
@@ -7,6 +8,10 @@ export default function WorkshopsPageContent() {
   const { t, dir } = useI18n();
   const wp = t.workshopsPage;
   const arrow = dir === "rtl" ? "←" : "→";
+
+  useEffect(() => {
+    document.title = `${wp.metaTitle} | ${t.brand.name}`;
+  }, [wp.metaTitle, t.brand.name]);
 
   return (
     <div className="min-h-screen bg-background text-foreground" dir={dir}>

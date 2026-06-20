@@ -54,8 +54,8 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
       if (!res.success || !res.token) { setError("خطا در ثبت رمز. دوباره تلاش کنید."); return; }
       onSuccess(phone, res.token, res.name ?? name);
       onClose();
-    } catch {
-      setError("خطا در اتصال. دوباره تلاش کنید.");
+    } catch (err) {
+      setError(`خطا: ${err instanceof Error ? err.message : String(err)}`);
     } finally {
       setLoading(false);
     }
@@ -100,12 +100,13 @@ export default function LoginModal({ onClose, onSuccess }: Props) {
         {step === "phone" && (
           <div className="space-y-4">
             <p className="text-sm text-muted-foreground">شماره موبایلی که در کارگاه ثبت کردی رو وارد کن</p>
+            <p className="text-xs text-gold/70 bg-gold/5 border border-gold/20 rounded-lg px-3 py-2">⌨️ کیبورد را روی <strong>انگلیسی</strong> تنظیم کنید</p>
             <div className="relative">
               <Phone className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="tel"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value.replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))))}
                 onKeyDown={(e) => e.key === "Enter" && handlePhoneSubmit()}
                 placeholder="09121234567"
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 pr-10 text-sm outline-none focus:border-gold/50 transition"

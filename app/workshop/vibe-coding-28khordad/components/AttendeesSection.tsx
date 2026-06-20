@@ -23,9 +23,9 @@ export default function AttendeesSection({ phone, token, userName, onLoginReques
 
   const myProfile = userName ? attendees.find((a) => a.name === userName) : null;
 
-  function handleSaved(linkedin: string, specialty: string, bio: string) {
+  function handleSaved(linkedin: string, specialty: string, bio: string, showPhone: boolean) {
     setAttendees((prev) =>
-      prev.map((a) => (a.name === userName ? { ...a, linkedin, specialty, bio } : a))
+      prev.map((a) => (a.name === userName ? { ...a, linkedin, specialty, bio, phone: showPhone ? (phone ?? "") : "" } : a))
     );
   }
 
@@ -75,6 +75,7 @@ export default function AttendeesSection({ phone, token, userName, onLoginReques
           initialLinkedin={myProfile.linkedin}
           initialSpecialty={myProfile.specialty}
           initialBio={myProfile.bio}
+          initialShowPhone={!!myProfile.phone}
           onClose={() => setEditOpen(false)}
           onSaved={handleSaved}
         />
