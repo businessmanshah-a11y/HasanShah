@@ -370,6 +370,30 @@ const ar: Dictionary = {
     workshopSuccessMsg: "أنت في القائمة. سنتواصل معك لتأكيد التسجيل.",
     workshopErrorMsg: "حدث خطأ. حاول مجددًا أو تواصل معنا مباشرة.",
   },
+
+  workshopsPage: {
+    badge: "✦ ورشاتي",
+    titlePlain: "ورشات",
+    titleAccent: "Vibe Coding",
+    subtitle: "من الفكرة إلى المنتج — بالذكاء الاصطناعي بلا كتابة كود",
+    pastLabel: "الورشات المنتهية",
+    workshopBadge: "✓ مكتملة",
+    viewEvent: "عرض صفحة الحدث",
+    comingSoon: "ورشات قادمة قريبًا",
+    attendeesLabel: "مشارك",
+    durationLabel: "ساعات",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "Vibe Coding: من الفكرة إلى المنتج",
+        date: "١٨ يونيو ٢٠٢٥",
+        location: "طهران",
+        attendees: 24,
+        duration: "٣",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
+  },
 };
 
 export default ar;

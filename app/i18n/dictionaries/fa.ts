@@ -369,6 +369,30 @@ const fa = {
     workshopSuccessMsg: "ثبت‌نامت با موفقیت ثبت شد. برای هماهنگی باهات تماس می‌گیریم.",
     workshopErrorMsg: "ارسال انجام نشد. لطفاً دوباره امتحان کن یا مستقیم تماس بگیر.",
   },
+
+  workshopsPage: {
+    badge: "✦ ورکشاپ‌های من",
+    titlePlain: "کارگاه‌های",
+    titleAccent: "وایب‌کدینگ",
+    subtitle: "از ایده تا محصول — با هوش مصنوعی و بدون نوشتن کد خام",
+    pastLabel: "برگزار شده",
+    workshopBadge: "✓ برگزار شد",
+    viewEvent: "مشاهده صفحه رویداد",
+    comingSoon: "ورکشاپ‌های بعدی به‌زودی اعلام می‌شه",
+    attendeesLabel: "شرکت‌کننده",
+    durationLabel: "ساعت",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "وایب‌کدینگ: از ایده تا محصول",
+        date: "۲۸ خرداد ۱۴۰۴",
+        location: "تهران",
+        attendees: 24,
+        duration: "۳",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
+  },
 };
 
 export default fa;

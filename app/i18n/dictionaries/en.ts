@@ -370,6 +370,30 @@ const en: Dictionary = {
     workshopSuccessMsg: "You're on the list. We'll be in touch to confirm.",
     workshopErrorMsg: "Something went wrong. Try again or reach out directly.",
   },
+
+  workshopsPage: {
+    badge: "✦ My Workshops",
+    titlePlain: "Workshops",
+    titleAccent: "Vibe Coding",
+    subtitle: "From idea to product — with AI, no raw code required",
+    pastLabel: "Past workshops",
+    workshopBadge: "✓ Completed",
+    viewEvent: "View event page",
+    comingSoon: "More workshops coming soon",
+    attendeesLabel: "attendees",
+    durationLabel: "hrs",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "Vibe Coding: From Idea to Product",
+        date: "June 18, 2025",
+        location: "Tehran",
+        attendees: 24,
+        duration: "3",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
+  },
 };
 
 export default en;
