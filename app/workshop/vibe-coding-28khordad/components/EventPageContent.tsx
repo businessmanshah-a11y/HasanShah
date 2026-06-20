@@ -5,6 +5,7 @@ import EventNav from "./EventNav";
 import EventHero from "./EventHero";
 import VideoSection from "./VideoSection";
 import AgendaSection from "./AgendaSection";
+import PresentationSection from "./PresentationSection";
 import AttendeesSection from "./AttendeesSection";
 import CommentsSection from "./CommentsSection";
 import FollowUpSection from "./FollowUpSection";
@@ -27,6 +28,7 @@ export default function EventPageContent() {
         <EventHero />
         <VideoSection />
         <AgendaSection />
+        <PresentationSection />
         <AttendeesSection
           phone={session?.phone ?? null}
           token={session?.token ?? null}
@@ -36,6 +38,7 @@ export default function EventPageContent() {
         <CommentsSection
           phone={session?.phone ?? null}
           token={session?.token ?? null}
+          userName={session?.name ?? null}
           onLoginRequest={() => setLoginOpen(true)}
         />
         <FollowUpSection
