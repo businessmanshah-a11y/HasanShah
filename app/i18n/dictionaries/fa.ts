@@ -371,6 +371,8 @@ const fa = {
   },
 
   workshopsPage: {
+    metaTitle: "ورکشاپ‌های وایب‌کدینگ",
+    metaDesc: "ورکشاپ‌های وایب‌کدینگ — از ایده تا محصول با هوش مصنوعی",
     badge: "✦ ورکشاپ‌های من",
     titlePlain: "کارگاه‌های",
     titleAccent: "وایب‌کدینگ",

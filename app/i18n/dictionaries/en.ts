@@ -372,6 +372,8 @@ const en: Dictionary = {
   },
 
   workshopsPage: {
+    metaTitle: "Vibe Coding Workshops",
+    metaDesc: "Vibe Coding workshops — from idea to product with AI, no raw code required",
     badge: "✦ My Workshops",
     titlePlain: "Workshops",
     titleAccent: "Vibe Coding",

@@ -372,6 +372,8 @@ const ar: Dictionary = {
   },
 
   workshopsPage: {
+    metaTitle: "ورشات Vibe Coding",
+    metaDesc: "ورشات Vibe Coding — من الفكرة إلى المنتج بالذكاء الاصطناعي",
     badge: "✦ ورشاتي",
     titlePlain: "ورشات",
     titleAccent: "Vibe Coding",
