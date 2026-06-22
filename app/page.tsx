@@ -1,7 +1,6 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import VibeCodingPromo from "./components/VibeCodingPromo";
-import WorkshopsPromo from "./components/WorkshopsPromo";
+import PromoCards from "./components/PromoCards";
 import Pain from "./components/Pain";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -19,8 +18,7 @@ export default function Home() {
       <MainPageFaqJsonLd />
       <Nav />
       <Hero />
-      <VibeCodingPromo />
-      <WorkshopsPromo />
+      <PromoCards />
       <Pain />
       <About />
       <Services />
