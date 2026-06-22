@@ -19,6 +19,7 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import ParticlesBackground from "../components/ParticlesBackground";
 import WorkshopSignupCard from "./WorkshopSignupCard";
+import WorkshopsPromo from "../components/WorkshopsPromo";
 import { useI18n } from "../i18n/LanguageProvider";
 
 const toolIcons = [Code2, Brain, TerminalSquare];
@@ -89,6 +90,8 @@ export default function VibeCodingPageContent() {
           </div>
         </div>
       </section>
+
+      <WorkshopsPromo />
 
       <div className="container mx-auto px-4 pb-16">
         <WorkshopSignupCard signupPlacement="top" />

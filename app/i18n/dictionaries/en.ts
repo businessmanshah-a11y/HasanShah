@@ -127,6 +127,14 @@ const en: Dictionary = {
     cta: "Go to the course",
   },
 
+  workshopsPromo: {
+    ariaLabel: "Vibe Coding workshops",
+    badge: "Events & Vibe Coding workshops",
+    title: "Browse our *Vibe Coding* workshops",
+    desc: "Our workshops page is live — past events, upcoming sessions, and a dedicated page for every event, all in one place.",
+    cta: "Go to workshops",
+  },
+
   form: {
     title: "Claim your *free website*",
     subtitle: "A few quick questions so our team can have your custom one-page site ready on a staging domain within 72 hours.",

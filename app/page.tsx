@@ -1,6 +1,7 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import VibeCodingPromo from "./components/VibeCodingPromo";
+import WorkshopsPromo from "./components/WorkshopsPromo";
 import Pain from "./components/Pain";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -19,6 +20,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <VibeCodingPromo />
+      <WorkshopsPromo />
       <Pain />
       <About />
       <Services />

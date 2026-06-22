@@ -119,6 +119,14 @@ const ar: Dictionary = {
     credit: "تصميم وتنفيذ حسن شاهمرادي",
   },
 
+  workshopsPromo: {
+    ariaLabel: "ورشات Vibe Coding",
+    badge: "الفعاليات وورشات Vibe Coding",
+    title: "اكتشف ورشات *Vibe Coding*",
+    desc: "صفحة ورشاتنا جاهزة — الفعاليات الماضية والقادمة وصفحة مخصصة لكل حدث، كل شيء في مكان واحد.",
+    cta: "الذهاب إلى الورشات",
+  },
+
   vibeCodingPromo: {
     ariaLabel: "دورة Vibe Coding",
     badge: "دورة ولقاء مجاني في Vibe Coding",
