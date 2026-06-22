@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import {
   ArrowLeft,
   Bot,
@@ -215,6 +216,36 @@ export default function VibeCodingPageContent() {
             </p>
           </div>
           <WorkshopSignupCard signupPlacement="bottom" />
+        </div>
+      </section>
+
+      {/* ── Workshops listing promo ── */}
+      <section className="bg-surface/25 py-14 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid items-center gap-6 rounded-3xl border border-gold/20 bg-background/70 p-5 shadow-elegant md:grid-cols-[auto_1fr_auto] md:p-7">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-gold shadow-gold">
+              <CheckCircle2 className="h-7 w-7 text-gold-foreground" />
+            </div>
+            <div>
+              <div className="mb-2 inline-flex items-center gap-2 text-xs font-bold text-gold">
+                <Sparkles className="h-3.5 w-3.5" />
+                {vc.workshopReadyTitle}
+              </div>
+              <h2 className="text-2xl font-black leading-snug md:text-3xl">
+                {vc.workshopsPromoTitle}
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-loose text-muted-foreground">
+                {vc.workshopsPromoDesc}
+              </p>
+            </div>
+            <Link
+              href="/workshop/"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 py-3 text-sm font-black text-gold-foreground shadow-gold transition hover:-translate-y-0.5 whitespace-nowrap"
+            >
+              {vc.workshopsPromoCta}
+              <ArrowLeft className={`h-4 w-4 transition-transform ${dir === "rtl" ? "group-hover:-translate-x-1" : "rotate-180 group-hover:translate-x-1"}`} />
+            </Link>
+          </div>
         </div>
       </section>
 

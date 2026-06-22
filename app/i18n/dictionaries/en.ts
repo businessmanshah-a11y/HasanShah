@@ -10,6 +10,7 @@ const en: Dictionary = {
 
   nav: {
     vibeCoding: "Vibe Coding",
+    workshops: "Workshops",
     about: "About",
     services: "Services",
     portfolio: "Work",
@@ -369,6 +370,9 @@ const en: Dictionary = {
     workshopValidationMsg: "Enter your name and phone number to continue.",
     workshopSuccessMsg: "You're on the list. We'll be in touch to confirm.",
     workshopErrorMsg: "Something went wrong. Try again or reach out directly.",
+    workshopsPromoTitle: "Browse our events",
+    workshopsPromoDesc: "Past workshops and upcoming vibe coding events — visit the dedicated page for each one.",
+    workshopsPromoCta: "Go to workshops",
   },
 
   workshopsPage: {

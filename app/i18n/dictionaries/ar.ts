@@ -10,6 +10,7 @@ const ar: Dictionary = {
 
   nav: {
     vibeCoding: "Vibe Coding",
+    workshops: "الورشات",
     about: "من أنا",
     services: "الخدمات",
     portfolio: "أعمالي",
@@ -369,6 +370,9 @@ const ar: Dictionary = {
     workshopValidationMsg: "أدخل اسمك ورقم هاتفك للمتابعة.",
     workshopSuccessMsg: "أنت في القائمة. سنتواصل معك لتأكيد التسجيل.",
     workshopErrorMsg: "حدث خطأ. حاول مجددًا أو تواصل معنا مباشرة.",
+    workshopsPromoTitle: "تصفّح فعالياتنا",
+    workshopsPromoDesc: "ورشات Vibe Coding المنتهية والقادمة — زُر الصفحة المخصصة لكل حدث.",
+    workshopsPromoCta: "الذهاب إلى الورشات",
   },
 
   workshopsPage: {

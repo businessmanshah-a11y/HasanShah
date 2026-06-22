@@ -9,6 +9,7 @@ const fa = {
 
   nav: {
     vibeCoding: "آموزش وایب‌کدینگ",
+    workshops: "ورکشاپ‌ها",
     about: "درباره من",
     services: "خدمات",
     portfolio: "نمونه‌کارها",
@@ -368,6 +369,9 @@ const fa = {
     workshopValidationMsg: "اسم و شماره تماس رو کامل وارد کن.",
     workshopSuccessMsg: "ثبت‌نامت با موفقیت ثبت شد. برای هماهنگی باهات تماس می‌گیریم.",
     workshopErrorMsg: "ارسال انجام نشد. لطفاً دوباره امتحان کن یا مستقیم تماس بگیر.",
+    workshopsPromoTitle: "رویدادهای ما رو ببین",
+    workshopsPromoDesc: "کارگاه‌های برگزارشده و ورکشاپ‌های آینده وایب‌کدینگ همه اینجاست — از صفحه اختصاصی هر رویداد دیدن کن.",
+    workshopsPromoCta: "ورود به صفحه ورکشاپ‌ها",
   },
 
   workshopsPage: {
