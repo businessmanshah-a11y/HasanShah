@@ -10,6 +10,7 @@ const en: Dictionary = {
 
   nav: {
     vibeCoding: "Vibe Coding",
+    workshops: "Workshops",
     about: "About",
     services: "Services",
     portfolio: "Work",
@@ -369,6 +370,35 @@ const en: Dictionary = {
     workshopValidationMsg: "Enter your name and phone number to continue.",
     workshopSuccessMsg: "You're on the list. We'll be in touch to confirm.",
     workshopErrorMsg: "Something went wrong. Try again or reach out directly.",
+    workshopsPromoTitle: "Browse our events",
+    workshopsPromoDesc: "Past workshops and upcoming vibe coding events — visit the dedicated page for each one.",
+    workshopsPromoCta: "Go to workshops",
+  },
+
+  workshopsPage: {
+    metaTitle: "Vibe Coding Workshops",
+    metaDesc: "Vibe Coding workshops — from idea to product with AI, no raw code required",
+    badge: "✦ My Workshops",
+    titlePlain: "Workshops",
+    titleAccent: "Vibe Coding",
+    subtitle: "From idea to product — with AI, no raw code required",
+    pastLabel: "Past workshops",
+    workshopBadge: "✓ Completed",
+    viewEvent: "View event page",
+    comingSoon: "More workshops coming soon",
+    attendeesLabel: "attendees",
+    durationLabel: "hrs",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "Vibe Coding: From Idea to Product",
+        date: "June 18, 2025",
+        location: "Tehran",
+        attendees: 24,
+        duration: "3",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
   },
 };
 

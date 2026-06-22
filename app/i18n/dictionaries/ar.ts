@@ -10,6 +10,7 @@ const ar: Dictionary = {
 
   nav: {
     vibeCoding: "Vibe Coding",
+    workshops: "الورشات",
     about: "من أنا",
     services: "الخدمات",
     portfolio: "أعمالي",
@@ -369,6 +370,35 @@ const ar: Dictionary = {
     workshopValidationMsg: "أدخل اسمك ورقم هاتفك للمتابعة.",
     workshopSuccessMsg: "أنت في القائمة. سنتواصل معك لتأكيد التسجيل.",
     workshopErrorMsg: "حدث خطأ. حاول مجددًا أو تواصل معنا مباشرة.",
+    workshopsPromoTitle: "تصفّح فعالياتنا",
+    workshopsPromoDesc: "ورشات Vibe Coding المنتهية والقادمة — زُر الصفحة المخصصة لكل حدث.",
+    workshopsPromoCta: "الذهاب إلى الورشات",
+  },
+
+  workshopsPage: {
+    metaTitle: "ورشات Vibe Coding",
+    metaDesc: "ورشات Vibe Coding — من الفكرة إلى المنتج بالذكاء الاصطناعي",
+    badge: "✦ ورشاتي",
+    titlePlain: "ورشات",
+    titleAccent: "Vibe Coding",
+    subtitle: "من الفكرة إلى المنتج — بالذكاء الاصطناعي بلا كتابة كود",
+    pastLabel: "الورشات المنتهية",
+    workshopBadge: "✓ مكتملة",
+    viewEvent: "عرض صفحة الحدث",
+    comingSoon: "ورشات قادمة قريبًا",
+    attendeesLabel: "مشارك",
+    durationLabel: "ساعات",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "Vibe Coding: من الفكرة إلى المنتج",
+        date: "١٨ يونيو ٢٠٢٥",
+        location: "طهران",
+        attendees: 24,
+        duration: "٣",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
   },
 };
 

@@ -9,6 +9,7 @@ const fa = {
 
   nav: {
     vibeCoding: "آموزش وایب‌کدینگ",
+    workshops: "ورکشاپ‌ها",
     about: "درباره من",
     services: "خدمات",
     portfolio: "نمونه‌کارها",
@@ -368,6 +369,35 @@ const fa = {
     workshopValidationMsg: "اسم و شماره تماس رو کامل وارد کن.",
     workshopSuccessMsg: "ثبت‌نامت با موفقیت ثبت شد. برای هماهنگی باهات تماس می‌گیریم.",
     workshopErrorMsg: "ارسال انجام نشد. لطفاً دوباره امتحان کن یا مستقیم تماس بگیر.",
+    workshopsPromoTitle: "رویدادهای ما رو ببین",
+    workshopsPromoDesc: "کارگاه‌های برگزارشده و ورکشاپ‌های آینده وایب‌کدینگ همه اینجاست — از صفحه اختصاصی هر رویداد دیدن کن.",
+    workshopsPromoCta: "ورود به صفحه ورکشاپ‌ها",
+  },
+
+  workshopsPage: {
+    metaTitle: "ورکشاپ‌های وایب‌کدینگ",
+    metaDesc: "ورکشاپ‌های وایب‌کدینگ — از ایده تا محصول با هوش مصنوعی",
+    badge: "✦ ورکشاپ‌های من",
+    titlePlain: "کارگاه‌های",
+    titleAccent: "وایب‌کدینگ",
+    subtitle: "از ایده تا محصول — با هوش مصنوعی و بدون نوشتن کد خام",
+    pastLabel: "برگزار شده",
+    workshopBadge: "✓ برگزار شد",
+    viewEvent: "مشاهده صفحه رویداد",
+    comingSoon: "ورکشاپ‌های بعدی به‌زودی اعلام می‌شه",
+    attendeesLabel: "شرکت‌کننده",
+    durationLabel: "ساعت",
+    workshops: [
+      {
+        id: "vibe-coding-28khordad",
+        title: "وایب‌کدینگ: از ایده تا محصول",
+        date: "۲۸ خرداد ۱۴۰۴",
+        location: "تهران",
+        attendees: 24,
+        duration: "۳",
+        href: "/workshop/vibe-coding-28khordad/",
+      },
+    ],
   },
 };
 

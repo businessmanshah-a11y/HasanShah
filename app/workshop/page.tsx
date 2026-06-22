@@ -1,13 +1,12 @@
-// app/workshop/page.tsx
-import type { Metadata } from 'next'
-import { SlideShell } from './components/SlideShell'
+import type { Metadata } from 'next';
+import WorkshopsPageContent from './WorkshopsPageContent';
 
 export const metadata: Metadata = {
-  title: 'وایب‌کدینگ: از ایده تا محصول | Workshop',
-  description: 'پرزنتیشن کارگاه وایب‌کدینگ — حسن شاه‌مرادی ۱۴۰۴',
-  robots: { index: false },
-}
+  title: 'ورکشاپ‌های وایب‌کدینگ',
+  description: 'ورکشاپ‌های وایب‌کدینگ — از ایده تا محصول با هوش مصنوعی',
+  robots: { index: true },
+};
 
-export default function WorkshopPage() {
-  return <SlideShell />
+export default function WorkshopsPage() {
+  return <WorkshopsPageContent />;
 }
