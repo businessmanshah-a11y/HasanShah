@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SeriesDetailPage({ params }: Props) {
   const { slug } = await params;
   const series = getSeriesBySlug(slug);
-  if (!series) notFound();
+  if (!series) return notFound();
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground" dir="rtl">

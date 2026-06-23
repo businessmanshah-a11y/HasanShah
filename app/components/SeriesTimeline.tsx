@@ -77,7 +77,7 @@ export default function SeriesTimeline({ steps }: { steps: TimelineStep[] }) {
             </div>
 
             {/* محتوای مرحله */}
-            <div className={`flex-1 pb-10 ${isLast ? "pb-0" : ""}`}>
+            <div className={isLast ? "flex-1" : "flex-1 pb-10"}>
               <h3 className="mb-3 text-xl font-black leading-snug">{step.title}</h3>
               <p className="mb-5 leading-loose text-muted-foreground">{step.story}</p>
 
