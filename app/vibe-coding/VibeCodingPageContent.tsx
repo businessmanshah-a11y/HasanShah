@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
+  BookOpen,
   Bot,
   Brain,
   CheckCircle2,
@@ -187,6 +188,33 @@ export default function VibeCodingPageContent() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Series promo ── */}
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid items-center gap-6 rounded-3xl border border-gold/20 bg-surface/60 p-6 shadow-elegant md:grid-cols-[auto_1fr_auto] md:p-8">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-gold shadow-gold">
+              <BookOpen className="h-7 w-7 text-gold-foreground" />
+            </div>
+            <div>
+              <div className="mb-1.5 text-xs font-bold text-gold">سری‌های آموزشی کامل</div>
+              <h2 className="text-xl font-black leading-snug md:text-2xl">
+                داستان کامل + تایم‌لاین + درس هر لحظه
+              </h2>
+              <p className="mt-1.5 max-w-xl text-sm leading-loose text-muted-foreground">
+                یه پروژه‌ی واقعی رو از ساعت شروع تا انتشار می‌بینی — چالش‌ها، پرامپت‌ها، و چیزی که یاد گرفتیم.
+              </p>
+            </div>
+            <Link
+              href="/vibe-coding/series/"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-gold px-6 py-3 text-sm font-black text-gold-foreground shadow-gold transition hover:-translate-y-0.5 whitespace-nowrap"
+            >
+              مشاهده سری‌ها
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>
