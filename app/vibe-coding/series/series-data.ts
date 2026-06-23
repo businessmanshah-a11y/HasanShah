@@ -3,6 +3,7 @@
 export type SeriesMedia =
   | { type: "image"; src: string; alt: string }
   | { type: "video"; src: string; poster?: string }
+  | { type: "aparat"; hash: string }
   | { type: "prompt"; content: string }
 
 export type TimelineStep = {
@@ -40,7 +41,7 @@ export const allSeries: Series[] = [
     duration: "۷ ساعت",
     tools: ["Claude Code", "Google Sheets", "Apps Script"],
     coverImage: "/series/faktor-dadash/cover.webp",
-    audioSrc: "/series/faktor-dadash/audio.mp3",
+    audioSrc: "/series/faktor-dadash/voice.m4a",
     steps: [
       {
         time: "۲۰:۰۰",
@@ -50,7 +51,7 @@ export const allSeries: Series[] = [
         media: [
           {
             type: "image",
-            src: "/series/faktor-dadash/images/whatsapp.jpg",
+            src: "/series/faktor-dadash/images/1.webp",
             alt: "اسکرین‌شات پیام واتساپ داداشم",
           },
         ],
@@ -68,6 +69,11 @@ export const allSeries: Series[] = [
             content:
               "یه سیستم فاکتورساز برای داداشم بساز که:\n- از موبایل راحت بشه باهاش کار کرد\n- فاکتورها ذخیره بشن و قابل ویرایش باشن\n- خروجی PDF برای چاپ و خروجی عکس برای ارسال داشته باشه\n- بدون نیاز به نصب اپ — مستقیم از مرورگر",
           },
+          {
+            type: "image",
+            src: "/series/faktor-dadash/images/2.webp",
+            alt: "اولین خروجی Claude Code",
+          },
         ],
         lesson:
           "پرامپت خوب با «کاربر نهایی کیه؟» شروع می‌شه، نه با «چی بسازیم؟». وقتی می‌دونی کاربرت داداشته که از گوشی کار می‌کنه، ابزار درست رو انتخاب می‌کنی.",
@@ -80,7 +86,7 @@ export const allSeries: Series[] = [
         media: [
           {
             type: "image",
-            src: "/series/faktor-dadash/images/vahid.jpg",
+            src: "/series/faktor-dadash/images/3.webp",
             alt: "عکس با وحید خاتمی",
           },
         ],
@@ -91,21 +97,49 @@ export const allSeries: Series[] = [
         time: "۰۳:۰۰",
         title: "سیستم آنلاین شد",
         story:
-          "اومدم خونه و تا ۳ صبح کار ادامه داشت. در نهایت سیستم روی سرور بالا اومد. داداشم از گوشیش فاکتور می‌زنه، خروجی PDF می‌گیره، خروجی عکس می‌گیره. خیالش راحته.",
+          "اومدم خونه و تا ۳ صبح کار ادامه داشت. در نهایت سیستم روی سرور بالا اومد. داداشم از گوشیش فاکتور می‌زنه، خروجی PDF می‌گیره، خروجی عکس برای ارسال می‌گیره. خیالش راحته.",
         media: [
           {
-            type: "video",
-            src: "/series/faktor-dadash/demo.mp4",
-            poster: "/series/faktor-dadash/demo-poster.jpg",
+            type: "image",
+            src: "/series/faktor-dadash/images/4.1.webp",
+            alt: "اسکرین‌شات سیستم فاکتور",
           },
           {
             type: "image",
-            src: "/series/faktor-dadash/images/invoice-result.jpg",
-            alt: "اسکرین‌شات فاکتور نهایی",
+            src: "/series/faktor-dadash/images/4.2.webp",
+            alt: "خروجی نهایی فاکتورساز",
           },
         ],
         lesson:
           "خروجی خوب یعنی کاربر بتونه بدون توضیح ازش استفاده کنه. تست واقعی: بده به کسی که ازش هیچی نمی‌دونه، ببین گیر می‌کنه یا نه.",
+      },
+      {
+        time: "دمو",
+        title: "تست واقعی اپلیکیشن فاکتورساز",
+        story:
+          "ویدیوی زیر یه walkthrough واقعی از سیستم نهایی‌ه — از ثبت فاکتور تا گرفتن خروجی PDF و عکس، مستقیم از گوشی موبایل.",
+        media: [
+          {
+            type: "aparat",
+            hash: "dokd8jb",
+          },
+        ],
+        lesson:
+          "یه ابزار خوب رو می‌شه بدون راهنما استفاده کرد. اگه کاربرت گیر کرد، مشکل از UX‌ته، نه از کاربر.",
+      },
+      {
+        time: "پشت‌صحنه",
+        title: "مراحل اجرا داخل Claude Code",
+        story:
+          "اینجا می‌تونی ببینی که دقیقاً چطور این سیستم ساخته شد — پرامپت‌ها، tool call‌ها، iteration‌ها، و لحظه‌ای که Claude Code شروع به ساختن ساختار اصلی کرد.",
+        media: [
+          {
+            type: "aparat",
+            hash: "abq9d6s",
+          },
+        ],
+        lesson:
+          "Vibe Coding یعنی تو ایده رو هدایت می‌کنی، Claude جزئیات رو اجرا می‌کنه. نقش تو معماری و تصمیم‌گیری‌ه، نه نوشتن کدِ تک‌تک.",
         isEnd: true,
       },
     ],

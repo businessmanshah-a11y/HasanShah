@@ -45,8 +45,20 @@ export default async function SeriesDetailPage({ params }: Props) {
       <Nav />
 
       {/* ── Hero ── */}
-      <section className="pt-28 pb-10 md:pt-36">
-        <div className="container mx-auto px-4">
+      <section className="relative flex min-h-[92vh] items-end overflow-hidden pb-14">
+        {/* Cover as full background */}
+        <Image
+          src={series.coverImage}
+          alt={series.title}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Gradient overlay — dark at bottom, transparent at top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/10" />
+
+        <div className="relative container mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="mb-6 flex items-center gap-2 text-xs text-muted-foreground">
             <Link href="/vibe-coding/" className="hover:text-gold transition-colors">
@@ -61,7 +73,7 @@ export default async function SeriesDetailPage({ params }: Props) {
           </nav>
 
           {/* Meta chips */}
-          <div className="mb-4 flex flex-wrap items-center gap-3">
+          <div className="mb-5 flex flex-wrap items-center gap-3">
             <span className="rounded-lg border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-bold text-gold">
               {series.tag}
             </span>
@@ -69,42 +81,37 @@ export default async function SeriesDetailPage({ params }: Props) {
             <span className="text-xs text-muted-foreground">⏱ {series.duration}</span>
           </div>
 
-          <h1 className="mb-4 text-3xl font-black leading-[1.35] md:text-5xl">
+          <h1 className="mb-4 max-w-3xl text-4xl font-black leading-[1.25] md:text-6xl">
             {series.title}
           </h1>
-          <p className="mb-6 max-w-2xl text-base leading-loose text-muted-foreground">
+          <p className="mb-8 max-w-xl text-base leading-loose text-muted-foreground">
             {series.summary}
           </p>
 
-          {/* Tools */}
-          <div className="mb-8 flex flex-wrap gap-2">
-            {series.tools.map((tool) => (
-              <span
-                key={tool}
-                className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-muted-foreground"
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="#story"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-6 py-3 text-sm font-black text-gold-foreground shadow-gold transition-opacity hover:opacity-90"
+            >
+              شروع داستان
+              <ArrowRight className="h-4 w-4 rotate-180" />
+            </a>
+            {series.audioSrc && (
+              <a
+                href="#audio"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-6 py-3 text-sm font-bold text-foreground backdrop-blur-sm transition-colors hover:bg-white/[0.10]"
               >
-                {tool}
-              </span>
-            ))}
-          </div>
-
-          {/* Cover image */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-gold/10">
-            <Image
-              src={series.coverImage}
-              alt={series.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 80vw"
-            />
+                🎧 روایت صوتی
+              </a>
+            )}
           </div>
         </div>
       </section>
 
       {/* ── Audio Player ── */}
       {series.audioSrc && (
-        <section className="pb-4">
+        <section id="audio" className="py-8">
           <div className="container mx-auto px-4">
             <div className="rounded-2xl border border-gold/15 bg-surface p-5">
               <p className="mb-3 text-sm font-black text-gold">
@@ -122,15 +129,13 @@ export default async function SeriesDetailPage({ params }: Props) {
       )}
 
       {/* ── Timeline ── */}
-      <section className="py-12 md:py-16">
+      <section id="story" className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-10">
             <p className="mb-2 text-sm font-bold text-gold">📖 داستان — قدم‌به‌قدم</p>
             <h2 className="text-2xl font-black md:text-4xl">مسیر کامل این شب</h2>
           </div>
-          <div className="max-w-3xl">
-            <SeriesTimeline steps={series.steps} />
-          </div>
+          <SeriesTimeline steps={series.steps} />
         </div>
       </section>
 
