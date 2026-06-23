@@ -27,6 +27,14 @@ if (!Array.isArray(rawCookies)) {
   process.exit(1);
 }
 
+function mapSameSite(val) {
+  if (!val) return 'Lax';
+  const v = val.toLowerCase();
+  if (v === 'strict') return 'Strict';
+  if (v === 'none' || v === 'no_restriction') return 'None';
+  return 'Lax';
+}
+
 const cookies = rawCookies.map(c => ({
   name: c.name,
   value: c.value,
@@ -35,7 +43,7 @@ const cookies = rawCookies.map(c => ({
   expires: typeof c.expirationDate === 'number' ? Math.round(c.expirationDate) : -1,
   httpOnly: c.httpOnly || false,
   secure: c.secure || false,
-  sameSite: c.sameSite || 'Lax',
+  sameSite: mapSameSite(c.sameSite),
 }));
 
 const storageState = { cookies, origins: [] };
