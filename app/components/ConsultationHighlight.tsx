@@ -1,8 +1,10 @@
 "use client";
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Gift, Handshake, Sparkles, Zap, type LucideIcon } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
 import { useI18n } from "../i18n/LanguageProvider";
 import { Highlight } from "../i18n/Highlight";
+
+const ITEM_ICONS: LucideIcon[] = [Gift, Handshake, Zap];
 
 export default function ConsultationHighlight() {
   const ref = useReveal<HTMLDivElement>();
@@ -54,18 +56,23 @@ export default function ConsultationHighlight() {
             </div>
 
             <div className="space-y-4">
-              {t.consultationHighlight.items.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-4 rounded-xl bg-surface/60 border border-gold/10 p-5 hover:border-gold/30 transition"
-                >
-                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                  <div>
-                    <h4 className="font-bold text-gold mb-1">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              {t.consultationHighlight.items.map((item, i) => {
+                const Icon = ITEM_ICONS[i];
+                return (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 rounded-xl bg-surface/60 border border-gold/10 p-5 hover:border-gold/30 transition"
+                  >
+                    <div className="flex-shrink-0 rounded-lg bg-gold/10 p-2.5">
+                      <Icon className="h-5 w-5 text-gold" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gold mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

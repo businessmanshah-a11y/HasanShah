@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Code2, Globe, Rocket, Send, Smartphone, Sparkles, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "../hooks/use-reveal";
 import { useI18n } from "../i18n/LanguageProvider";
@@ -156,6 +156,14 @@ export default function LeadForm() {
   const submittedRef = useRef(false);
 
   const f = t.consultForm;
+
+  const SERVICE_ICONS: Record<ServiceType, LucideIcon> = {
+    website: Globe,
+    app: Smartphone,
+    vibecoding: Code2,
+    startup: Rocket,
+  };
+
   const PrevIcon = dir === "rtl" ? ArrowRight : ArrowLeft;
   const NextIcon = dir === "rtl" ? ArrowLeft : ArrowRight;
   const phoneAlign = dir === "rtl" ? "text-right" : "text-left";
@@ -269,7 +277,7 @@ export default function LeadForm() {
 
   const progress = (step / 3) * 100;
 
-  const serviceEntries = Object.entries(f.services) as [ServiceType, { title: string; icon: string }][];
+  const serviceEntries = Object.entries(f.services) as [ServiceType, { title: string }][];
 
   return (
     <section id="form" className="relative py-20 md:py-28 bg-surface/30">
@@ -342,7 +350,9 @@ export default function LeadForm() {
                             : "border-gold/15 bg-surface hover:border-gold/40"
                         }`}
                       >
-                        <div className="text-3xl mb-3">{val.icon}</div>
+                        <div className="mb-3 inline-flex rounded-lg bg-gold/10 p-2.5">
+                          {(() => { const Icon = SERVICE_ICONS[key]; return <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />; })()}
+                        </div>
                         <div className="text-sm font-bold">{val.title}</div>
                       </button>
                     ))}
