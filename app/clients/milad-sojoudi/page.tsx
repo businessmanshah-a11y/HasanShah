@@ -71,7 +71,7 @@ const LIGHT = {
   navShadow0:  "0 0 0 1px oklch(0 0 0 / 0)",
 } as const;
 
-type Theme = typeof DARK;
+type Theme = { [K in keyof typeof DARK]: string };
 type AccentKey = "blue" | "purple";
 
 function ac(t: Theme, k: AccentKey)   { return t[k]; }
