@@ -67,13 +67,6 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center justify-center md:justify-start gap-6 text-xs text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
-              {t.hero.trustDelivery}
-            </div>
-            <div className="hidden sm:block">{t.hero.trustTime}</div>
-          </div>
         </div>
 
         {/* Portrait side */}
