@@ -5,7 +5,7 @@ import Pain from "./components/Pain";
 import About from "./components/About";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
-import Offer from "./components/Offer";
+import ConsultationHighlight from "./components/ConsultationHighlight";
 import LeadForm from "./components/LeadForm";
 import Footer from "./components/Footer";
 import { MainPageFaqJsonLd, PersonJsonLd, WebSiteJsonLd } from "./components/JsonLd";
@@ -23,7 +23,7 @@ export default function Home() {
       <About />
       <Services />
       <Portfolio />
-      <Offer />
+      <ConsultationHighlight />
       <LeadForm />
       <Footer />
     </main>
