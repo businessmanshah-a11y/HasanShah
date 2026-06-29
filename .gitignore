@@ -7,6 +7,7 @@ videoedit/
 /workshop/
 texttospeachtesy/
 personaldevelopment/
+scripts/
 
 # Next.js build output
 .next/
@@ -18,6 +19,7 @@ out/
 .impeccable/
 skills-lock.json
 .codex/
+.playwright-mcp/
 
 # Duplicate assets — Next.js serves static files from public/, not assets/
 assets/fonts/
@@ -40,3 +42,6 @@ tests/
 linkedin-cookies.json
 linkedin-storage-state.json
 docs/linkedin-audit/
+
+# Social Media — local strategy, audits, and content plans
+socialmedia/
