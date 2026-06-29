@@ -7,34 +7,29 @@ export async function POST(request: Request) {
   try {
     const raw = await request.json();
 
-    // Map form field names to what the Apps Script expects.
-    // Option values arrive already localized to the language the user filled in.
     const payload = {
       timestamp: new Date().toISOString(),
       lang: raw.lang ?? "",
-      // Step 1
-      name: raw.fullName,
-      contact: raw.contact,
-      businessType: raw.businessType,
-      businessDescription: raw.businessDescription,
-      hasSite: raw.hasSite,
+      serviceType: raw.serviceType ?? "",
+      name: raw.name ?? "",
+      phone: raw.phone ?? "",
+      email: raw.email ?? "",
+      telegram: raw.telegram ?? "",
+      siteSubType: raw.siteSubType ?? "",
+      businessDescription: raw.businessDescription ?? "",
+      hasSite: raw.hasSite ?? "",
       siteUrl: raw.siteUrl ?? "",
-      // Step 2
-      instagramLoss: raw.instagramLoss,
-      competitorIncome: raw.competitorIncome,
-      whyNow: raw.whyNow,
-      // Step 3
-      ageRange: raw.ageRange,
-      audienceLocation: raw.audienceLocation,
-      expectedIncome: raw.expectedIncome,
-      // Step 4
-      hasLogo: raw.hasLogo,
-      logoFileName: raw.logoFileName ?? "",
-      logoBase64: raw.logoBase64 ?? "",
-      color: raw.brandColor ?? "",
-      vibes: Array.isArray(raw.vibes) ? raw.vibes.join(", ") : raw.vibes,
-      goal: raw.mainGoal,
-      firstAction: raw.firstAction,
+      budget: raw.budget ?? "",
+      timeline: raw.timeline ?? "",
+      platforms: raw.platforms ?? "",
+      appIdea: raw.appIdea ?? "",
+      appStatus: raw.appStatus ?? "",
+      level: raw.level ?? "",
+      buildGoal: raw.buildGoal ?? "",
+      format: raw.format ?? "",
+      startupIdea: raw.startupIdea ?? "",
+      stage: raw.stage ?? "",
+      need: raw.need ?? "",
     };
 
     const res = await fetch(SCRIPT_URL, {
@@ -44,7 +39,6 @@ export async function POST(request: Request) {
       redirect: "follow",
     });
 
-    // Apps Script returns 200 even on redirect — any non-throw is success
     if (!res.ok && res.status !== 0) {
       throw new Error(`Apps Script responded with ${res.status}`);
     }
