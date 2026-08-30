@@ -4,6 +4,9 @@ import { SlideShell } from '../../components/SlideShell';
 export const metadata: Metadata = {
   title: 'پرزنتیشن کارگاه وایب‌کدینگ ۲۸ خرداد',
   description: 'اسلایدهای کارگاه وایب‌کدینگ — حسن شاه‌مرادی · خرداد ۱۴۰۴',
+  alternates: {
+    canonical: 'https://hasanshah.ir/workshop/vibe-coding-28khordad/slides/',
+  },
   robots: { index: false },
 };
 

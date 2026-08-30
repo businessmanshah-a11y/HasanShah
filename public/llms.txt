@@ -70,7 +70,11 @@ Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control)
 
 ## Pages & Articles
 
-- [Home](https://hasanshah.ir): Portfolio, services, free website offer, contact form
-- [Vibe Coding](https://hasanshah.ir/vibe-coding): Full vibe coding curriculum, tools guide, roadmap, and free workshop registration
-- [ChatGPT 460 Slash Commands Handbook (2026)](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): The definitive master reference of 460 ChatGPT slash commands, creative image shortcuts, cinematic render prompts, and developer workflows.
-- [Blog Archive](https://hasanshah.ir/blog/): Educational articles and guides on AI, vibe coding, and web design.
+- [Home](https://hasanshah.ir/): Portfolio, web design services, 72-hour free custom website offer, and contact form.
+- [Vibe Coding Curriculum](https://hasanshah.ir/vibe-coding/): Full vibe coding guide, tool selection, 4-step framework, and meetup registration.
+- [Blog Archive](https://hasanshah.ir/blog/): Specialized tutorials and deep-dives on artificial intelligence, vibe coding, prompt engineering, and high-converting landing pages.
+- [ChatGPT 460 Slash Commands Handbook (2026 Edition)](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): The definitive trilingual handbook containing 460 slash commands, hidden parameters, cinematic image generation prompts, and developer cheat codes.
+- [What is Vibe Coding? Guide](https://hasanshah.ir/blog/what-is-vibe-coding-guide/): Complete practical roadmap to building digital products with Cursor, Claude, and Codex without traditional programming.
+- [High-Converting Landing Page Secrets](https://hasanshah.ir/blog/high-converting-landing-page-secrets/): Golden rules of designing high-conversion landing pages for Iranian and regional businesses.
+- [Educational Series Archive](https://hasanshah.ir/vibe-coding/series/): Real-world project case studies and end-to-end vibe coding breakdowns.
+- [Workshops & Events](https://hasanshah.ir/workshop/): In-person and online workshops calendar and community sessions in Tehran.

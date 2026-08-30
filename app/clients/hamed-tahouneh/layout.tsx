@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
+import { ClientPortfolioJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "حامد طاحونه | مشاور خدمات اداری",
+  title: "حامد طاحونه | مشاور امور اداری و ثبتی",
   description:
-    "مشاوره تخصصی خدمات اداری در سراسر ایران. ثبت شرکت، تنظیم قرارداد، پیگیری امور اداری. تماس: ۰۹۳۹۲۴۰۶۷۶۷",
-  robots: { index: false, follow: false },
+    "نمونه کار طراحی و توسعه لندینگ‌پیج اختصاصی حامد طاحونه، مشاور ارشد ثبت شرکت، تنظیم قراردادها و پیگیری امور اداری در تهران.",
+  alternates: {
+    canonical: "https://hasanshah.ir/clients/hamed-tahouneh/",
+  },
+  openGraph: {
+    locale: "fa_IR",
+    type: "website",
+    siteName: "حسن شاهمرادی",
+    title: "حامد طاحونه | مشاور امور اداری و ثبتی | حسن شاهمرادی",
+    description:
+      "طراحی اختصاصی لندینگ‌پیج حامد طاحونه با تمرکز بر نرخ تبدیل بالا و تجربه کاربری روان توسط حسن شاهمرادی.",
+    url: "https://hasanshah.ir/clients/hamed-tahouneh/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "حامد طاحونه | مشاور امور اداری و ثبتی | حسن شاهمرادی",
+    description: "نمونه کار طراحی و توسعه لندینگ‌پیج اختصاصی حامد طاحونه توسط حسن شاهمرادی.",
+  },
 };
 
 export default function HamedTahounehLayout({
@@ -14,14 +31,12 @@ export default function HamedTahounehLayout({
 }) {
   return (
     <>
-      {/* override the main site's dark-navy body background for this route */}
-      <style>{`
-        body {
-          background: oklch(0.99 0.003 0) !important;
-          background-image: none !important;
-          background-attachment: initial !important;
-        }
-      `}</style>
+      <ClientPortfolioJsonLd
+        clientName="حامد طاحونه"
+        clientRole="مشاور امور اداری و ثبتی"
+        slug="hamed-tahouneh"
+        description="طراحی و توسعه لندینگ‌پیج اختصاصی حامد طاحونه، مشاور ارشد ثبت شرکت و تنظیم قراردادها."
+      />
       {children}
     </>
   );

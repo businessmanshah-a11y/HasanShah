@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import Nav from "../../../components/Nav";
 import Footer from "../../../components/Footer";
 import SeriesTimeline from "../../../components/SeriesTimeline";
+import { SeriesDetailJsonLd } from "../../../components/JsonLd";
 import { allSeries, getSeriesBySlug } from "../series-data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -42,6 +43,12 @@ export default async function SeriesDetailPage({ params }: Props) {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground" dir="rtl">
+      <SeriesDetailJsonLd
+        title={series.title}
+        summary={series.summary}
+        slug={series.slug}
+        coverImage={series.coverImage}
+      />
       <Nav />
 
       {/* ── Hero ── */}

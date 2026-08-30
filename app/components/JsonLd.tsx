@@ -542,3 +542,236 @@ export function ArticleJsonLd({ article }: { article: ArticleData }) {
     />
   );
 }
+
+export function ProfessionalServiceJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${BASE}/#service`,
+    name: "طراحی وب و آموزش وایب‌کدینگ حسن شاهمرادی",
+    alternateName: "Hasan Shahmoradi Web Design & Vibe Coding Studio",
+    url: BASE,
+    logo: `${BASE}/images/logo.webp`,
+    image: `${BASE}/images/profile.webp`,
+    description:
+      "طراحی لندینگ‌پیج‌های اختصاصی پرفروش با تحویل سریع ۷۲ ساعته و آموزش مهندسی وایب‌کدینگ با هوش مصنوعی.",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IR",
+      addressLocality: "Tehran",
+    },
+    founder: {
+      "@type": "Person",
+      "@id": `${BASE}/#person`,
+      name: "حسن شاهمرادی",
+    },
+    priceRange: "$$",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "خدمات طراحی وب و هوش مصنوعی",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          name: "طراحی سایت تک‌صفحه‌ای اختصاصی رایگان (۷۲ ساعته)",
+          description: "طراحی لندینگ‌پیج سفارشی بدون پیش‌پرداخت و تحویل در ۷۲ ساعت روی دامنه آزمایشی.",
+          price: "0",
+          priceCurrency: "IRR",
+        },
+        {
+          "@type": "Offer",
+          name: "آموزش و مشاوره وایب‌کدینگ با هوش مصنوعی",
+          description: "آموزش تبدیل ایده به محصول تجاری با ابزارهای Cursor، Claude و Codex.",
+        },
+      ],
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function WorkshopsListJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${BASE}/workshop/#webpage`,
+        name: "ورکشاپ‌ها و رویدادهای وایب‌کدینگ",
+        description: "تقویم کارگاه‌ها و دورهمی‌های حضوری و آنلاین وایب‌کدینگ حسن شاهمرادی در تهران.",
+        url: `${BASE}/workshop/`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BASE}/workshop/#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "خانه",
+            item: BASE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "ورکشاپ‌ها",
+            item: `${BASE}/workshop/`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function ClientPortfolioJsonLd({
+  clientName,
+  clientRole,
+  slug,
+  description,
+}: {
+  clientName: string;
+  clientRole: string;
+  slug: string;
+  description: string;
+}) {
+  const pageUrl = `${BASE}/clients/${slug}/`;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${pageUrl}#project`,
+        name: `طراحی لندینگ‌پیج ${clientName} — ${clientRole}`,
+        description: description,
+        url: pageUrl,
+        author: {
+          "@type": "Person",
+          "@id": `${BASE}/#person`,
+          name: "حسن شاهمرادی",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "خانه",
+            item: BASE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "نمونه‌کارها",
+            item: `${BASE}/#portfolio`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: clientName,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function SeriesDetailJsonLd({
+  title,
+  summary,
+  slug,
+  coverImage,
+}: {
+  title: string;
+  summary: string;
+  slug: string;
+  coverImage: string;
+}) {
+  const fullUrl = `${BASE}/vibe-coding/series/${slug}/`;
+  const fullCover = coverImage.startsWith("http") ? coverImage : `${BASE}${coverImage}`;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${fullUrl}#article`,
+        headline: title,
+        description: summary,
+        url: fullUrl,
+        image: fullCover,
+        inLanguage: "fa",
+        mainEntityOfPage: fullUrl,
+        author: {
+          "@type": "Person",
+          "@id": `${BASE}/#person`,
+          name: "حسن شاهمرادی",
+        },
+        publisher: {
+          "@type": "Person",
+          "@id": `${BASE}/#person`,
+          name: "حسن شاهمرادی",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${fullUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "خانه",
+            item: BASE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "آموزش وایب‌کدینگ",
+            item: `${BASE}/vibe-coding/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "سری‌های آموزشی",
+            item: `${BASE}/vibe-coding/series/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: title,
+            item: fullUrl,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+

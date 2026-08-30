@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `https://hasanshah.ir${article.coverImage}`;
 
   return {
-    title: `${article.title} | حسن شاهمرادی`,
+    title: article.title,
     description: article.summary,
     alternates: {
       canonical: fullUrl,

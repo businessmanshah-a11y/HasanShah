@@ -1,22 +1,42 @@
 import type { Metadata } from "next";
+import { ClientPortfolioJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "میلاد سجودی | مرجع آموزش ترید حرفه‌ای در ایران",
+  title: "میلاد سجودی | مرجع آموزش ترید حرفه‌ای و بازارهای مالی",
   description:
-    "آموزش حرفه‌ای ترید در بازارهای فارکس و ارزدیجیتال. از صفر تا استقلال مالی با میلاد سجودی.",
-  robots: { index: false, follow: false },
+    "طراحی و توسعه پلتفرم اختصاصی میلاد سجودی — تحلیل‌گر ارشد کریپتوکارنسی، فارکس و مربی دوره‌های جامع معاملاتی با نرخ بازدهی اثبات‌شده.",
+  alternates: {
+    canonical: "https://hasanshah.ir/clients/milad-sojoudi/",
+  },
+  openGraph: {
+    locale: "fa_IR",
+    type: "website",
+    siteName: "حسن شاهمرادی",
+    title: "میلاد سجودی | مرجع آموزش ترید حرفه‌ای و بازارهای مالی | حسن شاهمرادی",
+    description:
+      "طراحی اختصاصی لندینگ‌پیج آموزش ترید میلاد سجودی با قابلیت سوییچ تم تیره و روشن توسط حسن شاهمرادی.",
+    url: "https://hasanshah.ir/clients/milad-sojoudi/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "میلاد سجودی | مرجع آموزش ترید حرفه‌ای و بازارهای مالی | حسن شاهمرادی",
+    description: "طراحی پلتفرم مدرن آموزش ترید میلاد سجودی توسط حسن شاهمرادی.",
+  },
 };
 
-export default function MiladSojoudiLayout({ children }: { children: React.ReactNode }) {
+export default function MiladSojoudiLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
-      <style>{`
-        body {
-          background: oklch(0.10 0.020 272) !important;
-          background-image: none !important;
-          background-attachment: initial !important;
-        }
-      `}</style>
+      <ClientPortfolioJsonLd
+        clientName="میلاد سجودی"
+        clientRole="مرجع آموزش ترید حرفه‌ای و بازارهای مالی"
+        slug="milad-sojoudi"
+        description="طراحی و توسعه پلتفرم آموزشی اختصاصی میلاد سجودی، تحلیل‌گر ارشد بازارهای مالی و مدرس دوره‌های ترید."
+      />
       {children}
     </>
   );

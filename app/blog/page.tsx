@@ -3,7 +3,7 @@ import BlogArchiveContent from "./BlogArchiveContent";
 import { BlogListJsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "آموزش‌ها و مقالات تخصصی | حسن شاهمرادی",
+  title: "آموزش‌ها و مقالات تخصصی هوش مصنوعی و وایب‌کدینگ",
   description:
     "مرجع تخصصی آموزش‌های هوش مصنوعی، وایب‌کدینگ با Cursor و Claude، اسلش‌کامندهای ChatGPT و طراحی لندینگ‌پیج‌های پرفروش.",
   alternates: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     locale: "fa_IR",
     type: "website",
     siteName: "حسن شاهمرادی",
-    title: "آموزش‌ها و مقالات تخصصی | حسن شاهمرادی",
+    title: "آموزش‌ها و مقالات تخصصی هوش مصنوعی و وایب‌کدینگ | حسن شاهمرادی",
     description:
       "مرجع تخصصی آموزش‌های هوش مصنوعی، وایب‌کدینگ با Cursor و Claude، اسلش‌کامندهای ChatGPT و طراحی لندینگ‌پیج‌های پرفروش.",
     url: "https://hasanshah.ir/blog/",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "آموزش‌ها و مقالات تخصصی | حسن شاهمرادی",
+    title: "آموزش‌ها و مقالات تخصصی هوش مصنوعی و وایب‌کدینگ | حسن شاهمرادی",
     description:
       "مرجع تخصصی آموزش‌های هوش مصنوعی، وایب‌کدینگ و طراحی لندینگ‌پیج‌های پرفروش.",
   },
