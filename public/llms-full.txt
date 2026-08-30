@@ -1,0 +1,50 @@
+# Hasan Shahmoradi — حسن شاهمرادی (Full Knowledge Base)
+
+> Iranian web designer, front-end developer, digital strategist, and vibe coding educator based in Tehran.
+> 8+ years building digital products, e-commerce stores, and teaching people to ship software with AI tools.
+> https://hasanshah.ir — languages: Persian (fa), English (en), Arabic (ar)
+
+## About Hasan Shahmoradi
+Hasan Shahmoradi (Persian: حسن شاهمرادی) is a web designer and front-end developer from Tehran, Iran. He has over 8 years of professional experience building digital products and online stores for Iranian and international clients, and teaches vibe coding — a method of building software by directing AI models rather than writing code by hand.
+
+Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Codex, GitHub, Vercel.
+
+## Core Services
+1. Web Design and Development: High-converting landing pages, e-commerce systems, and full-stack web applications.
+2. Free 72-Hour One-Page Website: Custom-designed single-page website delivered on a staging domain within 72 hours for free, with 30 days to review before deciding on any further work.
+3. Vibe Coding Masterclasses: Interactive workshops and structured education teaching entrepreneurs and non-programmers to build production software with AI.
+
+## Articles & Master References
+
+### 1. ChatGPT 460 Slash Commands & Secret Codes Master Handbook (2026 Edition)
+- URL: https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/
+- Description: The definitive encyclopedia of 460 ChatGPT slash commands, studio lighting shortcuts, cinematic render prompts, inpainting parameters, code refactoring workflows, and prompt chaining frameworks.
+- Sections:
+  1. 4-Layer Architecture of ChatGPT Command Execution (Core UI, Sandbox Tools, Semantic LLM, System Matrix)
+  2. Official Core System Commands (/canvas, @mention, /code, /audit)
+  3. Canvas Workspace, File Management & Data Analytics
+  4. 150 Commercial Product Showcase & Advertising Shortcodes
+  5. 85 Camera Angles, Lens Focal Lengths & Perspectives
+  6. 28 AI Image Tools, Inpainting & Texture Manipulations
+  7. 103 Secret Style Modifiers, Haute Couture Fashion & Cyberpunk Aesthetics
+  8. 16 Software Engineering, Architecture & Vibe Coding Prompts
+  9. 15 Business Strategy, Startup Growth & Unit Economics Workflows
+  10. 18 High-Converting Copywriting & Video Script Prompts
+  11. 18 Recursive Deep Research & Feynman Technique Prompts
+  12. 8 Calibrated Roleplay & Expert Simulation Personas
+  13. Complete Keyboard Shortcuts Reference (Web, macOS, Windows)
+  14. Prompt Chaining Framework & Custom Instructions Methodology
+  15. Key Takeaways & Actionable Implementation Matrix
+
+### 2. What is Vibe Coding? The Complete 2026 Guide
+- URL: https://hasanshah.ir/blog/what-is-vibe-coding-guide/
+- Description: A comprehensive beginner-to-pro guide on building real-world web applications and digital products by directing AI models without manual coding.
+
+### 3. High-Converting Landing Page Secrets
+- URL: https://hasanshah.ir/blog/high-converting-landing-page-secrets/
+- Description: UX/UI and psychological frameworks for building high-converting landing pages that maximize sales and lead acquisition.
+
+## Contact & Consultation
+- Website: https://hasanshah.ir
+- Consultation Booking: https://hasanshah.ir/#form
+- Free Workshop Registration: https://hasanshah.ir/vibe-coding#workshop

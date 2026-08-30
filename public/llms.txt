@@ -68,7 +68,9 @@ Pre-production means defining who the user is, what problem they have, what v1 i
 **What tools are needed for vibe coding?**
 Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control), Vercel (deployment). Free tiers available for all of them.
 
-## Pages
+## Pages & Articles
 
 - [Home](https://hasanshah.ir): Portfolio, services, free website offer, contact form
 - [Vibe Coding](https://hasanshah.ir/vibe-coding): Full vibe coding curriculum, tools guide, roadmap, and free workshop registration
+- [ChatGPT 460 Slash Commands Handbook (2026)](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): The definitive master reference of 460 ChatGPT slash commands, creative image shortcuts, cinematic render prompts, and developer workflows.
+- [Blog Archive](https://hasanshah.ir/blog/): Educational articles and guides on AI, vibe coding, and web design.
