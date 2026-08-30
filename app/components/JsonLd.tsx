@@ -429,3 +429,116 @@ export function VibeCodingFaqJsonLd() {
     />
   );
 }
+
+export function BlogListJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${BASE}/blog/#blog`,
+    name: "آموزش‌ها و مقالات تخصصی حسن شاهمرادی",
+    description: "مرجع تخصصی آموزش‌های هوش مصنوعی، وایب‌کدینگ، پرامپت‌نویسی و طراحی لندینگ‌پیج‌های پرفروش.",
+    url: `${BASE}/blog/`,
+    publisher: {
+      "@type": "Person",
+      name: "حسن شاهمرادی",
+      url: BASE,
+    },
+    inLanguage: "fa",
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+interface ArticleData {
+  slug: string;
+  title: string;
+  summary: string;
+  category: string;
+  dateIso: string;
+  coverImage: string;
+  tags: string[];
+  author: {
+    name: string;
+    role: string;
+  };
+}
+
+export function ArticleJsonLd({ article }: { article: ArticleData }) {
+  const fullUrl = `${BASE}/blog/${article.slug}/`;
+  const fullCover = article.coverImage.startsWith("http")
+    ? article.coverImage
+    : `${BASE}${article.coverImage}`;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${fullUrl}#article`,
+        isPartOf: {
+          "@type": "Blog",
+          "@id": `${BASE}/blog/#blog`,
+          name: "آموزش‌ها و مقالات حسن شاهمرادی",
+        },
+        headline: article.title,
+        description: article.summary,
+        url: fullUrl,
+        image: fullCover,
+        datePublished: article.dateIso,
+        dateModified: article.dateIso,
+        inLanguage: "fa",
+        mainEntityOfPage: fullUrl,
+        keywords: article.tags.join(", "),
+        articleSection: article.category,
+        author: {
+          "@type": "Person",
+          name: article.author.name,
+          url: BASE,
+          jobTitle: article.author.role,
+        },
+        publisher: {
+          "@type": "Person",
+          name: "حسن شاهمرادی",
+          url: BASE,
+          image: `${BASE}/images/Shah2.webp`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${fullUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "خانه",
+            item: BASE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "آموزش‌ها",
+            item: `${BASE}/blog/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: fullUrl,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

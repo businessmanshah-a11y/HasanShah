@@ -5,6 +5,7 @@ import Pain from "./components/Pain";
 import About from "./components/About";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
+import LatestArticles from "./components/LatestArticles";
 import ConsultationHighlight from "./components/ConsultationHighlight";
 import LeadForm from "./components/LeadForm";
 import Footer from "./components/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
       <About />
       <Services />
       <Portfolio />
+      <LatestArticles />
       <ConsultationHighlight />
       <LeadForm />
       <Footer />

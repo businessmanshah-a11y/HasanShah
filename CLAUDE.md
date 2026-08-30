@@ -17,3 +17,11 @@ graphify explain "ComponentName" # توضیح یک node
 ```bash
 /graphify . --update
 ```
+
+## تماشای ویدیوها (/watch)
+
+برای تحلیل و مشاهده ویدیوها (یوتیوب یا فایل محلی):
+- `python3 /Users/infinite/HasanShah/.agents/skills/watch/scripts/watch.py "<URL یا مسیر فایل>"`
+- مهارت `/watch` فریم‌ها و زیرنویس‌های ویدیو را استخراج کرده و برای پاسخ به سوالات در اختیار مدل قرار می‌دهد.
+
+
