@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "convert:webp": "node scripts/convert-to-webp.mjs"
   },
   "dependencies": {
     "@lobehub/icons": "^5.10.0",

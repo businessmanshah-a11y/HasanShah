@@ -291,7 +291,13 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                   <div className="flex items-center justify-between mb-3.5">
                     <div className="flex items-center gap-2 text-gold font-bold text-xs sm:text-sm">
                       <Terminal className="h-4 w-4" />
-                      <span>{locale === "fa" ? "جستجو در ۴۶۰ دستور و کد" : "Search 460 Commands"}</span>
+                      <span>
+                        {locale === "fa"
+                          ? `جستجو در ${allCommands.length} دستور و کد`
+                          : locale === "ar"
+                          ? `البحث في ${allCommands.length} أمراً وكوداً`
+                          : `Search ${allCommands.length} Commands`}
+                      </span>
                     </div>
                     <span className="rounded-full border border-gold/40 bg-gold/10 px-2.5 py-0.5 text-[11px] font-bold text-gold">
                       {allCommands.length}
@@ -406,13 +412,13 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                 </h2>
 
                 {section.lead && (
-                  <p className="text-sm md:text-base font-semibold leading-loose text-foreground/90">
+                  <p className="text-base md:text-lg font-semibold leading-relaxed text-foreground/90">
                     {section.lead}
                   </p>
                 )}
 
                 {section.paragraphs?.map((p, idx) => (
-                  <p key={idx} className="text-sm md:text-base leading-loose text-muted-foreground font-normal">
+                  <p key={idx} className="text-base md:text-lg leading-relaxed text-muted-foreground font-normal">
                     {p}
                   </p>
                 ))}
@@ -423,9 +429,9 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                     {section.bulletPoints.map((item, bIdx) => (
                       <li
                         key={bIdx}
-                        className="flex items-start gap-3 text-xs md:text-sm leading-relaxed text-muted-foreground rounded-2xl border border-white/5 bg-surface/40 p-4"
+                        className="flex items-start gap-3 text-sm md:text-base leading-relaxed text-muted-foreground rounded-2xl border border-white/5 bg-surface/40 p-4"
                       >
-                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-gold shadow-gold" />
+                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-gold shadow-gold" />
                         <span className="flex-1">{item}</span>
                       </li>
                     ))}
@@ -459,11 +465,11 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                     {/* Desktop Table View */}
                     <div className="hidden md:block overflow-hidden rounded-2xl border border-gold/25 bg-surface/50 shadow-xl">
                       <div className="overflow-x-auto">
-                        <table className={`w-full ${dir === "rtl" ? "text-right" : "text-left"} text-xs md:text-sm`}>
+                        <table className={`w-full ${dir === "rtl" ? "text-right" : "text-left"} text-sm`}>
                           <thead className="bg-surface-elevated/90 text-gold border-b border-gold/20 backdrop-blur-md">
                             <tr>
                               {section.table.headers.map((h, hIdx) => (
-                                <th key={hIdx} className="py-4 px-4 font-bold whitespace-nowrap">
+                                <th key={hIdx} className="py-4 px-4 font-bold text-xs whitespace-nowrap">
                                   {h}
                                 </th>
                               ))}
@@ -539,7 +545,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                             <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
                               <div className="flex items-center gap-2">
                                 {rowNum && (
-                                  <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gold/15 text-gold text-[10px] font-mono font-bold">
+                                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gold/15 text-gold text-xs font-mono font-bold">
                                     {rowNum}
                                   </span>
                                 )}
@@ -549,17 +555,17 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                                     onClick={() =>
                                       handleCopyCode(cleanCmd, `m-tbl-${section.id}-${rIdx}`)
                                     }
-                                    className="inline-flex items-center gap-1.5 rounded-lg border border-gold/40 bg-gold/15 px-2.5 py-1 font-mono text-xs font-black text-gold hover:bg-gold hover:text-gold-foreground transition-all"
+                                    className="inline-flex items-center gap-1.5 rounded-lg border border-gold/40 bg-gold/15 px-3 py-1.5 font-mono text-sm font-black text-gold hover:bg-gold hover:text-gold-foreground transition-all"
                                   >
                                     <span>{cleanCmd}</span>
                                     {copiedCodeIndex === `m-tbl-${section.id}-${rIdx}` ? (
-                                      <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                                      <Check className="h-4 w-4 text-emerald-400 shrink-0" />
                                     ) : (
-                                      <Copy className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                                      <Copy className="h-4 w-4 text-gold/80 shrink-0" />
                                     )}
                                   </motion.button>
                                 ) : (
-                                  <span className="font-bold text-xs text-gold">
+                                  <span className="font-bold text-sm text-gold">
                                     {row[0]}
                                   </span>
                                 )}
@@ -571,7 +577,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                                   onClick={() =>
                                     handleCopyCode(cleanCmd, `m-tbl-${section.id}-${rIdx}`)
                                   }
-                                  className="text-[11px] font-medium text-gold hover:underline flex items-center gap-1"
+                                  className="text-xs font-medium text-gold hover:underline flex items-center gap-1"
                                 >
                                   <span>{copiedCodeIndex === `m-tbl-${section.id}-${rIdx}` ? bd.copied : bd.copy}</span>
                                 </motion.button>
@@ -579,7 +585,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                             </div>
 
                             {/* Card Body Details */}
-                            <div className="space-y-2.5 text-xs">
+                            <div className="space-y-3 text-sm">
                               {row.map((cell, cIdx) => {
                                 if (cIdx === 0 && rowNum) return null;
                                 if (cell === cmdCell) return null;
@@ -590,17 +596,17 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                                   (cell.length > 25 && /^[a-zA-Z0-9_\-\s\/,:]+$/.test(cell));
 
                                 return (
-                                  <div key={cIdx} className="space-y-1">
+                                  <div key={cIdx} className="space-y-1.5">
                                     {isCodeLike ? (
                                       <>
-                                        <span className="text-[10px] font-bold text-gold/70 block">
+                                        <span className="text-xs font-bold text-gold/80 block">
                                           {locale === "fa"
                                             ? "نمونه پرامپت / اجرا:"
                                             : locale === "ar"
                                             ? "مثال البرومبت / التطبيق:"
                                             : "Example Prompt / Execution:"}
                                         </span>
-                                        <div className="flex items-center justify-between gap-2 rounded-lg bg-black/40 border border-white/5 p-2 font-mono text-[11px] text-zinc-300">
+                                        <div className="flex items-center justify-between gap-2 rounded-xl bg-black/40 border border-white/5 p-2.5 font-mono text-xs text-zinc-300">
                                           <span className="break-all direction-ltr text-left">
                                             {cell.replace(/`/g, "")}
                                           </span>
@@ -615,15 +621,15 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                                             title={locale === "fa" ? "کپی" : locale === "ar" ? "نسخ" : "Copy"}
                                           >
                                             {copiedCodeIndex === `m-code-${section.id}-${rIdx}-${cIdx}` ? (
-                                              <Check className="h-3 w-3 text-emerald-400" />
+                                              <Check className="h-3.5 w-3.5 text-emerald-400" />
                                             ) : (
-                                              <Copy className="h-3 w-3" />
+                                              <Copy className="h-3.5 w-3.5" />
                                             )}
                                           </button>
                                         </div>
                                       </>
                                     ) : (
-                                      <p className="text-muted-foreground leading-relaxed text-xs">
+                                      <p className="text-muted-foreground leading-relaxed text-sm">
                                         {cell}
                                       </p>
                                     )}
@@ -728,7 +734,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold text-xs font-black">
                         {idx + 1}
                       </span>
-                      <p className="text-xs md:text-sm leading-loose text-muted-foreground">
+                      <p className="text-sm md:text-base leading-loose text-muted-foreground">
                         {item}
                       </p>
                     </div>
@@ -803,7 +809,11 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                       <Terminal className="h-3.5 w-3.5" />
                     </div>
                     <h3 className="text-xs sm:text-sm font-bold text-foreground">
-                      {locale === "fa" ? "جستجو در ۴۶۰ دستور" : "Search 460 Commands"}
+                      {locale === "fa"
+                        ? `جستجو در ${allCommands.length} دستور`
+                        : locale === "ar"
+                        ? `البحث في ${allCommands.length} أمراً`
+                        : `Search ${allCommands.length} Commands`}
                     </h3>
                   </div>
                   <span className="rounded-full border border-gold/40 bg-gold/10 px-2.5 py-0.5 text-[11px] font-bold text-gold">

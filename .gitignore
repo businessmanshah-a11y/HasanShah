@@ -7,7 +7,9 @@ videoedit/
 /workshop/
 texttospeachtesy/
 personaldevelopment/
-scripts/
+scripts/*
+!scripts/convert-to-webp.mjs
+!scripts/generate-category-banners.mjs
 
 # Next.js build output
 .next/

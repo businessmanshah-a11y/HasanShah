@@ -1,5 +1,6 @@
 // app/blog/blog-data.ts
 import type { Locale } from "../i18n/config";
+import { aiImageToVideoArticle } from "./articles/ai-image-to-video-article";
 
 export interface TableOfContentItem {
   id: string;
@@ -109,12 +110,13 @@ export const authors: Record<Locale, ArticleAuthor> = {
 };
 
 export const rawArticles: RawArticle[] = [
+  aiImageToVideoArticle,
   {
     slug: "chatgpt-slash-commands-handbook-2026",
     dateIso: "2026-02-27T00:00:00.000Z",
-    coverImage: "/images/blog/chatgpt-handbook-cover.jpg",
-    featured: true,
-    relatedSlugs: ["what-is-vibe-coding-guide", "high-converting-landing-page-secrets"],
+    coverImage: "/images/blog/chatgpt-handbook-cover.webp",
+    featured: false,
+    relatedSlugs: ["ai-image-to-video-cinematic-prompts", "what-is-vibe-coding-guide", "high-converting-landing-page-secrets"],
     locales: {
       fa: {
         title: "کامل‌ترین هندبوک ۴۶۰ اسلش‌کامند و کدهای مخفی ChatGPT (ویرایش ۲۰۲۶)",
@@ -196,7 +198,7 @@ export const rawArticles: RawArticle[] = [
                         "در واقع علامت اسلش (/) در آموزش مدل‌های هوش مصنوعی به عنوان یک جداکننده معنایی در سطح خط فرمان (CLI) یا سطح سیستم تلقی می‌شه. وقتی این ساختار رو بشناسی، می‌دونی چطور با نوشتن کمترین کلمات، بیشترین دقت و بازدهی رو از هوش مصنوعی بگیری."
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-commands-architecture.jpg",
+                        "src": "/images/blog/chatgpt-commands-architecture.webp",
                         "alt": "معماری ۴ لایه پردازش و اجرای اسلش‌کامندها در هوش مصنوعی و چت‌جی‌پی‌تی",
                         "caption": "نمای شماتیک از لایه‌های چهارگانه پردازش دستورات: هسته اپلیکیشن، محیط ایزوله Canvas، لایه معنایی LLM و پرامپت‌های سفارشی سیستم"
                 },
@@ -404,10 +406,11 @@ export const rawArticles: RawArticle[] = [
                 "title": "۴. شورت‌کدهای عکاسی تجاری، تبلیغات بیلبوردی و پروداکت شوکیس (۱۵۰ دستور)",
                 "lead": "مجموعه بی‌نظیر ۱۵۰ شورت‌کد اختصاصی برای طراحی کمپین‌های تبلیغاتی، بیلبوردهای سه‌بعدی شهری، استوری‌های فروشگاهی و پروداکت شات‌های استودیویی های‌اند.",
                 "paragraphs": [
-                        "کافیه عکس محصول خودت رو در چت آپلود کنی، یک یا چند مورد از این شورت‌کدها رو در پرامپت قرار بدی و جزییات رنگ، زاویه یا نور دلخواهت رو اضافه کنی:"
+                        "کافیه عکس محصول خودت رو در چت آپلود کنی، یک یا چند مورد از این شورت‌کدها رو در پرامپت قرار بدی و جزییات رنگ، زاویه یا نور دلخواهت رو اضافه کنی:",
+                        "نکته تکمیلی: بعد از ساخت عکس رفرنس، می‌تونی با استفاده از [آموزش جامع تبدیل عکس به ویدیو با هوش مصنوعی (۱۰۰ پرامپت سینمایی)](/blog/ai-image-to-video-cinematic-prompts/) تصاویر محصولت رو به تیزرهای هالیوودی و بیلبوردهای ۳D متحرک تبدیل کنی."
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-image-generation-modes.jpg",
+                        "src": "/images/blog/chatgpt-image-generation-modes.webp",
                         "alt": "مجموعه استایل‌های بصری رندر محصول، بیلبوردهای سه‌بعدی و عکاسی استودیویی با هوش مصنوعی",
                         "caption": "نمونه خروجی‌های بصری ایجادشده با کدهای شورت‌کات عکاسی، بیلبوردهای سه‌بعدی و استایل‌های استودیویی"
                 },
@@ -2673,7 +2676,7 @@ export const rawArticles: RawArticle[] = [
                 "title": "۸. کامندهای تخصصی مهندسی نرم‌افزار، معماری کد و وایب‌کدینگ (۱۶ دستور)",
                 "lead": "دستوراتی که فرآیند توسعه، خطایابی، نوشتن تست و ریفکتور کدهای شما رو تا ۱۰ برابر سریع‌تر و استانداردتر می‌کنن.",
                 "image": {
-                        "src": "/images/blog/chatgpt-developer-productivity.jpg",
+                        "src": "/images/blog/chatgpt-developer-productivity.webp",
                         "alt": "داشبورد توسعه‌دهندگان، تحلیل داده، اتوماسیون کدنویسی و بهینه‌سازی استراتژی بیزینس",
                         "caption": "محیط تعاملی توسعه نرم‌افزار، دیباگ هوشمند و تست‌های خودکار با استفاده از دستورات مهندسی پرامپت"
                 },
@@ -3366,7 +3369,7 @@ export const rawArticles: RawArticle[] = [
                         "The forward-slash (/) operates as a CLI Semantic Delimiter in LLM training. Mastering this structure enables you to achieve deterministic, maximum precision with minimal input tokens."
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-commands-architecture.jpg",
+                        "src": "/images/blog/chatgpt-commands-architecture.webp",
                         "alt": "The 4-Layer Processing Architecture of Slash Commands in ChatGPT",
                         "caption": "Architectural schematic of the 4 execution tiers: Native Core Application, Isolated Canvas Workspace, Semantic Prompt Layer, and Custom System Instructions."
                 },
@@ -3577,7 +3580,7 @@ export const rawArticles: RawArticle[] = [
                         "Upload your product image, add one or more of these shortcodes to the prompt, and specify your desired lighting, camera angle, or background:"
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-image-generation-modes.jpg",
+                        "src": "/images/blog/chatgpt-image-generation-modes.webp",
                         "alt": "Visual Reference Showcase: AI Product Rendering, 3D Billboards, and Studio Lighting Modifiers",
                         "caption": "Visual showcase generated using commercial photography shortcodes, anamorphic 3D billboards, and luxury studio rendering presets."
                 },
@@ -5843,7 +5846,7 @@ export const rawArticles: RawArticle[] = [
                 "title": "8. Software Engineering, Architecture & Vibe Coding Prompts (16 Commands)",
                 "lead": "Software engineering commands that accelerate development, debugging, unit testing, and code refactoring tenfold.",
                 "image": {
-                        "src": "/images/blog/chatgpt-developer-productivity.jpg",
+                        "src": "/images/blog/chatgpt-developer-productivity.webp",
                         "alt": "Developer Productivity Dashboard, Data Analytics, Code Automation, and Business Strategy",
                         "caption": "Interactive software engineering environment: intelligent debugging, clean architecture, and automated testing via prompt workflows."
                 },
@@ -6536,7 +6539,7 @@ export const rawArticles: RawArticle[] = [
                         "تعمل علامة السلاش (/) في تدريب النماذج كفاصل دلالي بنمط سطر الأوامر (CLI). يتيح لك فهم هذا البناء تحقيق أقصى دقة بأقل عدد من الكلمات."
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-commands-architecture.jpg",
+                        "src": "/images/blog/chatgpt-commands-architecture.webp",
                         "alt": "البنية المعمارية رباعية الطبقات لمعالجة أوامر السلاش في ChatGPT",
                         "caption": "رسم تخطيطي لطبقات معالجة الأوامر الأربعة: نواة التطبيق، بيئة Canvas المعزولة، طبقة البرومبت الدلالية، والتعليمات المخصصة."
                 },
@@ -6747,7 +6750,7 @@ export const rawArticles: RawArticle[] = [
                         "ما عليك سوى رفع صورة منتجك وإضافة هذه الأكواد إلى البرومبت وتحديد الإضاءة وزوايا التصوير المطلوبة:"
                 ],
                 "image": {
-                        "src": "/images/blog/chatgpt-image-generation-modes.jpg",
+                        "src": "/images/blog/chatgpt-image-generation-modes.webp",
                         "alt": "معرض الأنماط البصرية لرندر المنتجات، اللوحات ثلاثية الأبعاد وتصوير الاستوديو بالذكاء الاصطناعي",
                         "caption": "معرض المخرجات البصرية المنفذة بواسطة أوامر التصوير التجاري واللوحات الإعلانية المجسمة ورندرات الاستوديو."
                 },
@@ -9013,7 +9016,7 @@ export const rawArticles: RawArticle[] = [
                 "title": "٨. أوامر هندسة البرمجيات، معمارية الأكواد والـ Vibe Coding (16 أمراً)",
                 "lead": "أوامر هندسة البرمجيات التي تسرع عمليات التطوير، تصحيح الأخطاء، وكتابة الاختبارات وإعادة الهيكلة حتى 10 أضعاف.",
                 "image": {
-                        "src": "/images/blog/chatgpt-developer-productivity.jpg",
+                        "src": "/images/blog/chatgpt-developer-productivity.webp",
                         "alt": "لوحة تحكم المطورين، تحليل البيانات، أتمتة البرمجة وتحسين استراتيجيات الأعمال",
                         "caption": "بيئة تفاعلية لتطوير البرمجيات، الفحص الذكي للثغرات والاختبارات التلقائية باستخدام أوامر هندسة البرمجة."
                 },
@@ -9631,7 +9634,7 @@ export const rawArticles: RawArticle[] = [
   {
     slug: "what-is-vibe-coding-guide",
     dateIso: "2026-02-23T00:00:00.000Z",
-    coverImage: "/images/blog/vibe-coding-cover.jpg",
+    coverImage: "/images/blog/vibe-coding-cover.webp",
     featured: true,
     relatedSlugs: ["chatgpt-slash-commands-handbook-2026", "high-converting-landing-page-secrets"],
     locales: {
@@ -9774,7 +9777,7 @@ export const rawArticles: RawArticle[] = [
   {
     slug: "high-converting-landing-page-secrets",
     dateIso: "2026-02-14T00:00:00.000Z",
-    coverImage: "/images/blog/landing-page-secrets-cover.jpg",
+    coverImage: "/images/blog/landing-page-secrets-cover.webp",
     featured: true,
     relatedSlugs: ["chatgpt-slash-commands-handbook-2026", "what-is-vibe-coding-guide"],
     locales: {

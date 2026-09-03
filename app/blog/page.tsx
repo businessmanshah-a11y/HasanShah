@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://hasanshah.ir/blog/",
     images: [
       {
-        url: "https://hasanshah.ir/images/blog/chatgpt-handbook-cover.jpg",
+        url: "https://hasanshah.ir/images/blog/chatgpt-handbook-cover.webp",
         width: 1200,
         height: 630,
         alt: "آموزش‌ها و مقالات تخصصی حسن شاهمرادی",
