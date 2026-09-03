@@ -40,43 +40,43 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. کدهای دسته‌بندی 01: رونمایی و جلوه‌های ویژه بصری (VFX)"
+          "title": "۳. دسته‌بندی ۰۱: رونمایی و جلوه‌های ویژه بصری هالیوودی (Reveal & VFX)"
         },
         {
           "id": "cat-02",
-          "title": "4. کدهای دسته‌بندی 02: بیلبورد ۳ بعدی و تبلیغات محیطی (Outdoor)"
+          "title": "۴. دسته‌بندی ۰۲: بیلبوردهای سه‌بعدی و تبلیغات محیطی غول‌پیکر (Outdoor 3D)"
         },
         {
           "id": "cat-03",
-          "title": "5. کدهای دسته‌بندی 03: روایت سینمایی و استایل هالیوودی (Cinematic)"
+          "title": "۵. دسته‌بندی ۰۳: روایت سینمایی، کادر آنامورفیک و گرید رنگی (Cinematic)"
         },
         {
           "id": "cat-04",
-          "title": "6. کدهای دسته‌بندی 04: نورپردازی استودیویی و اتمسفر آب‌وهوایی (Lighting & Weather)"
+          "title": "۶. دسته‌بندی ۰۴: نورپردازی اتمسفریک، کلوین رنگ و شرایط جوی (Lighting & Weather)"
         },
         {
           "id": "cat-05",
-          "title": "7. کدهای دسته‌بندی 05: حرکت‌های مکانیکی و کینماتیک دوربین (Camera Movement)"
+          "title": "۷. دسته‌بندی ۰۵: کینماتیک و حرکات مکانیکی دوربین فیلم‌برداری (Camera Movement)"
         },
         {
           "id": "cat-06",
-          "title": "8. کدهای دسته‌بندی 06: سبک زندگی لوکس، پرستیژ و فشن (Luxury & Lifestyle)"
+          "title": "۸. دسته‌بندی ۰۶: دنیای پرستیژ، برندهای لوکس و لایف‌استایل ثروت (Luxury & Lifestyle)"
         },
         {
           "id": "cat-07",
-          "title": "9. کدهای دسته‌بندی 07: تیزرهای تجاری محصول و پک‌شات فروشگاهی (Product & Commercial)"
+          "title": "۹. دسته‌بندی ۰۷: شوکیس تجاری محصول، پایه‌های معلق و پک‌شات (Product Commercial)"
         },
         {
           "id": "cat-08",
-          "title": "10. کدهای دسته‌بندی 08: محیط‌های کاری مینیمال و زیبایی‌شناسی کریتورها (Workspace Aesthetic)"
+          "title": "۱۰. دسته‌بندی ۰۸: زیبایی‌شناسی محیط کار کریتورها و اتمسفر تمرکز (Workspace Aesthetic)"
         },
         {
           "id": "cat-09",
-          "title": "11. کدهای دسته‌بندی 09: جهان‌های سایبرپانک و تکنولوژی آینده (Futuristic & Sci-Fi)"
+          "title": "۱۱. دسته‌بندی ۰۹: ابرشهرهای سایبرپانک و رابط‌های هولوگرافیک (Futuristic & Sci-Fi)"
         },
         {
           "id": "cat-10",
-          "title": "12. کدهای دسته‌بندی 10: پورتال‌های ابعادی و قلمروهای فانتزی (Fantasy & Dream)"
+          "title": "۱۲. دسته‌بندی ۱۰: قلمروهای فانتزی، پورتال‌های جادویی و مناظر اثیری (Fantasy & Dream)"
         },
         {
           "id": "clusters-roadmap",
@@ -159,10 +159,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. کدهای دسته‌بندی 01: رونمایی و جلوه‌های ویژه بصری (VFX)",
-          "lead": "این ۱۰ دستور برای خلق شوک بصری در ۳ ثانیه اول ویدیو و رونمایی دراماتیک از محصول با عناصر طبیعی و انفجاری طراحی شده‌اند.",
+          "title": "۳. دسته‌بندی ۰۱: رونمایی و جلوه‌های ویژه بصری هالیوودی (Reveal & VFX)",
+          "lead": "سه ثانیه اول یک تیزر ویدیویی، سرنوشت فروش و جلب توجه مخاطب را رقم می‌زند. با این فرامین، پرده‌برداری از محصول را به یک رویداد بصری پرتعلیق بدل کنید.",
           "paragraphs": [
-            "دسته‌بندی 01 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Reveal / VFX است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "چه در حال رونمایی از یک ساعت مچی نفیس باشید و چه عطری دست‌ساز یا گجتی هوشمند، پدیده‌های فیزیکی پرتحرک—نظیر شکافتن مه غلیظ والومتریک، انفجار ترکش‌های کریستال، یا جریان روان طلای مذاب بر بدنه محصول—حس ارزش بالا و کیفیت اعلا را بی‌درنگ در ذهن بیننده تثبیت می‌کنند.",
+            "برای اجرای این دستورات، تصویر استودیویی بدون پس‌زمینه سوژه را به همراه یکی از کدهای زیر در پرامپت قرار دهید تا موتور ویدیوساز ذرات و فیزیک سیالات را با دقت ۱۲۰ فریم بر ثانیه پردازش کند:"
           ],
           "image": {
             "src": "/images/blog/ai-video-smoke-reveal-demo.webp",
@@ -242,10 +243,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-02",
-          "title": "4. کدهای دسته‌بندی 02: بیلبورد ۳ بعدی و تبلیغات محیطی (Outdoor)",
-          "lead": "دستورات تبدیل تصاویر محصول به تبلیغات محیطی غول‌پیکر با تکنیک خطای دید آنافورمیک در خیابان‌های نیویورک، توکیو و دبی.",
+          "title": "۴. دسته‌بندی ۰۲: بیلبوردهای سه‌بعدی و تبلیغات محیطی غول‌پیکر شهری (Outdoor 3D)",
+          "lead": "تبلیغات خطای دید آنامورفیک در میدان تایمز و توکیو، پربازدیدترین ترندهای وایرال جهان هستند. اکنون می‌توانید سوژه خود را از قاب یک نمایشگر شهری به دنیای واقعی بیرون بکشید.",
           "paragraphs": [
-            "دسته‌بندی 02 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Billboard / Outdoor Advertising است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "برای کمپین‌های آگاهی از برند (Brand Awareness) یا تولید محتوای پربازدید اینستاگرامی، هیچ ابزاری به اندازه شبیه‌سازی یک بیلبورد غول‌پیکر خمیده در هوای بارانی شب کارساز نیست.",
+            "با اعمال کدهای زیر، تصویر ثابت محصول درون یک نمایشگر عظیم شهری قرار گرفته و با شبیه‌سازی دقیق زاویه تابش نور خیابان، طوری به جلو گام برمی‌دارد که گویی شیشه ال‌ای‌دی را شکسته و وارد فضای واقعی خیابان شده است:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-02-billboard.webp",
@@ -325,10 +327,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-03",
-          "title": "5. کدهای دسته‌بندی 03: روایت سینمایی و استایل هالیوودی (Cinematic)",
-          "lead": "کدهای تغییر گرید رنگی، گرین فیلم و داینامیک رنج برای ایجاد حس پروداکشن‌های چند میلیون دلاری.",
+          "title": "۵. دسته‌بندی ۰۳: روایت سینمایی، کادر آنامورفیک و گرید رنگی بلاک‌باسترها (Cinematic)",
+          "lead": "تفاوت یک ویدیوی خام هوش مصنوعی با یک شاهکار سینمایی چند میلیون دلاری، در گرید رنگی (Color Grading)، نسبت عریض ۲.۳۹:۱ و نوسان نرم نور در قاب تصویر است.",
           "paragraphs": [
-            "دسته‌بندی 03 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Cinematic است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "کارگردانان برتر سینما ساعت‌ها برای انتخاب نوع لنز و تنظیم گرین فیلم زمان صرف می‌کنند. کدهای این بخش به هوش مصنوعی فرمان می‌دهند تا اعوجاج اپتیکال لنزهای پاناویژن، خطوط نوری آبی‌رنگ کشیده و بافت ارگانیک فیلم‌های ۳۵ میلی‌متری را در تمام ثانیه‌های تیزر بازسازی کند.",
+            "با انتخاب هر یک از سبک‌های زیر، اتمسفر دراماتیک و باوقار فیلم‌های شاخص سینما را به تبلیغات برند خود هدیه دهید:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-03-cinematic.webp",
@@ -408,10 +411,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-04",
-          "title": "6. کدهای دسته‌بندی 04: نورپردازی استودیویی و اتمسفر آب‌وهوایی (Lighting & Weather)",
-          "lead": "کنترل کامل ساعات طلایی، هوای بارانی، مه‌آلود و نورهای نئونی برای ساختن لحن بصری منحصربه‌فرد.",
+          "title": "۶. دسته‌بندی ۰۴: نورپردازی استودیویی، دمای کلوین و شرایط آب‌وهوایی دراماتیک (Lighting & Weather)",
+          "lead": "نور، راوی احساسات پنهان بیننده است. بدون نورپردازی حرفه‌ای، حتی لوکس‌ترین محصولات نیز در نگاه خریدار مات، کدر و بی‌ارزش جلوه می‌کنند.",
           "paragraphs": [
-            "دسته‌بندی 04 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Lighting / Weather است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "تنظیم زاویه تابش پرتوهای خورشید در ساعت طلایی (Golden Hour)، انعکاس چراغ‌های نئونی شب بر آسفالت باران‌خورده، یا مه غلیظ استودیویی که کانتورهای محصول را برجسته می‌کند، هویت بصری اثر شما را دگرگون می‌سازد.",
+            "کدهای این بخش با دقت میلی‌متری روی طیف دمای رنگ کلوین (از ۲۸۰۰ کلوین گرم پرتوهای غروب تا ۶۵۰۰ کلوین خنک صنعتی) کالیبره شده‌اند:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-04-lighting-weather.webp",
@@ -491,10 +495,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-05",
-          "title": "7. کدهای دسته‌بندی 05: حرکت‌های مکانیکی و کینماتیک دوربین (Camera Movement)",
-          "lead": "به مدل هوش مصنوعی یاد بدهید دوربین را با دقت گیمبال و بازوی مکانیکی در فضا بچرخاند.",
+          "title": "۷. دسته‌بندی ۰۵: کینماتیک لنز و حرکات مکانیکی دوربین فیلم‌برداری (Camera Movement)",
+          "lead": "تکان‌های لرزان و حرکات تصادفی دوربین، بارزترین نقطه ضعف ویدیوهای آماتور هوش مصنوعی هستند. با این فرامین، لنز را به بازوی رباتیک فوق‌پایدار مجهز کنید.",
           "paragraphs": [
-            "دسته‌بندی 05 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Camera Movement است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "هنگامی که به جای جملات شلوغ، از دستور زبان مکانیکی سینما مانند چرخش ۳۶۰ درجه پیرامون سوژه (/OrbitShot)، پرواز نرم پهپاد بر فراز محصول (/DroneReveal) یا زوم سرگیجه‌آور هیچکاکی (/DollyZoom) استفاده می‌کنید، الگوریتم یک محور هندسی پایدار برای دوربین تعریف می‌کند.",
+            "این کالیبراسیون حرکتی، خطای محو شدن (Ghosting) لبه‌های محصول را کاملاً از میان برمی‌دارد:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-05-camera-movement.webp",
@@ -574,10 +579,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-06",
-          "title": "8. کدهای دسته‌بندی 06: سبک زندگی لوکس، پرستیژ و فشن (Luxury & Lifestyle)",
-          "lead": "خلق حس ثروت، دست‌نیافتنی بودن و اصالت با پنت‌هاوس‌ها، جت‌های شخصی، مرمر و حریر مشکی.",
+          "title": "۸. دسته‌بندی ۰۶: دنیای پرستیژ، برندهای لوکس و لایف‌استایل ثروت (Luxury & Lifestyle)",
+          "lead": "کالاهای فاخر با منطق معامله نمی‌شوند؛ بلکه با برانگیختن اشتیاق به کمال، اصالت و حس تعلق به طبقه برگزیده فروخته می‌شوند.",
           "paragraphs": [
-            "دسته‌بندی 06 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Luxury / Lifestyle است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "این مجموعه دستورها به‌طور ویژه برای تیزرهای جواهرات گران‌بها، ساعت‌های کلکسیونی مکانیکی، عطرهای نیش، ویلاهای معماری مدرن و اتومبیل‌های سوپراسپرت تدوین شده‌اند.",
+            "تلألو برلیان‌ها زیر نور کانونی، بافت فیبر کربن و انعکاس سنگ‌های مرمر براق، ویدیوهایی می‌آفرینند که وقار و پرستیژ برند شما را در تراز نام‌های افسانه‌ای جهان قرار می‌دهد:"
           ],
           "image": {
             "src": "/images/blog/ai-video-glass-break-demo.webp",
@@ -657,10 +663,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-07",
-          "title": "9. کدهای دسته‌بندی 07: تیزرهای تجاری محصول و پک‌شات فروشگاهی (Product & Commercial)",
-          "lead": "تکنیک‌های حرفه‌ای عکاسی صنعتی متحرک برای تبدیل عکس خام بسته‌بندی به ویدیوی پرفروش اینستاگرام.",
+          "title": "۹. دسته‌بندی ۰۷: شوکیس تجاری محصول، پایه‌های معلق و پک‌شات استودیویی (Product Commercial)",
+          "lead": "پک‌شات متحرک، موتور محرک افزایش فروش لندینگ‌پیج‌ها و وب‌سایت‌های مدرن است. نرخ تبدیل صفحه‌ای با ویدیوی محصول، تا ۲.۸ برابر عکس‌های ثابت ارزیابی می‌شود.",
           "paragraphs": [
-            "دسته‌بندی 07 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Product / Commercial است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "با این فرامین می‌توانید اجزای محصول را در هوا معلق سازید (Zero-Gravity)، قطعات مکانیکی ساعت یا گجت را در نمای انفجاری (Exploded View) نمایش دهید و با ماکروعکاسی صنعتی، بافت و کیفیت ساخت بدنه را لمس‌پذیر کنید.",
+            "هر کدام از این کدهای تجاری، اعتماد آنی خریدار را برای ثبت سفارش برمی‌انگیزند:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-07-product-commercial.webp",
@@ -740,10 +747,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-08",
-          "title": "10. کدهای دسته‌بندی 08: محیط‌های کاری مینیمال و زیبایی‌شناسی کریتورها (Workspace Aesthetic)",
-          "lead": "فضاهای کار آرام‌بخش با ماگ‌های قهوه، مانیتورهای عریض، سایه شاخ‌وبرگ‌ها و میزهای چوب گردو.",
+          "title": "۱۰. دسته‌بندی ۰۸: زیبایی‌شناسی محیط کار کریتورها و اتمسفر تمرکز (Workspace Aesthetic)",
+          "lead": "ترند محبوب ورک‌استیشن‌های مینیمال و زیبایی‌شناسی میز کار کریتورها، عمیق‌ترین حس اعتماد و آرامش را برای مخاطبان محصولات دیجیتال رقم می‌زند.",
           "paragraphs": [
-            "دسته‌بندی 08 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Workspace / Lifestyle Aesthetic است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "اگر در حال معرفی ابزارهای نرم‌افزاری، خدمات طراحی وب، آکادمی‌های آموزشی یا دوره‌های وایب‌کدینگ هستید، تصویر کردن یک ستاپ کاری مینیمال با بخار ملایم فنجان اسپرسو، نمایشگر عریض خمیده و نور گرم تسک‌لایت، موثرترین استراتژی تعاملی است.",
+            "این دستورها فضایی سرشار از تمرکز، سلیقه و خلاقیت را در تیزر شما به جریان می‌اندازند:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-08-workspace-aesthetic.webp",
@@ -823,10 +831,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-09",
-          "title": "11. کدهای دسته‌بندی 09: جهان‌های سایبرپانک و تکنولوژی آینده (Futuristic & Sci-Fi)",
-          "lead": "رابط‌های کاربری هولوگرافیک، آسمان‌خراش‌های نئونی، ایستگاه‌های فضایی و هوش مصنوعی کوانتومی.",
+          "title": "۱۱. دسته‌بندی ۰۹: ابرشهرهای سایبرپانک و رابط‌های هولوگرافیک آینده (Futuristic & Sci-Fi)",
+          "lead": "برای استارتاپ‌های پیشگام در حوزه‌های هوش مصنوعی، فین‌تک، بلاک‌چین و وب۳، زبان بصری باید حاوی پیامی روشن از آینده سال ۲۰۹۹ باشد.",
           "paragraphs": [
-            "دسته‌بندی 09 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Futuristic / Sci-Fi است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "کدهای این بخش به تیزرهای تبلیغاتی شما هویت آینده‌نگرانه می‌بخشند: لایه‌های رابط کاربری شیشه‌ای هولوگرافیک، آسمان‌خراش‌های نئونی بنفش و فیروزه‌ای در هوای بارانی شب، و اتصالات شبکه‌های عصبی شناور که قدرت پردازش مدرن را به رخ سرمایه‌گذاران و کاربران جهانی می‌کشند.",
+            "فرامین زیر اوج نوآوری و تکنولوژی برند شما را به تصویر می‌کشند:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-09-futuristic-scifi.webp",
@@ -906,10 +915,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-10",
-          "title": "12. کدهای دسته‌بندی 10: پورتال‌های ابعادی و قلمروهای فانتزی (Fantasy & Dream)",
-          "lead": "گذر از مرز واقعیت با جزایر معلق در ابرها، جنگل‌های شب‌تاب، غارهای کریستالی و پورتال‌های جادویی.",
+          "title": "۱۲. دسته‌بندی ۱۰: قلمروهای فانتزی، پورتال‌های جادویی و مناظر اثیری (Fantasy & Dream)",
+          "lead": "گاه برای متمایز شدن، باید قوانین فیزیک دنیای مادی را زیر پا گذاشت و ذهن مخاطب را به سفری رویایی در میان ابرها و جزایر معلق فراخواند.",
           "paragraphs": [
-            "دسته‌بندی 10 شامل ۱۰ کد اختصاصی برای خلق ویدیوهای منحصربه‌فرد در حوزه Fantasy / Dream است. با کلیک روی هر کامند، کد به همراه سینتکس پرامپت در کلیپ‌بورد شما کپی می‌شود تا مستقیماً در ابزارهای Google Flow، Gemini Omni یا کدهای ویدیوساز استفاده کنید:"
+            "دستورات این دسته‌بندی مخصوص کمپین‌های برندسازی مفهومی، تیزرهای هنری و سناریوهای فراتر از زمان طراحی شده‌اند.",
+            "پورتال‌های کیهانی چرخان، گیاهان درخشان بیولومینسنت و قلمروهای معلق در آسمان شفق قطبی، صحنه‌هایی چنان مسحورکننده خلق می‌کنند که ماندگاری پیام برند در حافظه بلندمدت بیننده تضمین می‌شود:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-10-fantasy-dream.webp",
@@ -1049,43 +1059,43 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. Category 01: Reveal / VFX"
+          "title": "3. Category 01: High-Impact Disruption VFX & Product Reveals"
         },
         {
           "id": "cat-02",
-          "title": "4. Category 02: Billboard / Outdoor Advertising"
+          "title": "4. Category 02: Anamorphic 3D Billboards & Urban Takeovers (Outdoor)"
         },
         {
           "id": "cat-03",
-          "title": "5. Category 03: Cinematic"
+          "title": "5. Category 03: Hollywood Cinematic Pacing & Anamorphic Scope"
         },
         {
           "id": "cat-04",
-          "title": "6. Category 04: Lighting / Weather"
+          "title": "6. Category 04: Volumetric Lighting & Atmospheric Weather Physics"
         },
         {
           "id": "cat-05",
-          "title": "7. Category 05: Camera Movement"
+          "title": "7. Category 05: Precision Robotic Kinematics & Camera Rig Moves"
         },
         {
           "id": "cat-06",
-          "title": "8. Category 06: Luxury / Lifestyle"
+          "title": "8. Category 06: Haute Couture, Horology & Ultra-Luxury Lifestyle"
         },
         {
           "id": "cat-07",
-          "title": "9. Category 07: Product / Commercial"
+          "title": "9. Category 07: Commercial Product Showcase & Zero-G Packshots"
         },
         {
           "id": "cat-08",
-          "title": "10. Category 08: Workspace / Lifestyle Aesthetic"
+          "title": "10. Category 08: Minimalist Workspaces & Cozy Creator Lifestyle"
         },
         {
           "id": "cat-09",
-          "title": "11. Category 09: Futuristic / Sci-Fi"
+          "title": "11. Category 09: Cyberpunk Megacities, Neural Grids & Sci-Fi HUDs"
         },
         {
           "id": "cat-10",
-          "title": "12. Category 10: Fantasy / Dream"
+          "title": "12. Category 10: Celestial Dreamscapes & Mythical Dimensional Portals"
         },
         {
           "id": "clusters-roadmap",
@@ -1168,10 +1178,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. Category 01: Reveal / VFX",
-          "lead": "These 10 visual FX commands create an instant hook in the first 3 seconds, revealing your product through explosive atmospheric elements.",
+          "title": "3. Category 01: High-Impact Disruption VFX & Product Reveals",
+          "lead": "The first three seconds of a social video dictate your customer acquisition cost. When debuting flagship hardware or luxury goods, viewers demand immediate visual payoff.",
           "paragraphs": [
-            "Category 01 provides 10 battle-tested commands engineered for Reveal / VFX. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "Whether unveiling a Swiss automatic chronograph, artisanal perfume, or flagship consumer electronics, employing visceral physical phenomena—such as organic volumetric smoke parting outward, crystalline shattering, or molten gold cascading over metallic bezels—instantly cements high perceived value in the viewer's subconscious.",
+            "Combine your isolated high-res subject reference with any of the battle-tested command presets below to render procedural particle physics and fluid simulations at a cinematic 120fps benchmark:"
           ],
           "image": {
             "src": "/images/blog/ai-video-smoke-reveal-demo.webp",
@@ -1251,10 +1262,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-02",
-          "title": "4. Category 02: Billboard / Outdoor Advertising",
-          "lead": "Transform product stills into anamorphic 3D corner billboard takeovers across Times Square, Shibuya, and Dubai.",
+          "title": "4. Category 02: Anamorphic 3D Billboards & Urban Takeovers (Outdoor)",
+          "lead": "Anamorphic optical illusion displays across Times Square, Tokyo Shinjuku, and Dubai Mall command the highest viral share rates in modern outdoor advertising.",
           "paragraphs": [
-            "Category 02 provides 10 battle-tested commands engineered for Billboard / Outdoor Advertising. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "If your campaign demands bold disruption beyond standard mobile frames, 3D billboard takeovers deliver unmatched scroll-stopping power. By constraining your product reference within a curved LED municipal frame, these presets instruct neural video models to calculate realistic parallax depth.",
+            "The result is a mind-bending illusion where the subject appears to physically burst through digital display glass into rain-slicked city streets:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-02-billboard.webp",
@@ -1334,10 +1346,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-03",
-          "title": "5. Category 03: Cinematic",
-          "lead": "Cinema-grade focal lengths, film grain, dynamic range, and pacing inspired by major blockbuster studios.",
+          "title": "5. Category 03: Hollywood Cinematic Pacing & Anamorphic Scope",
+          "lead": "The chasm between an amateur AI render and an expensive studio commercial lies in color science, 2.39:1 widescreen framing, and subtle optical halation.",
           "paragraphs": [
-            "Category 03 provides 10 battle-tested commands engineered for Cinematic. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "Master cinematographers spend decades mastering lens selection and film chemistry. In modern AI generation, applying dedicated director codes like /Cinematic or /HollywoodShot instructs the diffusion model to inject Panavision blue horizontal flares, tactile 35mm film grain, and deliberate, disciplined visual pacing.",
+            "Transform your commercial renders with the exact cinematic aesthetics favored by top Hollywood studios:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-03-cinematic.webp",
@@ -1417,10 +1430,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-04",
-          "title": "6. Category 04: Lighting / Weather",
-          "lead": "Master atmospheric variables from golden hour rays to cyberpunk rain slicks and dense volumetric fog.",
+          "title": "6. Category 04: Volumetric Lighting & Atmospheric Weather Physics",
+          "lead": "Light is the emotional conductor of commercial storytelling. A product bathed in flat, uncalibrated illumination looks cheap; illuminated with intention, it becomes coveted.",
           "paragraphs": [
-            "Category 04 provides 10 battle-tested commands engineered for Lighting / Weather. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "From the warm, radiant glow of a 3200K Golden Hour sunset to rain-slicked city streets reflecting moody neon signage, environmental lighting dictates how customers perceive product quality.",
+            "These presets calibrate color temperature spectrums (from warm 2800K dusk to crisp 6500K daylight) and procedural volumetric particulate fog with studio-grade optical fidelity:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-04-lighting-weather.webp",
@@ -1500,10 +1514,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-05",
-          "title": "7. Category 05: Camera Movement",
-          "lead": "Direct simulated camera rigs with precise mechanical stability, crane ascents, and high-speed FPV dives.",
+          "title": "7. Category 05: Precision Robotic Kinematics & Camera Rig Moves",
+          "lead": "Uncontrolled camera drift and random jitter immediately destroy commercial credibility. Professional DPs rely on programmable Bolt robotic arms for repeatable camera paths.",
           "paragraphs": [
-            "Category 05 provides 10 battle-tested commands engineered for Camera Movement. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "By replacing vague textual descriptions with formal cinematic kinematics—such as a continuous 360-degree orbital sweep (/OrbitShot), a smooth crane reveal (/DroneReveal), or Hitchcock's vertigo-inducing contra-zoom (/DollyZoom)—the AI establishes a rigid mathematical axis around your subject.",
+            "This mechanical stabilization completely eliminates edge warping, ghosting, and erratic perspective jumps:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-05-camera-movement.webp",
@@ -1583,10 +1598,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-06",
-          "title": "8. Category 06: Luxury / Lifestyle",
-          "lead": "High-net-worth aesthetics, penthouse skyline terraces, superyachts, silk drapes, and bespoke elegance.",
+          "title": "8. Category 06: Haute Couture, Horology & Ultra-Luxury Lifestyle",
+          "lead": "Luxury is not sold on utilitarian features; it is acquired through the emotional desire for prestige, heritage, and uncompromising perfection.",
           "paragraphs": [
-            "Category 06 provides 10 battle-tested commands engineered for Luxury / Lifestyle. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "Engineered specifically for fine jewelry, bespoke timepieces, niche perfumery, architectural estates, and exotic hypercars, these commands focus the neural engine on luxury textures.",
+            "Reflections gliding across carbon-fiber bodywork, diamond dispersion under focused pinspots, and tactile Italian leather finishes elevate your product into an aspirational cultural icon:"
           ],
           "image": {
             "src": "/images/blog/ai-video-glass-break-demo.webp",
@@ -1666,10 +1682,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-07",
-          "title": "9. Category 07: Product / Commercial",
-          "lead": "Studio macro packshots, levitating products, and 360 rotating pedestals calibrated for high e-commerce conversion.",
+          "title": "9. Category 07: Commercial Product Showcase & Zero-G Packshots",
+          "lead": "In e-commerce and SaaS landing page design, interactive product motion videos convert at up to 2.8x the rate of static hero photography.",
           "paragraphs": [
-            "Category 07 provides 10 battle-tested commands engineered for Product / Commercial. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "These commands enable you to levitate products on anti-gravity pedestals, explode complex mechanical components into labeled visual layers (Exploded View), and execute tactile macro sweeps across premium materials.",
+            "Simulating the sensory feeling of holding and inspecting the physical product in real life builds instant buyer trust:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-07-product-commercial.webp",
@@ -1749,10 +1766,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-08",
-          "title": "10. Category 08: Workspace / Lifestyle Aesthetic",
-          "lead": "Curated Scandinavian desks, artisanal coffee steam, warm ambient lamps, and modern creative workflows.",
+          "title": "10. Category 08: Minimalist Workspaces & Cozy Creator Lifestyle",
+          "lead": "The viral appeal of minimalist creator desks and cozy lo-fi workstations establishes immediate warmth, authority, and creative credibility.",
           "paragraphs": [
-            "Category 08 provides 10 battle-tested commands engineered for Workspace / Lifestyle Aesthetic. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "For tech founders, software developers, design agencies, and vibe coders, showcasing an immaculate desk setup with curling espresso steam, an ultra-wide curved monitor, and warm ambient task lighting is the ultimate social proof.",
+            "These prompts cultivate an atmosphere of deep work, intellectual focus, and modern creative lifestyle:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-08-workspace-aesthetic.webp",
@@ -1832,10 +1850,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-09",
-          "title": "11. Category 09: Futuristic / Sci-Fi",
-          "lead": "Cyberpunk megalopolises, neon-drenched rain streets, floating HUD interfaces, and deep space exploration.",
+          "title": "11. Category 09: Cyberpunk Megacities, Neural Grids & Sci-Fi HUDs",
+          "lead": "Pioneering AI startups, Web3 platforms, and deep-tech founders require visual language engineered for the year 2099.",
           "paragraphs": [
-            "Category 09 provides 10 battle-tested commands engineered for Futuristic / Sci-Fi. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "Infuse your video campaigns with futuristic edge: semi-transparent holographic glass user interfaces, rain-drenched megacity towers pulsing with magenta and cyan neon, and floating neural network data streams.",
+            "These commands broadcast institutional technical capability and forward-looking vision to investors and early adopters:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-09-futuristic-scifi.webp",
@@ -1915,10 +1934,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-10",
-          "title": "12. Category 10: Fantasy / Dream",
-          "lead": "Ethereal floating islands, bioluminescent enchanted forests, crystal dimensions, and dimensional rifts.",
+          "title": "12. Category 10: Celestial Dreamscapes & Mythical Dimensional Portals",
+          "lead": "When a brand narrative demands transcending the physical world, surrealism unlocks profound viewer fascination and unshakeable brand recall.",
           "paragraphs": [
-            "Category 10 provides 10 battle-tested commands engineered for Fantasy / Dream. Click any command to copy its identifier and complete production prompt template directly to your clipboard:"
+            "Designed for conceptual branding, high-concept fashion films, and mythic storytelling, these presets construct impossible natural wonders.",
+            "Swirling celestial rifts, bioluminescent enchanted flora, and gravity-defying archipelagos floating among aurora-lit cloudscapes captivate audiences with unforgettable visual poetry:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-10-fantasy-dream.webp",
@@ -2058,43 +2078,43 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. أوامر الفئة 01: الكشف والمؤثرات البصرية (VFX)"
+          "title": "٣. الفئة الأولى: الكشف والمؤثرات البصرية الخارقة وهندسة لفت الانتباه (Reveal & VFX)"
         },
         {
           "id": "cat-02",
-          "title": "4. أوامر الفئة 02: اللوحات الإعلانية ثلاثية الأبعاد وشاشات الشوارع (Outdoor)"
+          "title": "٤. الفئة الثانية: اللوحات الإعلانية ثلاثية الأبعاد وشاشات الشوارع العملاقة (Outdoor 3D)"
         },
         {
           "id": "cat-03",
-          "title": "5. أوامر الفئة 03: الأنماط السينمائية وهوليوود (Cinematic)"
+          "title": "٥. الفئة الثالثة: الأنماط الإخراجية، أبعاد الشاشة واللمسات السينمائية (Cinematic)"
         },
         {
           "id": "cat-04",
-          "title": "6. أوامر الفئة 04: الإضاءة السينمائية والظروف الجوية (Lighting & Weather)"
+          "title": "٦. الفئة الرابعة: الإضاءة السينمائية، درجات كلفن والظروف الجوية الغامرة (Lighting & Weather)"
         },
         {
           "id": "cat-05",
-          "title": "7. أوامر الفئة 05: حركات الكاميرا السينمائية والميكانيكية (Camera Movement)"
+          "title": "٧. الفئة الخامسة: حركات الكاميرا الروبوتية، الدوران المداري والانسيابية (Camera Movement)"
         },
         {
           "id": "cat-06",
-          "title": "8. أوامر الفئة 06: الحياة الفاخرة والأناقة العالمية (Luxury & Lifestyle)"
+          "title": "٨. الفئة السادسة: الفخامة الملكية، عوالم الأناقة وأسلوب حياة الأثرياء (Luxury & Lifestyle)"
         },
         {
           "id": "cat-07",
-          "title": "9. أوامر الفئة 07: الإعلانات التجارية للمنتجات وبك شات المتاجر (Product & Commercial)"
+          "title": "٩. الفئة السابعة: العروض التجارية الاحترافية للمنتجات وقواعد العرض العائمة (Product Commercial)"
         },
         {
           "id": "cat-08",
-          "title": "10. أوامر الفئة 08: مساحات العمل الهادئة وجماليات صناع المحتوى (Workspace Aesthetic)"
+          "title": "١٠. الفئة الثامنة: مساحات العمل الهادئة، بخار القهوة وجماليات مكاتب المبدعين (Workspace Aesthetic)"
         },
         {
           "id": "cat-09",
-          "title": "11. أوامر الفئة 09: العوالم المستقبلية والسايبربانك (Futuristic & Sci-Fi)"
+          "title": "١١. الفئة التاسعة: عوالم السايبربانك، المدن النيونية والواجهات الهولوغرافية (Futuristic & Sci-Fi)"
         },
         {
           "id": "cat-10",
-          "title": "12. أوامر الفئة 10: البوابات السحرية والعوالم الخيالية (Fantasy & Dream)"
+          "title": "١٢. الفئة العاشرة: العوالم الأسطورية، البوابات السحرية والآفاق الخيالية (Fantasy & Dream)"
         },
         {
           "id": "clusters-roadmap",
@@ -2176,10 +2196,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-01",
-          "title": "3. أوامر الفئة 01: الكشف والمؤثرات البصرية (VFX)",
-          "lead": "صُممت هذه الأوامر العشرة لخطف انتباه المشاهد في أول ٣ ثوانٍ والكشف عن المنتجات من خلال مؤثرات انفجارية ودخانية سينمائية.",
+          "title": "٣. الفئة الأولى: الكشف والمؤثرات البصرية الخارقة وهندسة لفت الانتباه (Reveal & VFX)",
+          "lead": "تحسم الثواني الثلاث الأولى مصير أي حملة إعلانية رقمية. عبر هذه الأوامر الاحترافية، حوّل لحظة إزاحة الستار عن منتجك إلى مشهد سينمائي يحبس الأنفاس.",
           "paragraphs": [
-            "تتضمن الفئة 01 عشرة أوامر بصرية مصممة خصيصاً لمجال الكشف والمؤثرات البصرية (VFX). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "سواءً كنت تطلق ساعة يد فاخرة، عطراً نيش استثنائياً، أو جهازاً تقنياً متطوراً، فإن توظيف ظواهر بصرية فائقة الواقعية—مثل انقشاع سحب الدخان الحجمي، أو تفجر الكريستال وتطاير شظاياه، أو تدفق الذهب السائل بنعومة فوق الهيكل—يمنح علامتك التجارية هالة من الفخامة والقيمة العالية تأسر بصر العميل على الفور.",
+            "للتطبيق، ادمج صورة مرجعية نظيفة لمنتجك مع أحد الأوامر الميدانية أدناه لتوجيه محرك الفيديو نحو محاكاة فيزيائية دقيقة للجسيمات بسرعة ١٢٠ إطاراً في الثانية:"
           ],
           "image": {
             "src": "/images/blog/ai-video-smoke-reveal-demo.webp",
@@ -2259,10 +2280,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-02",
-          "title": "4. أوامر الفئة 02: اللوحات الإعلانية ثلاثية الأبعاد وشاشات الشوارع (Outdoor)",
-          "lead": "حوّل صور المنتجات إلى لوحات إعلانية ثلاثية الأبعاد تفاعلية تخرج من الشاشات في أشهر ميادين العالم.",
+          "title": "٤. الفئة الثانية: اللوحات الإعلانية ثلاثية الأبعاد وشاشات الشوارع العملاقة (Outdoor 3D)",
+          "lead": "تحقق شاشات الخداع البصري ثلاثية الأبعاد في ميدان التايمز، شينجوكو، ودبي مول أعلى معدلات الانتشار الفيروسي في العصر الرقمي. يمكنك الآن إخراج منتجك مجسماً إلى الواقع.",
           "paragraphs": [
-            "تتضمن الفئة 02 عشرة أوامر بصرية مصممة خصيصاً لمجال اللوحات الإعلانية ثلاثية الأبعاد وشاشات الشوارع (Outdoor). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "إذا كنت تخطط لحملة تسويقية تثير ضجة واسعة وتستوقف الجمهور في منصات التواصل، فإن محاكاة شاشة رقمية ضخمة ثلاثية الأبعاد في شارع ممطر ليلاً هي خيارك الأقوى.",
+            "تضع هذه الأوامر منتجك داخل إطار شاشة LED منحنية مع انعكاسات إضاءة الشارع الحقيقي، ليتحرك المنتج متجاوزاً حافة الشاشة كأنه اخترق الزجاج ليدخل الفضاء المادي أمام المارة:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-02-billboard.webp",
@@ -2342,10 +2364,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-03",
-          "title": "5. أوامر الفئة 03: الأنماط السينمائية وهوليوود (Cinematic)",
-          "lead": "أوامر التدرج اللوني، نسيج شريط السينما، والديناميكية البصرية المستوحاة من أضخم الإنتاجات العالمية.",
+          "title": "٥. الفئة الثالثة: الأنماط الإخراجية، أبعاد الشاشة واللمسات السينمائية الهوليوودية (Cinematic)",
+          "lead": "الفرق الجوهري بين مقطع هاوٍ وإعلان تجاري يُعرض بملايين الدولارات يكمن في التدرج اللوني (Color Grading)، والنسبة العريضة ۲.۳۹:۱، وحبيبات شريط الفيلم ۳۵ ملم.",
           "paragraphs": [
-            "تتضمن الفئة 03 عشرة أوامر بصرية مصممة خصيصاً لمجال الأنماط السينمائية وهوليوود (Cinematic). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "يقضي كبار المخرجين سنوات في دراسة تأثير العدسات واستجابة الألوان. في نماذج الذكاء الاصطناعي الحديثة، يتيح لك استخدام أوامر مثل /Cinematic أو /HollywoodShot استدعاء خصائص عدسات البانافيجن، ووهج الضوء الأفقي، وتوزيع الظلال الدرامية التي تميز الأفلام الحائزة على الجوائز العالمية.",
+            "ارتقِ بإعلانات منتجاتك عبر اختيار النمط السينمائي الأنسب لهوية علامتك التجارية:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-03-cinematic.webp",
@@ -2425,10 +2448,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-04",
-          "title": "6. أوامر الفئة 04: الإضاءة السينمائية والظروف الجوية (Lighting & Weather)",
-          "lead": "التحكم الكامل في الساعات الذهبية، الأمطار، الضباب الكثيف، وانعكاسات النيون لصنع بيئة سينمائية ساحرة.",
+          "title": "٦. الفئة الرابعة: الإضاءة السينمائية، درجات كلفن والظروف الجوية الغامرة (Lighting & Weather)",
+          "lead": "الإضاءة هي الروح الحقيقية لأي كادر إعلاني؛ فالمنتج المسلط عليه ضوء مسطح باهت يبدو رخيصاً، بينما إضاءة الساعة الذهبية أو قطرات المطر تحوله إلى تحفة مرغوبة.",
           "paragraphs": [
-            "تتضمن الفئة 04 عشرة أوامر بصرية مصممة خصيصاً لمجال الإضاءة السينمائية والظروف الجوية (Lighting & Weather). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "سواءً كان هدفك التقاط إشراقة الغروب الدافئة عند حرارة ۳۲۰۰ كلفن، أو الانعكاسات النيونية على الأسفلت الرطب ليلاً، أو الأشعة الحجمية النافذة وسط الضباب، فإن هذه الإعدادات تمنح المشهد عمقاً ساحراً.",
+            "تمت معايرة هذه الأوامر وفق مقاييس درجات كلفن الضوئية (من حرارة ٢٨۰۰ كلفن الدافئة إلى برودة الاستوديوهات المعاصرة عند ۶۵۰۰ كلفن):"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-04-lighting-weather.webp",
@@ -2508,10 +2532,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-05",
-          "title": "7. أوامر الفئة 05: حركات الكاميرا السينمائية والميكانيكية (Camera Movement)",
-          "lead": "وجّه الكاميرا الافتراضية بدقة الجيمبال والروافع الميكانيكية لإنشاء حركات دوران وتتبع فائقة الانسيابية.",
+          "title": "٧. الفئة الخامسة: حركات الكاميرا الروبوتية، الدوران المداري والانسيابية الميكانيكية (Camera Movement)",
+          "lead": "الاهتزازات العشوائية وحركات الكاميرا اليدوية غير المنضبطة هي العدو الأول لإعلانات الفيديو الذكية. ثبّت عدستك على مسارات روبوتية فائقة الدقة.",
           "paragraphs": [
-            "تتضمن الفئة 05 عشرة أوامر بصرية مصممة خصيصاً لمجال حركات الكاميرا السينمائية والميكانيكية (Camera Movement). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "بدلاً من كتابة أوصاف مطولة ومربكة، يتيح لك استخدام مصطلحات الإخراج الميكانيكي—مثل الدوران المداري ۳۶۰ درجة حول المنتج (/OrbitShot)، والتحليق الانسيابي للدرون (/DroneReveal)، وزوم الدوران الدوار الشهير (/DollyZoom)—تحديد محور دوران رياضي ثابت للكاميرا.",
+            "يقضي هذا التحديد الحركي تماماً على عيوب تشوه حواف المنتج وتشتت المشاهد:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-05-camera-movement.webp",
@@ -2591,10 +2616,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-06",
-          "title": "8. أوامر الفئة 06: الحياة الفاخرة والأناقة العالمية (Luxury & Lifestyle)",
-          "lead": "صناعة هالة من الفخامة الحصرية عبر اليخوت، الطائرات الخاصة، الرخام الإيطالي والحرير الفاخر.",
+          "title": "٨. الفئة السادسة: الفخامة الملكية، عوالم الأناقة وأسلوب حياة الأثرياء (Luxury & Lifestyle)",
+          "lead": "السلع الفاخرة لا تُباع بمجرد سرد المواصفات، بل بمخاطبة مشاعر التميز والتفرد والانتماء لطبقة النخبة.",
           "paragraphs": [
-            "تتضمن الفئة 06 عشرة أوامر بصرية مصممة خصيصاً لمجال الحياة الفاخرة والأناقة العالمية (Luxury & Lifestyle). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "صُممت هذه الأوامر خصيصاً لعلامات المجوهرات الراقية، الساعات الميكانيكية السويسرية، العطور النادرة، الفلل المعمارية الشاطئية، والسيارات الرياضية الفارهة.",
+            "انعكاسات الضوء على ألياف الكربون، وبريق الأحجار الكريمة، وفخامة الرخام المصقول تمنح إعلانك هيبة استثنائية تليق بأرقى شرائح العملاء:"
           ],
           "image": {
             "src": "/images/blog/ai-video-glass-break-demo.webp",
@@ -2674,10 +2700,11 @@ export const aiImageToVideoArticle: RawArticle = {
           },
         {
           "id": "cat-07",
-          "title": "9. أوامر الفئة 07: الإعلانات التجارية للمنتجات وبك شات المتاجر (Product & Commercial)",
-          "lead": "تقنيات التصوير الإعلاني التجاري لتحويل صور المنتجات إلى فيديوهات مبيعات احترافية ولقطات دوران ۳۶۰ درجة.",
+          "title": "٩. الفئة السابعة: العروض التجارية الاحترافية للمنتجات وقواعد العرض العائمة (Product Commercial)",
+          "lead": "في المتاجر الإلكترونية وصفحات الهبوط الاحترافية، تحقق مقاطع الفيديو التفاعلية معدلات تحويل للطلبات تفوق الصور الثابتة بنسبة تصل إلى ۲.۸ ضعفاً.",
           "paragraphs": [
-            "تتضمن الفئة 07 عشرة أوامر بصرية مصممة خصيصاً لمجال الإعلانات التجارية للمنتجات وبك شات المتاجر (Product & Commercial). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "تمنحك هذه المجموعة القدرة على جعل منتجك يطفو على قواعد حجرية عائمة بدون جاذبية (Zero-Gravity)، وتفكيك المكونات المعقدة في الهواء (Exploded View)، والتقريب المجهري فائق الدقة (Macro) لخامات التصنيع.",
+            "يمنح هذا العرض ثلاثي الأبعاد المشتري شعوراً حقيقياً بملمس وجودة المنتج قبل شرائه:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-07-product-commercial.webp",
@@ -2757,10 +2784,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-08",
-          "title": "10. أوامر الفئة 08: مساحات العمل الهادئة وجماليات صناع المحتوى (Workspace Aesthetic)",
-          "lead": "مكاتب اسكندنافية مريحة، بخار القهوة الساخنة، إضاءة خافتة، وشاشات عريضة لبيئة عمل ملهمة.",
+          "title": "١٠. الفئة الثامنة: مساحات العمل الهادئة، بخار القهوة وجماليات مكاتب المبدعين (Workspace Aesthetic)",
+          "lead": "تحظى جماليات بيئات العمل المينيمال ومكاتب صناع المحتوى بثقة بالغة لدى جمهور الخدمات الرقمية والمشاريع التقنية الحديثة.",
           "paragraphs": [
-            "تتضمن الفئة 08 عشرة أوامر بصرية مصممة خصيصاً لمجال مساحات العمل الهادئة وجماليات صناع المحتوى (Workspace Aesthetic). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "إذا كنت تُسوّق لبرمجيات، تطبيقات سحابية، دورات تدريبية أو خدمات فايب كودينغ، فإن تصوير بيئة عمل مرتبة يتصاعد منها بخار الإسبريسو أمام شاشات عريضة منحنية هو أسرع طريق لكسب ثقة العميل.",
+            "تنقل هذه الأوامر إحساساً عميقاً بالتركيز، الإنتاجية، وحسن التنظيم والإتقان:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-08-workspace-aesthetic.webp",
@@ -2840,10 +2868,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-09",
-          "title": "11. أوامر الفئة 09: العوالم المستقبلية والسايبربانك (Futuristic & Sci-Fi)",
-          "lead": "مدن السايبربانك، الشاشات الهولوغرافية التفاعلية، المحطات الفضائية، وعوالم الخيال العلمي المتقدمة.",
+          "title": "١١. الفئة التاسعة: عوالم السايبربانك، المدن النيونية والواجهات الهولوغرافية المستقبلية (Futuristic & Sci-Fi)",
+          "lead": "تحتاج الشركات الرائدة في مجالات الذكاء الاصطناعي، الفنتك، وسلاسل الكتل إلى هوية إعلانية بصرية تنبض بروح عام ۲۰۹۹.",
           "paragraphs": [
-            "تتضمن الفئة 09 عشرة أوامر بصرية مصممة خصيصاً لمجال العوالم المستقبلية والسايبربانك (Futuristic & Sci-Fi). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "تضفي هذه الأوامر طابعاً مستقبلياً مبهراً على فيديوهاتك: واجهات زجاجية هولوغرافية تفاعلية، وناطحات سحاب مضاءة بالنيون البنفسجي وسط أمطار الليل، وخطوط شبكات عصبية متدفقة بالبيانات.",
+            "تعكس هذه المشاهد قوة التطور التقني وجرأة الابتكار أمام المستثمرين والمستخدمين:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-09-futuristic-scifi.webp",
@@ -2923,10 +2952,11 @@ export const aiImageToVideoArticle: RawArticle = {
         },
         {
           "id": "cat-10",
-          "title": "12. أوامر الفئة 10: البوابات السحرية والعوالم الخيالية (Fantasy & Dream)",
-          "lead": "عوالم الخيال الساحرة، الجزر المعلقة في السماء، الغابات المضيئة، وبوابات الانتقال الآني بين الأبعاد.",
+          "title": "١٢. الفئة العاشرة: العوالم الأسطورية، البوابات السحرية والآفاق الخيالية (Fantasy & Dream)",
+          "lead": "حين تتطلب فكرة الإعلان كسر قوانين الواقع المادي وأخذ المشاهد في رحلة خيالية غامرة، تصبح هذه الفئة أداتك السحرية المطلقة.",
           "paragraphs": [
-            "تتضمن الفئة 10 عشرة أوامر بصرية مصممة خصيصاً لمجال البوابات السحرية والعوالم الخيالية (Fantasy & Dream). اضغط على أي أمر لنسخ الكود والبرومبت الجاهز إلى الحافظة فوراً:"
+            "صُممت فرامین هذه المجموعة للحملات الإبداعية المفاهيمية ورواية القصص الملهمة التي تتجاوز حدود المألوف.",
+            "بوابات كونية متوهجة، جزر سابحة وسط الغيوم، ونباتات ليلية تشع ضوءاً فسفورياً تصنع مشاهد أسطورية تترسخ عميقاً في الذاكرة ولا يمكن تجاوزها:"
           ],
           "image": {
             "src": "/images/blog/ai-video-cat-10-fantasy-dream.webp",

@@ -10,6 +10,7 @@ personaldevelopment/
 scripts/*
 !scripts/convert-to-webp.mjs
 !scripts/generate-category-banners.mjs
+!scripts/update-humanized-content.py
 
 # Next.js build output
 .next/
