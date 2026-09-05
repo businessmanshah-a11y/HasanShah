@@ -89,6 +89,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       alternates: alternates(`${base}/clients/pegah/`),
     },
+    {
+      url: `${base}/clients/visakade/`,
+      lastModified: LAST_MODIFIED.clients,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: alternates(`${base}/clients/visakade/`),
+    },
 
     // ── Workshops & Events ──
     {
