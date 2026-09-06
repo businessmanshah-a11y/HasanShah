@@ -15,6 +15,9 @@ scripts/*
 # Next.js build output
 .next/
 out/
+standalone-clients/**/.next/
+standalone-clients/**/out/
+standalone-clients/**/node_modules/
 
 # Claude Code / AI tool state (machine-local, not source)
 .agents/
