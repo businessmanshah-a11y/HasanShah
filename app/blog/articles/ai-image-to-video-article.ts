@@ -8,6 +8,7 @@ export const aiImageToVideoArticle: RawArticle = {
   "coverImage": "/images/blog/ai-video-masterclass-cover.webp",
   "featured": true,
   "relatedSlugs": [
+    "replicate-viral-reels-with-ai-google-flow",
     "chatgpt-slash-commands-handbook-2026",
     "what-is-vibe-coding-guide",
     "high-converting-landing-page-secrets"

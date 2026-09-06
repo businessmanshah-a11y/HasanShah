@@ -1,5 +1,6 @@
 // app/blog/blog-data.ts
 import type { Locale } from "../i18n/config";
+import { aiViralVideoReplicationArticle } from "./articles/ai-viral-video-replication-article";
 import { aiImageToVideoArticle } from "./articles/ai-image-to-video-article";
 
 export interface TableOfContentItem {
@@ -110,6 +111,7 @@ export const authors: Record<Locale, ArticleAuthor> = {
 };
 
 export const rawArticles: RawArticle[] = [
+  aiViralVideoReplicationArticle,
   aiImageToVideoArticle,
   {
     slug: "chatgpt-slash-commands-handbook-2026",
