@@ -39,11 +39,15 @@ import {
   ExternalLink,
   Send,
   SlidersHorizontal,
+  Gift,
+  Heart,
+  PartyPopper,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, type CSSProperties } from "react";
 import { toast } from "sonner";
+import confetti from "canvas-confetti";
 
 // ─── Executive Color Palette Tokens ──────────────────────────────────────────
 const DARK = {
@@ -82,6 +86,45 @@ const LIGHT = {
 
 type Theme = { [K in keyof typeof DARK]: string };
 type AccentKey = "emerald" | "cyan" | "gold" | "blue";
+
+// ─── Confetti Cannon Helper ──────────────────────────────────────────────────
+function fireGrandConfetti() {
+  // Center explosive burst
+  confetti({
+    particleCount: 90,
+    spread: 90,
+    origin: { y: 0.55 },
+    colors: ["#10b981", "#06b6d4", "#f59e0b", "#ec4899", "#3b82f6", "#ffffff"],
+    zIndex: 999999,
+  });
+
+  // Dual cascading cannons
+  const end = Date.now() + 2800;
+  const colors = ["#10b981", "#06b6d4", "#f59e0b", "#ffffff", "#ec4899"];
+
+  (function frame() {
+    confetti({
+      particleCount: 4,
+      angle: 55,
+      spread: 55,
+      origin: { x: 0, y: 0.65 },
+      colors: colors,
+      zIndex: 999999,
+    });
+    confetti({
+      particleCount: 4,
+      angle: 125,
+      spread: 55,
+      origin: { x: 1, y: 0.65 },
+      colors: colors,
+      zIndex: 999999,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 const IMPACT_STATS = [
@@ -276,6 +319,10 @@ export default function MortezaDaneshClientPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  // Birthday Surprise Pop-up State (opened on initial load as requested!)
+  const [showBirthdayModal, setShowBirthdayModal] = useState(true);
+
   const [formState, setFormState] = useState({
     name: "",
     contact: "",
@@ -289,6 +336,20 @@ export default function MortezaDaneshClientPage() {
 
   const t = isDark ? DARK : LIGHT;
 
+  // Initial gentle confetti on load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      confetti({
+        particleCount: 35,
+        spread: 60,
+        origin: { y: 0.4 },
+        colors: ["#10b981", "#06b6d4", "#f59e0b", "#ffffff"],
+        zIndex: 999999,
+      });
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Scroll listener for floating pill header
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -297,9 +358,9 @@ export default function MortezaDaneshClientPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Body overflow lock when mobile menu is open
+  // Body overflow lock when mobile menu or modal is open
   useEffect(() => {
-    if (menuOpen) {
+    if (menuOpen || showBirthdayModal || isBookingOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -307,7 +368,14 @@ export default function MortezaDaneshClientPage() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen]);
+  }, [menuOpen, showBirthdayModal, isBookingOpen]);
+
+  // Handle dismissal of birthday modal with grand celebration
+  const handleAcknowledgeBirthday = () => {
+    fireGrandConfetti();
+    setShowBirthdayModal(false);
+    toast.success("🎂 زادروزتان مبارک جناب دانش عزیز! این صفحه اختصاصی هدیه شماست.");
+  };
 
   // Toggle theme
   const toggleTheme = () => {
@@ -369,7 +437,6 @@ export default function MortezaDaneshClientPage() {
       }}
     >
       {/* ── High-Performance Hardware-Accelerated Ambient Mesh Background ── */}
-      {/* Zero blur filters to guarantee 120 FPS buttery smooth scrolling */}
       <div
         className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500"
         style={{
@@ -1395,6 +1462,146 @@ export default function MortezaDaneshClientPage() {
           </div>
         </div>
       </footer>
+
+      {/* ── Floating Birthday Gift Button (To replay the surprise anytime!) ── */}
+      <div className="fixed bottom-6 left-6 z-40">
+        <button
+          onClick={() => {
+            setShowBirthdayModal(true);
+            confetti({
+              particleCount: 40,
+              spread: 60,
+              origin: { x: 0.1, y: 0.9 },
+              colors: ["#f59e0b", "#10b981", "#06b6d4"],
+              zIndex: 999999,
+            });
+          }}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-full border shadow-2xl backdrop-blur-md transition-all duration-200 hover:scale-105 active:scale-95 group text-xs font-bold"
+          style={{
+            backgroundColor: isDark ? "rgba(18, 24, 40, 0.85)" : "rgba(255, 255, 255, 0.90)",
+            borderColor: t.gold,
+            color: t.gold,
+            boxShadow: "0 8px 30px rgba(245, 158, 11, 0.25)",
+          }}
+        >
+          <Gift className="w-4 h-4 group-hover:rotate-12 transition-transform text-amber-400" />
+          <span>هدیه و تبریک زادروز</span>
+          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+        </button>
+      </div>
+
+      {/* ── 🎂 SURPRISE BIRTHDAY POPUP MODAL (Opens on initial load & QR scan!) 🎂 ── */}
+      <AnimatePresence>
+        {showBirthdayModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+            {/* Backdrop with elegant blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            {/* Birthday Gift Card Dialog */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-lg rounded-[32px] border p-6 sm:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden z-10 text-center"
+              style={{
+                backgroundColor: isDark ? "rgba(16, 22, 38, 0.96)" : "rgba(255, 255, 255, 0.98)",
+                borderColor: "rgba(245, 158, 11, 0.35)",
+                color: t.fg,
+              }}
+            >
+              {/* Top ambient radial glow inside card */}
+              <div
+                className="absolute -top-24 inset-x-0 h-48 rounded-full pointer-events-none opacity-40"
+                style={{
+                  background: "radial-gradient(ellipse at center, rgba(245, 158, 11, 0.8), rgba(16, 185, 129, 0.4), transparent 70%)",
+                }}
+              />
+
+              {/* Header Badge */}
+              <div className="relative z-10 flex flex-col items-center gap-4">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold shadow-sm bg-gradient-to-r from-amber-500/20 via-emerald-500/20 to-cyan-500/20 border-amber-400/40 text-amber-400">
+                  <PartyPopper className="w-4 h-4 text-amber-400" />
+                  <span>یک سورپرایز و هدیه ویژه • زادروز</span>
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                </div>
+
+                {/* Portrait with Golden Festive Ring */}
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 border-2 border-amber-400/80 shadow-[0_0_30px_rgba(245,158,11,0.35)]">
+                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                    <Image
+                      src="/images/clients/morteza-danesh/morteza-danesh.webp"
+                      alt="مرتضی دانش"
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 p-2 rounded-full bg-amber-500 text-slate-950 font-bold shadow-lg">
+                    🎂
+                  </div>
+                </div>
+
+                {/* Congratulatory Title */}
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-snug">
+                    زادروزتان فرخنده باد! 🎉
+                  </h3>
+                  <p className="text-sm sm:text-base font-bold text-amber-400">
+                    جناب آقای مرتضی دانش عزیز
+                  </p>
+                </div>
+
+                {/* Heartfelt Birthday Message */}
+                <div
+                  className="p-4 sm:p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed text-justify space-y-2.5"
+                  style={{
+                    backgroundColor: isDark ? "rgba(255, 255, 255, 0.03)" : "rgba(0, 0, 0, 0.02)",
+                    borderColor: t.divider,
+                    color: t.fgMuted,
+                  }}
+                >
+                  <p>
+                    به پاس بیش از یک دهه نوآوری و ارزش‌آفرینی، هدایت هوشمندانه مرکز نوآوری <strong className="text-emerald-400">زی‌تک زرین‌پال</strong>،
+                    سرمایه‌گذاری در <strong className="text-cyan-400">کارایا</strong> و همراهی خستگی‌ناپذیر با استارتاپ‌های کشور؛
+                  </p>
+                  <p>
+                    این وب‌سایت شخصی و اختصاصی به عنوان یک هدیه ماندگار به مناسبت سالروز تولد شما، با کمال افتخار توسط{" "}
+                    <strong className="text-amber-400">حسن شاهمرادی</strong> طراحی و تقدیم حضورتان می‌گردد.
+                  </p>
+                </div>
+
+                {/* Primary Action: Celebrate & Enter */}
+                <div className="w-full pt-2 flex flex-col gap-2.5">
+                  <button
+                    onClick={handleAcknowledgeBirthday}
+                    className="w-full py-3.5 px-6 rounded-full font-black text-sm text-white flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-95 active:scale-95 shadow-xl"
+                    style={{
+                      background: "linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)",
+                      boxShadow: "0 8px 30px rgba(16, 185, 129, 0.50)",
+                    }}
+                  >
+                    <span>ممنونم، مشاهده هدیه و ورود به صفحه</span>
+                    <PartyPopper className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => setShowBirthdayModal(false)}
+                    className="text-xs font-semibold opacity-60 hover:opacity-100 transition-opacity"
+                    style={{ color: t.fgMuted }}
+                  >
+                    بستن پنجره و مشاهده مستقیم
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* ── Interactive Modal: Consultation & Pitch Form ── */}
       <AnimatePresence>
