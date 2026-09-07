@@ -1,5 +1,6 @@
 // app/blog/blog-data.ts
 import type { Locale } from "../i18n/config";
+import { googleFlowRegionErrorFixArticle } from "./articles/google-flow-region-error-fix-article";
 import { aiViralVideoReplicationArticle } from "./articles/ai-viral-video-replication-article";
 import { aiImageToVideoArticle } from "./articles/ai-image-to-video-article";
 
@@ -111,6 +112,7 @@ export const authors: Record<Locale, ArticleAuthor> = {
 };
 
 export const rawArticles: RawArticle[] = [
+  googleFlowRegionErrorFixArticle,
   aiViralVideoReplicationArticle,
   aiImageToVideoArticle,
   {

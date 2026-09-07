@@ -6,7 +6,7 @@ import { allSeries } from "./vibe-coding/series/series-data";
 const LAST_MODIFIED: Record<string, Date> = {
   home: new Date("2026-06-11"),
   vibeCoding: new Date("2026-06-11"),
-  blogArchive: new Date("2026-09-06"),
+  blogArchive: new Date("2026-09-07"),
   workshopArchive: new Date("2026-06-18"),
   workshop28Khordad: new Date("2026-06-18"),
   seriesArchive: new Date("2026-06-11"),
