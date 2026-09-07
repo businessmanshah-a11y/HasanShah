@@ -7,6 +7,17 @@
         "--storage-state",
         "linkedin-storage-state.json"
       ]
+    },
+    "ga4": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-ga4"
+      ],
+      "env": {
+        "GA4_PROPERTY_ID": "553080341",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/infinite/HasanShah/docs/hasanshah-seo-f2037b4860ad.json"
+      }
     }
   }
 }
