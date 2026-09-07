@@ -157,7 +157,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-country-association-form-guide.webp",
             alt: "آموزش گام به گام پر کردن فرم تغییر ریجن اکانت گوگل برای Google Flow",
-            caption: "شکل ۳: رابط کاربری فرم تغییر کشور متصل به جیمیل با انتخاب گزینه کلیدی I travel often.",
+            caption: "شکل ۳: اسکرین‌شات واقعی از فرم رسمی تغییر کشور اکانت گوگل (Country Association) با انتخاب انگلستان و تیک گزینه استراتژیک I travel often.",
           },
         },
         {
@@ -184,7 +184,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/browser-fingerprint-clean-profile.webp",
             alt: "ایزولاسیون پروفایل مرورگر و حذف فینگرپرینت برای ورود ایمن به گوگل فلو",
-            caption: "شکل ۴: تنظیمات ۴ گانه ضد ردپای دیجیتال مرورگر و همگام‌سازی تایم‌زون با موقعیت آی‌پی.",
+            caption: "شکل ۴: اسکرین‌شات واقعی از محیط فعال و قفل‌گشایی‌شده استودیوی Google Flow پس از ایزولاسیون موفق مرورگر و هماهنگ‌سازی تایم‌زون.",
           },
         },
         {
@@ -211,7 +211,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "معماری ساخت اکانت خارجی پاک و فعال‌سازی اشتراک فمیلی بدون شماره ایران",
-            caption: "شکل ۵: فرآیند ساخت اکانت پاک گوگل در حالت ایزوله و الحاق به شبکه استودیویی فمیلی.",
+            caption: "شکل ۵: اسکرین‌شات واقعی از صفحه ساخت اکانت گوگل پاک (Clean Account) در حالت ایزوله بدون نیاز به شماره ایران.",
           },
         },
         {
@@ -231,7 +231,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "دانلود و نصب اپلیکیشن رسمی Google Flow روی گوگل پلی و اپ استور آیفون",
-            caption: "شکل ۶: مراحل تغییر ریجن استورهای موبایل و دریافت اپلیکیشن رسمی ساخت ویدیوی هوش مصنوعی فلو.",
+            caption: "شکل ۶: اسکرین‌شات واقعی از صفحه اپلیکیشن رسمی Google Flow در استور گوگل پلی با دکمه Install و پیش‌نمایش‌های محیط موبایل.",
           },
         },
         {
@@ -446,7 +446,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-country-association-form-guide.webp",
             alt: "Step by step guide to completing the official Google Country Association Form",
-            caption: "Figure 3: Google's Terms of Service Country Association form with 'I travel often' selected.",
+            caption: "Figure 3: Real screenshot of the official Google Country Association form with United Kingdom selected and 'I travel often' checked.",
           },
         },
         {
@@ -473,7 +473,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/browser-fingerprint-clean-profile.webp",
             alt: "Browser profile isolation and fingerprint mitigation for Google Flow",
-            caption: "Figure 4: Anti-fingerprinting browser configuration aligning timezone, profile isolation, and cache state.",
+            caption: "Figure 4: Real screenshot of the fully unlocked Google Flow studio dashboard after complete browser isolation and timezone alignment.",
           },
         },
         {
@@ -500,7 +500,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "Clean foreign Google account creation architecture with Family Plan pooling",
-            caption: "Figure 5: Isolated account registration flow bypassing phone SMS verification.",
+            caption: "Figure 5: Real screenshot of the clean Google Account registration flow in isolated browser state.",
           },
         },
         {
@@ -520,7 +520,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "Installing Google Flow on Android Play Store and iOS App Store",
-            caption: "Figure 6: App store region synchronization steps for installing Google Flow on mobile.",
+            caption: "Figure 6: Real screenshot of the official Google Flow app listing on Google Play Store ready for installation.",
           },
         },
         {
@@ -735,7 +735,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-country-association-form-guide.webp",
             alt: "استمارة غوغل الرسمية لتغيير بلد الحساب مع خيار السفر المتكرر",
-            caption: "شكل ٣: واجهة استمارة تغيير البلد التابعة لسياسات وخصوصية غوغل.",
+            caption: "شكل ٣: لقطة شاشة حقيقية لاستمارة غوغل الرسمية (Country Association) مع اختيار المملكة المتحدة وتفعيل خيار I travel often.",
           },
         },
         {
@@ -762,7 +762,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/browser-fingerprint-clean-profile.webp",
             alt: "عزل المتصفح وضبط المنطقة الزمنية لمنع كشف الموقع في جوجل فلو",
-            caption: "شكل ٤: خطوات التخلص من البصمة الرقمية للمتصفح ومزامنة التوقيت.",
+            caption: "شكل ٤: لقطة شاشة حقيقية لواجهة استوديو Google Flow وهي تعمل بكامل ميزاتها بعد عزل المتصفح ومزامنة التوقيت.",
           },
         },
         {
@@ -789,7 +789,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "بنية حساب غوغل الدولي النظيف ومشاركة الحصص عبر العائلة",
-            caption: "شكل ٥: خطوات إنشاء حساب غوغل جديد جاهز لاستوديو فلو مباشرة.",
+            caption: "شكل ٥: لقطة شاشة حقيقية لصفحة إنشاء حساب غوغل دولي نظيف دون الحاجة لرقم هاتف محلي.",
           },
         },
         {
@@ -809,7 +809,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "تثبيت تطبيق Google Flow على متجر غوغل بلاي وآب ستور",
-            caption: "شكل ٦: خطوات ضبط متاجر التطبيقات وتثبيت تطبيق Google Flow على الهواتف بنجاح.",
+            caption: "شكل ٦: لقطة شاشة حقيقية لصفحة تطبيق Google Flow الرسمي على متجر غوغل بلاي مع زر التثبيت ومعاينة الشاشات.",
           },
         },
         {
