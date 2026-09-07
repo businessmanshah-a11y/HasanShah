@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import LocalizedToaster from "./components/LocalizedToaster";
 import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf } from "./i18n/config";
@@ -84,6 +85,7 @@ const NO_FLASH_SCRIPT = `(function(){try{var s=['fa','en','ar'];var m=document.c
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const initialLocale: Locale = defaultLocale;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-997EJHQ4QV";
 
   return (
     <html
@@ -98,6 +100,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preload" href="/fonts/PeydaWebFaNum-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        )}
         <LanguageProvider initialLocale={initialLocale}>
           {children}
           <LocalizedToaster />
