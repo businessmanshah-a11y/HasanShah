@@ -10,8 +10,10 @@ export function PersonJsonLd() {
     url: BASE,
     image: `${BASE}/images/Shah2.webp`,
     sameAs: [
-      "https://linkedin.com/in/hasanshah",
-      "https://github.com/hasanshah",
+      "https://www.linkedin.com/in/hasanshahmoradi/",
+      "https://www.instagram.com/shahbusinessman/",
+      "https://github.com/businessmanshah-a11y",
+      "https://t.me/shahbusinessman",
     ],
     jobTitle: [
       "طراح، توسعه‌دهنده و استراتژیست دیجیتال",

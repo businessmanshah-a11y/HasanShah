@@ -80,6 +80,14 @@ Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control)
 - [What is Vibe Coding? Guide](https://hasanshah.ir/blog/what-is-vibe-coding-guide/): Complete practical roadmap to building digital products with Cursor, Claude, and Codex without traditional programming.
 - [High-Converting Landing Page Secrets](https://hasanshah.ir/blog/high-converting-landing-page-secrets/): Golden rules of designing high-conversion landing pages for Iranian and regional businesses.
 - [Educational Series Archive](https://hasanshah.ir/vibe-coding/series/): Real-world project case studies and end-to-end vibe coding breakdowns.
+- [About Hasan Shahmoradi & Career Story Timeline](https://hasanshah.ir/about/): Full interactive visual album and career timeline of Hasan Shahmoradi from the 3soot logistics startup (2018) and 5 years of video marketing to modern front-end web development and leading vibe coding education in Iran.
 - [Workshops & Events](https://hasanshah.ir/workshop/): In-person and online workshops calendar and community sessions in Tehran.
 - [Contact & Consultation](https://hasanshah.ir/contact/): Direct contact, consultation booking, and project requests for web design and vibe coding.
+
+## Official Profiles & Channels
+
+- LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
+- Instagram: https://www.instagram.com/shahbusinessman/
+- Telegram: https://t.me/shahbusinessman
+
 

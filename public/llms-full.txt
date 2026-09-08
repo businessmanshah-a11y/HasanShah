@@ -56,7 +56,21 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Co
 - URL: https://hasanshah.ir/blog/high-converting-landing-page-secrets/
 - Description: UX/UI and psychological frameworks for building high-converting landing pages that maximize sales and lead acquisition.
 
-## Contact & Consultation
+## Career Journey & Story Timeline (About Page)
+- URL: https://hasanshah.ir/about/
+- Description: Full interactive visual album and career roadmap of Hasan Shahmoradi across five distinct epochs:
+  1. 2018–2019 (1397–1398): "3soot" On-Demand Warm Bread Logistics Startup (3soot.app) — first entrepreneurship venture, mobile app launch, and market validation.
+  2. 2019–2020 (1398–1399): Startup Shutdown & COVID-19 Era — key lessons from failure, business resilience, and strategic pivot toward value creation and sales psychology.
+  3. 2020–2023 (1399–1402): 5 Years of Heavy Video Marketing & Industrial Copywriting — viral reels, B2B commercial campaigns (e.g. mr_countertop.ir), and mastering viewer retention hooks.
+  4. 2023–2024 (1402–1403): Front-end Engineering & High-Converting Websites — building custom React/Next.js/WordPress sites with a 72-hour zero-risk delivery offer.
+  5. 2024–Present: Leading Vibe Coding in Iran — teaching entrepreneurs to ship complete web apps and digital products by directing AI models in Persian.
+
+## Contact & Official Channels
 - Website: https://hasanshah.ir
+- Dedicated About & Story Timeline: https://hasanshah.ir/about/
 - Dedicated Contact & Consultation Page: https://hasanshah.ir/contact/
 - Free Workshop Registration: https://hasanshah.ir/vibe-coding#workshop
+- LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
+- Instagram: https://www.instagram.com/shahbusinessman/
+- Telegram: https://t.me/shahbusinessman
+

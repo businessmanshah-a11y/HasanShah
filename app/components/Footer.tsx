@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Phone, Send } from "lucide-react";
+import { InstagramIcon, LinkedInIcon } from "./Icons";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Footer() {
@@ -8,7 +10,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative overflow-hidden bg-surface/30">
 
-      {/* ── جداکننده: خط طلایی + قیف장식ی فقط در بالا ── */}
+      {/* ── جداکننده: خط طلایی + قیف تزئینی در بالا ── */}
       <div className="relative">
         {/* خط طلایی اصلی */}
         <div className="gold-divider" />
@@ -60,21 +62,51 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* دکمه‌های تماس */}
-        <div className="flex flex-wrap justify-center gap-3">
+        {/* لینک‌های راهبری فوتر */}
+        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground">
+          <Link href="/" className="hover:text-gold transition-colors">صفحه اصلی</Link>
+          <Link href="/about/" className="text-foreground hover:text-gold transition-colors font-bold">درباره من (مسیر و رزومه)</Link>
+          <Link href="/vibe-coding" className="hover:text-gold transition-colors">آموزش وایب‌کدینگ</Link>
+          <Link href="/blog/" className="hover:text-gold transition-colors">وبلاگ تخصصی</Link>
+          <Link href="/contact/" className="hover:text-gold transition-colors">تماس با من</Link>
+        </div>
+
+        {/* شبکه‌های اجتماعی و دکمه‌های ارتباطی */}
+        <div className="flex flex-wrap justify-center items-center gap-3">
           <a
             href="https://t.me/shahbusinessman"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-6 py-2.5 text-sm font-bold text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-5 py-2.5 text-xs sm:text-sm font-bold text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
           >
             <Send className="h-4 w-4" />
             {t.footer.telegram}
           </a>
+
+          <a
+            href="https://www.instagram.com/shahbusinessman/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-pink-500/30 bg-pink-500/10 px-4 py-2.5 text-xs sm:text-sm font-semibold text-pink-400 hover:bg-pink-500/20 hover:border-pink-500/50 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+          >
+            <InstagramIcon className="h-4 w-4" />
+            <span>اینستاگرام</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/hasanshahmoradi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-xs sm:text-sm font-semibold text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+          >
+            <LinkedInIcon className="h-4 w-4" />
+            <span>لینکدین</span>
+          </a>
+
           <a
             href="tel:09120870095"
             dir="ltr"
-            className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-6 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+            className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-5 py-2.5 text-xs sm:text-sm font-semibold text-gold hover:bg-gold/10 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
             <Phone className="h-4 w-4" />
             {t.footer.phone}

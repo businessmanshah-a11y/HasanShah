@@ -19,6 +19,7 @@ import {
   ArrowRight,
   ArrowLeft,
 } from "lucide-react";
+import { InstagramIcon, LinkedInIcon } from "../components/Icons";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import LeadForm from "../components/LeadForm";
@@ -162,18 +163,36 @@ export default function ContactContent() {
                 </a>
 
                 <a
-                  href="https://instagram.com/hasanshah.ir"
+                  href="https://www.instagram.com/shahbusinessman/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-background/50 hover:border-gold/40 hover:bg-gold/5 transition group"
                 >
                   <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-pink-400">
-                      <Sparkles className="h-4 w-4" />
+                      <InstagramIcon className="h-4 w-4" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">اینستاگرام</div>
-                      <div className="text-xs text-muted-foreground">@hasanshah.ir</div>
+                      <div className="font-semibold text-foreground">اینستاگرام رسمی</div>
+                      <div className="text-xs text-muted-foreground" dir="ltr">@shahbusinessman</div>
+                    </div>
+                  </div>
+                  <ArrowIcon className="h-4 w-4 text-muted-foreground group-hover:text-gold transition-transform group-hover:scale-110" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/hasanshahmoradi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-background/50 hover:border-gold/40 hover:bg-gold/5 transition group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="h-8 w-8 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                      <LinkedInIcon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">لینکدین حرفه‌ای</div>
+                      <div className="text-xs text-muted-foreground" dir="ltr">hasanshahmoradi</div>
                     </div>
                   </div>
                   <ArrowIcon className="h-4 w-4 text-muted-foreground group-hover:text-gold transition-transform group-hover:scale-110" />

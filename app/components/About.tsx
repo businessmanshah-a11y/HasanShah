@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { Check, ArrowLeft, ArrowRight } from "lucide-react";
 import { useCounter, useReveal } from "../hooks/use-reveal";
 import { useI18n } from "../i18n/LanguageProvider";
 import { Highlight } from "../i18n/Highlight";
@@ -97,6 +98,16 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/about/"
+                className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-6 py-3 text-sm font-bold text-gold hover:bg-gold/20 hover:border-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all group"
+              >
+                <span>مشاهده داستان کامل و آلبوم تصویری مسیر من</span>
+                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              </Link>
             </div>
           </div>
         </div>

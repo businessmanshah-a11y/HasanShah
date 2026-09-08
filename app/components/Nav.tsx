@@ -11,7 +11,7 @@ export default function Nav() {
     { href: "/blog/",       label: t.nav.blog },
     { href: "/vibe-coding", label: t.nav.vibeCoding },
     { href: "/workshop/",   label: t.nav.workshops },
-    { href: "/#about",      label: t.nav.about },
+    { href: "/about/",      label: t.nav.about },
     { href: "/#services",   label: t.nav.services },
     { href: "/#portfolio",  label: t.nav.portfolio },
     { href: "/contact/",    label: t.nav.contact },
