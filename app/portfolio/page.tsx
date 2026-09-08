@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PortfolioPageClient from "./PortfolioPageClient";
+import PortfolioContent from "./PortfolioContent";
 import { PortfolioPageJsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
   return (
     <>
       <PortfolioPageJsonLd />
-      <PortfolioPageClient />
+      <PortfolioContent />
     </>
   );
 }

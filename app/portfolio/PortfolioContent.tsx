@@ -26,7 +26,7 @@ import {
   type ProjectItem,
 } from "../lib/portfolio-data";
 
-export default function PortfolioPageClient() {
+export default function PortfolioContent() {
   const { locale, dir } = useI18n();
   const isRtl = dir === "rtl";
   const ArrowForward = isRtl ? ArrowLeft : ArrowRight;
