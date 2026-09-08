@@ -157,6 +157,29 @@ function AboutStructuredData() {
             "High-Converting Landing Pages",
             "Startup Unit Economics",
           ],
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Shahid Beheshti University",
+              "alternateName": "دانشگاه شهید بهشتی",
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Tehran Technical Complex (MFT)",
+              "alternateName": "مجتمع فنی تهران",
+            },
+          ],
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "certificate",
+              "name": "Executive MBA",
+              "recognizedBy": {
+                "@type": "EducationalOrganization",
+                "name": "Shahid Beheshti University",
+              },
+            },
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Tehran",

@@ -17,6 +17,25 @@ export interface MilestoneTranslation {
   };
 }
 
+export interface EducationStepTranslation {
+  step: string;
+  year: string;
+  badge: string;
+  title: string;
+  institution: string;
+  description: string;
+  takeaway: string;
+}
+
+export interface EducationSectionTranslation {
+  badge: string;
+  heading: string;
+  subtitle: string;
+  quoteHighlight: string;
+  quoteAuthor: string;
+  steps: EducationStepTranslation[];
+}
+
 export interface PhilosophyCardTranslation {
   iconType: "trending" | "shield" | "terminal";
   number: string;
@@ -59,6 +78,7 @@ export interface AboutPageDictionary {
     imageDocPrefix: string;
   };
   milestones: MilestoneTranslation[];
+  education: EducationSectionTranslation;
   philosophy: {
     badge: string;
     heading: string;
@@ -85,15 +105,15 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
     hero: {
       badge: "داستان واقعی، آلبوم مستند و چشم‌انداز من",
       heading: "سلام، من حسن شاهمرادی هستم؛",
-      highlightRole: "معمار محصول دیجیتال و مدرس پیشگام Vibe Coding در ایران",
-      p1: "بیش از ۸ سال است که در تقاطع «فهم عمیق کسب‌وکار»، «روانشناسی فروش و توجه» و «مهندسی نرم‌افزار» فعالیت می‌کنم. کار من از شکست‌های سخت در استارتاپ‌های عملیاتی تا مدیریت ویدیو مارکتینگ صنعتی و ثبت رکوردهای میلیاردی فروش روزانه گسترش یافته است.",
-      p2: "در دورانی که بیشتر برنامه‌نویسان درگیر کدنویسی خط به خط سنتی بودند، متوجه شدم که آینده متعلق به کسانی است که بتوانند با تسلط بر هوش مصنوعی (Cursor, Claude, Codex)، سرعت خلق محصول را ده‌ها برابر کنند؛ مفهومی که امروز به نام Vibe Coding شناخته می‌شود.",
-      p3: "ما ظرفیت پذیرش پروژه‌هایمان را به دلیل وسواس شدید بر کیفیت، به ۲ الی ۳ بیزینس منتخب در ماه محدود کرده‌ایم. اگر به دنبال طراحی لندینگ‌پیج یا پلتفرمی اختصاصی با نرخ تبدیل بالا هستید، می‌توانید وارد صف بررسی مشاوره استراتژیک شوید.",
-      consultBtn: "درخواست مشاوره استراتژیک ۳۰ دقیقه‌ای",
-      consultBadge: "ظرفیت محدود | صف بررسی ماهانه",
-      vibeBtn: "مشاهده آموزش‌های وایب‌کدینگ",
-      socialLinkedin: "لینکدین رسمی",
-      socialInstagram: "اینستاگرام (@shahbusinessman)",
+      highlightRole: "معمار محصول دیجیتال و مدرس پیشگام Vibe Coding",
+      p1: "بیش از ۸ سال فعالیت در تقاطع بیزینس، روانشناسی فروش و مهندسی نرم‌افزار — از چالش‌های سخت استارتاپ لجستیکی تا مدیریت کمپین‌های ویدیو مارکتینگ صنعتی با فروش روزانه میلیاردی.",
+      p2: "با ظهور هوش مصنوعی، دوران ماه‌ها کدنویسی خسته‌کننده دستی به پایان رسیده؛ ما با متدولوژی Vibe Coding و ابزارهای هوشمند (Cursor, Claude, Codex) محصولات نرم‌افزاری را ده‌ها برابر سریع‌تر به ثمر می‌رسانیم.",
+      p3: "به دلیل وسواس شدید بر کیفیت، پذیرش ماهانه پروژه‌ها صرفاً به ۲ الی ۳ بیزینس منتخب محدود است. می‌توانید برای ارزیابی نیاز پروژه، وارد صف مشاوره استراتژیک شوید.",
+      consultBtn: "مشاوره استراتژیک (۳۰ دقیقه)",
+      consultBadge: "ارزیابی اولیه و تطابق پروژه",
+      vibeBtn: "آموزش وایب‌کدینگ",
+      socialLinkedin: "لینکدین",
+      socialInstagram: "اینستاگرام",
       socialTelegram: "تلگرام",
       profileRole: "طراح سایت، معمار محصول و مدرس Vibe Coding",
       stat1Value: "۸+ سال",
@@ -210,6 +230,57 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         },
       },
     ],
+    education: {
+      badge: "مسیر تحصیلی و فلسفه یادگیری",
+      heading: "چرا دانشگاه را رها کردم و چگونه یاد می‌گیرم؟",
+      subtitle:
+        "روایتی شفاف از انصراف از آموزش عالی سنتی تا مدارک حرفه‌ای بیزینس و خودآموزی بی‌پایان در عصر مدرن.",
+      quoteHighlight:
+        "«من یوتیوب، مستندات دست‌اول جهانی و کتاب‌ها را از دانشگاه‌های سنتی بسیار آموزنده‌تر می‌دانم. من کاری را صرفاً برای اینکه در چشم دیگران موجه به نظر برسد انجام ندادم؛ تنها ملاک، خلق ارزش واقعی و خروجی ملموس در بازار است.»",
+      quoteAuthor: "حسن شاهمرادی",
+      steps: [
+        {
+          step: "۰۱",
+          year: "۱۳۹۵ — ۱۳۹۶",
+          badge: "شروع آکادمیک",
+          title: "ورود به رشته حسابداری و مشاهده شکاف تئوری با بازار",
+          institution: "آموزش عالی سنتی",
+          description:
+            "برای فهم پایه‌های مالی و گردش نقدینگی وارد دانشگاه در رشته حسابداری شدم؛ اما بلافاصله متوجه شدم سیلابس‌های کهنه و تدریس تئوریک هیچ درکی از جریان زنده بیزینس به دانشجو نمی‌دهد. بعد از چند ترم تصمیم به تغییر مسیر گرفتم.",
+          takeaway: "تئوری‌های خاک‌گرفته دانشگاهی پاسخگوی واقعیت‌های خشن بازار نیستند.",
+        },
+        {
+          step: "۰۲",
+          year: "۱۳۹۶ — ۱۳۹۸",
+          badge: "تصمیم رادیکال",
+          title: "تغییر به مدیریت و انصراف قطعی از ساختار مدرک‌محور",
+          institution: "دانشگاه — انصراف در ترم‌های پایانی",
+          description:
+            "به امید یادگیری استراتژی‌های رهبری وارد رشته مدیریت شدم. اما در ترم‌های پایانی، دیدم دانشگاه صرفاً به کارخانه‌ای برای صدور کاغذ مدرک تبدیل شده است. قاطعانه انصراف دادم و پرونده مدرک دانشگاهی را برای همیشه بستم.",
+          takeaway: "مدرک آکادمیک را کاملاً رها کردم تا روی خروجی واقعی تمرکز کنم.",
+        },
+        {
+          step: "۰۳",
+          year: "۱۳۹۸ — ۱۴۰۱",
+          badge: "مدارک تخصصی کسب‌وکار",
+          title: "مدرک MBA شهید بهشتی و گواهینامه‌های پیشرفته اجرایی",
+          institution: "دانشگاه شهید بهشتی & مجتمع فنی تهران",
+          description:
+            "به جای مدرک‌گرایی، سراغ تخصص‌های کاربردی رفتم: اخذ مدرک Executive MBA از دانشگاه شهید بهشتی و گذراندن دوره‌های پیشرفته مدیریت مالی، بازاریابی و فروش، برندسازی و مدیریت عملیات در مراکز معتبر و تخصصی.",
+          takeaway: "کسب مهارت‌های عملیاتیِ درآمدساز از معتبرترین مراجع آموزشی کشور.",
+        },
+        {
+          step: "۰۴",
+          year: "۱۴۰۱ — اکنون",
+          badge: "سبک زندگی خودآموز",
+          title: "یادگیری مستمر: یوتیوب، کتاب‌خوانی پیوسته و هوش مصنوعی",
+          institution: "اکوسیستم جهانی & خودآموزی مستمر",
+          description:
+            "یادگیری به عنوان یک عادت روزانه: مطالعه صدها جلد کتاب در حوزه‌های اقتصاد رفتاری، روانشناسی فروش و معماری نرم‌افزار، دنبال کردن منابع پیشتاز بین‌المللی در یوتیوب و تسلط کامل بر مهندسی پرامپت و متدولوژی Vibe Coding.",
+          takeaway: "یوتیوب و مستندات دست‌اول جهانی، واقعی‌ترین دانشگاه عصر مدرن هستند.",
+        },
+      ],
+    },
     philosophy: {
       badge: "فلسفه کاری و رویکرد اجرایی",
       heading: "اصولی که اعتبار برند مرا تعریف می‌کنند",
@@ -243,9 +314,9 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
       description:
         "چه برای اجرای یک پلتفرم یا لندینگ‌پیج با نرخ تبدیل استثنایی و چه برای یادگیری عمیق و تسلط بر وایب‌کدینگ، مسیر آماده است.",
       waitlistBadge: "ظرفیت پذیرش این ماه: در حال تکمیل",
-      primaryBtn: "رزرو مشاوره استراتژیک ۳۰ دقیقه‌ای (ورود به صف بررسی)",
-      secondaryBtn: "مشاهده دوره‌ها و آموزش وایب‌کدینگ",
-      secondarySub: "از صفر تا خلق اولین محصول وب با AI",
+      primaryBtn: "درخواست مشاوره استراتژیک",
+      secondaryBtn: "آموزش وایب‌کدینگ",
+      secondarySub: "جلسه ۳۰ دقیقه‌ای رایگان برای ارزیابی نیاز پروژه و تضمین بازگشت سرمایه",
     },
   },
   en: {
@@ -257,16 +328,16 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
     hero: {
       badge: "Authentic Story, Documentary Album & Vision",
       heading: "Hi, I am Hasan Shahmoradi;",
-      highlightRole: "Digital Product Architect & Pioneer Vibe Coding Educator in Iran",
-      p1: "For over 8 years, I have worked at the exact intersection of deep business strategy, consumer attention psychology, and modern software engineering. My journey spans from operational battlegrounds in urban logistics to directing industrial video campaigns that drove billions in daily sales.",
-      p2: "While conventional developers remained confined to manual syntax, I realized the future belongs to architects who direct advanced AI models (Cursor, Claude, Codex) to build products at 10x speed — the paradigm now celebrated worldwide as Vibe Coding.",
-      p3: "To preserve uncompromising excellence, client intake is strictly capped at 2 to 3 selective projects per month. If you are building a high-converting web platform, apply for our 30-minute strategic consultation.",
-      consultBtn: "Request 30-Min Strategic Consultation",
-      consultBadge: "Strict Capacity | Selective Monthly Intake",
-      vibeBtn: "Explore Vibe Coding Masterclass",
-      socialLinkedin: "Official LinkedIn",
-      socialInstagram: "Instagram (@shahbusinessman)",
-      socialTelegram: "Telegram Channel",
+      highlightRole: "Digital Product Architect & Pioneer Vibe Coding Educator",
+      p1: "Over 8 years operating at the intersection of business strategy, consumer attention psychology, and modern software engineering — from the trenches of logistics startups to directing video campaigns that drove billions in daily sales.",
+      p2: "In the era of frontier AI, months of tedious manual coding are over. Using Vibe Coding methodologies with intelligent models (Cursor, Claude, Codex), we build production software 10x faster.",
+      p3: "To preserve bespoke craftsmanship, monthly project intake is strictly capped at 2 to 3 selective clients. Apply below to join our strategic qualification queue.",
+      consultBtn: "Strategic Consultation (30 Min)",
+      consultBadge: "Project Scoping & Fit Evaluation",
+      vibeBtn: "Vibe Coding Masterclass",
+      socialLinkedin: "LinkedIn",
+      socialInstagram: "Instagram",
+      socialTelegram: "Telegram",
       profileRole: "Web Architect, Product Strategist & Vibe Coding Educator",
       stat1Value: "8+ Years",
       stat1Label: "Digital Market Experience",
@@ -298,9 +369,9 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         tags: ["Startup", "Entrepreneurship", "Product Management", "Urban Logistics"],
         image: {
           src: "/images/about/milestone-1-3soot.jpg",
-          alt: "3soot startup launch video cover on Aparat",
-          caption: "Official Aparat video launch cover for 3soot.app — on-demand warm bread doorstep logistics",
-          tag: "Aparat Video Archive 2018",
+          alt: "Aparat launch campaign cover for 3soot app",
+          caption: "Official video release cover for 3soot startup (3soot.app) on Aparat — on-demand bread delivery fleet in Tehran",
+          tag: "Aparat Archives 2018",
           externalLink: "https://www.aparat.com/v/z702f4r",
           externalLinkLabel: "Watch on Aparat",
         },
@@ -308,45 +379,45 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
       {
         id: "corona-pivot",
         year: "2019 — 2020",
-        badge: "Turning Point & Rebuilding",
-        title: "Startup Shutdown, COVID-19 Era & The Year of Strategic Reflection",
-        subtitle: "Hard lessons from failure, building resilience, and redefining business acumen",
+        badge: "Pivot & Resilience",
+        title: "Startup Shuttering, COVID-19 Era & 1-Year Strategic Audit",
+        subtitle: "Deep lessons in failure, mental grit, and re-engineering commercial perspective",
         description:
-          "After 8 months of intense operational hustle and exactly two months before COVID-19 hit Iran, the startup was shuttered. A quiet year of deep personal and strategic recalibration followed. I learned that failure is only fatal if you fail to extract wisdom. I realized that before writing any code, one must deeply master marketing, attention capture, and value engineering.",
+          "After 8 months of exhaustive execution and just two months before COVID-19 hit Iran, operations halted. A year of silent self-reconstruction followed. I learned that failure is only permanent if you fail to extract its lessons. Before writing code, one must master marketing, attention hooks, and commercial value creation.",
         quote:
-          "I hit an absolute dead end and spent a full year rethinking everything. But that exact dark period became the catalyst for five years of mastering copywriting, video storytelling, and sales.",
-        tags: ["Resilience", "Failure Analysis", "Business Mindset", "Pivot"],
+          "I realized traditional routes would not take me where I wanted to be. I spent a year re-evaluating everything — and that dark chapter catalyzed five years of mastering content, psychology, and sales.",
+        tags: ["Resilience", "Post-Mortem", "Commercial Strategy", "Turning Point"],
         image: {
           src: "/images/about/milestone-2-resilience.jpg",
-          alt: "Rebuilding era, strategic analysis and business blueprints",
-          caption: "The resilience station: late nights redesigning business models and market psychology blueprints",
-          tag: "Strategic Reconstruction 2019",
+          alt: "Quiet rebuilding and strategic reflection period",
+          caption: "Strategic resilience station; late nights deconstructing business unit economics and buyer psychology",
+          tag: "Strategy Redesign 2019",
         },
       },
       {
         id: "video-marketing-era",
         year: "2020 — 2023",
         badge: "5 Years Content Leadership",
-        title: "Heavyweight Industrial Video Marketing & Commercial Scriptwriting",
-        subtitle: "Engineering viral retention hooks, factory collaborations, and B2B conversion",
+        title: "Pioneering Industrial Video Marketing & B2B Scriptwriting",
+        subtitle: "Crafting viral hooks, partnering with factories, and unlocking major sales contracts",
         description:
-          "Transitioned full-time into consulting, scripting, and executing high-ticket video campaigns for premium industrial and architectural brands (such as countertop authority mr_countertop.ir). Mastered 3-second visual hooks, retention pacing, and turning digital attention into high-ticket sales contracts — standards that remain industry benchmarks to this day.",
+          "Transitioned full-time into consulting, scripting, and executing high-converting video campaigns for luxury industrial manufacturers (including stone countertop authority mr_countertop.ir). Mastered 3-second attention hooks, audience retention, and converting organic views into multi-billion-toman daily contracts.",
         quote:
-          "The most sophisticated website in the world is an empty desert if it fails to hook attention in the first three seconds and resolve the visitor's core pain.",
-        tags: ["Video Marketing", "Direct Response", "Sales Psychology", "B2B Branding"],
+          "The most technologically sophisticated website is a barren desert if it fails to hook attention in the first three seconds and solve a genuine user problem.",
+        tags: ["Video Marketing", "Direct-Response Scripting", "Sales Psychology", "B2B Branding"],
         image: {
           src: "/images/about/milestone-3-videomarketing.jpg",
-          alt: "Hasan Shahmoradi in the Mr Countertop showroom",
-          caption: "Content production and script execution for mr_countertop.ir; driving high-ticket B2B conversions with video",
+          alt: "Hasan Shahmoradi in mr_countertop showroom",
+          caption: "Executing video campaigns for mr_countertop.ir; driving high-ticket B2B transactions through video narrative",
           tag: "Instagram Campaigns 2020",
           externalLink: "https://www.instagram.com/mr_countertop.ir/",
-          externalLinkLabel: "View Mr Countertop Page",
+          externalLinkLabel: "Visit mr_countertop Page",
         },
       },
       {
         id: "web-dev-conversion",
         year: "2023 — 2024",
-        badge: "Frontend Architecture",
+        badge: "Frontend & CRO Engineering",
         title: "Uniting Content with Code: High-Converting Custom Web Platforms",
         subtitle: "Bespoke web engineering with React, Next.js, and high-conversion architecture",
         description:
@@ -382,6 +453,57 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         },
       },
     ],
+    education: {
+      badge: "Educational Journey & Learning Philosophy",
+      heading: "Why I Walked Away from Academia & How I Learn",
+      subtitle:
+        "A transparent journey from dropping out of traditional universities to executive business credentials and lifelong self-education.",
+      quoteHighlight:
+        "\"I consider YouTube, global engineering docs, and deep reading far superior to traditional universities. I never pursued anything merely to look validated in the eyes of others — real-world market impact is the only metric that matters.\"",
+      quoteAuthor: "Hasan Shahmoradi",
+      steps: [
+        {
+          step: "01",
+          year: "2016 — 2017",
+          badge: "Academic Entry",
+          title: "Starting Accounting & Experiencing the Theory-Market Gap",
+          institution: "Higher Education System",
+          description:
+            "Enrolled in Accounting to grasp financial balance sheets and cash flow fundamentals. Quickly discovered that outdated academic theory was completely disconnected from live market dynamics, leading to my first withdrawal.",
+          takeaway: "Outdated university syllabi cannot solve modern market challenges.",
+        },
+        {
+          step: "02",
+          year: "2017 — 2019",
+          badge: "Decisive Dropout",
+          title: "Switching to Management & Walking Away from Degrees",
+          institution: "University — Advanced Terms Dropout",
+          description:
+            "Switched to Management seeking executive and operational insight. Right in the final semesters, I saw universities in Iran as credential mills rather than centers of competence. I dropped out definitively and abandoned academic degrees for good.",
+          takeaway: "Walked away from formal degrees to focus 100% on real-world execution.",
+        },
+        {
+          step: "03",
+          year: "2019 — 2022",
+          badge: "Executive Credentials",
+          title: "Executive MBA at Shahid Beheshti & Specialized Diplomas",
+          institution: "Shahid Beheshti University & Tehran Technical Complex",
+          description:
+            "Invested in rigorous, practical business mastery: earned an Executive MBA from Shahid Beheshti University alongside certified programs in Financial Management, Marketing & Sales, Brand Strategy, and Operations Management.",
+          takeaway: "Targeted, high-level business competence that drives direct ROI.",
+        },
+        {
+          step: "04",
+          year: "2022 — Present",
+          badge: "Lifelong Self-Taught",
+          title: "Continuous Learning: YouTube, Books & Frontier AI",
+          institution: "Global Ecosystem & Frontier AI",
+          description:
+            "Learning as a daily lifestyle: devouring hundreds of volumes on behavioral economics, attention psychology, and software architecture, alongside global masterclasses on YouTube and pioneering frontier AI Vibe Coding.",
+          takeaway: "YouTube and direct global resources are the true universities of our time.",
+        },
+      ],
+    },
     philosophy: {
       badge: "Core Philosophy & Approach",
       heading: "Principles Defining Our Brand Standard",
@@ -414,10 +536,10 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
       heading: "Where Would You Like to Connect on This Journey?",
       description:
         "Whether you are building a mission-critical web platform or seeking mastery in Vibe Coding, your roadmap begins here.",
-      waitlistBadge: "Current Monthly Capacity: Limited Availability",
-      primaryBtn: "Book 30-Min Strategic Session (Join Waitlist)",
-      secondaryBtn: "Explore Vibe Coding Masterclass",
-      secondarySub: "From zero to shipping your first AI-built web product",
+      waitlistBadge: "Monthly Capacity: Limited Availability",
+      primaryBtn: "Request Strategic Consultation",
+      secondaryBtn: "Explore Vibe Coding",
+      secondarySub: "Complimentary 30-min evaluation to scope your project and guarantee mutual fit",
     },
   },
   ar: {
@@ -429,16 +551,16 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
     hero: {
       badge: "قصة واقعية، ألبوم وثائقي ورؤية مستقبلية",
       heading: "مرحباً، أنا حسن شهمرادي؛",
-      highlightRole: "مهندس منتجات رقمية ورائد تعليم Vibe Coding في الشرق الأوسط",
-      p1: "على مدار أكثر من ۸ سنوات، أعمل عند نقطة التقاء الرؤية التجارية العميقة، سيكولوجية جذب الانتباه والمبيعات، وهندسة البرمجيات الحديثة. تمتد مسيرتي من الميدان اللوجستي الصعب إلى قيادة حملات الفيديو الصناعية التي حققت مبيعات قياسية يومية.",
-      p2: "في الوقت الذي انشغل فيه المبرمجون التقليديون بكتابة الكود سطراً بسطر، أدركت أن المستقبل هو لمن يتقن توجيه الذكاء الاصطناعي (Cursor, Claude, Codex) لبناء البرمجيات بسرعة مضاعفة بعشرات المرات؛ وهو المفهوم المعروف عالمياً بـ Vibe Coding.",
-      p3: "حرصاً منا على أعلى مستويات الجودة الفاخرة، نحدد طاقتنا الاستيعابية الصارمة بـ ۲ إلى ۳ مشاريع فقط شهرياً. إذا كنت تطمح لتطوير منصة رقمية ذات معدل تحويل استثنائي، يمكنك حجز جلسة استشارية استراتيجية.",
-      consultBtn: "طلب استشارة استراتيجية مدتها ۳۰ دقيقة",
-      consultBadge: "طاقة محدودة | قائمة انتظار شهرية",
-      vibeBtn: "استكشاف دورات فايب كودينغ",
-      socialLinkedin: "لينكد إن الرسمي",
-      socialInstagram: "إنستغرام (@shahbusinessman)",
-      socialTelegram: "قناة تلغرام",
+      highlightRole: "مهندس منتجات رقمية ورائد تعليم Vibe Coding",
+      p1: "أكثر من ۸ سنوات عند نقطة التقاء الرؤية التجارية العميقة، سيكولوجية جذب الانتباه والمبيعات، وهندسة البرمجيات الحديثة — من الميدان اللوجستي الصعب إلى قيادة حملات الفيديو الصناعية بمبيعات قياسية.",
+      p2: "مع تطور الذكاء الاصطناعي، انتهى عصر كتابة الكود اليدوي المرهق؛ نحن نبني البرمجيات والتطبيقات بسرعة مضاعفة بعشرات المرات عبر منهجية Vibe Coding وأحدث النماذج الذكية (Cursor, Claude, Codex).",
+      p3: "حرصاً منا على أعلى معايير الجودة الفاخرة، نحدد طاقتنا الاستيعابية الصارمة بـ ۲ إلى ۳ مشاريع فقط شهرياً. يمكنك الانضمام لقائمة انتظار الجلسة الاستشارية.",
+      consultBtn: "استشارة استراتيجية (۳۰ دقيقة)",
+      consultBadge: "تقييم أولي لملاءمة المشروع",
+      vibeBtn: "دورات فايب كودينغ",
+      socialLinkedin: "لينكد إن",
+      socialInstagram: "إنستغرام",
+      socialTelegram: "تلغرام",
       profileRole: "مصمم مواقع، مهندس منتجات ومحاضر Vibe Coding",
       stat1Value: "+۸ سنوات",
       stat1Label: "خبرة في السوق الرقمي",
@@ -554,6 +676,57 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         },
       },
     ],
+    education: {
+      badge: "المسار التعليمي وفلسفة التعلّم",
+      heading: "لماذا تركت الجامعة وكيف أتعلّم؟",
+      subtitle:
+        "رحلة واقعية من الانقطاع عن التعليم التقليدي نحو الشهادات المهنية المتقدمة والتعلم الذاتي المستمر.",
+      quoteHighlight:
+        "«أعتبر يوتيوب والمراجع العالمية والكتب أكثر نفعاً وعمقاً من كل الجامعات التقليدية. لم أقم يوماً بأي عمل لمجرد إرضاء نظرة الآخرين؛ المقياس الوحيد هو القيمة الملموسة والأثر التجاري الحقيقي.»",
+      quoteAuthor: "حسن شهمرادي",
+      steps: [
+        {
+          step: "۰۱",
+          year: "۲۰۱۶ — ۲۰۱۷",
+          badge: "البداية الأكاديمية",
+          title: "دراسة المحاسبة واكتشاف الفجوة بين النظرية والسوق",
+          institution: "التعليم الجامعي التقليدي",
+          description:
+            "التحقت بتخصص المحاسبة لفهم القوائم المالية وإدارة التدفق النقدي؛ لكن سرعان ما أدركت أن المناهج القديمة والنظريات المجردة منفصلة تماماً عن واقع الأعمال الحقيقي، مما دفعني للانسحاب وتغيير المسار.",
+          takeaway: "النظريات الجامعية القديمة عاجزة عن حل معضلات السوق الحديث.",
+        },
+        {
+          step: "۰۲",
+          year: "۲۰۱۷ — ۲۰۱۹",
+          badge: "الانسحاب الحاسم",
+          title: "الانتقال إلى إدارة الأعمال ثم الانسحاب التام من الجامعة",
+          institution: "الجامعة — الانسحاب في الفصول الأخيرة",
+          description:
+            "انتقلت لدراسة الإدارة بهدف اكتساب أدوات القيادة والتنفيذ. لكن في الفصول الأخيرة، رأيت أن النظام الجامعي مجرد مطبعة لشهادات ورقية بلا فاعلية. انسحبت نهائياً وأغلقت ملف الشهادة الأكاديمية للأبد.",
+          takeaway: "تركت الشهادة الأكاديمية للتركيز ۱۰۰٪ على الإنجاز والإنتاج العملي.",
+        },
+        {
+          step: "۰۳",
+          year: "۲۰۱۹ — ۲۰۲۲",
+          badge: "شهادات مهنية متقدمة",
+          title: "شهادة MBA من جامعة شهيد بهشتي ودبلومات الإدارة العليا",
+          institution: "جامعة شهيد بهشتي & المجمع التقني بطهران",
+          description:
+            "عوضاً عن هوس الشهادات، ركزت على المهارات العالية: الحصول على ماجستير إدارة الأعمال التنفيذي (MBA) من جامعة شهيد بهشتي، واجتياز دورات متخصصة في الإدارة المالية، التسويق والمبيعات، بناء العلامة التجارية، وإدارة العمليات.",
+          takeaway: "اكتساب خبرات تنفيذية مدرّة للدخل من أرقى الصروح التدريبية.",
+        },
+        {
+          step: "۰۴",
+          year: "۲۰۲۲ — حتى الآن",
+          badge: "أسلوب حياة التعلم الذاتي",
+          title: "التعلم المستمر: يوتيوب، قراءة الكتب وهندسة الذكاء الاصطناعي",
+          institution: "المنظومة العالمية والتعلم الذاتي",
+          description:
+            "التعلم كنهج يومي دائم: قراءة مئات الكتب المتخصصة في الاقتصاد السلوكي وسيكولوجية المستهلك، متابعة كبرى المراجع العالمية على يوتيوب، واحتراف هندسة الأوامر ومنهجية Vibe Coding.",
+          takeaway: "يوتيوب والمصادر العالمية المباشرة هي الجامعة الحقيقية في هذا العصر.",
+        },
+      ],
+    },
     philosophy: {
       badge: "فلسفة العمل والنهج التنفيذي",
       heading: "المبادئ التي تحدد معيار علامتنا التجارية",
@@ -586,10 +759,10 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
       heading: "أين ترغب في الانضمام إليّ في هذه الرحلة؟",
       description:
         "سواء كنت تطمح لبناء منصة رقمية ذات معدل تحويل فائق، أو ترغب في إتقان منهجية Vibe Coding، الطريق ممهد أمامك.",
-      waitlistBadge: "الطاقة الاستيعابية لهذا الشهر: أوشكت على الاكتمال",
-      primaryBtn: "حجز جلسة استشارية استراتيجية (۳۰ دقيقة)",
-      secondaryBtn: "استكشاف دورات ومنهج Vibe Coding",
-      secondarySub: "من الصفر حتى إطلاق أول تطبيق ويب بالذكاء الاصطناعي",
+      waitlistBadge: "الطاقة الاستيعابية لهذا الشهر: مقاعد محدودة",
+      primaryBtn: "طلب استشارة استراتيجية",
+      secondaryBtn: "استكشاف دورات فايب كودينغ",
+      secondarySub: "جلسة ۳۰ دقيقة لتقييم المشروع وضمان التوافق التجاري التام",
     },
   },
 };

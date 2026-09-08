@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
   Calendar,
@@ -16,6 +17,10 @@ import {
   ShieldCheck,
   Quote,
   Clock,
+  GraduationCap,
+  Award,
+  BookOpen,
+  Check,
 } from "lucide-react";
 import { InstagramIcon, LinkedInIcon, TelegramIcon } from "../components/Icons";
 import Nav from "../components/Nav";
@@ -29,6 +34,8 @@ export default function AboutContent() {
   const isRtl = dir === "rtl";
   const ArrowForward = isRtl ? ArrowLeft : ArrowRight;
 
+  const [activeEduStep, setActiveEduStep] = useState<number>(0);
+
   return (
     <div
       dir={dir}
@@ -40,12 +47,12 @@ export default function AboutContent() {
 
       {/* ── 1. Hero Section ── */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-        {/* Ambient Glows */}
-        <div className="pointer-events-none absolute top-1/4 -right-40 h-96 w-96 rounded-full bg-gold/15 blur-[120px]" />
-        <div className="pointer-events-none absolute top-1/3 -left-40 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
+        {/* Ambient Warm & Deep Navy Glows (No random bright colors) */}
+        <div className="pointer-events-none absolute top-1/4 -right-40 h-96 w-96 rounded-full bg-gold/10 blur-[130px]" />
+        <div className="pointer-events-none absolute top-1/3 -left-40 h-96 w-96 rounded-full bg-[#111c30]/40 blur-[140px]" />
 
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Main Column: Text & Scarcity Brand Bio */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -53,7 +60,7 @@ export default function AboutContent() {
               transition={{ duration: 0.6 }}
               className={`lg:col-span-7 space-y-6 ${isRtl ? "text-right" : "text-left"}`}
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-semibold text-gold shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-semibold text-gold shadow-sm">
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>{d.hero.badge}</span>
               </div>
@@ -62,34 +69,28 @@ export default function AboutContent() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground leading-[1.2]">
                   {d.hero.heading}
                 </h1>
-                <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-amber-400 via-gold to-yellow-200 bg-clip-text text-transparent">
+                <p className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-amber-300 via-gold to-yellow-200 bg-clip-text text-transparent">
                   {d.hero.highlightRole}
                 </p>
               </div>
 
-              <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <div className="space-y-3.5 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 <p>{d.hero.p1}</p>
                 <p>{d.hero.p2}</p>
-                <p className="border-s-2 border-gold/50 ps-4 text-foreground/90 font-medium">
+                <p className="border-s-2 border-gold/60 ps-3.5 text-foreground/90 font-medium">
                   {d.hero.p3}
                 </p>
               </div>
 
-              {/* Action Buttons & Scarcity Badge */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-                <div className="relative group">
-                  <Link
-                    href="/contact?service=consultation"
-                    className="flex items-center justify-center gap-2.5 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-black text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
-                  >
-                    <span>{d.hero.consultBtn}</span>
-                    <ArrowForward className="h-4 w-4" />
-                  </Link>
-                  <div className="mt-1.5 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-gold font-medium">
-                    <Clock className="h-3 w-3" />
-                    <span>{d.hero.consultBadge}</span>
-                  </div>
-                </div>
+              {/* Action Buttons: Clean & Punchy */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link
+                  href="/contact?service=consultation"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-black text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
+                >
+                  <span>{d.hero.consultBtn}</span>
+                  <ArrowForward className="h-4 w-4" />
+                </Link>
 
                 <Link
                   href="/vibe-coding"
@@ -100,54 +101,25 @@ export default function AboutContent() {
                 </Link>
               </div>
 
-              {/* Social Channels Badges */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <a
-                  href="https://www.linkedin.com/in/hasanshahmoradi/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all"
-                >
-                  <LinkedInIcon className="h-4 w-4" />
-                  <span>{d.hero.socialLinkedin}</span>
-                  <ExternalLink className="h-3 w-3 opacity-60" />
-                </a>
-
-                <a
-                  href="https://www.instagram.com/shahbusinessman/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-pink-500/30 bg-pink-500/10 px-4 py-2 text-xs font-semibold text-pink-400 hover:bg-pink-500/20 hover:border-pink-500/50 transition-all"
-                >
-                  <InstagramIcon className="h-4 w-4" />
-                  <span>{d.hero.socialInstagram}</span>
-                  <ExternalLink className="h-3 w-3 opacity-60" />
-                </a>
-
-                <a
-                  href="https://t.me/shahbusinessman"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-gold/30 bg-gold/10 px-4 py-2 text-xs font-semibold text-gold hover:bg-gold/20 transition-all"
-                >
-                  <TelegramIcon className="h-4 w-4" />
-                  <span>{d.hero.socialTelegram}</span>
-                </a>
+              {/* Micro badge under buttons */}
+              <div className="flex items-center gap-1.5 text-xs text-gold/80 font-medium pt-0.5">
+                <Clock className="h-3.5 w-3.5 text-gold" />
+                <span>{d.hero.consultBadge}</span>
               </div>
             </motion.div>
 
-            {/* Profile Card with Highlights Grid */}
+            {/* Profile Card & Highlights (Luxury Monochromatic Gold/Navy) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5"
             >
-              <div className="relative mx-auto max-w-sm rounded-3xl border border-gold/30 bg-surface/70 p-6 backdrop-blur-xl shadow-2xl">
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-b from-gold/20 to-transparent blur-xl pointer-events-none" />
+              <div className="relative mx-auto max-w-sm rounded-3xl border border-gold/25 bg-surface/70 p-5 sm:p-6 backdrop-blur-xl shadow-2xl space-y-4">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-b from-gold/15 to-transparent blur-xl pointer-events-none" />
 
                 {/* Portrait Frame */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/10 mb-5 shadow-inner">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/10 shadow-inner">
                   <Image
                     src="/images/Shah2.webp"
                     alt="Hasan Shahmoradi — حسن شاهمرادی"
@@ -158,7 +130,7 @@ export default function AboutContent() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                   <div className={`absolute bottom-4 right-4 left-4 ${isRtl ? "text-right" : "text-left"}`}>
-                    <div className="text-xs font-bold text-gold tracking-widest uppercase mb-1">
+                    <div className="text-[11px] font-bold text-gold tracking-widest uppercase mb-0.5">
                       Hasan Shahmoradi
                     </div>
                     <div className="text-lg font-black text-white">
@@ -170,24 +142,57 @@ export default function AboutContent() {
                   </div>
                 </div>
 
-                {/* Quick Highlights Grid */}
-                <div className={`grid grid-cols-2 gap-2.5 text-xs ${isRtl ? "text-right" : "text-left"}`}>
-                  <div className="rounded-xl border border-white/5 bg-background/60 p-3">
+                {/* Quick Highlights Grid (Harmonized Luxury Gold & Slate) */}
+                <div className={`grid grid-cols-2 gap-2 text-xs ${isRtl ? "text-right" : "text-left"}`}>
+                  <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-gold/30 transition-colors">
                     <div className="font-black text-gold text-base">{d.hero.stat1Value}</div>
-                    <div className="text-muted-foreground mt-0.5">{d.hero.stat1Label}</div>
+                    <div className="text-white/60 text-[11px] mt-0.5">{d.hero.stat1Label}</div>
                   </div>
-                  <div className="rounded-xl border border-white/5 bg-background/60 p-3">
-                    <div className="font-black text-emerald-400 text-base">{d.hero.stat2Value}</div>
-                    <div className="text-muted-foreground mt-0.5">{d.hero.stat2Label}</div>
+                  <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-gold/30 transition-colors">
+                    <div className="font-black text-gold text-base">{d.hero.stat2Value}</div>
+                    <div className="text-white/60 text-[11px] mt-0.5">{d.hero.stat2Label}</div>
                   </div>
-                  <div className="rounded-xl border border-white/5 bg-background/60 p-3">
-                    <div className="font-black text-blue-400 text-base">{d.hero.stat3Value}</div>
-                    <div className="text-muted-foreground mt-0.5">{d.hero.stat3Label}</div>
+                  <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-gold/30 transition-colors">
+                    <div className="font-black text-gold text-base">{d.hero.stat3Value}</div>
+                    <div className="text-white/60 text-[11px] mt-0.5">{d.hero.stat3Label}</div>
                   </div>
-                  <div className="rounded-xl border border-white/5 bg-background/60 p-3">
-                    <div className="font-black text-pink-400 text-base">{d.hero.stat4Value}</div>
-                    <div className="text-muted-foreground mt-0.5">{d.hero.stat4Label}</div>
+                  <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-gold/30 transition-colors">
+                    <div className="font-black text-gold text-base">{d.hero.stat4Value}</div>
+                    <div className="text-white/60 text-[11px] mt-0.5">{d.hero.stat4Label}</div>
                   </div>
+                </div>
+
+                {/* Social Channels: Compact & Elegant Row */}
+                <div className="flex items-center justify-center gap-2 pt-1 border-t border-white/5">
+                  <a
+                    href="https://www.linkedin.com/in/hasanshahmoradi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-2.5 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-gold/40 hover:bg-gold/10 transition-all"
+                  >
+                    <LinkedInIcon className="h-3.5 w-3.5 text-[#0a66c2]" />
+                    <span>{d.hero.socialLinkedin}</span>
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/shahbusinessman/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-2.5 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-gold/40 hover:bg-gold/10 transition-all"
+                  >
+                    <InstagramIcon className="h-3.5 w-3.5 text-[#e4405f]" />
+                    <span>{d.hero.socialInstagram}</span>
+                  </a>
+
+                  <a
+                    href="https://t.me/shahbusinessman"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-2.5 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-gold/40 hover:bg-gold/10 transition-all"
+                  >
+                    <TelegramIcon className="h-3.5 w-3.5 text-[#229ed9]" />
+                    <span>{d.hero.socialTelegram}</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -195,7 +200,7 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* ── 2. Main Interactive Timeline Album Section ── */}
+      {/* ── 2. Main Interactive Career Timeline Album Section ── */}
       <section className="relative py-20 bg-surface/30 border-t border-b border-gold/10">
         <div className="container mx-auto px-4 max-w-6xl">
           {/* Section Header */}
@@ -216,7 +221,7 @@ export default function AboutContent() {
           <div className="relative">
             {/* Center Line on Desktop / Edge Line on Mobile */}
             <div
-              className={`absolute top-4 bottom-4 w-0.5 bg-gradient-to-b from-amber-500 via-gold to-emerald-500 opacity-25 ${
+              className={`absolute top-4 bottom-4 w-0.5 bg-gradient-to-b from-gold/20 via-gold/50 to-gold/20 opacity-40 ${
                 isRtl
                   ? "right-4 md:right-1/2 md:translate-x-1/2"
                   : "left-4 md:left-1/2 md:-translate-x-1/2"
@@ -361,7 +366,7 @@ export default function AboutContent() {
                             {m.quote && (
                               <div className="relative rounded-2xl border border-white/10 bg-background/60 p-4 mb-5 text-xs sm:text-sm text-foreground/90 italic leading-relaxed">
                                 <Quote
-                                  className={`h-4 w-4 text-gold/60 mb-1 inline-block ${
+                                  className={`h-4 w-4 text-gold/70 mb-1 inline-block ${
                                     isRtl ? "-scale-x-100 me-2" : "me-2"
                                   }`}
                                 />
@@ -392,7 +397,192 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* ── 3. Brand Principles & Scarcity Matrix Section ── */}
+      {/* ── 3. Educational & Learning Journey Section (NEW) ── */}
+      <section className="relative py-20 bg-background border-b border-gold/15 overflow-hidden">
+        {/* Subtle Ambient Navy/Gold Glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[700px] rounded-full bg-gold/5 blur-[160px]" />
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-semibold text-gold">
+              <GraduationCap className="h-3.5 w-3.5" />
+              <span>{d.education.badge}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground">
+              {d.education.heading}
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              {d.education.subtitle}
+            </p>
+          </div>
+
+          {/* Core Learning Philosophy Quote */}
+          <div className="relative mx-auto max-w-3xl rounded-2xl border border-gold/25 bg-surface/60 p-5 sm:p-6 backdrop-blur-md mb-14 shadow-lg">
+            <div className="flex items-start gap-3.5">
+              <div className="p-2 rounded-xl bg-gold/10 border border-gold/30 shrink-0 text-gold mt-0.5">
+                <BookOpen className="h-5 w-5" />
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-xs sm:text-sm md:text-base font-medium text-foreground/95 italic leading-relaxed">
+                  {d.education.quoteHighlight}
+                </p>
+                <div className="text-xs font-bold text-gold">
+                  — {d.education.quoteAuthor}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── DESKTOP: Interactive Horizontal Roadmap Track ── */}
+          <div className="hidden md:block">
+            {/* Horizontal Timeline Connector Bar with Dots */}
+            <div className="relative mb-10">
+              {/* Connecting glowing track */}
+              <div className="absolute top-6 left-12 right-12 h-0.5 bg-gradient-to-r from-gold/20 via-gold/60 to-gold/20" />
+
+              <div className="grid grid-cols-4 gap-4 relative z-10">
+                {d.education.steps.map((st, sIdx) => {
+                  const isActive = activeEduStep === sIdx;
+                  return (
+                    <div
+                      key={sIdx}
+                      onClick={() => setActiveEduStep(sIdx)}
+                      onMouseEnter={() => setActiveEduStep(sIdx)}
+                      className="flex flex-col items-center text-center cursor-pointer group"
+                    >
+                      {/* Dot Node */}
+                      <div
+                        className={`h-12 w-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? "border-gold bg-gold text-gold-foreground scale-110 shadow-[0_0_25px_rgba(212,175,55,0.6)]"
+                            : "border-gold/40 bg-[#0c121e] text-gold/70 group-hover:border-gold group-hover:scale-105"
+                        }`}
+                      >
+                        <span className="font-mono text-sm font-black">{st.step}</span>
+                      </div>
+
+                      {/* Step Badge & Year */}
+                      <span
+                        className={`text-xs font-bold mt-3 transition-colors ${
+                          isActive ? "text-gold" : "text-white/80 group-hover:text-gold"
+                        }`}
+                      >
+                        {st.badge}
+                      </span>
+                      <span className="text-[11px] text-white/40 font-mono mt-0.5" dir="ltr">
+                        {st.year}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 4 Cards Grid with Active Highlight */}
+            <div className="grid grid-cols-4 gap-4 items-stretch">
+              {d.education.steps.map((st, sIdx) => {
+                const isActive = activeEduStep === sIdx;
+                return (
+                  <div
+                    key={sIdx}
+                    onClick={() => setActiveEduStep(sIdx)}
+                    onMouseEnter={() => setActiveEduStep(sIdx)}
+                    className={`rounded-2xl border p-5 transition-all duration-300 flex flex-col justify-between cursor-pointer ${
+                      isActive
+                        ? "border-gold/70 bg-surface/90 shadow-[0_8px_30px_rgba(0,0,0,0.6)] -translate-y-1.5"
+                        : "border-white/10 bg-surface/40 hover:border-gold/30 hover:bg-surface/60"
+                    } ${isRtl ? "text-right" : "text-left"}`}
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
+                          {st.institution}
+                        </span>
+                        <span className="font-mono text-xs text-white/50" dir="ltr">
+                          {st.year}
+                        </span>
+                      </div>
+
+                      <h3 className="text-sm sm:text-base font-black text-foreground leading-snug">
+                        {st.title}
+                      </h3>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {st.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-start gap-1.5 text-[11px] text-gold font-medium">
+                      <Check className="h-3.5 w-3.5 text-gold shrink-0 mt-0.5" />
+                      <span>{st.takeaway}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── MOBILE: Clean Vertical Stepped Timeline ── */}
+          <div className="block md:hidden">
+            <div
+              className={`relative space-y-6 ${
+                isRtl
+                  ? "pe-1 pr-10 before:absolute before:top-2 before:bottom-2 before:right-3.5 before:w-0.5 before:bg-gradient-to-b before:from-gold/60 before:via-gold/30 before:to-transparent"
+                  : "ps-1 pl-10 before:absolute before:top-2 before:bottom-2 before:left-3.5 before:w-0.5 before:bg-gradient-to-b before:from-gold/60 before:via-gold/30 before:to-transparent"
+              }`}
+            >
+              {d.education.steps.map((st, sIdx) => (
+                <div key={sIdx} className="relative group">
+                  {/* Glowing Node on Line */}
+                  <div
+                    className={`absolute top-3 flex h-7 w-7 items-center justify-center rounded-full border-2 border-gold bg-[#0c121e] text-[11px] font-mono font-bold text-gold shadow-[0_0_12px_rgba(212,175,55,0.5)] ${
+                      isRtl ? "right-0" : "left-0"
+                    }`}
+                  >
+                    {st.step}
+                  </div>
+
+                  {/* Card Content */}
+                  <div
+                    className={`rounded-2xl border border-gold/25 bg-surface/60 p-4 space-y-2.5 backdrop-blur-md ${
+                      isRtl ? "text-right" : "text-left"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-bold text-gold bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
+                        {st.badge}
+                      </span>
+                      <span className="font-mono text-[11px] text-white/50" dir="ltr">
+                        {st.year}
+                      </span>
+                    </div>
+
+                    <div className="text-[11px] text-white/60 font-semibold">
+                      {st.institution}
+                    </div>
+
+                    <h3 className="text-sm font-black text-foreground leading-snug">
+                      {st.title}
+                    </h3>
+
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {st.description}
+                    </p>
+
+                    <div className="pt-2 border-t border-white/5 flex items-start gap-1.5 text-[11px] text-gold font-medium">
+                      <Check className="h-3 w-3 text-gold shrink-0 mt-0.5" />
+                      <span>{st.takeaway}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Brand Principles & Scarcity Matrix Section ── */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
@@ -420,10 +610,10 @@ export default function AboutContent() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="h-10 w-10 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
                       {card.iconType === "trending" && <TrendingUp className="h-5 w-5" />}
-                      {card.iconType === "shield" && <ShieldCheck className="h-5 w-5 text-emerald-400" />}
-                      {card.iconType === "terminal" && <Terminal className="h-5 w-5 text-blue-400" />}
+                      {card.iconType === "shield" && <ShieldCheck className="h-5 w-5" />}
+                      {card.iconType === "terminal" && <Terminal className="h-5 w-5" />}
                     </div>
-                    <span className="font-mono text-xs text-gold/60 font-bold" dir="ltr">
+                    <span className="font-mono text-xs text-gold/70 font-bold" dir="ltr">
                       {card.number}
                     </span>
                   </div>
@@ -437,7 +627,7 @@ export default function AboutContent() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] text-gold font-semibold">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-gold" />
                   <span>تعهد کیفیت برند شاهمرادی</span>
                 </div>
               </div>
@@ -446,13 +636,14 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* ── 4. Strategic Bottom Call To Action ── */}
+      {/* ── 5. Strategic Bottom Call To Action ── */}
       <section className="relative py-20 bg-surface/40 border-t border-gold/20 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent opacity-60" />
 
         <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-bold text-emerald-400 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+          {/* Waitlist Scarcity Badge (Gold/Amber, No Emerald Green) */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-bold text-gold shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-gold animate-ping" />
             <span>{d.cta.waitlistBadge}</span>
           </div>
 
