@@ -13,16 +13,17 @@ export default function TimedLeadPopup() {
   const { dir } = useI18n();
 
   useEffect(() => {
-    // Never show on the contact page itself
-    if (pathname?.startsWith("/contact")) return;
+    // Only show on article and tutorial pages (/blog/...)
+    const isArticlePage = Boolean(pathname?.startsWith("/blog"));
+    if (!isArticlePage) return;
 
     // Check if user already dismissed or interacted with the popup in this session
     const isDismissed = sessionStorage.getItem("hasan_timed_popup_dismissed");
     if (isDismissed) return;
 
     const timer = setTimeout(() => {
-      // Re-check in case user navigated to contact during the 30 seconds
-      if (window.location.pathname.startsWith("/contact")) return;
+      // Re-check in case user navigated away from articles during the 30 seconds
+      if (!window.location.pathname.startsWith("/blog")) return;
       setIsOpen(true);
     }, 30000); // 30 seconds
 
