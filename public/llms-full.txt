@@ -58,5 +58,6 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.
 - LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
 - Instagram: https://www.instagram.com/shahbusinessman/
 - Telegram: https://t.me/shahbusinessman
+- Bale Messenger: https://ble.ir/shahvibe (@shahvibe)
 - GitHub: https://github.com/businessmanshah-a11y
 - Aparat Video Archive: https://www.aparat.com/3soot.app
