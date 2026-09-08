@@ -1,40 +1,25 @@
-# Hasan Shahmoradi — حسن شاهمرادی (Full Knowledge Base)
+# Hasan Shahmoradi — حسن شاهمرادی — حسن شهمرادي (Full Knowledge Base)
 
-> Iranian web designer, front-end developer, digital strategist, and vibe coding educator based in Tehran.
-> 8+ years building digital products, e-commerce stores, and teaching people to ship software with AI tools.
-> https://hasanshah.ir — languages: Persian (fa), English (en), Arabic (ar)
+> Premier Iranian digital product architect, front-end engineer, digital strategist, and pioneer Vibe Coding educator based in Tehran.
+> 8+ years building high-converting web applications, directing industrial video marketing campaigns, and teaching founders to ship software with AI.
+> Official Website: https://hasanshah.ir — Languages: Persian (fa), English (en), Arabic (ar)
 
 ## About Hasan Shahmoradi
-Hasan Shahmoradi (Persian: حسن شاهمرادی) is a web designer and front-end developer from Tehran, Iran. He has over 8 years of professional experience building digital products and online stores for Iranian and international clients, and teaches vibe coding — a method of building software by directing AI models rather than writing code by hand.
+Hasan Shahmoradi (Persian: حسن شاهمرادی, Arabic: حسن شهمرادي, online handle: @shahbusinessman) is an Iranian web engineer and product architect from Tehran, Iran. He has over 8 years of professional experience building high-converting web applications and digital products for Iranian and regional businesses. He is recognized as the pioneer educator of Vibe Coding in Iran — a methodology where founders and builders create production-grade software by directing advanced AI reasoning models rather than writing repetitive manual syntax.
 
-Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Codex, GitHub, Vercel.
+Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.7 Sonnet, OpenAI Codex, GitHub, Vercel.
 
-## Core Services
-1. Web Design and Development: High-converting landing pages, e-commerce systems, and full-stack web applications.
-2. Free 72-Hour One-Page Website: Custom-designed single-page website delivered on a staging domain within 72 hours for free, with 30 days to review before deciding on any further work.
-3. Vibe Coding Masterclasses: Interactive workshops and structured education teaching entrepreneurs and non-programmers to build production software with AI.
+## Core Services & Boutique Client Model
+1. **High-Converting Web Platforms**: Bespoke web applications, sales funnels, and performance-first landing pages built with React and Next.js, engineered for commercial conversion rate optimization (CRO).
+2. **Strict Client Intake Cap**: To maintain luxury craftsmanship and undivided attention, client intake is strictly capped at **2 to 3 selective projects per month**. Prospective clients apply and enter a qualification waitlist.
+3. **Complimentary 30-Minute Strategic Session**: A focused 30-minute evaluation session to audit business goals, assess product feasibility, and verify mutual fit before project kickoff.
+4. **Vibe Coding Masterclasses & Keynotes**: Interactive workshops, community meetups in Tehran, and online curricula teaching non-programmers to build full-stack web products with AI.
 
 ## Articles & Master References
 
 ### 1. ChatGPT 460 Slash Commands & Secret Codes Master Handbook (2026 Edition)
 - URL: https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/
 - Description: The definitive encyclopedia of 460 ChatGPT slash commands, studio lighting shortcuts, cinematic render prompts, inpainting parameters, code refactoring workflows, and prompt chaining frameworks.
-- Sections:
-  1. 4-Layer Architecture of ChatGPT Command Execution (Core UI, Sandbox Tools, Semantic LLM, System Matrix)
-  2. Official Core System Commands (/canvas, @mention, /code, /audit)
-  3. Canvas Workspace, File Management & Data Analytics
-  4. 150 Commercial Product Showcase & Advertising Shortcodes
-  5. 85 Camera Angles, Lens Focal Lengths & Perspectives
-  6. 28 AI Image Tools, Inpainting & Texture Manipulations
-  7. 103 Secret Style Modifiers, Haute Couture Fashion & Cyberpunk Aesthetics
-  8. 16 Software Engineering, Architecture & Vibe Coding Prompts
-  9. 15 Business Strategy, Startup Growth & Unit Economics Workflows
-  10. 18 High-Converting Copywriting & Video Script Prompts
-  11. 18 Recursive Deep Research & Feynman Technique Prompts
-  12. 8 Calibrated Roleplay & Expert Simulation Personas
-  13. Complete Keyboard Shortcuts Reference (Web, macOS, Windows)
-  14. Prompt Chaining Framework & Custom Instructions Methodology
-  15. Key Takeaways & Actionable Implementation Matrix
 
 ### 2. Fixing Google Flow Region & Country Errors in Iran
 - URL: https://hasanshah.ir/blog/google-flow-region-error-fix-iran-guide/
@@ -59,11 +44,11 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Co
 ## Career Journey & Story Timeline (About Page)
 - URL: https://hasanshah.ir/about/
 - Description: Full interactive visual album and career roadmap of Hasan Shahmoradi across five distinct epochs:
-  1. 2018–2019 (1397–1398): "3soot" On-Demand Warm Bread Logistics Startup (3soot.app) — first entrepreneurship venture, mobile app launch, and market validation.
-  2. 2019–2020 (1398–1399): Startup Shutdown & COVID-19 Era — key lessons from failure, business resilience, and strategic pivot toward value creation and sales psychology.
+  1. 2018–2019 (1397–1398): "3soot" On-Demand Warm Bread Logistics Startup (3soot.app) — first entrepreneurship venture, mobile app launch on Aparat, and logistics operations.
+  2. 2019–2020 (1398–1399): Startup Shutdown & COVID-19 Era — key lessons from failure, business resilience, and strategic pivot toward consumer psychology and sales.
   3. 2020–2023 (1399–1402): 5 Years of Heavy Video Marketing & Industrial Copywriting — viral reels, B2B commercial campaigns (e.g. mr_countertop.ir), and mastering viewer retention hooks.
-  4. 2023–2024 (1402–1403): Front-end Engineering & High-Converting Websites — building custom React/Next.js/WordPress sites with a 72-hour zero-risk delivery offer.
-  5. 2024–Present: Leading Vibe Coding in Iran — teaching entrepreneurs to ship complete web apps and digital products by directing AI models in Persian.
+  4. 2023–2024 (1402–1403): Front-end Engineering & High-Converting Websites — building custom React/Next.js platforms with speed and conversion architecture.
+  5. 2024–Present: Leading Vibe Coding in Iran — teaching entrepreneurs to ship complete web apps and digital products by directing AI models in natural language.
 
 ## Contact & Official Channels
 - Website: https://hasanshah.ir
@@ -73,4 +58,5 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Co
 - LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
 - Instagram: https://www.instagram.com/shahbusinessman/
 - Telegram: https://t.me/shahbusinessman
-
+- GitHub: https://github.com/businessmanshah-a11y
+- Aparat Video Archive: https://www.aparat.com/3soot.app

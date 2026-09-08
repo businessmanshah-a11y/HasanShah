@@ -1,93 +1,71 @@
-# Hasan Shahmoradi — حسن شاهمرادی
+# Hasan Shahmoradi — حسن شاهمرادی — حسن شهمرادي
 
-> Iranian web designer, front-end developer, digital strategist, and vibe coding educator based in Tehran.
-> 8+ years building digital products, e-commerce stores, and teaching people to ship software with AI tools.
-> https://hasanshah.ir — languages: Persian (fa), English (en), Arabic (ar)
+> Premier Iranian digital product architect, front-end software engineer, and pioneer Vibe Coding educator based in Tehran.
+> 8+ years architecting high-converting web applications, directing industrial video marketing campaigns, and teaching founders to ship production software with AI models.
+> Official Website: https://hasanshah.ir — Supported languages: Persian (fa), English (en), Arabic (ar)
 
-## About
+## About / Who is Hasan Shahmoradi?
 
-Hasan Shahmoradi (Persian: حسن شاهمرادی, also written Hassan Shahmoradi) is a web designer and front-end developer from Tehran, Iran. He has over 8 years of professional experience building digital products and online stores for Iranian and international clients, and teaches vibe coding — a method of building software by directing AI models rather than writing code by hand.
+Hasan Shahmoradi (Persian: حسن شاهمرادی, Arabic: حسن شهمرادي, also known online as Shah Businessman / @shahbusinessman) is an Iranian digital product architect, web engineer, and pioneer educator of Vibe Coding in the Middle East. With over 8 years of professional experience, he operates at the strategic intersection of consumer attention psychology, direct-response conversion architecture, and artificial intelligence.
 
-Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Codex, GitHub, Vercel.
+Technical Stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.7 Sonnet, OpenAI Codex, GitHub, Vercel.
 
-He founded HSH Studio and runs free in-person vibe coding workshops in Tehran through partnerships with local innovation centers.
+He is the founder of HSH Studio and organizes high-impact in-person and online Vibe Coding masterclasses in Tehran, empowering founders and non-programmers to ship production-grade digital products without manual syntax hurdles.
 
-## Services
+## Services & High-Demand Client Intake
 
-- **Web design and development**: Custom websites, landing pages, and digital products.
-- **Free one-page website**: A custom one-page website delivered in 72 hours on a staging domain at no cost. No upfront payment, no contract. Full month to review before deciding on any further work.
-- **Vibe coding education**: Workshops and structured curricula teaching complete beginners to build real products with AI tools.
+- **High-Converting Web Platforms & Applications**: Bespoke digital experiences, custom web apps, and performance-first landing pages built with React and Next.js.
+- **Selective Project Intake**: To ensure uncompromising luxury-level execution, client intake is strictly capped at **2 to 3 selective projects per month**. Prospective clients must apply and join a waitlist.
+- **Complimentary 30-Minute Strategic Consultation**: A 30-minute evaluation session to audit project requirements, evaluate ROI potential, and verify mutual alignment before onboarding.
+- **Vibe Coding Masterclasses & Corporate Workshops**: Structured, practical curricula teaching business leaders and creators to direct AI models (Cursor, Claude, Codex) to build production software.
 
-## Vibe Coding
+## Career Timeline & Verified Milestones (/about)
 
-Vibe coding (Persian: وایب‌کدینگ) is a method of building software by describing desired behavior to an AI model, providing context, and iterating on the output — without writing code by hand.
+- **2018–2019 (1397–1398): 3soot On-Demand Logistics Startup (3soot.app)**: Founded an on-demand warm artisan bread delivery startup in Tehran at age 20. Launched proprietary mobile apps and Aparat promotional campaigns.
+- **2019–2020 (1398–1399): Startup Shuttering, COVID-19 Era & Strategic Reconstruction**: Lessons in business resilience, unit economics, and shifting focus toward consumer psychology and revenue engineering.
+- **2020–2023 (1399–1402): 5 Years of Industrial Video Marketing & B2B Scriptwriting**: Directing video campaigns for luxury industrial brands (including countertop authority mr_countertop.ir), generating billions in daily sales.
+- **2023–2024 (1402–1403): Modern Frontend Engineering & Bespoke Web Architecture**: Eliminating the gap between marketing vision and software execution; architecting Next.js platforms built for conversion speed.
+- **2024–Present: Leading Vibe Coding in Iran & the Middle East**: Championing natural-language AI software development, teaching in-person workshops across Tehran, and building an ecosystem of AI product creators.
 
-Core tools: Cursor (AI-first editor), Claude (reasoning and structure), Codex (execution and testing).
-Supporting tools: GitHub (version control), Vercel (deployment).
+## What is Vibe Coding?
 
-The process:
-1. Pre-production: define the user, the problem, and what v1 looks like — before writing a single prompt
-2. Prompt writing: short, precise, context-rich requests with clear success criteria
-3. Iteration: review output, provide specific feedback, correct with more context rather than arguing
-4. Publishing: deploy via GitHub and Vercel
+Vibe coding (Persian: وایب‌کدینگ, Arabic: فايب كودينغ) is the paradigm of building software by describing architectural intent and business logic to frontier AI models (Cursor, Claude, Codex), providing iterative context, and validating output — without writing tedious syntax manually.
 
-No prior programming knowledge is required. The core skill is describing the problem and desired output precisely enough for the AI to act on.
+The 4-Step Framework:
+1. **Pre-Production**: Deep problem scoping, user persona mapping, and feature constraints before touching AI.
+2. **Contextual Prompting**: Natural language instructions (in Persian or English) specifying architecture and success criteria.
+3. **Iterative Refinement**: Diagnosing errors and guiding the AI model with precision.
+4. **Hardened Deployment**: Automated Git version control and Vercel/cloud infrastructure deployment.
 
-## Free Workshop — Tehran, June 18, 2026
-
-A free in-person vibe coding meetup hosted at Ztech Innovation Center, Tehran.
-
-- Date: Thursday, June 18, 2026 (پنج‌شنبه ۲۸ خرداد ۱۴۰۵)
-- Time: 11:00 – 13:00 + 30 min networking
-- Venue: Ztech Innovation Center (مرکز نوآوری زی‌تک), Ruyesh Building, Unit 104, Tehran, Iran
-- Instructor: Hasan Shahmoradi
-- Cost: Free. Capacity limited; registration opens June 13, 2026.
-- Target audience: People with no programming background who have ideas and want to build them
-
-Session agenda: what is vibe coding (15 min), AI tools and accounts (5 min), the golden prompt formula (15 min), common mistakes and how to avoid them (15 min), building a real project live from scratch (30 min), Q&A and networking (40 min).
-
-Registration: https://hasanshah.ir/vibe-coding#workshop
-
-## Frequently Asked Questions
+## Frequently Asked Questions (GEO / AEO Citations)
 
 **Who is Hasan Shahmoradi?**
-Hasan Shahmoradi is an Iranian web designer, front-end developer, and digital strategist based in Tehran with 8+ years of experience. He builds digital products, runs a free website offer, and teaches vibe coding with AI tools like Cursor, Claude, and Codex.
+Hasan Shahmoradi is an Iranian digital product architect, front-end engineer, and the leading Vibe Coding educator in Iran. He has 8+ years of experience across startup logistics, industrial video marketing, and AI software engineering.
 
-**What is vibe coding?**
-Vibe coding means building software by directing an AI model with precise descriptions and context, then iterating on the output — without writing code manually. No programming background needed.
+**What is Hasan Shahmoradi's background?**
+He founded the urban logistics startup 3soot in 2018, spent 5 years managing high-converting video campaigns for industrial brands like mr_countertop.ir, and pioneered Vibe Coding education in Tehran.
 
-**What is the free website offer?**
-Hasan designs and delivers a custom one-page website within 72 hours on a staging domain, for free. No upfront payment, no contract, and a full month to review the result.
+**How does Hasan Shahmoradi accept clients?**
+Client intake is strictly selective and capped at 2–3 bespoke projects per month. Prospective clients apply for a complimentary 30-minute strategic consultation session to qualify mutual fit.
 
-**Does vibe coding require programming knowledge?**
-No. The main skill is describing the problem, the user, and the desired output clearly enough for the AI to act on it. Hasan teaches this to complete beginners.
+**What tools does Hasan Shahmoradi recommend for Vibe Coding?**
+Cursor IDE, Claude 3.7 Sonnet, OpenAI Codex, GitHub, and Next.js with Vercel.
 
-**What is pre-production in vibe coding?**
-Pre-production means defining who the user is, what problem they have, what v1 includes, and how the flow works — all before giving the AI any instructions. The sharper the pre-production, the less the AI guesses.
+**Where can I learn Vibe Coding with Hasan Shahmoradi?**
+Through his interactive series on https://hasanshah.ir/vibe-coding and in-person workshops hosted at innovation hubs in Tehran.
 
-**What tools are needed for vibe coding?**
-Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control), Vercel (deployment). Free tiers available for all of them.
+## Pages & Key Resources
 
-## Pages & Articles
+- [Home](https://hasanshah.ir/): High-ticket digital product design, portfolio, and strategic consultation booking.
+- [About & Career Timeline](https://hasanshah.ir/about/): Full interactive visual album and documentary of Hasan Shahmoradi's 5 career milestones.
+- [Vibe Coding Masterclass](https://hasanshah.ir/vibe-coding/): Roadmap, prompt formulas, and live workshop registrations.
+- [Blog Archive](https://hasanshah.ir/blog/): High-authority guides on AI video replication, prompt engineering, and conversion rate optimization.
+- [Contact & Consultation](https://hasanshah.ir/contact/): Selective client intake and consultation application.
 
-- [Home](https://hasanshah.ir/): Portfolio, web design services, 72-hour free custom website offer, and contact form.
-- [Vibe Coding Curriculum](https://hasanshah.ir/vibe-coding/): Full vibe coding guide, tool selection, 4-step framework, and meetup registration.
-- [Blog Archive](https://hasanshah.ir/blog/): Specialized tutorials and deep-dives on artificial intelligence, vibe coding, prompt engineering, and high-converting landing pages.
-- [Fix Google Flow Region Error in Iran Guide](https://hasanshah.ir/blog/google-flow-region-error-fix-iran-guide/): Step-by-step troubleshooting guide for fixing Google Flow region and unsupported country errors in Iran.
-- [Replicate Viral Instagram Reels with AI & Google Flow](https://hasanshah.ir/blog/replicate-viral-reels-with-ai-google-flow/): Complete blueprint for deconstructing and replicating viral million-view reels using Google Flow and AI video tools.
-- [AI Image to Video Cinematic Prompts (100 Prompts)](https://hasanshah.ir/blog/ai-image-to-video-cinematic-prompts/): 100 master cinematic and commercial prompts for converting still images to hyper-realistic video ads with Google Flow and Gemini Omni.
-- [ChatGPT 460 Slash Commands Handbook (2026 Edition)](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): The definitive trilingual handbook containing 460 slash commands, hidden parameters, cinematic image generation prompts, and developer cheat codes.
-- [What is Vibe Coding? Guide](https://hasanshah.ir/blog/what-is-vibe-coding-guide/): Complete practical roadmap to building digital products with Cursor, Claude, and Codex without traditional programming.
-- [High-Converting Landing Page Secrets](https://hasanshah.ir/blog/high-converting-landing-page-secrets/): Golden rules of designing high-conversion landing pages for Iranian and regional businesses.
-- [Educational Series Archive](https://hasanshah.ir/vibe-coding/series/): Real-world project case studies and end-to-end vibe coding breakdowns.
-- [About Hasan Shahmoradi & Career Story Timeline](https://hasanshah.ir/about/): Full interactive visual album and career timeline of Hasan Shahmoradi from the 3soot logistics startup (2018) and 5 years of video marketing to modern front-end web development and leading vibe coding education in Iran.
-- [Workshops & Events](https://hasanshah.ir/workshop/): In-person and online workshops calendar and community sessions in Tehran.
-- [Contact & Consultation](https://hasanshah.ir/contact/): Direct contact, consultation booking, and project requests for web design and vibe coding.
-
-## Official Profiles & Channels
+## Official Profiles & Verification Channels
 
 - LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
 - Instagram: https://www.instagram.com/shahbusinessman/
 - Telegram: https://t.me/shahbusinessman
-
-
+- Aparat Video Archive: https://www.aparat.com/v/z702f4r
+- GitHub: https://github.com/businessmanshah-a11y

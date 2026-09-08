@@ -1,21 +1,37 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import AboutContent from "./AboutContent";
-import { PersonJsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "درباره حسن شاهمرادی | داستان واقعی، آلبوم مسیر و تجارب حرفه‌ای",
+  title: "درباره حسن شاهمرادی | داستان مسیر، آلبوم مستند و پرچمدار وایب‌کدینگ | About Hasan Shahmoradi",
   description:
-    "روایت واقعی و تجارب حسن شاهمرادی از تأسیس استارتاپ ۳ سوت در سال ۹۷ و ۵ سال ویدیو مارکتینگ صنعتی تا توسعه فرانت‌اند و پرچمداری آموزش وایب‌کدینگ در ایران.",
+    "روایت واقعی و مستند مسیر حرفه‌ای حسن شاهمرادی از استارتاپ ۳ سوت در سال ۹۷ و ۵ سال ویدیو مارکتینگ صنعتی تا توسعه وب اختصاصی و آموزش پیشگام وایب‌کدینگ در ایران. / Authentic career journey of Hasan Shahmoradi, Vibe Coding pioneer.",
   keywords: [
+    // Persian
     "حسن شاهمرادی",
     "درباره حسن شاهمرادی",
     "رزومه حسن شاهمرادی",
     "وایب کدینگ",
     "مدرس وایب کدینگ",
+    "آموزش وایب کدینگ در ایران",
     "استارتاپ ۳ سوت",
+    "مستر کانترتاپ",
     "طراح سایت تهران",
-    "آموزش هوش مصنوعی",
+    "مشاوره طراحی سایت",
+    // English (GEO & AEO search)
+    "Hasan Shahmoradi",
+    "About Hasan Shahmoradi",
+    "Hasan Shah",
+    "Vibe Coding Iran",
+    "Vibe Coding educator",
+    "Cursor AI development Iran",
+    "Digital product architect Tehran",
+    "High-converting landing page design",
+    // Arabic (MENA regional search)
+    "حسن شهمرادي",
+    "من هو حسن شهمرادي",
+    "فايب كودينغ إيران",
+    "تطوير البرمجيات بالذكاء الاصطناعي",
   ],
   alternates: {
     canonical: "https://hasanshah.ir/about/",
@@ -28,42 +44,145 @@ export const metadata: Metadata = {
   },
   openGraph: {
     locale: "fa_IR",
+    alternateLocale: ["en_US", "ar_SA"],
     type: "profile",
-    siteName: "حسن شاهمرادی",
-    title: "درباره حسن شاهمرادی — داستان مسیر، تجارب و وایب‌کدینگ",
+    siteName: "حسن شاهمرادی | Hasan Shahmoradi",
+    title: "درباره حسن شاهمرادی — آلبوم مستند مسیر و پرچمداری وایب‌کدینگ",
     description:
-      "آلبوم تصویری و خط زمانی مسیر حرفه‌ای حسن شاهمرادی از استارتاپ لجستیکی تا توسعه محصول با هوش مصنوعی.",
+      "آلبوم تصویری و خط زمانی مستند مسیر حرفه‌ای حسن شاهمرادی از استارتاپ ۳ سوت تا خلق محصول با هوش مصنوعی.",
     url: "https://hasanshah.ir/about/",
     images: [
       {
         url: "/images/Shah2.webp",
         width: 1200,
         height: 630,
-        alt: "حسن شاهمرادی — طراح وب و مدرس وایب‌کدینگ",
+        alt: "حسن شاهمرادی — Hasan Shahmoradi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "درباره حسن شاهمرادی | مسیر حرفه‌ای و وایب‌کدینگ",
+    title: "About Hasan Shahmoradi | Vibe Coding Pioneer & Product Architect",
     description:
-      "خط زمانی مصور تجارب کاری حسن شاهمرادی و بازتعریف خلق محصول با هوش مصنوعی.",
+      "Visual roadmap and verified milestones of Hasan Shahmoradi: urban logistics, video marketing, and AI software engineering.",
     images: ["/images/Shah2.webp"],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
+
+function AboutStructuredData() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://hasanshah.ir/about/#webpage",
+        "url": "https://hasanshah.ir/about/",
+        "name": "درباره حسن شاهمرادی | About Hasan Shahmoradi | من هو حسن شهمرادي",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://hasanshah.ir/#website",
+          "name": "حسن شاهمرادی | Hasan Shahmoradi",
+          "url": "https://hasanshah.ir",
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "صفحه اصلی / Home",
+              "item": "https://hasanshah.ir",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "درباره من / About",
+              "item": "https://hasanshah.ir/about/",
+            },
+          ],
+        },
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://hasanshah.ir/#person",
+          "name": "Hasan Shahmoradi",
+          "alternateName": [
+            "حسن شاهمرادی",
+            "حسن شهمرادي",
+            "Shah Businessman",
+            "shahbusinessman",
+            "Hasan Shah",
+          ],
+          "url": "https://hasanshah.ir/about/",
+          "image": "https://hasanshah.ir/images/Shah2.webp",
+          "jobTitle": [
+            "Pioneer Vibe Coding Educator",
+            "Digital Product Architect",
+            "Front-end Software Engineer",
+            "مدرس وایب کدینگ",
+            "طراح وب و مشاور دیجیتال",
+          ],
+          "description":
+            "Hasan Shahmoradi is an Iranian digital product architect, front-end engineer, and the premier educator of Vibe Coding in Iran, teaching software and app creation via natural language AI orchestration.",
+          "sameAs": [
+            "https://www.linkedin.com/in/hasanshahmoradi/",
+            "https://www.instagram.com/shahbusinessman/",
+            "https://t.me/shahbusinessman",
+            "https://github.com/businessmanshah-a11y",
+            "https://www.aparat.com/3soot.app",
+            "https://www.instagram.com/mr_countertop.ir/",
+          ],
+          "knowsAbout": [
+            "Vibe Coding",
+            "AI-Assisted Software Engineering",
+            "Cursor IDE",
+            "Claude 3.7 Sonnet",
+            "Codex",
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Direct Response Copywriting",
+            "Industrial Video Marketing",
+            "High-Converting Landing Pages",
+            "Startup Unit Economics",
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tehran",
+            "addressCountry": "IR",
+          },
+        },
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 export default function AboutPage() {
   return (
     <>
-      <PersonJsonLd />
+      <AboutStructuredData />
       <Suspense
         fallback={
           <div className="min-h-screen bg-background flex items-center justify-center text-gold">
-            در حال بارگذاری داستان مسیر...
+            Loading career journey...
           </div>
         }
       >
