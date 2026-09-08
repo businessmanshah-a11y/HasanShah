@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
   const base = process.env.NEXT_PUBLIC_BASE_URL || "https://hasanshah.ir";
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/api/"] },
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/clients/"] },
       // Traditional search engines
       { userAgent: "Googlebot", allow: "/" },
       { userAgent: "Applebot", allow: "/" },

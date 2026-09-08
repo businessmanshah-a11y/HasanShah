@@ -73,8 +73,13 @@ Cursor (editor), Claude (reasoning), Codex (execution), GitHub (version control)
 - [Home](https://hasanshah.ir/): Portfolio, web design services, 72-hour free custom website offer, and contact form.
 - [Vibe Coding Curriculum](https://hasanshah.ir/vibe-coding/): Full vibe coding guide, tool selection, 4-step framework, and meetup registration.
 - [Blog Archive](https://hasanshah.ir/blog/): Specialized tutorials and deep-dives on artificial intelligence, vibe coding, prompt engineering, and high-converting landing pages.
+- [Fix Google Flow Region Error in Iran Guide](https://hasanshah.ir/blog/google-flow-region-error-fix-iran-guide/): Step-by-step troubleshooting guide for fixing Google Flow region and unsupported country errors in Iran.
+- [Replicate Viral Instagram Reels with AI & Google Flow](https://hasanshah.ir/blog/replicate-viral-reels-with-ai-google-flow/): Complete blueprint for deconstructing and replicating viral million-view reels using Google Flow and AI video tools.
+- [AI Image to Video Cinematic Prompts (100 Prompts)](https://hasanshah.ir/blog/ai-image-to-video-cinematic-prompts/): 100 master cinematic and commercial prompts for converting still images to hyper-realistic video ads with Google Flow and Gemini Omni.
 - [ChatGPT 460 Slash Commands Handbook (2026 Edition)](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): The definitive trilingual handbook containing 460 slash commands, hidden parameters, cinematic image generation prompts, and developer cheat codes.
 - [What is Vibe Coding? Guide](https://hasanshah.ir/blog/what-is-vibe-coding-guide/): Complete practical roadmap to building digital products with Cursor, Claude, and Codex without traditional programming.
 - [High-Converting Landing Page Secrets](https://hasanshah.ir/blog/high-converting-landing-page-secrets/): Golden rules of designing high-conversion landing pages for Iranian and regional businesses.
 - [Educational Series Archive](https://hasanshah.ir/vibe-coding/series/): Real-world project case studies and end-to-end vibe coding breakdowns.
 - [Workshops & Events](https://hasanshah.ir/workshop/): In-person and online workshops calendar and community sessions in Tehran.
+- [Contact & Consultation](https://hasanshah.ir/contact/): Direct contact, consultation booking, and project requests for web design and vibe coding.
+

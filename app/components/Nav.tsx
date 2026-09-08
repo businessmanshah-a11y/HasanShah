@@ -14,7 +14,7 @@ export default function Nav() {
     { href: "/#about",      label: t.nav.about },
     { href: "/#services",   label: t.nav.services },
     { href: "/#portfolio",  label: t.nav.portfolio },
-    { href: "/#form",       label: t.nav.contact },
+    { href: "/contact/",    label: t.nav.contact },
   ];
 
   const [scrolled, setScrolled] = useState(false);

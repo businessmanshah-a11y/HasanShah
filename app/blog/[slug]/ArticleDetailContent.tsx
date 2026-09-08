@@ -35,6 +35,67 @@ interface Props {
 
 const springTransition = { type: "spring" as const, stiffness: 120, damping: 20 };
 
+function renderRichText(text?: string): React.ReactNode {
+  if (!text) return null;
+  if (!text.includes("[") && !text.includes("`")) return text;
+
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      elements.push(text.substring(lastIndex, match.index));
+    }
+
+    if (match[1] && match[2]) {
+      const label = match[1];
+      const href = match[2];
+      const isInternal = href.startsWith("/") || href.startsWith("#");
+
+      elements.push(
+        isInternal ? (
+          <Link
+            key={match.index}
+            href={href}
+            className="text-gold font-semibold underline decoration-gold/40 hover:decoration-gold underline-offset-4 transition-colors"
+          >
+            {label}
+          </Link>
+        ) : (
+          <a
+            key={match.index}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold font-semibold underline decoration-gold/40 hover:decoration-gold underline-offset-4 transition-colors"
+          >
+            {label}
+          </a>
+        )
+      );
+    } else if (match[3]) {
+      elements.push(
+        <code
+          key={match.index}
+          className="rounded bg-gold/10 px-1.5 py-0.5 font-mono text-xs text-gold border border-gold/20"
+        >
+          {match[3]}
+        </code>
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    elements.push(text.substring(lastIndex));
+  }
+
+  return elements;
+}
+
 export default function ArticleDetailContent({ initialArticle }: Props) {
   const { t, dir, locale } = useI18n();
   const bd = t.blogDetail;
@@ -413,13 +474,13 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
 
                 {section.lead && (
                   <p className="text-base md:text-lg font-semibold leading-relaxed text-foreground/90">
-                    {section.lead}
+                    {renderRichText(section.lead)}
                   </p>
                 )}
 
                 {section.paragraphs?.map((p, idx) => (
                   <p key={idx} className="text-base md:text-lg leading-relaxed text-muted-foreground font-normal">
-                    {p}
+                    {renderRichText(p)}
                   </p>
                 ))}
 
@@ -432,7 +493,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                         className="flex items-start gap-3 text-sm md:text-base leading-relaxed text-muted-foreground rounded-2xl border border-white/5 bg-surface/40 p-4"
                       >
                         <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-gold shadow-gold" />
-                        <span className="flex-1">{item}</span>
+                        <span className="flex-1">{renderRichText(item)}</span>
                       </li>
                     ))}
                   </ul>
@@ -705,7 +766,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                       {section.callout.title && (
                         <p className="font-bold mb-1.5 text-foreground text-sm">{section.callout.title}</p>
                       )}
-                      <p className="text-muted-foreground/90">{section.callout.text}</p>
+                      <p className="text-muted-foreground/90">{renderRichText(section.callout.text)}</p>
                     </div>
                   </div>
                 )}
@@ -735,7 +796,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                         {idx + 1}
                       </span>
                       <p className="text-sm md:text-base leading-loose text-muted-foreground">
-                        {item}
+                        {renderRichText(item)}
                       </p>
                     </div>
                   ))}

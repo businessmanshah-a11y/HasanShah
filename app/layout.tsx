@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import LocalizedToaster from "./components/LocalizedToaster";
+import TimedLeadPopup from "./components/TimedLeadPopup";
 import { type Locale, LOCALE_STORAGE_KEY, defaultLocale, dirOf } from "./i18n/config";
 import "./globals.css";
 
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         <LanguageProvider initialLocale={initialLocale}>
           {children}
+          <TimedLeadPopup />
           <LocalizedToaster />
         </LanguageProvider>
       </body>

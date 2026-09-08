@@ -36,15 +36,27 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor, Claude AI, Co
   14. Prompt Chaining Framework & Custom Instructions Methodology
   15. Key Takeaways & Actionable Implementation Matrix
 
-### 2. What is Vibe Coding? The Complete 2026 Guide
+### 2. Fixing Google Flow Region & Country Errors in Iran
+- URL: https://hasanshah.ir/blog/google-flow-region-error-fix-iran-guide/
+- Description: Complete technical troubleshooting and step-by-step roadmap to overcome regional restrictions, DNS conflicts, and proxy leaks when using Google Flow from Iran.
+
+### 3. Replicate Viral Reels with AI and Google Flow
+- URL: https://hasanshah.ir/blog/replicate-viral-reels-with-ai-google-flow/
+- Description: A practical playbook for deconstructing top-performing viral short videos and recreating them using Google Flow, Veo, and Gemini multimodal workflows.
+
+### 4. 100 AI Image to Video Cinematic Prompts (2026 Edition)
+- URL: https://hasanshah.ir/blog/ai-image-to-video-cinematic-prompts/
+- Description: 100 commercial, cinematic, and advertising prompts for animating still photography into ultra-high-definition video commercials.
+
+### 5. What is Vibe Coding? The Complete 2026 Guide
 - URL: https://hasanshah.ir/blog/what-is-vibe-coding-guide/
 - Description: A comprehensive beginner-to-pro guide on building real-world web applications and digital products by directing AI models without manual coding.
 
-### 3. High-Converting Landing Page Secrets
+### 6. High-Converting Landing Page Secrets
 - URL: https://hasanshah.ir/blog/high-converting-landing-page-secrets/
 - Description: UX/UI and psychological frameworks for building high-converting landing pages that maximize sales and lead acquisition.
 
 ## Contact & Consultation
 - Website: https://hasanshah.ir
-- Consultation Booking: https://hasanshah.ir/#form
+- Dedicated Contact & Consultation Page: https://hasanshah.ir/contact/
 - Free Workshop Registration: https://hasanshah.ir/vibe-coding#workshop

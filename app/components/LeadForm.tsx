@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Code2, Globe, Rocket, Send, Smartphone, Sparkles, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "../hooks/use-reveal";
@@ -144,16 +144,28 @@ function MultiCardToggle({
   );
 }
 
-export default function LeadForm() {
+interface LeadFormProps {
+  initialService?: ServiceType | null;
+  initialStep?: 1 | 2 | 3;
+}
+
+export default function LeadForm({ initialService, initialStep }: LeadFormProps = {}) {
   const ref = useReveal<HTMLDivElement>();
   const { t, locale, dir } = useI18n();
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [service, setService] = useState<ServiceType | null>(null);
+  const [step, setStep] = useState<1 | 2 | 3>(() => (initialService ? 2 : (initialStep ?? 1)));
+  const [service, setService] = useState<ServiceType | null>(initialService ?? null);
   const [data, setData] = useState<FormData>({ platforms: [] });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const submittedRef = useRef(false);
+
+  useEffect(() => {
+    if (initialService) {
+      setService(initialService);
+      setStep(2);
+    }
+  }, [initialService]);
 
   const f = t.consultForm;
 

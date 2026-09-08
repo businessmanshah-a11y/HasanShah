@@ -67,34 +67,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Blog Articles (Pillar & Cluster) ──
     ...blogPosts(base),
 
-    // ── Client Showcases & Portfolio ──
+    // ── Contact & Consultation ──
     {
-      url: `${base}/clients/hamed-tahouneh/`,
-      lastModified: LAST_MODIFIED.clients,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: alternates(`${base}/clients/hamed-tahouneh/`),
-    },
-    {
-      url: `${base}/clients/milad-sojoudi/`,
-      lastModified: LAST_MODIFIED.clients,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: alternates(`${base}/clients/milad-sojoudi/`),
-    },
-    {
-      url: `${base}/clients/pegah/`,
-      lastModified: LAST_MODIFIED.clients,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: alternates(`${base}/clients/pegah/`),
-    },
-    {
-      url: `${base}/clients/visakade/`,
-      lastModified: LAST_MODIFIED.clients,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: alternates(`${base}/clients/visakade/`),
+      url: `${base}/contact/`,
+      lastModified: new Date("2026-09-08"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: alternates(`${base}/contact/`),
     },
 
     // ── Workshops & Events ──
