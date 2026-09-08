@@ -129,6 +129,28 @@
     line-height: 1.75;
   }
 
+  /* Persian & Arabic explicitly use Peyda font across all text, inputs, buttons, and form controls */
+  html[lang="fa"] body,
+  html[lang="fa"] button,
+  html[lang="fa"] input,
+  html[lang="fa"] textarea,
+  html[lang="fa"] select,
+  html[lang="fa"] option,
+  html[lang="ar"] body,
+  html[lang="ar"] button,
+  html[lang="ar"] input,
+  html[lang="ar"] textarea,
+  html[lang="ar"] select,
+  html[lang="ar"] option,
+  html[dir="rtl"] body,
+  html[dir="rtl"] button,
+  html[dir="rtl"] input,
+  html[dir="rtl"] textarea,
+  html[dir="rtl"] select,
+  html[dir="rtl"] option {
+    font-family: 'Peyda', Tahoma, ui-sans-serif, system-ui, sans-serif;
+  }
+
   /* English uses a clean Latin face; Peyda stays the fallback for shared glyphs. */
   html[lang="en"] body,
   html[lang="en"] button,
@@ -136,6 +158,13 @@
   html[lang="en"] textarea,
   html[lang="en"] select {
     font-family: var(--font-latin), "Peyda", Tahoma, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Prevent system monospace from overriding Peyda on numbers, counters, or badges in RTL/Persian/Arabic */
+  html[dir="rtl"] .font-mono:not(pre *):not(code *):not(pre):not(code),
+  html[lang="fa"] .font-mono:not(pre *):not(code *):not(pre):not(code),
+  html[lang="ar"] .font-mono:not(pre *):not(code *):not(pre):not(code) {
+    font-family: 'Peyda', Tahoma, ui-sans-serif, system-ui, sans-serif;
   }
 
   @media (max-width: 768px) {

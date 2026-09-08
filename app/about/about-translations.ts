@@ -85,6 +85,13 @@ export interface AboutPageDictionary {
     description: string;
     cards: PhilosophyCardTranslation[];
   };
+  portfolioBridge: {
+    badge: string;
+    heading: string;
+    description: string;
+    btnText: string;
+    statBadge: string;
+  };
   cta: {
     heading: string;
     description: string;
@@ -309,6 +316,14 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         },
       ],
     },
+    portfolioBridge: {
+      badge: "اثبات ادعاها در عمل",
+      heading: "از ادعا تا واقعیت؛ پروژه‌ها و پلتفرم‌های زنده را ببینید",
+      description:
+        "تمام این اصول مهندسی، تجربیات بیزینسی و استانداردهای طراحی در پروژه‌های آنلاین و فعال تجاری آزموده شده‌اند. عملکرد، سرعت لود بهینه و معماری تبدیل را در صفحه نمونه‌کارها بررسی کنید.",
+      btnText: "مشاهده نمونه‌کارها و پروژه‌های زنده",
+      statBadge: "۶+ پروژه تجاری فعال با ترافیک واقعی",
+    },
     cta: {
       heading: "می‌خواهید در کجای این مسیر همراه من باشید؟",
       description:
@@ -532,6 +547,14 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
         },
       ],
     },
+    portfolioBridge: {
+      badge: "Verified Proof of Work",
+      heading: "From Strategy to Production: Explore Live Case Studies",
+      description:
+        "Every principle, business insight, and engineering standard is demonstrated in live commercial systems with real traffic and conversion architecture.",
+      btnText: "Explore Portfolio & Live Projects",
+      statBadge: "6+ Live commercial platforms & custom web apps",
+    },
     cta: {
       heading: "Where Would You Like to Connect on This Journey?",
       description:
@@ -754,6 +777,14 @@ export const ABOUT_DICTIONARIES: Record<"fa" | "en" | "ar", AboutPageDictionary>
             "من خلال منهجية فايب كودينغ، اختصرنا أسابيع التطوير التقليدي إلى أيام معدودة بفضل التوجيه الذكي للذكاء الاصطناعي، لنقدم أنظمة عالية المتانة والأمان في وقت قياسي.",
         },
       ],
+    },
+    portfolioBridge: {
+      badge: "إثبات عملي في السوق الحقيقي",
+      heading: "من الرؤية إلى الواقع؛ استكشف المشاريع التجارية الحية",
+      description:
+        "تم تطبيق جميع هذه المعايير الهندسية والخبرات العملية في مواقع وتطبيقات حية تعمل بنجاح في السوق. تصفح دراسات الحالة واختبر الأداء بنفسك.",
+      btnText: "استعراض معرض الأعمال والمشاريع الحية",
+      statBadge: "+6 مواقع نشطة ومنصات تجارية متكاملة",
     },
     cta: {
       heading: "أين ترغب في الانضمام إليّ في هذه الرحلة؟",

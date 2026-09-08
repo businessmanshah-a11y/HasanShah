@@ -152,8 +152,8 @@ interface LeadFormProps {
 export default function LeadForm({ initialService, initialStep }: LeadFormProps = {}) {
   const ref = useReveal<HTMLDivElement>();
   const { t, locale, dir } = useI18n();
-  const [step, setStep] = useState<1 | 2 | 3>(() => (initialService ? 2 : (initialStep ?? 1)));
-  const [service, setService] = useState<ServiceType | null>(initialService ?? null);
+  const [step, setStep] = useState<1 | 2 | 3>(() => initialStep ?? 1);
+  const [service, setService] = useState<ServiceType | null>(() => initialService ?? null);
   const [data, setData] = useState<FormData>({ platforms: [] });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
@@ -163,7 +163,6 @@ export default function LeadForm({ initialService, initialStep }: LeadFormProps 
   useEffect(() => {
     if (initialService) {
       setService(initialService);
-      setStep(2);
     }
   }, [initialService]);
 
@@ -349,23 +348,41 @@ export default function LeadForm({ initialService, initialStep }: LeadFormProps 
               {/* Step 1: Service selection */}
               {step === 1 && (
                 <div className="space-y-5">
-                  <p className="text-sm font-semibold text-foreground mb-4">{f.serviceTitle}</p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <p className="text-sm font-bold text-foreground">{f.serviceTitle}</p>
+                    <span className="text-xs text-gold/80 font-medium">
+                      {locale === "fa"
+                        ? "یکی از ۴ گزینه زیر را انتخاب کنید"
+                        : locale === "ar"
+                        ? "اختر أحد الخيارات الأربعة أدناه"
+                        : "Select one of the 4 services"}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     {serviceEntries.map(([key, val]) => (
                       <button
                         type="button"
                         key={key}
-                        onClick={() => setService(key)}
-                        className={`rounded-2xl border p-5 text-start transition ${
+                        onClick={() => {
+                          setService(key);
+                          setStep(2);
+                        }}
+                        className={`rounded-2xl border p-5 text-start transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer ${
                           service === key
-                            ? "border-gold bg-gold/15 shadow-gold"
-                            : "border-gold/15 bg-surface hover:border-gold/40"
+                            ? "border-gold bg-gold/15 shadow-gold ring-1 ring-gold"
+                            : "border-gold/15 bg-surface hover:border-gold/40 hover:bg-surface-elevated"
                         }`}
                       >
-                        <div className="mb-3 inline-flex rounded-lg bg-gold/10 p-2.5">
+                        <div className="mb-3 inline-flex rounded-xl bg-gold/10 p-2.5">
                           {(() => { const Icon = SERVICE_ICONS[key]; return <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />; })()}
                         </div>
-                        <div className="text-sm font-bold">{val.title}</div>
+                        <div className="text-sm sm:text-base font-bold text-foreground mb-1">{val.title}</div>
+                        <div className="text-xs text-muted-foreground leading-relaxed">
+                          {key === "website" && (locale === "fa" ? "طراحی سایت شرکتی، فروشگاهی و لندینگ لوکس با سئو بهینه" : locale === "ar" ? "تصميم متاجر ومواقع احترافية وسريعة" : "Bespoke e-commerce, landing pages & brand websites")}
+                          {key === "app" && (locale === "fa" ? "طراحی و توسعه اپلیکیشن موبایل، وب‌اپ و پنل اختصاصی" : locale === "ar" ? "تطوير تطبيقات الجوال وأنظمة الويب" : "Mobile apps, web apps & custom software portals")}
+                          {key === "vibecoding" && (locale === "fa" ? "آموزش متدولوژی ساخت محصول با AI، Cursor و Claude" : locale === "ar" ? "تعلم بناء المنتجات بالذكاء الاصطناعي" : "Vibe Coding training & AI-accelerated dev workflows")}
+                          {key === "startup" && (locale === "fa" ? "معماری ایده بیزینسی، استراتژی و پیاده‌سازی سریع MVP" : locale === "ar" ? "تطوير نموذج العمل وبناء MVP السريع" : "Business architecture, MVP prototyping & launch")}
+                        </div>
                       </button>
                     ))}
                   </div>

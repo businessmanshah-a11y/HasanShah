@@ -140,8 +140,8 @@ export default function PortfolioContent() {
                 </div>
 
                 <div className="text-center px-4 py-2">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight font-mono" dir="ltr">
-                    &lt; 1.5s
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight" dir={isRtl ? "rtl" : "ltr"}>
+                    {locale === "fa" ? "زیر ۱.۵ ثانیه" : locale === "ar" ? "أقل من ۱.۵ ثانية" : "< 1.5s"}
                   </div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
                     {locale === "fa" ? "سرعت بارگذاری بهینه" : locale === "ar" ? "سرعة التحميل" : "Fast Page Load"}
@@ -282,8 +282,12 @@ export default function PortfolioContent() {
                     : "Active Live Client Websites"}
                 </h2>
               </div>
-              <span className="text-xs font-mono text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
-                {liveProjects.length} {locale === "fa" ? "سایت فعال" : "Live Projects"}
+              <span className="text-xs font-bold text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
+                {locale === "fa"
+                  ? `${(liveProjects.length).toLocaleString("fa-IR")} سایت فعال`
+                  : locale === "ar"
+                  ? `${liveProjects.length} مواقع نشطة`
+                  : `${liveProjects.length} Live Projects`}
               </span>
             </div>
 
@@ -309,8 +313,12 @@ export default function PortfolioContent() {
                     : "Proprietary Software & Startup Concepts"}
                 </h2>
               </div>
-              <span className="text-xs font-mono text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
-                {customProjects.length} {locale === "fa" ? "سیستم اختصاصی" : "Systems"}
+              <span className="text-xs font-bold text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
+                {locale === "fa"
+                  ? `${(customProjects.length).toLocaleString("fa-IR")} سیستم اختصاصی`
+                  : locale === "ar"
+                  ? `${customProjects.length} أنظمة مخصصة`
+                  : `${customProjects.length} Systems`}
               </span>
             </div>
 
@@ -348,6 +356,86 @@ export default function PortfolioContent() {
             </div>
           </div>
         )}
+
+        {/* ── Bridge Card: About Me Story & Engineering Philosophy ── */}
+        <section className="container mx-auto px-4 mb-20 md:mb-28">
+          <div className="max-w-5xl mx-auto relative overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-r from-surface/90 via-surface/70 to-surface/90 p-8 sm:p-10 backdrop-blur-xl shadow-2xl">
+            {/* Ambient gold glow */}
+            <div className="pointer-events-none absolute -top-20 start-0 h-64 w-64 rounded-full bg-gold/10 blur-3xl" />
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className={`space-y-3 flex-1 ${isRtl ? "text-right" : "text-left"}`}>
+                <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-bold text-gold">
+                  <Sparkles className="h-3.5 w-3.5 text-gold" />
+                  <span>
+                    {locale === "fa"
+                      ? "پشت صحنه این پروژه‌ها"
+                      : locale === "ar"
+                      ? "ما وراء كواليس هذه المشاريع"
+                      : "Behind These Digital Products"}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
+                  {locale === "fa"
+                    ? "می‌خواهید بدانید پشت صحنه خلق این پروژه‌ها کیست؟"
+                    : locale === "ar"
+                    ? "هل ترغب في معرفة من يقف وراء هندسة هذه المشاريع؟"
+                    : "Curious about the creator and philosophy behind these projects?"}
+                </h2>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                  {locale === "fa"
+                    ? "یک وب‌سایت با نرخ تبدیل بالا نتیجه شانس نیست؛ حاصل ۸ سال آزمون در استارتاپ‌ها، ۵ سال سناریونویسی و ویدیو مارکتینگ صنعتی و متدولوژی Vibe Coding است. با داستان و استانداردهای حسن شاهمرادی آشنا شوید."
+                    : locale === "ar"
+                    ? "بناء منتج رقمي استثنائي ليس صدفة؛ بل نتاج ۸ سنوات من التحديات في الشركات الناشئة، وخبرة عميقة في التسويق المرئي ومنهجية فايب كودينغ. اكتشف القصة والمعايير."
+                    : "A high-conversion digital product isn't luck. It's built on 8 years of startup grit, industrial video marketing, and pioneering Vibe Coding methodology. Learn about Hasan's journey."}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-semibold text-gold/90">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-gold shrink-0" />
+                    <span>
+                      {locale === "fa"
+                        ? "۸+ سال تجربه در بازار دیجیتال"
+                        : locale === "ar"
+                        ? "۸+ سنوات خبرة في السوق"
+                        : "8+ Years Market Experience"}
+                    </span>
+                  </div>
+                  <span className="opacity-30">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-gold shrink-0" />
+                    <span>
+                      {locale === "fa"
+                        ? "ظرفیت ماهانه محدود (کیفیت لوکس)"
+                        : locale === "ar"
+                        ? "طاقة استيعابية محددة شهرياً"
+                        : "Bespoke & Limited Capacity"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="shrink-0 w-full md:w-auto">
+                <Link
+                  href="/about"
+                  prefetch={false}
+                  className="group w-full md:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-gradient-gold px-7 py-4 text-sm font-black text-gold-foreground shadow-gold hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <span>
+                    {locale === "fa"
+                      ? "داستان و مسیر من (درباره من)"
+                      : locale === "ar"
+                      ? "القصة والمسيرة (عن حسن)"
+                      : "Read My Story (About Me)"}
+                  </span>
+                  <ArrowForward className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ── Conversion Bottom CTA ── */}
         <section className="container mx-auto px-4 mt-20">
@@ -457,7 +545,7 @@ function ProjectCard({
           </div>
 
           {/* Address bar mockup */}
-          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 font-mono text-[11px] text-white/70 max-w-[220px] truncate">
+          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-[11px] text-white/70 max-w-[220px] truncate">
             <Globe className="h-3 w-3 shrink-0 text-gold/80" />
             <span className="truncate">{project.domain || project.titleEn}</span>
           </div>
@@ -507,7 +595,7 @@ function ProjectCard({
                 {locale === "en" ? project.titleEn : project.title}
               </h3>
               {project.domain && (
-                <span className="text-xs font-mono text-muted-foreground" dir="ltr">
+                <span className="text-xs text-muted-foreground font-medium" dir="ltr">
                   {project.domain}
                 </span>
               )}
@@ -539,7 +627,7 @@ function ProjectCard({
               {project.techStack.map((tech, tIdx) => (
                 <span
                   key={tIdx}
-                  className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-white/70"
+                  className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-white/70"
                 >
                   {tech}
                 </span>

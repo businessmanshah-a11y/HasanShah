@@ -1,21 +1,15 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Code2,
-  Globe,
   Mail,
   MessageSquare,
   Phone,
   Send,
-  Sparkles,
   ShieldCheck,
-  Zap,
   CheckCircle2,
-  Clock,
   ArrowRight,
   ArrowLeft,
 } from "lucide-react";
@@ -31,18 +25,10 @@ export default function ContactContent() {
   const rawService = searchParams.get("service");
   const { dir, locale } = useI18n();
 
-  const [activeService, setActiveService] = useState<ServiceType | null>(() => {
-    if (rawService === "vibecoding" || rawService === "website" || rawService === "app" || rawService === "startup") {
-      return rawService;
-    }
-    return null;
-  });
-
-  useEffect(() => {
-    if (rawService === "vibecoding" || rawService === "website" || rawService === "app" || rawService === "startup") {
-      setActiveService(rawService);
-    }
-  }, [rawService]);
+  const initialService: ServiceType | undefined =
+    rawService === "vibecoding" || rawService === "website" || rawService === "app" || rawService === "startup"
+      ? rawService
+      : undefined;
 
   const ArrowIcon = dir === "rtl" ? ArrowLeft : ArrowRight;
 
@@ -80,40 +66,8 @@ export default function ContactContent() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
-            چه برای یادگیری تخصصی وایب‌کدینگ (توسعه محصول با AI) آمده‌اید و چه به دنبال سفارش طراحی سایت و سیستم‌های اختصاصی با متدهای روز هستید، مسیر خود را انتخاب کنید.
+            چه برای یادگیری تخصصی وایب‌کدینگ (توسعه محصول با AI) آمده‌اید و چه به دنبال سفارش طراحی سایت و سیستم‌های اختصاصی با متدهای روز هستید، فرم زیر را تکمیل نمایید.
           </motion.p>
-
-          {/* Quick Choice Tabs */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="pt-4 flex flex-wrap justify-center gap-3"
-          >
-            <button
-              onClick={() => setActiveService("vibecoding")}
-              className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl border text-sm font-bold transition-all shadow-md ${
-                activeService === "vibecoding"
-                  ? "border-gold bg-gradient-gold text-gold-foreground shadow-gold/20 scale-105"
-                  : "border-white/10 bg-surface/60 text-muted-foreground hover:border-gold/40 hover:text-foreground"
-              }`}
-            >
-              <Code2 className="h-4 w-4 shrink-0" />
-              <span>آموزش و یادگیری وایب‌کدینگ</span>
-            </button>
-
-            <button
-              onClick={() => setActiveService("website")}
-              className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl border text-sm font-bold transition-all shadow-md ${
-                activeService === "website"
-                  ? "border-gold bg-gradient-gold text-gold-foreground shadow-gold/20 scale-105"
-                  : "border-white/10 bg-surface/60 text-muted-foreground hover:border-gold/40 hover:text-foreground"
-              }`}
-            >
-              <Globe className="h-4 w-4 shrink-0" />
-              <span>سفارش طراحی سایت اختصاصی</span>
-            </button>
-          </motion.div>
         </div>
 
         {/* Two-Column Grid: Left Features/Contacts, Right The Form */}
@@ -246,7 +200,7 @@ export default function ContactContent() {
               <div className="absolute -top-24 -end-24 w-60 h-60 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -bottom-24 -start-24 w-60 h-60 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
-              <LeadForm key={activeService ?? "all"} initialService={activeService} />
+              <LeadForm initialService={initialService} />
             </div>
           </div>
         </div>

@@ -85,7 +85,7 @@ export default function AboutContent() {
               {/* Action Buttons: Clean & Punchy */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
-                  href="/contact?service=consultation"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-black text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
                 >
                   <span>{d.hero.consultBtn}</span>
@@ -311,9 +311,9 @@ export default function AboutContent() {
                         >
                           <div className="flex items-center justify-between gap-2">
                             <span className="text-[11px] font-bold text-gold tracking-wider">
-                              {d.timeline.imageDocPrefix} {idx + 1}
+                              {d.timeline.imageDocPrefix} {locale === "fa" ? (idx + 1).toLocaleString("fa-IR") : idx + 1}
                             </span>
-                            <span className="text-[10px] text-white/60 font-mono" dir="ltr">
+                            <span className="text-[11px] text-white/70 font-semibold">
                               {m.year}
                             </span>
                           </div>
@@ -346,7 +346,7 @@ export default function AboutContent() {
                               <span className="rounded-full border border-gold/40 bg-gold/10 text-gold px-3 py-0.5 text-[11px] font-bold">
                                 {m.badge}
                               </span>
-                              <span className="font-mono text-xs text-muted-foreground" dir="ltr">
+                              <span className="text-xs text-muted-foreground font-semibold">
                                 {m.year}
                               </span>
                             </div>
@@ -459,7 +459,7 @@ export default function AboutContent() {
                             : "border-gold/40 bg-[#0c121e] text-gold/70 group-hover:border-gold group-hover:scale-105"
                         }`}
                       >
-                        <span className="font-mono text-sm font-black">{st.step}</span>
+                        <span className="text-sm font-black">{st.step}</span>
                       </div>
 
                       {/* Step Badge & Year */}
@@ -470,7 +470,7 @@ export default function AboutContent() {
                       >
                         {st.badge}
                       </span>
-                      <span className="text-[11px] text-white/40 font-mono mt-0.5" dir="ltr">
+                      <span className="text-[11px] text-white/50 font-medium mt-0.5">
                         {st.year}
                       </span>
                     </div>
@@ -499,7 +499,7 @@ export default function AboutContent() {
                         <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
                           {st.institution}
                         </span>
-                        <span className="font-mono text-xs text-white/50" dir="ltr">
+                        <span className="text-xs text-white/60 font-medium">
                           {st.year}
                         </span>
                       </div>
@@ -536,7 +536,7 @@ export default function AboutContent() {
                 <div key={sIdx} className="relative group">
                   {/* Glowing Node on Line */}
                   <div
-                    className={`absolute top-3 flex h-7 w-7 items-center justify-center rounded-full border-2 border-gold bg-[#0c121e] text-[11px] font-mono font-bold text-gold shadow-[0_0_12px_rgba(212,175,55,0.5)] ${
+                    className={`absolute top-3 flex h-7 w-7 items-center justify-center rounded-full border-2 border-gold bg-[#0c121e] text-[11px] font-bold text-gold shadow-[0_0_12px_rgba(212,175,55,0.5)] ${
                       isRtl ? "right-0" : "left-0"
                     }`}
                   >
@@ -553,7 +553,7 @@ export default function AboutContent() {
                       <span className="text-[10px] font-bold text-gold bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
                         {st.badge}
                       </span>
-                      <span className="font-mono text-[11px] text-white/50" dir="ltr">
+                      <span className="text-[11px] text-white/60 font-medium">
                         {st.year}
                       </span>
                     </div>
@@ -613,7 +613,7 @@ export default function AboutContent() {
                       {card.iconType === "shield" && <ShieldCheck className="h-5 w-5" />}
                       {card.iconType === "terminal" && <Terminal className="h-5 w-5" />}
                     </div>
-                    <span className="font-mono text-xs text-gold/70 font-bold" dir="ltr">
+                    <span className="text-xs text-gold/80 font-black">
                       {card.number}
                     </span>
                   </div>
@@ -632,6 +632,48 @@ export default function AboutContent() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4.5 Bridge to Portfolio (Proof of Work) ── */}
+      <section className="relative py-16 md:py-20 bg-gradient-to-b from-background via-surface/40 to-surface/20 border-t border-gold/15">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="relative overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-r from-surface/90 via-surface/70 to-surface/90 p-8 sm:p-10 backdrop-blur-xl shadow-2xl">
+            {/* Ambient gold glow */}
+            <div className="pointer-events-none absolute -top-20 end-0 h-64 w-64 rounded-full bg-gold/10 blur-3xl" />
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className={`space-y-3 flex-1 ${isRtl ? "text-right" : "text-left"}`}>
+                <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-bold text-gold">
+                  <Sparkles className="h-3.5 w-3.5 text-gold" />
+                  <span>{d.portfolioBridge.badge}</span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight leading-snug">
+                  {d.portfolioBridge.heading}
+                </h2>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                  {d.portfolioBridge.description}
+                </p>
+
+                <div className="flex items-center gap-2 pt-1 text-xs font-semibold text-gold/90">
+                  <CheckCircle2 className="h-4 w-4 text-gold shrink-0" />
+                  <span>{d.portfolioBridge.statBadge}</span>
+                </div>
+              </div>
+
+              <div className="shrink-0 w-full md:w-auto">
+                <Link
+                  href="/portfolio"
+                  className="group w-full md:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-gradient-gold px-7 py-4 text-sm font-black text-gold-foreground shadow-gold hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <span>{d.portfolioBridge.btnText}</span>
+                  <ArrowForward className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -657,7 +699,7 @@ export default function AboutContent() {
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact?service=consultation"
+              href="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-sm font-black text-gold-foreground shadow-gold hover:-translate-y-0.5 active:translate-y-0 transition-transform"
             >
               <span>{d.cta.primaryBtn}</span>
