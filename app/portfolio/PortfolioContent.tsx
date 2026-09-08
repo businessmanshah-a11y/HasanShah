@@ -124,36 +124,46 @@ export default function PortfolioContent() {
                   : "A showcase of verified live websites, luxury e-commerce platforms, interactive digital menus, and custom software systems."}
               </p>
 
-              {/* Luminous Floating Metrics Strip */}
-              <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                <div className="rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-gold/30">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">۶+</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+              {/* Luminous Floating Metrics Deck (Uniform Heights, Clean Typography, Zero Awkward Wrapping) */}
+              <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 items-stretch">
+                {/* Card 1: Live Sites */}
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 sm:p-5 text-center transition-all duration-300 hover:border-gold/30 hover:bg-surface/60 min-h-[96px] sm:min-h-[112px]">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight leading-none mb-2">
+                    ۶+
+                  </div>
+                  <div className="text-[11px] sm:text-xs md:text-sm text-muted-foreground font-medium leading-snug">
                     {locale === "fa" ? "سایت آنلاین و فعال" : locale === "ar" ? "مواقع نشطة" : "Live Web Apps"}
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-gold/30">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">۱۰۰٪</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                {/* Card 2: Bespoke Design */}
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 sm:p-5 text-center transition-all duration-300 hover:border-gold/30 hover:bg-surface/60 min-h-[96px] sm:min-h-[112px]">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight leading-none mb-2">
+                    ۱۰۰٪
+                  </div>
+                  <div className="text-[11px] sm:text-xs md:text-sm text-muted-foreground font-medium leading-snug">
                     {locale === "fa" ? "طراحی اختصاصی و سفارشی" : locale === "ar" ? "تصميم مخصص" : "Bespoke UI/UX"}
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-gold/30">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight" dir={isRtl ? "rtl" : "ltr"}>
-                    {locale === "fa" ? "زیر ۱.۵ ثانیه" : locale === "ar" ? "أقل من ۱.۵ ثانية" : "< 1.5s"}
+                {/* Card 3: Load Speed */}
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 sm:p-5 text-center transition-all duration-300 hover:border-gold/30 hover:bg-surface/60 min-h-[96px] sm:min-h-[112px]">
+                  <div className="flex items-baseline justify-center gap-1 text-gold leading-none mb-2 whitespace-nowrap" dir={isRtl ? "rtl" : "ltr"}>
+                    <span className="text-xs sm:text-sm font-bold opacity-80">{locale === "fa" ? "زیر" : locale === "ar" ? "أقل من" : "<"}</span>
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">{locale === "fa" ? "۱.۵" : locale === "ar" ? "۱.۵" : "1.5"}</span>
+                    <span className="text-xs sm:text-sm font-bold opacity-80">{locale === "fa" ? "ثانیه" : locale === "ar" ? "ثانية" : "s"}</span>
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                  <div className="text-[11px] sm:text-xs md:text-sm text-muted-foreground font-medium leading-snug">
                     {locale === "fa" ? "سرعت بارگذاری بهینه" : locale === "ar" ? "سرعة التحميل" : "Fast Page Load"}
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 text-center transition-all duration-300 hover:border-gold/30">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">
-                    {locale === "fa" ? "موبایل‌فرست" : locale === "ar" ? "متوافق جوال" : "Mobile"}
+                {/* Card 4: Mobile Experience */}
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 sm:p-5 text-center transition-all duration-300 hover:border-gold/30 hover:bg-surface/60 min-h-[96px] sm:min-h-[112px]">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-black text-gold tracking-tight leading-none mb-2 whitespace-nowrap">
+                    {locale === "fa" ? "موبایل‌فرست" : locale === "ar" ? "متوافق جوال" : "Mobile-First"}
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                  <div className="text-[11px] sm:text-xs md:text-sm text-muted-foreground font-medium leading-snug">
                     {locale === "fa" ? "تجربه لمسی و سئو" : locale === "ar" ? "متوافق مع الجوال" : "Touch UX & SEO"}
                   </div>
                 </div>
