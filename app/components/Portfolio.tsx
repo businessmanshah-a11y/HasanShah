@@ -1,7 +1,8 @@
 "use client";
 import { type CSSProperties, useState } from "react";
 import Image from "next/image";
-import { ExternalLink, EyeOff } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, ExternalLink, EyeOff, Globe } from "lucide-react";
 import { useReveal } from "../hooks/use-reveal";
 import { filters, getVisibleProjects, type Category, type Project } from "./portfolio-data";
 import { useI18n } from "../i18n/LanguageProvider";
@@ -11,7 +12,7 @@ export default function Portfolio() {
   const [filter, setFilter] = useState<Category>("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useReveal<HTMLDivElement>();
-  const { t } = useI18n();
+  const { t, dir } = useI18n();
   const filterLabel = (key: Category) => t.portfolio.filters[key as keyof typeof t.portfolio.filters];
 
   const visible = getVisibleProjects(filter);
@@ -35,9 +36,9 @@ export default function Portfolio() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(event) => event.stopPropagation()}
-          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-extrabold text-gold transition hover:bg-gold hover:text-gold-foreground active:translate-y-px"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-extrabold text-gold transition hover:bg-gold hover:text-gold-foreground active:translate-y-px shadow-sm"
         >
-          {t.portfolio.view}
+          {t.portfolio.visitLive || t.portfolio.view}
           <ExternalLink className="h-4 w-4" />
         </a>
       );
@@ -86,7 +87,7 @@ export default function Portfolio() {
 
         {activeProject ? (
           <div className="mx-auto w-full max-w-md md:hidden">
-            <article className="relative h-[520px] overflow-hidden rounded-3xl border border-gold/50 bg-surface shadow-gold-lg">
+            <article className="relative h-[540px] overflow-hidden rounded-3xl border border-gold/50 bg-surface shadow-gold-lg">
               <Image
                 src={activeProject.image}
                 alt={activeProject.title}
@@ -95,18 +96,32 @@ export default function Portfolio() {
                 loading="lazy"
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
               <div className="absolute inset-0 z-10 flex flex-col justify-end p-5">
                 <div className="flex flex-col items-start gap-3">
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
-                    {filterLabel(activeProject.category) ?? t.portfolio.fallbackCategory}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
+                      {filterLabel(activeProject.category) ?? t.portfolio.fallbackCategory}
+                    </span>
+                    {activeProject.status === "live" ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[11px] font-bold text-emerald-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        {t.portfolio.liveBadge}
+                      </span>
+                    ) : null}
+                  </div>
                   <div className="flex w-full flex-col items-start gap-4">
                     <div>
-                      <h3 className="text-3xl font-black leading-tight text-white">
+                      <h3 className="text-2xl font-black leading-tight text-white">
                         {activeProject.title}
                       </h3>
-                      <p className="mt-2 max-w-md text-sm leading-loose text-white/75">
+                      {activeProject.domain ? (
+                        <div className="mt-1 flex items-center gap-1.5 text-xs text-gold/80 font-mono" dir="ltr">
+                          <Globe className="h-3 w-3" />
+                          <span>{activeProject.domain}</span>
+                        </div>
+                      ) : null}
+                      <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
                         {t.portfolio.projects[activeProject.title] ?? activeProject.desc}
                       </p>
                     </div>
@@ -164,7 +179,7 @@ export default function Portfolio() {
         ) : null}
 
         <ul
-          className="mx-auto hidden h-[700px] w-full max-w-7xl gap-3 transition-[grid-template-columns,grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [grid-template-rows:var(--portfolio-rows)] md:grid md:h-[500px] md:[grid-template-columns:var(--portfolio-columns)] md:[grid-template-rows:1fr]"
+          className="mx-auto hidden h-[700px] w-full max-w-7xl gap-3 transition-[grid-template-columns,grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [grid-template-rows:var(--portfolio-rows)] md:grid md:h-[520px] md:[grid-template-columns:var(--portfolio-columns)] md:[grid-template-rows:1fr]"
           style={accordionStyle}
         >
           {visible.map((p, index) => {
@@ -206,7 +221,7 @@ export default function Portfolio() {
                 <div
                   className={`absolute inset-0 transition-opacity duration-700 ${
                     isActive
-                      ? "bg-gradient-to-t from-black/80 via-black/30 to-black/5"
+                      ? "bg-gradient-to-t from-black/85 via-black/30 to-black/5"
                       : "bg-gradient-to-t from-black/65 via-black/20 to-transparent"
                   }`}
                 />
@@ -231,15 +246,30 @@ export default function Portfolio() {
                   }`}
                 >
                   <div className="flex flex-col items-start gap-3">
-                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
-                      {filterLabel(p.category) ?? t.portfolio.fallbackCategory}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-[0.18em] text-gold">
+                        {filterLabel(p.category) ?? t.portfolio.fallbackCategory}
+                      </span>
+                      {p.status === "live" ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[11px] font-bold text-emerald-400">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          {t.portfolio.liveBadge}
+                        </span>
+                      ) : null}
+                    </div>
+
                     <div className="flex w-full flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
                       <div>
                         <h3 className="text-2xl font-black leading-tight text-white md:text-3xl">
                           {p.title}
                         </h3>
-                        <p className="mt-2 max-w-md text-sm leading-loose text-white/70 md:text-base">
+                        {p.domain ? (
+                          <div className="mt-1 flex items-center gap-1.5 text-xs text-gold/85 font-mono" dir="ltr">
+                            <Globe className="h-3 w-3" />
+                            <span>{p.domain}</span>
+                          </div>
+                        ) : null}
+                        <p className="mt-2 max-w-md text-sm leading-relaxed text-white/75 md:text-base">
                           {t.portfolio.projects[p.title] ?? p.desc}
                         </p>
                       </div>
@@ -251,6 +281,32 @@ export default function Portfolio() {
             );
           })}
         </ul>
+
+        {/* CTA banner linking to dedicated portfolio page */}
+        <div className="mt-12 mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl border border-gold/30 bg-gradient-to-r from-surface/90 via-surface/60 to-surface/90 p-6 md:p-8 shadow-gold/10 backdrop-blur-md">
+          <div className="text-center sm:text-start">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-gold mb-1">
+              صفحه اختصاصی پروژه‌ها
+            </span>
+            <h3 className="text-xl md:text-2xl font-black text-white">
+              {t.portfolio.viewAllCta}
+            </h3>
+            <p className="mt-1.5 text-sm text-muted-foreground max-w-xl">
+              تمام نمونه‌کارهای آنلاین، سیستم‌های اختصاصی و استارتاپی را همراه با مستندات فنی، استک و تحلیل تجربه کاربری در صفحه مجزا ببینید.
+            </p>
+          </div>
+          <Link
+            href="/portfolio/"
+            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-gradient-gold px-7 py-3.5 text-sm md:text-base font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span>{t.portfolio.viewAll}</span>
+            {dir === "rtl" ? (
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            ) : (
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            )}
+          </Link>
+        </div>
       </div>
     </section>
   );

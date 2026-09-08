@@ -777,3 +777,50 @@ export function SeriesDetailJsonLd({
   );
 }
 
+export function PortfolioPageJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${BASE}/portfolio/#collection`,
+        name: "نمونه‌کارها و پروژه‌های حسن شاهمرادی",
+        description:
+          "آرشیو پروژه‌ها، وبسایت‌های آنلاین و سیستم‌های اختصاصی اجرا شده توسط حسن شاهمرادی.",
+        url: `${BASE}/portfolio/`,
+        publisher: {
+          "@type": "Person",
+          name: "حسن شاهمرادی",
+          url: BASE,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BASE}/portfolio/#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "صفحه اصلی",
+            item: BASE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "نمونه‌کارها",
+            item: `${BASE}/portfolio/`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+

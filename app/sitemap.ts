@@ -67,6 +67,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Blog Articles (Pillar & Cluster) ──
     ...blogPosts(base),
 
+    // ── Portfolio Hub ──
+    {
+      url: `${base}/portfolio/`,
+      lastModified: new Date("2026-09-08"),
+      changeFrequency: "weekly",
+      priority: 0.95,
+      alternates: alternates(`${base}/portfolio/`),
+    },
+
     // ── About & Story ──
     {
       url: `${base}/about/`,

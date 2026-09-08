@@ -1,4 +1,6 @@
-export type Category = "all" | "shop" | "service" | "startup" | "personal";
+import { ALL_PROJECTS } from "../lib/portfolio-data";
+
+export type Category = "all" | "shop" | "food" | "service" | "custom";
 
 export type Project = {
   title: string;
@@ -6,52 +8,34 @@ export type Project = {
   image: string;
   category: Exclude<Category, "all">;
   url?: string;
+  domain?: string;
+  status?: "live" | "proprietary" | "concept";
+  niche?: string;
+  techStack?: string[];
 };
 
-export const projects: Project[] = [
-  {
-    title: "Lux Counter",
-    desc: "سایت شرکتی تخصصی صفحات سنگ کابینت — بیش از ۲۰۰ محصول، دوزبانه با دو تم",
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-luxcounter.webp`,
-    category: "service",
-    url: "https://luxcounter.ir",
-  },
-  {
-    title: "Rubifo",
-    desc: "ربات هوشمند بارگذاری محتوا برای روبیکا — درگاه پرداخت یکپارچه و سایت اختصاصی",
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-rubifo.webp`,
-    category: "service",
-    url: "https://rubifo.ir",
-  },
-  {
-    title: "AutoMarketing",
-    desc: "سیستم جامع دیجیتال مارکتینگ — از تحقیقات بازار تا تولید محتوا، بارگذاری و آنالیز با هوش مصنوعی",
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-automarketing.webp`,
-    category: "startup",
-  },
-  {
-    title: "LoosiPet",
-    desc: "پلتفرم هویت دیجیتال پت — QR هوشمند، ردیابی لحظه‌ای و دستیار هوش مصنوعی برای مراقبت از حیوانات خانگی",
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-loosipet.webp`,
-    category: "startup",
-  },
-  {
-    title: "نداهیر",
-    desc: "فروشگاه تخصصی مراقبت از مو — مشاوره شخصی‌سازی‌شده، محصولات گیاهی و راهنمای درمان ریزش مو",
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/portfolio/portfolio-nadahair.webp`,
-    category: "shop",
-    url: "https://nadahair.ir",
-  },
-];
+export const projects: Project[] = ALL_PROJECTS.map((item) => ({
+  title: item.title,
+  desc: item.desc,
+  image: item.image,
+  category: item.category as Exclude<Category, "all">,
+  url: item.url,
+  domain: item.domain,
+  status: item.status,
+  niche: item.niche,
+  techStack: item.techStack,
+}));
 
 export const filters: { key: Category; label: string }[] = [
   { key: "all", label: "همه" },
   { key: "shop", label: "فروشگاهی" },
+  { key: "food", label: "کافه و رستوران" },
   { key: "service", label: "خدماتی" },
-  { key: "startup", label: "استارتاپ" },
-  { key: "personal", label: "پرسونال" },
+  { key: "custom", label: "سیستم اختصاصی" },
 ];
 
 export function getVisibleProjects(filter: Category) {
-  return projects.filter((project) => filter === "all" || project.category === filter);
+  // Show featured or live projects first
+  const filtered = projects.filter((project) => filter === "all" || project.category === filter);
+  return filtered;
 }
