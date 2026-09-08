@@ -37,6 +37,13 @@ interface Milestone {
   tags: string[];
   icon: typeof Rocket;
   highlightColor: string;
+  image: {
+    src: string;
+    alt: string;
+    caption: string;
+    tag: string;
+    externalLink?: string;
+  };
 }
 
 const MILESTONES: Milestone[] = [
@@ -47,11 +54,18 @@ const MILESTONES: Milestone[] = [
     title: "استارتاپ «۳ سوت» (3soot.app)؛ سفارش آنلاین نان داغ",
     subtitle: "اولین ورود جدی به دنیای استارتاپ‌ها، ساخت محصول دیجیتال و بازار سنتی",
     description:
-      "همه چیز از عطش ساختن یک راهکار واقعی برای مردم شروع شد. استارتاپ ۳ سوت با هدف تحویل نان گرم سه سوته به درب منازل در تهران متولد شد؛ همراه با اپلیکیشن اختصاصی، ویدیوهای رونمایی در آپارات و ایجاد شبکه تحویل لجستیکی. اینجا اولین میدان نبرد واقعی من با چالش‌های بیزینس، کشش بازار و مدیریت محصول بود.",
+      "همه چیز از عطش ساختن یک راهکار واقعی برای مردم شروع شد. استارتاپ ۳ سوت با هدف تحویل نان گرم سه سوته به درب منازل در سن ۲۰ سالگی متولد شد؛ همراه با اپلیکیشن اختصاصی، ویدیوی پروموشن در آپارات و ایجاد شبکه تحویل لجستیکی. اینجا اولین میدان نبرد واقعی من با چالش‌های بیزینس، کشش بازار و مدیریت محصول بود.",
     quote: "اولین تجربه بیزینسی من بود. فهمیدم داشتن یک ایده نو، فقط ۵ درصد کاره و ۹۵ درصد بقیه به اجرای دقیق و درک روانشناسی رفتار مشتری وابسته است.",
     tags: ["استارتاپ", "کارآفرینی", "مدیریت محصول", "لجستیک شهری"],
     icon: Rocket,
     highlightColor: "from-amber-500/20 to-orange-500/10 border-amber-500/30 text-amber-400",
+    image: {
+      src: "/images/about/milestone-1-3soot.jpg",
+      alt: "کاور ویدیوی معرفی استارتاپ ۳ سوت در آپارات",
+      caption: "کاور رسمی ویدیوی رونمایی استارتاپ ۳ سوت (3soot.app) در آپارات — ارسال آنلاین نان داغ درب منازل",
+      tag: "مستندات ویدیویی آپارات ۱۳۹۷",
+      externalLink: "https://www.aparat.com/v/z702f4r",
+    },
   },
   {
     id: "corona-pivot",
@@ -65,6 +79,12 @@ const MILESTONES: Milestone[] = [
     tags: ["تاب‌آوری", "تحلیل شکست", "تفکر بیزینسی", "نقطه عطف"],
     icon: Flame,
     highlightColor: "from-rose-500/20 to-red-500/10 border-rose-500/30 text-rose-400",
+    image: {
+      src: "/images/about/milestone-2-resilience.jpg",
+      alt: "دوران بازسازی، سکوت و تحلیل استراتژی بیزینس",
+      caption: "ایستگاه بازسازی و تحلیل تاب‌آوری؛ شب‌های بازطراحی بیزینس مدل و روانشناسی بازار",
+      tag: "تحلیل و بازسازی استراتژی ۱۳۹۸",
+    },
   },
   {
     id: "video-marketing-era",
@@ -78,6 +98,13 @@ const MILESTONES: Milestone[] = [
     tags: ["ویدیو مارکتینگ", "سناریونویسی", "روانشناسی فروش", "برندینگ B2B"],
     icon: Award,
     highlightColor: "from-emerald-500/20 to-teal-500/10 border-emerald-500/30 text-emerald-400",
+    image: {
+      src: "/images/about/milestone-3-videomarketing.jpg",
+      alt: "حسن شاهمرادی در شو روم مستر کانترتاپ",
+      caption: "اجرا و سناریونویسی محتوای برند مستر کانترتاپ (mr_countertop.ir)؛ جذب مشتریان B2B و فروش میلیاردی با ویدیو",
+      tag: "کمپین‌های اینستاگرامی ۱۳۹۹",
+      externalLink: "https://www.instagram.com/mr_countertop.ir/",
+    },
   },
   {
     id: "web-dev-conversion",
@@ -91,6 +118,12 @@ const MILESTONES: Milestone[] = [
     tags: ["React & Next.js", "لندینگ‌پیج پرفروش", "طراحی UI/UX", "آفر ۷۲ ساعته"],
     icon: Globe,
     highlightColor: "from-blue-500/20 to-indigo-500/10 border-blue-500/30 text-blue-400",
+    image: {
+      src: "/images/about/milestone-4-frontend.jpg",
+      alt: "میز کار مهندسی فرانت‌اند و لندینگ‌پیج‌های پرسرعت",
+      caption: "توسعه وب‌سایت‌های مدرن و لندینگ‌پیج‌های اختصاصی بدون قالب آماده با استک Next.js و آفر تحویل ۷۲ ساعته",
+      tag: "توسعه وب و آفر ۷۲ ساعته ۱۴۰۲",
+    },
   },
   {
     id: "vibe-coding-era",
@@ -104,6 +137,13 @@ const MILESTONES: Milestone[] = [
     tags: ["وایب‌کدینگ", "هوش مصنوعی مولد", "Cursor & Claude", "کارگاه‌های حضوری"],
     icon: Sparkles,
     highlightColor: "from-gold/30 to-amber-500/20 border-gold/50 text-gold",
+    image: {
+      src: "/images/about/milestone-5-vibecoding.jpg",
+      alt: "حسن شاهمرادی در حال تدریس وایب‌کدینگ روی صحنه در تهران",
+      caption: "آموزش و ترویج عملی Vibe Coding در کارگاه‌های حضوری و آنلاین تهران؛ هدایت هوش مصنوعی برای خلق محصولات دیجیتال",
+      tag: "رویدادها و ورکشاپ‌های تهران ۱۴۰۳",
+      externalLink: "/vibe-coding",
+    },
   },
 ];
 
@@ -248,7 +288,7 @@ export default function AboutContent() {
 
       {/* Main Interactive Timeline Album Section */}
       <section className="relative py-20 bg-surface/30 border-t border-b border-gold/10">
-        <div className="container mx-auto px-4 max-w-5xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs font-semibold text-gold">
@@ -265,80 +305,147 @@ export default function AboutContent() {
 
           {/* Timeline Spine */}
           <div className="relative">
-            {/* Center / Right Line */}
-            <div className="absolute right-4 md:right-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-amber-500 via-gold to-emerald-500 opacity-30 transform md:translate-x-1/2" />
+            {/* Center Line on Desktop / Right Line on Mobile */}
+            <div className="absolute right-4 md:right-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-amber-500 via-gold to-emerald-500 opacity-25 transform md:translate-x-1/2" />
 
-            {/* Milestones */}
-            <div className="space-y-12 md:space-y-16">
+            {/* Milestones List */}
+            <div className="space-y-16 md:space-y-24">
               {MILESTONES.map((m, idx) => {
                 const isEven = idx % 2 === 0;
 
                 return (
                   <motion.div
                     key={m.id}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 35 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.6 }}
-                    className={`relative flex flex-col md:flex-row items-start md:items-center gap-6 ${
-                      isEven ? "md:flex-row-reverse" : ""
-                    }`}
+                    className="relative w-full pr-10 sm:pr-12 md:pr-0"
                   >
-                    {/* Node Dot on the Line */}
-                    <div className="absolute right-4 md:right-1/2 top-6 md:top-1/2 transform translate-x-1/2 md:-translate-y-1/2 z-20 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gold bg-[#09090b] shadow-[0_0_15px_rgba(212,175,55,0.6)]">
-                      <div className="h-2.5 w-2.5 rounded-full bg-gold animate-pulse" />
+                    {/* Glowing Node Dot on the Spine */}
+                    <div className="absolute right-4 md:right-1/2 top-8 md:top-1/2 transform translate-x-1/2 md:-translate-y-1/2 z-20 flex h-9 w-9 items-center justify-center rounded-full border-2 border-gold bg-[#09090b] shadow-[0_0_20px_rgba(212,175,55,0.7)]">
+                      <div className="h-3 w-3 rounded-full bg-gold animate-pulse" />
                     </div>
 
-                    {/* Content Card */}
-                    <div className="pr-12 md:pr-0 md:w-1/2 w-full">
+                    {/* 2-Column Grid: Exactly Equal Heights on Desktop */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-stretch">
+                      
+                      {/* Visual Album Photo Card */}
                       <div
-                        className={`rounded-3xl border bg-gradient-to-b p-6 sm:p-7 backdrop-blur-xl shadow-xl transition-all hover:scale-[1.01] ${m.highlightColor}`}
+                        className={`relative w-full h-full min-h-[300px] sm:min-h-[360px] md:min-h-[440px] rounded-3xl overflow-hidden border border-gold/30 bg-surface/60 backdrop-blur-xl shadow-2xl group flex flex-col justify-between ${
+                          isEven
+                            ? "order-1 md:order-2 md:ps-4 lg:ps-6"
+                            : "order-1 md:order-1 md:pe-4 lg:pe-6"
+                        }`}
                       >
-                        {/* Header of milestone */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                          <span className="rounded-full border border-current px-3 py-0.5 text-[11px] font-bold">
-                            {m.badge}
-                          </span>
-                          <span className="font-mono text-xs text-muted-foreground" dir="ltr">
-                            {m.year}
-                          </span>
+                        {/* Background Photo */}
+                        <div className="absolute inset-0 z-0">
+                          <Image
+                            src={m.image.src}
+                            alt={m.image.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                            priority={idx === 0}
+                          />
+                          {/* Ambient cinematic gradients */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 transition-opacity group-hover:opacity-85" />
+                          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent opacity-60" />
                         </div>
 
-                        <h3 className="text-lg sm:text-xl font-black text-foreground mb-1">
-                          {m.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm font-semibold text-foreground/80 mb-4 leading-relaxed">
-                          {m.subtitle}
-                        </p>
+                        {/* Top Badge & External Link */}
+                        <div className="relative z-10 p-5 sm:p-6 flex items-start justify-between gap-2">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-black/75 backdrop-blur-md px-3.5 py-1 text-[11px] font-bold text-gold shadow-lg">
+                            <m.icon className="h-3.5 w-3.5" />
+                            <span>{m.image.tag}</span>
+                          </span>
 
-                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
-                          {m.description}
-                        </p>
-
-                        {/* Quote Box */}
-                        {m.quote && (
-                          <div className="relative rounded-2xl border border-white/10 bg-background/50 p-4 mb-4 text-xs text-foreground/90 italic leading-relaxed">
-                            <Quote className="h-4 w-4 text-gold/60 mb-1 inline-block -scale-x-100 me-1" />
-                            <span>{m.quote}</span>
-                          </div>
-                        )}
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
-                          {m.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-lg bg-background/60 px-2.5 py-1 text-[11px] text-muted-foreground border border-white/5"
+                          {m.image.externalLink && (
+                            <a
+                              href={m.image.externalLink}
+                              target={m.image.externalLink.startsWith("http") ? "_blank" : undefined}
+                              rel={m.image.externalLink.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 backdrop-blur-md px-3 py-1 text-[11px] font-medium text-white/90 hover:border-gold hover:text-gold transition-colors shadow-lg"
                             >
-                              #{tag}
+                              <span>مشاهده منبع</span>
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
+                        </div>
+
+                        {/* Bottom Caption & Subtitle */}
+                        <div className="relative z-10 p-5 sm:p-6 text-right space-y-1.5 border-t border-white/10 bg-black/70 backdrop-blur-md">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[11px] font-bold text-gold tracking-wider">
+                              مستند تصویری ایستگاه {idx + 1}
                             </span>
-                          ))}
+                            <span className="text-[10px] text-white/60 font-mono" dir="ltr">
+                              {m.year}
+                            </span>
+                          </div>
+                          <p className="text-xs sm:text-sm font-medium text-white/95 leading-relaxed drop-shadow-sm">
+                            {m.image.caption}
+                          </p>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Empty spacer for the other column in desktop */}
-                    <div className="hidden md:block md:w-1/2" />
+                      {/* Story Content Card */}
+                      <div
+                        className={`w-full flex flex-col justify-between ${
+                          isEven
+                            ? "order-2 md:order-1 md:pe-4 lg:pe-6"
+                            : "order-2 md:order-2 md:ps-4 lg:ps-6"
+                        }`}
+                      >
+                        <div
+                          className={`h-full flex flex-col justify-between rounded-3xl border bg-gradient-to-b p-6 sm:p-8 backdrop-blur-xl shadow-xl transition-all hover:border-gold/50 ${m.highlightColor}`}
+                        >
+                          <div>
+                            {/* Header */}
+                            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                              <span className="rounded-full border border-current px-3 py-0.5 text-[11px] font-bold">
+                                {m.badge}
+                              </span>
+                              <span className="font-mono text-xs text-muted-foreground" dir="ltr">
+                                {m.year}
+                              </span>
+                            </div>
+
+                            <h3 className="text-xl sm:text-2xl font-black text-foreground mb-1.5">
+                              {m.title}
+                            </h3>
+                            <p className="text-xs sm:text-sm font-semibold text-foreground/80 mb-4 leading-relaxed">
+                              {m.subtitle}
+                            </p>
+
+                            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5">
+                              {m.description}
+                            </p>
+
+                            {/* Quote Box */}
+                            {m.quote && (
+                              <div className="relative rounded-2xl border border-white/10 bg-background/60 p-4 mb-5 text-xs sm:text-sm text-foreground/90 italic leading-relaxed">
+                                <Quote className="h-4 w-4 text-gold/60 mb-1 inline-block -scale-x-100 me-1" />
+                                <span>{m.quote}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 mt-auto">
+                            {m.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="rounded-lg bg-background/70 px-2.5 py-1 text-[11px] text-muted-foreground border border-white/5"
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
                   </motion.div>
                 );
               })}
