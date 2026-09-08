@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Send } from "lucide-react";
-import { InstagramIcon, LinkedInIcon } from "./Icons";
+import { InstagramIcon, LinkedInIcon, BaleIcon } from "./Icons";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Footer() {
@@ -81,6 +81,16 @@ export default function Footer() {
           >
             <Send className="h-4 w-4" />
             {t.footer.telegram}
+          </a>
+
+          <a
+            href="https://ble.ir/shahvibe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[#00B894]/40 bg-[#00B894]/10 px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#00B894] hover:bg-[#00B894]/20 hover:border-[#00B894]/60 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+          >
+            <BaleIcon className="h-4 w-4" />
+            <span>بله (@shahvibe)</span>
           </a>
 
           <a

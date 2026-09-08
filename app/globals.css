@@ -199,7 +199,17 @@
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 60px);
 }
-main > section { padding: clamp(80px, 12vw, 140px) 0; }
+
+/* ── Scrollbar utilities ── */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
 
 /* ── Chip / tag ── */
 .chip {

@@ -40,12 +40,14 @@ import { toast } from "sonner";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import ParticlesBackground from "../../components/ParticlesBackground";
+import { BaleIcon } from "../../components/Icons";
 
 // ── Contact Constants ────────────────────────────────────────────────────────
 const PHONE = "09120870095";
 const PHONE_FA = "۰۹۱۲۰۸۷۰۰۹۵";
 const TEL = `tel:${PHONE}`;
 const TELEGRAM = "https://t.me/shahbusinessman";
+const BALE = "https://ble.ir/shahvibe";
 const WHATSAPP_MSG = encodeURIComponent(
   "سلام آقای شاهمرادی، پروپوزال و مسیر بوت‌کمپ اختصاصی وایب‌کدینگ ویژه تیم برنامه‌نویسی را در سایت دیدیم. می‌خواستیم برای هماهنگی زمان‌بندی دو جلسه ۲ ساعته و شروع کارگاه هماهنگ کنیم."
 );
@@ -807,10 +809,20 @@ export default function DevTeamBootcampPage() {
 
             <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base leading-loose text-muted-foreground">
               این برنامه برای تیم‌های ۴ تا ۵ نفره تدوین شده است. جهت هماهنگی تقویم زمان‌بندی دو جلسه ۲ ساعته
-              و دریافت جزییات اولیه قبل از برگزاری، مستقیماً از طریق تلگرام یا تماس تلفنی با حسن شاهمرادی در ارتباط باشید.
+              و دریافت جزییات اولیه قبل از برگزاری، مستقیماً از طریق پیام‌رسان بله، تلگرام، واتساپ یا تماس تلفنی با حسن شاهمرادی در ارتباط باشید.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <a
+                href={BALE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-xl border border-[#00B894]/40 bg-[#00B894]/15 px-7 py-4 text-sm font-black text-[#00B894] transition hover:bg-[#00B894]/25 hover:border-[#00B894]/70 hover:-translate-y-0.5 shadow-sm"
+              >
+                <BaleIcon className="h-5 w-5 text-[#00B894]" />
+                <span>پیام در بله (@shahvibe)</span>
+              </a>
+
               <a
                 href={TELEGRAM}
                 target="_blank"
