@@ -64,11 +64,11 @@ export default function Footer() {
 
         {/* لینک‌های راهبری فوتر */}
         <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground">
-          <Link href="/" className="hover:text-gold transition-colors">صفحه اصلی</Link>
-          <Link href="/about/" className="text-foreground hover:text-gold transition-colors font-bold">درباره من (مسیر و رزومه)</Link>
-          <Link href="/vibe-coding" className="hover:text-gold transition-colors">آموزش وایب‌کدینگ</Link>
-          <Link href="/blog/" className="hover:text-gold transition-colors">وبلاگ تخصصی</Link>
-          <Link href="/contact/" className="hover:text-gold transition-colors">تماس با من</Link>
+          <Link href="/" prefetch={false} className="hover:text-gold transition-colors">صفحه اصلی</Link>
+          <Link href="/about/" prefetch={false} className="text-foreground hover:text-gold transition-colors font-bold">درباره من (مسیر و رزومه)</Link>
+          <Link href="/vibe-coding" prefetch={false} className="hover:text-gold transition-colors">آموزش وایب‌کدینگ</Link>
+          <Link href="/blog/" prefetch={false} className="hover:text-gold transition-colors">وبلاگ تخصصی</Link>
+          <Link href="/contact/" prefetch={false} className="hover:text-gold transition-colors">تماس با من</Link>
         </div>
 
         {/* شبکه‌های اجتماعی و دکمه‌های ارتباطی */}

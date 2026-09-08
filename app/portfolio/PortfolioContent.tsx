@@ -76,14 +76,14 @@ export default function PortfolioContent() {
     >
       <Nav />
 
-      <main className="pt-28 md:pt-36 pb-24">
+      <main className="pt-32 md:pt-40 pb-28">
         {/* ── Breadcrumb ── */}
-        <div className="container mx-auto px-4 mb-6">
+        <div className="container mx-auto px-4 mb-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-gold transition">
+            <Link href="/" prefetch={false} className="hover:text-gold transition-colors duration-200">
               {locale === "fa" ? "صفحه اصلی" : locale === "ar" ? "الرئيسية" : "Home"}
             </Link>
-            <span>/</span>
+            <span className="opacity-40">/</span>
             <span className="text-foreground font-semibold">
               {locale === "fa" ? "نمونه‌کارها" : locale === "ar" ? "الأعمال" : "Portfolio"}
             </span>
@@ -91,7 +91,7 @@ export default function PortfolioContent() {
         </div>
 
         {/* ── Hero Section ── */}
-        <section className="container mx-auto px-4 mb-16 md:mb-24">
+        <section className="container mx-auto px-4 mb-20 md:mb-28">
           <div className="relative max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs md:text-sm font-bold text-gold shadow-gold/10 backdrop-blur-sm mb-6">
               <Sparkles className="h-3.5 w-3.5 text-gold animate-pulse" />
@@ -104,7 +104,7 @@ export default function PortfolioContent() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black leading-[1.25] tracking-tight mb-6">
               {locale === "fa" ? (
                 <Highlight text="پروژه‌هایی که *زنده و فعالند*؛ ساخته‌شده برای رقابت واقعی" />
               ) : locale === "ar" ? (
@@ -114,7 +114,7 @@ export default function PortfolioContent() {
               )}
             </h1>
 
-            <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+            <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
               {locale === "fa"
                 ? "گزیده‌ای از وب‌سایت‌های آنلاین تجاری با ترافیک واقعی، فروشگاه‌های تخصصی، منوهای دیجیتال لمسی و پلتفرم‌های نرم‌افزاری اختصاصی."
                 : locale === "ar"
@@ -122,45 +122,49 @@ export default function PortfolioContent() {
                 : "A showcase of verified live websites, luxury e-commerce platforms, interactive digital menus, and custom software systems."}
             </p>
 
-            {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto">
-              <div className="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-sm">
-                <div className="text-2xl md:text-3xl font-black text-gold">۶+</div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">
-                  {locale === "fa" ? "سایت آنلاین و فعال" : locale === "ar" ? "مواقع نشطة" : "Live Web Apps"}
+            {/* Unified Luxury Metrics Bar (Eliminating Cramped Separate Boxes) */}
+            <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-surface/50 backdrop-blur-md p-4 sm:p-6 shadow-2xl">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x md:divide-x-reverse md:divide-white/10">
+                <div className="text-center px-4 py-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">۶+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                    {locale === "fa" ? "سایت آنلاین و فعال" : locale === "ar" ? "مواقع نشطة" : "Live Web Apps"}
+                  </div>
                 </div>
-              </div>
 
-              <div className="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-sm">
-                <div className="text-2xl md:text-3xl font-black text-gold">۱۰۰٪</div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">
-                  {locale === "fa" ? "طراحی اختصاصی و سفارشی" : locale === "ar" ? "تصميم مخصص" : "Bespoke UI/UX"}
+                <div className="text-center px-4 py-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">۱۰۰٪</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                    {locale === "fa" ? "طراحی اختصاصی و سفارشی" : locale === "ar" ? "تصميم مخصص" : "Bespoke UI/UX"}
+                  </div>
                 </div>
-              </div>
 
-              <div className="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-sm">
-                <div className="text-2xl md:text-3xl font-black text-gold">&lt; ۱.۵s</div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">
-                  {locale === "fa" ? "سرعت بارگذاری بهینه" : locale === "ar" ? "سرعة التحميل" : "Fast Page Load"}
+                <div className="text-center px-4 py-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight font-mono" dir="ltr">
+                    &lt; 1.5s
+                  </div>
+                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                    {locale === "fa" ? "سرعت بارگذاری بهینه" : locale === "ar" ? "سرعة التحميل" : "Fast Page Load"}
+                  </div>
                 </div>
-              </div>
 
-              <div className="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-sm">
-                <div className="text-2xl md:text-3xl font-black text-gold">Mobile</div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">
-                  {locale === "fa" ? "تجربه لمسی و سئو" : locale === "ar" ? "متوافق مع الجوال" : "Mobile-First UX"}
+                <div className="text-center px-4 py-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight">Mobile</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground mt-1.5 font-medium">
+                    {locale === "fa" ? "تجربه لمسی و سئو" : locale === "ar" ? "متوافق مع الجوال" : "Mobile-First UX"}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── Filters & Search Controls ── */}
-        <section className="container mx-auto px-4 mb-12">
-          <div className="max-w-6xl mx-auto rounded-3xl border border-white/10 bg-surface/50 p-4 md:p-6 backdrop-blur-md">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-              {/* Category tabs */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 w-full lg:w-auto">
+        {/* ── Filters & Search Controls (Horizontal Scroll on Mobile) ── */}
+        <section className="container mx-auto px-4 mb-16 md:mb-24">
+          <div className="max-w-6xl mx-auto rounded-3xl border border-white/10 bg-surface/50 p-4 md:p-6 backdrop-blur-md shadow-xl">
+            <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+              {/* Category tabs: smooth horizontal scroll on mobile */}
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full lg:w-auto -mx-1 px-1 sm:mx-0 sm:px-0">
                 {PORTFOLIO_FILTER_TABS.map((tab) => {
                   const isActive = activeCategory === tab.key;
                   const label =
@@ -174,7 +178,7 @@ export default function PortfolioContent() {
                     <button
                       key={tab.key}
                       onClick={() => setActiveCategory(tab.key)}
-                      className={`rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all duration-300 ${
+                      className={`shrink-0 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
                         isActive
                           ? "bg-gradient-gold text-gold-foreground shadow-gold scale-105"
                           : "border border-white/10 bg-white/5 text-muted-foreground hover:border-gold/40 hover:text-gold"
@@ -187,13 +191,13 @@ export default function PortfolioContent() {
               </div>
 
               {/* Search + Live toggle */}
-              <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end">
+              <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-white/5">
                 {/* Live Only Toggle */}
                 <button
                   onClick={() => setLiveOnly(!liveOnly)}
-                  className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-bold transition border ${
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-bold transition border ${
                     liveOnly
-                      ? "border-emerald-500/60 bg-emerald-500/15 text-emerald-300 shadow-sm"
+                      ? "border-emerald-500/60 bg-emerald-500/20 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                       : "border-white/10 bg-white/5 text-muted-foreground hover:text-white"
                   }`}
                   title={locale === "fa" ? "فقط پروژه‌های آنلاین فعال" : "Only live websites"}
@@ -203,7 +207,7 @@ export default function PortfolioContent() {
                       liveOnly ? "bg-emerald-400 animate-ping" : "bg-emerald-400/50"
                     }`}
                   />
-                  <span>
+                  <span className="whitespace-nowrap">
                     {locale === "fa"
                       ? "فقط آنلاین"
                       : locale === "ar"
@@ -213,8 +217,8 @@ export default function PortfolioContent() {
                 </button>
 
                 {/* Quick search input */}
-                <div className="relative min-w-[160px] sm:min-w-[200px]">
-                  <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                <div className="relative flex-1 sm:w-64">
+                  <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -226,7 +230,7 @@ export default function PortfolioContent() {
                         ? "بحث عن مشروع..."
                         : "Search project or tech..."
                     }
-                    className="w-full rounded-xl border border-white/10 bg-black/40 py-2 ps-9 pe-3 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/50 transition"
+                    className="w-full h-11 rounded-2xl border border-white/10 bg-black/40 py-2 ps-10 pe-4 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/50 transition"
                   />
                 </div>
               </div>
@@ -248,7 +252,7 @@ export default function PortfolioContent() {
                     setLiveOnly(false);
                     setSearchQuery("");
                   }}
-                  className="text-gold hover:underline"
+                  className="text-gold hover:underline font-medium"
                 >
                   {locale === "fa"
                     ? "پاک کردن فیلترها"
@@ -263,14 +267,14 @@ export default function PortfolioContent() {
 
         {/* ── Section 1: Live Commercial Projects ── */}
         {liveProjects.length > 0 && (
-          <section className="container mx-auto px-4 mb-20">
-            <div className="max-w-6xl mx-auto mb-8 flex items-center justify-between">
+          <section className="container mx-auto px-4 mb-24 md:mb-32">
+            <div className="max-w-6xl mx-auto mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
               <div className="flex items-center gap-3">
                 <span className="flex h-3 w-3 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
                 </span>
-                <h2 className="text-xl md:text-2xl font-black text-white">
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                   {locale === "fa"
                     ? "وب‌سایت‌های آنلاین و فعال در بازار"
                     : locale === "ar"
@@ -278,12 +282,12 @@ export default function PortfolioContent() {
                     : "Active Live Client Websites"}
                 </h2>
               </div>
-              <span className="text-xs font-mono text-muted-foreground">
-                {liveProjects.length} {locale === "fa" ? "سایت فعال" : "Live"}
+              <span className="text-xs font-mono text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
+                {liveProjects.length} {locale === "fa" ? "سایت فعال" : "Live Projects"}
               </span>
             </div>
 
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
               {liveProjects.map((project, idx) => (
                 <ProjectCard key={project.id} project={project} index={idx} locale={locale} isRtl={isRtl} />
               ))}
@@ -293,11 +297,11 @@ export default function PortfolioContent() {
 
         {/* ── Section 2: Custom Systems & Startups ── */}
         {customProjects.length > 0 && (
-          <section className="container mx-auto px-4 mb-20">
-            <div className="max-w-6xl mx-auto mb-8 flex items-center justify-between">
+          <section className="container mx-auto px-4 mb-24 md:mb-32">
+            <div className="max-w-6xl mx-auto mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
               <div className="flex items-center gap-3">
                 <Cpu className="h-5 w-5 text-gold" />
-                <h2 className="text-xl md:text-2xl font-black text-white">
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                   {locale === "fa"
                     ? "سیستم‌های اختصاصی، محصولات نرم‌افزاری و استارتاپ‌ها"
                     : locale === "ar"
@@ -305,12 +309,12 @@ export default function PortfolioContent() {
                     : "Proprietary Software & Startup Concepts"}
                 </h2>
               </div>
-              <span className="text-xs font-mono text-muted-foreground">
+              <span className="text-xs font-mono text-muted-foreground bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
                 {customProjects.length} {locale === "fa" ? "سیستم اختصاصی" : "Systems"}
               </span>
             </div>
 
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
               {customProjects.map((project, idx) => (
                 <ProjectCard key={project.id} project={project} index={idx} locale={locale} isRtl={isRtl} />
               ))}
@@ -384,6 +388,7 @@ export default function PortfolioContent() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/contact/"
+                  prefetch={false}
                   className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-gradient-gold px-8 py-4 text-sm sm:text-base font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <span>
@@ -422,7 +427,7 @@ export default function PortfolioContent() {
   );
 }
 
-// ── Subcomponent: Project Card ──
+// ── Subcomponent: High-End Agency Project Card (Double-Bezel Architecture) ──
 function ProjectCard({
   project,
   index,
@@ -439,129 +444,135 @@ function ProjectCard({
   return (
     <article
       id={project.id}
-      className="group relative flex flex-col rounded-3xl border border-white/10 bg-surface/70 shadow-xl overflow-hidden transition-all duration-500 hover:border-gold/50 hover:shadow-gold-lg"
+      className="group relative rounded-[2rem] border border-white/[0.08] bg-white/[0.02] p-2 sm:p-2.5 shadow-2xl transition-all duration-500 hover:border-gold/30 hover:bg-white/[0.04] hover:shadow-gold-lg flex flex-col"
     >
-      {/* Browser Mockup Header */}
-      <div className="flex items-center justify-between border-b border-white/10 bg-black/40 px-4 py-3 text-xs" dir="ltr">
-        {/* Window controls */}
-        <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-500/80 inline-block" />
-          <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80 inline-block" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80 inline-block" />
-        </div>
+      <div className="rounded-[calc(2rem-0.625rem)] bg-surface/90 border border-white/5 overflow-hidden flex flex-col h-full">
+        {/* Browser Mockup Header */}
+        <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3 text-xs" dir="ltr">
+          {/* macOS window controls */}
+          <div className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-500/80 inline-block" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80 inline-block" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80 inline-block" />
+          </div>
 
-        {/* Address bar mockup */}
-        <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[11px] text-white/60 max-w-[220px] truncate">
-          <Globe className="h-3 w-3 shrink-0 text-gold/70" />
-          <span className="truncate">{project.domain || project.titleEn}</span>
-        </div>
+          {/* Address bar mockup */}
+          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 font-mono text-[11px] text-white/70 max-w-[220px] truncate">
+            <Globe className="h-3 w-3 shrink-0 text-gold/80" />
+            <span className="truncate">{project.domain || project.titleEn}</span>
+          </div>
 
-        {/* Status indicator */}
-        <div className="flex items-center gap-1.5">
-          {isLive ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>LIVE</span>
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-gold/20 border border-gold/40 px-2 py-0.5 text-[10px] font-bold text-gold">
-              <span>{project.status === "proprietary" ? "CUSTOM" : "CONCEPT"}</span>
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Image Preview Container */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/60">
-        <Image
-          src={project.image}
-          alt={locale === "en" ? project.titleEn : project.title}
-          fill
-          sizes="(min-width: 1024px) 560px, 100vw"
-          loading={index < 2 ? "eager" : "lazy"}
-          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-        />
-        {/* Subtle overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80" />
-
-        {/* Floating Category Badge */}
-        <div className={`absolute top-3 ${isRtl ? "right-3" : "left-3"} z-10`}>
-          <span className="rounded-full border border-black/40 bg-black/70 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-gold shadow-md">
-            {locale === "en" ? project.nicheEn : project.niche}
-          </span>
-        </div>
-      </div>
-
-      {/* Card Content */}
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        {/* Title & Subtitle */}
-        <div className="mb-4">
-          <div className="flex items-center justify-between gap-2 mb-1">
-            <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-gold transition">
-              {locale === "en" ? project.titleEn : project.title}
-            </h3>
-            {project.domain && (
-              <span className="text-xs font-mono text-muted-foreground" dir="ltr">
-                {project.domain}
+          {/* Status badge */}
+          <div>
+            {isLive ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 px-2.5 py-0.5 text-[10px] font-black text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>LIVE</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 rounded-full bg-gold/20 border border-gold/40 px-2.5 py-0.5 text-[10px] font-black text-gold">
+                <span>{project.status === "proprietary" ? "CUSTOM" : "CONCEPT"}</span>
               </span>
             )}
           </div>
-          <p className="text-xs sm:text-sm font-semibold text-gold/85">
-            {locale === "en" ? project.subtitleEn : project.subtitle}
-          </p>
         </div>
 
-        {/* Description */}
-        <p className="text-sm leading-relaxed text-muted-foreground mb-6">
-          {locale === "en" ? project.descEn : project.desc}
-        </p>
+        {/* Image Preview Container */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/90">
+          <Image
+            src={project.image}
+            alt={locale === "en" ? project.titleEn : project.title}
+            fill
+            sizes="(min-width: 1024px) 560px, 100vw"
+            loading={index < 2 ? "eager" : "lazy"}
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          />
+          {/* Subtle gradient scrim */}
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-75" />
 
-        {/* Feature Highlights */}
-        <div className="mb-6 space-y-2 border-t border-white/5 pt-4">
-          {(locale === "en" ? project.featuresEn : project.features).map((feat, fIdx) => (
-            <div key={fIdx} className="flex items-start gap-2 text-xs text-white/80">
-              <CheckCircle2 className="h-3.5 w-3.5 text-gold shrink-0 mt-0.5" />
-              <span>{feat}</span>
+          {/* Category Badge */}
+          <div className={`absolute top-3.5 ${isRtl ? "right-3.5" : "left-3.5"} z-10`}>
+            <span className="rounded-full border border-black/40 bg-black/80 backdrop-blur-md px-3.5 py-1 text-[11px] font-bold text-gold shadow-md">
+              {locale === "en" ? project.nicheEn : project.niche}
+            </span>
+          </div>
+        </div>
+
+        {/* Card Content with Generous Spacing */}
+        <div className="flex flex-1 flex-col justify-between p-6 sm:p-8 gap-6">
+          {/* Header & Subtitle */}
+          <div>
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-gold transition-colors duration-300">
+                {locale === "en" ? project.titleEn : project.title}
+              </h3>
+              {project.domain && (
+                <span className="text-xs font-mono text-muted-foreground" dir="ltr">
+                  {project.domain}
+                </span>
+              )}
             </div>
-          ))}
-        </div>
+            <p className="text-xs sm:text-sm font-semibold text-gold/85">
+              {locale === "en" ? project.subtitleEn : project.subtitle}
+            </p>
 
-        {/* Tech Stack Pills */}
-        <div className="mt-auto pt-4 border-t border-white/10 flex flex-wrap gap-1.5 mb-6">
-          {project.techStack.map((tech, tIdx) => (
-            <span
-              key={tIdx}
-              className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-mono text-white/70"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+            {/* Description */}
+            <p className="text-sm leading-relaxed text-muted-foreground mt-3">
+              {locale === "en" ? project.descEn : project.desc}
+            </p>
+          </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-3">
-          {isLive ? (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-gold/50 bg-gradient-gold px-5 py-2.5 text-xs sm:text-sm font-black text-gold-foreground shadow-gold transition hover:scale-105 active:scale-95"
-            >
-              <span>{locale === "fa" ? "مشاهده وب‌سایت آنلاین" : locale === "ar" ? "زيارة الموقع الحي" : "Visit Live Website"}</span>
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          ) : (
-            <span className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-xs sm:text-sm font-bold text-white/50 cursor-default">
-              <span>{locale === "fa" ? "سیستم اختصاصی / کانسپت" : "Custom System"}</span>
-            </span>
-          )}
+          {/* High-Value Highlights (Top 3 key points with clean airy rhythm) */}
+          <div className="space-y-2.5">
+            {(locale === "en" ? project.featuresEn : project.features).slice(0, 3).map((feat, fIdx) => (
+              <div key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/85 leading-snug">
+                <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+                <span>{feat}</span>
+              </div>
+            ))}
+          </div>
 
-          <Link
-            href={`/contact/?service=website&ref=${encodeURIComponent(project.title)}`}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white hover:border-gold/40 hover:text-gold transition"
-          >
-            <span>{locale === "fa" ? "سفارش مشابه" : locale === "ar" ? "طلب مماثل" : "Order Similar"}</span>
-          </Link>
+          {/* Bottom Area: Tech Stack & Action Buttons */}
+          <div className="space-y-5">
+            {/* Tech Stack Pills */}
+            <div className="flex flex-wrap gap-1.5">
+              {project.techStack.map((tech, tIdx) => (
+                <span
+                  key={tIdx}
+                  className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-white/70"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              {isLive ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-xs sm:text-sm font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span>{locale === "fa" ? "مشاهده وب‌سایت آنلاین" : locale === "ar" ? "زيارة الموقع الحي" : "Visit Live Website"}</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              ) : (
+                <span className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-xs sm:text-sm font-bold text-white/40 cursor-default">
+                  <span>{locale === "fa" ? "سیستم اختصاصی / کانسپت" : "Custom System"}</span>
+                </span>
+              )}
+
+              <Link
+                href={`/contact/?service=website&ref=${encodeURIComponent(project.title)}`}
+                prefetch={false}
+                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs sm:text-sm font-bold text-white hover:border-gold/40 hover:text-gold transition-all duration-300"
+              >
+                <span>{locale === "fa" ? "سفارش مشابه" : locale === "ar" ? "طلب مماثل" : "Order Similar"}</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </article>

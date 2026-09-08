@@ -43,12 +43,12 @@ export default function Nav() {
         transform:    "translateX(-50%)",
         borderRadius: s ? "9999px" : "0px",
         background:   s
-          ? "rgba(10, 10, 10, 0.55)"
+          ? "rgba(10, 10, 15, 0.85)"
           : "transparent",
-        backdropFilter:       s ? "blur(8px)" : "none",
-        WebkitBackdropFilter: s ? "blur(8px)" : "none",
+        backdropFilter:       s ? "blur(16px)" : "none",
+        WebkitBackdropFilter: s ? "blur(16px)" : "none",
         boxShadow: s
-          ? "0 0 0 1px rgba(255,255,255,0.07), 0 8px 32px rgba(0,0,0,0.45)"
+          ? "0 0 0 1px rgba(255,255,255,0.1), 0 16px 40px rgba(0,0,0,0.6)"
           : "none",
         willChange: "transform",
         transition:
@@ -63,14 +63,14 @@ export default function Nav() {
         className="flex items-center justify-between"
         style={{
           padding: s ? "10px 20px" : "16px 24px",
-          background:            open ? "rgba(0, 0, 0, 0.7)" : "transparent",
-          backdropFilter:        open ? "blur(8px)" : "none",
-          WebkitBackdropFilter:  open ? "blur(8px)" : "none",
+          background:            open ? "rgba(0, 0, 0, 0.85)" : "transparent",
+          backdropFilter:        open ? "blur(16px)" : "none",
+          WebkitBackdropFilter:  open ? "blur(16px)" : "none",
           transition: "padding 300ms ease, background 200ms ease",
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
+        <Link href="/" prefetch={false} className="flex items-center gap-2 shrink-0">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.webp`}
             alt={t.brand.name}
@@ -89,6 +89,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
+              prefetch={false}
               className="text-sm text-white/45 hover:text-white/90 transition-colors duration-200 whitespace-nowrap"
             >
               {l.label}
@@ -101,6 +102,7 @@ export default function Nav() {
           <LanguageSwitcher />
           <Link
             href="/#form"
+            prefetch={false}
             className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-4 py-2 text-xs sm:text-sm font-semibold text-gold-foreground shadow-gold hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             {t.nav.cta}
@@ -124,12 +126,13 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur-xl rounded-b-2xl shadow-[0_24px_48px_rgba(0,0,0,0.5)]">
+        <div className="md:hidden border-t border-white/10 bg-black/85 backdrop-blur-2xl rounded-b-2xl shadow-[0_24px_48px_rgba(0,0,0,0.7)]">
           <nav className="flex flex-col gap-1 px-5 py-5">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
+                prefetch={false}
                 onClick={() => setOpen(false)}
                 className="py-2.5 text-sm text-white/60 hover:text-white transition-colors"
               >

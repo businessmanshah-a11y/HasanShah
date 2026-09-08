@@ -297,6 +297,7 @@ export default function Portfolio() {
           </div>
           <Link
             href="/portfolio/"
+            prefetch={false}
             className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-gradient-gold px-7 py-3.5 text-sm md:text-base font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-105 active:scale-95"
           >
             <span>{t.portfolio.viewAll}</span>
