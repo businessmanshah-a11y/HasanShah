@@ -495,12 +495,20 @@ export default function AboutContent() {
                     } ${isRtl ? "text-right" : "text-left"}`}
                   >
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
-                          {st.institution}
+                      {/* Card Header: Step & Year in a dedicated top bar */}
+                      <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-white/5">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 border border-gold/30 px-2.5 py-0.5 text-xs font-black text-gold">
+                          <span>{isRtl ? `گام ${st.step}` : `Step ${st.step}`}</span>
                         </span>
-                        <span className="text-xs text-white/60 font-medium">
+                        <span className="text-xs font-bold text-gold/90 whitespace-nowrap" dir="ltr">
                           {st.year}
+                        </span>
+                      </div>
+
+                      {/* Institution Badge: Full width on its own row */}
+                      <div>
+                        <span className="inline-block text-[11px] font-bold text-foreground/90 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg leading-relaxed">
+                          {st.institution}
                         </span>
                       </div>
 
@@ -549,17 +557,21 @@ export default function AboutContent() {
                       isRtl ? "text-right" : "text-left"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-bold text-gold bg-gold/10 border border-gold/30 px-2 py-0.5 rounded-md">
-                        {st.badge}
+                    {/* Header Row: Badge & Year */}
+                    <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/5">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-gold/10 border border-gold/30 px-2.5 py-0.5 text-[11px] font-bold text-gold">
+                        <span>{st.badge}</span>
                       </span>
-                      <span className="text-[11px] text-white/60 font-medium">
+                      <span className="text-xs font-bold text-gold/90 whitespace-nowrap" dir="ltr">
                         {st.year}
                       </span>
                     </div>
 
-                    <div className="text-[11px] text-white/60 font-semibold">
-                      {st.institution}
+                    {/* Institution */}
+                    <div>
+                      <span className="inline-block text-[11px] font-semibold text-white/80 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-md">
+                        {st.institution}
+                      </span>
                     </div>
 
                     <h3 className="text-sm font-black text-foreground leading-snug">

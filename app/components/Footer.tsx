@@ -1,12 +1,15 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Send } from "lucide-react";
+import { Phone, Send, Share2, ChevronDown } from "lucide-react";
 import { InstagramIcon, LinkedInIcon, BaleIcon } from "./Icons";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Footer() {
   const { t } = useI18n();
+  const [mobileSocialsOpen, setMobileSocialsOpen] = useState(false);
+
   return (
     <footer id="contact" className="relative overflow-hidden bg-surface/30">
 
@@ -30,7 +33,7 @@ export default function Footer() {
             </linearGradient>
             <linearGradient id="lineRight" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%"   stopColor="oklch(0.83 0.105 72)" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0" />
+              <stop offset="100%" stopColor="oklch(0.83 0.105 72)" stopOpacity="0.22" />
             </linearGradient>
           </defs>
           <line x1="0"    y1="0" x2="600" y2="80" stroke="url(#lineLeft)"  strokeWidth="1" vectorEffect="non-scaling-stroke" />
@@ -71,8 +74,8 @@ export default function Footer() {
           <Link href="/contact/" prefetch={false} className="hover:text-gold transition-colors">تماس با من</Link>
         </div>
 
-        {/* شبکه‌های اجتماعی و دکمه‌های ارتباطی */}
-        <div className="flex flex-wrap justify-center items-center gap-3">
+        {/* شبکه‌های اجتماعی در دسکتاپ */}
+        <div className="hidden md:flex flex-wrap justify-center items-center gap-3">
           <a
             href="https://t.me/shahbusinessman"
             target="_blank"
@@ -90,7 +93,7 @@ export default function Footer() {
             className="inline-flex items-center gap-2 rounded-full border border-[#00B894]/40 bg-[#00B894]/10 px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#00B894] hover:bg-[#00B894]/20 hover:border-[#00B894]/60 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
             <BaleIcon className="h-4 w-4" />
-            <span>بله (@shahvibe)</span>
+            <span>بله</span>
           </a>
 
           <a
@@ -121,6 +124,77 @@ export default function Footer() {
             <Phone className="h-4 w-4" />
             {t.footer.phone}
           </a>
+        </div>
+
+        {/* دکمه شبکه‌های اجتماعی در موبایل (کالاپس روی دکمه طلایی طبق درخواست کاربر) */}
+        <div className="w-full max-w-xs md:hidden flex flex-col items-center">
+          <button
+            type="button"
+            onClick={() => setMobileSocialsOpen(!mobileSocialsOpen)}
+            className="w-full inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-gold px-6 py-3.5 text-sm font-black text-gold-foreground shadow-gold active:scale-95 transition-all duration-300"
+          >
+            <Share2 className="h-4 w-4 text-gold-foreground" />
+            <span>شبکه‌های اجتماعی</span>
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-300 ${
+                mobileSocialsOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {/* منوی بازشونده در موبایل */}
+          {mobileSocialsOpen && (
+            <div className="w-full mt-3 grid grid-cols-2 gap-2.5 p-3 rounded-2xl border border-white/10 bg-surface/90 backdrop-blur-xl shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+              <a
+                href="https://t.me/shahbusinessman"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold/15 border border-gold/30 p-2.5 text-xs font-bold text-gold"
+              >
+                <Send className="h-4 w-4" />
+                <span>{t.footer.telegram}</span>
+              </a>
+
+              <a
+                href="https://ble.ir/shahvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#00B894]/40 bg-[#00B894]/15 p-2.5 text-xs font-bold text-[#00B894]"
+              >
+                <BaleIcon className="h-4 w-4" />
+                <span>بله</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/shahbusinessman/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-pink-500/40 bg-pink-500/15 p-2.5 text-xs font-bold text-pink-400"
+              >
+                <InstagramIcon className="h-4 w-4" />
+                <span>اینستاگرام</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/hasanshahmoradi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 p-2.5 text-xs font-bold text-blue-400"
+              >
+                <LinkedInIcon className="h-4 w-4" />
+                <span>لینکدین</span>
+              </a>
+
+              <a
+                href="tel:09120870095"
+                dir="ltr"
+                className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl border border-gold/30 bg-gold/10 p-2.5 text-xs font-bold text-gold"
+              >
+                <Phone className="h-4 w-4" />
+                <span>{t.footer.phone}</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* خط جداکننده */}

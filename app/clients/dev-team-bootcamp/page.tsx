@@ -820,7 +820,7 @@ export default function DevTeamBootcampPage() {
                 className="inline-flex items-center gap-2.5 rounded-xl border border-[#00B894]/40 bg-[#00B894]/15 px-7 py-4 text-sm font-black text-[#00B894] transition hover:bg-[#00B894]/25 hover:border-[#00B894]/70 hover:-translate-y-0.5 shadow-sm"
               >
                 <BaleIcon className="h-5 w-5 text-[#00B894]" />
-                <span>پیام در بله (@shahvibe)</span>
+                <span>پیام در بله</span>
               </a>
 
               <a
