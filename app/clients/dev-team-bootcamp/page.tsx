@@ -35,6 +35,7 @@ import {
   Share2,
   AlertCircle,
   Laptop,
+  Download,
 } from "lucide-react";
 import { toast } from "sonner";
 import Nav from "../../components/Nav";
@@ -136,6 +137,18 @@ export default function DevTeamBootcampPage() {
               >
                 <span>مشاهده سرفصل‌های ۴ ساعته</span>
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              </a>
+
+              <a
+                href="/downloads/Dev-Team-Bootcamp-Proposal-HasanShahmoradi.pdf"
+                download="Dev-Team-Bootcamp-Proposal-HasanShahmoradi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-gold/40 bg-gold/10 px-6 py-3.5 text-sm font-bold text-gold transition hover:border-gold hover:bg-gold/20"
+                title="دانلود نسخه PDF پروپوزال رسمی ویژه مدیران فنی و CTOها"
+              >
+                <Download className="h-4 w-4" />
+                <span>دریافت نسخه PDF پروپوزال</span>
               </a>
 
               <a

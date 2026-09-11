@@ -28,6 +28,10 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         "Country Association",
         "هوش مصنوعی ویدیو",
         "تغییر ریجن جیمیل",
+        "رفع تحریم گوگل فلو",
+        "ارور کشور گوگل فلو",
+        "آموزش Google Flow",
+        "حسن شامرادی",
       ],
       author: authors.fa,
       takeaways: [
@@ -300,6 +304,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "آیا اکستنشن‌های رایگان پروکسی برای فلو مناسب هستند؟\nبه هیچ وجه؛ این اکستنشن‌ها نشت شدید WebRTC دارند و آی‌پی آن‌ها به سرعت بلاک می‌شود که می‌تواند باعث بن شدن موقت اکانت شود.",
             "آیا می‌توانم با یک اکانت تغییر ریجن داده‌شده در لپ‌تاپ و گوشی همزمان کار کنم؟\nبله؛ به شرطی که در هر دو دستگاه به سرور یک کشور واحد وصل باشی تا سیستم ضد تقلب گوگل حساس نشود.",
           ],
+        },
+      ],
+      leadMagnet: {
+        badge: "پکیج هدیه اختصاصی + جامعه VIP وایب‌کدینگ",
+        title: "دانلود چیت‌شیت پرامپت‌های سینمایی و لیست ابزارهای بدون فیلترشکن",
+        description:
+          "برای اینکه درگیر تغییر مداوم قوانین تحریمی نشوی، تمام آپدیت‌های لحظه‌ای ابزارهای هوش مصنوعی ویدیو (Google Flow, Veo 2, Sora)، ابزارهای آنتی‌نشت و راهنمای اجرای پروژه‌ها را در کانال تلگرام به اشتراک می‌گذارم.",
+        primaryAction: {
+          label: "عضویت در کانال تلگرام VIP (کلیک کنید)",
+          href: "https://t.me/shahbusinessman",
+          isExternal: true,
+        },
+        secondaryAction: {
+          label: "درخواست مشاوره یا بوت‌کمپ تیم‌های توسعه",
+          href: "/clients/dev-team-bootcamp/",
+          isExternal: false,
+        },
+        perks: [
+          "دسترسی سریع به آخرین بای‌پس‌های DNS و ابزارهای آنتی‌نشت تست‌شده",
+          "دریافت ۱۰۰ پرامپت کپی‌پیست برای رندرهای تبلیغاتی و تجاری",
+          "پاسخگویی مستقیم به اشکالات فنی در گروه و کامنت‌ها با حسن شاهمرادی",
+        ],
+      },
+      faqs: [
+        {
+          question: "آیا بعد از تایید فرم تغییر کشور، باز هم باید فیلترشکن روشن باشد؟",
+          answer:
+            "بله؛ چون دامنه‌های گوگل لبز و سرویس‌های هوش مصنوعی آن در اینترنت ایران فیلتر هستند، همیشه باید با سرور همان کشوری که انتخاب کرده‌ای وصل شوی تا تناقض مکانی رخ ندهد.",
+        },
+        {
+          question: "بهترین کشور برای انتخاب در فرم تغییر ریجن گوگل کدام است؟",
+          answer:
+            "کشورهای United Kingdom (انگلستان)، United States (آمریکا) و Germany (آلمان) بهترین گزینه‌ها هستند؛ چون جدیدترین امکانات مدل‌های Veo 2 و Imagen 3 ابتدا در این مناطق عرضه می‌شوند.",
+        },
+        {
+          question: "آیا با تغییر ریجن، ایمیل‌ها یا فایل‌های گوگل درایو من پاک می‌شوند؟",
+          answer:
+            "خیر؛ تغییر Country Association فقط حوزه قضایی و قوانین حریم خصوصی حساب شما را به‌روز می‌کند و هیچ تغییری در داده‌ها، ایمیل‌ها یا فایل‌های درایوت ایجاد نمی‌کند.",
+        },
+        {
+          question: "چرا حتی با بستن و باز کردن مرورگر باز هم ارور کشور می‌دهد؟",
+          answer:
+            "به خاطر کش شدن سرویس‌ورکر در مرورگر است. حتماً از یک پروفایل تمیز و اختصاصی در کروم استفاده کن یا دیتای سایت labs.google را پاک کن.",
+        },
+        {
+          question: "آیا اکستنشن‌های رایگان پروکسی برای فلو مناسب هستند؟",
+          answer:
+            "به هیچ وجه؛ این اکستنشن‌ها نشت شدید WebRTC دارند و آی‌پی آن‌ها به سرعت بلاک می‌شود که می‌تواند باعث بن شدن موقت اکانت شود.",
+        },
+        {
+          question: "آیا می‌توانم با یک اکانت تغییر ریجن داده‌شده در لپ‌تاپ و گوشی همزمان کار کنم؟",
+          answer:
+            "بله؛ به شرطی که در هر دو دستگاه به سرور یک کشور واحد وصل باشی تا سیستم ضد تقلب گوگل حساس نشود.",
         },
       ],
     },
@@ -591,6 +648,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           ],
         },
       ],
+      leadMagnet: {
+        badge: "Exclusive Gift Package + VIP Community",
+        title: "Download Cinematic Prompt Cheat-Sheet & Zero-Leak Tools Matrix",
+        description:
+          "Stay ahead of shifting geo-restrictions and model updates. Join Hasan Shahmoradi's private channel for real-time bypasses, prompt formulas, and Vibe Coding architecture.",
+        primaryAction: {
+          label: "Join VIP Telegram Channel",
+          href: "https://t.me/shahbusinessman",
+          isExternal: true,
+        },
+        secondaryAction: {
+          label: "Explore Dev Team Vibe Coding Bootcamp",
+          href: "/clients/dev-team-bootcamp/",
+          isExternal: false,
+        },
+        perks: [
+          "Instant access to verified DNS bypasses and anti-leak configurations",
+          "100+ copy-paste prompts for commercial-grade video renders",
+          "Direct Q&A with Hasan Shahmoradi in the community",
+        ],
+      },
+      faqs: [
+        {
+          question: "Do I still need an active VPN after my Country Association Form is approved?",
+          answer:
+            "Yes. Because Google Labs endpoints are geo-restricted at the network edge in certain countries, keeping a leak-free VPN active to your assigned country prevents location conflicts.",
+        },
+        {
+          question: "What is the best destination country to select in the Google Country Association form?",
+          answer:
+            "The United Kingdom, United States, and Germany are the most reliable selections, as cutting-edge Veo 2 and Imagen 3 features deploy to these jurisdictions first.",
+        },
+        {
+          question: "Will changing my account's country delete my emails or Google Drive files?",
+          answer:
+            "No. The Country Association process strictly updates the legal Terms of Service and data privacy policies governing your account; it does not touch your emails, Drive files, or Google Photos.",
+        },
+        {
+          question: "Why does the country error persist even after restarting my browser?",
+          answer:
+            "Chrome service workers cache redirection headers aggressively. Purge site data for labs.google under chrome://settings/siteData and ensure your OS clock matches your VPN region.",
+        },
+        {
+          question: "Can I use free browser VPN extensions to access Google Flow?",
+          answer:
+            "No. Free browser proxy extensions routinely leak WebRTC packets and utilize dirty shared IP ranges that trigger immediate HTTP 403 blocks from Google's anti-bot filters.",
+        },
+        {
+          question: "Can I use my updated Google account on desktop and mobile simultaneously?",
+          answer:
+            "Yes, provided both devices route through VPN endpoints within the same country to prevent sudden geolocation discrepancies.",
+        },
+      ],
     },
     ar: {
       title: "حل مشكلة ريجين Google Flow وتخطي خطأ البلد غير المدعوم (دليل شامل)",
@@ -878,6 +988,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "س: هل يمكن الاعتماد على إضافات البروكسي المجانية في المتصفح؟\nج: لا ننصح بذلك إطلاقاً؛ فالإضافات المجانية تعاني من تسريبات حادة في WebRTC وعناوينها محظورة تلقائياً من أنظمة غوغل.",
             "س: هل يمكن تشغيل الحساب على الكمبيوتر والهاتف في نفس الوقت؟\nج: نعم، بشرط أن يتصل كلا الجهازين بخادم من نفس الدولة لتجنب رصد تسجيلات دخول من مواقع متباعدة في وقت متزامن.",
           ],
+        },
+      ],
+      leadMagnet: {
+        badge: "حزمة هدايا حصرية + مجتمع VIP",
+        title: "تحميل ورقة أوامر Google Flow السينمائية ودليل تجاوز الحظر",
+        description:
+          "للبقاء على اطلاع دائم بآخر تحديثات أدوات الذكاء الاصطناعي وتجاوز قيود المناطق، انضم إلى قناة تيليغرام الخاصة بحسن شاهمرادي للحصول على الدعم والتحديثات الفورية.",
+        primaryAction: {
+          label: "الانضمام إلى قناة تيليغرام VIP",
+          href: "https://t.me/shahbusinessman",
+          isExternal: true,
+        },
+        secondaryAction: {
+          label: "استكشاف مقترح بوت‌كامب الفرق الهندسية",
+          href: "/clients/dev-team-bootcamp/",
+          isExternal: false,
+        },
+        perks: [
+          "تحديثات حصرية لسيرفرات وإعدادات الـ DNS الآمنة",
+          "أكثر من ١٠٠ برومبت جاهز للنسخ لإنتاج فيديوهات احترافية",
+          "إجابات مباشرة واستشارات في تعليقات القناة مع حسن شاهمرادي",
+        ],
+      },
+      faqs: [
+        {
+          question: "هل يجب إبقاء اتصال VPN نشطاً بعد الموافقة على تغيير بلد الحساب؟",
+          answer:
+            "نعم؛ نظراً لأن مختبرات غوغل تطبق قيوداً على أطراف الشبكة في بعض المناطق، فإن الحفاظ على اتصال آمن بدولة الحساب يمنع أي تعارض.",
+        },
+        {
+          question: "ما هي أفضل دولة لاختيارها في استمارة تغيير بلد الحساب؟",
+          answer:
+            "المملكة المتحدة والولايات المتحدة وألمانيا؛ حيث تحصل هذه الدول على ميزات نماذج Veo 2 و Imagen 3 أولاً بأول.",
+        },
+        {
+          question: "هل يؤدي تغيير بلد الحساب إلى حذف رسائل الجيميل أو ملفات غوغل درايف؟",
+          answer:
+            "لا مطلقاً؛ تعديل Country Association يقتصر على الشروط القانونية ونطاق الخصوصية دون أي مساس ببياناتك أو ملفاتك المخزنة.",
+        },
+        {
+          question: "لماذا يستمر ظهور خطأ البلد حتى بعد إغلاق المتصفح وفتحه؟",
+          answer:
+            "بسبب احتفاظ المتصفح ببيانات Service Worker المؤقتة. امسح بيانات موقع labs.google واضبط توقيت جهازك ليطابق الخادم.",
+        },
+        {
+          question: "هل يمكن الاعتماد على إضافات البروكسي المجانية في المتصفح؟",
+          answer:
+            "لا ننصح بذلك إطلاقاً؛ فالإضافات المجانية تعاني من تسريبات حادة في WebRTC وعناوينها محظورة تلقائياً من أنظمة غوغل.",
+        },
+        {
+          question: "هل يمكن تشغيل الحساب على الكمبيوتر والهاتف في نفس الوقت؟",
+          answer:
+            "نعم، بشرط أن يتصل كلا الجهازين بخادم من نفس الدولة لتجنب رصد تسجيلات دخول من مواقع متباعدة في وقت متزامن.",
         },
       ],
     },

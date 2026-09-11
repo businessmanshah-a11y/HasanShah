@@ -21,6 +21,7 @@ import {
   Award,
   BookOpen,
   Check,
+  Download,
 } from "lucide-react";
 import { InstagramIcon, LinkedInIcon, TelegramIcon } from "../components/Icons";
 import Nav from "../components/Nav";
@@ -99,6 +100,18 @@ export default function AboutContent() {
                   <Terminal className="h-4 w-4 text-gold" />
                   <span>{d.hero.vibeBtn}</span>
                 </Link>
+
+                <a
+                  href="/downloads/About-Hasan-Shahmoradi-Executive-Profile.pdf"
+                  download="About-Hasan-Shahmoradi-Executive-Profile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-3.5 text-sm font-bold text-gold hover:bg-gold/20 hover:border-gold transition-all"
+                  title="دانلود کاتالوگ و پروفایل رسمی اجرایی (PDF)"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>{isRtl ? "دانلود پروفایل رسمی (PDF)" : "Download Executive PDF"}</span>
+                </a>
               </div>
 
               {/* Micro badge under buttons */}

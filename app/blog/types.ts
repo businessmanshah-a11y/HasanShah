@@ -57,6 +57,28 @@ export interface ArticleSection {
   commands?: ArticleCommandItem[];
 }
 
+export interface ArticleFaq {
+  question: string;
+  answer: string;
+}
+
+export interface ArticleLeadMagnet {
+  badge?: string;
+  title: string;
+  description: string;
+  primaryAction: {
+    label: string;
+    href: string;
+    isExternal?: boolean;
+  };
+  secondaryAction?: {
+    label: string;
+    href: string;
+    isExternal?: boolean;
+  };
+  perks?: string[];
+}
+
 export interface LocalizedArticleContent {
   title: string;
   summary: string;
@@ -68,6 +90,8 @@ export interface LocalizedArticleContent {
   toc: TableOfContentItem[];
   sections: ArticleSection[];
   takeaways?: string[];
+  faqs?: ArticleFaq[];
+  leadMagnet?: ArticleLeadMagnet;
 }
 
 export interface RawArticle {
@@ -86,3 +110,4 @@ export interface Article extends LocalizedArticleContent {
   featured: boolean;
   relatedSlugs?: string[];
 }
+

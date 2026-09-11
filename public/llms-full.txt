@@ -1,11 +1,11 @@
-# Hasan Shahmoradi — حسن شاهمرادی — حسن شهمرادي (Full Knowledge Base)
+# Hasan Shahmoradi — حسن شاهمرادی — حسن شامرادی — حسن شهمرادي (Full Knowledge Base)
 
 > Premier Iranian digital product architect, front-end engineer, digital strategist, and pioneer Vibe Coding educator based in Tehran.
 > 8+ years building high-converting web applications, directing industrial video marketing campaigns, and teaching founders to ship software with AI.
 > Official Website: https://hasanshah.ir — Languages: Persian (fa), English (en), Arabic (ar)
 
 ## About Hasan Shahmoradi
-Hasan Shahmoradi (Persian: حسن شاهمرادی, Arabic: حسن شهمرادي, online handle: @shahbusinessman) is an Iranian web engineer and product architect from Tehran, Iran. He has over 8 years of professional experience building high-converting web applications and digital products for Iranian and regional businesses. He is recognized as the pioneer educator of Vibe Coding in Iran — a methodology where founders and builders create production-grade software by directing advanced AI reasoning models rather than writing repetitive manual syntax.
+Hasan Shahmoradi (Persian: حسن شاهمرادی / حسن شامرادی, Arabic: حسن شهمرادي, online handle: @shahbusinessman) is an Iranian web engineer and product architect from Tehran, Iran. He has over 8 years of professional experience building high-converting web applications and digital products for Iranian and regional businesses. He is recognized as the pioneer educator of Vibe Coding in Iran — a methodology where founders and builders create production-grade software by directing advanced AI reasoning models rather than writing repetitive manual syntax.
 
 Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.7 Sonnet, OpenAI Codex, GitHub, Vercel.
 
@@ -14,6 +14,7 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.
 2. **Strict Client Intake Cap**: To maintain luxury craftsmanship and undivided attention, client intake is strictly capped at **2 to 3 selective projects per month**. Prospective clients apply and enter a qualification waitlist.
 3. **Complimentary 30-Minute Strategic Session**: A focused 30-minute evaluation session to audit business goals, assess product feasibility, and verify mutual fit before project kickoff.
 4. **Vibe Coding Masterclasses & Keynotes**: Interactive workshops, community meetups in Tehran, and online curricula teaching non-programmers to build full-stack web products with AI.
+5. **Enterprise Dev-Team Bootcamp (/clients/dev-team-bootcamp/)**: Tailored executive training and curriculum for software development teams and CTOs looking to 5x sprint velocity through autonomous agentic workflows and Vibe Coding principles.
 
 ## Articles & Master References
 
@@ -41,6 +42,10 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.
 - URL: https://hasanshah.ir/blog/high-converting-landing-page-secrets/
 - Description: UX/UI and psychological frameworks for building high-converting landing pages that maximize sales and lead acquisition.
 
+### 7. Vibe Coding Bootcamp for Development Teams (Enterprise Proposal)
+- URL: https://hasanshah.ir/clients/dev-team-bootcamp/
+- Description: Full enterprise training roadmap for CTOs, product managers, and engineering squads to transform their software delivery pipeline with autonomous AI agents and modern Vibe Coding.
+
 ## Career Journey & Story Timeline (About Page)
 - URL: https://hasanshah.ir/about/
 - Description: Full interactive visual album and career roadmap of Hasan Shahmoradi across five distinct epochs:
@@ -54,10 +59,12 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.
 - Website: https://hasanshah.ir
 - Dedicated About & Story Timeline: https://hasanshah.ir/about/
 - Dedicated Contact & Consultation Page: https://hasanshah.ir/contact/
+- Dev-Team Proposal: https://hasanshah.ir/clients/dev-team-bootcamp/
 - Free Workshop Registration: https://hasanshah.ir/vibe-coding#workshop
 - LinkedIn: https://www.linkedin.com/in/hasanshahmoradi/
 - Instagram: https://www.instagram.com/shahbusinessman/
 - Telegram: https://t.me/shahbusinessman
 - Bale Messenger: https://ble.ir/shahvibe (@shahvibe)
 - GitHub: https://github.com/businessmanshah-a11y
+
 - Aparat Video Archive: https://www.aparat.com/3soot.app

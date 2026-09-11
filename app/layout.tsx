@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     "Claude AI",
     "سایت رایگان",
     "حسن شاهمرادی",
+    "حسن شامرادی",
     "Next.js",
     "React",
   ],

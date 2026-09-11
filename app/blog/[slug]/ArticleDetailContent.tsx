@@ -10,9 +10,11 @@ import {
   ArrowUp,
   BookOpen,
   Check,
+  ChevronDown,
   ChevronRight,
   Clock,
   Copy,
+  HelpCircle,
   Info,
   Lightbulb,
   Quote,
@@ -804,6 +806,101 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
               </div>
             )}
 
+            {/* High-Converting Lead Magnet / Action Box */}
+            {article.leadMagnet && (
+              <section className="my-12 rounded-[2.5rem] border-2 border-gold/40 bg-gradient-to-br from-gold/15 via-surface-elevated to-surface p-6 md:p-10 shadow-2xl relative overflow-hidden group">
+                <div className="pointer-events-none absolute -top-16 -right-16 w-56 h-56 bg-gold/20 rounded-full blur-3xl group-hover:bg-gold/30 transition-all duration-700" />
+                <div className="relative z-10 space-y-6">
+                  {article.leadMagnet.badge && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/20 px-3.5 py-1 text-xs font-black text-gold shadow-gold/20 shadow-sm">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      <span>{article.leadMagnet.badge}</span>
+                    </span>
+                  )}
+
+                  <div className="space-y-2">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tight leading-snug">
+                      {article.leadMagnet.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground max-w-2xl">
+                      {article.leadMagnet.description}
+                    </p>
+                  </div>
+
+                  {article.leadMagnet.perks && article.leadMagnet.perks.length > 0 && (
+                    <div className="grid gap-2.5 sm:grid-cols-2 pt-1">
+                      {article.leadMagnet.perks.map((perk, pIdx) => (
+                        <div key={pIdx} className="flex items-center gap-2.5 text-xs sm:text-sm text-foreground/90">
+                          <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                          <span>{perk}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                    <a
+                      href={article.leadMagnet.primaryAction.href}
+                      target={article.leadMagnet.primaryAction.isExternal ? "_blank" : undefined}
+                      rel={article.leadMagnet.primaryAction.isExternal ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-gold px-6 py-3.5 text-xs sm:text-sm font-black text-gold-foreground shadow-gold hover:shadow-gold-lg hover:opacity-95 transition-all duration-300"
+                    >
+                      <span>{article.leadMagnet.primaryAction.label}</span>
+                      <Arrow className={`h-4 w-4 transition-transform duration-300 ${arrowHover}`} />
+                    </a>
+
+                    {article.leadMagnet.secondaryAction && (
+                      <Link
+                        href={article.leadMagnet.secondaryAction.href}
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold/30 bg-surface/80 px-5 py-3.5 text-xs sm:text-sm font-bold text-gold hover:bg-gold/10 hover:border-gold/50 transition-all duration-300"
+                      >
+                        <span>{article.leadMagnet.secondaryAction.label}</span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Interactive FAQs Accordion Section */}
+            {article.faqs && article.faqs.length > 0 && (
+              <section id="faq-interactive" className="my-14 rounded-[2.5rem] border border-gold/30 bg-gradient-to-br from-surface to-surface-elevated/90 p-6 md:p-10 shadow-2xl relative overflow-hidden">
+                <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-gold/10 rounded-full blur-3xl" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-gold shadow-gold text-gold-foreground">
+                    <HelpCircle className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-gold uppercase tracking-wider">
+                      {locale === "fa" ? "پرسش و پاسخ‌های پرتکرار" : locale === "ar" ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
+                    </span>
+                    <h3 className="text-lg sm:text-2xl font-black text-foreground">
+                      {locale === "fa" ? "پاسخ سریع به ابهامات فنی و تحریم‌ها" : locale === "ar" ? "إجابات الخبراء السريعة" : "Expert Answers & Verification"}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="space-y-3.5">
+                  {article.faqs.map((faq, fIdx) => (
+                    <details
+                      key={fIdx}
+                      className="group rounded-2xl border border-gold/20 bg-background/80 p-4 transition-all duration-300 open:border-gold/50 open:bg-surface open:shadow-lg"
+                    >
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-sm md:text-base text-foreground group-open:text-gold transition-colors">
+                        <span>{faq.question}</span>
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-gold transition-transform duration-300 group-open:rotate-180">
+                          <ChevronDown className="h-3.5 w-3.5" />
+                        </span>
+                      </summary>
+                      <p className="mt-3.5 pt-3.5 border-t border-white/5 text-xs md:text-sm leading-loose text-muted-foreground">
+                        {renderRichText(faq.answer)}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Share CTA */}
             <div className="rounded-3xl border border-gold/25 bg-surface/50 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
               <p className="text-xs sm:text-sm font-bold text-foreground">
@@ -1074,6 +1171,23 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
               dir === "rtl" ? "left-4 sm:left-6" : "right-4 sm:right-6"
             } z-40 flex items-center gap-2`}
           >
+            {/* Mobile-Only Sticky Lead CTA */}
+            {article.leadMagnet && (
+              <motion.a
+                initial={{ opacity: 0, scale: 0.85, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.85, y: 15 }}
+                transition={springTransition}
+                href={article.leadMagnet.primaryAction.href}
+                target={article.leadMagnet.primaryAction.isExternal ? "_blank" : undefined}
+                rel={article.leadMagnet.primaryAction.isExternal ? "noopener noreferrer" : undefined}
+                className="lg:hidden flex items-center gap-2 rounded-full bg-gradient-gold px-4 py-2.5 text-xs font-black text-gold-foreground shadow-gold backdrop-blur-xl hover:opacity-95 transition-all"
+                aria-label="Quick Action"
+              >
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>{locale === "fa" ? "عضویت تلگرام VIP" : locale === "ar" ? "قناة VIP" : "VIP Channel"}</span>
+              </motion.a>
+            )}
             {/* Mobile-Only Floating TOC Trigger Button */}
             {article.toc && article.toc.length > 0 && (
               <motion.button

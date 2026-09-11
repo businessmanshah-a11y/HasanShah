@@ -6,7 +6,7 @@ export function PersonJsonLd() {
     "@type": "Person",
     "@id": `${BASE}/#person`,
     name: "حسن شاهمرادی",
-    alternateName: ["Hasan Shahmoradi", "Hassan Shahmoradi", "حسن شاهمرادي"],
+    alternateName: ["Hasan Shahmoradi", "Hassan Shahmoradi", "حسن شاهمرادي", "حسن شامرادی", "Hasan Shamoradi"],
     url: BASE,
     image: `${BASE}/images/Shah2.webp`,
     sameAs: [
@@ -456,6 +456,11 @@ export function BlogListJsonLd() {
   );
 }
 
+interface ArticleFaqItem {
+  question: string;
+  answer: string;
+}
+
 interface ArticleData {
   slug: string;
   title: string;
@@ -468,6 +473,7 @@ interface ArticleData {
     name: string;
     role: string;
   };
+  faqs?: ArticleFaqItem[];
 }
 
 export function ArticleJsonLd({ article }: { article: ArticleData }) {
@@ -476,65 +482,82 @@ export function ArticleJsonLd({ article }: { article: ArticleData }) {
     ? article.coverImage
     : `${BASE}${article.coverImage}`;
 
+  const graphItems: any[] = [
+    {
+      "@type": "BlogPosting",
+      "@id": `${fullUrl}#article`,
+      isPartOf: {
+        "@type": "Blog",
+        "@id": `${BASE}/blog/#blog`,
+        name: "آموزش‌ها و مقالات حسن شاهمرادی",
+      },
+      headline: article.title,
+      description: article.summary,
+      url: fullUrl,
+      image: fullCover,
+      datePublished: article.dateIso,
+      dateModified: article.dateIso,
+      inLanguage: "fa",
+      mainEntityOfPage: fullUrl,
+      keywords: article.tags.join(", "),
+      articleSection: article.category,
+      author: {
+        "@type": "Person",
+        name: article.author.name,
+        url: BASE,
+        jobTitle: article.author.role,
+      },
+      publisher: {
+        "@type": "Person",
+        name: "حسن شاهمرادی",
+        url: BASE,
+        image: `${BASE}/images/Shah2.webp`,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "خانه",
+          item: BASE,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "آموزش‌ها",
+          item: `${BASE}/blog/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: article.title,
+          item: fullUrl,
+        },
+      ],
+    },
+  ];
+
+  if (article.faqs && article.faqs.length > 0) {
+    graphItems.push({
+      "@type": "FAQPage",
+      "@id": `${fullUrl}#faq`,
+      mainEntity: article.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        "@id": `${fullUrl}#article`,
-        isPartOf: {
-          "@type": "Blog",
-          "@id": `${BASE}/blog/#blog`,
-          name: "آموزش‌ها و مقالات حسن شاهمرادی",
-        },
-        headline: article.title,
-        description: article.summary,
-        url: fullUrl,
-        image: fullCover,
-        datePublished: article.dateIso,
-        dateModified: article.dateIso,
-        inLanguage: "fa",
-        mainEntityOfPage: fullUrl,
-        keywords: article.tags.join(", "),
-        articleSection: article.category,
-        author: {
-          "@type": "Person",
-          name: article.author.name,
-          url: BASE,
-          jobTitle: article.author.role,
-        },
-        publisher: {
-          "@type": "Person",
-          name: "حسن شاهمرادی",
-          url: BASE,
-          image: `${BASE}/images/Shah2.webp`,
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${fullUrl}#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "خانه",
-            item: BASE,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "آموزش‌ها",
-            item: `${BASE}/blog/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: article.title,
-            item: fullUrl,
-          },
-        ],
-      },
-    ],
+    "@graph": graphItems,
   };
 
   return (
