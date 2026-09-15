@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "convert:webp": "node scripts/convert-to-webp.mjs",
-    "analytics": "node scripts/analytics-report.mjs"
+    "analytics": "node scripts/analytics-report.mjs",
+    "seo:report": "node scripts/generate-analytics-digest.mjs && open docs/seo_analytics_digest.html",
+    "seo:sync": "node scripts/comprehensive-seo-analytics-audit.mjs && node scripts/generate-analytics-digest.mjs && open docs/seo_analytics_digest.html"
   },
   "dependencies": {
     "@lobehub/icons": "^5.10.0",
