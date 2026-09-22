@@ -32,6 +32,10 @@ export const aiImageToVideoArticle: RawArticle = {
       "author": authors.fa,
       "toc": [
         {
+          "id": "quick-access-tools",
+          "title": "۰. استودیوها و ابزارهای ساخت ویدیو"
+        },
+        {
           "id": "intro-image-to-video",
           "title": "۱. انقلاب تبدیل عکس به ویدیو در سال ۲۰۲۶: چرا تیزرهای متحرک برنده نهایی مارکتینگ هستند؟"
         },
@@ -88,13 +92,64 @@ export const aiImageToVideoArticle: RawArticle = {
           "title": "۱۴. جمع‌بندی نهایی و نکات کلیدی برای ساخت ویدیوهای درآمدزا"
         }
       ],
+      "quickLinks": [
+        {
+          "title": "استودیو ویدیوساز Kling AI",
+          "url": "https://klingai.com",
+          "description": "استودیو قدرتمند تولید ویدیو با فیزیک واقع‌گرایانه، حرکات دقیق دست و خروجی‌های سینمایی",
+          "badge": "استودیو ویدیوساز",
+          "icon": "sparkles"
+        },
+        {
+          "title": "موتور تبدیل عکس به ویدیو Runway Gen-3",
+          "url": "https://runwayml.com",
+          "description": "پیشگام جهانی تولید ویدیو با قابلیت هدایت مسیر دوربین (Camera Path) و موشن براش",
+          "badge": "موتور پرچمدار",
+          "icon": "flow"
+        },
+        {
+          "title": "استودیو سه‌بعدی Luma Dream Machine",
+          "url": "https://lumalabs.ai/dream-machine",
+          "description": "رندر تصاویر سه‌بعدی و حرکت سیال نور با سرعت تولید بالا و حفظ پرسپکتیو زاویه دید",
+          "badge": "رندر ۳D",
+          "icon": "sparkles"
+        },
+        {
+          "title": "هوش مصنوعی هایلو MiniMax Hailuo",
+          "url": "https://hailuoai.video",
+          "description": "مدل خارق‌العاده در بازآفرینی بافت پوست، تعاملات انسانی و فیزیک طبیعی موها و لباس",
+          "badge": "فیزیک واقع‌گرایانه",
+          "icon": "sparkles"
+        },
+        {
+          "title": "پلتفرم افکت‌های ویژه Pika 2.0",
+          "url": "https://pika.art",
+          "description": "جلوه‌های ویژه فانتزی، افکت‌های ذوب، خرد شدن شیشه، انفجار و انیمیشن با پیکا",
+          "badge": "جلوه‌های ویژه VFX",
+          "icon": "sparkles"
+        },
+        {
+          "title": "استودیو رسمی Google Flow",
+          "url": "https://labs.google/fx/tools/flow",
+          "description": "استودیو نسل جدید گوگل بر پایه مدل‌های Veo 2 و Imagen 3 جهت ساخت تیزرهای تبلیغاتی",
+          "badge": "استودیو گوگل",
+          "icon": "flow"
+        },
+        {
+          "title": "استودیو ساخت رفرنس Midjourney",
+          "url": "https://www.midjourney.com",
+          "description": "ساخت فریم‌های رفرنس اولیه با کیفیت ۸K و استایل‌های عکاسی آنامورفیک و هالیوودی",
+          "badge": "رفرنس اولیه",
+          "icon": "external"
+        }
+      ],
       "sections": [
         {
           "id": "intro-image-to-video",
           "title": "۱. انقلاب تبدیل عکس به ویدیو در سال ۲۰۲۶: چرا تیزرهای متحرک برنده نهایی مارکتینگ هستند؟",
           "lead": "در سال ۲۰۲۶ دیگر هیچ کسب‌وکاری با عکس‌های ثابت محصول نمی‌تواند در شبکه‌های اجتماعی و کمپین‌های تبلیغاتی توجه مخاطبان خسته از اسکرول را جلب کند.",
           "paragraphs": [
-            "ورود مدل‌های پیشرفته تولید ویدیوی هوش مصنوعی مانند Google Flow، Gemini Omni 1.1 Flash، Runway Gen-3 و Kling اکوسیستم تولید محتوا را برای همیشه تغییر داده است. (اگر هنگام دسترسی به فلو از ایران به خطا خوردید، راهنمای گام‌به‌گام [حل مشکل ریجن Google Flow در ایران](/blog/google-flow-region-error-fix-iran-guide/) را بخوانید؛ همچنین برای دیدن نحوه بازتولید ریلزهای میلیونی با این ابزار، آموزش [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی و Google Flow](/blog/replicate-viral-reels-with-ai-google-flow/) را بررسی کنید). اکنون کافی است یک تصویر باکیفیت و تمیز از محصول یا سوژه خود داشته باشید؛ با ترکیب آن و یک دستور زبان حرکتی مهندسی‌شده، می‌توانید تیزرهایی بسازید که تا پیش از این به بودجه‌های صدها میلیونی و تیم‌های بزرگ جلوه‌های ویژه نیاز داشتند.",
+            "ورود مدل‌های پیشرفته تولید ویدیوی هوش مصنوعی مانند [استودیو Google Flow](https://labs.google/fx/tools/flow)، [Runway Gen-3](https://runwayml.com)، [Kling AI](https://klingai.com)، [Luma Dream Machine](https://lumalabs.ai/dream-machine)، [MiniMax Hailuo](https://hailuoai.video) و [Pika 2.0](https://pika.art) اکوسیستم تولید محتوا را برای همیشه تغییر داده است. (اگر هنگام دسترسی به فلو از ایران به خطا خوردید، راهنمای گام‌به‌گام [حل مشکل ریجن Google Flow در ایران](/blog/google-flow-region-error-fix-iran-guide/) را بخوانید؛ همچنین برای دیدن نحوه بازتولید ریلزهای میلیونی با این ابزار، آموزش [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی و Google Flow](/blog/replicate-viral-reels-with-ai-google-flow/) را بررسی کنید). اکنون کافی است یک تصویر رفرنس باکیفیت ساخته‌شده در [Midjourney](https://www.midjourney.com) داشته باشید؛ با ترکیب آن و یک دستور زبان حرکتی مهندسی‌شده، می‌توانید تیزرهایی بسازید که تا پیش از این به بودجه‌های صدها میلیونی و تیم‌های بزرگ جلوه‌های ویژه نیاز داشتند.",
             "بزرگ‌ترین اشتباه کاربران در کار با ابزارهای ویدیوساز، نوشتن توضیحات طولانی و مبهم متنی است. وقتی شما از یک تصویر رفرنس تمیز (Reference Image) به همراه یک کد دستوری کالیبره‌شده استفاده می‌کنید، هوش مصنوعی دقیقاً متوجه کینماتیک حرکت، رفتار نور و فیزیک ذرات می‌شود و خروجی بدون لرزش، کاملاً هالیوودی و وفادار به محصول به شما تحویل می‌دهد."
           ],
           "callout": {
@@ -106,7 +161,7 @@ export const aiImageToVideoArticle: RawArticle = {
         {
           "id": "prompt-formula-pipeline",
           "title": "۲. فرمول طلایی ۴ مرحله‌ای مهندسی پرامپت ویدیوساز",
-          "lead": "برای رسیدن به بهترین رندر ویدیویی در Google Flow، Gemini Omni و ابزارهای مشابه، باید پرامپت خود را طبق ساختار استاندارد ۴ لایه تنظیم کنید.",
+          "lead": "برای رسیدن به بهترین رندر ویدیویی در [استودیو Google Flow](https://labs.google/fx/tools/flow)، [Runway Gen-3](https://runwayml.com) و [Kling AI](https://klingai.com)، باید پرامپت خود را طبق ساختار استاندارد ۴ لایه تنظیم کنید.",
           "paragraphs": [
             "این متدولوژی تضمین می‌کند که هوش مصنوعی هیچ متغیری را حدس نزند و هر ثانیه از تایم‌لاین ویدیو با فیزیک دقیق اجرا شود:",
             "۱. تصویر ورودی (Image Reference): قفل کردن ویژگی‌های ابعادی، متریال و هویت سوژه.\n۲. کد دستوری (Command Preset): تعیین رخداد بصری اصلی (مثلاً انفجار شیشه یا خروج از بیلبورد).\n۳. اتمسفر و نورپردازی (Lighting & Atmosphere): تعیین دمای رنگ کلوین، نورهای پرتو و عمق سایه.\n۴. کینماتیک دوربین (Camera Motion): مشخص کردن لنز، زاویه و سرعت حرکت دوربین."
@@ -1009,7 +1064,7 @@ export const aiImageToVideoArticle: RawArticle = {
           "callout": {
             "type": "info",
             "title": "لینک به مقاله اول: پرامپت‌های اولیه ساخت عکس رفرنس در ChatGPT",
-            "text": "اگر هنوز تصویر رفرنس باکیفیتی برای اعمال این دستورات ندارید، پیشنهاد می‌کنیم ابتدا [کامل‌ترین هندبوک ۴۶۰ اسلش‌کامند و کدهای مخفی ChatGPT](/blog/chatgpt-slash-commands-handbook-2026/) را مطالعه کنید تا یاد بگیرید چطور با چت‌جی‌پی‌تی و میدجورنی عکس‌های استودیویی بی‌نظیر بسازید."
+            "text": "اگر هنوز تصویر رفرنس باکیفیتی برای اعمال این دستورات ندارید، پیشنهاد می‌کنیم ابتدا [کامل‌ترین هندبوک ۴۶۰ اسلش‌کامند و کدهای مخفی ChatGPT](/blog/chatgpt-slash-commands-handbook-2026/) را مطالعه کنید تا یاد بگیرید چطور با [چت‌بات ChatGPT](https://chatgpt.com) و استودیو [میدجورنی (Midjourney)](https://www.midjourney.com) عکس‌های استودیویی بی‌نظیر بسازید؛ همچنین اگر به دنبال شبیه‌سازی ریلزهای پربازدید هستید، آموزش [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی](/blog/replicate-viral-reels-with-ai-google-flow/) را از دست ندهید."
           }
         },
         {
@@ -1031,7 +1086,7 @@ export const aiImageToVideoArticle: RawArticle = {
         "دستورات ۱۰ گانه اول (VFX) برای جلب توجه مخاطب در ۳ ثانیه اول و ایجاد شوک بصری در شبکه‌های اجتماعی معجزه می‌کنند.",
         "برای کسب‌وکارهای فروشگاهی و لندینگ پیج‌ها، ترکیب رندرهای ۳ بعدی بیلبوردی و پک‌شات‌های لوکس بالاترین نرخ تبدیل لید را به همراه دارد.",
         "کلیدواژه‌های پرامپت را به جای توضیحات طولانی، در قالب تک‌دستورهای دقیق و استاندارد مهندسی پرامپت به هوش مصنوعی تحویل دهید.",
-        "اگر می‌خواهید فراتر از ویدیو، سیستم‌های نرم‌افزاری و وب‌سایت‌های فروشگاهی خود را با AI بسازید، [نقشه راه آموزش وایب‌کدینگ](/vibe-coding/) و [فرم سفارش پروژه در صفحه تماس](/contact?service=website) همراه شماست."
+        "اگر می‌خواهید فراتر از ویدیو، سیستم‌های نرم‌افزاری و وب‌سایت‌های فروشگاهی با نرخ تبدیل بالا بسازید، راهنمای [رازهای لندینگ پیج با نرخ تبدیل بالا](/blog/high-converting-landing-page-secrets/)، [نقشه راه آموزش وایب‌کدینگ](/vibe-coding/) و [نمونه‌کارهای حسن شاهمرادی](/portfolio) همراه با [فرم سفارش پروژه در صفحه تماس](/contact?service=website) در اختیار شماست."
       ]
     },
     "en": {
@@ -1051,6 +1106,10 @@ export const aiImageToVideoArticle: RawArticle = {
       ],
       "author": authors.en,
       "toc": [
+        {
+          "id": "quick-access-tools",
+          "title": "0. AI Video Studios & Tools Hub"
+        },
         {
           "id": "intro-image-to-video",
           "title": "1. The 2026 AI Image-to-Video Revolution: Why Motion Wins Attention"
@@ -1108,13 +1167,64 @@ export const aiImageToVideoArticle: RawArticle = {
           "title": "14. Final Takeaways & Monetization Blueprint"
         }
       ],
+      "quickLinks": [
+        {
+          "title": "Kling AI Video Studio",
+          "url": "https://klingai.com",
+          "description": "Leading image-to-video engine with realistic physics, fine hand kinetics, and 1080p rendering",
+          "badge": "Video Studio",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Runway Gen-3 Alpha",
+          "url": "https://runwayml.com",
+          "description": "Industry benchmark for cinematic camera paths, motion brush controls, and multi-prompt directors",
+          "badge": "Flagship Model",
+          "icon": "flow"
+        },
+        {
+          "title": "Luma Dream Machine",
+          "url": "https://lumalabs.ai/dream-machine",
+          "description": "Fast 3D scene rendering, volumetric lighting, and continuous perspective tracking",
+          "badge": "3D Render",
+          "icon": "sparkles"
+        },
+        {
+          "title": "MiniMax Hailuo AI",
+          "url": "https://hailuoai.video",
+          "description": "State-of-the-art human skin texture, facial expressiveness, and dynamic cloth aerodynamics",
+          "badge": "Realistic Physics",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Pika 2.0 Effects Studio",
+          "url": "https://pika.art",
+          "description": "Playful VFX simulations, object melting, shattering glass, and explosive reveal animations",
+          "badge": "VFX Studio",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Google Flow Studio",
+          "url": "https://labs.google/fx/tools/flow",
+          "description": "Google's flagship creative studio combining Veo 2 video synthesis with Imagen 3",
+          "badge": "Google AI",
+          "icon": "flow"
+        },
+        {
+          "title": "Midjourney Reference Studio",
+          "url": "https://www.midjourney.com",
+          "description": "High-fidelity initial reference image synthesis with anamorphic lenses and master lighting",
+          "badge": "Reference Frames",
+          "icon": "external"
+        }
+      ],
       "sections": [
         {
           "id": "intro-image-to-video",
           "title": "1. The 2026 AI Image-to-Video Revolution: Why Motion Wins Attention",
           "lead": "In 2026, static product photos no longer cut through the noise. High-impact video commercials are the new non-negotiable benchmark.",
           "paragraphs": [
-            "With next-generation video diffusion architectures including Google Flow, Gemini Omni 1.1 Flash, Runway Gen-3, and Kling, creative directors can transform isolated product stills into Hollywood-grade video advertisements in seconds.",
+            "With next-generation video diffusion architectures including [Google Flow](https://labs.google/fx/tools/flow), [Runway Gen-3](https://runwayml.com), [Kling AI](https://klingai.com), [Luma Dream Machine](https://lumalabs.ai/dream-machine), and [MiniMax Hailuo](https://hailuoai.video), creative directors can transform isolated product stills from [Midjourney](https://www.midjourney.com) into Hollywood-grade video advertisements in seconds. (If you experience regional blocks, see our [Google Flow Iran Region Error Fix Guide](/blog/google-flow-region-error-fix-iran-guide/); for social media strategies, explore [How to Replicate Viral Instagram Reels with AI](/blog/replicate-viral-reels-with-ai-google-flow/)).",
             "The secret lies in eliminating open-ended prompt guesswork. By combining an ultra-clean subject image reference with standardized visual presets such as /SmokeReveal or /TimesSquare3DReveal, the neural model maintains strict product identity while simulating photorealistic fluid dynamics, atmospheric lighting, and cinematic focal moves."
           ],
           "callout": {
@@ -2071,6 +2181,10 @@ export const aiImageToVideoArticle: RawArticle = {
       "author": authors.ar,
       "toc": [
         {
+          "id": "quick-access-tools",
+          "title": "۰. استوديوهات وأدوات توليد الفيديو"
+        },
+        {
           "id": "intro-image-to-video",
           "title": "١. ثورة تحويل الصور إلى فيديو في ٢٠٢٦: لماذا تتفوق الحركة في جذب العملاء؟"
         },
@@ -2127,13 +2241,64 @@ export const aiImageToVideoArticle: RawArticle = {
           "title": "١٤. الخلاصة التنفيذية وأسرار تحقيق الأرباح من إعلانات الفيديو"
         }
       ],
+      "quickLinks": [
+        {
+          "title": "استوديو Kling AI لتوليد الفيديو",
+          "url": "https://klingai.com",
+          "description": "محرك رائد لتحويل الصور إلى فيديو بفيزياء واقعية وحركات سينمائية دقيقة",
+          "badge": "استوديو الفيديو",
+          "icon": "sparkles"
+        },
+        {
+          "title": "محرك Runway Gen-3 Alpha",
+          "url": "https://runwayml.com",
+          "description": "معيار الصناعة للتحكم في مسارات الكاميرا السينمائية وفرشاة الحركة الذكية",
+          "badge": "محرك رائد",
+          "icon": "flow"
+        },
+        {
+          "title": "استوديو Luma Dream Machine",
+          "url": "https://lumalabs.ai/dream-machine",
+          "description": "رندر ثلاثي الأبعاد فائق السرعة مع محاكاة متقنة للإضاءة والزوايا البصرية",
+          "badge": "رندر ثلاثي الأبعاد",
+          "icon": "sparkles"
+        },
+        {
+          "title": "ذكاء MiniMax Hailuo الاصطناعي",
+          "url": "https://hailuoai.video",
+          "description": "نموذج فائق الدقة في تفاصيل ملامح الوجه وحركة الأقمشة والفيزياء الطبيعية",
+          "badge": "فيزياء واقعية",
+          "icon": "sparkles"
+        },
+        {
+          "title": "منصة Pika 2.0 للمؤثرات الخاصة",
+          "url": "https://pika.art",
+          "description": "مؤثرات بصرية سينمائية متطورة كالانفجار والتفتت والذوبان والتحول الشكلي",
+          "badge": "مؤثرات بصرية",
+          "icon": "sparkles"
+        },
+        {
+          "title": "استوديو Google Flow الرسمي",
+          "url": "https://labs.google/fx/tools/flow",
+          "description": "استوديو غوغل الإبداعي المتطور المعتمد على نماذج Veo 2 و Imagen 3",
+          "badge": "استوديو غوغل",
+          "icon": "flow"
+        },
+        {
+          "title": "منصة Midjourney للصور المرجعية",
+          "url": "https://www.midjourney.com",
+          "description": "توليد الإطارات المرجعية الأولى بدقة فائقة وإضاءة بصرية إعلانية احترافية",
+          "badge": "صور مرجعية",
+          "icon": "external"
+        }
+      ],
       "sections": [
         {
           "id": "intro-image-to-video",
           "title": "١. ثورة تحويل الصور إلى فيديو في ٢٠٢٦: لماذا تتفوق الحركة في جذب العملاء؟",
           "lead": "في عام ٢٠٢٦، لم تعد الصور الثابتة قادرة على لفت انتباه العملاء في الحملات الإعلانية ومنصات التواصل.",
           "paragraphs": [
-            "أحدثت نماذج الذكاء الاصطناعي التوليدي مثل Google Flow و Gemini Omni 1.1 Flash و Runway Gen-3 تحولاً جذرياً في صناعة الإعلانات. بات بإمكانك الآن، عبر صورة واحدة واضحة للمنتج، إنتاج إعلانات وفيديوهات سينمائية كانت تتطلب سابقاً ميزانيات ضخمة وفرق عمل متخصصة.",
+            "أحدثت نماذج الذكاء الاصطناعي التوليدي مثل [Google Flow](https://labs.google/fx/tools/flow) و [Runway Gen-3](https://runwayml.com) و [Kling AI](https://klingai.com) تحولاً جذرياً في صناعة الإعلانات، خصوصاً عند استخدام صور مرجعية من [Midjourney](https://www.midjourney.com). بات بإمكانك الآن، عبر صورة واحدة واضحة للمنتج، إنتاج إعلانات وفيديوهات سينمائية كانت تتطلب سابقاً ميزانيات ضخمة وفرق عمل متخصصة. (إذا واجهت حجب المنطقة، راجع [دليل حل خطأ الدولة في Google Flow](/blog/google-flow-region-error-fix-iran-guide/)).",
             "السر يكمن في دمج صورة مرجعية نقية مع أوامر حركة محددة ومدروسة. هذا النهج يضمن ثبات هوية المنتج دون تشوه، مع محاكاة دقيقة لحركة الكاميرا وتأثيرات الإضاءة والدخان والانفجارات السينمائية."
           ],
           "callout": {

@@ -79,6 +79,15 @@ export interface ArticleLeadMagnet {
   perks?: string[];
 }
 
+export interface ArticleQuickLink {
+  title: string;
+  url: string;
+  description?: string;
+  badge?: string;
+  icon?: string;
+  isCopyOnly?: boolean;
+}
+
 export interface LocalizedArticleContent {
   title: string;
   summary: string;
@@ -88,6 +97,7 @@ export interface LocalizedArticleContent {
   tags: string[];
   author: ArticleAuthor;
   toc: TableOfContentItem[];
+  quickLinks?: ArticleQuickLink[];
   sections: ArticleSection[];
   takeaways?: string[];
   faqs?: ArticleFaq[];

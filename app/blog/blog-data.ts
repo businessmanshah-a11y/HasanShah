@@ -82,6 +82,15 @@ export interface ArticleLeadMagnet {
   perks?: string[];
 }
 
+export interface ArticleQuickLink {
+  title: string;
+  url: string;
+  description?: string;
+  badge?: string;
+  icon?: string;
+  isCopyOnly?: boolean;
+}
+
 export interface LocalizedArticleContent {
   title: string;
   summary: string;
@@ -91,6 +100,7 @@ export interface LocalizedArticleContent {
   tags: string[];
   author: ArticleAuthor;
   toc: TableOfContentItem[];
+  quickLinks?: ArticleQuickLink[];
   sections: ArticleSection[];
   takeaways?: string[];
   faqs?: ArticleFaq[];
@@ -156,6 +166,10 @@ export const rawArticles: RawArticle[] = [
         author: authors.fa,
         toc: [
         {
+                "id": "quick-access-tools",
+                "title": "۰. پرتال‌ها و ابزارهای رسمی چت‌جی‌پی‌تی"
+        },
+        {
                 "id": "understanding-commands",
                 "title": "۱. ساختار و معماری ۴ لایه پردازش کامندها در ChatGPT"
         },
@@ -216,14 +230,58 @@ export const rawArticles: RawArticle[] = [
                 "title": "۱۵. جمع‌بندی نهایی و نقشه راه تسلط بر پرامپت‌های پیشرفته"
         }
 ],
+        quickLinks: [
+          {
+            title: "وب‌اپلیکیشن رسمی ChatGPT",
+            url: "https://chatgpt.com",
+            description: "دسترسی مستقیم به مدل‌های پرچمدار GPT-4o، استدلال o1 و محیط کار مشارکتی Canvas",
+            badge: "پرتال رسمی",
+            icon: "sparkles",
+          },
+          {
+            title: "پلتفرم توسعه‌دهندگان OpenAI Platform",
+            url: "https://platform.openai.com",
+            description: "مدیریت API Keys، تست پرامپت‌ها در محیط Playground و رصد میزان مصرف توکن‌ها",
+            badge: "پلتفرم API",
+            icon: "terminal",
+          },
+          {
+            title: "فروشگاه جی‌پی‌تی‌های سفارشی (GPTs Store)",
+            url: "https://chatgpt.com/gpts",
+            description: "مجموعه هزاران چت‌بات و دستیار هوشمند تخصصی برای کدنویسی، دیزاین و مارکتینگ",
+            badge: "دستیارهای هوشمند",
+            icon: "sparkles",
+          },
+          {
+            title: "دانلود اپلیکیشن دسکتاپ ChatGPT",
+            url: "https://openai.com/chatgpt/desktop/",
+            description: "کلاینت رسمی مک و ویندوز با کلید میانبر فراخوانی فوری و اتصال به اپ‌های سیستمی",
+            badge: "نرم‌افزار دسکتاپ",
+            icon: "mobile",
+          },
+          {
+            title: "مرکز راهنما و مستندات OpenAI Help",
+            url: "https://help.openai.com",
+            description: "پاسخ به سوالات فنی، حریم خصوصی، ارورهای اتصال و راهنمای اشتراک پلاس و تیم",
+            badge: "پشتیبانی رسمی",
+            icon: "form",
+          },
+          {
+            title: "داشبورد مانیتورینگ و آپ‌تایم سرورها",
+            url: "https://status.openai.com",
+            description: "بررسی زنده وضعیت فعالیت سرورها، تاخیر مدل‌ها و قطعی‌های سراسری OpenAI",
+            badge: "آنالیز سرور",
+            icon: "shield",
+          },
+        ],
         sections: [
         {
                 "id": "understanding-commands",
                 "title": "۱. ساختار و معماری ۴ لایه پردازش کامندها در ChatGPT",
                 "lead": "برای تسلط واقعی بر هوش مصنوعی، باید بدونی که دستورات و اسلش‌کامندها در چهار لایه معماری کاملاً تفکیک‌شده پردازش می‌شن.",
                 "paragraphs": [
-                        "برخلاف تصور عموم که اسلش‌کامندها رو صرفاً یک‌سری میانبر تصادفی می‌دونن، مدل‌های هوشمند مانند GPT-4o و محیط تعاملی OpenAI دستورات رو بر اساس لایه‌های دسترسی، ابزارهای فعال و پارسرهای معنایی ارزیابی می‌کنن.",
-                        "در واقع علامت اسلش (/) در آموزش مدل‌های هوش مصنوعی به عنوان یک جداکننده معنایی در سطح خط فرمان (CLI) یا سطح سیستم تلقی می‌شه. وقتی این ساختار رو بشناسی، می‌دونی چطور با نوشتن کمترین کلمات، بیشترین دقت و بازدهی رو از هوش مصنوعی بگیری."
+                        "برخلاف تصور عموم که اسلش‌کامندها رو صرفاً یک‌سری میانبر تصادفی می‌دونن، مدل‌های هوشمند مانند GPT-4o در محیط وب [رسمی ChatGPT](https://chatgpt.com) و [پلتفرم توسعه‌دهندگان OpenAI](https://platform.openai.com) دستورات رو بر اساس لایه‌های دسترسی، ابزارهای فعال و پارسرهای معنایی ارزیابی می‌کنن.",
+                        "در واقع علامت اسلش (/) در آموزش مدل‌های هوش مصنوعی به عنوان یک جداکننده معنایی در سطح خط فرمان (CLI) یا سطح سیستم تلقی می‌شه. وقتی این ساختار رو بشناسی، می‌دونی چطور با نوشتن کمترین کلمات، بیشترین دقت و بازدهی رو از هوش مصنوعی بگیری؛ قابلیتی که در سناریوهای بازتولید ویدیویی (همانند آموزش [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی و Google Flow](/blog/replicate-viral-reels-with-ai-google-flow/)) سرعت تولید محتوا را چند برابر می‌کند."
                 ],
                 "image": {
                         "src": "/images/blog/chatgpt-commands-architecture.webp",
@@ -275,7 +333,7 @@ export const rawArticles: RawArticle[] = [
                 "title": "۲. اسلش‌کامندهای رسمی و سیستمی هسته (Official Commands)",
                 "lead": "این دستورات به صورت مستقیم در رابط کاربری رسمی وب، دسکتاپ و موبایل ChatGPT توسط OpenAI تعبیه شدن و عملکردهای سیستمی رو کنترل می‌کنن.",
                 "paragraphs": [
-                        "با تایپ مستقیم این فرامین در کادر ورودی گفتگو، قابلیت‌های هسته پلتفرم بدون نیاز به کلیک‌های اضافه فعال می‌شن:"
+                        "با تایپ مستقیم این فرامین در کادر ورودی گفتگوی [chatgpt.com](https://chatgpt.com) یا [اپلیکیشن رسمی دسکتاپ OpenAI](https://openai.com/chatgpt/desktop/)، قابلیت‌های هسته پلتفرم بدون نیاز به کلیک‌های اضافه فعال می‌شن:"
                 ],
                 "table": {
                         "headers": [
@@ -340,7 +398,7 @@ export const rawArticles: RawArticle[] = [
         {
                 "id": "canvas-workspace-and-files",
                 "title": "۳. محیط کار Canvas، مدیریت اسناد و تحلیل داده (Workspace & Data)",
-                "lead": "محیط Canvas یک ویرایشگر دوپنجره‌ای فوق‌العاده برای همکاری تعاملی روی کدها، مقالات طولانی و تحلیل فایل‌های اکسل و دیتابیس است.",
+                "lead": "محیط Canvas یک ویرایشگر دوپنجره‌ای فوق‌العاده در [پلتفرم ChatGPT](https://chatgpt.com) برای همکاری تعاملی روی کدها، مقالات طولانی و تحلیل داده‌هاست که با متدولوژی [آموزش وایب‌کدینگ](/vibe-coding/) و ادیتورهایی مثل [Cursor](https://www.cursor.com) هماهنگی کامل دارد.",
                 "table": {
                         "headers": [
                                 "ردیف",
@@ -3327,6 +3385,10 @@ export const rawArticles: RawArticle[] = [
         author: authors.en,
         toc: [
         {
+                "id": "quick-access-tools",
+                "title": "0. Official ChatGPT Portals & Tools"
+        },
+        {
                 "id": "understanding-commands",
                 "title": "1. The 4-Layer Architecture of ChatGPT Command Processing"
         },
@@ -3387,6 +3449,50 @@ export const rawArticles: RawArticle[] = [
                 "title": "15. Summary & Actionable Roadmap for Advanced Prompting"
         }
 ],
+                quickLinks: [
+          {
+            title: "ChatGPT Official Web Portal",
+            url: "https://chatgpt.com",
+            description: "Direct gateway to GPT-4o, o1 reasoning models, and the Canvas collaborative workspace",
+            badge: "Web Portal",
+            icon: "sparkles",
+          },
+          {
+            title: "OpenAI Developer Platform",
+            url: "https://platform.openai.com",
+            description: "API key provisioning, interactive Playground sandbox, and usage analytics",
+            badge: "Developer API",
+            icon: "terminal",
+          },
+          {
+            title: "Custom GPTs Store",
+            url: "https://chatgpt.com/gpts",
+            description: "Curated directory of specialized AI agents for coding, UI design, and market analysis",
+            badge: "Agent Store",
+            icon: "sparkles",
+          },
+          {
+            title: "ChatGPT Desktop Applications",
+            url: "https://openai.com/chatgpt/desktop/",
+            description: "Native macOS and Windows apps with system-wide shortcut invocation and screen reading",
+            badge: "Desktop App",
+            icon: "mobile",
+          },
+          {
+            title: "OpenAI Help & Documentation",
+            url: "https://help.openai.com",
+            description: "Official guides on prompt parameters, privacy safeguards, and troubleshooting",
+            badge: "Help Center",
+            icon: "form",
+          },
+          {
+            title: "OpenAI Service Status Dashboard",
+            url: "https://status.openai.com",
+            description: "Real-time system health, API latency metrics, and scheduled maintenance alerts",
+            badge: "Status Monitor",
+            icon: "shield",
+          },
+        ],
         sections: [
         {
                 "id": "understanding-commands",
@@ -6497,6 +6603,10 @@ export const rawArticles: RawArticle[] = [
         author: authors.ar,
         toc: [
         {
+                "id": "quick-access-tools",
+                "title": "۰. بوابات وأدوات ChatGPT الرسمية"
+        },
+        {
                 "id": "understanding-commands",
                 "title": "١. البنية المعمارية رباعية الطبقات لمعالجة الأوامر في ChatGPT"
         },
@@ -6557,6 +6667,50 @@ export const rawArticles: RawArticle[] = [
                 "title": "١٥. الخلاصة النهائية وخريطة الطريق لإتقان البرومبت المتقدم"
         }
 ],
+                quickLinks: [
+          {
+            title: "بوابة ويب ChatGPT الرسمية",
+            url: "https://chatgpt.com",
+            description: "الوصول المباشر لنماذج GPT-4o ونماذج التفكير o1 ومساحة عمل Canvas التفاعلية",
+            badge: "البوابة الرسمية",
+            icon: "sparkles",
+          },
+          {
+            title: "منصة مطوري OpenAI",
+            url: "https://platform.openai.com",
+            description: "إدارة مفاتيح واجهة البرمجة API واختبار النماذج في بيئة Playground ومراقبة الاستهلاك",
+            badge: "منصة المطورين",
+            icon: "terminal",
+          },
+          {
+            title: "متجر GPTs المخصصة",
+            url: "https://chatgpt.com/gpts",
+            description: "دليل الوكلاء الأذكياء المتخصصين في البرمجة والتصميم والتسويق وتحليل البيانات",
+            badge: "متجر الوكلاء",
+            icon: "sparkles",
+          },
+          {
+            title: "تطبيق ديسكتوب ChatGPT",
+            url: "https://openai.com/chatgpt/desktop/",
+            description: "تطبيق رسمي لأنظمة macOS و Windows مع اختصار التشغيل السريع المدمج بالنظام",
+            badge: "تطبيق الكمبيوتر",
+            icon: "mobile",
+          },
+          {
+            title: "مركز مساعدة OpenAI",
+            url: "https://help.openai.com",
+            description: "دليل شامل للأسئلة الشائعة، الأمان، وإصلاح مشكلات الاتصال والحسابات",
+            badge: "الدعم الفني",
+            icon: "form",
+          },
+          {
+            title: "لوحة مراقبة خوادم OpenAI",
+            url: "https://status.openai.com",
+            description: "رصد فوري لجهوزية الخوادم وسرعة استجابة النماذج والتوقفات المحتملة",
+            badge: "مراقبة الخوادم",
+            icon: "shield",
+          },
+        ],
         sections: [
         {
                 "id": "understanding-commands",
@@ -9675,11 +9829,56 @@ export const rawArticles: RawArticle[] = [
         tags: ["وایب‌کدینگ", "Cursor", "Claude", "Next.js", "توسعه محصول", "هوش مصنوعی"],
         author: authors.fa,
         toc: [
+          { id: "quick-access-tools", title: "۰. ابزارهای کلیدی و ادیتورهای وایب‌کدینگ" },
           { id: "what-is-vibe-coding", title: "۱. تعریف و مفهوم وایب‌کدینگ" },
           { id: "tools-of-the-trade", title: "۲. جعبه‌ابزار اصلی یک وایب‌کدر حرفه‌ای" },
           { id: "mindset-shift", title: "۳. تغییر ذهنیت: از کدنویس به معمار محصول" },
           { id: "workflow-blueprint", title: "۴. مراحل اجرای یک پروژه کامل وایب‌کدینگ" },
           { id: "common-pitfalls", title: "۵. اشتباهات رایج و نحوه جلوگیری از آن‌ها" },
+        ],
+                quickLinks: [
+          {
+            title: "ادیتور هوش مصنوعی Cursor",
+            url: "https://www.cursor.com",
+            description: "محبوب‌ترین محیط کدنویسی نسل جدید با درک کامل کانتکست پروژه و قابلیت Tab Autocomplete",
+            badge: "ادیتور هوشمند",
+            icon: "terminal",
+          },
+          {
+            title: "پلتفرم هوش مصنوعی Claude",
+            url: "https://claude.ai",
+            description: "برترین مدل در استدلال منطقی و معماری کد با کانتکست عمیق مدل‌های Sonnet",
+            badge: "مدل هوش مصنوعی",
+            icon: "sparkles",
+          },
+          {
+            title: "ابزار ساخت رابط کاربری v0 Vercel",
+            url: "https://v0.dev",
+            description: "تولید آنی کامپوننت‌های مدرن React و Tailwind CSS از روی متن و اسکرین‌شات",
+            badge: "طراحی کامپوننت",
+            icon: "sparkles",
+          },
+          {
+            title: "عامل توسعه آنلاین Bolt.new",
+            url: "https://bolt.new",
+            description: "محیط اجرای مرورگری برای ساخت، اجرا و دیپلوی فوری اپلیکیشن‌های فول‌استک",
+            badge: "عامل هوشمند",
+            icon: "terminal",
+          },
+          {
+            title: "دستیار کدنویسی GitHub Copilot",
+            url: "https://github.com/features/copilot",
+            description: "دستیار هوشمند گیت‌هاب برای پیشنهاد خط به خط و رفع باگ‌های پروژه در ادیتور",
+            badge: "دستیار گیت‌هاب",
+            icon: "terminal",
+          },
+          {
+            title: "سریال آموزش وایب‌کدینگ حسن شاهمرادی",
+            url: "/vibe-coding/",
+            description: "نقشه راه عملی و گام‌به‌گام ورود به دنیای برنامه‌نویسی با AI از صفر تا تولید محصول",
+            badge: "آموزش جامع",
+            icon: "flow",
+          },
         ],
         sections: [
           {
@@ -9696,10 +9895,11 @@ export const rawArticles: RawArticle[] = [
             title: "۲. جعبه‌ابزار اصلی یک وایب‌کدر حرفه‌ای",
             lead: "برای ورود به این فضا نیاز به ابزارهای نسل جدید داری که کل پروژه رو یکپارچه درک می‌کنن:",
             bulletPoints: [
-              "‏Cursor / Windsurf — ادیتورهای مدرن با درک کامل از ساختار فایل‌ها و وابستگی‌های پروژه.",
-              "‏Claude 3.7 Sonnet & ChatGPT — مدل‌های دارای استدلال معماری همراه با پرامپت‌های تخصصی در [هندبوک ۴۶۰ اسلش‌کامند ChatGPT](/blog/chatgpt-slash-commands-handbook-2026/).",
-              "‏Next.js & Tailwind CSS — فریم‌ورک استاندارد وب برای ساخت صفحات سریع، ریسپانسیو و سئومحور.",
-              "‏Vercel & Supabase — زیرساخت ابری برای دیتابیس و دیپلوی فوری محصول در سراسر دنیا.",
+              "‏[ادیتور هوشمند Cursor](https://www.cursor.com) و [ادیتور Windsurf](https://codeium.com/windsurf) — ادیتورهای مدرن با درک کامل از ساختار فایل‌ها و وابستگی‌های پروژه.",
+              "‏[مدل هوش مصنوعی Claude 3.7](https://claude.ai) و [چت‌بات ChatGPT](https://chatgpt.com) — مدل‌های دارای استدلال معماری همراه با پرامپت‌های تخصصی در [هندبوک ۴۶۰ اسلش‌کامند ChatGPT](/blog/chatgpt-slash-commands-handbook-2026/).",
+              "‏[فریم‌ورک Next.js](https://nextjs.org) و [Tailwind CSS](https://tailwindcss.com) — فریم‌ورک استاندارد وب برای ساخت صفحات سریع، ریسپانسیو و سئومحور.",
+              "‏[زیرساخت ابری Vercel](https://vercel.com) و [پایگاه داده Supabase](https://supabase.com) — زیرساخت ابری برای دیتابیس و دیپلوی فوری محصول در سراسر دنیا.",
+              "‏[پلتفرم v0.dev](https://v0.dev) و [استودیوی Bolt.new](https://bolt.new) — ابزارهای مدرن خلق فوری کامپوننت‌های فرانت‌اند و رابط کاربری.",
             ],
           },
           {
@@ -9707,7 +9907,7 @@ export const rawArticles: RawArticle[] = [
             title: "۳. تغییر ذهنیت: از کدنویس به معمار محصول",
             lead: "ارزش تو در توانایی حل مسئله و دیزاین سیستم خلاصه می‌شه، نه در تعداد خط کدی که دستی تایپ می‌کنی.",
             paragraphs: [
-              "تو برنامه‌نویسی سنتی، ۸۰ درصد وقت صرف نوشتن سینتکس و ارورهای کامپایلر می‌شد. در وایب‌کدینگ این نسبت برعکس شده: تو ۸۰ درصد زمانت رو صرف درک نیاز بیزینس و تجربه کاربری می‌کنی.",
+              "تو برنامه‌نویسی سنتی، ۸۰ درصد وقت صرف نوشتن سینتکس و ارورهای کامپایلر می‌شد. در وایب‌کدینگ این نسبت برعکس شده: تو ۸۰ درصد زمانت رو صرف درک نیاز بیزینس، پرسونای مخاطب و تجربه کاربری می‌کنی؛ مهارتی که مستقیماً برای ساخت [لندینگ‌پیج‌های پرفروش با نرخ تبدیل بالا](/blog/high-converting-landing-page-secrets/) به کار می‌آید.",
             ],
             callout: {
               type: "tip",
@@ -9723,8 +9923,8 @@ export const rawArticles: RawArticle[] = [
               "مرحله ۱: نوشتن سند مشخصات محصول (Product Spec) و مشخص کردن جریان کاربر.",
               "مرحله ۲: آماده‌سازی دیزاین سیستم (پالت رنگ، فونت، کامپوننت‌های پایه).",
               "مرحله ۳: ساخت صفحه اصلی و بخش‌های تعاملی با هدایت مداوم هوش مصنوعی؛ درست مانند نمونه عملی [داستان ساخت سیستم فاکتور در سریال وایب‌کدینگ](/vibe-coding/series/faktor-dadash/).",
-              "مرحله ۴: تست مرحله‌به‌مرحله در مرورگر و برطرف کردن ناهماهنگی‌ها در گام‌های کوچک.",
-              "مرحله ۵: دیپلوی روی دامنه نهایی و اتصال به ابزارهای تحلیل کاربر.",
+              "مرحله ۴: تست مرحله‌به‌مرحله در مرورگر و برطرف کردن ناهماهنگی‌ها؛ در صورتی که با تحریم ابزارهای ابری روبرو شدید، راهنمای [حل مشکل ریجن و ارورهای دسترسی](/blog/google-flow-region-error-fix-iran-guide/) راهگشاست.",
+              "مرحله ۵: دیپلوی روی دامنه نهایی، اتصال به ابزارهای تحلیلی و مشاهده خروجی در میان [نمونه‌کارهای شاخص توسعه وب](/portfolio).",
             ],
           },
         ],
@@ -9744,10 +9944,55 @@ export const rawArticles: RawArticle[] = [
         tags: ["Vibe Coding", "Cursor", "Claude", "Next.js", "AI Development"],
         author: authors.en,
         toc: [
+          { id: "quick-access-tools", title: "0. Essential Vibe Coding Tools & Editors" },
           { id: "what-is-vibe-coding", title: "1. What is Vibe Coding?" },
           { id: "tools-of-the-trade", title: "2. The Essential Vibe Coder Toolkit" },
           { id: "mindset-shift", title: "3. Mindset Shift: From Coder to Product Architect" },
           { id: "workflow-blueprint", title: "4. The 5-Step Vibe Coding Blueprint" },
+        ],
+                quickLinks: [
+          {
+            title: "Cursor AI Code Editor",
+            url: "https://www.cursor.com",
+            description: "Next-gen AI code editor with full codebase indexing, multi-file edits, and agent mode",
+            badge: "AI Editor",
+            icon: "terminal",
+          },
+          {
+            title: "Anthropic Claude AI",
+            url: "https://claude.ai",
+            description: "Premier reasoning engine for software architecture, code generation, and complex refactoring",
+            badge: "Reasoning AI",
+            icon: "sparkles",
+          },
+          {
+            title: "v0 Generative UI by Vercel",
+            url: "https://v0.dev",
+            description: "Prompt-driven React and Tailwind component generation ready for production copy-paste",
+            badge: "UI Generator",
+            icon: "sparkles",
+          },
+          {
+            title: "Bolt.new Fullstack In-Browser Sandbox",
+            url: "https://bolt.new",
+            description: "Browser-based development environment that installs packages and runs servers in real-time",
+            badge: "Web Agent",
+            icon: "terminal",
+          },
+          {
+            title: "GitHub Copilot",
+            url: "https://github.com/features/copilot",
+            description: "Contextual code completions and repository chat directly integrated into VS Code",
+            badge: "Pair Programmer",
+            icon: "terminal",
+          },
+          {
+            title: "Hasan Shah Vibe Coding Series",
+            url: "/vibe-coding/",
+            description: "Practical roadmap for founders and creators to build production software with AI",
+            badge: "Masterclass",
+            icon: "flow",
+          },
         ],
         sections: [
           {
@@ -9783,9 +10028,54 @@ export const rawArticles: RawArticle[] = [
         tags: ["فايب كودينغ", "Cursor", "Claude", "Next.js", "تطوير المنتجات"],
         author: authors.ar,
         toc: [
+          { id: "quick-access-tools", title: "۰. أدوات ومحررات الفايب كودينغ الأساسية" },
           { id: "what-is-vibe-coding", title: "١. مفهوم الفايب كودينغ" },
           { id: "tools-of-the-trade", title: "٢. صندوق أدوات الفايب كودينغ" },
           { id: "mindset-shift", title: "٣. التحول من مبرمج إلى مهندس منتج" },
+        ],
+                quickLinks: [
+          {
+            title: "محرر الكود Cursor",
+            url: "https://www.cursor.com",
+            description: "المحرر الأذكى في فهم بنية المشروع وتعديل الأكواد البرمجية بدقة فائقة",
+            badge: "محرر ذكي",
+            icon: "terminal",
+          },
+          {
+            title: "ذكاء Claude من أنثروبيك",
+            url: "https://claude.ai",
+            description: "النموذج الرائد في التفكير المعماري وهندسة البرمجيات التوليدية عبر Sonnet",
+            badge: "ذكاء اصطناعي",
+            icon: "sparkles",
+          },
+          {
+            title: "منصة v0 من Vercel",
+            url: "https://v0.dev",
+            description: "بناء واجهات المستخدم ومكونات React و Tailwind فورياً من خلال الوصف النصي",
+            badge: "توليد الواجهات",
+            icon: "sparkles",
+          },
+          {
+            title: "وكيل التطوير السحابي Bolt.new",
+            url: "https://bolt.new",
+            description: "بيئة عمل متكاملة داخل المتصفح لتشغيل ونشر التطبيقات الرقمية في دقائق",
+            badge: "وكيل ويب",
+            icon: "terminal",
+          },
+          {
+            title: "مساعد البرمجة GitHub Copilot",
+            url: "https://github.com/features/copilot",
+            description: "المساعد البرمجي الذكي لاقتراح الأكواد وإصلاح الأخطاء وتسهيل التطوير",
+            badge: "مساعد ذكي",
+            icon: "terminal",
+          },
+          {
+            title: "دورة الفايب كودينغ لحسن شاهمرادي",
+            url: "/vibe-coding/",
+            description: "خارطة طريق تعليمية متكاملة للبدء في بناء المنتجات والأنظمة بالذكاء الاصطناعي",
+            badge: "دليل شامل",
+            icon: "flow",
+          },
         ],
         sections: [
           {
@@ -9819,11 +10109,56 @@ export const rawArticles: RawArticle[] = [
         tags: ["لندینگ‌پیج", "افزایش فروش", "مارکتینگ", "طراحی وب", "اعتمادسازی"],
         author: authors.fa,
         toc: [
+          { id: "quick-access-tools", title: "۰. ابزارهای تحلیل و بهینه‌سازی لندینگ‌پیج" },
           { id: "instagram-vulnerability", title: "۱. چرا تکیه کردن فقط به اینستاگرام خطرناکه؟" },
           { id: "anatomy-of-high-converting-page", title: "۲. آناتومی یک لندینگ‌پیج پرفروش" },
           { id: "pain-before-promise", title: "۳. اصل درد قبل از وعده (Pain before Promise)" },
           { id: "frictionless-lead-generation", title: "۴. ساخت مسیر دریافت لید بدون اصطکاک" },
           { id: "trust-elements", title: "۵. عناصر حیاتی اعتمادسازی در نگاه اول" },
+        ],
+                quickLinks: [
+          {
+            title: "پلتفرم طراحی رابط کاربری Figma",
+            url: "https://www.figma.com",
+            description: "استاندارد طراحی وایرفریم، دیزاین سیستم و پروتوتایپ صفحات وب با بالاترین نرخ تبدیل",
+            badge: "ابزار طراحی",
+            icon: "sparkles",
+          },
+          {
+            title: "تست سرعت گوگل PageSpeed Insights",
+            url: "https://pagespeed.web.dev",
+            description: "سنجش شاخص‌های حیاتی تجربه کاربری Core Web Vitals و بهینه‌سازی سرعت بارگذاری",
+            badge: "آنالیز گوگل",
+            icon: "flow",
+          },
+          {
+            title: "سرویس هیت‌مپ و رفتار کاربر Hotjar",
+            url: "https://www.hotjar.com",
+            description: "ضبط ویدیویی رفتار بازدیدکنندگان، نقشه‌های حرارتی کلیک و کشف نقاط افت مشتری",
+            badge: "تحلیل رفتار",
+            icon: "shield",
+          },
+          {
+            title: "رصد عملکرد و لود Vercel Analytics",
+            url: "https://vercel.com/analytics",
+            description: "رصد بی‌درنگ سرعت لود واقعی، نرخ تعامل و وضعیت فنی هاستینگ مدرن",
+            badge: "زیرساخت ابری",
+            icon: "terminal",
+          },
+          {
+            title: "تست تخصصی سرعت WebPageTest",
+            url: "https://www.webpagetest.org",
+            description: "آنالیز عمیق آبشاری لود فایل‌ها، فشرده‌سازی فونت‌ها و کش مرورگر کاربران",
+            badge: "تست سرعت",
+            icon: "flow",
+          },
+          {
+            title: "نمونه‌کارها و پروژه‌های حسن شاهمرادی",
+            url: "/portfolio",
+            description: "مشاهده صفحات لندینگ لوکس و سیستم‌های طراحی اختصاصی با بالاترین استاندارد فروش",
+            badge: "نمونه‌کارها",
+            icon: "sparkles",
+          },
         ],
         sections: [
           {
@@ -9831,7 +10166,7 @@ export const rawArticles: RawArticle[] = [
             title: "۱. چرا تکیه کردن فقط به اینستاگرام خطرناکه؟",
             lead: "اینستاگرام ابزار فوق‌العاده‌ای برای جلب توجهه، اما جای امنی برای دارایی اصلی بیزینست نیست.",
             paragraphs: [
-              "تغییرات مداوم الگوریتم، خطر قطعی یا فیلترینگ، گم شدن مشتری‌های جدی تو شلوغی دایرکت‌ها و نبودن تو سرچ‌های گوگل باعث می‌شن بخش زیادی از زحماتت هدر بره.",
+              "تغییرات مداوم الگوریتم، خطر قطعی یا فیلترینگ، گم شدن مشتری‌های جدی تو شلوغی دایرکت‌ها و نبودن تو سرچ‌های گوگل باعث می‌شن بخش زیادی از زحماتت هدر بره. حتی اگر طبق متدولوژی [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی](/blog/replicate-viral-reels-with-ai-google-flow/) محتوای وایرال بسازی، بدون لندینگ‌پیج بخش زیادی از مشتریان خرید نهایی را انجام نمی‌دهند.",
               "یه لندینگ‌پیج اختصاصی قرار نیست جای اینستاگرامت رو بگیره؛ بلکه ستون اصلی اعتماد و ابزار جذب مشتری جدی در کنار پیجته.",
             ],
           },
@@ -9840,11 +10175,11 @@ export const rawArticles: RawArticle[] = [
             title: "۲. آناتومی یک لندینگ‌پیج پرفروش",
             lead: "هر لندینگ‌پیج موفق از ۵ بخش اصلی و هماهنگ تشکیل شده:",
             bulletPoints: [
-              "هدینگ اصلی (Hero) با ارزش پیشنهادی شفاف که تو ۳ ثانیه اول مخاطب رو نگه داره.",
+              "هدینگ اصلی (Hero) با ارزش پیشنهادی شفاف که در [نرم‌افزار Figma](https://www.figma.com) طراحی و تو ۳ ثانیه اول مخاطب رو نگه داره.",
               "لمس دقیق درد و چالش مشتری (Pain Points) تا متوجه بشه شرایطش رو کاملاً می‌فهمی.",
-              "معرفی خدمات و مزیت رقابتی با شواهد و نمونه‌کارهای واقعی.",
+              "معرفی خدمات و مزیت رقابتی با شواهد و [نمونه‌کارهای واقعی و لوکس](/portfolio).",
               "پیشنهاد بدون ریسک (Offer) مثل آفر تست رایگان ۷۲ ساعته سایت برای شروع گفتگو و ثبت مستقیم در [صفحه تماس و برآورد پروژه](/contact?service=website).",
-              "فرم ثبت درخواست ساده با کمترین فیلدهای ممکن برای ثبت سریع اطلاعات.",
+              "فرم ثبت درخواست ساده و تست سرعت لود زیر ۲ ثانیه با [سایت Google PageSpeed Insights](https://pagespeed.web.dev) و تحلیل رفتار در [ابزار Hotjar](https://www.hotjar.com).",
             ],
           },
           {
@@ -9852,14 +10187,14 @@ export const rawArticles: RawArticle[] = [
             title: "۳. اصل درد قبل از وعده (Pain before Promise)",
             lead: "مخاطب ایرانی اول باید حس کنه دردش رو می‌شناسی، بعد به راهکارت گوش میده.",
             paragraphs: [
-              "اگه از همون اول فقط از خودت تعریف کنی، مخاطب صفحه رو می‌بنده. ولی وقتی اول چالش‌های روزمره‌ش رو دقیق نام ببری، می‌فهمه با متخصصی طرفه که تو دل کاره. همچنین با متدهای [آموزش وایب‌کدینگ](/vibe-coding/) می‌توانید چنین صفحات تعاملی و پرفروشی را در عرض چند ساعت پیاده‌سازی کنید.",
+              "اگه از همون اول فقط از خودت تعریف کنی، مخاطب صفحه رو می‌بنده. ولی وقتی اول چالش‌های روزمره‌ش رو دقیق نام ببری، می‌فهمه با متخصصی طرفه که تو دل کاره. همچنین با متدهای [آموزش وایب‌کدینگ](/vibe-coding/) و راهنمای [وایب‌کدینگ چیست؟](/blog/what-is-vibe-coding-guide/) می‌توانید چنین صفحات تعاملی و پرفروشی را در عرض چند ساعت پیاده‌سازی کنید.",
             ],
           },
         ],
         takeaways: [
           "لندینگ‌پیج نرخ تبدیل ترافیک سوشال مدیا به مشتری پرداخت‌کننده رو تا ۳ برابر بیشتر می‌کنه.",
           "پیشنهاد بدون ریسک بهترین راه برای شروع ارتباط با مشتری جدیه.",
-          "دیزاین لوکس و تمیز پیش‌فرض ذهنی مشتری رو درباره ارزشمند بودن خدماتت شکل میده.",
+          "دیزاین لوکس و تمیز پیش‌فرض ذهنی مشتری رو درباره ارزشمند بودن خدماتت شکل میده؛ نمونه‌های واقعی را در [صفحه نمونه‌کارها](/portfolio) مشاهده کنید.",
           "برای ثبت درخواست طراحی لندینگ‌پیج یا ساخت سیستم اختصاصی، [صفحه تماس با حسن شاهمرادی](/contact?service=website) آماده دریافت مشخصات پروژه شماست.",
         ],
       },
@@ -9872,9 +10207,54 @@ export const rawArticles: RawArticle[] = [
         tags: ["Landing Page", "Conversion Rate", "Web Design", "Lead Generation"],
         author: authors.en,
         toc: [
+          { id: "quick-access-tools", title: "0. Landing Page CRO & Analytics Tools" },
           { id: "instagram-vulnerability", title: "1. The Single-Channel Risk" },
           { id: "anatomy-of-high-converting-page", title: "2. Anatomy of a Converting Page" },
           { id: "pain-before-promise", title: "3. Pain Before Promise" },
+        ],
+                quickLinks: [
+          {
+            title: "Figma UI/UX Collaborative Design",
+            url: "https://www.figma.com",
+            description: "Industry-standard platform for conversion wireframing, design tokens, and rapid prototyping",
+            badge: "Design Suite",
+            icon: "sparkles",
+          },
+          {
+            title: "Google PageSpeed Insights",
+            url: "https://pagespeed.web.dev",
+            description: "Core Web Vitals benchmarking, mobile performance diagnostics, and render optimization",
+            badge: "Google Audit",
+            icon: "flow",
+          },
+          {
+            title: "Hotjar Heatmaps & Behavioral Recordings",
+            url: "https://www.hotjar.com",
+            description: "Session replay, scroll depth visualization, and funnel friction detection",
+            badge: "CRO Analytics",
+            icon: "shield",
+          },
+          {
+            title: "Vercel Speed Insights",
+            url: "https://vercel.com/analytics",
+            description: "Real-user performance monitoring measuring Largest Contentful Paint and Cumulative Layout Shift",
+            badge: "Cloud Metrics",
+            icon: "terminal",
+          },
+          {
+            title: "WebPageTest Granular Performance",
+            url: "https://www.webpagetest.org",
+            description: "Deep multi-location connection speed audits and asset delivery waterfall inspection",
+            badge: "Speed Test",
+            icon: "flow",
+          },
+          {
+            title: "Hasan Shah Luxury Web Showcase",
+            url: "/portfolio",
+            description: "Explore custom high-converting web applications and bespoke landing architectures",
+            badge: "Portfolio",
+            icon: "sparkles",
+          },
         ],
         sections: [
           {
@@ -9900,8 +10280,53 @@ export const rawArticles: RawArticle[] = [
         tags: ["صفحات الهبوط", "معدل التحويل", "تصميم المواقع", "جذب العملاء"],
         author: authors.ar,
         toc: [
+          { id: "quick-access-tools", title: "۰. أدوات تحليل وتحسين صفحات الهبوط" },
           { id: "instagram-vulnerability", title: "١. مخاطر الاعتماد على منصة واحدة" },
           { id: "anatomy-of-high-converting-page", title: "٢. تشريح صفحة الهبوط الناجحة" },
+        ],
+                quickLinks: [
+          {
+            title: "منصة تصميم الواجهات Figma",
+            url: "https://www.figma.com",
+            description: "المعيار العالمي لتصميم النماذج الأولية وهندسة واجهات الهبوط الجذابة للمستخدمين",
+            badge: "منصة التصميم",
+            icon: "sparkles",
+          },
+          {
+            title: "فحص سرعة الصفحات Google PageSpeed",
+            url: "https://pagespeed.web.dev",
+            description: "قياس مؤشرات أداء الويب الحيوية Core Web Vitals للجوال والكمبيوتر لتحسين الترتيب",
+            badge: "فحص غوغل",
+            icon: "flow",
+          },
+          {
+            title: "الخرائط الحرارية وسلوك الزوار Hotjar",
+            url: "https://www.hotjar.com",
+            description: "تسجيل جلسات الزوار وتتبع حركات الماوس لتحديد ومعالجة نقاط تسرب العملاء",
+            badge: "تحليل السلوك",
+            icon: "shield",
+          },
+          {
+            title: "تحليلات الأداء المباشرة Vercel Analytics",
+            url: "https://vercel.com/analytics",
+            description: "مراقبة فورية لسرعة التفاعل وتجربة المستخدم الحقيقية على الخوادم السحابية",
+            badge: "تحليلات الأداء",
+            icon: "terminal",
+          },
+          {
+            title: "اختبار أداء الويب الشامل WebPageTest",
+            url: "https://www.webpagetest.org",
+            description: "تحليل متقدم لتسلسل تحميل الموارد البرمجية والخطوط والصور وسرعة الاستجابة",
+            badge: "اختبار السرعة",
+            icon: "flow",
+          },
+          {
+            title: "معرض أعمال وتصاميم حسن شاهمرادي",
+            url: "/portfolio",
+            description: "استعراض تصاميم صفحات الهبوط الفاخرة ذات معدلات التحويل العالية وتجارب النجاح",
+            badge: "معرض الأعمال",
+            icon: "sparkles",
+          },
         ],
         sections: [
           {

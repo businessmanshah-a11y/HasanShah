@@ -14,15 +14,23 @@ import {
   ChevronRight,
   Clock,
   Copy,
+  ExternalLink,
+  FileText,
+  Globe,
   HelpCircle,
   Info,
   Lightbulb,
+  Link as LinkIcon,
   Quote,
   Search,
+  ShieldCheck,
+  Smartphone,
   Sparkles,
   Tag,
   Terminal,
+  Wrench,
   X,
+  ArrowUpRight,
 } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -37,11 +45,39 @@ interface Props {
 
 const springTransition = { type: "spring" as const, stiffness: 120, damping: 20 };
 
+function getQuickLinkIcon(icon?: string) {
+  switch (icon) {
+    case "shield":
+      return <ShieldCheck className="h-4 w-4" />;
+    case "flow":
+      return <Sparkles className="h-4 w-4" />;
+    case "leak":
+      return <Globe className="h-4 w-4" />;
+    case "mobile":
+      return <Smartphone className="h-4 w-4" />;
+    case "form":
+      return <FileText className="h-4 w-4" />;
+    case "browser":
+    case "flag":
+      return <Wrench className="h-4 w-4" />;
+    default:
+      return <ExternalLink className="h-4 w-4" />;
+  }
+}
+
 function renderRichText(text?: string): React.ReactNode {
   if (!text) return null;
-  if (!text.includes("[") && !text.includes("`")) return text;
+  if (
+    !text.includes("[") &&
+    !text.includes("`") &&
+    !text.includes("http://") &&
+    !text.includes("https://") &&
+    !text.includes("chrome://")
+  ) {
+    return text;
+  }
 
-  const regex = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`/g;
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`|(https?:\/\/[^\s<>)"]+)|(chrome:\/\/[^\s<>)"]+)/g;
   const elements: React.ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
@@ -55,9 +91,26 @@ function renderRichText(text?: string): React.ReactNode {
       const label = match[1];
       const href = match[2];
       const isInternal = href.startsWith("/") || href.startsWith("#");
+      const isChromeProtocol = href.startsWith("chrome://");
 
-      elements.push(
-        isInternal ? (
+      if (isChromeProtocol) {
+        elements.push(
+          <button
+            key={match.index}
+            type="button"
+            onClick={() => {
+              navigator.clipboard.writeText(href);
+              toast.success("آدرس داخلی مرورگر کپی شد! در تب جدید مرورگر Paste کنید.");
+            }}
+            className="inline-flex items-center gap-1.5 font-mono text-[0.88em] font-bold text-gold hover:text-gold-bright bg-gold/10 hover:bg-gold/25 border border-gold/30 hover:border-gold/60 px-2.5 py-0.5 rounded-lg transition-all duration-200 shadow-sm mx-1 align-baseline cursor-pointer"
+            title="کلیک برای کپی آدرس مرورگر"
+          >
+            <span>{label}</span>
+            <Copy className="h-3 w-3 shrink-0 text-gold/70" />
+          </button>
+        );
+      } else if (isInternal) {
+        elements.push(
           <Link
             key={match.index}
             href={href}
@@ -65,18 +118,21 @@ function renderRichText(text?: string): React.ReactNode {
           >
             {label}
           </Link>
-        ) : (
+        );
+      } else {
+        elements.push(
           <a
             key={match.index}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold font-semibold underline decoration-gold/40 hover:decoration-gold underline-offset-4 transition-colors"
+            className="inline-flex items-center gap-1 font-bold text-gold hover:text-gold-bright bg-gold/10 hover:bg-gold/20 border border-gold/30 hover:border-gold/60 px-2.5 py-0.5 rounded-lg text-[0.92em] transition-all duration-200 group/link shadow-sm mx-1 align-baseline hover:shadow-gold"
           >
-            {label}
+            <span>{label}</span>
+            <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 opacity-80 group-hover/link:opacity-100" />
           </a>
-        )
-      );
+        );
+      }
     } else if (match[3]) {
       elements.push(
         <code
@@ -85,6 +141,39 @@ function renderRichText(text?: string): React.ReactNode {
         >
           {match[3]}
         </code>
+      );
+    } else if (match[4]) {
+      const cleanUrl = match[4].replace(/[.,;:)]+$/, "");
+      elements.push(
+        <a
+          key={match.index}
+          href={cleanUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 font-bold text-gold hover:text-gold-bright bg-gold/10 hover:bg-gold/20 border border-gold/30 hover:border-gold/60 px-2.5 py-0.5 rounded-lg text-[0.92em] transition-all duration-200 group/link shadow-sm mx-1 align-baseline hover:shadow-gold"
+        >
+          <span className="font-mono text-xs truncate max-w-[220px]">
+            {cleanUrl.replace(/^https?:\/\//, "")}
+          </span>
+          <ArrowUpRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 opacity-80 group-hover/link:opacity-100" />
+        </a>
+      );
+    } else if (match[5]) {
+      const cleanUrl = match[5].replace(/[.,;:)]+$/, "");
+      elements.push(
+        <button
+          key={match.index}
+          type="button"
+          onClick={() => {
+            navigator.clipboard.writeText(cleanUrl);
+            toast.success("آدرس داخلی مرورگر کپی شد! در تب جدید مرورگر Paste کنید.");
+          }}
+          className="inline-flex items-center gap-1.5 font-mono text-[0.88em] font-bold text-gold hover:text-gold-bright bg-gold/10 hover:bg-gold/25 border border-gold/30 hover:border-gold/60 px-2.5 py-0.5 rounded-lg transition-all duration-200 shadow-sm mx-1 align-baseline cursor-pointer"
+          title="کلیک برای کپی آدرس مرورگر"
+        >
+          <span>{cleanUrl}</span>
+          <Copy className="h-3 w-3 shrink-0 text-gold/70" />
+        </button>
       );
     }
 
@@ -107,7 +196,7 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
   const [copiedCodeIndex, setCopiedCodeIndex] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeSectionId, setActiveSectionId] = useState<string>(
-    article.sections[0]?.id || ""
+    article.toc[0]?.id || article.sections[0]?.id || ""
   );
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
@@ -143,13 +232,13 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
       }
     );
 
-    article.sections.forEach((s) => {
-      const el = document.getElementById(s.id);
+    article.toc.forEach((t) => {
+      const el = document.getElementById(t.id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [article.sections]);
+  }, [article.toc]);
 
   // Extract all searchable command rows across all sections
   const allCommands = useMemo(() => {
@@ -201,6 +290,63 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
     setCopiedCodeIndex(id);
     toast.success(bd.copiedCodeToast);
     setTimeout(() => setCopiedCodeIndex(null), 2500);
+  };
+
+  const [copiedQuickLink, setCopiedQuickLink] = useState<string | null>(null);
+
+  const handleCopyQuickLink = (url: string, id: string) => {
+    navigator.clipboard.writeText(url);
+    setCopiedQuickLink(id);
+    const toastMsg =
+      locale === "fa"
+        ? "آدرس داخلی مرورگر کپی شد! در تب جدید مرورگر Paste کنید."
+        : locale === "ar"
+        ? "تم نسخ عنوان المتصفح الداخلي! افتح علامة تبويب جديدة والصقه."
+        : "Internal browser URL copied! Paste it into a new tab.";
+    toast.success(toastMsg);
+    setTimeout(() => setCopiedQuickLink(null), 2500);
+  };
+
+  const qlLabels = {
+    fa: {
+      badge: "دسترسی فوری",
+      title: "جعبه‌ابزار دسترسی سریع و لینک‌های مستقیم",
+      desc: "تمام فرم‌های رسمی گوگل، تست‌های نشت هویت و ابزارهای موردنیاز این مقاله در یک نگاه:",
+      openLink: "باز کردن لینک مستقیم",
+      copyLink: "کپی آدرس مرورگر",
+      copied: "کپی شد",
+      sidebarTitle: "لینک‌ها و ابزارهای سریع",
+      sidebarBadge: "ابزارها",
+    },
+    en: {
+      badge: "Quick Access",
+      title: "Quick Access Links & Essential Tools Hub",
+      desc: "Official Google sanction appeal forms, leak tests, and shortcut tools at a glance:",
+      openLink: "Open Link",
+      copyLink: "Copy Browser URL",
+      copied: "Copied",
+      sidebarTitle: "Quick Links & Tools",
+      sidebarBadge: "Tools",
+    },
+    ar: {
+      badge: "وصول سريع",
+      title: "لوحة الوصول السريع والروابط المباشرة",
+      desc: "نماذج جوجل الرسمية واختبارات التسريب وروابط الاختصار المذكورة في الدليل:",
+      openLink: "فتح الرابط",
+      copyLink: "نسخ رابط المتصفح",
+      copied: "تم النسخ",
+      sidebarTitle: "روابط وأدوات سريعة",
+      sidebarBadge: "أدوات",
+    },
+  }[locale as "fa" | "en" | "ar"] || {
+    badge: "Quick Access",
+    title: "Quick Access Links & Essential Tools Hub",
+    desc: "Official Google sanction appeal forms, leak tests, and shortcut tools at a glance:",
+    openLink: "Open Link",
+    copyLink: "Copy Browser URL",
+    copied: "Copied",
+    sidebarTitle: "Quick Links & Tools",
+    sidebarBadge: "Tools",
   };
 
   const scrollToTop = () => {
@@ -462,6 +608,127 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                 </div>
               )}
             </div>
+
+            {/* Section 0: Quick Access Links & Key Tools */}
+            {article.quickLinks && article.quickLinks.length > 0 && (
+              <section key="quick-access-tools" id="quick-access-tools" className="scroll-mt-28 space-y-6">
+                <h2
+                  className={`text-xl md:text-2xl lg:text-3xl font-black text-foreground ${
+                    dir === "rtl" ? "border-r-4 pr-3.5" : "border-l-4 pl-3.5"
+                  } border-gold leading-snug`}
+                >
+                  {locale === "fa"
+                    ? "۰. لینک‌ها و ابزارهای سریع"
+                    : locale === "ar"
+                    ? "۰. روابط وأدوات سريعة"
+                    : "0. Quick Links & Essential Tools"}
+                </h2>
+
+                <p className="text-base md:text-lg font-semibold leading-relaxed text-foreground/90">
+                  {qlLabels.desc}
+                </p>
+
+                {/* Grid of Quick Links */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                  {article.quickLinks.map((item, qIdx) => {
+                    const isCopied = copiedQuickLink === `ql-${qIdx}`;
+                    if (item.isCopyOnly) {
+                      return (
+                        <button
+                          key={qIdx}
+                          type="button"
+                          onClick={() => handleCopyQuickLink(item.url, `ql-${qIdx}`)}
+                          className="group flex flex-col justify-between text-start p-4 rounded-2xl border border-amber-500/30 bg-surface-elevated/80 hover:bg-surface-elevated hover:border-amber-400/60 transition-all duration-300 shadow-md hover:shadow-gold hover:-translate-y-0.5 cursor-pointer relative overflow-hidden w-full"
+                        >
+                          <div className="space-y-1.5 w-full">
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-2 truncate">
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 shrink-0">
+                                  {getQuickLinkIcon(item.icon)}
+                                </div>
+                                <span className="font-bold text-xs sm:text-sm text-foreground group-hover:text-amber-300 transition-colors truncate">
+                                  {item.title}
+                                </span>
+                              </div>
+                              {item.badge && (
+                                <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold text-amber-300 shrink-0">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </div>
+                            {item.description && (
+                              <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
+                          <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between gap-2 w-full text-xs">
+                            <code className="text-[11px] font-mono text-amber-300/80 truncate max-w-[190px]">
+                              {item.url}
+                            </code>
+                            <span className="inline-flex items-center gap-1 font-bold text-[11px] shrink-0">
+                              {isCopied ? (
+                                <>
+                                  <Check className="h-3.5 w-3.5 text-emerald-400" />
+                                  <span className="text-emerald-400">{qlLabels.copied}</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="h-3.5 w-3.5 text-amber-300" />
+                                  <span className="text-amber-300">{qlLabels.copyLink}</span>
+                                </>
+                              )}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={qIdx}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col justify-between p-4 rounded-2xl border border-gold/20 bg-surface-elevated/80 hover:bg-surface-elevated hover:border-gold/60 transition-all duration-300 shadow-md hover:shadow-gold hover:-translate-y-0.5 relative overflow-hidden"
+                      >
+                        <div className="space-y-1.5 w-full">
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-2 truncate">
+                              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gold/15 text-gold border border-gold/30 shrink-0">
+                                {getQuickLinkIcon(item.icon)}
+                              </div>
+                              <span className="font-bold text-xs sm:text-sm text-foreground group-hover:text-gold transition-colors truncate">
+                                {item.title}
+                              </span>
+                            </div>
+                            {item.badge && (
+                              <span className="rounded-full border border-gold/30 bg-gold/10 px-2 py-0.5 text-[10px] font-bold text-gold shrink-0">
+                                {item.badge}
+                              </span>
+                            )}
+                          </div>
+                          {item.description && (
+                            <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                        <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between gap-2 w-full text-xs">
+                          <span className="text-[11px] font-mono text-muted-foreground group-hover:text-gold/90 transition-colors truncate max-w-[190px]">
+                            {item.url.replace(/^https?:\/\//, "")}
+                          </span>
+                          <span className="inline-flex items-center gap-1 font-bold text-gold text-[11px] shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                            <span>{qlLabels.openLink}</span>
+                            <ArrowUpRight className="h-3.5 w-3.5" />
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {/* Article Sections */}
             {article.sections.map((section) => (

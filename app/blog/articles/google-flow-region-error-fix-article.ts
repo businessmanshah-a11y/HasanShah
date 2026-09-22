@@ -42,6 +42,10 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
       ],
       toc: [
         {
+          id: "quick-access-tools",
+          title: "۰. لینک‌ها و ابزارهای سریع",
+        },
+        {
           id: "root-cause-google-account-association",
           title: "۱. ریشه‌یابی خطا: تضاد لایه شبکه و لایه هویت گوگل",
         },
@@ -74,6 +78,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "۸. پرسش‌های متداول و پاسخ‌های تخصصی",
         },
       ],
+      quickLinks: [
+        {
+          title: "فرم رسمی تغییر کشور گوگل (Google Country Association)",
+          url: "https://policies.google.com/country-association-form",
+          description: "درخواست رسمی تغییر کشور اکانت جیمیل در شروط خدمات بدون نیاز به مدارک با گزینه I travel often",
+          badge: "فرم رسمی گوگل",
+          icon: "form",
+        },
+        {
+          title: "ورود مستقیم به استودیو هوش مصنوعی Google Flow",
+          url: "https://labs.google/fx/tools/flow",
+          description: "استودیوی نسل جدید تولید ویدیو با هوش مصنوعی و مدل‌های پیشرفته Veo 2 و Imagen 3",
+          badge: "استودیو هوش مصنوعی",
+          icon: "sparkles",
+        },
+        {
+          title: "تست نشت پروتکل WebRTC در مرورگر (BrowserLeaks)",
+          url: "https://browserleaks.com/webrtc",
+          description: "بررسی قطعی عدم افشای آدرس IP واقعی کارت شبکه از طریق پکت‌های نشت WebRTC",
+          badge: "آنتی نشت امنیتی",
+          icon: "shield",
+        },
+        {
+          title: "تست جامع نشت IP و DNS کانکشن (IPLeak)",
+          url: "https://ipleak.net",
+          description: "بررسی عدم نشت DNSهای ارائه‌دهنده اینترنت داخلی و راستی‌آزمایی موقعیت خروجی",
+          badge: "آنالیز شبکه",
+          icon: "external",
+        },
+        {
+          title: "دانلود اپلیکیشن رسمی Google Flow در پلی‌استور",
+          url: "https://play.google.com/store/apps/details?id=com.google.android.apps.bard",
+          description: "صفحه دانلود اپ رسمی فلو در Google Play پس از پاکسازی کش سرویس‌های گوگل",
+          badge: "اپلیکیشن اندروید",
+          icon: "mobile",
+        },
+        {
+          title: "تنظیمات پاکسازی دیتای سایت در گوگل کروم",
+          url: "chrome://settings/siteData",
+          description: "مسیر مستقیم حذف کوکی‌ها و سرویس‌ورکرهای قدیمی google.com و labs.google در کروم",
+          badge: "دستور داخلی کروم",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+        {
+          title: "فلگ مسدودسازی اجباری نشت WebRTC در کروم",
+          url: "chrome://flags/#webrtc-ip-handling-policy",
+          description: "تنظیم اجباری ارسال ترافیک WebRTC از پروکسی با Disable non-proxied UDP",
+          badge: "فلگ امنیتی کروم",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+      ],
       sections: [
         {
           id: "root-cause-google-account-association",
@@ -81,7 +138,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           lead:
             "اگر بارها فیلترشکن عوض کردی و باز هم موقع ورود به Google Flow به درِ بسته خوردی، باید بدانی مشکل اصلاً از آی‌پی یا قدرت فیلترشکنت نیست؛ گوگل هویت حساب جیمیلت را نشانه گرفته است.",
           paragraphs: [
-            "خیلی از تدوین‌گران و تولیدکنندگان محتوا بعد از دیدن پتانسیل ساخت تیزرهای تبلیغاتی و آموزش‌هایی مثل [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی و Google Flow](/blog/replicate-viral-reels-with-ai-google-flow/)، با کلی اشتیاق سراغ استودیوی فلو در گوگل لبز می‌روند؛ اما به محض باز کردن flow.google.com با یک صفحه سیاه و خطای کلافه‌کننده روبرو می‌شوند: «Flow is not available in your country yet» با ریدایرکت خودکار به flow.google.com/unsupported-country. اولین تصوری که شکل می‌گیرد این است: «حتماً وی‌پی‌انم ضعیف بوده یا لوکیشنم لو رفته!» در نتیجه ساعت‌ها وقت و هزینه صرف تعویض سرور، خرید آی‌پی ثابت و کانکشن‌های مختلف می‌شود، اما هیچ نتیجه‌ای حاصل نمی‌گردد.",
+            "خیلی از تدوین‌گران و تولیدکنندگان محتوا بعد از دیدن پتانسیل ساخت تیزرهای تبلیغاتی و آموزش‌هایی مثل [کپی ویدیوهای میلیونی اینستاگرام با هوش مصنوعی و Google Flow](/blog/replicate-viral-reels-with-ai-google-flow/)، با کلی اشتیاق سراغ استودیوی فلو در گوگل لبز می‌روند؛ اما به محض باز کردن [flow.google.com](https://flow.google.com) با یک صفحه سیاه و خطای کلافه‌کننده روبرو می‌شوند: «Flow is not available in your country yet» با ریدایرکت خودکار به [flow.google.com/unsupported-country](https://flow.google.com/unsupported-country). اولین تصوری که شکل می‌گیرد این است: «حتماً وی‌پی‌انم ضعیف بوده یا لوکیشنم لو رفته!» در نتیجه ساعت‌ها وقت و هزینه صرف تعویض سرور، خرید آی‌پی ثابت و کانکشن‌های مختلف می‌شود، اما هیچ نتیجه‌ای حاصل نمی‌گردد.",
             "داستان اینجاست که گوگل در سرویس‌های نسل جدید هوش مصنوعی خود (به‌ویژه ابزارهای مبتنی بر مدل ویدیوساز Veo 2 و استودیوهای آزمایشگاهی Labs)، یک سیستم اعتبارسنجی دو لایه‌ای پیاده کرده است. وب‌سایت‌های عادی فقط به آدرس IP عمومی شما (GeoIP) نگاه می‌کنند؛ اما گوگل علاوه بر آی‌پی، وابستگی حقوقی اکانت شما یا همان «Google Account Country Association» را بررسی می‌کند.",
             "وقتی سال‌ها پیش حسابتان را داخل ایران ساخته‌اید یا با شماره تلفن ایران فعالش کرده‌اید، گوگل در بخش شرایط خدمات (Terms of Service)، حساب شما را قانوناً به حوزه ایران متصل کرده است. حالا حتی اگر با بهترین سرورهای اختصاصی لندن یا نیویورک هم وصل شوید، به محض زدن دکمه ورود، توکن شناسایی جیمیل به سرور اعلام می‌کند که این اکانت متعلق به ایران است و دسترسی شما در کسری از ثانیه مسدود می‌شود.",
           ],
@@ -130,7 +187,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           callout: {
             type: "tip",
             title: "تست تضمینی سلامت شبکه قبل از ادامه",
-            text: "قبل از رفتن به مرحله بعد، حتماً وارد دو سایت browserleaks.com/webrtc و ipleak.net شو. در تمام بخش‌های WebRTC، DNS و IP باید فقط نام کشور سرورت (مثلاً United Kingdom یا United States) دیده شود و هیچ اثری از شرکت‌های اینترنت ایران نباشد.",
+            text: "قبل از رفتن به مرحله بعد، حتماً وارد دو سایت [سایت تست BrowserLeaks WebRTC](https://browserleaks.com/webrtc) و [سایت تست جامع IPLeak](https://ipleak.net) شو. در تمام بخش‌های WebRTC، DNS و IP باید فقط نام کشور سرورت (مثلاً United Kingdom یا United States) دیده شود و هیچ اثری از شرکت‌های اینترنت ایران نباشد.",
           },
           image: {
             src: "/images/blog/network-dns-webrtc-leak-prevention.webp",
@@ -145,11 +202,11 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "خیلی از افراد فکر می‌کنند جیمیل که ساخته شد دیگر امکان تغییر ریجن ندارد؛ اما گوگل یک مسیر کاملاً رسمی و خودکار برای این کار در نظر گرفته است.",
           paragraphs: [
             "شرکت گوگل به دلیل الزامات و قوانین بین‌المللی حفظ حریم خصوصی (مثل GDPR اروپا و قوانین ایالتی آمریکا)، موظف است به کاربران اجازه دهد در صورت جابه‌جایی یا سفر، حوزه قضایی حساب خود را تغییر دهند. این فرم با عنوان «Request to Change Associated Region» در بخش خط‌مشی‌های گوگل فعال است.",
-            "وقتی با جیمیل خود وارد لینک رسمی policies.google.com/country-association-form می‌شوی، گوگل کشوری را که حسابت در حال حاضر به آن متصل است نشان می‌دهد: مثلاً «As shown in Google's Terms of Service, your account is associated with: Iran». این همان پیوند قرمزی است که درِ سرویس‌های هوش مصنوعی فلو را به رویت بسته است.",
+            "وقتی با جیمیل خود وارد لینک رسمی [فرم تغییر ریجن گوگل در policies.google.com](https://policies.google.com/country-association-form) می‌شوی، گوگل کشوری را که حسابت در حال حاضر به آن متصل است نشان می‌دهد: مثلاً «As shown in Google's Terms of Service, your account is associated with: Iran». این همان پیوند قرمزی است که درِ سرویس‌های هوش مصنوعی فلو را به رویت بسته است.",
             "حالا برای نجات این اکانت، کافیست از لیست کشورها یک کشور مجاز مثل United Kingdom یا United States را انتخاب کنی. نکته کلیدی اینجاست: در قسمت دلیل تغییر (Reason)، حتماً گزینه «I travel often» (من زیاد سفر می‌کنم) را انتخاب کن. اگر گزینه‌های اقامت دائم را انتخاب کنی، گوگل ممکن است از تو مدارک قبض یا اقامت بخواهد؛ اما گزینه سفر مکرر به‌طور کاملاً خودکار و الگوریتمی توسط هوش مصنوعی بررسی و تایید می‌شود.",
           ],
           bulletPoints: [
-            "آدرس فرم رسمی گوگل: policies.google.com/country-association-form",
+            "آدرس فرم رسمی گوگل: [policies.google.com/country-association-form (کلیک برای باز کردن فرم)](https://policies.google.com/country-association-form)",
             "کشور مقصد پیشنهادی: United Kingdom (انگلستان) یا United States (آمریکا)",
             "دلیل انتخابی: حتماً تیک «I travel often» را بزن تا درگیر احراز هویت‌های بانکی و قبض نشوی.",
             "یک نکته بسیار مهم: درست در لحظه زدن دکمه Submit، باید فیلترشکن با آی‌پی همان کشور انتخابی روشن باشد و هیچ نشتی در شبکه وجود نداشته باشد.",
@@ -176,7 +233,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           ],
           bulletPoints: [
             "ساخت یک پروفایل کاملاً مجزا در کروم: هرگز از پروفایل جیمیل روزمره‌ات که پر از سوابق لوکیشن ایران است برای فلو استفاده نکن.",
-            "پاکسازی داده‌های ذخیره‌شده گوگل: وارد chrome://settings/siteData شو و تمام ورودی‌های google.com و labs.google را کاملاً پاک کن.",
+            "پاکسازی داده‌های ذخیره‌شده گوگل: وارد `chrome://settings/siteData` شو و تمام ورودی‌های [google.com](https://www.google.com) و [labs.google](https://labs.google) را کاملاً پاک کن.",
             "تنظیم ساعت و تایم‌زون سیستم: در تنظیمات ویندوز یا مک، موقتاً منطقه زمانی (Time Zone) را روی همان کشور سرورت قرار بده.",
           ],
           codeSnippets: [
@@ -200,7 +257,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           paragraphs: [
             "گاهی اکانت اصلی جیمیلت دارای تراکنش‌های قدیمی، اشتراک‌های کاری یا اتصالات حساسی است که دستکاری آن ممکن است برایت چالش ایجاد کند. در چنین شرایطی، بهترین و بی‌دردسرترین راه این است که یک اکانت جدید بسازی که از همان ثانیه تولدش، هویت خارجی داشته باشد.",
             "راز موفقیت در ساخت اکانت پاک این است: هرگز شماره تلفن ایران (+98) را وارد نکن. اگر داخل پنجره Guest Mode کروم با یک آی‌پی تمیز و استیبل خارجی اقدام به ساخت جیمیل کنی، گوگل در اکثر مواقع اجازه می‌دهد مرحله شماره تلفن را با وارد کردن یک ایمیل پشتیبان (Recovery Email) دور بزنی و اکانت بدون نیاز به اس‌ام‌اس ساخته شود.",
-            "این اکانت جدید از همان ابتدا به عنوان یک شهروند خارجی در دیتابیس گوگل ثبت می‌شود و به محض ورود به labs.google/fx/tools/flow، استودیوی تولید ویدیوی فلو بدون یک ثانیه معطلی برایت باز خواهد شد.",
+            "این اکانت جدید از همان ابتدا به عنوان یک شهروند خارجی در دیتابیس گوگل ثبت می‌شود و به محض ورود به [استودیو ابری labs.google/fx/tools/flow](https://labs.google/fx/tools/flow)، استودیوی تولید ویدیوی فلو بدون یک ثانیه معطلی برایت باز خواهد شد.",
           ],
           bulletPoints: [
             "محیط ساخت: منحصراً داخل پنجره Guest Mode در مرورگر گوگل کروم.",
@@ -229,9 +286,9 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "اما اگر در گوگل پلی یا اپ استور ایران کلمه Google Flow را سرچ کنی، پیامی با مضمون عدم پشتیبانی در کشورت دریافت می‌کنی. حل این مشکل در موبایل فقط چند دقیقه زمان می‌برد:",
           ],
           bulletPoints: [
-            "در گوشی‌های اندروید: ابتدا از مسیر تنظیمات وارد بخش برنامه‌ها (Apps) شو، برای Google Play Store و Google Play Services گزینه توقف اجباری (Force Stop) را بزن و حافظه موقت (Clear Cache) آن‌ها را پاک کن. حالا با روشن کردن وی‌پی‌ان و لاگین با جیمیل خارجی‌ات، استور خارجی باز شده و اپ فلو به راحتی نصب می‌شود.",
+            "در گوشی‌های اندروید: ابتدا از مسیر تنظیمات وارد بخش برنامه‌ها (Apps) شو، برای Google Play Store و Google Play Services گزینه توقف اجباری (Force Stop) را بزن و حافظه موقت (Clear Cache) آن‌ها را پاک کن. حالا با روشن کردن وی‌پی‌ان و لاگین با جیمیل خارجی‌ات، استور خارجی باز شده و [اپلیکیشن رسمی Google Flow در Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.bard) به راحتی نصب می‌شود.",
             "در گوشی‌های آیفون: کافیست در بخش Media & Purchases اپل آیدی، ریجن اکانت را به United States تغییر داده و یک آدرس پستی ثبت کنی (یا با یک اپل آیدی آمریکایی لاگین کنی) تا اپ فلو در اپ استور ظاهر شود.",
-            "سینک خودکار ابری: هر ویدیویی که روی موبایل بسازی، همان لحظه روی نسخه وب کامپیوترت هم در دسترس است و می‌توانی با کیفیت 4K رندر نهایی بگیری.",
+            "سینک خودکار ابری: هر ویدیویی که روی موبایل بسازی، همان لحظه روی نسخه وب کامپیوترت در [استودیوی وب labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) هم در دسترس است و می‌توانی با کیفیت 4K رندر نهایی بگیری.",
           ],
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
@@ -259,7 +316,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "Flow is not available in your country yet",
                 "کشور ثبت‌شده جیمیل در شروط خدمات روی ایران است",
                 "وی‌پی‌ان روشن اما اکانت تحریم",
-                "ارسال فرم Country Association با گزینه I travel often یا ساخت جیمیل خارجی پاک",
+                "ارسال [فرم رسمی تغییر کشور در policies.google.com](https://policies.google.com/country-association-form) با گزینه I travel often یا ساخت جیمیل خارجی پاک",
               ],
               [
                 "HTTP 403 Forbidden / Access Denied",
@@ -271,7 +328,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "گیر کردن در لودینگ (Infinite Spinner)",
                 "تداخل کوکی‌های قدیمی با سشن جدید یا لو رفتن ساعت تهران",
                 "کش آلوده مرورگر",
-                "پاکسازی کش دامنه‌های labs.google و هماهنگ کردن تایم‌زون سیستم با سرور",
+                "پاکسازی کش دامنه‌های [labs.google](https://labs.google) و هماهنگ کردن تایم‌زون سیستم با سرور",
               ],
               [
                 "Quota / Capacity Error",
@@ -300,7 +357,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "آیا بعد از تایید فرم تغییر کشور، باز هم باید فیلترشکن روشن باشد؟\nبله؛ چون دامنه‌های گوگل لبز و سرویس‌های هوش مصنوعی آن در اینترنت ایران فیلتر هستند، همیشه باید با سرور همان کشوری که انتخاب کرده‌ای وصل شوی تا تناقض مکانی رخ ندهد.",
             "بهترین کشور برای انتخاب در فرم تغییر ریجن گوگل کدام است؟\nکشورهای United Kingdom (انگلستان)، United States (آمریکا) و Germany (آلمان) بهترین گزینه‌ها هستند؛ چون جدیدترین امکانات مدل‌های Veo 2 و Imagen 3 ابتدا در این مناطق عرضه می‌شوند.",
             "آیا با تغییر ریجن، ایمیل‌ها یا فایل‌های گوگل درایو من پاک می‌شوند؟\nخیر؛ تغییر Country Association فقط حوزه قضایی و قوانین حریم خصوصی حساب شما را به‌روز می‌کند و هیچ تغییری در داده‌ها، ایمیل‌ها یا فایل‌های درایوت ایجاد نمی‌کند.",
-            "چرا حتی با بستن و باز کردن مرورگر باز هم ارور کشور می‌دهد؟\nبه خاطر کش شدن سرویس‌ورکر در مرورگر است. حتماً از یک پروفایل تمیز و اختصاصی در کروم استفاده کن یا دیتای سایت labs.google را پاک کن.",
+            "چرا حتی با بستن و باز کردن مرورگر باز هم ارور کشور می‌دهد؟\nبه خاطر کش شدن سرویس‌ورکر در مرورگر است. حتماً از یک پروفایل تمیز و اختصاصی در کروم استفاده کن یا دیتای سایت [labs.google](https://labs.google) را پاک کن.",
             "آیا اکستنشن‌های رایگان پروکسی برای فلو مناسب هستند؟\nبه هیچ وجه؛ این اکستنشن‌ها نشت شدید WebRTC دارند و آی‌پی آن‌ها به سرعت بلاک می‌شود که می‌تواند باعث بن شدن موقت اکانت شود.",
             "آیا می‌توانم با یک اکانت تغییر ریجن داده‌شده در لپ‌تاپ و گوشی همزمان کار کنم؟\nبله؛ به شرطی که در هر دو دستگاه به سرور یک کشور واحد وصل باشی تا سیستم ضد تقلب گوگل حساس نشود.",
           ],
@@ -346,7 +403,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         {
           question: "چرا حتی با بستن و باز کردن مرورگر باز هم ارور کشور می‌دهد؟",
           answer:
-            "به خاطر کش شدن سرویس‌ورکر در مرورگر است. حتماً از یک پروفایل تمیز و اختصاصی در کروم استفاده کن یا دیتای سایت labs.google را پاک کن.",
+            "به خاطر کش شدن سرویس‌ورکر در مرورگر است. حتماً از یک پروفایل تمیز و اختصاصی در کروم استفاده کن یا دیتای سایت [labs.google](https://labs.google) را پاک کن.",
         },
         {
           question: "آیا اکستنشن‌های رایگان پروکسی برای فلو مناسب هستند؟",
@@ -384,6 +441,10 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
       ],
       toc: [
         {
+          id: "quick-access-tools",
+          title: "0. Quick Links & Essential Tools",
+        },
+        {
           id: "root-cause-google-account-association",
           title: "1. Root Cause: Network GeoIP vs. Google Account Country Association",
         },
@@ -416,6 +477,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "8. Frequently Asked Questions & Real-World Fixes",
         },
       ],
+      quickLinks: [
+        {
+          title: "Official Google Country Association Form",
+          url: "https://policies.google.com/country-association-form",
+          description: "Submit official country reassignment without foreign residency proof via 'I travel often'",
+          badge: "Official Google Form",
+          icon: "form",
+        },
+        {
+          title: "Access Google Flow Generative Video Studio",
+          url: "https://labs.google/fx/tools/flow",
+          description: "Direct gateway to the next-gen AI video studio powered by Veo 2 and Imagen 3",
+          badge: "AI Video Studio",
+          icon: "sparkles",
+        },
+        {
+          title: "BrowserLeaks WebRTC Leak Test",
+          url: "https://browserleaks.com/webrtc",
+          description: "Verify that your real local IP address is not leaking past your proxy tunnel",
+          badge: "Security Audit",
+          icon: "shield",
+        },
+        {
+          title: "IPLeak DNS & Tunnel Integrity Check",
+          url: "https://ipleak.net",
+          description: "Confirm zero DNS resolver leaks and verify clean destination IP footprint",
+          badge: "Network Diagnostic",
+          icon: "external",
+        },
+        {
+          title: "Google Flow on Google Play Store",
+          url: "https://play.google.com/store/apps/details?id=com.google.android.apps.bard",
+          description: "Official Android app download link after clearing Play Store service cache",
+          badge: "Mobile App",
+          icon: "mobile",
+        },
+        {
+          title: "Chrome Site Data & Service Worker Purge",
+          url: "chrome://settings/siteData",
+          description: "Direct configuration path to clear cached cookies for google.com and labs.google",
+          badge: "Chrome Internal",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+        {
+          title: "Chrome WebRTC IP Handling Policy Flag",
+          url: "chrome://flags/#webrtc-ip-handling-policy",
+          description: "Force all WebRTC UDP traffic strictly through active proxy endpoints",
+          badge: "Security Flag",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+      ],
       sections: [
         {
           id: "root-cause-google-account-association",
@@ -423,7 +537,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           lead:
             "If you've connected through a high-speed VPN and still hit the 'Flow is not available in your country' screen, your IP is not the culprit—Google is checking your account's legal origin.",
           paragraphs: [
-            "When Google Labs rolled out Google Flow—its groundbreaking generative video creation suite powered by Veo 2—thousands of creators raced to test it. But many were instantly greeted by a pitch-black screen and a frustrating roadblock: 'Flow is not available in your country yet' with an automatic redirect to flow.google.com/unsupported-country.",
+            "When Google Labs rolled out Google Flow—its groundbreaking generative video creation suite powered by Veo 2—thousands of creators raced to test it. But many were instantly greeted by a pitch-black screen and a frustrating roadblock: 'Flow is not available in your country yet' with an automatic redirect to [flow.google.com/unsupported-country](https://flow.google.com/unsupported-country).",
             "The natural reaction is to switch VPN servers, buy dedicated residential proxies, or cycle through different locations. Yet nothing changes. Here is why: Google operates on a dual-layer security perimeter. Standard websites only check your public IP address (GeoIP). But Google's flagship AI platforms inspect something far deeper: your 'Google Account Country Association.'",
             "When you first registered your Gmail account or verified it with a domestic phone number, Google permanently assigned your account's legal jurisdiction in its Terms of Service to that home region. When you access Google Flow, the authentication token immediately presents your account's registered country. If that country isn't in Google Labs' approved rollout list, access is revoked instantly—regardless of whether your active VPN IP is physically located in London, Frankfurt, or New York.",
           ],
@@ -472,7 +586,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           callout: {
             type: "tip",
             title: "Zero-Leak Verification Checklist",
-            text: "Before proceeding, visit browserleaks.com/webrtc and ipleak.net. In every section (WebRTC, DNS, and IP), you should see only your VPN server's country (e.g., United Kingdom or United States) with zero references to your home ISP.",
+            text: "Before proceeding, visit [BrowserLeaks WebRTC Test](https://browserleaks.com/webrtc) and [IPLeak Integrity Test](https://ipleak.net). In every section (WebRTC, DNS, and IP), you should see only your VPN server's country (e.g., United Kingdom or United States) with zero references to your home ISP.",
           },
           image: {
             src: "/images/blog/network-dns-webrtc-leak-prevention.webp",
@@ -487,11 +601,11 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "Google maintains an official, automated self-service form that allows users to reassign their account's associated country without submitting residency paperwork.",
           paragraphs: [
             "Most users believe an account's jurisdiction is set in stone. However, under international data protection frameworks (such as GDPR), Google must permit users to align their account's legal terms with where they reside or travel. This official portal is titled 'Request to Change Associated Region'.",
-            "By logging into policies.google.com/country-association-form with your target Google account, the system reveals your currently recorded jurisdiction: for example, 'As shown in Google's Terms of Service, your account is associated with: [Country]'. This is the precise association keeping you out of Google Flow.",
+            "By logging into [Google Country Association Form (policies.google.com)](https://policies.google.com/country-association-form) with your target Google account, the system reveals your currently recorded jurisdiction: for example, 'As shown in Google's Terms of Service, your account is associated with: [Country]'. This is the precise association keeping you out of Google Flow.",
             "To reassign it, choose a supported destination country (such as the United Kingdom or United States). Next, under the rationale section, select the strategic option: 'I travel often'. Choosing permanent relocation often prompts automated requests for foreign utility bills or bank statements; selecting frequent travel is handled algorithmically without requiring document verification.",
           ],
           bulletPoints: [
-            "Official Form URL: policies.google.com/country-association-form",
+            "Official Form URL: [policies.google.com/country-association-form (Click to Open)](https://policies.google.com/country-association-form)",
             "Recommended Target Countries: United Kingdom or United States",
             "Selection Rationale: Always pick 'I travel often' to trigger automated algorithmic approval rather than manual document review.",
             "Critical Execution Rule: When clicking Submit, your VPN tunnel must be active with an IP corresponding to your chosen destination country, and zero network leaks must exist.",
@@ -518,7 +632,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           ],
           bulletPoints: [
             "Create a Dedicated Chrome Profile: Never mix your everyday browsing history with your Google Flow workstation.",
-            "Clear Cached Google Service Workers: Navigate to chrome://settings/siteData, search for google.com and labs.google, and purge all entries.",
+            "Clear Cached Google Service Workers: Navigate to `chrome://settings/siteData`, search for [google.com](https://www.google.com) and [labs.google](https://labs.google), and purge all entries.",
             "Align System Timezone: In your OS settings (Windows or macOS), temporarily match your clock and timezone to your VPN endpoint (e.g., London UTC or New York EST).",
           ],
           codeSnippets: [
@@ -542,7 +656,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           paragraphs: [
             "Existing accounts often carry legacy Google Play transaction histories, tied subscriptions, or location flags that slow down country migration. In these scenarios, creating a fresh, isolated Google account provides an immediate, foolproof bypass.",
             "The golden rule of clean account creation: never enter a domestic phone number from an unsupported country. When registering through Chrome's Guest Mode over a clean, stable residential proxy, Google typically allows you to bypass phone SMS verification by providing an existing email address as a recovery contact.",
-            "From the moment of its creation, this account is stamped as a foreign entity in Google's Terms of Service database. When you visit labs.google/fx/tools/flow, the studio opens immediately without any region errors.",
+            "From the moment of its creation, this account is stamped as a foreign entity in Google's Terms of Service database. When you visit [labs.google/fx/tools/flow](https://labs.google/fx/tools/flow), the studio opens immediately without any region errors.",
           ],
           bulletPoints: [
             "Creation Environment: Exclusively inside Google Chrome Guest Mode.",
@@ -571,9 +685,9 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "However, searching for Google Flow in regional app stores often returns 'This item isn't available in your country'. Here is how to configure your device to install the app cleanly:",
           ],
           bulletPoints: [
-            "Android (Google Play Store): Go to Settings > Apps, locate Google Play Store and Google Play Services, tap Force Stop, and tap Clear Storage/Cache. Activate your VPN, sign in with your foreign Google account, and Google Flow will appear in search results.",
+            "Android (Google Play Store): Go to Settings > Apps, locate Google Play Store and Google Play Services, tap Force Stop, and tap Clear Storage/Cache. Activate your VPN, sign in with your foreign Google account, and install [Google Flow on Google Play Store](https://play.google.com/store/apps/details?id=com.google.android.apps.bard).",
             "iOS (Apple App Store): In your Apple ID settings, navigate to Media & Purchases > Country/Region, change your country to the United States with a valid US address format (or sign in with a free secondary US Apple ID), and download the app directly.",
-            "Seamless Cloud Sync: Projects initiated on your phone automatically sync with the desktop studio at labs.google/fx/tools/flow for final 4K rendering and multi-track editing.",
+            "Seamless Cloud Sync: Projects initiated on your phone automatically sync with the desktop studio at [labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) for final 4K rendering and multi-track editing.",
           ],
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
@@ -601,7 +715,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "Flow is not available in your country yet",
                 "Account Terms of Service locked to an unsupported country",
                 "VPN connected, account restricted",
-                "Submit Country Association Form with 'I travel often' or create a clean foreign account",
+                "Submit [Country Association Form](https://policies.google.com/country-association-form) with 'I travel often' or create a clean foreign account",
               ],
               [
                 "HTTP 403 Forbidden / Access Denied",
@@ -613,7 +727,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "Infinite Loading / Spinner Freeze",
                 "Stale cache collision or client timezone mismatch",
                 "Dirty browser state",
-                "Purge labs.google site data and align OS clock with VPN server timezone",
+                "Purge [labs.google](https://labs.google) site data and align OS clock with VPN server timezone",
               ],
               [
                 "Billing / Quota Error in Labs",
@@ -642,7 +756,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "Q: Do I still need an active VPN after my Country Association Form is approved?\nA: Yes. Because Google Labs endpoints are geo-restricted at the network edge in certain countries, keeping a leak-free VPN active to your assigned country prevents location conflicts.",
             "Q: What is the best destination country to select in the Google Country Association form?\nA: The United Kingdom, United States, and Germany are the most reliable selections, as cutting-edge Veo 2 and Imagen 3 features deploy to these jurisdictions first.",
             "Q: Will changing my account's country delete my emails or Google Drive files?\nA: No. The Country Association process strictly updates the legal Terms of Service and data privacy policies governing your account; it does not touch your emails, Drive files, or Google Photos.",
-            "Q: Why does the country error persist even after restarting my browser?\nA: Chrome service workers cache redirection headers aggressively. Purge site data for labs.google under chrome://settings/siteData and ensure your OS clock matches your VPN region.",
+            "Q: Why does the country error persist even after restarting my browser?\nA: Chrome service workers cache redirection headers aggressively. Purge site data for [labs.google](https://labs.google) under `chrome://settings/siteData` and ensure your OS clock matches your VPN region.",
             "Q: Can I use free browser VPN extensions to access Google Flow?\nA: No. Free browser proxy extensions routinely leak WebRTC packets and utilize dirty shared IP ranges that trigger immediate HTTP 403 blocks from Google's anti-bot filters.",
             "Q: Can I use my updated Google account on desktop and mobile simultaneously?\nA: Yes, provided both devices route through VPN endpoints within the same country to prevent sudden geolocation discrepancies.",
           ],
@@ -688,7 +802,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         {
           question: "Why does the country error persist even after restarting my browser?",
           answer:
-            "Chrome service workers cache redirection headers aggressively. Purge site data for labs.google under chrome://settings/siteData and ensure your OS clock matches your VPN region.",
+            "Chrome service workers cache redirection headers aggressively. Purge site data for [labs.google](https://labs.google) under `chrome://settings/siteData` and ensure your OS clock matches your VPN region.",
         },
         {
           question: "Can I use free browser VPN extensions to access Google Flow?",
@@ -726,6 +840,10 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
       ],
       toc: [
         {
+          id: "quick-access-tools",
+          title: "۰. روابط وأدوات سريعة",
+        },
+        {
           id: "root-cause-google-account-association",
           title: "١. تشخيص المشكلة: طبقة عنوان IP مقابل بلد الحساب المسجل",
         },
@@ -758,6 +876,59 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "٨. الأسئلة الأكثر شيوعاً والحلول العملية",
         },
       ],
+      quickLinks: [
+        {
+          title: "استمارة غوغل الرسمية لتغيير بلد الحساب",
+          url: "https://policies.google.com/country-association-form",
+          description: "تعديل بلد الحساب قانونياً في شروط خدمة غوغل بدون مستندات عبر اختيار I travel often",
+          badge: "استمارة رسمية",
+          icon: "form",
+        },
+        {
+          title: "دخول استوديو Google Flow للذكاء الاصطناعي",
+          url: "https://labs.google/fx/tools/flow",
+          description: "الوصول المباشر لاستوديو توليد الفيديو بالذكاء الاصطناعي بنماذج Veo 2 و Imagen 3",
+          badge: "استوديو الذكاء الاصطناعي",
+          icon: "sparkles",
+        },
+        {
+          title: "فحص تسريب WebRTC عبر BrowserLeaks",
+          url: "https://browserleaks.com/webrtc",
+          description: "التحقق من عدم تسريب عنوان IP الداخلي عبر بروتوكول المتصفح",
+          badge: "أداة أمان",
+          icon: "shield",
+        },
+        {
+          title: "فحص تسريب DNS و IP عبر IPLeak",
+          url: "https://ipleak.net",
+          description: "التأكد من عدم كشف خوادم مزود الخدمة المحلي وسلامة نفق الاتصال",
+          badge: "فحص الشبكة",
+          icon: "external",
+        },
+        {
+          title: "تحميل تطبيق Google Flow من متجر Google Play",
+          url: "https://play.google.com/store/apps/details?id=com.google.android.apps.bard",
+          description: "رابط تحميل التطبيق الرسمي على أندرويد بعد مسح ذاكرة خدمات غوغل بلاي",
+          badge: "تطبيق الجوال",
+          icon: "mobile",
+        },
+        {
+          title: "مسار مسح بيانات المواقع في كروم",
+          url: "chrome://settings/siteData",
+          description: "إعدادات مسح ملفات تعريف الارتباط ومخزن الخدمة لموقعي google.com و labs.google",
+          badge: "إعدادات كروم",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+        {
+          title: "تعطيل تسريب WebRTC في إعدادات كروم",
+          url: "chrome://flags/#webrtc-ip-handling-policy",
+          description: "إجبار حركة مرور WebRTC على المرور بالكامل عبر البروكسي المشفر",
+          badge: "خيار أمان متقدم",
+          icon: "terminal",
+          isCopyOnly: true,
+        },
+      ],
       sections: [
         {
           id: "root-cause-google-account-association",
@@ -765,7 +936,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           lead:
             "إذا حاولت فتح Google Flow مراراً وواجهتك شاشة الخطأ السوداء بالرغم من تشغيل VPN سريع، فالمشكلة ليست في شبكتك؛ غوغل تستهدف بلد حسابك المسجل.",
           paragraphs: [
-            "عندما أطلقت مختبرات غوغل استوديو Google Flow الثوري لتوليد الفيديو بالذكاء الاصطناعي عبر نموذج Veo 2، سارع صناع المحتوى لتجربته؛ إلا أن الكثيرين تفاجأوا بشاشة سوداء ورسالة محبطة: «Flow is not available in your country yet» مع تحويل تلقائي إلى flow.google.com/unsupported-country. رد الفعل التلقائي لمعظم المستخدمين هو تغيير خادم VPN أو شراء اشتراكات جديدة، دون أي نتيجة.",
+            "عندما أطلقت مختبرات غوغل استوديو Google Flow الثوري لتوليد الفيديو بالذكاء الاصطناعي عبر نموذج Veo 2، سارع صناع المحتوى لتجربته؛ إلا أن الكثيرين تفاجأوا بشاشة سوداء ورسالة محبطة: «Flow is not available in your country yet» مع تحويل تلقائي إلى [flow.google.com/unsupported-country](https://flow.google.com/unsupported-country). رد الفعل التلقائي لمعظم المستخدمين هو تغيير خادم VPN أو شراء اشتراكات جديدة، دون أي نتيجة.",
             "السبب الحقيقي يكمن في أن خدمات الذكاء الاصطناعي المتقدمة من غوغل لا تكتفي بفحص عنوان IP الخارجي (GeoIP)، بل تفحص طبقة أعمق بكثير تُعرف باسم «Google Account Country Association» أو بلد الارتباط المسجل في شروط الخدمة القانونية للحساب.",
             "إذا كنت قد أنشأت حساب الجيميل قديماً في منطقة محظورة أو ربطته برقم هاتف محلي، فإن غوغل تثبت ارتباط الحساب قانونياً بتلك الدولة في شروط الخدمة. حتى لو اتصلت بخادم بريطاني أو أمريكي، فبمجرد الضغط على تسجيل الدخول، يُرسل توكن المصادقة موقع حسابك الأصلي، ويتم حظر دخولك للاستوديو فوراً.",
           ],
@@ -814,7 +985,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           callout: {
             type: "tip",
             title: "فحص أمان الاتصال قبل المتابعة",
-            text: "قبل الانتقال للخطوة التالية، افتح موقعي browserleaks.com/webrtc و ipleak.net. تأكد من ظهور دولة الخادم فقط (مثل المملكة المتحدة أو أمريكا) في كافة أقسام WebRTC و DNS و IP دون أي إشارة لبلدك الأصلي.",
+            text: "قبل الانتقال للخطوة التالية، افتح موقعي [اختبار BrowserLeaks WebRTC](https://browserleaks.com/webrtc) و [فحص IPLeak للشبكة](https://ipleak.net). تأكد من ظهور دولة الخادم فقط (مثل المملكة المتحدة أو أمريكا) في كافة أقسام WebRTC و DNS و IP دون أي إشارة لبلدك الأصلي.",
           },
           image: {
             src: "/images/blog/network-dns-webrtc-leak-prevention.webp",
@@ -829,11 +1000,11 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "توفر غوغل استمارة ذاتية ورسمية تتيح للمستخدمين تعديل بلد الحساب المرتبط بشروط الخدمة دون الحاجة لتقديم مستندات إقامة معقدة.",
           paragraphs: [
             "يعتقد الكثيرون أن بلد الحساب غير قابل للتعديل بعد إنشائه. لكن بموجب القوانين الدولية لحماية البيانات (مثل GDPR)، تلتزم غوغل بالسماح للمستخدمين بتعديل بلد ارتباط حساباتهم عند الانتقال أو السفر، من خلال استمارة رسمية تُسمى «Request to Change Associated Region».",
-            "عند تسجيل الدخول والانتقال إلى policies.google.com/country-association-form ستظهر لك الرسالة الحالية: «As shown in Google's Terms of Service, your account is associated with: [الدولة]». هذا هو الارتباط القانوني الذي يحجب عنك الوصول لأدوات فلو.",
+            "عند تسجيل الدخول والانتقال إلى [استمارة تغيير بلد الحساب في policies.google.com](https://policies.google.com/country-association-form) ستظهر لك الرسالة الحالية: «As shown in Google's Terms of Service, your account is associated with: [الدولة]». هذا هو الارتباط القانوني الذي يحجب عنك الوصول لأدوات فلو.",
             "لتغيير هذا الوضع، اختر دولة مدعومة رسمياً مثل United Kingdom أو United States. وفي خانة السبب (Reason)، اختر الخيار الاستراتيجي: «I travel often» (أسافر باستمرار). اختيار خيارات الإقامة الدائمة قد يطلب فواتير أو مستندات مصرفية، بينما خيار السفر المتكرر تتم مراجعته والموافقة عليه آلياً عبر خوارزميات غوغل.",
           ],
           bulletPoints: [
-            "رابط الاستمارة الرسمي: policies.google.com/country-association-form",
+            "رابط الاستمارة الرسمي: [policies.google.com/country-association-form (اضغط لفتح الاستمارة)](https://policies.google.com/country-association-form)",
             "الدول المقترحة: المملكة المتحدة (United Kingdom) أو الولايات المتحدة (United States).",
             "سبب التعديل: اختر دائماً «I travel often» لضمان المعالجة الآلية السريعة دون طلب مستندات.",
             "شرط أساسي أثناء الإرسال: يجب أن يكون اتصال VPN نشطاً بعنوان يطابق الدولة المختارة وخالياً تماماً من أي تسريب شبكي لحظة الضغط على Submit.",
@@ -860,7 +1031,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           ],
           bulletPoints: [
             "إنشاء ملف مستخدم مخصص في كروم (Chrome Profile): لا تخلط بين حساب فلو وحساباتك الشخصية اليومية.",
-            "مسح بيانات مواقع غوغل المخزنة: ادخل إلى chrome://settings/siteData وابحث عن google.com و labs.google وامسح كافة البيانات.",
+            "مسح بيانات مواقع غوغل المخزنة: ادخل إلى `chrome://settings/siteData` وابحث عن [google.com](https://www.google.com) و [labs.google](https://labs.google) وامسح كافة البيانات.",
             "مزامنة ساعة الجهاز: في إعدادات النظام، اضبط المنطقة الزمنية مؤقتاً لتطابق دولة خادم VPN المستخدم.",
           ],
           codeSnippets: [
@@ -884,7 +1055,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           paragraphs: [
             "في بعض الأحيان يكون حسابك القديم مرتبطاً بعمليات شراء سابقة أو اشتراكات تعقد نقله. في هذه الحالة، الخيار الأمثل هو إنشاء حساب غوغل جديد ومستقل بالكامل بحيث ينشأ من اللحظة الأولى بهوية أوروبية أو أمريكية.",
             "القاعدة الذهبية أثناء التسجيل: لا تدخل رقم هاتف محلي من دولة غير مدعومة. عند التسجيل عبر وضع التصفح الضيف (Guest Mode) في كروم باستخدام اتصال آمن، تتيح لك غوغل في أغلب الحالات تخطي رقم الهاتف وإدخال بريد استرداد بديل (Recovery Email).",
-            "ينشأ هذا الحساب مباشرة بهوية أجنبية في شروط خدمة غوغل، وبمجرد الدخول إلى labs.google/fx/tools/flow ستفتح لك واجهة الاستوديو لتوليد الفيديوهات على الفور.",
+            "ينشأ هذا الحساب مباشرة بهوية أجنبية في شروط خدمة غوغل، وبمجرد الدخول إلى [استوديو labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) ستفتح لك واجهة الاستوديو لتوليد الفيديوهات على الفور.",
           ],
           bulletPoints: [
             "بيئة التسجيل: حصرياً عبر وضع Guest Mode في متصفح كروم.",
@@ -913,9 +1084,9 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "لتحميل التطبيق وتخطي رسالة «هذا العنصر غير متاح في بلدك»، اتبع الخطوات التالية لكل نظام:",
           ],
           bulletPoints: [
-            "على أجهزة أندرويد (Google Play): ادخل إلى الإعدادات ثم التطبيقات، واختر Google Play Store و Google Play Services، واضغط على Force Stop ثم مسح التخزين المؤقت (Clear Cache). بعد ذلك شغل VPN وسجل الدخول بحسابك الأجنبي لتحميل التطبيق مباشرة.",
+            "على أجهزة أندرويد (Google Play): ادخل إلى الإعدادات ثم التطبيقات، واختر Google Play Store و Google Play Services، واضغط على Force Stop ثم مسح التخزين المؤقت (Clear Cache). بعد ذلك شغل VPN وسجل الدخول بحسابك الأجنبي لتحميل [تطبيق Google Flow الرسمي على Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.bard).",
             "على هواتف آيفون (Apple App Store): في إعدادات Apple ID، ادخل إلى Media & Purchases وحول الدولة إلى الولايات المتحدة (أو سجل الدخول بآبل آيدي أمريكي إضافي) لتحميل تطبيق Google Flow مباشرة.",
-            "مزامنة سحابية تامة: المقاطع التي تبدأ العمل عليها في الهاتف تظهر فوراً على شاشة الكمبيوتر في labs.google/fx/tools/flow لتصديرها بدقة 4K.",
+            "مزامنة سحابية تامة: المقاطع التي تبدأ العمل عليها في الهاتف تظهر فوراً على شاشة الكمبيوتر في [استوديو labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) لتصديرها بدقة 4K.",
           ],
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
@@ -943,7 +1114,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "Flow is not available in your country yet",
                 "بلد الحساب مسجل في منطقة غير مدعومة ضمن شروط الخدمة",
                 "اتصال VPN نشط لكن الحساب مقيد",
-                "تقديم استمارة Country Association باختيار 'I travel often' أو إنشاء حساب نظيف",
+                "تقديم [استمارة Country Association](https://policies.google.com/country-association-form) باختيار 'I travel often' أو إنشاء حساب نظيف",
               ],
               [
                 "HTTP 403 Forbidden / Access Denied",
@@ -955,7 +1126,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
                 "تعليق شاشة التحميل (Infinite Spinner)",
                 "تعارض ملفات الارتباط القديمة أو عدم تطابق توقيت النظام",
                 "ذاكرة متصفح قديمة",
-                "مسح بيانات labs.google بالكامل ومزامنة ساعة الجهاز مع توقيت الخادم",
+                "مسح بيانات [labs.google](https://labs.google) بالكامل ومزامنة ساعة الجهاز مع توقيت الخادم",
               ],
               [
                 "Quota / Capacity Error",
@@ -984,7 +1155,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
             "س: هل يجب إبقاء اتصال VPN نشطاً بعد الموافقة على تغيير بلد الحساب؟\nج: نعم؛ نظراً لأن مختبرات غوغل تطبق قيوداً على أطراف الشبكة في بعض المناطق، فإن الحفاظ على اتصال آمن بدولة الحساب يمنع أي تعارض.",
             "س: ما هي أفضل دولة لاختيارها في استمارة تغيير بلد الحساب؟\nج: المملكة المتحدة والولايات المتحدة وألمانيا؛ حيث تحصل هذه الدول على ميزات نماذج Veo 2 و Imagen 3 أولاً بأول.",
             "س: هل يؤدي تغيير بلد الحساب إلى حذف رسائل الجيميل أو ملفات غوغل درايف؟\nج: لا مطلقاً؛ تعديل Country Association يقتصر على الشروط القانونية ونطاق الخصوصية دون أي مساس ببياناتك أو ملفاتك المخزنة.",
-            "س: لماذا يستمر ظهور خطأ البلد حتى بعد إغلاق المتصفح وفتحه؟\nج: بسبب احتفاظ المتصفح ببيانات Service Worker المؤقتة. امسح بيانات موقع labs.google واضبط توقيت جهازك ليطابق الخادم.",
+            "س: لماذا يستمر ظهور خطأ البلد حتى بعد إغلاق المتصفح وفتحه؟\nج: بسبب احتفاظ المتصفح ببيانات Service Worker المؤقتة. امسح بيانات موقع [labs.google](https://labs.google) واضبط توقيت جهازك ليطابق الخادم.",
             "س: هل يمكن الاعتماد على إضافات البروكسي المجانية في المتصفح؟\nج: لا ننصح بذلك إطلاقاً؛ فالإضافات المجانية تعاني من تسريبات حادة في WebRTC وعناوينها محظورة تلقائياً من أنظمة غوغل.",
             "س: هل يمكن تشغيل الحساب على الكمبيوتر والهاتف في نفس الوقت؟\nج: نعم، بشرط أن يتصل كلا الجهازين بخادم من نفس الدولة لتجنب رصد تسجيلات دخول من مواقع متباعدة في وقت متزامن.",
           ],
@@ -1030,7 +1201,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         {
           question: "لماذا يستمر ظهور خطأ البلد حتى بعد إغلاق المتصفح وفتحه؟",
           answer:
-            "بسبب احتفاظ المتصفح ببيانات Service Worker المؤقتة. امسح بيانات موقع labs.google واضبط توقيت جهازك ليطابق الخادم.",
+            "بسبب احتفاظ المتصفح ببيانات Service Worker المؤقتة. امسح بيانات موقع [labs.google](https://labs.google) واضبط توقيت جهازك ليطابق الخادم.",
         },
         {
           question: "هل يمكن الاعتماد على إضافات البروكسي المجانية في المتصفح؟",

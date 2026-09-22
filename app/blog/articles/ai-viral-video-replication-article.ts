@@ -31,6 +31,10 @@ export const aiViralVideoReplicationArticle: RawArticle = {
       author: authors.fa,
       toc: [
         {
+          id: "quick-access-tools",
+          title: "۰. ابزارها و استودیوهای پیشنهادی",
+        },
+        {
           id: "intro-viral-replication",
           title: "۱. چرا ساخت ویدیو از صفر اشتباه است؟ فرمول مهندسی معکوس ریلزهای میلیونی",
         },
@@ -63,6 +67,50 @@ export const aiViralVideoReplicationArticle: RawArticle = {
           title: "۸. پرسش‌های متداول (FAQ) درباره کپی ویدیوهای وایرال با هوش مصنوعی",
         },
       ],
+      quickLinks: [
+        {
+          title: "استودیو هوش مصنوعی Google Flow",
+          url: "https://labs.google/fx/tools/flow",
+          description: "محیط اصلی شبیه‌سازی استودیویی، تثبیت آواتار و رندر ویدیو با مدل ویدیوساز Veo 2",
+          badge: "استودیو ویدیوساز",
+          icon: "flow",
+        },
+        {
+          title: "شبیه‌ساز و کلون صدای [ElevenLabs](https://elevenlabs.io)",
+          url: "https://elevenlabs.io",
+          description: "تولید صدای طبیعی گوینده و دوبله فوق‌حرفه‌ای با تفکیک لحن و هیجان صدا",
+          badge: "هوش مصنوعی صدا",
+          icon: "sparkles",
+        },
+        {
+          title: "استودیو تصویرسازی [Midjourney](https://www.midjourney.com)",
+          url: "https://www.midjourney.com",
+          description: "ساخت شیت ۶ زاویه‌ای کاراکتر و تصاویر پایه آواتار با ثبات فوق‌العاده بالا",
+          badge: "تولید تصویر",
+          icon: "external",
+        },
+        {
+          title: "مدل متن‌باز تصویرساز FLUX.1",
+          url: "https://blackforestlabs.ai",
+          description: "تولید تصاویر پرتره فوق‌واقعی با قابلیت رندر دقیق انگشتان و جزئیات چهره",
+          badge: "مدل تصویرساز",
+          icon: "external",
+        },
+        {
+          title: "ویرایشگر ویدیویی [CapCut](https://www.capcut.com) Web",
+          url: "https://www.capcut.com",
+          description: "تدوین هوشمند، برش سکانس‌های ۱۰ ثانیه‌ای و افزودن ترنزیشن‌ها و افکت‌های وایرال",
+          badge: "نرم‌افزار تدوین",
+          icon: "mobile",
+        },
+        {
+          title: "استودیو ویدیوساز Runway Gen-3",
+          url: "https://runwayml.com",
+          description: "موتور قدرتمند تولید ویدیو از عکس با کنترل دقیق حرکات دوربین و ترنزیشن‌های سینمایی",
+          badge: "موتور ویدیو",
+          icon: "sparkles",
+        },
+      ],
       sections: [
         {
           id: "intro-viral-replication",
@@ -70,7 +118,7 @@ export const aiViralVideoReplicationArticle: RawArticle = {
           lead: "برای وایرال شدن در اینستاگرام نیاز به حدس زدن سلیقه مخاطب ندارید؛ الگوریتم قبلاً به ساختارهای برنده پاداش میلیونی داده است.",
           paragraphs: [
             "مهندسی معکوس ویدیو به معنای کالبدشکافی ساختار بصری، قلاب کلامی و ریتم تدوین یک ریلز میلیونی برای بازتولید آن با هویت و محتوای اختصاصی خودتان است. زمانی که یک ویدیو از ۱ میلیون بازدید عبور می‌کند، نشان‌دهنده اثربخشی اثبات‌شده در سه متغیر کلیدی است: هوک ۳ ثانیه اول، سرعت برش نماها و چگالی ارائه ارزش.",
-            "در این پروژه عملی، ما ریلز وایرال «دستورات مخفی ChatGPT» از پیج @thaywanss را که به بازدید میلیونی رسیده بود انتخاب کردیم؛ محتوایی که ارتباط مستقیمی با گنجینه دستورات [هندبوک ۴۶۰ اسلش‌کامند و کدهای مخفی ChatGPT ویرایش ۲۰۲۶](/blog/chatgpt-slash-commands-handbook-2026/) دارد. هدف این آزمایش، بازتولید ۱۰۰٪ استودیویی این ویدیو بدون نیاز به فیلم‌برداری فیزیکی، استودیوی گران‌قیمت یا دوربین بود. با استفاده از ترکیب ابزارهای پیشرفته Antigravity IDE و پلتفرم Google Flow، کل زنجیره تولید از متن تا خروجی نهایی به صورت هوشمند پیاده‌سازی شد. (اگر در دسترسی به این ابزار با خطای تحریم روبرو شدید، حتماً آموزش [حل مشکل ریجن Google Flow در ایران](/blog/google-flow-region-error-fix-iran-guide/) را بررسی کنید).",
+            "در این پروژه عملی، ما ریلز وایرال «دستورات مخفی ChatGPT» از پیج [@thaywanss در اینستاگرام](https://instagram.com/thaywanss) را که به بازدید میلیونی رسیده بود انتخاب کردیم؛ محتوایی که ارتباط مستقیمی با گنجینه دستورات [هندبوک ۴۶۰ اسلش‌کامند و کدهای مخفی ChatGPT ویرایش ۲۰۲۶](/blog/chatgpt-slash-commands-handbook-2026/) دارد. هدف این آزمایش، بازتولید ۱۰۰٪ استودیویی این ویدیو بدون نیاز به فیلم‌برداری فیزیکی، استودیوی گران‌قیمت یا دوربین بود. با استفاده از ترکیب ابزارهای پیشرفته [محیط کاری Antigravity IDE](https://github.com/google/antigravity) و پلتفرم [Google Flow (استودیو Labs)](https://labs.google/fx/tools/flow)، کل زنجیره تولید از متن تا خروجی نهایی به صورت هوشمند پیاده‌سازی شد. (اگر در دسترسی به این ابزار با خطای تحریم روبرو شدید، حتماً راهنمای گام‌به‌گام [حل مشکل ریجن Google Flow در ایران](/blog/google-flow-region-error-fix-iran-guide/) را بررسی کنید).",
           ],
           image: {
             src: "/images/blog/viral-reel-instagram-analysis.webp",
@@ -88,7 +136,7 @@ export const aiViralVideoReplicationArticle: RawArticle = {
           title: "۲. کالبدشکافی ریلز و استخراج فریم‌ها و لاین صوتی در Antigravity IDE",
           lead: "پایپ‌لاین مهندسی معکوس با تبدیل ویدیوی خام اینستاگرام به داده‌های فنی فریم‌ها، شکل‌موج صدا و ترنسکریپت میلی‌ثانیه‌ای آغاز می‌شود.",
           paragraphs: [
-            "با اجرای فرمان تحلیل در محیط کاری Antigravity IDE، ویدیوی ۵۸ ثانیه‌ای هدف فریم‌به‌فریم اسکن شد. سیستم ۴۰ فریم کلیدی متناظر با هر تغییر زاویه، ورود موشن‌گرافیک و متن‌های تاکیدی را با ثبت دقیق تایم‌کد استخراج کرد.",
+            "با اجرای فرمان تحلیل در محیط کاری [Antigravity IDE](https://github.com/google/antigravity)، ویدیوی ۵۸ ثانیه‌ای هدف فریم‌به‌فریم اسکن شد. سیستم ۴۰ فریم کلیدی متناظر با هر تغییر زاویه، ورود موشن‌گرافیک و متن‌های تاکیدی را با ثبت دقیق تایم‌کد استخراج کرد.",
             "همزمان لاین گفتار گوینده از افکت‌های صوتی و موزیک پس‌زمینه تفکیک شد. این کار اجازه داد تا تمپوی دقیق کلام گوینده (تعداد کلمات در هر ثانیه) و محل قرارگیری کلمات پرقدرت مثل «دستورات مخفی» شناسایی شود. بدین ترتیب نیازی به حدس زدن زمان مناسب کات‌ها نبود و نمودار ریتم ویدیو با دقت میلی‌ثانیه به دست آمد.",
           ],
           image: {
@@ -124,8 +172,8 @@ analyze-reel https://instagram.com/reel/thaywanss_chatgpt \\
           title: "۳. ساخت دوقلوی دیجیتال و تثبیت چهره در Google Flow با شیت ۶ زاویه‌ای",
           lead: "بزرگ‌ترین چالش تولید ویدیو با هوش مصنوعی، پرش چهره و تغییر ناگهانی لباس یا فرم صورت است. راهکار نهایی قفل هندسی با شیت ۶ زاویه‌ای است.",
           paragraphs: [
-            "در ابزارهای معمولی ویدیوساز، هر بار که پرامپت جدیدی ارسال می‌کنید، هوش مصنوعی صورت متفاوتی تولید می‌کند. برای حل ریشه‌ای این مشکل، ما در پلتفرم Google Flow (آدرس labs.google/fx/tools/flow) از ترکیب مدل‌های Nano Banana 2 و موتور پیشرفته Omni Engine استفاده کردیم.",
-            "به جای آپلود یک عکس تکی، یک شیت چرخش ۶ زاویه‌ای (6-Angle Turnaround Sheet) از چهره مجری بارگذاری شد که شامل زوایای روبرو، سه رخ چپ، نیم‌رخ کامل، پشت سر و سه رخ راست بود. این اطلاعات سه‌بعدی باعث شد هوش مصنوعی ساختار استخوانی، فرم فک، بینی و چشم‌ها را قفل کند؛ در نتیجه در سرتاسر چرخش‌های سر به سمت میکروفون، هویت کاراکتر ۱۰۰٪ ثابت باقی ماند.",
+            "در ابزارهای معمولی ویدیوساز، هر بار که پرامپت جدیدی ارسال می‌کنید، هوش مصنوعی صورت متفاوتی تولید می‌کند. برای حل ریشه‌ای این مشکل، ما در پلتفرم [Google Flow (labs.google/fx/tools/flow)](https://labs.google/fx/tools/flow) از ترکیب مدل‌های Nano Banana 2 و موتور پیشرفته Omni Engine استفاده کردیم.",
+            "به جای آپلود یک عکس تکی، یک شیت چرخش ۶ زاویه‌ای (6-Angle Turnaround Sheet) از چهره مجری بارگذاری شد که با استودیوهای [Midjourney v6](https://www.midjourney.com) یا مدل متن‌باز [FLUX.1](https://blackforestlabs.ai) ایجاد شده بود و شامل زوایای روبرو، سه رخ چپ، نیم‌رخ کامل، پشت سر و سه رخ راست بود. این اطلاعات سه‌بعدی باعث شد هوش مصنوعی ساختار استخوانی، فرم فک، بینی و چشم‌ها را قفل کند؛ در نتیجه در سرتاسر چرخش‌های سر به سمت میکروفون، هویت کاراکتر ۱۰۰٪ ثابت باقی ماند.",
           ],
           image: {
             src: "/images/blog/google-flow-character-consistency.webp",
@@ -143,7 +191,7 @@ analyze-reel https://instagram.com/reel/thaywanss_chatgpt \\
           title: "۴. مهندسی پرامپت استودیویی: نورپردازی، میکروفون Shure SM7B و کادر ۹:۱۶",
           lead: "اعتبار یک ویدیوی آموزشی در نگاه مخاطب با اکسسوری‌های واقعی و نورپردازی استودیویی تایید می‌شود.",
           paragraphs: [
-            "در تب Prompt & Engineering پلتفرم Google Flow، پرامپت پایه صحنه را بر سه رکن استوار کردیم:",
+            "در تب Prompt & Engineering پلتفرم [Google Flow](https://labs.google/fx/tools/flow)، پرامپت پایه صحنه را بر سه رکن استوار کردیم:",
             "۱. نورپردازی سینمایی (Cinematic Lighting): ایجاد نور ملایم اصلی (Key Light) روی چهره به همراه ریم‌لایت نئونی بنفش و فیروزه‌ای در حاشیه شانه‌ها روی پس‌زمینه تیره استودیو؛ تکنیکی که نمونه‌های پیشرفته آن را در مقاله [۱۰۰ پرامپت و دستور تبدیل عکس به ویدیو با هوش مصنوعی برای تیزرهای تجاری](/blog/ai-image-to-video-cinematic-prompts/) با جزییات تحلیل کرده‌ایم.",
             "۲. تجهیزات فیزیکی (Prop Integration): قفل کردن میکروفون داینامیک Shure SM7B به همراه بازوی فلزی حرفه‌ای در پیش‌زمینه تصویر؛ این المان ناخودآگاه مغز مخاطب را به یاد برنامه‌های تخصصی پادکست و تولیدات تراز اول می‌اندازد.",
             "۳. فرمت عمودی (9:16 Vertical Formation): تنظیم دقیق وضوح عمودی متناسب با الگوریتم تمام‌صفحه ریلز و یوتیوب شورتز برای پوشش حداکثری نمایشگر موبایل.",
@@ -171,7 +219,7 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           title: "۵. تکنیک کات‌های ۱۰ ثانیه‌ای: حل دائمی معضل پرش و افت کیفیت هوش مصنوعی",
           lead: "تولید یک ویدیوی ۶۰ ثانیه‌ای یک‌تکه در مدل‌های ویدیوساز همیشه به افت فاحش کیفیت و تغییر شکل دست‌ها و صورت ختم می‌شود.",
           paragraphs: [
-            "تمام مدل‌های زایشی پیشرفته ویدیویی دنیا (نظیر Sora، Runway Gen-3 و Veo) پس از ثانیه ۸ تا ۱۰ دچار انحراف زمانی (Temporal Drift) می‌شوند؛ یعنی خطوط لب‌سینک به هم می‌ریزد و جزئیات چهره تار می‌شوند.",
+            "تمام مدل‌های زایشی پیشرفته ویدیویی دنیا (نظیر [OpenAI Sora](https://openai.com/sora)، [استودیو Runway Gen-3](https://runwayml.com) و مدل [Google DeepMind Veo](https://deepmind.google/technologies/veo/)) پس از ثانیه ۸ تا ۱۰ دچار انحراف زمانی (Temporal Drift) می‌شوند؛ یعنی خطوط لب‌سینک به هم می‌ریزد و جزئیات چهره تار می‌شوند.",
             "راز دستیابی به خروجی ۱۰۰٪ واقعی در این ویدیو، استفاده از تکنیک کات‌های ۱۰ ثانیه‌ای بود. سناریوی ۶۰ ثانیه‌ای به ۶ سکانس ۱۰ ثانیه‌ای مجزا تقسیم شد. هر بخش به صورت یک کلید مستقل با پرامپت حرکتی دقیق رندر گردید و سپس این راش‌ها روی خط زمان ویرایشگر ویدیو با برش‌های تند (Jump Cuts) استاندارد اینستاگرام تدوین شدند. حاصل کار، یک ویدیوی ۶۰ ثانیه‌ای پیوسته، شارپ و بدون کوچک‌ترین افت کیفیت شد.",
           ],
           image: {
@@ -198,7 +246,7 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           paragraphs: [
             "یکی از نقاط قوت بصری این ریلز، نمایش کارت‌های گفتگو بود. برای آنکه این کارت‌ها در نگاه اول حرفه‌ای و مدرن به نظر برسند، از یک دیزاین سیستم مینیمال با سه رنگ مشخص استفاده کردیم:",
             "• رنگ نارنجی پرانرژی (#FF5E3A): اختصاص‌یافته به عنوان پرامپت و آیکون ورودی کاربر.",
-            "• رنگ سبز متالیک (#00D26A): برای تایید پاسخ هوشمندانه و خروجی الگوریتم ChatGPT.",
+            "• رنگ سبز متالیک (#00D26A): برای تایید پاسخ هوشمندانه و خروجی الگوریتم [ChatGPT](https://chatgpt.com).",
             "• رنگ سرمه‌ای عمیق (#0B0F19): پس‌زمینه دارک کارت‌ها با حاشیه شیشه‌ای ظریف و بلور پس‌زمینه.",
             "این ترکیب پالت، خوانایی متن‌های فارسی روی موبایل را تضمین کرده و جلوه‌ای های‌تک و متقاعدکننده به ویدیو می‌بخشد.",
           ],
@@ -226,10 +274,10 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
         {
           id: "step4-studio-match-results",
           title: "۷. تست تطابق ۱۰۰٪ استودیویی: مقایسه ویدیوی واقعی با خروجی هوش مصنوعی",
-          lead: "در آزمون ساید-بای-ساید، خروجی تولیدشده توسط Google Flow با ویدیوی ضبط‌شده واقعی به رقم شگفت‌انگیز تطابق ۱۰۰٪ استودیویی رسید.",
+          lead: "در آزمون ساید-بای-ساید، خروجی تولیدشده توسط [Google Flow](https://labs.google/fx/tools/flow) با ویدیوی ضبط‌شده واقعی به رقم شگفت‌انگیز تطابق ۱۰۰٪ استودیویی رسید.",
           paragraphs: [
-            "همان‌طور که در تصویر مقایسه مشاهده می‌کنید، هیچ فاصله‌ای بین ویدیوی فیلم‌برداری‌شده در استودیو فیزیکی و نسخه شبیه‌سازی‌شده دیجیتال وجود ندارد. زاویه فک، بازتاب نور روی پوست، پویایی لب‌ها بر اساس آواهای زبان فارسی و موقعیت قرارگیری میکروفون Shure SM7B بی‌نقص هستند.",
-            "این دستاورد مرز میان تولیدات چند صد میلیونی استودیویی و محتوای هوش مصنوعی را از میان برداشته است. اکنون هر کارآفرین، مدرس یا برندی می‌تواند بدون نیاز به حضور فیزیکی جلوی دوربین، صدها محتوای باکیفیت استودیویی در ماه تولید کند.",
+            "همان‌طور که در تصویر مقایسه مشاهده می‌کنید، هیچ فاصله‌ای بین ویدیوی فیلم‌برداری‌شده در استودیو فیزیکی و نسخه شبیه‌سازی‌شده دیجیتال وجود ندارد. زاویه فک، بازتاب نور روی پوست، پویایی لب‌ها و شبیه‌سازی صدا با [موتور صوتی هوشمند ElevenLabs](https://elevenlabs.io) و موقعیت قرارگیری میکروفون Shure SM7B بی‌نقص هستند.",
+            "این دستاورد مرز میان تولیدات چند صد میلیونی استودیویی و محتوای هوش مصنوعی را از میان برداشته است. اکنون هر کارآفرین، مدرس یا برندی می‌تواند بدون نیاز به حضور فیزیکی جلوی دوربین، صدها محتوای باکیفیت استودیویی در ماه تولید کند؛ به ویژه اگر این سبک ویدیوها را با [اصول لندینگ‌پیج‌های پرفروش](/blog/high-converting-landing-page-secrets/) ترکیب کند.",
           ],
           image: {
             src: "/images/blog/ai-video-100-percent-match.webp",
@@ -251,15 +299,15 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           ],
           bulletPoints: [
             "آیا کپی کردن ساختار ویدیوهای وایرال غیرقانونی است؟ خیر؛ کپی کردن ساختار روایت، تمپوی کات‌ها و سبک نورپردازی استاندارد بین‌المللی است، به شرط آنکه سناریو و زاویه دید برند خودتان را به آن بیفزایید و کپی محتوای متنی نباشد.",
-            "چرا در Google Flow به شیت ۶ زاویه‌ای نیاز داریم؟ زیرا مدل‌های ویدیوساز برای حفظ ثبات هندسی چهره هنگام چرخش سر نیاز به مختصات سه‌بعدی از تمام زوایا دارند تا از دفرمه شدن صورت جلوگیری کنند.",
-            "علت محدود کردن سکانس‌ها به ۱۰ ثانیه چیست؟ تمام مدل‌های هوش مصنوعی فعلی پس از ثانیه دهم دچار پدیده Temporal Drift می‌شوند. خرد کردن ویدیو به بخش‌های ۱۰ ثانیه‌ای کیفیت را در اوج نگه می‌دارد.",
-            "آیا می‌توان این سیستم را بدون دوربین واقعی راه‌اندازی کرد؟ بله؛ با داشتن تنها چند عکس باکیفیت از خودتان در زوایای مختلف، می‌توانید شیت چندزاویه‌ای را ساخته و کل ویدیو را به صورت دیجیتال تولید نمایید.",
+            "چرا در [Google Flow](https://labs.google/fx/tools/flow) به شیت ۶ زاویه‌ای نیاز داریم؟ زیرا مدل‌های ویدیوساز برای حفظ ثبات هندسی چهره هنگام چرخش سر نیاز به مختصات سه‌بعدی از تمام زوایا دارند تا از دفرمه شدن صورت جلوگیری کنند. (برای دور زدن تحریم، [آموزش حل ارور ریجن گوگل فلو](/blog/google-flow-region-error-fix-iran-guide/) را ببینید).",
+            "علت محدود کردن سکانس‌ها به ۱۰ ثانیه چیست؟ تمام مدل‌های هوش مصنوعی فعلی پس از ثانیه دهم دچار پدیده Temporal Drift می‌شوند. خرد کردن ویدیو به بخش‌های ۱۰ ثانیه‌ای و تدوین با [ویرایشگر CapCut](https://www.capcut.com) کیفیت را در اوج نگه می‌دارد.",
+            "آیا می‌توان این سیستم را بدون دوربین واقعی راه‌اندازی کرد؟ بله؛ با داشتن تنها چند عکس باکیفیت از خودتان در زوایای مختلف، می‌توانید شیت چندزاویه‌ای را در [میدجورنی (Midjourney)](https://www.midjourney.com) ساخته و کل ویدیو را به صورت دیجیتال تولید نمایید.",
           ],
         },
       ],
       takeaways: [
         "مهندسی معکوس ساختار ریلزهای میلیونی، تضمینی‌ترین روش جذب ترافیک ارگانیک در اینستاگرام است.",
-        "قفل کردن هندسه چهره با شیت ۶ زاویه‌ای در Google Flow معضل تغییر قیافه را به صفر می‌رساند.",
+        "قفل کردن هندسه چهره با شیت ۶ زاویه‌ای در [Google Flow](https://labs.google/fx/tools/flow) معضل تغییر قیافه را به صفر می‌رساند.",
         "سقف ۱۰ ثانیه برای هر سکانس، متضمن کیفیت فوق‌العاده و حذف کامل نویزها و پرش‌های تصویری است.",
         "تجهیزات فیزیکی شاخص مثل میکروفون Shure SM7B در کادر، اعتبار ناخودآگاه ویدیو را چند برابر می‌کند.",
         "کال تو اکشن دو مرحله‌ای (کامنت عدد ۱۰۱ برای دایرکت خودکار)، نرخ تعامل ریلز را در الگوریتم منفجر می‌کند.",
@@ -283,6 +331,10 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
       ],
       author: authors.en,
       toc: [
+        {
+          id: "quick-access-tools",
+          title: "0. Recommended AI Studios & Tools",
+        },
         {
           id: "intro-viral-replication",
           title: "1. Why Starting from Scratch Fails: The Viral Reverse-Engineering Blueprint",
@@ -316,6 +368,50 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           title: "8. Frequently Asked Questions (FAQ) on AI Video Replication",
         },
       ],
+      quickLinks: [
+        {
+          title: "Google Flow Generative Studio",
+          url: "https://labs.google/fx/tools/flow",
+          description: "Core studio platform for avatar digital twinning and temporal video rendering powered by Veo 2",
+          badge: "AI Video Studio",
+          icon: "flow",
+        },
+        {
+          title: "[ElevenLabs](https://elevenlabs.io) Voice Cloning AI",
+          url: "https://elevenlabs.io",
+          description: "Ultra-realistic synthetic voice generation, audio pacing, and multilingual narration replication",
+          badge: "Voice Synthesis",
+          icon: "sparkles",
+        },
+        {
+          title: "[Midjourney](https://www.midjourney.com) Studio",
+          url: "https://www.midjourney.com",
+          description: "Generate 6-angle character turnaround sheets with strict facial identity preservation",
+          badge: "Image Generation",
+          icon: "external",
+        },
+        {
+          title: "FLUX.1 by Black Forest Labs",
+          url: "https://blackforestlabs.ai",
+          description: "Next-gen open image model with photorealistic lighting and precise anatomy rendering",
+          badge: "Image Engine",
+          icon: "external",
+        },
+        {
+          title: "[CapCut](https://www.capcut.com) Online Video Editor",
+          url: "https://www.capcut.com",
+          description: "Assemble 10-second micro-sequences, dynamic captions, and rhythm-matched sound effects",
+          badge: "Video Editing",
+          icon: "mobile",
+        },
+        {
+          title: "Runway Gen-3 Alpha",
+          url: "https://runwayml.com",
+          description: "Cinematic camera path control and high-fidelity temporal video motion engine",
+          badge: "Video Generation",
+          icon: "sparkles",
+        },
+      ],
       sections: [
         {
           id: "intro-viral-replication",
@@ -323,7 +419,7 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           lead: "Stop guessing what works on social algorithms; reverse engineer the blueprints that have already earned millions of views.",
           paragraphs: [
             "Video reverse engineering is the systematic deconstruction of visual hooks, pacing, and retention triggers from viral content to recreate a bespoke, studio-grade version for your own brand. When a video crosses 1 million views, it proves that its retention formula works.",
-            "In this production case study, we benchmarked a 1M+ views viral Instagram Reel on 'ChatGPT Hidden Secret Commands' by creator @thaywanss. Our objective: completely replicate the video at full studio quality using Google Flow and the Omni Engine without setting foot in a physical recording studio.",
+            "In this production case study, we benchmarked a 1M+ views viral Instagram Reel on 'ChatGPT Hidden Secret Commands' by creator [@thaywanss on Instagram](https://instagram.com/thaywanss). Our objective: completely replicate the video at full studio quality using [Google Flow (labs.google/fx/tools/flow)](https://labs.google/fx/tools/flow) and the Omni Engine without setting foot in a physical recording studio. (If encountering geo-restrictions, see our [Google Flow Iran Region Error Fix Guide](/blog/google-flow-region-error-fix-iran-guide/); also refer to the [ChatGPT Slash Commands Handbook 2026](/blog/chatgpt-slash-commands-handbook-2026/)).",
           ],
           image: {
             src: "/images/blog/viral-reel-instagram-analysis.webp",
@@ -341,7 +437,7 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           title: "2. Reel Deconstruction: Keyframes & Audio Waveforms in Antigravity IDE",
           lead: "The operational pipeline begins by converting raw video into structured keyframes, vocal waveforms, and timecoded transcripts.",
           paragraphs: [
-            "Running our automated analysis pipeline in Antigravity IDE, we processed the 58-second source video. The tool automatically extracted 40 keyframes matching every camera angle switch, graphic entry, and retention hook.",
+            "Running our automated analysis pipeline in [Antigravity IDE](https://github.com/google/antigravity), we processed the 58-second source video. The tool automatically extracted 40 keyframes matching every camera angle switch, graphic entry, and retention hook.",
             "Simultaneously, the presenter's vocal track was isolated from background audio, allowing us to map dialogue tempo (words per second) and identify the precise seconds where high-curiosity phrases were introduced.",
           ],
           image: {
@@ -377,8 +473,8 @@ analyze-reel https://instagram.com/reel/thaywanss_chatgpt \\
           title: "3. Digital Twin & Face Consistency via 6-Angle Turnaround in Google Flow",
           lead: "Standard video generators suffer from facial jitter and identity changes across cuts. The definitive solution is locking character geometry with a 6-angle turnaround sheet.",
           paragraphs: [
-            "In conventional AI video generation, each new prompt generates a slightly different face. To solve this in Google Flow (labs.google/fx/tools/flow), we paired Nano Banana 2 with the Omni Engine.",
-            "Instead of a single headshot, we uploaded a 6-angle turnaround sheet: front view, 3/4 left, profile left, back view, and 3/4 right. This gave the AI full 3D structural data for presenter Hasan Shah, ensuring zero distortion or flickering during head movements.",
+            "In conventional AI video generation, each new prompt generates a slightly different face. To solve this in [Google Flow (labs.google/fx/tools/flow)](https://labs.google/fx/tools/flow), we paired Nano Banana 2 with the Omni Engine.",
+            "Instead of a single headshot, we uploaded a 6-angle turnaround sheet generated via [Midjourney v6](https://www.midjourney.com) or [FLUX.1](https://blackforestlabs.ai): front view, 3/4 left, profile left, back view, and 3/4 right. This gave the AI full 3D structural data for presenter Hasan Shah, ensuring zero distortion or flickering during head movements.",
           ],
           image: {
             src: "/images/blog/google-flow-character-consistency.webp",
@@ -424,8 +520,8 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
           title: "5. The 10-Second Scene Rule: Eliminating AI Drift and Temporal Distortion",
           lead: "Generating a 60-second video in a single prompt always degrades quality. Modular 10-second scenes guarantee crisp studio fidelity.",
           paragraphs: [
-            "Current state-of-the-art generative models (Sora, Runway Gen-3, Veo) encounter temporal drift after 8 to 10 seconds, causing lip-sync mismatch and facial softening.",
-            "By dividing the 60-second script into six modular 10-second scenes, each clip is generated with razor-sharp fidelity and tight motion prompts. These scenes are then assembled on a video editor timeline with rapid jump cuts, producing an uninterrupted 60-second studio masterpiece.",
+            "Current state-of-the-art generative models ([OpenAI Sora](https://openai.com/sora), [Runway Gen-3](https://runwayml.com), [Google DeepMind Veo](https://deepmind.google/technologies/veo/)) encounter temporal drift after 8 to 10 seconds, causing lip-sync mismatch and facial softening.",
+            "By dividing the 60-second script into six modular 10-second scenes, each clip is generated with razor-sharp fidelity and tight motion prompts. These scenes are then assembled on a video editor timeline with [CapCut Web](https://www.capcut.com) using rapid jump cuts, producing an uninterrupted 60-second studio masterpiece.",
           ],
           image: {
             src: "/images/blog/ai-video-timeline-sequencer.webp",
@@ -479,9 +575,9 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
         {
           id: "step4-studio-match-results",
           title: "7. 100% Studio-Grade Match Validation: Original vs AI Digital Clone",
-          lead: "Side-by-side comparison confirms a 100% perceptual match between physical studio footage and Google Flow output.",
+          lead: "Side-by-side comparison confirms a 100% perceptual match between physical studio footage and [Google Flow](https://labs.google/fx/tools/flow) output.",
           paragraphs: [
-            "In our side-by-side split screen audit, the AI-generated host matched the original footage across jawline contours, natural skin pores, lip-sync alignment, and realistic light reflections on the Shure SM7B microphone.",
+            "In our side-by-side split screen audit, the AI-generated host matched the original footage across jawline contours, natural skin pores, lip-sync alignment, realistic light reflections on the Shure SM7B microphone, and voice cloned through [ElevenLabs](https://elevenlabs.io).",
             "Viewers in the feed cannot distinguish between footage shot in a $50,000 physical studio and this AI-orchestrated pipeline, unlocking unlimited production capacity for educators, agencies, and founders.",
           ],
           image: {
@@ -536,6 +632,10 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
       author: authors.ar,
       toc: [
         {
+          id: "quick-access-tools",
+          title: "۰. الاستوديوهات والأدوات المقترحة",
+        },
+        {
           id: "intro-viral-replication",
           title: "١. لماذا يفشل البدء من الصفر؟ نموذج الهندسة العكسية للريلز المليونية",
         },
@@ -566,6 +666,50 @@ Settings: Omni Engine temporal identity locked, zero plastic skin artifacts`,
         {
           id: "faq-section",
           title: "٨. الأسئلة الشائعة (FAQ) حول استنساخ الفيديوهات بالذكاء الاصطناعي",
+        },
+      ],
+      quickLinks: [
+        {
+          title: "استوديو Google Flow للذكاء الاصطناعي",
+          url: "https://labs.google/fx/tools/flow",
+          description: "المنصة الأساسية لبناء التوأم الرقمي وتوليد المشاهد الفيديوية بنموذج Veo 2",
+          badge: "استوديو الفيديو",
+          icon: "flow",
+        },
+        {
+          title: "استنساخ الصوت عبر [ElevenLabs](https://elevenlabs.io)",
+          url: "https://elevenlabs.io",
+          description: "توليد تعليق صوتي واقعي فائق الدقة وتطابق النبرات الصوتية للمذيع",
+          badge: "ذكاء الصوت",
+          icon: "sparkles",
+        },
+        {
+          title: "منصة [Midjourney](https://www.midjourney.com) لتوليد الصور",
+          url: "https://www.midjourney.com",
+          description: "إنشاء مخطط الإطلالات بست زوايا لتثبيت هوية وملامح الشخصية الرقمية",
+          badge: "توليد الصور",
+          icon: "external",
+        },
+        {
+          title: "نموذج FLUX.1 من Black Forest Labs",
+          url: "https://blackforestlabs.ai",
+          description: "توليد صور فائقة الواقعية مع إضاءة استوديو متقنة وتفاصيل تشريحية دقيقة",
+          badge: "محرك الصور",
+          icon: "external",
+        },
+        {
+          title: "محرر الفيديو [CapCut](https://www.capcut.com)",
+          url: "https://www.capcut.com",
+          description: "مونتاج المشاهد المتقطعة لمدة ١٠ ثوانٍ وإضافة المؤثرات البصرية والانتقالات السريعة",
+          badge: "تحرير الفيديو",
+          icon: "mobile",
+        },
+        {
+          title: "محرك الفيديو Runway Gen-3",
+          url: "https://runwayml.com",
+          description: "محاكاة حركة الكاميرا السينمائية وتوليد لقطات ديناميكية عالية الدقة",
+          badge: "توليد الفيديو",
+          icon: "sparkles",
         },
       ],
       sections: [
