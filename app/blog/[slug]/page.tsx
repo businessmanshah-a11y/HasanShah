@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.summary,
     alternates: {
       canonical: fullUrl,
+      types: {
+        "text/markdown": `https://hasanshah.ir/markdown/${article.slug}.md`,
+      },
     },
     openGraph: {
       locale: "fa_IR",

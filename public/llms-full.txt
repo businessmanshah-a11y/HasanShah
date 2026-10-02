@@ -18,7 +18,12 @@ Technical stack: Next.js, React, TypeScript, Tailwind CSS, Cursor IDE, Claude 3.
 
 ## Articles & Master References
 
-### 1. ChatGPT 460 Slash Commands & Secret Codes Master Handbook (2026 Edition)
+### 1. Zero to Hero AI Video Creation with Google Flow & ChatGPT
+- URL: https://hasanshah.ir/blog/ai-video-creation-google-flow-guide/
+- Markdown URL: https://hasanshah.ir/markdown/ai-video-creation-google-flow-guide.md
+- Description: The definitive, hands-on masterclass for producing cinema-grade AI videos using Google Flow (Veo 3.1), ChatGPT, and Google Vids; single-image storyboard formulas, scene breakdown math (40s=4x10s, 30s=3x10s, 24s=3x8s), and the 499,000 Toman ($15) 18-month Google AI Pro tier hack via BuyAiPro.ir.
+
+### 2. ChatGPT 460 Slash Commands & Secret Codes Master Handbook (2026 Edition)
 - URL: https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/
 - Description: The definitive encyclopedia of 460 ChatGPT slash commands, studio lighting shortcuts, cinematic render prompts, inpainting parameters, code refactoring workflows, and prompt chaining frameworks.
 

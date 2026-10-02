@@ -8,6 +8,7 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
   coverImage: "/images/blog/google-flow-region-fix-cover.webp",
   featured: true,
   relatedSlugs: [
+    "ai-video-creation-google-flow-guide",
     "replicate-viral-reels-with-ai-google-flow",
     "ai-image-to-video-cinematic-prompts",
     "chatgpt-slash-commands-handbook-2026",

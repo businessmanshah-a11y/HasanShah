@@ -3,6 +3,7 @@ import type { Locale } from "../i18n/config";
 import { googleFlowRegionErrorFixArticle } from "./articles/google-flow-region-error-fix-article";
 import { aiViralVideoReplicationArticle } from "./articles/ai-viral-video-replication-article";
 import { aiImageToVideoArticle } from "./articles/ai-image-to-video-article";
+import { aiVideoCreationGoogleFlowArticle } from "./articles/ai-video-creation-google-flow-guide";
 
 export interface TableOfContentItem {
   id: string;
@@ -146,6 +147,7 @@ export const authors: Record<Locale, ArticleAuthor> = {
 };
 
 export const rawArticles: RawArticle[] = [
+  aiVideoCreationGoogleFlowArticle,
   googleFlowRegionErrorFixArticle,
   aiViralVideoReplicationArticle,
   aiImageToVideoArticle,

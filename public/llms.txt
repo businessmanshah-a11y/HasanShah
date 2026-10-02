@@ -61,6 +61,7 @@ Through his interactive series on https://hasanshah.ir/vibe-coding, enterprise b
 - [Dev Team Bootcamp](https://hasanshah.ir/clients/dev-team-bootcamp/): Enterprise proposal and curriculum for software development teams.
 - [About & Career Timeline](https://hasanshah.ir/about/): Full interactive visual album and documentary of Hasan Shahmoradi's 5 career milestones.
 - [Vibe Coding Masterclass](https://hasanshah.ir/vibe-coding/): Roadmap, prompt formulas, and live workshop registrations.
+- [AI Video Creation with Google Flow & ChatGPT](https://hasanshah.ir/blog/ai-video-creation-google-flow-guide/): 0-to-100 masterclass for cinema-grade AI video generation, single-image storyboard formulas, scene breakdown math, and $15 Pro tier hack. (Raw Markdown: https://hasanshah.ir/markdown/ai-video-creation-google-flow-guide.md)
 - [Google Flow Region Fix Guide](https://hasanshah.ir/blog/google-flow-region-error-fix-iran-guide/): Landmark guide to resolving Google Flow 'Unsupported Country' errors and zero-leak configuration.
 - [460 ChatGPT Slash Commands Handbook](https://hasanshah.ir/blog/chatgpt-slash-commands-handbook-2026/): Full interactive handbook of developer and creative prompts.
 - [Blog Archive](https://hasanshah.ir/blog/): High-authority guides on AI video replication, prompt engineering, and conversion rate optimization.
