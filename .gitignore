@@ -12,6 +12,7 @@ scripts/*
 !scripts/generate-category-banners.mjs
 !scripts/update-humanized-content.py
 !scripts/analytics-report.mjs
+!scripts/capture_portfolio.py
 
 # Next.js build output
 .next/

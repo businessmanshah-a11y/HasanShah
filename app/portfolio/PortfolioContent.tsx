@@ -14,6 +14,8 @@ import {
   MessageSquare,
   Laptop,
   Cpu,
+  X,
+  Zap,
 } from "lucide-react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -33,7 +35,14 @@ export default function PortfolioContent() {
 
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
   const [liveOnly, setLiveOnly] = useState<boolean>(false);
+  const [consultationOnly, setConsultationOnly] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+  const liveCount = useMemo(
+    () => ALL_PROJECTS.filter((p) => p.status === "live").length,
+    []
+  );
 
   const filteredProjects = useMemo(() => {
     return ALL_PROJECTS.filter((project) => {
@@ -45,6 +54,10 @@ export default function PortfolioContent() {
       if (liveOnly && project.status !== "live") {
         return false;
       }
+      // Smart consultation toggle
+      if (consultationOnly && !project.hasSmartConsultation) {
+        return false;
+      }
       // Search query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
@@ -53,11 +66,12 @@ export default function PortfolioContent() {
         const inDesc = project.desc.toLowerCase().includes(q) || project.descEn.toLowerCase().includes(q);
         const inTech = project.techStack.some((t) => t.toLowerCase().includes(q));
         const inDomain = project.domain ? project.domain.toLowerCase().includes(q) : false;
-        return inTitle || inNiche || inDesc || inTech || inDomain;
+        const inHighlight = project.consultationHighlight ? project.consultationHighlight.toLowerCase().includes(q) : false;
+        return inTitle || inNiche || inDesc || inTech || inDomain || inHighlight;
       }
       return true;
     });
-  }, [activeCategory, liveOnly, searchQuery]);
+  }, [activeCategory, liveOnly, consultationOnly, searchQuery]);
 
   const liveProjects = useMemo(
     () => filteredProjects.filter((p) => p.status === "live"),
@@ -129,7 +143,11 @@ export default function PortfolioContent() {
                 {/* Card 1: Live Sites */}
                 <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 backdrop-blur-sm p-4 sm:p-5 text-center transition-all duration-300 hover:border-gold/30 hover:bg-surface/60 min-h-[96px] sm:min-h-[112px]">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gold tracking-tight leading-none mb-2">
-                    ۶+
+                    {locale === "fa"
+                      ? `${liveCount.toLocaleString("fa-IR")}+`
+                      : locale === "ar"
+                      ? `${liveCount.toLocaleString("ar-SA")}+`
+                      : `${liveCount}+`}
                   </div>
                   <div className="text-[11px] sm:text-xs md:text-sm text-muted-foreground font-medium leading-snug">
                     {locale === "fa" ? "سایت آنلاین و فعال" : locale === "ar" ? "مواقع نشطة" : "Live Web Apps"}
@@ -204,12 +222,12 @@ export default function PortfolioContent() {
                   })}
                 </div>
 
-                {/* Search + Live toggle */}
-                <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-white/5">
+                {/* Search + Live toggle + Smart consultation toggle */}
+                <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-white/5">
                   {/* Live Only Toggle */}
                   <button
                     onClick={() => setLiveOnly(!liveOnly)}
-                    className={`inline-flex shrink-0 items-center gap-2 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-bold transition border ${
+                    className={`inline-flex shrink-0 items-center gap-2 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-bold transition border ${
                       liveOnly
                         ? "border-emerald-500/60 bg-emerald-500/20 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                         : "border-white/10 bg-white/5 text-muted-foreground hover:text-white"
@@ -230,8 +248,28 @@ export default function PortfolioContent() {
                     </span>
                   </button>
 
+                  {/* Smart Consultation Toggle */}
+                  <button
+                    onClick={() => setConsultationOnly(!consultationOnly)}
+                    className={`inline-flex shrink-0 items-center gap-1.5 rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm font-bold transition border ${
+                      consultationOnly
+                        ? "border-gold/60 bg-gold/20 text-gold shadow-gold-sm"
+                        : "border-white/10 bg-white/5 text-muted-foreground hover:text-white"
+                    }`}
+                    title={locale === "fa" ? "پروژه‌های مجهز به سیستم مشاوره هوشمند یا کوییز اختصاصی" : "Projects with smart consultation or interactive quiz"}
+                  >
+                    <Sparkles className="h-3.5 w-3.5 text-gold" />
+                    <span className="whitespace-nowrap">
+                      {locale === "fa"
+                        ? "مشاوره هوشمند"
+                        : locale === "ar"
+                        ? "استشارة ذكية"
+                        : "Smart AI Quiz"}
+                    </span>
+                  </button>
+
                   {/* Quick search input */}
-                  <div className="relative flex-1 sm:w-64">
+                  <div className="relative flex-1 sm:w-60 min-w-[160px]">
                     <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <input
                       type="text"
@@ -259,11 +297,12 @@ export default function PortfolioContent() {
                     ? `عرض ${filteredProjects.length} من أصل ${ALL_PROJECTS.length} مشروع`
                     : `Showing ${filteredProjects.length} of ${ALL_PROJECTS.length} projects`}
                 </span>
-                {(activeCategory !== "all" || liveOnly || searchQuery) && (
+                {(activeCategory !== "all" || liveOnly || consultationOnly || searchQuery) && (
                   <button
                     onClick={() => {
                       setActiveCategory("all");
                       setLiveOnly(false);
+                      setConsultationOnly(false);
                       setSearchQuery("");
                     }}
                     className="text-gold hover:underline font-medium"
@@ -309,7 +348,14 @@ export default function PortfolioContent() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {liveProjects.map((project, idx) => (
-                  <ProjectCard key={project.id} project={project} index={idx} locale={locale} isRtl={isRtl} />
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={idx}
+                    locale={locale}
+                    isRtl={isRtl}
+                    onSelect={setSelectedProject}
+                  />
                 ))}
               </div>
             </div>
@@ -356,7 +402,14 @@ export default function PortfolioContent() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {customProjects.map((project, idx) => (
-                  <ProjectCard key={project.id} project={project} index={idx} locale={locale} isRtl={isRtl} />
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={idx}
+                    locale={locale}
+                    isRtl={isRtl}
+                    onSelect={setSelectedProject}
+                  />
                 ))}
               </div>
             </div>
@@ -547,6 +600,15 @@ export default function PortfolioContent() {
             </div>
           </div>
         </section>
+        {/* ── 7. Case Study Quick-View Modal ── */}
+        {selectedProject && (
+          <CaseStudyModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            locale={locale}
+            isRtl={isRtl}
+          />
+        )}
       </main>
 
       <Footer />
@@ -560,11 +622,13 @@ function ProjectCard({
   index,
   locale,
   isRtl,
+  onSelect,
 }: {
   project: ProjectItem;
   index: number;
   locale: string;
   isRtl: boolean;
+  onSelect: (p: ProjectItem) => void;
 }) {
   const isLive = project.status === "live" && Boolean(project.url);
 
@@ -605,7 +669,10 @@ function ProjectCard({
         </div>
 
         {/* Image Preview Container */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/90">
+        <div
+          onClick={() => onSelect(project)}
+          className="relative aspect-[16/10] w-full overflow-hidden bg-black/90 cursor-pointer"
+        >
           <Image
             src={project.image}
             alt={locale === "en" ? project.titleEn : project.title}
@@ -617,11 +684,17 @@ function ProjectCard({
           {/* Subtle gradient scrim */}
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
 
-          {/* Category Badge */}
-          <div className={`absolute top-3.5 ${isRtl ? "right-3.5" : "left-3.5"} z-10`}>
+          {/* Badges Container */}
+          <div className={`absolute top-3.5 ${isRtl ? "right-3.5" : "left-3.5"} z-10 flex flex-wrap items-center gap-2`}>
             <span className="rounded-full border border-black/40 bg-black/80 backdrop-blur-md px-3.5 py-1 text-[11px] font-bold text-gold shadow-md">
               {locale === "en" ? project.nicheEn : project.niche}
             </span>
+            {project.hasSmartConsultation && (
+              <span className="rounded-full border border-gold/50 bg-black/85 backdrop-blur-md px-3 py-1 text-[11px] font-extrabold text-gold shadow-gold-sm inline-flex items-center gap-1.5">
+                <Sparkles className="h-3 w-3 text-gold animate-pulse" />
+                <span>{locale === "fa" ? "مشاوره هوشمند" : locale === "ar" ? "استشارة ذكية" : "AI Quiz"}</span>
+              </span>
+            )}
           </div>
         </div>
 
@@ -630,7 +703,10 @@ function ProjectCard({
           {/* Header & Subtitle */}
           <div>
             <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-              <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-gold transition-colors duration-300">
+              <h3
+                onClick={() => onSelect(project)}
+                className="text-xl sm:text-2xl font-black text-white group-hover:text-gold transition-colors duration-300 cursor-pointer"
+              >
                 {locale === "en" ? project.titleEn : project.title}
               </h3>
               {project.domain && (
@@ -647,6 +723,18 @@ function ProjectCard({
             <p className="text-sm leading-relaxed text-muted-foreground mt-3">
               {locale === "en" ? project.descEn : project.desc}
             </p>
+
+            {/* Smart Consultation Highlight Callout */}
+            {project.consultationHighlight && (
+              <div className="mt-3.5 rounded-2xl border border-gold/30 bg-gold/[0.08] p-3 text-xs text-gold flex items-center gap-2 shadow-sm">
+                <Sparkles className="h-4 w-4 text-gold shrink-0" />
+                <span className="font-semibold leading-relaxed">
+                  {locale === "en"
+                    ? project.consultationHighlightEn || project.consultationHighlight
+                    : project.consultationHighlight}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* High-Value Highlights (Top 3 key points with clean airy rhythm) */}
@@ -674,34 +762,208 @@ function ProjectCard({
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
               {isLive ? (
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-xs sm:text-sm font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-gold px-4 py-3 text-xs sm:text-sm font-black text-gold-foreground shadow-gold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span>{locale === "fa" ? "مشاهده وب‌سایت آنلاین" : locale === "ar" ? "زيارة الموقع الحي" : "Visit Live Website"}</span>
+                  <span>{locale === "fa" ? "مشاهده سایت" : locale === "ar" ? "زيارة الموقع" : "Visit Live"}</span>
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               ) : (
-                <span className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-xs sm:text-sm font-bold text-white/40 cursor-default">
-                  <span>{locale === "fa" ? "سیستم اختصاصی / کانسپت" : "Custom System"}</span>
+                <span className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-xs sm:text-sm font-bold text-white/40 cursor-default">
+                  <span>{locale === "fa" ? "سیستم اختصاصی" : "Custom System"}</span>
                 </span>
               )}
+
+              <button
+                type="button"
+                onClick={() => onSelect(project)}
+                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gold/30 bg-gold/5 px-3.5 py-3 text-xs sm:text-sm font-bold text-gold hover:bg-gold/20 hover:border-gold transition-all duration-300"
+              >
+                <span>{locale === "fa" ? "کیس استادی" : locale === "ar" ? "التفاصيل" : "Case Study"}</span>
+              </button>
 
               <Link
                 href={`/contact/?service=website&ref=${encodeURIComponent(project.title)}`}
                 prefetch={false}
-                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs sm:text-sm font-bold text-white hover:border-gold/40 hover:text-gold transition-all duration-300"
+                className="inline-flex items-center justify-center gap-1 rounded-full border border-white/15 bg-white/5 px-3.5 py-3 text-xs sm:text-sm font-bold text-white hover:border-gold/40 hover:text-gold transition-all duration-300"
               >
-                <span>{locale === "fa" ? "سفارش مشابه" : locale === "ar" ? "طلب مماثل" : "Order Similar"}</span>
+                <span>{locale === "fa" ? "مشابه این" : locale === "ar" ? "طلب مماثل" : "Order"}</span>
               </Link>
             </div>
           </div>
         </div>
       </div>
     </article>
+  );
+}
+
+// ── Subcomponent: Case Study Quick-View Floating Modal ──
+function CaseStudyModal({
+  project,
+  onClose,
+  locale,
+  isRtl,
+}: {
+  project: ProjectItem;
+  onClose: () => void;
+  locale: string;
+  isRtl: boolean;
+}) {
+  const isLive = project.status === "live" && Boolean(project.url);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md transition-all duration-300"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-gold/40 bg-surface/95 p-6 sm:p-8 shadow-2xl backdrop-blur-xl text-foreground"
+        onClick={(e) => e.stopPropagation()}
+        dir={isRtl ? "rtl" : "ltr"}
+      >
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-5 end-5 rounded-full border border-white/15 bg-white/10 p-2 text-white/80 hover:bg-white/20 hover:text-white transition"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        {/* Modal Header */}
+        <div className="mb-6 pe-10">
+          <div className="flex flex-wrap items-center gap-2.5 mb-2">
+            <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-bold text-gold">
+              {locale === "en" ? project.nicheEn : project.niche}
+            </span>
+            {isLive ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 px-3 py-1 text-xs font-black text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>{locale === "fa" ? "سایت آنلاین و فعال" : "LIVE"}</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 rounded-full bg-gold/20 border border-gold/40 px-3 py-1 text-xs font-black text-gold">
+                <span>{project.status === "proprietary" ? "CUSTOM" : "CONCEPT"}</span>
+              </span>
+            )}
+            {project.hasSmartConsultation && (
+              <span className="rounded-full border border-gold/50 bg-gold/15 px-3 py-1 text-xs font-black text-gold inline-flex items-center gap-1.5 shadow-sm">
+                <Sparkles className="h-3 w-3 text-gold" />
+                <span>{locale === "fa" ? "سیستم مشاوره هوشمند" : "AI Quiz & Consultation"}</span>
+              </span>
+            )}
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-black text-white">
+            {locale === "en" ? project.titleEn : project.title}
+          </h3>
+          <p className="text-sm sm:text-base font-semibold text-gold/90 mt-1">
+            {locale === "en" ? project.subtitleEn : project.subtitle}
+          </p>
+        </div>
+
+        {/* Big Preview Mockup */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black mb-6 shadow-xl">
+          <Image
+            src={project.image}
+            alt={locale === "en" ? project.titleEn : project.title}
+            fill
+            sizes="800px"
+            className="object-cover object-top"
+          />
+        </div>
+
+        {/* Narrative Description */}
+        <div className="mb-6 space-y-3">
+          <h4 className="text-sm font-bold text-white uppercase tracking-wider">
+            {locale === "fa" ? "داستان و راهکار پیاده‌شده:" : "Project Solution & Impact:"}
+          </h4>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            {locale === "en" ? project.descEn : project.desc}
+          </p>
+        </div>
+
+        {/* Smart Consultation Callout if Present */}
+        {project.consultationHighlight && (
+          <div className="mb-6 rounded-2xl border border-gold/30 bg-gold/10 p-4 text-xs sm:text-sm text-gold">
+            <div className="flex items-center gap-2 font-black mb-1">
+              <Sparkles className="h-4 w-4 text-gold shrink-0" />
+              <span>{locale === "fa" ? "سیستم مشاوره و تشخیص هوشمند:" : "Smart Recommendation Engine:"}</span>
+            </div>
+            <p className="leading-relaxed opacity-90 ps-6">
+              {locale === "en"
+                ? project.consultationHighlightEn || project.consultationHighlight
+                : project.consultationHighlight}
+            </p>
+          </div>
+        )}
+
+        {/* Deliverables & Features */}
+        <div className="mb-6 space-y-3">
+          <h4 className="text-sm font-bold text-white uppercase tracking-wider">
+            {locale === "fa" ? "دستاوردها و قابلیت‌های پیاده‌سازی‌شده:" : "Key Technical Deliverables:"}
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {(locale === "en" ? project.featuresEn : project.features).map((feat, fIdx) => (
+              <div
+                key={fIdx}
+                className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-white/[0.03] p-3 text-xs sm:text-sm text-foreground/90 leading-snug"
+              >
+                <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+                <span>{feat}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech Stack */}
+        <div className="mb-8">
+          <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2.5">
+            {locale === "fa" ? "پشته فنی و ابزارها (Tech Stack):" : "Tech Stack & Frameworks:"}
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tech, tIdx) => (
+              <span
+                key={tIdx}
+                className="rounded-lg border border-gold/20 bg-gold/5 px-3 py-1.5 text-xs font-semibold text-gold"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Modal CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-5 border-t border-white/10">
+          {isLive && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-6 py-3.5 text-xs sm:text-sm font-black text-gold-foreground shadow-gold hover:scale-105 active:scale-95 transition"
+            >
+              <span>{locale === "fa" ? "مشاهده سایت آنلاین" : locale === "ar" ? "زيارة الموقع الحي" : "Open Live Site"}</span>
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          )}
+
+          <Link
+            href={`/contact/?service=website&ref=${encodeURIComponent(project.title)}`}
+            prefetch={false}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 bg-surface px-6 py-3.5 text-xs sm:text-sm font-bold text-white hover:border-gold hover:text-gold transition"
+          >
+            <span>{locale === "fa" ? "درخواست طراحی مشابه این" : "Inquire Similar System"}</span>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -12,6 +12,8 @@ export type Project = {
   status?: "live" | "proprietary" | "concept";
   niche?: string;
   techStack?: string[];
+  hasSmartConsultation?: boolean;
+  consultationHighlight?: string;
 };
 
 export const projects: Project[] = ALL_PROJECTS.map((item) => ({
@@ -24,6 +26,8 @@ export const projects: Project[] = ALL_PROJECTS.map((item) => ({
   status: item.status,
   niche: item.niche,
   techStack: item.techStack,
+  hasSmartConsultation: item.hasSmartConsultation,
+  consultationHighlight: item.consultationHighlight,
 }));
 
 export const filters: { key: Category; label: string }[] = [

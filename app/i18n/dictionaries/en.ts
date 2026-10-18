@@ -97,6 +97,10 @@ const en: Dictionary = {
     openPrefix: "Open",
     fallbackCategory: "Project",
     projects: {
+      "۵ ستاره (5Setare)": "Smart B2B local SEO platform boosting Google Maps rankings, 5-star reviews and business directories",
+      "قهوه فلای (Fly Coffee)": "Specialty coffee roastery e-commerce featuring AI barista taste profiler and installment payments",
+      "لیدی‌کوین (Lady Coin)": "Clean skincare and beauty boutique with smart diagnostic routine quiz and cosmetic shade matcher",
+      "نداهیر | NedaHair (طب ایرانی)": "Holistic hair regrowth therapy center featuring root-cause coldness diagnosis and 6,200+ case studies",
       "گالری فرش دهقانی": "Handmade and modern Persian carpet e-commerce with rich catalogs and SMS login",
       "کافه ایلا": "Interactive digital menu and brand showcase for specialty coffee house with instant QR access",
       "گیم لند": "High-volume gaming platform for Call of Duty CP and game top-ups with instant delivery",
