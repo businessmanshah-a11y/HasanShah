@@ -6,7 +6,8 @@ import {
   Sparkles,
   Calendar,
   Share2,
-  PhoneCall,
+  Printer,
+  FileDown,
   Send,
   ChevronLeft,
   ChevronDown,
@@ -203,6 +204,15 @@ export default function ShogunProposalPage() {
 
         {/* Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href="/clients/shogun-garage/print"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs sm:text-sm text-neutral-300 hover:text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-white/10 transition-colors"
+          >
+            <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
+            <span className="hidden sm:inline font-medium">نسخه چاپی و PDF</span>
+          </a>
           <button
             onClick={handleShare}
             className="flex items-center gap-1.5 text-xs sm:text-sm text-neutral-300 hover:text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-white/10 transition-colors"
@@ -279,9 +289,9 @@ export default function ShogunProposalPage() {
         </div>
 
         {/* Center Minimal Punchy Headline */}
-        <div className="relative z-10 my-auto max-w-4xl space-y-4 py-6">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.18]">
-            مرجع مهندسی، تجهیز و بازسازی <br />
+        <div className="relative z-10 my-auto max-w-4xl space-y-3 py-4">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+            <span>مرجع مهندسی و تجهیز </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-red-500 via-orange-500 to-amber-200">
               خودروهای بیراهه‌نورد
             </span>
@@ -293,7 +303,7 @@ export default function ShogunProposalPage() {
           </div>
 
           <p className="text-neutral-200 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal">
-            پروپوزال اختصاصی شوگان گاراژ؛ شورووم مهندسی قطعات، هاب خدمات کارگاهی، سامانه هوشمند مشاوره و کلوب اختصاصی بیراهه‌نوردان.
+            پروپوزال اختصاصی شوگان گاراژ؛ شورووم قطعات، خدمات کارگاهی و کلوب ماجراجویی.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-3">
@@ -325,7 +335,7 @@ export default function ShogunProposalPage() {
           </div>
           <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
             <div className="text-2xl sm:text-3xl font-black text-white">۱۰۰٪</div>
-            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">کدنویسی اختصاصی</div>
+            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">کدنویسی اختصاصی PHP</div>
           </div>
           <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
             <div className="text-2xl sm:text-3xl font-black text-orange-400">۸ اسلاید</div>
@@ -344,13 +354,13 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            چرا شوگان شایسته فراتر از سایت‌سازهای معمولی است؟
+            تمایز شورووم شوگان با سایت‌سازهای معمولی
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             GAP ANALYSIS & BRAND PRESTIGE // ۰۲
           </div>
           <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
-            مقایسه رویکرد فروشگاه‌های قالبی متداول بازار با استانداردهای پرچمدار شوگان گاراژ.
+            مقایسه رویکرد فروشگاه‌های قالبی متداول بازار با استانداردهای اختصاصی شوگان گاراژ.
           </p>
         </div>
 
@@ -368,7 +378,7 @@ export default function ShogunProposalPage() {
             <ul className="space-y-3 text-sm sm:text-base text-neutral-300 font-medium">
               <li className="flex items-start gap-2.5">
                 <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
-                <span>قالب‌های خشک و آماده بدون هویت آفرود ژاپنی</span>
+                <span>قالب‌های کند و سنگین آماده بدون هویت آفرود ژاپنی</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
@@ -390,7 +400,7 @@ export default function ShogunProposalPage() {
             <div className="flex items-center justify-between pb-3.5 border-b border-red-500/25">
               <span className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-red-500 shrink-0" />
-                معماری اختصاصی شوگان (سبک Camber)
+                معماری اختصاصی شوگان (PHP و وردپرس)
               </span>
               <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-red-600 text-white font-bold">
                 HIGH PERFORMANCE
@@ -399,15 +409,15 @@ export default function ShogunProposalPage() {
             <ul className="space-y-3 text-sm sm:text-base text-neutral-100 font-medium">
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
-                <span>دیزاین دارک صنعتی، سرعت خیره‌کننده و هویت سامورایی</span>
+                <span>کدنویسی اختصاصی با PHP بدون قالب‌های آماده و سنگین</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
-                <span>فیلتر قطعی قطعات بر اساس شاسی (جیمنی، پرادو، هایلوکس)</span>
+                <span>یکپارچه‌سازی با ووکامرس و فیلتر قطعات بر اساس شاسی خودرو</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
-                <span>هاب معرفی لاین‌های خدمات کارگاه با تقویم نوبت‌دهی</span>
+                <span>پنل ادمین اختصاصی، امن و پرسرعت برای مدیریت آسان</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
@@ -442,7 +452,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            ویترین مهندسی قطعات؛ سازگاری قطعی با خودرو
+            کاتالوگ مهندسی و سازگاری قطعات با خودرو
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             PARTS CATALOGUE & FITMENT VERIFICATION // ۰۳
@@ -729,16 +739,16 @@ export default function ShogunProposalPage() {
               </p>
             </div>
 
-            <a
-              href={`https://wa.me/989120870095?text=${encodeURIComponent(`سلام، برای خودروی ${VEHICLES.find(v => v.id === selectedVehicle)?.name} در سبک ${STYLES.find(s => s.id === selectedStyle)?.name} مشاوره می‌خواهم.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setAdvisorConsulted(true)}
+            <button
+              onClick={() => {
+                setAdvisorConsulted(true);
+                toast.success("درخواست مشاوره و برآورد تجهیز با موفقیت ثبت شد.");
+              }}
               className="shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm px-5 py-3 rounded-xl font-bold shadow-lg shadow-red-600/30 transition-all hover:scale-105 active:scale-95"
             >
-              <Send className="w-4 h-4" />
-              <span>{advisorConsulted ? "ارسال به واتس‌اپ شوگان" : "دریافت مشاوره و برآورد تجهیز"}</span>
-            </a>
+              <Check className="w-4 h-4" />
+              <span>{advisorConsulted ? "درخواست مشاوره ثبت شد" : "دریافت مشاوره و برآورد تجهیز"}</span>
+            </button>
           </div>
         </div>
 
@@ -896,15 +906,15 @@ export default function ShogunProposalPage() {
           {/* Step 3 */}
           <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
             <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام سوم · هفته ۴-۶</span>
-            <h3 className="font-extrabold text-base sm:text-lg text-white">کدنویسی و فیچرها</h3>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">کدنویسی اختصاصی قالب و افزونه‌ها</h3>
             <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
               <li className="flex items-start gap-1.5">
                 <span className="text-red-500 font-bold">•</span>
-                <span>توسعه کاتالوگ قطعات و سیستم استعلام</span>
+                <span>توسعه قالب اختصاصی PHP، ووکامرس و پنل ادمین</span>
               </li>
               <li className="flex items-start gap-1.5">
                 <span className="text-red-500 font-bold">•</span>
-                <span>سامانه نوبت‌دهی و مشاوره هوشمند</span>
+                <span>ماژول استعلام قطعات و رزرو تقویمی نوبت</span>
               </li>
             </ul>
           </div>
@@ -982,15 +992,19 @@ export default function ShogunProposalPage() {
               <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-200 font-medium mt-4">
                 <li className="flex items-center gap-2.5">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>کدنویسی ۱۰۰٪ اختصاصی با ری‌اکت و نکست‌جی‌اس</span>
+                  <span>کدنویسی ۱۰۰٪ اختصاصی قالب با PHP بر پایه وردپرس</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>کاتالوگ مهندسی قطعات با استعلام مستقیم</span>
+                  <span>کاتالوگ قطعات مهندسی هماهنگ با هسته ووکامرس</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>معرفی ۴ لاین خدمات کارگاهی گلگون و فرم نوبت</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>پنل ادمین اختصاصی، امن و پرسرعت برای مدیریت آسان</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -1078,30 +1092,17 @@ export default function ShogunProposalPage() {
           </div>
         </div>
 
-        {/* Footer Contact Details with User's Exact Phone Number */}
+        {/* Footer Status & Readiness (NO CONTACT INFO) */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 rounded-xl bg-neutral-900 border border-white/10 text-xs sm:text-sm">
           <div className="flex items-center gap-2 text-neutral-300 text-center sm:text-right">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-            <span className="font-medium">آماده شروع فاز اول تحقیقات و طراحی هویت بصری شوگان گاراژ</span>
+            <span className="font-medium">پروپوزال آماده تایید نهایی و عقد قرارداد توسعه فنی</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <a
-              href="tel:09120870095"
-              className="flex items-center gap-1.5 text-neutral-100 hover:text-white px-3.5 py-2 rounded-lg bg-neutral-800 border border-white/10 transition-colors font-mono font-bold"
-            >
-              <PhoneCall className="w-4 h-4 text-red-400" />
-              <span>۰۹۱۲۰۸۷۰۰۹۵</span>
-            </a>
-            <a
-              href="https://wa.me/989120870095?text=سلام%20حسن%20جان،%20پروپوزال%20شوگان%20گاراژ%20را%20بررسی%20کردم"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-white font-bold px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95"
-            >
-              <Send className="w-4 h-4" />
-              <span>پیام در واتس‌اپ</span>
-            </a>
+          <div className="flex items-center gap-2 text-neutral-400 font-mono text-xs">
+            <span className="px-3 py-1.5 rounded-lg bg-neutral-800 border border-white/10 text-neutral-300 font-bold">
+              SHOGUN 4X4 GARAGE · نسخه رسمی سند راهبردی
+            </span>
           </div>
         </div>
       </section>
