@@ -198,7 +198,7 @@ export default function ContactContent() {
               <ul className="space-y-3 text-xs sm:text-sm text-muted-foreground">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />
-                  <span><strong>سایت تک‌صفحه‌ای آزمایشی در ۷۲ ساعت:</strong> بدون پیش‌پرداخت، با مهلت یک ماه برای بررسی و تصمیم‌گیری.</span>
+                  <span><strong>توسعه پروتوتایپ و سیستم اختصاصی:</strong> پیاده‌سازی سریع معماری پروژه با مهندسی مدرن و بالاترین استانداردهای UI/UX.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />

@@ -5,7 +5,7 @@ import { VibeCodingBreadcrumbJsonLd, VibeCodingCourseJsonLd, VibeCodingEventJson
 export const metadata: Metadata = {
   title: "آموزش وایب‌کدینگ از صفر تا ساخت محصول با هوش مصنوعی",
   description:
-    "یاد بگیر با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال واقعی تبدیل کنی. پیش‌تولید ایده، پرامپت‌نویسی و دورهمی حضوری رایگان وایب‌کدینگ در تهران.",
+    "یاد بگیر با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال واقعی تبدیل کنی. پیش‌تولید ایده، پرامپت‌نویسی و دورهمی حضوری تخصصی وایب‌کدینگ در تهران.",
   keywords: [
     "آموزش وایب‌کدینگ",
     "وایب کدینگ",
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     siteName: "حسن شاهمرادی",
     title: "آموزش وایب‌کدینگ از صفر تا ساخت محصول",
     description:
-      "با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال تبدیل کن. دورهمی حضوری رایگان + سرفصل کامل.",
+      "با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال تبدیل کن. دورهمی حضوری تخصصی + سرفصل کامل.",
     url: "https://hasanshah.ir/vibe-coding",
     images: [
       {
         url: "/images/profile.webp",
         width: 1200,
         height: 630,
-        alt: "آموزش وایب‌کدینگ با حسن شاهمرادی — دورهمی حضوری رایگان تهران",
+        alt: "آموزش وایب‌کدینگ با حسن شاهمرادی — دورهمی حضوری وایب‌کدینگ تهران",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "آموزش وایب‌کدینگ از صفر | حسن شاهمرادی",
     description:
-      "با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال تبدیل کن. دورهمی حضوری رایگان.",
+      "با Cursor، Claude و Codex ایده‌ات را به محصول دیجیتال تبدیل کن. دورهمی حضوری تخصصی.",
     images: ["/images/profile.webp"],
     creator: "@hasanshah",
   },

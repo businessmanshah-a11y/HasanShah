@@ -16,14 +16,14 @@ const en: Dictionary = {
     services: "Services",
     portfolio: "Work",
     contact: "Contact",
-    cta: "Free Consultation",
+    cta: "Strategic Consultation",
     menu: "Menu",
   },
 
   hero: {
-    badge: "Free Consultation",
+    badge: "Strategic Consultation",
     title: "Let's turn your *idea* into a digital product",
-    desc: "Website, app, training, or startup — one free consultation session is all it takes to map out your path.",
+    desc: "Website, app, training, or startup — one strategic consultation session is all it takes to map out your path.",
     ctaPrimary: "Request Consultation",
     ctaSecondary: "See the work",
   },
@@ -118,11 +118,11 @@ const en: Dictionary = {
     badge: "Why consult?",
     title: "One session is all it takes to *clarify your path*",
     items: [
-      { title: "It's free", desc: "No charge for the consultation session" },
+      { title: "In-depth audit", desc: "Evaluate project feasibility and technical requirements" },
       { title: "No commitment", desc: "We just map out your path — no contract required" },
       { title: "Quick & online", desc: "30-minute online session — from anywhere" },
     ],
-    cta: "Request a free consultation",
+    cta: "Request a strategic consultation",
   },
 
   footer: {
@@ -134,9 +134,9 @@ const en: Dictionary = {
 
   vibeCodingPromo: {
     ariaLabel: "Vibe coding course",
-    badge: "Free vibe coding course & meetup",
+    badge: "In-person vibe coding course & meetup",
     title: "Want to learn how to turn your idea into a product with AI?",
-    desc: "The vibe coding page is ready, from zero: the curriculum, the tools, and early registration for the free in-person meetup. Take a look.",
+    desc: "The vibe coding page is ready, from zero: the curriculum, the tools, and early registration for the in-person meetup. Take a look.",
     cta: "Go to the course",
   },
 
@@ -149,7 +149,7 @@ const en: Dictionary = {
   },
 
   consultForm: {
-    title: "Request a *Free Consultation*",
+    title: "Request a *Strategic Consultation*",
     subtitle: "Tell us what you need so we can find the best path forward",
     serviceTitle: "How can I help?",
     services: {
@@ -288,7 +288,7 @@ const en: Dictionary = {
     heroBadge: "Vibe coding — from zero to working product",
     heroTitle: "Take your idea from words to a real product with AI",
     heroDesc: "A straightforward roadmap for vibe coding: where to start, which accounts you need, and how to move an idea forward step by step with Cursor, Claude, and Codex.",
-    heroCtaWorkshop: "Free meetup — sign up",
+    heroCtaWorkshop: "In-person meetup — sign up",
     heroCtaCurriculum: "See the curriculum",
     heroSteps: ["Raw idea", "Pre-production and product map", "Build v1 with AI", "Test, fix, and ship"],
 
@@ -342,7 +342,7 @@ const en: Dictionary = {
     workshopReadyTitle: "The response was incredible!",
     workshopReadyDesc: "Every spot filled up within days. Follow us to be the first to know about our next meetups and webinars.",
 
-    workshopBadgeFree: "Free in-person meetup",
+    workshopBadgeFree: "Specialized in-person meetup",
     workshopBadgeCapacity: "Sold out",
     workshopUrgencyJoined: "30 people signed up",
     workshopUrgencySpotsLeft: "Fully booked",
@@ -358,7 +358,7 @@ const en: Dictionary = {
     workshopCountdownMinutes: "min",
     workshopCountdownSeconds: "sec",
     workshopCountdownLive: "The meetup has started",
-    workshopFormTitle: "Free registration — vibe coding meetup",
+    workshopFormTitle: "Registration — vibe coding meetup",
     workshopFormDesc: "Next week, we're going through vibe coding from scratch in plain language: from choosing your tools to turning a raw idea into something testable. Sign up now and reserve your spot.",
     workshopEventDate: "Thursday, June 18, 2026",
     workshopEventTime: "11:00 – 13:00",
@@ -376,7 +376,7 @@ const en: Dictionary = {
     workshopPlaceholderName: "e.g. Ali Mohammadi",
     workshopLabelPhone: "Phone number",
     workshopPlaceholderPhone: "09120000000",
-    workshopSubmitBtn: "Sign me up — it's free",
+    workshopSubmitBtn: "Confirm registration",
     workshopDoneTitle: "You're registered. We'll be in touch soon.",
     workshopDoneDesc: "If you made a mistake with the number, just fill out the form again.",
     workshopValidationMsg: "Enter your name and phone number to continue.",
@@ -441,8 +441,8 @@ const en: Dictionary = {
     emptyBtn: "View All Articles",
     ctaBadge: "Direct Consultation with Hasan",
     ctaTitle: "Want to build a high-converting website for your business?",
-    ctaDesc: "In a free 30-minute session, we'll map out a clear path to turn visitors into loyal paying clients.",
-    ctaBtn: "Book Free Consultation",
+    ctaDesc: "In a 30-minute strategic session, we'll map out a clear path to turn visitors into loyal paying clients.",
+    ctaBtn: "Book Strategic Consultation",
   },
 
   blogDetail: {
@@ -458,10 +458,10 @@ const en: Dictionary = {
     tagsLabel: "Related Tags:",
     aboutAuthor: "About the Author",
     bookConsultation: "Book an online consultation with me",
-    sidebarWidgetBadge: "Free 30-Min Consultation",
+    sidebarWidgetBadge: "Strategic 30-Min Consultation",
     sidebarWidgetTitle: "Want to launch a custom site for your brand?",
     sidebarWidgetDesc: "Luxury landing pages, vibe coding, and high-impact lead generation strategies for your business.",
-    sidebarWidgetBtn: "Book Free Consultation",
+    sidebarWidgetBtn: "Book Strategic Consultation",
     relatedHeading: "Recommended Reading",
     relatedSubtitle: "Related Guides & Articles",
     viewAll: "View All",

@@ -572,10 +572,10 @@ export default function PortfolioContent() {
                   >
                     <span>
                       {locale === "fa"
-                        ? "درخواست مشاوره رایگان ۳۰ دقیقه‌ای"
+                        ? "درخواست مشاوره استراتژیک ۳۰ دقیقه‌ای"
                         : locale === "ar"
-                        ? "طلب استشارة مجانية لمدة ۳۰ دقيقة"
-                        : "Book Free 30-Min Consultation"}
+                        ? "طلب استشارة استراتيجية لمدة ۳۰ دقيقة"
+                        : "Book Strategic 30-Min Consultation"}
                     </span>
                     <ArrowForward className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                   </Link>

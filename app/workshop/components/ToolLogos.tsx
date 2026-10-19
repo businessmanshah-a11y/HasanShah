@@ -148,7 +148,7 @@ export const CONFIG: Record<ToolLogoName, { label: string; tagline: string; colo
   },
   codium: {
     label: 'Codeium',
-    tagline: 'دستیار کدنویسی با توکن رایگان زیاد',
+    tagline: 'دستیار کدنویسی با اعتبار هدیه بالا',
     color: 'oklch(0.72 0.14 158)',
   },
   openrouter: {

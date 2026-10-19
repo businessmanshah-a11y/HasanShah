@@ -115,10 +115,10 @@ export function MainPageFaqJsonLd() {
       },
       {
         "@type": "Question",
-        name: "سایت رایگان حسن شاهمرادی چیست؟",
+        name: "خدمات طراحی وب‌سایت و توسعه حسن شاهمرادی چیست؟",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "حسن شاهمرادی یک سایت تک‌صفحه‌ای اختصاصی رایگان طراحی و حداکثر ظرف ۷۲ ساعت روی دامنه آزمایشی تحویل می‌دهد. هیچ پیش‌پرداخت یا پیش‌شرطی لازم نیست.",
+          text: "طراحی و توسعه پلتفرم‌های اختصاصی، وب‌سایت‌های مهندسی و فروشگاهی مدرن با انیمیشن‌های پیشرفته، معماری فرانت‌اند مقیاس‌پذیر و بالاترین پرفورمنس.",
         },
       },
       {
@@ -268,13 +268,13 @@ export function VibeCodingEventJsonLd() {
     "@context": "https://schema.org",
     "@type": "Event",
     "@id": `${BASE}/vibe-coding#event`,
-    name: "Free In-Person Vibe Coding Meetup — Tehran",
+    name: "In-Person Vibe Coding Meetup — Tehran",
     alternateName: [
-      "دورهمی آموزشی حضوری رایگان وایب‌کدینگ — تهران",
-      "لقاء Vibe Coding الحضوري المجاني — طهران",
+      "دورهمی آموزشی حضوری وایب‌کدینگ — تهران",
+      "لقاء Vibe Coding الحضوري — طهران",
     ],
     description:
-      "A free in-person meetup to learn vibe coding from scratch — from choosing tools to turning a raw idea into a testable product with AI.",
+      "An in-person meetup to learn vibe coding from scratch — from choosing tools to turning a raw idea into a testable product with AI.",
     url: `${BASE}/vibe-coding#workshop`,
     startDate: "2026-06-18T11:00:00+03:30",
     endDate: "2026-06-18T13:00:00+03:30",
@@ -360,7 +360,7 @@ export function VibeCodingFaqJsonLd() {
         name: "دورهمی وایب‌کدینگ کجاست؟",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "دورهمی حضوری رایگان وایب‌کدینگ در تهران برگزار می‌شود. ظرفیت از شنبه ۲۳ خرداد باز می‌شود. با پیش‌ثبت‌نام اول خبر می‌گیری.",
+          text: "دورهمی حضوری وایب‌کدینگ در تهران برگزار می‌شود. ظرفیت از شنبه ۲۳ خرداد باز می‌شود. با پیش‌ثبت‌نام اول خبر می‌گیری.",
         },
       },
       // English
@@ -579,7 +579,7 @@ export function ProfessionalServiceJsonLd() {
     logo: `${BASE}/images/logo.webp`,
     image: `${BASE}/images/profile.webp`,
     description:
-      "طراحی لندینگ‌پیج‌های اختصاصی پرفروش با تحویل سریع ۷۲ ساعته و آموزش مهندسی وایب‌کدینگ با هوش مصنوعی.",
+      "طراحی و توسعه پلتفرم‌های اختصاصی، وب‌سایت‌های مدرن و شورووم‌های تعاملی و آموزش تخصصی وایب‌کدینگ با هوش مصنوعی.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "IR",
@@ -597,15 +597,13 @@ export function ProfessionalServiceJsonLd() {
       itemListElement: [
         {
           "@type": "Offer",
-          name: "طراحی سایت تک‌صفحه‌ای اختصاصی رایگان (۷۲ ساعته)",
-          description: "طراحی لندینگ‌پیج سفارشی بدون پیش‌پرداخت و تحویل در ۷۲ ساعت روی دامنه آزمایشی.",
-          price: "0",
-          priceCurrency: "IRR",
+          name: "طراحی و توسعه پلتفرم وب اختصاصی",
+          description: "طراحی رابط کاربری پریمیوم، کدنویسی ۱۰۰٪ اختصاصی با Next.js و تضمین ۱ سال پشتیبانی فنی کامل.",
         },
         {
           "@type": "Offer",
-          name: "آموزش و مشاوره وایب‌کدینگ با هوش مصنوعی",
-          description: "آموزش تبدیل ایده به محصول تجاری با ابزارهای Cursor، Claude و Codex.",
+          name: "آموزش و ارکستراسیون وایب‌کدینگ با هوش مصنوعی",
+          description: "آموزش تبدیل ایده به محصول تجاری با ابزارهای هوش مصنوعی و معماری مدرن فرانت‌اند.",
         },
       ],
     },

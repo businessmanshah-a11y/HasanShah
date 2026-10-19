@@ -351,7 +351,7 @@ export default function VisakadeProposalPage() {
                 ۱ سال <span className="text-[11px] sm:text-xs font-normal text-slate-400">پشتیبانی</span>
               </div>
               <div className="text-[10px] sm:text-[11px] text-amber-400/90 mt-1 truncate">
-                رایگان و رفع باگ
+                تضمینی و رفع باگ
               </div>
             </div>
           </div>
@@ -737,7 +737,7 @@ export default function VisakadeProposalPage() {
               </div>
               <div>
                 <h4 className="font-bold text-white text-sm sm:text-base mb-1">
-                  پشتیبانی فنی رایگان به مدت ۱ سال کامل
+                  پشتیبانی فنی تضمین‌شده به مدت ۱ سال کامل
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   تضمین آپ‌تایم، رفع سریع هرگونه باگ، مانیتورینگ سلامت سرور و
@@ -747,7 +747,7 @@ export default function VisakadeProposalPage() {
               </div>
             </div>
             <span className="rounded-lg bg-amber-400/10 text-amber-300 border border-amber-400/30 text-[11px] font-bold px-3 py-1 shrink-0">
-              ارزش افزوده رایگان
+              ارزش افزوده ویژه
             </span>
           </div>
         </div>

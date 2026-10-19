@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
-  title: "تماس با حسن شاهمرادی | مشاوره رایگان طراحی سایت و آموزش وایب‌کدینگ",
+  title: "تماس با حسن شاهمرادی | مشاوره تخصصی طراحی سایت و آموزش وایب‌کدینگ",
   description:
     "ارتباط مستقیم و ثبت درخواست مشاوره برای طراحی وب‌سایت‌های مدرن، سیستم‌های اختصاصی و یادگیری وایب‌کدینگ با هوش مصنوعی همراه با حسن شاهمرادی.",
   keywords: [

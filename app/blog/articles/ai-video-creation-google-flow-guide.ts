@@ -98,7 +98,7 @@ export const aiVideoCreationGoogleFlowArticle: RawArticle = {
           title: "استودیو تدوین و مونتاژ Google Vids",
           url: "https://vids.google.com",
           description: "پلتفرم ابری گوگل برای تدوین، چیدمان سکانس‌ها، زیرنویس خودکار و صداگذاری",
-          badge: "تدوین رایگان ابری",
+          badge: "تدوین ابری هوشمند",
           icon: "external",
         },
         {
