@@ -3,13 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
-  Wrench,
   Sparkles,
   Calendar,
   Share2,
   PhoneCall,
   Send,
-  Zap,
   ChevronLeft,
   ChevronDown,
   Check,
@@ -22,7 +20,9 @@ import {
   Mountain,
   Compass,
   Gauge,
-  X
+  X,
+  ShieldCheck,
+  Zap
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { toast } from "sonner";
@@ -43,7 +43,7 @@ const SLIDES: SlideData[] = [
   { id: "advisor", num: "۰۵", title: "مشاوره هوشمند خودرو", badge: "SMART ADVISOR" },
   { id: "club", num: "۰۶", title: "جیمشید و کلوب ماجراجویی", badge: "ADVENTURE CLUB" },
   { id: "roadmap", num: "۰۷", title: "نقشه راه و فازبندی", badge: "PROJECT ROADMAP" },
-  { id: "investment", num: "۰۸", title: "پلن‌های سرمایه‌گذاری", badge: "INVESTMENT & ACTION" },
+  { id: "investment", num: "۰۸", title: "پکیج‌های پیشنهادی", badge: "PROPOSED PACKAGES" },
 ];
 
 const VEHICLES = [
@@ -56,7 +56,7 @@ const VEHICLES = [
 const STYLES = [
   { id: "overland", name: "اورلندینگ و کمپینگ", icon: Compass, desc: "سفرهای طولانی، باربند، روف‌تنت و پایداری در شیب" },
   { id: "rock", name: "آفرود سنگین و صخره", icon: Mountain, desc: "انعطاف ماکزیمم، لیفت ۳ اینچ، وینچ و دف‌لاک" },
-  { id: "urban", name: "پرفورمنس و استفاده شهری", icon: Gauge, desc: "سواری نرم شهری، رینگ فورج، ترمز تقویت‌شده" },
+  { id: "urban", name: "پرفورمنس و سواری شهری", icon: Gauge, desc: "سواری نرم، رینگ فورج سبک، ترمز تقویت‌شده" },
 ];
 
 export default function ShogunProposalPage() {
@@ -83,7 +83,7 @@ export default function ShogunProposalPage() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.4,
     };
 
     const handleIntersect: IntersectionObserverCallback = (entries) => {
@@ -129,7 +129,7 @@ export default function ShogunProposalPage() {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     const deltaY = touchStartY.current - e.changedTouches[0].clientY;
-    if (Math.abs(deltaY) > 50) {
+    if (Math.abs(deltaY) > 60) {
       if (deltaY > 0 && activeSlide < SLIDES.length - 1) {
         goToSlide(activeSlide + 1);
       } else if (deltaY < 0 && activeSlide > 0) {
@@ -165,15 +165,15 @@ export default function ShogunProposalPage() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       style={{ fontFamily: "'Peyda', Tahoma, sans-serif" }}
-      className="relative w-full h-screen overflow-y-scroll snap-y snap-mandatory bg-[#0a0a0b] text-neutral-100 antialiased selection:bg-red-600 selection:text-white"
+      className="relative w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory bg-[#0a0a0b] text-neutral-100 antialiased selection:bg-red-600 selection:text-white"
       dir="rtl"
     >
       {/* ─── FIXED TOP NAV BAR ──────────────────────────────────────────────── */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-10 py-3 bg-[#0a0a0b]/90 backdrop-blur-md border-b border-white/[0.08]">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 md:px-12 py-3 bg-[#0a0a0b]/95 backdrop-blur-md border-b border-white/[0.08]">
         {/* Brand Logo & Name */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-600 to-neutral-950 border border-red-500/40 flex items-center justify-center text-white shadow-lg shadow-red-950/50">
-            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 to-neutral-950 border border-red-500/40 flex items-center justify-center text-white shadow-lg shadow-red-950/50 shrink-0">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 5h18" />
               <path d="M1 3h22" />
               <path d="M5 5v16" />
@@ -183,47 +183,47 @@ export default function ShogunProposalPage() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-sm md:text-base tracking-tight text-white">شوگان گاراژ</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-red-950/80 text-red-400 border border-red-700/50">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white">شوگان گاراژ</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-700/60 font-semibold">
                 PROPOSAL
               </span>
             </div>
-            <p className="text-[11px] text-neutral-400 hidden sm:block">مرجع تخصصی تعمیر و تجهیز خودروهای بیراهه‌نورد</p>
+            <p className="text-xs text-neutral-400 hidden sm:block">مرجع تخصصی تعمیر و تجهیز خودروهای بیراهه‌نورد</p>
           </div>
         </div>
 
         {/* Dynamic Center Slide Tracker */}
-        <div className="hidden lg:flex items-center gap-2 text-xs text-neutral-400 bg-neutral-900/90 px-4 py-1.5 rounded-full border border-white/10">
-          <span className="text-red-500 font-bold">{SLIDES[activeSlide].num}</span>
+        <div className="hidden lg:flex items-center gap-2.5 text-xs sm:text-sm text-neutral-300 bg-neutral-900/90 px-4 py-1.5 rounded-full border border-white/10 shadow-inner">
+          <span className="text-red-500 font-black">{SLIDES[activeSlide].num}</span>
           <span className="text-neutral-600">/</span>
-          <span>۰۸</span>
+          <span className="font-medium">۰۸</span>
           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse mr-1"></span>
-          <span className="text-neutral-200 mr-1 font-medium">{SLIDES[activeSlide].title}</span>
+          <span className="text-white mr-1 font-bold">{SLIDES[activeSlide].title}</span>
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 text-xs text-neutral-300 hover:text-white px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-white/10 transition-colors"
+            className="flex items-center gap-1.5 text-xs sm:text-sm text-neutral-300 hover:text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-white/10 transition-colors"
           >
-            <Share2 className="w-3.5 h-3.5 text-neutral-400" />
-            <span className="hidden sm:inline">{copied ? "کپی شد" : "اشتراک‌گذاری"}</span>
+            <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400" />
+            <span className="hidden sm:inline font-medium">{copied ? "کپی شد" : "اشتراک‌گذاری"}</span>
           </button>
           <button
             onClick={() => goToSlide(7)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-white px-4 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 shadow-md shadow-red-600/30 transition-all hover:scale-[1.02]"
+            className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-xl bg-red-600 hover:bg-red-500 shadow-md shadow-red-600/30 transition-all hover:scale-[1.02] active:scale-95"
           >
             <span>مشاهده پکیج‌ها</span>
-            <ChevronLeft className="w-3.5 h-3.5" />
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
       </header>
 
-      {/* ─── FIXED FLOATING PAGINATION (ON THE LEFT SIDE AWAY FROM RTL TEXT) ── */}
+      {/* ─── FIXED FLOATING PAGINATION (ON LEFT SIDE AWAY FROM RTL TEXT) ────── */}
       <nav
         aria-label="ناوبری صفحات"
-        className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center gap-2 bg-neutral-900/70 backdrop-blur-md px-2 py-3.5 rounded-full border border-white/10 shadow-2xl"
+        className="fixed left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center gap-2 bg-neutral-900/80 backdrop-blur-md px-2 py-4 rounded-full border border-white/10 shadow-2xl"
       >
         {SLIDES.map((slide, idx) => (
           <button
@@ -232,15 +232,15 @@ export default function ShogunProposalPage() {
             className="group relative flex items-center justify-center p-1"
           >
             {/* Tooltip on Hover */}
-            <span className="pointer-events-none absolute left-full ml-3 opacity-0 group-hover:opacity-100 transition-opacity bg-neutral-950/95 text-xs text-neutral-200 px-2.5 py-1 rounded-md border border-white/10 whitespace-nowrap shadow-2xl">
+            <span className="pointer-events-none absolute left-full ml-3 opacity-0 group-hover:opacity-100 transition-opacity bg-neutral-950/95 text-xs text-neutral-200 px-3 py-1.5 rounded-lg border border-white/15 whitespace-nowrap shadow-2xl font-medium">
               {slide.num} · {slide.title}
             </span>
 
-            {/* Active / Inactive Pill */}
+            {/* Active / Inactive Indicator */}
             <span
               className={`transition-all duration-300 rounded-full ${
                 activeSlide === idx
-                  ? "w-2.5 h-6 bg-red-500 ring-2 ring-red-500/30"
+                  ? "w-2.5 h-7 bg-red-500 ring-2 ring-red-500/40 shadow-sm shadow-red-500"
                   : "w-2 h-2 bg-neutral-600 hover:bg-neutral-400"
               }`}
             />
@@ -253,10 +253,10 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="hero"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 overflow-y-auto md:overflow-hidden"
       >
         {/* Background Image with Cinematic Dark Gradient */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="/images/clients/shogun/hero-jimny.jpg"
             alt="شوگان جیمشید"
@@ -264,69 +264,72 @@ export default function ShogunProposalPage() {
             priority
             className="object-cover object-center opacity-35 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/75 to-[#0a0a0b]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/80 to-[#0a0a0b]/60" />
         </div>
 
         {/* Top Badges */}
-        <div className="relative z-10 flex flex-wrap items-center gap-2.5">
-          <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-red-600/20 text-red-400 border border-red-500/30 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+        <div className="relative z-10 flex flex-wrap items-center gap-2.5 pt-2">
+          <span className="text-xs font-mono px-3.5 py-1.5 rounded-full bg-red-600/20 text-red-400 border border-red-500/40 flex items-center gap-2 font-bold">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
             SHOGUN 4X4 ENGINEERING
           </span>
-          <span className="text-xs text-neutral-400 bg-neutral-900/80 backdrop-blur-sm px-3.5 py-1 rounded-full border border-white/10">
-            سند راهبردی اختصاصی · شهرک صنعتی گلگون
-          </span>
-          <span className="text-xs text-neutral-400 bg-neutral-900/80 backdrop-blur-sm px-3.5 py-1 rounded-full border border-white/10">
-            آماده‌شده توسط حسن شاهمرادی
+          <span className="text-xs sm:text-sm text-neutral-300 bg-neutral-900/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10 font-medium">
+            شهرک صنعتی گلگون · سند راهبردی اختصاصی
           </span>
         </div>
 
         {/* Center Minimal Punchy Headline */}
-        <div className="relative z-10 my-auto max-w-3xl space-y-4">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.2]">
+        <div className="relative z-10 my-auto max-w-4xl space-y-4 py-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.18]">
             مرجع مهندسی، تجهیز و بازسازی <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-red-500 via-orange-500 to-amber-200">
               خودروهای بیراهه‌نورد
             </span>
           </h1>
-          <p className="text-neutral-300 text-sm md:text-base max-w-xl leading-relaxed">
-            پروپوزال اختصاصی شوگان گاراژ؛ تلفیق شورووم مدرن قطعات، هاب خدمات کارگاهی، سامانه مشاوره هوشمند و خانه رسمی Shogun Adventure Club.
+
+          {/* English Kicker BELOW the Persian Title */}
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            THE GENESIS // ۰۱
+          </div>
+
+          <p className="text-neutral-200 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal">
+            پروپوزال اختصاصی شوگان گاراژ؛ شورووم مهندسی قطعات، هاب خدمات کارگاهی، سامانه هوشمند مشاوره و کلوب اختصاصی بیراهه‌نوردان.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-3">
             <button
               onClick={() => goToSlide(1)}
-              className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:scale-105"
+              className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:scale-105 active:scale-95"
             >
               <span>بررسی سند استراتژیک</span>
               <ChevronDown className="w-4 h-4" />
             </button>
             <button
               onClick={() => goToSlide(7)}
-              className="flex items-center gap-2 bg-neutral-900/90 hover:bg-neutral-800 text-neutral-200 border border-white/15 text-xs md:text-sm px-6 py-3 rounded-xl transition-all"
+              className="flex items-center gap-2 bg-neutral-900/90 hover:bg-neutral-800 text-neutral-100 border border-white/20 font-semibold text-sm sm:text-base px-6 py-3.5 rounded-xl transition-all"
             >
-              <span>پلن‌های سرمایه‌گذاری (۱۰۰ و ۱۴۰ م.ت)</span>
+              <span>مشاهده پکیج‌های پیشنهادی</span>
             </button>
           </div>
         </div>
 
         {/* Footer Metrics */}
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10">
-          <div>
-            <div className="text-xl md:text-2xl font-black text-white">+۲۱K</div>
-            <div className="text-xs text-neutral-400">جامعه مخاطب اینستاگرام</div>
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-white/10">
+          <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
+            <div className="text-2xl sm:text-3xl font-black text-white">+۲۱K</div>
+            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">دنبال‌کننده اینستاگرام</div>
           </div>
-          <div>
-            <div className="text-xl md:text-2xl font-black text-red-500">۱ سال</div>
-            <div className="text-xs text-neutral-400">پشتیبانی فنی کامل تضمینی</div>
+          <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
+            <div className="text-2xl sm:text-3xl font-black text-red-500">۱ سال</div>
+            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">پشتیبانی فنی تضمینی</div>
           </div>
-          <div>
-            <div className="text-xl md:text-2xl font-black text-white">۱۰۰٪</div>
-            <div className="text-xs text-neutral-400">کدنویسی اختصاصی بدون قالب</div>
+          <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
+            <div className="text-2xl sm:text-3xl font-black text-white">۱۰۰٪</div>
+            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">کدنویسی اختصاصی</div>
           </div>
-          <div>
-            <div className="text-xl md:text-2xl font-black text-orange-400">۸ سکشن</div>
-            <div className="text-xs text-neutral-400">طراحی تمام‌صفحه اسکرول کمبر</div>
+          <div className="p-3 sm:p-4 rounded-xl bg-neutral-900/60 backdrop-blur-sm border border-white/10">
+            <div className="text-2xl sm:text-3xl font-black text-orange-400">۸ اسلاید</div>
+            <div className="text-xs sm:text-sm text-neutral-300 mt-0.5">شورووم تعاملی تمام‌صفحه</div>
           </div>
         </div>
       </section>
@@ -336,189 +339,207 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="vision"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0c0c0e] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0c0c0e] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۲ // GAP ANALYSIS & BRAND PRESTIGE
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             چرا شوگان شایسته فراتر از سایت‌سازهای معمولی است؟
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            مقایسه رویکرد متداول بازار (مانند آر‌گاراژ در پرتال) با جایگاه پرچم‌داری برند شوگان.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            GAP ANALYSIS & BRAND PRESTIGE // ۰۲
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            مقایسه رویکرد فروشگاه‌های قالبی متداول بازار با استانداردهای پرچمدار شوگان گاراژ.
           </p>
         </div>
 
-        {/* 2 Comparison Cards with Clean Whitespace */}
-        <div className="grid md:grid-cols-2 gap-5 md:gap-8 my-auto max-w-4xl">
-          <div className="p-5 md:p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 space-y-3">
-            <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
-              <span className="text-sm font-bold text-neutral-400 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-amber-500" />
-                سایت‌سازهای سنتی و فروشگاه‌های قالبی
+        {/* 2 Comparison Cards with Larger Typography */}
+        <div className="grid md:grid-cols-2 gap-5 md:gap-8 my-auto max-w-5xl w-full">
+          {/* Generic Store Card */}
+          <div className="p-5 sm:p-7 rounded-2xl bg-neutral-900/70 border border-neutral-800 space-y-4">
+            <div className="flex items-center justify-between pb-3.5 border-b border-neutral-800">
+              <span className="text-base sm:text-lg font-bold text-neutral-300 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-amber-500 shrink-0" />
+                سایت‌سازهای قالبی و معمولی
               </span>
-              <span className="text-[10px] font-mono text-neutral-500">GENERIC CMS</span>
+              <span className="text-xs font-mono text-neutral-500 font-semibold">GENERIC CMS</span>
             </div>
-            <ul className="space-y-2.5 text-xs md:text-sm text-neutral-400">
-              <li className="flex items-center gap-2">
-                <X className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                قالب‌های خشک و بی‌روح، فاقد کاراکتر آفرود ژاپنی
+            <ul className="space-y-3 text-sm sm:text-base text-neutral-300 font-medium">
+              <li className="flex items-start gap-2.5">
+                <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
+                <span>قالب‌های خشک و آماده بدون هویت آفرود ژاپنی</span>
               </li>
-              <li className="flex items-center gap-2">
-                <X className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                سردرگمی مخاطب در قطعات نامشخص و عدم فیلتر خودرو
+              <li className="flex items-start gap-2.5">
+                <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
+                <span>سردرگمی خریدار به دلیل عدم فیلتر بر اساس شاسی خودرو</span>
               </li>
-              <li className="flex items-center gap-2">
-                <X className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                نادیده گرفته شدن خدمات تخصصی کارگاه گلگون
+              <li className="flex items-start gap-2.5">
+                <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
+                <span>غفلت کامل از معرفی خدمات کارگاه مهندسی گلگون</span>
               </li>
-              <li className="flex items-center gap-2">
-                <X className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                فقدان فضای اختصاصی برای دورهمی‌ها و اعضای کلوب
+              <li className="flex items-start gap-2.5">
+                <X className="w-4 h-4 text-red-500 shrink-0 mt-1" />
+                <span>نبود بخش اختصاصی برای دورهمی‌ها و اعضای کلوب</span>
               </li>
             </ul>
           </div>
 
-          <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900/95 to-red-950/40 border border-red-500/30 space-y-3 shadow-xl shadow-red-950/20">
-            <div className="flex items-center justify-between pb-3 border-b border-red-500/20">
-              <span className="text-sm font-bold text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-red-500" />
-                معماری اختصاصی شوگان (الهام از Camber)
+          {/* Bespoke Shogun Card */}
+          <div className="p-5 sm:p-7 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-red-950/40 border border-red-500/40 space-y-4 shadow-xl shadow-red-950/30">
+            <div className="flex items-center justify-between pb-3.5 border-b border-red-500/25">
+              <span className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-red-500 shrink-0" />
+                معماری اختصاصی شوگان (سبک Camber)
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-600 text-white font-bold">
+              <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-red-600 text-white font-bold">
                 HIGH PERFORMANCE
               </span>
             </div>
-            <ul className="space-y-2.5 text-xs md:text-sm text-neutral-200">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                دیزاین دارک صنعتی، انیمیشن‌های روان و هویت سامورایی
+            <ul className="space-y-3 text-sm sm:text-base text-neutral-100 font-medium">
+              <li className="flex items-start gap-2.5">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                <span>دیزاین دارک صنعتی، سرعت خیره‌کننده و هویت سامورایی</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                فیلتر دقیق بر اساس پلتفرم (جیمنی، پرادو، هایلوکس)
+              <li className="flex items-start gap-2.5">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                <span>فیلتر قطعی قطعات بر اساس شاسی (جیمنی، پرادو، هایلوکس)</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                هاب خدمات و رزرو نوبت تست درایو با پنل ادمین
+              <li className="flex items-start gap-2.5">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                <span>هاب معرفی لاین‌های خدمات کارگاه با تقویم نوبت‌دهی</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                پورتال اختصاصی Shogun Adventure Club و شوکیس جیمشید
+              <li className="flex items-start gap-2.5">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                <span>پورتال Shogun Adventure Club و شوکیس پروژه جیمشید</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/90 border border-white/10 text-xs">
-          <span className="text-neutral-300">
-            هدف اصلی: هدایت آسان ۲۱ هزار دنبال‌کننده به مشتریان رزرو کارگاه و خریداران قطعات
+        {/* Bottom Context Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-4 rounded-xl bg-neutral-900/90 border border-white/10 text-xs sm:text-sm">
+          <span className="text-neutral-300 font-medium text-center sm:text-right">
+            هدف اصلی: تبدیل مستقیم ۲۱ هزار مخاطب پیج به مشتریان وفادار کارگاه و خریداران قطعات
           </span>
           <button
             onClick={() => goToSlide(2)}
-            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-semibold"
+            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-bold shrink-0"
           >
-            <span>بررسی ماژول قطعات</span>
+            <span>مشاهده ویترین قطعات</span>
             <ChevronLeft className="w-4 h-4" />
           </button>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SLIDE 3: PARTS & FITMENT GUIDE (کاتالوگ مهندسی قطعات - با ۳ عکس استودیویی)
+          SLIDE 3: PARTS & FITMENT GUIDE (کاتالوگ مهندسی قطعات)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="parts"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0a0a0b] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0a0a0b] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۳ // PARTS CATALOGUE & FITMENT VERIFICATION
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             ویترین مهندسی قطعات؛ سازگاری قطعی با خودرو
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            الهام‌گرفته از ریل کاتالوگ کمبر؛ انتخاب دقیق بر اساس شاسی خودرو با عکس‌های باکیفیت استودیویی و استعلام سریع.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            PARTS CATALOGUE & FITMENT VERIFICATION // ۰۳
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            انتخاب دقیق بر اساس شاسی خودرو با تصاویر استودیویی و استعلام آنی.
           </p>
         </div>
 
-        {/* 3 Real Commercial Product Cards */}
-        <div className="my-auto grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl">
+        {/* 3 Real Commercial Product Cards with Larger Typography */}
+        <div className="my-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-6xl w-full">
           {/* Product 1: Coilovers */}
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 hover:border-red-500/40 transition-all group">
-            <div className="relative h-40 w-full rounded-lg overflow-hidden bg-neutral-950 mb-3">
-              <Image
-                src="/images/clients/shogun/parts-detail.jpg"
-                alt="کیت کمک‌فنر نیتروژنی"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <span className="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-red-600 text-white font-bold">
-                SUSPENSION KIT
-              </span>
+          <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/50 transition-all group shadow-lg flex flex-col justify-between">
+            <div>
+              <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden bg-neutral-950 mb-3.5">
+                <Image
+                  src="/images/clients/shogun/parts-detail.jpg"
+                  alt="کیت کمک‌فنر نیتروژنی"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-2.5 right-2.5 text-xs font-mono px-2.5 py-1 rounded-md bg-red-600 text-white font-bold shadow-md">
+                  SUSPENSION KIT
+                </span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">کیت کمک‌فنر نیتروژنی شوگان</h3>
+              <p className="text-xs sm:text-sm text-neutral-300 mt-1.5 leading-relaxed">
+                لیفت ۲.۵ اینچ، مخزن ریموت، تنظیم ۳۰ حالته سختی مخصوص جیمنی
+              </p>
             </div>
-            <h4 className="font-bold text-sm text-white">کیت کمک‌فنر نیتروژنی شوگان</h4>
-            <p className="text-xs text-neutral-400 mt-1">لیفت ۲.۵ اینچ، مخزن ریموت، تنظیم نرمی ۳۰ حالته مخصوص جیمنی</p>
-            <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-white/10 text-xs">
-              <span className="text-emerald-400 text-[11px]">فیتمنت تضمینی VIN</span>
-              <span className="text-neutral-300 font-medium">استعلام سریع ←</span>
+            <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/10 text-xs sm:text-sm font-semibold">
+              <span className="text-emerald-400">فیتمنت تضمینی VIN</span>
+              <span className="text-white group-hover:text-red-400 transition-colors">استعلام مستقیم ←</span>
             </div>
           </div>
 
           {/* Product 2: Beadlock Wheels */}
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 hover:border-red-500/40 transition-all group">
-            <div className="relative h-40 w-full rounded-lg overflow-hidden bg-neutral-950 mb-3">
-              <Image
-                src="/images/clients/shogun/wheel-detail.jpg"
-                alt="رینگ بیدلاک فورج"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <span className="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 font-bold">
-                WHEEL & TIRE
-              </span>
+          <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/50 transition-all group shadow-lg flex flex-col justify-between">
+            <div>
+              <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden bg-neutral-950 mb-3.5">
+                <Image
+                  src="/images/clients/shogun/wheel-detail.jpg"
+                  alt="رینگ بیدلاک فورج"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-2.5 right-2.5 text-xs font-mono px-2.5 py-1 rounded-md bg-neutral-800 text-neutral-200 border border-white/10 font-bold shadow-md">
+                  WHEEL & TIRE
+                </span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">رینگ سبک‌وزن بیدلاک ۱۶ اینچ</h3>
+              <p className="text-xs sm:text-sm text-neutral-300 mt-1.5 leading-relaxed">
+                فورج با حلقه بیدلاک قرمز، جلوگیری قطعی از دیس‌بید در رمل و صخره
+              </p>
             </div>
-            <h4 className="font-bold text-sm text-white">رینگ سبک‌وزن بیدلاک ۱۶ اینچ</h4>
-            <p className="text-xs text-neutral-400 mt-1">حلقه بیدلاک فورج قرمز، جلوگیری از دیس‌بید در رمل و صخره</p>
-            <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-white/10 text-xs">
-              <span className="text-amber-400 text-[11px]">موجودی در انبار شوگان</span>
-              <span className="text-neutral-300 font-medium">استعلام سریع ←</span>
+            <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/10 text-xs sm:text-sm font-semibold">
+              <span className="text-amber-400">موجودی در گاراژ شوگان</span>
+              <span className="text-white group-hover:text-red-400 transition-colors">استعلام مستقیم ←</span>
             </div>
           </div>
 
           {/* Product 3: Heavy Duty Winch */}
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 hover:border-red-500/40 transition-all group">
-            <div className="relative h-40 w-full rounded-lg overflow-hidden bg-neutral-950 mb-3">
-              <Image
-                src="/images/clients/shogun/winch-detail.jpg"
-                alt="وینچ برقی هوی‌دیوتی"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <span className="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 font-bold">
-                RECOVERY GEAR
-              </span>
+          <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/50 transition-all group shadow-lg flex flex-col justify-between">
+            <div>
+              <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden bg-neutral-950 mb-3.5">
+                <Image
+                  src="/images/clients/shogun/winch-detail.jpg"
+                  alt="وینچ برقی هوی‌دیوتی"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-2.5 right-2.5 text-xs font-mono px-2.5 py-1 rounded-md bg-neutral-800 text-neutral-200 border border-white/10 font-bold shadow-md">
+                  RECOVERY GEAR
+                </span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">وینچ برقی ۱۲,۰۰۰ پوند کابل قرمز</h3>
+              <p className="text-xs sm:text-sm text-neutral-300 mt-1.5 leading-relaxed">
+                موتور ضدآب IP68، کابل سنتتیک، ریموت بی‌سیم و سینی فابریک شاسی
+              </p>
             </div>
-            <h4 className="font-bold text-sm text-white">وینچ برقی ۱۲,۰۰۰ پوند کابل قرمز</h4>
-            <p className="text-xs text-neutral-400 mt-1">موتور ضدآب IP68، کابل سنتتیک، ریموت وایرلس و سینی فابریک</p>
-            <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-white/10 text-xs">
-              <span className="text-emerald-400 text-[11px]">نصب فابریک در گاراژ</span>
-              <span className="text-neutral-300 font-medium">استعلام سریع ←</span>
+            <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/10 text-xs sm:text-sm font-semibold">
+              <span className="text-emerald-400">نصب فابریک در کارگاه</span>
+              <span className="text-white group-hover:text-red-400 transition-colors">استعلام مستقیم ←</span>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/90 border border-white/10 text-xs">
-          <span className="text-neutral-300">
+        {/* Bottom Context Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-4 rounded-xl bg-neutral-900/90 border border-white/10 text-xs sm:text-sm">
+          <span className="text-neutral-300 font-medium text-center sm:text-right">
             حذف اصطکاک قیمت متغیر: مشتری قطعه را انتخاب کرده و مستقیماً به استعلام فنی وصل می‌شود
           </span>
           <button
             onClick={() => goToSlide(3)}
-            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-semibold"
+            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-bold shrink-0"
           >
-            <span>مشاهده هاب خدمات کارگاهی</span>
+            <span>مشاهده خدمات کارگاه</span>
             <ChevronLeft className="w-4 h-4" />
           </button>
         </div>
@@ -529,73 +550,74 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="services"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0c0c0e] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0c0c0e] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۴ // WORKSHOP HUB & TIME SLOT MANAGEMENT
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             هاب خدمات کارگاهی و مدیریت هوشمند نوبت‌ها
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            معرفی لاین‌های تخصصی گاراژ شوگان در گلگون به همراه تقویم نوبت‌دهی برای زمان‌های آزاد.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            WORKSHOP HUB & TIME SLOT MANAGEMENT // ۰۴
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            معرفی لاین‌های تخصصی گاراژ گلگون به همراه سیستم نوبت‌دهی آنلاین.
           </p>
         </div>
 
-        {/* 4 Pillars Grid */}
-        <div className="my-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-5xl">
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2">
-            <span className="text-xs font-mono text-red-500 font-bold">۰۱</span>
-            <h4 className="font-bold text-sm text-white">سرویس‌های ادواری موتور و گیربکس</h4>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              تست کیفیت روغن و سوخت، شستشوی انژکتور، سلامت موتور در شرایط سخت بیراهه‌نوردی.
+        {/* 4 Pillars Grid with Larger Typography and Concise Text */}
+        <div className="my-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl w-full">
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-2.5 shadow-md">
+            <span className="text-base sm:text-lg font-mono text-red-500 font-black">۰۱</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">سرویس موتور و گیربکس</h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              تعویض روغن، شستشوی انژکتور و تست سلامت موتور در شرایط بیراهه‌نوردی.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2">
-            <span className="text-xs font-mono text-red-500 font-bold">۰۲</span>
-            <h4 className="font-bold text-sm text-white">نصب و کالیبراسیون زیربندی</h4>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              تنظیم کمبر و کستر، لیفت استاندارد تعلیق بدون گیجی فرمان و افت پایداری خودرو.
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-2.5 shadow-md">
+            <span className="text-base sm:text-lg font-mono text-red-500 font-black">۰۲</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">کالیبراسیون زیربندی</h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              تنظیم کمبر و کستر، لیفت استاندارد تعلیق و رفع گیجی فرمان با پایداری کامل.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2">
-            <span className="text-xs font-mono text-red-500 font-bold">۰۳</span>
-            <h4 className="font-bold text-sm text-white">تست درایو و چکاپ پیش از سفر</h4>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              بازرسی کامل سیستم ۴ چرخ، دیفرانسیل‌ها، ترمزها و پلوس‌ها پیش از ورود به کویر یا کوهستان.
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-2.5 shadow-md">
+            <span className="text-base sm:text-lg font-mono text-red-500 font-black">۰۳</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">چکاپ پیش از سفر</h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              بازرسی کامل سیستم ۴ چرخ، دیفرانسیل‌ها، ترمزها و پلوس‌ها قبل از سفر.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2">
-            <span className="text-xs font-mono text-red-500 font-bold">۰۴</span>
-            <h4 className="font-bold text-sm text-white">تجهیز و شخصی‌سازی کمپر</h4>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              سیم‌کشی باتری دوم، اسنورکل، باک اضافه، پروژکتورهای دید در شب و امکانات رفاهی سفر.
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-2.5 shadow-md">
+            <span className="text-base sm:text-lg font-mono text-red-500 font-black">۰۴</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">تجهیز کمپر و اورلند</h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              سیم‌کشی باتری دوم، باک اضافه، پروژکتورهای دید در شب و امکانات رفاهی.
             </p>
           </div>
         </div>
 
         {/* Booking Card */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-neutral-900 to-red-950/30 border border-red-500/30 flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="space-y-1 text-center md:text-right">
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-neutral-900 to-red-950/40 border border-red-500/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="space-y-1.5 text-center md:text-right">
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <Calendar className="w-4 h-4 text-red-400" />
-              <span className="font-bold text-sm text-white">سیستم رزرو نوبت با تقویم هوشمند</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
+              <Calendar className="w-5 h-5 text-red-400 shrink-0" />
+              <span className="font-bold text-base text-white">سیستم رزرو نوبت با تقویم هوشمند</span>
+              <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold">
                 ACTIVE
               </span>
             </div>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs sm:text-sm text-neutral-300">
               ادمین گاراژ زمان‌های پر را مشخص می‌کند و مشتریان تنها زمان‌های باز را برای بررسی خودرو رزرو می‌کنند.
             </p>
           </div>
 
           <button
             onClick={() => goToSlide(4)}
-            className="shrink-0 flex items-center gap-1.5 bg-red-600 hover:bg-red-500 text-white text-xs px-4 py-2.5 rounded-lg font-medium shadow-md transition-all"
+            className="shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm px-5 py-3 rounded-xl font-bold shadow-md shadow-red-600/30 transition-all hover:scale-105 active:scale-95"
           >
             <span>مشاهده سیستم مشاوره هوشمند</span>
             <ChevronLeft className="w-4 h-4" />
@@ -608,26 +630,27 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="advisor"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0a0a0b] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0a0a0b] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۵ // INTERACTIVE SMART ADVISOR
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             سیستم مشاوره و پیشنهاد هوشمند تجهیزات
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            ابزار اختصاصی هدایت کاربر؛ نوع خودرو و سبک سفر را انتخاب کنید تا پیشنهاد مهندسی شوگان نمایان شود.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            INTERACTIVE SMART ADVISOR // ۰۵
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            انتخاب هوشمند قطعات متناسب با خودرو و سبک بیراهه‌نوردی شما.
           </p>
         </div>
 
-        {/* Live Interactive Configurator Box */}
-        <div className="my-auto p-4 md:p-6 rounded-2xl bg-neutral-900/90 border border-red-500/30 space-y-4 max-w-4xl w-full mx-auto shadow-2xl">
+        {/* Live Interactive Configurator Box with Larger Fonts */}
+        <div className="my-auto p-4 sm:p-6 md:p-8 rounded-2xl bg-neutral-900/90 border border-red-500/40 space-y-5 max-w-5xl w-full mx-auto shadow-2xl">
           {/* Step 1: Vehicle */}
-          <div className="space-y-1.5">
-            <span className="text-xs font-mono text-red-400">// گام اول: انتخاب خودرو</span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="space-y-2">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold">// گام اول: انتخاب خودرو</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
               {VEHICLES.map((v) => {
                 const IconComponent = v.icon;
                 const isSelected = selectedVehicle === v.id;
@@ -638,21 +661,21 @@ export default function ShogunProposalPage() {
                       setSelectedVehicle(v.id);
                       setAdvisorConsulted(false);
                     }}
-                    className={`p-3 rounded-xl border text-right transition-all group ${
+                    className={`p-3.5 sm:p-4 rounded-xl border text-right transition-all group ${
                       isSelected
                         ? "bg-red-600/20 border-red-500 text-white shadow-md shadow-red-950/40"
                         : "bg-neutral-950/70 border-white/5 text-neutral-400 hover:text-white hover:border-white/20"
                     }`}
                   >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 transition-colors ${
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2.5 transition-colors ${
                       isSelected
                         ? "bg-red-600 text-white shadow-md shadow-red-600/30"
                         : "bg-neutral-900 text-neutral-400 group-hover:text-white group-hover:bg-neutral-800"
                     }`}>
-                      <IconComponent className="w-4 h-4" />
+                      <IconComponent className="w-5 h-5" />
                     </div>
-                    <div className="text-xs font-bold text-white">{v.name}</div>
-                    <div className="text-[10px] text-neutral-400 truncate">{v.tag}</div>
+                    <div className="text-sm font-extrabold text-white">{v.name}</div>
+                    <div className="text-xs text-neutral-400 mt-0.5 truncate">{v.tag}</div>
                   </button>
                 );
               })}
@@ -660,9 +683,9 @@ export default function ShogunProposalPage() {
           </div>
 
           {/* Step 2: Use Style */}
-          <div className="space-y-1.5">
-            <span className="text-xs font-mono text-red-400">// گام دوم: سبک سفر و بیراهه‌نوردی</span>
-            <div className="grid sm:grid-cols-3 gap-2">
+          <div className="space-y-2">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold">// گام دوم: سبک سفر و استفاده</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
               {STYLES.map((s) => {
                 const IconComponent = s.icon;
                 const isSelected = selectedStyle === s.id;
@@ -673,21 +696,21 @@ export default function ShogunProposalPage() {
                       setSelectedStyle(s.id);
                       setAdvisorConsulted(false);
                     }}
-                    className={`p-3 rounded-xl border text-right transition-all group ${
+                    className={`p-3.5 sm:p-4 rounded-xl border text-right transition-all group ${
                       isSelected
                         ? "bg-red-600/20 border-red-500 text-white shadow-md"
                         : "bg-neutral-950/70 border-white/5 text-neutral-400 hover:text-white hover:border-white/20"
                     }`}
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
                         isSelected ? "bg-red-600 text-white" : "bg-neutral-900 text-neutral-400 group-hover:text-white"
                       }`}>
-                        <IconComponent className="w-3.5 h-3.5" />
+                        <IconComponent className="w-4 h-4" />
                       </div>
-                      <div className="text-xs font-bold text-white">{s.name}</div>
+                      <div className="text-sm font-extrabold text-white">{s.name}</div>
                     </div>
-                    <div className="text-[10px] text-neutral-400 leading-relaxed">{s.desc}</div>
+                    <div className="text-xs text-neutral-300 leading-relaxed font-normal">{s.desc}</div>
                   </button>
                 );
               })}
@@ -695,14 +718,14 @@ export default function ShogunProposalPage() {
           </div>
 
           {/* Step 3: Result Box */}
-          <div className="p-3.5 rounded-xl bg-black/60 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="space-y-0.5 text-center sm:text-right">
-              <span className="text-[11px] font-mono text-red-400">پیشنهاد مهندسی شوگان:</span>
-              <p className="text-xs text-neutral-200">
+          <div className="p-4 sm:p-5 rounded-xl bg-black/70 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center sm:text-right">
+              <span className="text-xs font-mono text-red-400 font-bold">پیشنهاد مهندسی شوگان:</span>
+              <p className="text-sm sm:text-base text-neutral-100 font-medium">
                 {selectedVehicle === "jimny" && "کیت لیفت ۲.۵ اینچ نیتروژنی + اسنورکل فابریک + رینگ بیدلاک ۱۶ سبک"}
                 {selectedVehicle === "toyota" && "زیربندی هوی‌دیوتی با فنر لول دوبل + سینی زیر و سپر فلزی + وینچ ۱۲۰۰۰"}
                 {selectedVehicle === "pajero" && "کمک‌فنرهای کورس بلند + هدرز استیل + تقویت سیستم خنک‌کاری گیربکس"}
-                {selectedVehicle === "nissan" && "بازسازی کامل جلوبندی + بوستر ترمز ماکسیمایی + پروژکتورهای مهندسی"}
+                {selectedVehicle === "nissan" && "بازسازی کامل جلوبندی + بوستر ترمز تقویت‌شده + پروژکتورهای مهندسی"}
               </p>
             </div>
 
@@ -711,21 +734,22 @@ export default function ShogunProposalPage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setAdvisorConsulted(true)}
-              className="shrink-0 flex items-center gap-1.5 bg-red-600 hover:bg-red-500 text-white text-xs px-4 py-2 rounded-lg font-medium shadow-md shadow-red-600/30 transition-all"
+              className="shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm px-5 py-3 rounded-xl font-bold shadow-lg shadow-red-600/30 transition-all hover:scale-105 active:scale-95"
             >
-              <Send className="w-3.5 h-3.5" />
-              <span>{advisorConsulted ? "ارسال به واتس‌اپ شوگان" : "دریافت برآورد هزینه"}</span>
+              <Send className="w-4 h-4" />
+              <span>{advisorConsulted ? "ارسال به واتس‌اپ شوگان" : "دریافت مشاوره و برآورد تجهیز"}</span>
             </a>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/90 border border-white/10 text-xs">
-          <span className="text-neutral-300">
+        {/* Bottom Context Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-4 rounded-xl bg-neutral-900/90 border border-white/10 text-xs sm:text-sm">
+          <span className="text-neutral-300 font-medium text-center sm:text-right">
             ابزاری تعاملی برای تبدیل آنی بیننده به مکالمه کاری مستقیم در پیام‌رسان
           </span>
           <button
             onClick={() => goToSlide(5)}
-            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-semibold"
+            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-bold shrink-0"
           >
             <span>مشاهده جیمشید و کلوب</span>
             <ChevronLeft className="w-4 h-4" />
@@ -738,74 +762,76 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="club"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0c0c0e] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0c0c0e] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۶ // ICONIC BUILDS & ADVENTURE COMMUNITY
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             پروژه نمادین «جیمشید» و باشگاه ماجراجویی شوگان
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            نمایش دستاوردهای فنی شوگان در ساخت خودروهای خاص و خانه رسمی Shogun Adventure Club.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            ICONIC BUILDS & ADVENTURE COMMUNITY // ۰۶
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            روایت مهندسی ساخت خودروهای خاص و خانه رسمی Shogun Adventure Club.
           </p>
         </div>
 
-        {/* 2 Visual Cards */}
-        <div className="grid md:grid-cols-2 gap-5 md:gap-8 my-auto max-w-5xl">
+        {/* 2 Visual Cards with Larger Content */}
+        <div className="grid md:grid-cols-2 gap-5 md:gap-8 my-auto max-w-5xl w-full">
           {/* Jimshid Showcase */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 group min-h-[220px] md:min-h-[260px] flex flex-col justify-end p-5">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 group min-h-[240px] sm:min-h-[280px] md:min-h-[320px] flex flex-col justify-end p-6 sm:p-7 shadow-xl">
             <Image
               src="/images/clients/shogun/hero-jimny.jpg"
               alt="پروژه جیمشید"
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-60"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-55"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-            <div className="relative z-10 space-y-1.5">
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-600 text-white font-bold inline-block">
+            <div className="relative z-10 space-y-2">
+              <span className="text-xs font-mono px-3 py-1 rounded-md bg-red-600 text-white font-bold inline-block shadow">
                 FLAGSHIP BUILD · JIMSHID
               </span>
-              <h3 className="text-lg md:text-xl font-bold text-white">
+              <h3 className="text-xl sm:text-2xl font-black text-white">
                 «جیمشید»؛ سوزوکی‌ای که شوگان از نو ساخت
               </h3>
-              <p className="text-xs text-neutral-300 line-clamp-2">
+              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-normal">
                 روایت بازسازی صفر تا صد سوزوکی جیمنی، شناسنامه قطعات تعویض‌شده و تقویت شاسی به عنوان سند مهارت گاراژ.
               </p>
             </div>
           </div>
 
           {/* Shogun Adventure Club */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 group min-h-[220px] md:min-h-[260px] flex flex-col justify-end p-5">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 group min-h-[240px] sm:min-h-[280px] md:min-h-[320px] flex flex-col justify-end p-6 sm:p-7 shadow-xl">
             <Image
               src="/images/clients/shogun/adventure-club.jpg"
               alt="باشگاه ماجراجویی شوگان"
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-60"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-55"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-            <div className="relative z-10 space-y-1.5">
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-600 text-white font-bold inline-block">
+            <div className="relative z-10 space-y-2">
+              <span className="text-xs font-mono px-3 py-1 rounded-md bg-amber-600 text-white font-bold inline-block shadow">
                 SHOGUN ADVENTURE CLUB
               </span>
-              <h3 className="text-lg md:text-xl font-bold text-white">
+              <h3 className="text-xl sm:text-2xl font-black text-white">
                 باشگاه ماجراجویی و گردهمایی‌های شمشک
               </h3>
-              <p className="text-xs text-neutral-300 line-clamp-2">
-                تقویم تورهای بیراهه‌نوردی، قوانین عضویت، و گالری رویدادهای گروهی برای تقویت حس جامعه وفادار.
+              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-normal">
+                تقویم تورهای بیراهه‌نوردی، قوانین عضویت، و گالری رویدادهای گروهی برای ساخت جامعه وفادار مشتریان.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/90 border border-white/10 text-xs">
-          <span className="text-neutral-300">
+        {/* Bottom Context Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-4 rounded-xl bg-neutral-900/90 border border-white/10 text-xs sm:text-sm">
+          <span className="text-neutral-300 font-medium text-center sm:text-right">
             ارزش برندینگ: نمایش جامعه وفادار و پروژه‌های پرچمدار، اعتبار شوگان را چند پله بالاتر از رقبا می‌نشاند
           </span>
           <button
             onClick={() => goToSlide(6)}
-            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-semibold"
+            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-bold shrink-0"
           >
             <span>مشاهده نقشه راه</span>
             <ChevronLeft className="w-4 h-4" />
@@ -818,234 +844,263 @@ export default function ShogunProposalPage() {
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="roadmap"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-12 px-6 md:px-20 lg:px-28 bg-[#0a0a0b] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0a0a0b] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۷ // IMPLEMENTATION PHASES & TIMELINE
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
             نقشه راه شفاف؛ ۴ گام تا راه‌اندازی شورووم شوگان
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
-            فرایند ساخت پروژه همراه با بررسی و تایید مداوم خروجی‌ها با کارفرما.
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            IMPLEMENTATION PHASES & TIMELINE // ۰۷
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+            فرایند ساخت پروژه همراه با بررسی و تایید گام‌به‌گام با کارفرما.
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="my-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-5xl">
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2.5 relative">
-            <span className="text-xs font-mono text-red-400">گام اول · هفته ۱</span>
-            <h4 className="font-bold text-sm text-white">هویت و سناریوی برند</h4>
-            <ul className="text-xs text-neutral-400 space-y-1">
-              <li>• دریافت تصاویر و ویدیوهای شوگان</li>
-              <li>• تعیین دقیق پالت رنگ و فونت پیدا</li>
-              <li>• استراتژی محتوا و دسته‌بندی قطعات</li>
+        {/* 4 Steps Grid with Larger Typography and Clean Concise Content */}
+        <div className="my-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl w-full">
+          {/* Step 1 */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام اول · هفته ۱</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">هویت و سناریو</h3>
+            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>دریافت مدیا و تحلیل دقیق هویت شوگان</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>تعیین ساختار محتوا و دسته‌بندی قطعات</span>
+              </li>
             </ul>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2.5 relative">
-            <span className="text-xs font-mono text-red-400">گام دوم · هفته ۲-۳</span>
-            <h4 className="font-bold text-sm text-white">طراحی لندینگ و تایید دیزاین</h4>
-            <ul className="text-xs text-neutral-400 space-y-1">
-              <li>• پیاده‌سازی پروتوتایپ زنده لندینگ</li>
-              <li>• بررسی جزء به جزء دکمه‌ها و رنگ‌ها</li>
-              <li>• تایید نهایی دیزاین سیستم (Sign-off)</li>
+          {/* Step 2 */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام دوم · هفته ۲-۳</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">دیزاین و پروتوتایپ</h3>
+            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>پیاده‌سازی لندینگ زنده و تعاملی</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>تایید نهایی دیزاین سیستم (Sign-off)</span>
+              </li>
             </ul>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2.5 relative">
-            <span className="text-xs font-mono text-red-400">گام سوم · هفته ۴-۶</span>
-            <h4 className="font-bold text-sm text-white">کدنویسی اختصاصی و فیچرها</h4>
-            <ul className="text-xs text-neutral-400 space-y-1">
-              <li>• توسعه کاتالوگ قطعات و استعلام</li>
-              <li>• پیاده‌سازی سامانه مشاوره هوشمند</li>
-              <li>• راه‌اندازی تقویم نوبت‌دهی کارگاه</li>
+          {/* Step 3 */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام سوم · هفته ۴-۶</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">کدنویسی و فیچرها</h3>
+            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>توسعه کاتالوگ قطعات و سیستم استعلام</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>سامانه نوبت‌دهی و مشاوره هوشمند</span>
+              </li>
             </ul>
           </div>
 
-          <div className="p-4 rounded-xl bg-neutral-900/80 border border-white/10 space-y-2.5 relative">
-            <span className="text-xs font-mono text-red-400">گام چهارم · هفته ۷</span>
-            <h4 className="font-bold text-sm text-white">تست، استقرار و تحویل</h4>
-            <ul className="text-xs text-neutral-400 space-y-1">
-              <li>• بهینه‌سازی سرعت ۹۵+ در موبایل</li>
-              <li>• اتصال دامنه و سئو پایه محلی</li>
-              <li>• آموزش پنل و آغاز ۱ سال پشتیبانی</li>
+          {/* Step 4 */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
+            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام چهارم · هفته ۷</span>
+            <h3 className="font-extrabold text-base sm:text-lg text-white">تست، استقرار و لانچ</h3>
+            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>بهینه‌سازی سرعت ۹۵+ روی موبایل</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="text-red-500 font-bold">•</span>
+                <span>اتصال دامنه و آغاز ۱ سال پشتیبانی فنی</span>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-neutral-900/90 border border-white/10 text-xs">
-          <span className="text-neutral-300">
-            تضمین تحویل به موقع همراه با گزارش‌دهی مستقیم هفتگی
+        {/* Bottom Context Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 p-4 rounded-xl bg-neutral-900/90 border border-white/10 text-xs sm:text-sm">
+          <span className="text-neutral-300 font-medium text-center sm:text-right">
+            تضمین تحویل به موقع همراه با گزارش‌دهی مستقیم هفتگی در هر مرحله
           </span>
           <button
             onClick={() => goToSlide(7)}
-            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-semibold"
+            className="text-red-400 hover:text-red-300 flex items-center gap-1 font-bold shrink-0"
           >
-            <span>مشاهده پلن‌های سرمایه‌گذاری</span>
+            <span>مشاهده پکیج‌های پیشنهادی</span>
             <ChevronLeft className="w-4 h-4" />
           </button>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          SLIDE 8: INVESTMENT TIERS & SIGN-OFF (پلن‌های سرمایه‌گذاری و دکمه رسمی تایید)
+          SLIDE 8: PROPOSED PACKAGES & SIGN-OFF (پکیج‌های پیشنهادی)
           ═══════════════════════════════════════════════════════════════════════ */}
       <section
         id="investment"
-        className="relative w-full h-screen snap-start snap-always flex flex-col justify-between pt-24 pb-8 px-6 md:px-20 lg:px-28 bg-[#0c0c0e] overflow-hidden"
+        className="relative w-full min-h-[100dvh] md:h-[100dvh] snap-start snap-always flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-10 md:px-16 lg:px-24 bg-[#0c0c0e] overflow-y-auto md:overflow-hidden"
       >
-        <div className="max-w-3xl space-y-2">
-          <div className="text-red-500 text-xs font-mono tracking-wider">
-            ۰۸ // INVESTMENT & PARTNERSHIP AGREEMENT
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white">
-            پلن‌های شفاف سرمایه‌گذاری شوگان گاراژ
+        {/* Persian Heading First, English Below */}
+        <div className="max-w-4xl space-y-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+            پلن‌های پیشنهادی توسعه شوگان گاراژ
           </h2>
-          <p className="text-neutral-400 text-xs sm:text-sm">
+          <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
+            PROPOSED EXECUTIVE PACKAGES // ۰۸
+          </div>
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
             هر دو پکیج شامل <span className="text-white font-bold">کدنویسی ۱۰۰٪ اختصاصی (بدون قالب آماده)</span> و{" "}
             <span className="text-red-400 font-bold">۱ سال پشتیبانی فنی کامل تضمینی</span> می‌باشند.
           </p>
         </div>
 
-        {/* 2 Packages Cards Side by Side */}
-        <div className="my-auto grid md:grid-cols-2 gap-5 md:gap-8 max-w-4xl mx-auto w-full">
-          {/* Package 1: 100M */}
-          <div className={`p-5 md:p-6 rounded-2xl bg-neutral-900/80 border transition-all ${
+        {/* 2 Packages Cards Side by Side with Larger Typography */}
+        <div className="my-auto grid md:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto w-full">
+          {/* Package 1 */}
+          <div className={`p-6 sm:p-7 rounded-2xl bg-neutral-900/80 border transition-all ${
             approvedPlan === 1 ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-white/10 hover:border-white/20"
-          } space-y-3.5`}>
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div>
-                <span className="text-xs font-mono text-neutral-400">PLAN 01</span>
-                <h3 className="text-lg font-bold text-white">کاتالوگ پرفورمنس شوگان</h3>
+          } space-y-4 shadow-xl flex flex-col justify-between`}>
+            <div>
+              <div className="flex items-center justify-between pb-3.5 border-b border-white/10">
+                <div>
+                  <span className="text-xs font-mono text-neutral-400 font-semibold">PLAN 01</span>
+                  <h3 className="text-lg sm:text-xl font-black text-white">کاتالوگ پرفورمنس شوگان</h3>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-neutral-800 text-neutral-300 border border-white/10">
+                  پکیج استاندارد
+                </span>
               </div>
-              <div className="text-right">
-                <div className="text-2xl font-black text-white">۱۰۰ م.ت</div>
-                <div className="text-[10px] text-neutral-400">سرمایه‌گذاری پروژه</div>
-              </div>
-            </div>
 
-            <ul className="space-y-2 text-xs text-neutral-300">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                کدنویسی ۱۰۰٪ اختصاصی Next.js با سرعت و امنیت بالا
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                کاتالوگ مهندسی قطعات با استعلام مستقیم
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                معرفی ۴ لاین خدمات کارگاهی گلگون و فرم نوبت
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                بهینه‌سازی کامل برای گوشی‌های موبایل
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-red-400 font-bold shrink-0" />
-                <span className="font-bold text-white">۱ سال پشتیبانی کامل فنی تضمینی</span>
-              </li>
-            </ul>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-200 font-medium mt-4">
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>کدنویسی ۱۰۰٪ اختصاصی با ری‌اکت و نکست‌جی‌اس</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>کاتالوگ مهندسی قطعات با استعلام مستقیم</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>معرفی ۴ لاین خدمات کارگاهی گلگون و فرم نوبت</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>بهینه‌سازی کامل سرعت و رابط کاربری موبایل</span>
+                </li>
+                <li className="flex items-center gap-2.5 pt-1">
+                  <ShieldCheck className="w-4 h-4 text-red-400 shrink-0" />
+                  <span className="font-bold text-white">۱ سال پشتیبانی فنی کامل و تضمینی</span>
+                </li>
+              </ul>
+            </div>
 
             <button
               onClick={() => handleApprove(1)}
-              className={`w-full py-3 rounded-xl font-medium text-xs transition-all flex items-center justify-center gap-2 ${
+              className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                 approvedPlan === 1
                   ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-                  : "bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-white/10"
+                  : "bg-neutral-800 hover:bg-neutral-700 text-neutral-100 border border-white/10 active:scale-95"
               }`}
             >
               {approvedPlan === 1 ? <CheckCheck className="w-4 h-4" /> : null}
-              <span>{approvedPlan === 1 ? "پلن ۱ انتخاب و تایید شد" : "انتخاب پلن ۱ (۱۰۰ میلیون تومان)"}</span>
+              <span>{approvedPlan === 1 ? "پکیج ۱ انتخاب شد" : "انتخاب پکیج ۱ (کاتالوگ پرفورمنس)"}</span>
             </button>
           </div>
 
-          {/* Package 2: 140M (RECOMMENDED) */}
-          <div className={`p-5 md:p-6 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-red-950/40 border transition-all ${
-            approvedPlan === 2 ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-red-500/50 shadow-xl shadow-red-950/40"
-          } space-y-3.5 relative overflow-hidden`}>
-            <div className="absolute top-0 left-0 bg-gradient-to-r from-red-600 to-orange-500 text-white font-mono text-[9px] font-bold px-3.5 py-0.5 rounded-br-xl uppercase flex items-center gap-1">
-              <Award className="w-3 h-3 text-white" />
+          {/* Package 2: RECOMMENDED */}
+          <div className={`p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-red-950/40 border transition-all ${
+            approvedPlan === 2 ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-red-500/50 shadow-2xl shadow-red-950/40"
+          } space-y-4 relative overflow-hidden flex flex-col justify-between`}>
+            <div className="absolute top-0 left-0 bg-gradient-to-r from-red-600 to-orange-500 text-white font-mono text-[10px] font-bold px-3.5 py-1 rounded-br-xl uppercase flex items-center gap-1 shadow">
+              <Award className="w-3.5 h-3.5 text-white" />
               <span>RECOMMENDED · بالاترین بازدهی تجاری</span>
             </div>
 
-            <div className="flex items-center justify-between pb-3 border-b border-red-500/20 pt-1">
-              <div>
-                <span className="text-xs font-mono text-red-400">PLAN 02</span>
-                <h3 className="text-lg font-bold text-white">شو‌روم جامع و تعاملی شوگان</h3>
+            <div>
+              <div className="flex items-center justify-between pb-3.5 border-b border-red-500/20 pt-2">
+                <div>
+                  <span className="text-xs font-mono text-red-400 font-semibold">PLAN 02</span>
+                  <h3 className="text-lg sm:text-xl font-black text-white">شورووم جامع و تعاملی شوگان</h3>
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-950/80 text-red-400 border border-red-500/30">
+                  پکیج جامع (پیشنهادی)
+                </span>
               </div>
-              <div className="text-right">
-                <div className="text-2xl font-black text-red-500">۱۴۰ م.ت</div>
-                <div className="text-[10px] text-neutral-400">سرمایه‌گذاری جامع</div>
-              </div>
-            </div>
 
-            <ul className="space-y-2 text-xs text-neutral-200">
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="font-semibold text-white">تمام امکانات پلن اول + موارد زیر:</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="text-amber-300 font-semibold">سامانه مشاوره هوشمند خودرو (Advisor Tool)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                سیستم نوبت‌دهی تقویمی کارگاه با پنل ادمین
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                پورتال اختصاصی Shogun Adventure Club و شوکیس جیمشید
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                انیمیشن‌های تعاملی اسکرول و ترنزیشن‌های سبک Camber
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-red-400 font-bold shrink-0" />
-                <span className="font-bold text-white">۱ سال پشتیبانی کامل فنی + مانیتورینگ اختصاصی</span>
-              </li>
-            </ul>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-100 font-medium mt-4">
+                <li className="flex items-center gap-2.5 text-amber-300 font-bold">
+                  <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>تمام امکانات پلن اول + موارد اختصاصی زیر:</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>سامانه مشاوره هوشمند خودرو (Advisor Tool)</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>سیستم نوبت‌دهی تقویمی کارگاه با پنل ادمین</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>پورتال Shogun Adventure Club و شوکیس جیمشید</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>انیمیشن‌های تعاملی اسکرول سبک کمبر</span>
+                </li>
+                <li className="flex items-center gap-2.5 pt-1">
+                  <ShieldCheck className="w-4 h-4 text-red-400 shrink-0" />
+                  <span className="font-bold text-white">۱ سال پشتیبانی فنی کامل + مانیتورینگ اختصاصی</span>
+                </li>
+              </ul>
+            </div>
 
             <button
               onClick={() => handleApprove(2)}
-              className={`w-full py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg ${
+              className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg ${
                 approvedPlan === 2
                   ? "bg-emerald-600 text-white shadow-emerald-600/30"
-                  : "bg-red-600 hover:bg-red-500 text-white shadow-red-600/30 hover:scale-[1.02]"
+                  : "bg-red-600 hover:bg-red-500 text-white shadow-red-600/40 hover:scale-[1.02] active:scale-95"
               }`}
             >
               {approvedPlan === 2 ? <CheckCheck className="w-4 h-4" /> : <Flame className="w-4 h-4" />}
-              <span>{approvedPlan === 2 ? "پلن ۲ (پیشنهادی) تایید شد" : "انتخاب پلن جامع (۱۴۰ میلیون تومان)"}</span>
+              <span>{approvedPlan === 2 ? "پکیج ۲ (پیشنهادی) انتخاب شد" : "انتخاب پکیج جامع تعاملی"}</span>
             </button>
           </div>
         </div>
 
         {/* Footer Contact Details with User's Exact Phone Number */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 rounded-xl bg-neutral-900 border border-white/10 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 rounded-xl bg-neutral-900 border border-white/10 text-xs sm:text-sm">
           <div className="flex items-center gap-2 text-neutral-300 text-center sm:text-right">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>آماده شروع فاز اول تحقیقات و طراحی هویت بصری شوگان گاراژ</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+            <span className="font-medium">آماده شروع فاز اول تحقیقات و طراحی هویت بصری شوگان گاراژ</span>
           </div>
 
           <div className="flex items-center gap-3">
             <a
               href="tel:09120870095"
-              className="flex items-center gap-1.5 text-neutral-200 hover:text-white px-3.5 py-1.5 rounded-lg bg-neutral-800 border border-white/10 transition-colors"
+              className="flex items-center gap-1.5 text-neutral-100 hover:text-white px-3.5 py-2 rounded-lg bg-neutral-800 border border-white/10 transition-colors font-mono font-bold"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-red-400" />
+              <PhoneCall className="w-4 h-4 text-red-400" />
               <span>۰۹۱۲۰۸۷۰۰۹۵</span>
             </a>
             <a
               href="https://wa.me/989120870095?text=سلام%20حسن%20جان،%20پروپوزال%20شوگان%20گاراژ%20را%20بررسی%20کردم"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-white font-medium px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-600/20 transition-colors"
+              className="flex items-center gap-1.5 text-white font-bold px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95"
             >
-              <Send className="w-3.5 h-3.5" />
-              <span>ارسال پیام در واتس‌اپ</span>
+              <Send className="w-4 h-4" />
+              <span>پیام در واتس‌اپ</span>
             </a>
           </div>
         </div>
