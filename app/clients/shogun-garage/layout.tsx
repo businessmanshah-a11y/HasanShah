@@ -64,6 +64,46 @@ export default function ShogunLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            /* Shogun Garage Custom Red Scrollbar - override globals.css gold thumb */
+            html, body, #__next, main, div, * {
+              scrollbar-color: #dc2626 #0a0a0b !important;
+            }
+            ::-webkit-scrollbar,
+            html::-webkit-scrollbar,
+            body::-webkit-scrollbar,
+            main::-webkit-scrollbar,
+            *::-webkit-scrollbar {
+              width: 6px !important;
+              height: 6px !important;
+            }
+            ::-webkit-scrollbar-track,
+            html::-webkit-scrollbar-track,
+            body::-webkit-scrollbar-track,
+            main::-webkit-scrollbar-track,
+            *::-webkit-scrollbar-track {
+              background: #0a0a0b !important;
+            }
+            ::-webkit-scrollbar-thumb,
+            html::-webkit-scrollbar-thumb,
+            body::-webkit-scrollbar-thumb,
+            main::-webkit-scrollbar-thumb,
+            *::-webkit-scrollbar-thumb {
+              background: #dc2626 !important;
+              border-radius: 999px !important;
+            }
+            ::-webkit-scrollbar-thumb:hover,
+            html::-webkit-scrollbar-thumb:hover,
+            body::-webkit-scrollbar-thumb:hover,
+            main::-webkit-scrollbar-thumb:hover,
+            *::-webkit-scrollbar-thumb:hover {
+              background: #ef4444 !important;
+            }
+          `,
+        }}
+      />
       {children}
     </div>
   );

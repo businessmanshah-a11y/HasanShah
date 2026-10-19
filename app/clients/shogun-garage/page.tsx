@@ -38,13 +38,13 @@ interface SlideData {
 
 const SLIDES: SlideData[] = [
   { id: "hero", num: "۰۱", title: "معرفی و هویت", badge: "THE GENESIS" },
-  { id: "vision", num: "۰۲", title: "چشم‌انداز و تمایز", badge: "THE BIG LEAP" },
-  { id: "parts", num: "۰۳", title: "کاتالوگ مهندسی قطعات", badge: "PARTS & FITMENT" },
-  { id: "services", num: "۰۴", title: "هاب خدمات کارگاهی", badge: "GARAGE SERVICES" },
-  { id: "advisor", num: "۰۵", title: "مشاوره هوشمند خودرو", badge: "SMART ADVISOR" },
-  { id: "club", num: "۰۶", title: "جیمشید و کلوب ماجراجویی", badge: "ADVENTURE CLUB" },
-  { id: "roadmap", num: "۰۷", title: "نقشه راه و فازبندی", badge: "PROJECT ROADMAP" },
-  { id: "investment", num: "۰۸", title: "پکیج‌های پیشنهادی", badge: "PROPOSED PACKAGES" },
+  { id: "vision", num: "۰۲", title: "تمایز شوگان با رقبا", badge: "GAP ANALYSIS" },
+  { id: "parts", num: "۰۳", title: "کاتالوگ مهندسی", badge: "PARTS & FITMENT" },
+  { id: "services", num: "۰۴", title: "هاب خدمات و نوبت‌دهی", badge: "WORKSHOP HUB" },
+  { id: "advisor", num: "۰۵", title: "سیستم مشاوره هوشمند", badge: "SMART ADVISOR" },
+  { id: "club", num: "۰۶", title: "پروژه‌ها و باشگاه ماجراجویی", badge: "COMMUNITY HUB" },
+  { id: "roadmap", num: "۰۷", title: "نقشه راه شفاف", badge: "PROJECT ROADMAP" },
+  { id: "investment", num: "۰۸", title: "پلن‌های پیشنهادی", badge: "PROPOSED PACKAGES" },
 ];
 
 const VEHICLES = [
@@ -166,7 +166,7 @@ export default function ShogunProposalPage() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       style={{ fontFamily: "'Peyda', Tahoma, sans-serif" }}
-      className="relative w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory bg-[#0a0a0b] text-neutral-100 antialiased selection:bg-red-600 selection:text-white"
+      className="relative w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory bg-[#0a0a0b] text-neutral-100 antialiased selection:bg-red-600 selection:text-white [scrollbar-color:#dc2626_#0a0a0b] [scrollbar-width:thin]"
       dir="rtl"
     >
       {/* ─── FIXED TOP NAV BAR ──────────────────────────────────────────────── */}
@@ -290,9 +290,9 @@ export default function ShogunProposalPage() {
 
         {/* Center Minimal Punchy Headline */}
         <div className="relative z-10 my-auto max-w-4xl space-y-3 py-4">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-            <span>مرجع مهندسی و تجهیز </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-l from-red-500 via-orange-500 to-amber-200">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+            <span className="block">مرجع مهندسی و تجهیز</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-l from-red-500 via-orange-500 to-amber-200">
               خودروهای بیراهه‌نورد
             </span>
           </h1>
@@ -354,7 +354,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            تمایز شورووم شوگان با سایت‌سازهای معمولی
+            تمایز شوگان با رقبا
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             GAP ANALYSIS & BRAND PRESTIGE // ۰۲
@@ -452,7 +452,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            کاتالوگ مهندسی و سازگاری قطعات با خودرو
+            کاتالوگ مهندسی
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             PARTS CATALOGUE & FITMENT VERIFICATION // ۰۳
@@ -565,7 +565,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            هاب خدمات کارگاهی و مدیریت هوشمند نوبت‌ها
+            هاب خدمات و نوبت‌دهی
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             WORKSHOP HUB & TIME SLOT MANAGEMENT // ۰۴
@@ -645,7 +645,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            سیستم مشاوره و پیشنهاد هوشمند تجهیزات
+            سیستم مشاوره هوشمند
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             INTERACTIVE SMART ADVISOR // ۰۵
@@ -777,7 +777,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            پروژه نمادین «جیمشید» و باشگاه ماجراجویی شوگان
+            پروژه‌ها و باشگاه ماجراجویی
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             ICONIC BUILDS & ADVENTURE COMMUNITY // ۰۶
@@ -859,7 +859,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            نقشه راه شفاف؛ ۴ گام تا راه‌اندازی شورووم شوگان
+            نقشه راه شفاف
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             IMPLEMENTATION PHASES & TIMELINE // ۰۷
@@ -869,70 +869,110 @@ export default function ShogunProposalPage() {
           </p>
         </div>
 
-        {/* 4 Steps Grid with Larger Typography and Clean Concise Content */}
+        {/* 4 Steps Grid with Balanced Typography and Clean Alignment */}
         <div className="my-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl w-full">
           {/* Step 1 */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
-            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام اول · هفته ۱</span>
-            <h3 className="font-extrabold text-base sm:text-lg text-white">هویت و سناریو</h3>
-            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>دریافت مدیا و تحلیل دقیق هویت شوگان</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>تعیین ساختار محتوا و دسته‌بندی قطعات</span>
-              </li>
-            </ul>
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/30 transition-all flex flex-col justify-between shadow-md">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-red-950/80 text-red-400 border border-red-800/40 font-bold">
+                  PHASE ۰۱
+                </span>
+                <span className="text-xs font-mono text-neutral-400 font-bold">هفته ۱</span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">هویت بصری و سناریو</h3>
+              <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-normal leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>دریافت مدیا و تدوین هویت آفرودی شوگان</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>تعیین معماری اطلاعات و فیلترهای شاسی</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-3 mt-3 border-t border-white/5 text-[11px] font-mono text-neutral-400">
+              تحویل: سند معماری شورووم
+            </div>
           </div>
 
           {/* Step 2 */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
-            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام دوم · هفته ۲-۳</span>
-            <h3 className="font-extrabold text-base sm:text-lg text-white">دیزاین و پروتوتایپ</h3>
-            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>پیاده‌سازی لندینگ زنده و تعاملی</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>تایید نهایی دیزاین سیستم (Sign-off)</span>
-              </li>
-            </ul>
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/30 transition-all flex flex-col justify-between shadow-md">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-red-950/80 text-red-400 border border-red-800/40 font-bold">
+                  PHASE ۰۲
+                </span>
+                <span className="text-xs font-mono text-neutral-400 font-bold">هفته ۲-۳</span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">دیزاین و پروتوتایپ</h3>
+              <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-normal leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>پیاده‌سازی پروتوتایپ زنده و تعاملی</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>تایید نهایی دیزاین سیستم (Sign-off)</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-3 mt-3 border-t border-white/5 text-[11px] font-mono text-neutral-400">
+              تحویل: پروتوتایپ تعاملی
+            </div>
           </div>
 
           {/* Step 3 */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
-            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام سوم · هفته ۴-۶</span>
-            <h3 className="font-extrabold text-base sm:text-lg text-white">کدنویسی اختصاصی قالب و افزونه‌ها</h3>
-            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>توسعه قالب اختصاصی PHP، ووکامرس و پنل ادمین</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>ماژول استعلام قطعات و رزرو تقویمی نوبت</span>
-              </li>
-            </ul>
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/30 transition-all flex flex-col justify-between shadow-md">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-red-950/80 text-red-400 border border-red-800/40 font-bold">
+                  PHASE ۰۳
+                </span>
+                <span className="text-xs font-mono text-neutral-400 font-bold">هفته ۴-۶</span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">کدنویسی اختصاصی PHP</h3>
+              <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-normal leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>توسعه قالب اختصاصی ووکامرس و پنل ادمین</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>ماژول استعلام قطعات و رزرو تقویمی نوبت</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-3 mt-3 border-t border-white/5 text-[11px] font-mono text-neutral-400">
+              تحویل: هسته فنی و دیتابیس
+            </div>
           </div>
 
           {/* Step 4 */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-3 relative shadow-md">
-            <span className="text-xs sm:text-sm font-mono text-red-400 font-bold block">گام چهارم · هفته ۷</span>
-            <h3 className="font-extrabold text-base sm:text-lg text-white">تست، استقرار و لانچ</h3>
-            <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-medium">
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>بهینه‌سازی سرعت ۹۵+ روی موبایل</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-red-500 font-bold">•</span>
-                <span>اتصال دامنه و آغاز ۱ سال پشتیبانی فنی</span>
-              </li>
-            </ul>
+          <div className="p-5 sm:p-6 rounded-2xl bg-neutral-900/80 border border-white/10 hover:border-red-500/30 transition-all flex flex-col justify-between shadow-md">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-red-950/80 text-red-400 border border-red-800/40 font-bold">
+                  PHASE ۰۴
+                </span>
+                <span className="text-xs font-mono text-neutral-400 font-bold">هفته ۷</span>
+              </div>
+              <h3 className="font-extrabold text-base sm:text-lg text-white">تست و تحویل نهایی</h3>
+              <ul className="text-xs sm:text-sm text-neutral-300 space-y-2 font-normal leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>تست سرعت ۹۵+، اتصال دامنه و لانچ</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 font-bold leading-none mt-1">•</span>
+                  <span>آغاز ۱ سال پشتیبانی فنی و امنیتی</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-3 mt-3 border-t border-white/5 text-[11px] font-mono text-neutral-400">
+              تحویل: راه‌اندازی و لانچ کامل
+            </div>
           </div>
         </div>
 
@@ -961,7 +1001,7 @@ export default function ShogunProposalPage() {
         {/* Persian Heading First, English Below */}
         <div className="max-w-4xl space-y-2">
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            پلن‌های پیشنهادی توسعه شوگان گاراژ
+            پلن‌های پیشنهادی
           </h2>
           <div className="text-red-500 text-xs sm:text-sm font-mono tracking-wider font-bold">
             PROPOSED EXECUTIVE PACKAGES // ۰۸
