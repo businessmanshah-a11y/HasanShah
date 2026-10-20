@@ -4,7 +4,7 @@ import type { RawArticle } from "../types";
 
 export const googleFlowRegionErrorFixArticle: RawArticle = {
   slug: "google-flow-region-error-fix-iran-guide",
-  dateIso: "2026-09-07T00:00:00.000Z",
+  dateIso: "2026-10-20T00:00:00.000Z",
   coverImage: "/images/blog/google-flow-region-fix-cover.webp",
   featured: true,
   relatedSlugs: [
@@ -17,16 +17,21 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
     fa: {
       title: "حل مشکل ریجن Google Flow در ایران و رفع خطای عدم پشتیبانی فلو",
       summary:
-        "راهنمای جامع، تجربی و گام‌به‌گام برای رفع خطای Flow is not available in your country yet، تغییر قانونی کشور اکانت جیمیل در فرم رسمی گوگل و بستن کامل تمام نشت‌های IP و WebRTC.",
+        "راهنمای جامع، تجربی و گام‌به‌گام برای رفع خطای Flow is not available in your country yet، حل خطای جدید تایید سن (Verify Age) با ویدیوی سلفی، تغییر قانونی کشور اکانت جیمیل در فرم رسمی گوگل و بستن کامل تمام نشت‌های IP و WebRTC.",
       category: "هوش مصنوعی و ابزارها",
       readTime: "۱۴ دقیقه مطالعه",
-      publishedDate: "۱۷ شهریور ۱۴۰۵",
+      publishedDate: "۲۹ مهر ۱۴۰۵ (به‌روزرسانی جامع پاییز ۲۰۲۶)",
       tags: [
         "گوگل فلو",
         "Google Flow",
         "حل مشکل ریجن فلو",
         "ارور تحریم گوگل فلو",
         "Country Association",
+        "احراز سن گوگل فلو",
+        "ارور سن گوگل فلو",
+        "Verify Age Google Flow",
+        "Google Age Verification Selfie",
+        "رفع ارور Verify Age",
         "هوش مصنوعی ویدیو",
         "تغییر ریجن جیمیل",
         "رفع تحریم گوگل فلو",
@@ -36,7 +41,8 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
       ],
       author: authors.fa,
       takeaways: [
-        "خطای گوگل فلو ناشی از ضعف وی‌پی‌ان نیست؛ گوگل کشور ثبت‌شده اکانت شما در شرایط خدمات (Terms of Service) را مبنای تحریم قرار می‌دهد.",
+        "خطای گوگل فلو ناشی از ضعف وی‌پی‌ان نیست؛ گوگل کشور ثبت‌شده اکانت در شرایط خدمات (Terms of Service) و همچنین لایه جدید تایید سن ۱۸+ سال (Age Verification) را مبنا قرار می‌دهد.",
+        "اگر ریجن اکانت و وی‌پی‌ان درست است ولی باز هم وارد نمی‌شود، با مراجعه به لینک رسمی احراز سن گوگل و ضبط ویدیوی سلفی ۱ دقیقه‌ای، قفل ابزار درجا باز می‌شود.",
         "با ارسال فرم رسمی Country Association و انتخاب گزینه استراتژیک «I travel often» ریجن اکانت بدون نیاز به مدرک اقامتی به انگلستان یا آمریکا تغییر می‌کند.",
         "قبل از هر اقدامی، باید نشت‌های سه‌گانه WebRTC، DNS و IPv6 روی مرورگر و سیستم‌عامل به‌طور کامل بسته و ایزوله شوند.",
         "اگر علاوه بر تولید ویدیو، می‌خواهی با هوش مصنوعی و بدون کدنویسی سیستم‌ها و لندینگ‌های اختصاصی بسازی، نقشه راه [آموزش وایب‌کدینگ از صفر](/vibe-coding/) و [درخواست مشاوره در صفحه تماس](/contact?service=vibecoding) بهترین مسیر شروع شماست.",
@@ -63,20 +69,24 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "۴. گام سوم: پاکسازی کش مرورگر و ورود به استودیو Google Flow",
         },
         {
+          id: "step-age-verification-selfie",
+          title: "۵. گام چهارم: رفع ارور جدید احراز سن گوگل فلو (Verify Age با ویدیوی سلفی)",
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "۵. گام چهارم: راه سریع‌تر؛ ساخت یک جیمیل بدون شماره ایران",
+          title: "۶. گام پنجم: راه سریع‌تر؛ ساخت یک جیمیل بدون شماره ایران",
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "۶. گام پنجم: نصب برنامه روی گوشی (اندروید و آیفون)",
+          title: "۷. گام ششم: نصب برنامه روی گوشی (اندروید و آیفون)",
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "۷. جدول حل سریع مشکلات متداول (Cheat-Sheet)",
+          title: "۸. جدول حل سریع مشکلات متداول (Cheat-Sheet)",
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "۸. پرسش‌های متداول و پاسخ‌های تخصصی",
+          title: "۹. پرسش‌های متداول و پاسخ‌های تخصصی",
         },
       ],
       quickLinks: [
@@ -86,6 +96,13 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           description: "درخواست رسمی تغییر کشور اکانت جیمیل در شروط خدمات بدون نیاز به مدارک با گزینه I travel often",
           badge: "فرم رسمی گوگل",
           icon: "form",
+        },
+        {
+          title: "احراز هویت سن گوگل (Google Age Verification)",
+          url: "https://myaccount.google.com/age-verification",
+          description: "حل فوری خطای تایید سن ۱۸+ و قفل ورود به گوگل فلو با سلفی ویدیویی ۱ دقیقه‌ای بدون نیاز به کارت خارجی",
+          badge: "احراز سن گوگل",
+          icon: "shield",
         },
         {
           title: "ورود مستقیم به استودیو هوش مصنوعی Google Flow",
@@ -242,8 +259,39 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           },
         },
         {
+          id: "step-age-verification-selfie",
+          title: "۵. گام چهارم: رفع ارور جدید احراز سن گوگل فلو (Verify Age با ویدیوی سلفی)",
+          lead:
+            "اگر ریجن اکانتت خارجه و وی‌پی‌ان هم درسته ولی با ارور سن یا عدم اجازه دسترسی روبرو شدی، این گام کلید نجات توئه!",
+          paragraphs: [
+            "خیلی از کاربران حرفه‌ای بعد از اینکه کشور اکانت جیمیل‌شان را به آمریکا، انگلیس یا آلمان تغییر می‌دهند و تمام نشت‌های آی‌پی را می‌بندند، با یک مانع جدید و غافلگیرکننده روبرو می‌شوند: استودیوی [Google Flow](https://labs.google/fx/tools/flow) باز نمی‌شود، در حلقه لاگین گیر می‌کند، یا خطای «Verify your age to continue» و «You must be 18 or older to access generative AI video tools» را نشان می‌دهد.",
+            "چرا این اتفاق می‌افتد؟ گوگل به دلیل قوانین سفت‌وسخت نظارتی بین‌المللی در خصوص هوش مصنوعی مولد (به ویژه مدل‌های پیشرفته تولید ویدیو نظیر Veo 2 و Imagen 3)، یک لایه حفاظتی به نام Age Assurance یا تایید سن قانونی (۱۸+ سال) اضافه کرده است. اگر گوگل تاریخ تولد حساب شما را مشکوک تشخیص دهد یا اخیراً ریجن حسابتان تغییر کرده باشد، دسترسی به تولید ویدیو را تا زمان احراز سن مسدود نگه می‌دارد.",
+            "گوگل برای احراز سن ۳ گزینه پیشنهاد می‌دهد: ۱. وارد کردن کارت اعتباری بین‌المللی (ویزا یا مسترکارت) با شارژ موقت ۱ دلار، ۲. آپلود کارت شناسایی دولتی یا پاسپورت خارجی، ۳. **تایید چهره با ضبط ویدیوی سلفی کوتاه (Selfie Video Verification)**.",
+            "**چرا ویدیوی سلفی بهترین و تضمینی‌ترین راهکار برای کاربران داخل ایران است؟**",
+            "نیازی به مسترکارت، سیم‌کارت خارجی یا پاسپورت معتبر بین‌المللی ندارید! سیستم هوش مصنوعی تخمین سن گوگل، در کمتر از ۲ دقیقه سن چهره شما را آنالیز کرده و تاییدیه بالای ۱۸ سال بودن را ثبت می‌کند. طبق سند حریم خصوصی گوگل، این ویدیو صرفاً جهت تخمین سن پردازش شده و بلافاصله پس از تایید از سرورها برای همیشه حذف می‌شود.",
+          ],
+          bulletPoints: [
+            "گام ۱: وی‌پی‌ان خود را روی همان کشور ثبت‌شده اکانت (مثلاً آلمان یا آمریکا) متصل نگه دار.",
+            "گام ۲: وارد [صفحه رسمی احراز سن گوگل (myaccount.google.com/age-verification)](https://myaccount.google.com/age-verification) شو.",
+            "گام ۳: گزینه Use your camera to estimate your age (تخمین سن با دوربین) را انتخاب کن.",
+            "گام ۴: چهره‌ات را در کادر بیضی شکل دوربین قرار بده و چند ثانیه مستقیماً به دوربین نگاه کن تا نوار پردازش سبز شود.",
+            "گام ۵: حداکثر ظرف ۲ الی ۵ دقیقه، ایمیل تاییدیه رسمی (Your age is verified) از سمت گوگل ارسال می‌شود.",
+            "گام ۶: حافظه کش مرورگر را پاک کن و وارد [Google Flow](https://labs.google/fx/tools/flow) شو؛ قفل استودیو و تولید ویدیوهای Veo 2 فوراً باز می‌شود!",
+          ],
+          callout: {
+            type: "tip",
+            title: "نکته طلایی ثبت سلفی ویدیو",
+            text: "هنگام ضبط سلفی، در فضایی با نور یکنواخت قرار بگیرید و عینک آفتابی یا کلاه نداشته باشید. این الگوریتم هوش مصنوعی به هیچ عنوان ملیت شما را بررسی نمی‌کند و صرفاً آناتومی چهره برای تایید سن بالای ۱۸ سال را ارزیابی می‌کند؛ بنابراین بدون کوچک‌ترین دغدغه‌ای برای کاربران ایران کارساز است.",
+          },
+          image: {
+            src: "/images/blog/google-flow-prompt-studio.webp",
+            alt: "احراز هویت سن گوگل فلو و دسترسی بدون محدودیت به استودیوی Veo 2",
+            caption: "تصویر ۵: رفع قطعی محدودیت سنی و فعال‌سازی کامل ابزارهای ساخت ویدیو در استودیو گوگل فلو.",
+          },
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "۵. گام چهارم: راه سریع‌تر؛ ساخت یک جیمیل بدون شماره ایران",
+          title: "۶. گام پنجم: راه سریع‌تر؛ ساخت یک جیمیل بدون شماره ایران",
           lead:
             "اگر وقت نداری منتظر تایید فرم بمونی و همین الان پروژه داری، این میان‌بر ۲ دقیقه‌ای رو برو.",
           paragraphs: [
@@ -258,12 +306,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "ساخت اکانت پاک گوگل بدون شماره تلفن",
-            caption: "تصویر ۵: ساخت جیمیل جدید و بدون شماره در محیط ایزوله مرورگر.",
+            caption: "تصویر ۶: ساخت جیمیل جدید و بدون شماره در محیط ایزوله مرورگر.",
           },
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "۶. گام پنجم: نصب و اجرای اپلیکیشن موبایل Google Flow",
+          title: "۷. گام ششم: نصب و اجرای اپلیکیشن موبایل Google Flow",
           lead:
             "استودیوی فلو فقط مخصوص کامپیوتر نیست؛ با اپلیکیشن رسمی موبایل می‌توانی مستقیم با دوربین گوشی ویدیو بسازی و پرامپت بزنی.",
           paragraphs: [
@@ -278,12 +326,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "دانلود و نصب اپلیکیشن رسمی Google Flow روی گوگل پلی و اپ استور آیفون",
-            caption: "شکل ۶: اسکرین‌شات واقعی از صفحه اپلیکیشن رسمی Google Flow در استور گوگل پلی با دکمه Install و پیش‌نمایش‌های محیط موبایل.",
+            caption: "شکل ۷: اسکرین‌شات واقعی از صفحه اپلیکیشن رسمی Google Flow در استور گوگل پلی با دکمه Install و پیش‌نمایش‌های محیط موبایل.",
           },
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "۷. جدول عیب‌یابی خطاهای متداول گوگل فلو (Cheat-Sheet)",
+          title: "۸. جدول عیب‌یابی خطاهای متداول گوگل فلو (Cheat-Sheet)",
           lead:
             "یک راهنمای سریع و دم‌دستی برای وقت‌هایی که فلو وسط پروژه به خطا می‌خورد.",
           paragraphs: [
@@ -297,6 +345,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
               "راه‌حل قطعی و فوری",
             ],
             rows: [
+              [
+                "ارور احراز سن (Verify your age / 18+ Restriction)",
+                "سیاست جدید نظارتی گوگل برای مسدودسازی مدل‌های هوش مصنوعی ویدیو برای اکانت‌های تاییدنشده سنی",
+                "ریجن و آی‌پی درست است اما ورود یا رندر ویدیو قفل است",
+                "مراجعه به [صفحه تایید سن گوگل](https://myaccount.google.com/age-verification) و ضبط ویدیوی سلفی ۱ دقیقه‌ای جهت تایید هوشمند هوش مصنوعی بدون نیاز به کارت خارجی",
+              ],
               [
                 "Flow is not available in your country yet",
                 "کشور ثبت‌شده جیمیل در شروط خدمات روی ایران است",
@@ -332,13 +386,15 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "۸. پرسش‌های متداول و پاسخ‌های تخصصی",
+          title: "۹. پرسش‌های متداول و پاسخ‌های تخصصی",
           lead:
             "پاسخ‌های شفاف به سوالات پرتکرار کاربرانی که می‌خواهند از ایران با گوگل فلو کار کنند.",
           paragraphs: [
             "این پاسخ‌ها بر اساس تست‌های مکرر و استانداردهای روز گوگل لبز گردآوری شده‌اند:",
           ],
           bulletPoints: [
+            "چرا با وجود وی‌پی‌ان سالم و ریجن درست، ارور Verify Age دریافت می‌کنم و گوگل فلو باز نمی‌شود؟\nگوگل بر اساس قوانین جهانی ایمنی هوش مصنوعی، برای ابزارهای تولید ویدیو با مدل‌های Veo 2 الزام تایید سن ۱۸ سال تمام را وضع کرده است. اگر اکانت شما به تازگی تغییر ریجن داده باشد، گوگل احراز سن می‌خواهد. با ورود به [صفحه رسمی تایید سن گوگل](https://myaccount.google.com/age-verification) و گرفتن یک ویدیوی سلفی کوتاه از چهره، این مشکل در کمتر از ۲ دقیقه برای همیشه حل می‌شود.",
+            "آیا ضبط ویدیوی سلفی برای تایید سن گوگل امن است و برای کاربران ایرانی مشکلی ایجاد نمی‌کند؟\nکاملاً امن است؛ گوگل رسماً اعلام کرده که این ویدیو فقط توسط مدل هوش مصنوعی برای تخمین رده سنی بررسی شده و بلافاصله پس از تایید از سرورها پاک می‌شود. همچنین این روش نیازی به ارائه کارت بانکی خارجی یا مدارک هویتی ندارد و بهترین گزینه بدون ریسک برای کاربران داخل ایران است.",
             "آیا بعد از تایید فرم تغییر کشور، باز هم باید فیلترشکن روشن باشد؟\nبله؛ چون دامنه‌های گوگل لبز و سرویس‌های هوش مصنوعی آن در اینترنت ایران فیلتر هستند، همیشه باید با سرور همان کشوری که انتخاب کرده‌ای وصل شوی تا تناقض مکانی رخ ندهد.",
             "بهترین کشور برای انتخاب در فرم تغییر ریجن گوگل کدام است؟\nکشورهای United Kingdom (انگلستان)، United States (آمریکا) و Germany (آلمان) بهترین گزینه‌ها هستند؛ چون جدیدترین امکانات مدل‌های Veo 2 و Imagen 3 ابتدا در این مناطق عرضه می‌شوند.",
             "آیا با تغییر ریجن، ایمیل‌ها یا فایل‌های گوگل درایو من پاک می‌شوند؟\nخیر؛ تغییر Country Association فقط حوزه قضایی و قوانین حریم خصوصی حساب شما را به‌روز می‌کند و هیچ تغییری در داده‌ها، ایمیل‌ها یا فایل‌های درایوت ایجاد نمی‌کند.",
@@ -370,6 +426,16 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         ],
       },
       faqs: [
+        {
+          question: "چرا با وجود وی‌پی‌ان سالم و ریجن درست، ارور Verify Age دریافت می‌کنم و گوگل فلو باز نمی‌شود؟",
+          answer:
+            "گوگل بر اساس قوانین جهانی ایمنی هوش مصنوعی، برای ابزارهای تولید ویدیو با مدل‌های Veo 2 الزام تایید سن ۱۸ سال تمام را وضع کرده است. اگر اکانت شما به تازگی تغییر ریجن داده باشد، گوگل احراز سن می‌خواهد. با ورود به [صفحه رسمی تایید سن گوگل](https://myaccount.google.com/age-verification) و گرفتن یک ویدیوی سلفی کوتاه از چهره، این مشکل در کمتر از ۲ دقیقه برای همیشه حل می‌شود.",
+        },
+        {
+          question: "آیا ضبط ویدیوی سلفی برای تایید سن گوگل امن است و برای کاربران ایرانی مشکلی ایجاد نمی‌کند؟",
+          answer:
+            "کاملاً امن است؛ گوگل رسماً اعلام کرده که این ویدیو فقط توسط مدل هوش مصنوعی برای تخمین رده سنی بررسی شده و بلافاصله پس از تایید از سرورها پاک می‌شود. همچنین این روش نیازی به ارائه کارت بانکی خارجی یا مدارک هویتی ندارد و بهترین گزینه بدون ریسک برای کاربران داخل ایران است.",
+        },
         {
           question: "آیا بعد از تایید فرم تغییر کشور، باز هم باید فیلترشکن روشن باشد؟",
           answer:
@@ -405,22 +471,27 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
     en: {
       title: "How to Fix the Google Flow 'Unsupported Country' Error (Complete Guide)",
       summary:
-        "A battle-tested, step-by-step guide to fixing the 'Flow is not available in your country yet' error in Google Flow. Update your Google Account Country Association, kill WebRTC leaks, and access the Veo 2 studio from anywhere.",
+        "A battle-tested, step-by-step guide to fixing the 'Flow is not available in your country yet' error in Google Flow, resolving the new age verification (Verify Age via Selfie Video) barrier, updating your Google Account Country Association, and eliminating WebRTC leaks.",
       category: "AI & Video Tools",
       readTime: "14 min read",
-      publishedDate: "September 7, 2026",
+      publishedDate: "October 20, 2026 (Updated 2026 Edition)",
       tags: [
         "Google Flow",
         "Fix Region Error",
         "Unsupported Country",
         "Country Association",
+        "Google Flow Age Verification",
+        "Verify Age Error",
+        "Google Flow Selfie Verification",
+        "Google Labs Age Verification",
         "AI Video Generator",
         "Google Labs",
         "WebRTC Leak Fix",
       ],
       author: authors.en,
       takeaways: [
-        "The Google Flow block is enforced at the Google Account Country Association layer (Terms of Service), not merely by checking your public IP.",
+        "The Google Flow block is enforced at two distinct layers: Google Account Country Association (Terms of Service) and mandatory 18+ Age Assurance.",
+        "If your VPN and Country Association are valid but access remains blocked, completing Google's 1-minute selfie video age verification unlocks the studio instantly without requiring foreign credit cards.",
         "Submitting Google's official Country Association Form with 'I travel often' cleanly reassigns your account without demanding foreign utility bills.",
         "Plugging WebRTC STUN leaks, enforcing DoH encryption, and isolating Chrome profiles guarantees permanent, zero-friction studio access.",
       ],
@@ -446,20 +517,24 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "4. Step 3: Browser Cache Purge & Flow Studio Access",
         },
         {
+          id: "step-age-verification-selfie",
+          title: "5. Step 4: Bypass the New Age Verification Barrier (Verify Age via Selfie Video)",
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "5. Step 4: Clean Overseas Google Account & Family Sharing Setup",
+          title: "6. Step 5: Clean Overseas Google Account & Family Sharing Setup",
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "6. Step 5: Installing the Official Google Flow Mobile App",
+          title: "7. Step 6: Installing the Official Google Flow Mobile App",
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "7. Google Flow Troubleshooting Matrix & Error Codes",
+          title: "8. Google Flow Troubleshooting Matrix & Error Codes",
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "8. Frequently Asked Questions & Real-World Fixes",
+          title: "9. Frequently Asked Questions & Real-World Fixes",
         },
       ],
       quickLinks: [
@@ -469,6 +544,13 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           description: "Submit official country reassignment without foreign residency proof via 'I travel often'",
           badge: "Official Google Form",
           icon: "form",
+        },
+        {
+          title: "Google Age Verification Portal",
+          url: "https://myaccount.google.com/age-verification",
+          description: "Resolve 18+ age restriction and generation locks via automated 1-minute selfie video verification",
+          badge: "Age Verification",
+          icon: "shield",
         },
         {
           title: "Access Google Flow Generative Video Studio",
@@ -647,8 +729,39 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           },
         },
         {
+          id: "step-age-verification-selfie",
+          title: "5. Step 4: Bypass the New Age Verification Barrier (Verify Age via Selfie Video)",
+          lead:
+            "If your VPN is clean and your Google account country is set to the US or Germany, yet Google Flow still blocks you or displays an age restriction error, here is the immediate fix.",
+          paragraphs: [
+            "A growing number of creators have reported hitting a brick wall even after successfully updating their Country Association: upon visiting [labs.google/fx/tools/flow](https://labs.google/fx/tools/flow), the workspace either hangs in an infinite authorization loop or throws an explicit security restriction: 'Verify your age to continue' or 'You must be 18 or older to access generative AI video tools'.",
+            "Why does this occur? Due to stringent international regulatory frameworks governing generative AI and photorealistic video synthesis (specifically models like Veo 2 and Imagen 3), Google enforces a mandatory adult age-assurance protocol. If your account's recorded birthdate is unconfirmed, or if recent regional shifts flagged your profile for automated compliance re-evaluation, generative video synthesis remains locked until age verification is fulfilled.",
+            "Google offers three verification paths: 1. International Credit Card authorization ($1 temporary hold, which is challenging for international creators facing financial sanctions), 2. Uploading a valid government ID or passport, 3. **AI-driven Facial Age Estimation via a short Selfie Video**.",
+            "**Why the Selfie Video Method is the Gold Standard:**",
+            "You do NOT need a foreign credit card, foreign phone number, or international passport! Google's automated biometric age estimation evaluates facial geometry to confirm you are 18+ within 2 minutes. Under Google's official privacy commitments, the video selfie is exclusively used for age estimation and is permanently purged from Google's servers immediately following verification.",
+          ],
+          bulletPoints: [
+            "Step 1: Keep your VPN active and routed through your account's primary country (e.g., Germany, UK, or US).",
+            "Step 2: Open [Google's Official Age Verification Portal (myaccount.google.com/age-verification)](https://myaccount.google.com/age-verification).",
+            "Step 3: Select 'Use your camera to estimate your age' (Facial estimation).",
+            "Step 4: Center your face inside the on-screen oval frame, ensure balanced indoor lighting without hats or sunglasses, and look directly into the camera lens.",
+            "Step 5: Google algorithmically processes your video in 1 to 3 minutes, dispatching an official email confirmation ('Your age has been verified').",
+            "Step 6: Purge your browser cache under `chrome://settings/siteData` and reload [Google Flow](https://labs.google/fx/tools/flow). Full Veo 2 video generation and timeline controls unlock immediately!",
+          ],
+          callout: {
+            type: "tip",
+            title: "Zero-Risk for International Creators",
+            text: "Google's facial estimation model evaluates physiological age markers, completely agnostic of geographic nationality or passport jurisdictions. It provides an immediate, 100% reliable bypass for creators locked out of cutting-edge AI video models.",
+          },
+          image: {
+            src: "/images/blog/google-flow-prompt-studio.webp",
+            alt: "Unlocking Google Flow Veo 2 studio through facial selfie age verification",
+            caption: "Figure 5: Permanent unlock of Google Flow generative video synthesis after fulfilling Google's 18+ age verification requirement.",
+          },
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "5. Step 4: Clean Overseas Google Account & Family Sharing Setup",
+          title: "6. Step 5: Clean Overseas Google Account & Family Sharing Setup",
           lead:
             "If you have an urgent client deadline and cannot wait for form approval, provisioning a clean foreign Google account is the fastest direct path.",
           paragraphs: [
@@ -670,12 +783,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "Clean foreign Google account creation architecture with Family Plan pooling",
-            caption: "Figure 5: Real screenshot of the clean Google Account registration flow in isolated browser state.",
+            caption: "Figure 6: Real screenshot of the clean Google Account registration flow in isolated browser state.",
           },
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "6. Step 5: Installing the Official Google Flow Mobile App",
+          title: "7. Step 6: Installing the Official Google Flow Mobile App",
           lead:
             "Google Flow is not restricted to the desktop browser; mobile apps for Android and iOS let you shoot, style, and generate on the go.",
           paragraphs: [
@@ -690,12 +803,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "Installing Google Flow on Android Play Store and iOS App Store",
-            caption: "Figure 6: Real screenshot of the official Google Flow app listing on Google Play Store ready for installation.",
+            caption: "Figure 7: Real screenshot of the official Google Flow app listing on Google Play Store ready for installation.",
           },
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "7. Google Flow Troubleshooting Matrix & Error Codes",
+          title: "8. Google Flow Troubleshooting Matrix & Error Codes",
           lead:
             "A quick-reference cheat sheet to diagnose and fix unexpected errors during production.",
           paragraphs: [
@@ -709,6 +822,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
               "Direct Resolution",
             ],
             rows: [
+              [
+                "Verify your age / 18+ Required",
+                "Google's compliance policy restricting generative video to verified adult accounts",
+                "VPN and region correct, but studio locked",
+                "Navigate to [Google Age Verification Portal](https://myaccount.google.com/age-verification) and complete a 1-minute selfie video scan for instant AI approval",
+              ],
               [
                 "Flow is not available in your country yet",
                 "Account Terms of Service locked to an unsupported country",
@@ -744,13 +863,15 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "8. Frequently Asked Questions & Real-World Fixes",
+          title: "9. Frequently Asked Questions & Real-World Fixes",
           lead:
             "Clear, direct answers to common questions about bypassing Google Flow region restrictions.",
           paragraphs: [
             "Structured for quick reference and generative answer engines (AEO/GEO):",
           ],
           bulletPoints: [
+            "Q: Why am I receiving a 'Verify your age' error even though my VPN and account region are correct?\nA: Google Labs enforces an 18+ requirement for generative video models like Veo 2. If your account hasn't undergone adult verification, visit [myaccount.google.com/age-verification](https://myaccount.google.com/age-verification) and complete the short selfie video estimation for instant unlocking.",
+            "Q: Is the selfie video age verification safe and accessible for users in sanctioned regions?\nA: Yes, 100%. Google's automated model checks facial physiology rather than nationality or passport data, and the video recording is permanently deleted immediately after verification. No foreign credit card is required.",
             "Q: Do I still need an active VPN after my Country Association Form is approved?\nA: Yes. Because Google Labs endpoints are geo-restricted at the network edge in certain countries, keeping a leak-free VPN active to your assigned country prevents location conflicts.",
             "Q: What is the best destination country to select in the Google Country Association form?\nA: The United Kingdom, United States, and Germany are the most reliable selections, as cutting-edge Veo 2 and Imagen 3 features deploy to these jurisdictions first.",
             "Q: Will changing my account's country delete my emails or Google Drive files?\nA: No. The Country Association process strictly updates the legal Terms of Service and data privacy policies governing your account; it does not touch your emails, Drive files, or Google Photos.",
@@ -782,6 +903,16 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         ],
       },
       faqs: [
+        {
+          question: "Why am I receiving a 'Verify your age' error even though my VPN and account region are correct?",
+          answer:
+            "Google Labs enforces an 18+ requirement for generative video models like Veo 2. If your account hasn't undergone adult verification, visit [Google Age Verification](https://myaccount.google.com/age-verification) and complete the short selfie video estimation for instant unlocking.",
+        },
+        {
+          question: "Is the selfie video age verification safe and accessible for users in restricted regions?",
+          answer:
+            "Yes, 100%. Google's automated model checks facial physiology rather than nationality or passport data, and the video recording is permanently deleted immediately after verification. No foreign credit card is required.",
+        },
         {
           question: "Do I still need an active VPN after my Country Association Form is approved?",
           answer:
@@ -817,22 +948,27 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
     ar: {
       title: "حل مشكلة ريجين Google Flow وتخطي خطأ البلد غير المدعوم (دليل شامل)",
       summary:
-        "دليل عملي مجرب لتجاوز خطأ Flow is not available in your country yet في غوغل فلو، وتعديل بلد حساب الجيميل رسمياً عبر استمارة غوغل، وسد تسريبات WebRTC و IP بالكامل.",
+        "دليل عملي مجرب لتجاوز خطأ Flow is not available in your country yet في غوغل فلو، وحل خطأ تأكيد العمر الجديد (Verify Age) عبر فيديو السيلفي، وتعديل بلد حساب الجيميل رسمياً عبر استمارة غوغل، وسد تسريبات WebRTC و IP بالكامل.",
       category: "الذكاء الاصطناعي وصناعة الفيديو",
       readTime: "١٤ دقيقة قراءة",
-      publishedDate: "١٧ سبتمبر ٢٠٢٦",
+      publishedDate: "۲۰ أكتوبر ۲۰۲۶ (تحديث شامل لخريف ۲۰۲۶)",
       tags: [
         "غوغل فلو",
         "Google Flow",
         "حل مشكلة الريجين",
         "خطأ غير مدعوم في بلدك",
         "Country Association",
+        "تأكيد العمر غوغل فلو",
+        "خطأ Verify Age",
+        "سيلفي تأكيد العمر غوغل",
+        "Google Age Verification Selfie",
         "توليد الفيديو بالذكاء الاصطناعي",
         "تغيير بلد الجيميل",
       ],
       author: authors.ar,
       takeaways: [
-        "حظر غوغل فلو لا يعتمد على ضعف اتصالك؛ بل يعتمد على 'بلد الحساب المسجل' في شروط خدمة غوغل (Terms of Service).",
+        "حظر غوغل فلو لا يعتمد على ضعف اتصالك؛ بل يفرضه غوغل على طبقتين: بلد الحساب المسجل في شروط الخدمة وتأكيد العمر القانوني (18+ Age Verification).",
+        "إذا كان اتصالك وبلد حسابك سليمين لكن الاستوديو يرفض الدخول، فإن تسجيل فيديو سيلفي مدته دقيقة عبر رابط تأكيد العمر الرسمي يفعل الحساب فوراً دون الحاجة لبطاقات مصرفية أجنبية.",
         "إرسال استمارة Country Association الرسمية مع اختيار 'I travel often' يغير بلد الحساب إلى بريطانيا أو أمريكا دون الحاجة لمستندات إقامة.",
         "قبل تقديم الطلب، يجب سد تسريبات WebRTC و DNS و IPv6 في المتصفح والنظام لضمان قبول التغيير فوراً.",
       ],
@@ -858,20 +994,24 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           title: "٤. الخطوة الثالثة: مسح الذاكرة المؤقتة وتشغيل استودیو Google Flow",
         },
         {
+          id: "step-age-verification-selfie",
+          title: "٥. الخطوة الرابعة: حل خطأ تأكيد العمر الجديد في غوغل فلو (Verify Age عبر فيديو السيلفي)",
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "٥. الخطوة الرابعة: إنشاء حساب غوغل دولي نظيف وخطة المجموعات العائلية",
+          title: "٦. الخطوة الخامسة: إنشاء حساب غوغل دولي نظيف وخطة المجموعات العائلية",
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "٦. الخطوة الخامسة: تثبيت وتشغيل تطبيق Google Flow على الهواتف الذكية",
+          title: "٧. الخطوة السادسة: تثبيت وتشغيل تطبيق Google Flow على الهواتف الذكية",
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "٧. جدول تشخيص وإصلاح أخطاء Google Flow الشائعة",
+          title: "٨. جدول تشخيص وإصلاح أخطاء Google Flow الشائعة",
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "٨. الأسئلة الأكثر شيوعاً والحلول العملية",
+          title: "٩. الأسئلة الأكثر شيوعاً والحلول العملية",
         },
       ],
       quickLinks: [
@@ -881,6 +1021,13 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           description: "تعديل بلد الحساب قانونياً في شروط خدمة غوغل بدون مستندات عبر اختيار I travel often",
           badge: "استمارة رسمية",
           icon: "form",
+        },
+        {
+          title: "بوابة تأكيد العمر الرسمية في غوغل (Age Verification)",
+          url: "https://myaccount.google.com/age-verification",
+          description: "تخطي قيود سن ۱۸+ وفك قفل استوديو غوغل فلو عبر فحص سيلفي ذكي خلال دقيقة واحدة",
+          badge: "تأكيد العمر",
+          icon: "shield",
         },
         {
           title: "دخول استوديو Google Flow للذكاء الاصطناعي",
@@ -1059,8 +1206,39 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           },
         },
         {
+          id: "step-age-verification-selfie",
+          title: "٥. الخطوة الرابعة: حل خطأ تأكيد العمر الجديد في غوغل فلو (Verify Age عبر فيديو السيلفي)",
+          lead:
+            "إذا كان اتصالك وبلد حسابك سليمين بنسبة ١٠٠٪ لكن غوغل فلو يرفض فتح الاستوديو أو يظهر لك رسالة خطأ السن القانوني، فهذا هو الحل المباشر والنهائي.",
+          paragraphs: [
+            "واجه العديد من صناع المحتوى عقبة مفاجئة بعد تحديث بلد الحساب بنجاح إلى ألمانيا أو أمريكا وسد تسريبات الشبكة: عند الدخول إلى [استوديو labs.google/fx/tools/flow](https://labs.google/fx/tools/flow)، يعلق الموقع في حلقة تسجيل الدخول أو تظهر رسالة أمان صارمة: «Verify your age to continue» أو «You must be 18 or older to access generative AI video tools».",
+            "لماذا تفرض غوغل هذا القيد؟ نظراً للقوانين والمعايير التنظيمية الدولية الصارمة المفروضة على أدوات الذكاء الاصطناعي التوليدي وخاصة توليد الفيديو الواقعي بنماذج Veo 2 و Imagen 3، فرضت غوغل طبقة أمان إلزامية لتأكيد بلوغ السن القانونية (18+ عاماً). إذا كان تاريخ ميلاد حسابك غير موثق أو تم تعديل بلد الحساب مؤخراً، يتم حظر ميزات توليد الفيديو تلقائياً حتى إتمام التحقق.",
+            "توفر غوغل ٣ خيارات لتأكيد السن: ١. بطاقة ائتمان دولية بخصم مؤقت بقيمة ١ دولار، ٢. رفع صورة بطاقة هوية حكومية أو جواز سفر، ٣. **تقدير العمر بالذكاء الاصطناعي عبر تسجيل فيديو سيلفي قصير (Selfie Video Verification)**.",
+            "**لماذا يعد فيديو السيلفي الحل الذهبي والأمثل لكافة المستخدمين؟**",
+            "لست بحاجة إلى بطاقة فيزا أو ماستركارد أجنبية، ولا إلى جواز سفر دولي! يحلل نموذج الذكاء الاصطناعي لغوغل ملامح الوجه لتأكيد بلوغك سن ۱۸+ في أقل من دقيقتين. ووفقاً للالتزام الرسمي لسياسة الخصوصية من غوغل، يُستخدم الفيديو حصراً لتقدير الفئة العمرية ويُحذف نهائياً وفورياً من خوادم غوغل بعد التحقق.",
+          ],
+          bulletPoints: [
+            "الخطوة ١: تأكد من بقاء اتصال الـ VPN نشطاً لنفس دولة الحساب المعتمدة (مثل ألمانيا أو أمريكا).",
+            "الخطوة ٢: افتح [بوابة تأكيد العمر الرسمية في غوغل (myaccount.google.com/age-verification)](https://myaccount.google.com/age-verification).",
+            "الخطوة ٣: اختر «Use your camera to estimate your age» (استخدام الكاميرا لتقدير العمر).",
+            "الخطوة ٤: ثبت وجهك داخل الإطار البيضاوي الظاهر على الشاشة وتأكد من إضاءة واضحة دون ارتداء قبعة أو نظارات شمسية وانظر للكاميرا مباشرة.",
+            "الخطوة ٥: يعالج النظام الفيديو آلياً خلال دقيقة إلى ٣ دقائق وتصلك رسالة تأكيد رسمية على بريدك الإلكتروني.",
+            "الخطوة ٦: امسح ذاكرة التخزين المؤقتة للمتصفح عبر `chrome://settings/siteData` ثم افتح [Google Flow](https://labs.google/fx/tools/flow) لتجد أن قفل استوديو Veo 2 قد فُتح بالكامل وبشكل دائم!",
+          ],
+          callout: {
+            type: "tip",
+            title: "طريقة آمنة ومضمونة",
+            text: "يركز نموذج غوغل الذكي حصراً على المؤشرات الحيوية لتقدير العمر فوق ١٨ عاماً دون أي ربط بجنسية المستخدم أو جواز سفره، مما يجعله الحل الأكثر فاعلية وأماناً لتخطي قيود أدوات الفيديو.",
+          },
+          image: {
+            src: "/images/blog/google-flow-prompt-studio.webp",
+            alt: "فك قفل استوديو Google Flow Veo 2 عبر تأكيد العمر بفيديو السيلفي",
+            caption: "شكل ٥: التفعيل النهائي لاستوديو توليد الفيديو في Google Flow بعد إتمام متطلبات تأكيد العمر بنجاح.",
+          },
+        },
+        {
           id: "step4-clean-foreign-google-account",
-          title: "٥. الخطوة الرابعة: إنشاء حساب غوغل دولي نظيف وخطة المجموعات العائلية",
+          title: "٦. الخطوة الخامسة: إنشاء حساب غوغل دولي نظيف وخطة المجموعات العائلية",
           lead:
             "إذا كان لديك موعد نهائي لتسليم عمل ولا يمكنك انتظار معالجة الاستمارة، فإن إنشاء حساب جيميل دولي جديد هو الحل الأسرع والأضمن.",
           paragraphs: [
@@ -1082,12 +1260,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/clean-foreign-google-account-creation.webp",
             alt: "بنية حساب غوغل الدولي النظيف ومشاركة الحصص عبر العائلة",
-            caption: "شكل ٥: لقطة شاشة حقيقية لصفحة إنشاء حساب غوغل دولي نظيف دون الحاجة لرقم هاتف محلي.",
+            caption: "شكل ٦: لقطة شاشة حقيقية لصفحة إنشاء حساب غوغل دولي نظيف دون الحاجة لرقم هاتف محلي.",
           },
         },
         {
           id: "step5-mobile-app-store-setup",
-          title: "٦. الخطوة الخامسة: تثبيت وتشغيل تطبيق Google Flow على الهواتف الذكية",
+          title: "٧. الخطوة السادسة: تثبيت وتشغيل تطبيق Google Flow على الهواتف الذكية",
           lead:
             "استوديو فلو ليس حكراً على أجهزة الكمبيوتر؛ فالتطبيق الرسمي للهواتف يتيح لك التصوير وتطبيق البرومبت وتوليد الفيديو أثناء التنقل.",
           paragraphs: [
@@ -1102,12 +1280,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
           image: {
             src: "/images/blog/google-flow-mobile-app-store-setup.webp",
             alt: "تثبيت تطبيق Google Flow على متجر غوغل بلاي وآب ستور",
-            caption: "شكل ٦: لقطة شاشة حقيقية لصفحة تطبيق Google Flow الرسمي على متجر غوغل بلاي مع زر التثبيت ومعاينة الشاشات.",
+            caption: "شكل ٧: لقطة شاشة حقيقية لصفحة تطبيق Google Flow الرسمي على متجر غوغل بلاي مع زر التثبيت ومعاينة الشاشات.",
           },
         },
         {
           id: "troubleshooting-matrix-error-codes",
-          title: "٧. جدول تشخيص وإصلاح أخطاء Google Flow الشائعة",
+          title: "٨. جدول تشخيص وإصلاح أخطاء Google Flow الشائعة",
           lead:
             "دليل فوري وسريع للتعامل مع أي رسالة خطأ قد تظهر أثناء عملك في استوديو فلو.",
           paragraphs: [
@@ -1121,6 +1299,12 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
               "الحل الفوري والمجرب",
             ],
             rows: [
+              [
+                "Verify your age / 18+ Required",
+                "سياسة غوغل التنظيمية لحظر نماذج الفيديو على الحسابات غير المؤكدة عمرياً",
+                "الاتصال والبلد سليم لكن الاستوديو مقفل",
+                "الدخول إلى [بوابة تأكيد العمر الرسمية](https://myaccount.google.com/age-verification) وإجراء فحص سيلفي لمدة دقيقة للموافقة الفورية دون بطاقات أجنبية",
+              ],
               [
                 "Flow is not available in your country yet",
                 "بلد الحساب مسجل في منطقة غير مدعومة ضمن شروط الخدمة",
@@ -1156,13 +1340,15 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         },
         {
           id: "faq-aeo-geo-answers",
-          title: "٨. الأسئلة الأكثر شيوعاً والحلول العملية",
+          title: "٩. الأسئلة الأكثر شيوعاً والحلول العملية",
           lead:
             "إجابات واضحة ومباشرة على استفسارات المستخدمين حول تشغيل Google Flow.",
           paragraphs: [
             "إجابات منظمة ومحدثة وفق أحدث معايير مختبرات غوغل:",
           ],
           bulletPoints: [
+            "س: لماذا أواجه خطأ Verify Age بالرغم من أن اتصالي وبلد حسابي سليمين؟\nج: تطبق مختبرات غوغل شرط السن القانونية (18+ عاماً) على نماذج الفيديو المتقدمة مثل Veo 2. قم بزيارة [myaccount.google.com/age-verification](https://myaccount.google.com/age-verification) وأجرِ فحص سيلفي سريع لفك القفل فورياً.",
+            "س: هل فحص السيلفي لتأكيد العمر آمن ومتاح للمستخدمين في المناطق الخاضعة للقيود؟\nج: نعم، بنسبة 100%. خوارزميات غوغل تحلل ملامح الوجه لتقدير السن دون النظر للجنسية أو جواز السفر، ويتم حذف التسجيل نهائياً بعد إتمام الفحص مباشرة، دون حاجة لبطاقة بنكية دولية.",
             "س: هل يجب إبقاء اتصال VPN نشطاً بعد الموافقة على تغيير بلد الحساب؟\nج: نعم؛ نظراً لأن مختبرات غوغل تطبق قيوداً على أطراف الشبكة في بعض المناطق، فإن الحفاظ على اتصال آمن بدولة الحساب يمنع أي تعارض.",
             "س: ما هي أفضل دولة لاختيارها في استمارة تغيير بلد الحساب؟\nج: المملكة المتحدة والولايات المتحدة وألمانيا؛ حيث تحصل هذه الدول على ميزات نماذج Veo 2 و Imagen 3 أولاً بأول.",
             "س: هل يؤدي تغيير بلد الحساب إلى حذف رسائل الجيميل أو ملفات غوغل درايف؟\nج: لا مطلقاً؛ تعديل Country Association يقتصر على الشروط القانونية ونطاق الخصوصية دون أي مساس ببياناتك أو ملفاتك المخزنة.",
@@ -1194,6 +1380,16 @@ export const googleFlowRegionErrorFixArticle: RawArticle = {
         ],
       },
       faqs: [
+        {
+          question: "لماذا أواجه خطأ Verify Age بالرغم من أن اتصالي وبلد حسابي سليمين؟",
+          answer:
+            "تطبق مختبرات غوغل شرط السن القانونية (18+ عاماً) على نماذج الفيديو المتقدمة مثل Veo 2. قم بزيارة [بوابة تأكيد العمر الرسمية](https://myaccount.google.com/age-verification) وأجرِ فحص سيلفي سريع لفك القفل فورياً.",
+        },
+        {
+          question: "هل فحص السيلفي لتأكيد العمر آمن ومتاح للمستخدمين في المناطق المقيدة؟",
+          answer:
+            "نعم، بنسبة 100%. خوارزميات غوغل تحلل ملامح الوجه لتقدير السن دون النظر للجنسية أو جواز السفر، ويتم حذف التسجيل نهائياً بعد إتمام الفحص مباشرة، دون حاجة لبطاقة بنكية دولية.",
+        },
         {
           question: "هل يجب إبقاء اتصال VPN نشطاً بعد الموافقة على تغيير بلد الحساب؟",
           answer:

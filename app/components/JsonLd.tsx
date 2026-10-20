@@ -494,7 +494,12 @@ export function ArticleJsonLd({ article }: { article: ArticleData }) {
       headline: article.title,
       description: article.summary,
       url: fullUrl,
-      image: fullCover,
+      image: {
+        "@type": "ImageObject",
+        url: fullCover,
+        width: 1200,
+        height: 630,
+      },
       datePublished: article.dateIso,
       dateModified: article.dateIso,
       inLanguage: "fa",
