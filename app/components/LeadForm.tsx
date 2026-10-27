@@ -252,7 +252,9 @@ export default function LeadForm({ initialService, initialStep }: LeadFormProps 
       businessDescription: data.businessDescription ?? "",
       hasSite: data.hasSite ?? "",
       siteUrl: data.siteUrl ?? "",
-      budget: data.budget ?? "",
+      budget: (data.budget && f.budgetOptions[data.budget as keyof typeof f.budgetOptions])
+        ? f.budgetOptions[data.budget as keyof typeof f.budgetOptions]
+        : (data.budget ?? ""),
       timeline: data.timeline ?? "",
       platforms: platforms.join(", "),
       appIdea: data.appIdea ?? "",

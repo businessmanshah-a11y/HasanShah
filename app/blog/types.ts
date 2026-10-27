@@ -36,6 +36,13 @@ export interface ArticleImage {
   caption?: string;
 }
 
+export interface ArticleAudio {
+  src: string;
+  title: string;
+  description?: string;
+  duration?: string;
+}
+
 export interface ArticleCommandItem {
   num: number;
   command: string;
@@ -54,6 +61,7 @@ export interface ArticleSection {
   table?: ArticleTable;
   codeSnippets?: ArticleCodeSnippet[];
   image?: ArticleImage;
+  audio?: ArticleAudio;
   commands?: ArticleCommandItem[];
 }
 

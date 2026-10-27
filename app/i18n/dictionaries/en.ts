@@ -263,11 +263,11 @@ const en: Dictionary = {
       },
     },
     budgetOptions: {
-      unknown: "Not sure yet",
-      under5: "Under 5M IRR",
-      from5to15: "5–15M IRR",
-      from15to50: "15–50M IRR",
-      over50: "Over 50M IRR",
+      unknown: "Not sure yet (Needs assessment)",
+      tier1: "$1,000 – $2,500",
+      tier2: "$2,500 – $5,000",
+      tier3: "$5,000 – $10,000",
+      tier4: "Over $10,000",
     },
     timelineOptions: {
       asap: "As soon as possible",

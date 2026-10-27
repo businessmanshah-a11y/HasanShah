@@ -10,7 +10,7 @@ export const levelKeys = ["beginner", "familiar", "intermediate"] as const;
 export const formatKeys = ["private", "group", "workshop"] as const;
 export const stageKeys = ["idea", "developing", "mvp", "launched"] as const;
 export const needKeys = ["tech", "strategy", "both"] as const;
-export const budgetKeys = ["unknown", "under5", "from5to15", "from15to50", "over50"] as const;
+export const budgetKeys = ["unknown", "tier1", "tier2", "tier3", "tier4"] as const;
 export const timelineKeys = ["asap", "twoWeeks", "oneMonth", "twoThreeMonths", "flexible"] as const;
 
 export type ConsultErrors = {

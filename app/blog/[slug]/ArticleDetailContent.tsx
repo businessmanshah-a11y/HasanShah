@@ -31,6 +31,8 @@ import {
   Wrench,
   X,
   ArrowUpRight,
+  Mic,
+  Volume2,
 } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -787,6 +789,45 @@ export default function ArticleDetailContent({ initialArticle }: Props) {
                       </figcaption>
                     )}
                   </figure>
+                )}
+
+                {/* Voice Note / Audio Player */}
+                {section.audio && (
+                  <div className="my-8 overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-br from-surface-elevated/95 via-surface/90 to-background p-6 shadow-2xl backdrop-blur-md relative group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl pointer-events-none" />
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gold/20 border border-gold/40 flex items-center justify-center text-gold shadow-gold/20 shadow-md">
+                          <Mic className="w-5 h-5 animate-pulse" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-base text-foreground group-hover:text-gold transition-colors">
+                            {section.audio.title}
+                          </h4>
+                          {section.audio.description && (
+                            <p className="text-xs text-muted-foreground mt-0.5">
+                              {section.audio.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      {section.audio.duration && (
+                        <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold font-bold">
+                          {section.audio.duration}
+                        </span>
+                      )}
+                    </div>
+                    <div className="bg-background/80 border border-white/10 rounded-xl p-3 shadow-inner">
+                      <audio
+                        controls
+                        src={section.audio.src}
+                        className="w-full h-10 accent-gold"
+                        preload="metadata"
+                      >
+                        مرورگر شما از پخش مستقیم صوت پشتیبانی نمی‌کند.
+                      </audio>
+                    </div>
+                  </div>
                 )}
 
                 {/* Interactive Responsive Table: Desktop Table + Mobile Cards */}

@@ -1,5 +1,6 @@
 // app/blog/blog-data.ts
 import type { Locale } from "../i18n/config";
+import { ladycoinEcommerceAiCaseStudyArticle } from "./articles/ladycoin-ecommerce-ai-case-study";
 import { googleFlowRegionErrorFixArticle } from "./articles/google-flow-region-error-fix-article";
 import { aiViralVideoReplicationArticle } from "./articles/ai-viral-video-replication-article";
 import { aiImageToVideoArticle } from "./articles/ai-image-to-video-article";
@@ -40,6 +41,13 @@ export interface ArticleImage {
   caption?: string;
 }
 
+export interface ArticleAudio {
+  src: string;
+  title: string;
+  description?: string;
+  duration?: string;
+}
+
 export interface ArticleCommandItem {
   num: number;
   command: string;
@@ -58,6 +66,7 @@ export interface ArticleSection {
   table?: ArticleTable;
   codeSnippets?: ArticleCodeSnippet[];
   image?: ArticleImage;
+  audio?: ArticleAudio;
   commands?: ArticleCommandItem[];
 }
 
@@ -147,6 +156,7 @@ export const authors: Record<Locale, ArticleAuthor> = {
 };
 
 export const rawArticles: RawArticle[] = [
+  ladycoinEcommerceAiCaseStudyArticle,
   aiVideoCreationGoogleFlowArticle,
   googleFlowRegionErrorFixArticle,
   aiViralVideoReplicationArticle,
