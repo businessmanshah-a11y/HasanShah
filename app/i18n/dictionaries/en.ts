@@ -15,6 +15,7 @@ const en: Dictionary = {
     about: "About",
     services: "Services",
     portfolio: "Work",
+    pricing: "Pricing",
     contact: "Contact",
     cta: "Strategic Consultation",
     menu: "Menu",

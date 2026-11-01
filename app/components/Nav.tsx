@@ -14,6 +14,7 @@ export default function Nav() {
     { href: "/about/",      label: t.nav.about },
     { href: "/#services",   label: t.nav.services },
     { href: "/portfolio/",  label: t.nav.portfolio },
+    { href: "/pricing/",    label: t.nav.pricing },
     { href: "/contact/",    label: t.nav.contact },
   ];
 

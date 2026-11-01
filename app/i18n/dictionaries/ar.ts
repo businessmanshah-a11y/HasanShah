@@ -15,6 +15,7 @@ const ar: Dictionary = {
     about: "من أنا",
     services: "الخدمات",
     portfolio: "أعمالي",
+    pricing: "الأسعار",
     contact: "تواصل",
     cta: "استشارة استراتيجية",
     menu: "القائمة",

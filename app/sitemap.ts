@@ -76,6 +76,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: alternates(`${base}/portfolio/`),
     },
 
+    // ── Pricing & Investment Hub ──
+    {
+      url: `${base}/pricing/`,
+      lastModified: new Date("2026-11-01"),
+      changeFrequency: "weekly",
+      priority: 0.92,
+      alternates: alternates(`${base}/pricing/`),
+    },
+
     // ── About & Story ──
     {
       url: `${base}/about/`,

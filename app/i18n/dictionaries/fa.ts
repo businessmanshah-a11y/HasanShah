@@ -9,11 +9,12 @@ const fa = {
 
   nav: {
     blog: "آموزش‌ها",
-    vibeCoding: "آموزش وایب‌کدینگ",
+    vibeCoding: "وایب‌کدینگ",
     workshops: "ورکشاپ‌ها",
     about: "درباره من",
     services: "خدمات",
     portfolio: "نمونه‌کارها",
+    pricing: "تعرفه‌ها",
     contact: "فرم تماس",
     cta: "مشاوره تخصصی",
     menu: "منو",
