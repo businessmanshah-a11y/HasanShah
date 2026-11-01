@@ -26,6 +26,7 @@ import {
   Cpu,
   AlertTriangle,
   LifeBuoy,
+  DollarSign,
 } from "lucide-react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -327,8 +328,16 @@ export default function PricingContent() {
                           <span className="text-[11px] text-muted-foreground block mb-1">
                             {isEn ? "Investment Framework:" : isAr ? "إطار الاستثمار:" : "چارچوب سرمایه‌گذاری:"}
                           </span>
-                          <div className="text-2xl sm:text-3xl font-black text-gold tracking-tight">
-                            {isEn ? tier.priceFormattedEn : isAr ? tier.priceFormattedAr : tier.priceFormatted}
+                          <div className="flex items-center justify-center gap-2 flex-wrap">
+                            <div className="text-2xl sm:text-3xl font-black text-gold tracking-tight" dir={isEn || isAr ? "ltr" : undefined}>
+                              {isEn ? tier.priceFormattedEn : isAr ? tier.priceFormattedAr : tier.priceFormatted}
+                            </div>
+                            {(isEn || isAr) && (
+                              <span className="inline-flex items-center gap-0.5 text-[10px] font-black text-gold px-2 py-0.5 rounded-full bg-gold/15 border border-gold/30 tracking-wider">
+                                <DollarSign className="w-3 h-3" />
+                                <span>USD</span>
+                              </span>
+                            )}
                           </div>
                           <p className="text-[11px] text-amber-300/80 mt-1.5 font-medium leading-relaxed">
                             {isEn
@@ -445,8 +454,16 @@ export default function PricingContent() {
                           <span className="text-[10px] text-muted-foreground block mb-0.5">
                             {isEn ? "Investment:" : isAr ? "الاستثمار:" : "برآورد سرمایه‌گذاری:"}
                           </span>
-                          <div className="text-xl sm:text-2xl font-black text-gold tracking-tight">
-                            {isEn ? tier.priceFormattedEn : isAr ? tier.priceFormattedAr : tier.priceFormatted}
+                          <div className="flex items-center justify-center gap-1.5 flex-wrap">
+                            <div className="text-xl sm:text-2xl font-black text-gold tracking-tight" dir={isEn || isAr ? "ltr" : undefined}>
+                              {isEn ? tier.priceFormattedEn : isAr ? tier.priceFormattedAr : tier.priceFormatted}
+                            </div>
+                            {(isEn || isAr) && (
+                              <span className="inline-flex items-center gap-0.5 text-[9px] font-black text-gold px-1.5 py-0.5 rounded bg-gold/15 border border-gold/30 tracking-wider">
+                                <DollarSign className="w-2.5 h-2.5" />
+                                <span>USD</span>
+                              </span>
+                            )}
                           </div>
                         </div>
 
@@ -556,8 +573,16 @@ export default function PricingContent() {
                           {isEn ? addon.descEn : isAr ? addon.descAr : addon.desc}
                         </p>
                       </div>
-                      <div className="text-xs font-black text-gold pt-1.5 border-t border-white/5">
-                        {isEn ? addon.priceEn : isAr ? addon.priceAr : addon.price}
+                      <div className="flex items-center justify-between text-xs font-black text-gold pt-1.5 border-t border-white/5">
+                        <span dir={isEn || isAr ? "ltr" : undefined}>
+                          {isEn ? addon.priceEn : isAr ? addon.priceAr : addon.price}
+                        </span>
+                        {(isEn || isAr) && (
+                          <span className="inline-flex items-center gap-0.5 text-[9px] font-bold text-gold px-1.5 py-0.5 rounded bg-gold/15 border border-gold/30">
+                            <DollarSign className="w-2.5 h-2.5" />
+                            <span>USD</span>
+                          </span>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -801,8 +826,16 @@ export default function PricingContent() {
                   <span className="text-xs text-muted-foreground block mb-1">
                     {isEn ? ANNUAL_SUPPORT_DATA.externalTitleEn : isAr ? ANNUAL_SUPPORT_DATA.externalTitleAr : ANNUAL_SUPPORT_DATA.externalTitle}
                   </span>
-                  <div className="text-2xl sm:text-3xl font-black text-gold tracking-tight">
-                    {isEn ? ANNUAL_SUPPORT_DATA.priceRangeEn : isAr ? ANNUAL_SUPPORT_DATA.priceRangeAr : ANNUAL_SUPPORT_DATA.priceRange}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <div className="text-2xl sm:text-3xl font-black text-gold tracking-tight" dir={isEn || isAr ? "ltr" : undefined}>
+                      {isEn ? ANNUAL_SUPPORT_DATA.priceRangeEn : isAr ? ANNUAL_SUPPORT_DATA.priceRangeAr : ANNUAL_SUPPORT_DATA.priceRange}
+                    </div>
+                    {(isEn || isAr) && (
+                      <span className="inline-flex items-center gap-0.5 text-[11px] font-black text-gold px-2 py-0.5 rounded-full bg-gold/15 border border-gold/30 tracking-wider">
+                        <DollarSign className="w-3 h-3" />
+                        <span>USD</span>
+                      </span>
+                    )}
                   </div>
                   <p className="text-[11px] text-muted-foreground/80 mt-1.5 leading-relaxed">
                     {isEn ? ANNUAL_SUPPORT_DATA.priceNoteEn : isAr ? ANNUAL_SUPPORT_DATA.priceNoteAr : ANNUAL_SUPPORT_DATA.priceNote}
