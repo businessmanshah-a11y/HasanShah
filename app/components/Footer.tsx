@@ -71,6 +71,7 @@ export default function Footer() {
           <Link href="/about/" prefetch={false} className="text-foreground hover:text-gold transition-colors font-bold">درباره من (مسیر و رزومه)</Link>
           <Link href="/vibe-coding" prefetch={false} className="hover:text-gold transition-colors">وایب‌کدینگ</Link>
           <Link href="/blog/" prefetch={false} className="hover:text-gold transition-colors">وبلاگ تخصصی</Link>
+          <Link href="/careers/" prefetch={false} className="hover:text-gold transition-colors">همکاری و استخدام</Link>
           <Link href="/contact/" prefetch={false} className="hover:text-gold transition-colors">تماس با من</Link>
         </div>
 

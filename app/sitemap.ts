@@ -103,6 +103,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: alternates(`${base}/contact/`),
     },
 
+    // ── Careers & Hiring ──
+    {
+      url: `${base}/careers/`,
+      lastModified: new Date("2026-11-13"),
+      changeFrequency: "weekly",
+      priority: 0.85,
+      alternates: alternates(`${base}/careers/`),
+    },
+
     // ── Workshops & Events ──
     {
       url: `${base}/workshop/`,
