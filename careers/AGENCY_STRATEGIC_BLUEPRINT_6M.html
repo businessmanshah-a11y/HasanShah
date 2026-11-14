@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سند جامع استراتژیک و تصمیم‌گیری تأسیس آژانس — استودیو حسن شاهمرادی</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Mermaid CDN for Dynamic Flowcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                darkMode: true,
+                background: '#0f172a',
+                primaryColor: '#1e293b',
+                primaryTextColor: '#f8fafc',
+                primaryBorderColor: '#d4af37',
+                lineColor: '#fbbf24',
+                secondaryColor: '#0b1329',
+                tertiaryColor: '#1e293b'
+            },
+            fontFamily: 'Vazirmatn, sans-serif'
+        });
+    </script>
+    <style>
+        :root {
+            --bg-body: #060911;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-card: rgba(212, 175, 55, 0.22);
+            --border-card-subtle: rgba(255, 255, 255, 0.08);
+            --gold: #d4af37;
+            --gold-light: #fbbf24;
+            --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d4af37 50%, #b45309 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --emerald: #10b981;
+            --rose: #f43f5e;
+            --blue: #38bdf8;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 25px -10px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header Bar */
+        .header {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(14px);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-card-subtle);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .meta-item strong {
+            color: var(--text-main);
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+        }
+
+        .section-card:hover {
+            border-color: var(--border-card);
+            box-shadow: var(--shadow-card);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border-card-subtle);
+            padding-bottom: 12px;
+        }
+
+        .section-title span.number {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            font-size: 1rem;
+            color: var(--gold-light);
+        }
+
+        p, li {
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-right: 24px;
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            right: 6px;
+            color: var(--gold);
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        /* Price Cards */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin: 20px 0;
+        }
+
+        .metric-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .metric-title {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 4px;
+        }
+
+        .metric-sub {
+            color: #64748b;
+            font-size: 0.82rem;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 22px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-card-subtle);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--gold-light);
+            font-weight: 600;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-card);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        tr:hover td {
+            background: rgba(212, 175, 55, 0.06);
+        }
+
+        tfoot td {
+            background: rgba(30, 41, 59, 0.95) !important;
+            font-weight: 700;
+            border-top: 2px solid var(--gold);
+            color: var(--gold-light);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-gold {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .pill-green {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .pill-blue {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--blue);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* Callout Box */
+        .callout {
+            border-right: 4px solid var(--gold);
+            background: rgba(212, 175, 55, 0.06);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 18px 22px;
+            margin: 20px 0;
+        }
+
+        .callout-title {
+            color: var(--gold-light);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mermaid Wrapper */
+        .mermaid-wrapper {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-card-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin: 22px 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        /* Actions */
+        .print-btn {
+            background: var(--gold-gradient);
+            color: #000;
+            font-family: inherit;
+            font-weight: 700;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .print-btn:hover {
+            opacity: 0.9;
+        }
+
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 0;
+            }
+            .header, .section-card {
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .header h1, .section-title {
+                color: #000 !important;
+                -webkit-text-fill-color: initial !important;
+            }
+            .print-btn {
+                display: none !important;
+            }
+            th, td {
+                color: #000 !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Document Header -->
+    <header class="header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div class="badge-tag">سند رسمی راهبردی و مدل‌سازی مالی (نسخه ۲.۰)</div>
+            <button class="print-btn" onclick="window.print()">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2m-10 0v4h8v-4m-8-4h.01"></path></svg>
+                چاپ / ذخیره PDF
+            </button>
+        </div>
+        <h1>سند جامع استراتژیک و تصمیم‌گیری تأسیس آژانس</h1>
+        <div class="header-subtitle">برنامه ۶ ماهه، ساختار هزینه‌ها، مدل مالی ۴ سناریویی و پیش‌بینی درآمد شرکا و شکارچی لید</div>
+        
+        <div class="meta-grid">
+            <div class="meta-item">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span><strong>هم‌بنیان‌گذاران:</strong> حسن شاهمرادی و شریک هم‌بنیان‌گذار (مدل ۵۰٪ - ۵۰٪)</span>
+            </div>
+            <div class="meta-item">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span><strong>دفتر کار:</strong> تهران، بلوار پژوهش، ساختمان رویش، مرکز نوآوری زی‌تک (ZTech)، واحد ۱۰۴</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۱</span>
+            منطق استراتژیک تصمیم (The "Why")
+        </h2>
+        
+        <div class="mermaid-wrapper">
+            <div class="mermaid">
+flowchart LR
+    A["۲ معمار نخبه وب و AI"] -->|تمرکز ۱۰۰٪ روی کد و محصول| B["تحویل کارهای کلاس جهانی"]
+    C["شکارچی لید حضوری در زی‌تک"] -->|Outreach، محتوا و ست کردن دمو| D["پایپ‌لاین مداوم مشتری نقد"]
+    B & D --> E["آژانس مستقل، سودآور و مقیاس‌پذیر"]
+            </div>
+        </div>
+
+        <ul>
+            <li><strong>حل ریشه‌ای مشکل:</strong> بنیان‌گذاران فنی عاشق کدنویسی و معماری سیستم هستند، اما اصطکاک ذهنی شدیدی در فروش و دایرکت زدن دارند.</li>
+            <li><strong>اهرم شراکت ۵۰/۵۰:</strong> با تقسیم هزینه‌های ثابت، با پرداخت ماهیانه تنها <strong>۱۳.۵ تا ۱۶ میلیون تومان</strong> برای هر شریک، صندلی هانتر در زی‌تک، نیروی فروش حضوری و زیرساخت‌های AI تأمین می‌شود.</li>
+        </ul>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۲</span>
+            تعرفه‌های پایه و ساختار مالی مصوب
+        </h2>
+
+        <h3 style="color: var(--text-main); font-size: 1.15rem; margin-bottom: 12px;">۲.۱. تعرفه خدمات اصلی استودیو</h3>
+        <div class="grid-3">
+            <div class="metric-box">
+                <div class="metric-title">طراحی و توسعه مهندسی وب</div>
+                <div class="metric-val">۱۰۰ میلیون</div>
+                <div class="metric-sub">بازه ۷۰ تا ۱۵۰ میلیون تومان</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-title">خدمات ماهانه سئو مستمر (MRR)</div>
+                <div class="metric-val">۵۰ میلیون / ماه</div>
+                <div class="metric-sub">درآمد مستقیم، تکرارشونده و پایدار</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-title">پروژه بین‌المللی ارزی ($1,500)</div>
+                <div class="metric-val">۴۰۵ میلیون</div>
+                <div class="metric-sub">با نرخ مصوب دلار ۲۷۰,۰۰۰ تومان</div>
+            </div>
+        </div>
+
+        <h3 style="color: var(--text-main); font-size: 1.15rem; margin: 26px 0 12px 0;">۲.۲. ساختار حقوق و کمیسیون پلکانی شکارچی لید</h3>
+        <ul>
+            <li><strong>حقوق پایه ماهانه:</strong> در ماه بدون قرارداد <strong>۱۵,۰۰۰,۰۰۰ تومان</strong> | با بستن حداقل ۱ قرارداد در ماه: <strong>پرش فوری به ۲۰,۰۰۰,۰۰۰ تومان</strong> (پاداش ۵ میلیونی مستقیم روی پایه).</li>
+            <li><strong>کمیسیون طراحی وب و اپلیکیشن (داخلی):</strong> ۱ قرارداد در ماه: <strong>۱۰٪ (۱۰ م)</strong> | ۲ تا ۴ قرارداد در ماه: <strong>۱۵٪ (۱۵ م به ازای هر پروژه)</strong> | ۵ قرارداد به بالا: <strong>۲۰٪ (۲۰ م به ازای هر پروژه)</strong>.</li>
+            <li><strong>کمیسیون خدمات سئو (MRR):</strong> ماه اول قرارداد: <strong>۱۵٪ (۷.۵ م)</strong> | ماه‌های تمدید بعدی: <strong>۵٪ مستمر (۲.۵ م تا زمان تمدید)</strong>.</li>
+            <li><strong>کمیسیون پروژه‌های ارزی (دلاری با نرخ ۲۷۰ هزار تومان):</strong> ۱ پروژه: <strong>۲۰٪ (۸۱ م)</strong> | ۲ تا ۵ پروژه: <strong>۲۵٪ (۱۰۱.۲۵ م)</strong> | ۶ پروژه به بالا: <strong>۳۰٪ (۱۲۱.۵ م)</strong>.</li>
+        </ul>
+
+        <h3 style="color: var(--text-main); font-size: 1.15rem; margin: 26px 0 12px 0;">۲.۳. ساختار هزینه‌های ثابت ماهانه آژانس (تقسیم ۵۰٪ - ۵۰٪)</h3>
+        
+        <div class="callout" style="border-right-color: var(--blue); background: rgba(56, 189, 248, 0.06);">
+            <div class="callout-title" style="color: var(--blue);">نکته مهم در تفکیک هزینه‌ها:</div>
+            <p>هزینه استقرار خود بنیان‌گذاران در دفتر به صورت مستقل و جداگانه تسویه می‌شود و در محاسبات زیر لحاظ نشده است؛ تنها هزینه <strong>۱ صندلی برای نیروی استخدامی (هانتر)</strong> معادل ماهانه ۶ میلیون تومان است.</p>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>سرفصل هزینه</th>
+                        <th>شرح و جزییات</th>
+                        <th>کل ماهانه (بدون قرارداد)</th>
+                        <th>کل ماهانه (با قرارداد)</th>
+                        <th>سهم حسن شاهمرادی (۵۰٪)</th>
+                        <th>سهم شریک (۵۰٪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>حقوق پایه هانتر</strong></td>
+                        <td>حضور در زی‌تک و فعالیت منظم</td>
+                        <td>۱۵,۰۰۰,۰۰۰</td>
+                        <td>۲۰,۰۰۰,۰۰۰</td>
+                        <td>۷.۵ / ۱۰ میلیون</td>
+                        <td>۷.۵ / ۱۰ میلیون</td>
+                    </tr>
+                    <tr>
+                        <td><strong>صندلی هانتر در زی‌تک</strong></td>
+                        <td>۱ نفر استخدامی (واحد ۱۰۴، فیبر، امکانات)</td>
+                        <td>۶,۰۰۰,۰۰۰</td>
+                        <td>۶,۰۰۰,۰۰۰</td>
+                        <td>۳,۰۰۰,۰۰۰</td>
+                        <td>۳,۰۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td><strong>اکانت‌های AI و سرورها</strong></td>
+                        <td>ChatGPT Plus، Claude Pro، هاست و زیرساخت</td>
+                        <td>۴,۰۰۰,۰۰۰</td>
+                        <td>۴,۰۰۰,۰۰۰</td>
+                        <td>۲,۰۰۰,۰۰۰</td>
+                        <td>۲,۰۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td><strong>تنخواه و پذیرایی جلسات</strong></td>
+                        <td>پذیرایی کارفرمایان، ملزومات و امور روزمره</td>
+                        <td>۲,۰۰۰,۰۰۰</td>
+                        <td>۲,۰۰۰,۰۰۰</td>
+                        <td>۱,۰۰۰,۰۰۰</td>
+                        <td>۱,۰۰۰,۰۰۰</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><strong>جمع کل هزینه ثابت ماهانه</strong></td>
+                        <td><strong>۲۷,۰۰۰,۰۰۰ تومان</strong></td>
+                        <td><strong>۳۲,۰۰۰,۰۰۰ تومان</strong></td>
+                        <td><strong>۱۳.۵ الی ۱۶ میلیون</strong></td>
+                        <td><strong>۱۳.۵ الی ۱۶ میلیون</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۳</span>
+            مدل‌سازی مالی ۴ سناریویی در افق ۶ ماهه
+        </h2>
+
+        <div class="mermaid-wrapper">
+            <div class="mermaid">
+flowchart LR
+    subgraph S1["سناریو ۱: فاجعه‌بار"]
+        direction TB
+        A1["ورودی: ۰ قرارداد"] --> B1["کل زیان ۶ ماه: ۵۴ م"]
+        B1 --> C1["سهم هر شریک: ۲۷- م"]
+    end
+    subgraph S2["سناریو ۲: محافظه‌کار"]
+        direction TB
+        A2["۱ وب/ماه + ۱ سئو هر ۲ ماه"] --> B2["سود خالص: ۷۶۰.۵ م"]
+        B2 --> C2["سهم هر شریک: ۳۸۰+ م"]
+    end
+    subgraph S3["سناریو ۳: هدف و واقع‌بینانه"]
+        direction TB
+        A3["۲ وب/ماه + ۱ سئو/ماه + ۲ دلاری"] --> B3["سود خالص: ۲,۴۴۳.۵ م"]
+        B3 --> C3["سهم هر شریک: ۱,۲۲۱+ م"]
+    end
+    subgraph S4["سناریو ۴: رویایی و جهشی"]
+        direction TB
+        A4["فروش سازمانی + دلاری مداوم"] --> B4["سود خالص: ۴,۰۰۰+ م"]
+        B4 --> C4["سهم هر شریک: ۲,۰۰۰+ م"]
+    end
+            </div>
+        </div>
+
+        <h3 style="color: var(--rose); font-size: 1.15rem; margin: 24px 0 10px 0;">• سناریو ۱: فاجعه‌بار / بدترین حالت فرضی (Catastrophic - ۰ قرارداد)</h3>
+        <ul>
+            <li><strong>فرضیات:</strong> صفر قرارداد در ۶ ماه؛ حقوق پایه هانتر روی ۱۵ میلیون تومان می‌ماند.</li>
+            <li><strong>کل هزینه ثابت ماهانه:</strong> ۲۷,۰۰۰,۰۰۰ تومان (سهم هر شریک: ۱۳.۵ میلیون تومان).</li>
+            <li><strong>پروتکل خروج (Kill-Switch):</strong> اگر تا روز ۶۰ خروجی حاصل نشد، هانتر تغییر می‌کند. حداکثر ریسک مالی واقعی هر شریک: <strong>۲۷,۰۰۰,۰۰۰ تومان</strong>.</li>
+        </ul>
+
+        <h3 style="color: var(--blue); font-size: 1.15rem; margin: 28px 0 10px 0;">• سناریو ۲: محافظه‌کارانه / حداقل حیات (Conservative)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 12px;">فرضیات: جذب ماهانه فقط ۱ پروژه وب (۱۰۰ م با کمیسیون ۱۰٪) + جذب ۱ مشتری سئو هر ۲ ماه (ماه‌های ۲، ۴، ۶ با کمیسیون ۱۵٪ ماه اول و ۵٪ تمدید) | صفر دلاری.</p>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ماه</th>
+                        <th>ورودی وب</th>
+                        <th>ورودی سئو (MRR)</th>
+                        <th>کل ناخالص</th>
+                        <th>دریافتی هانتر (پایه+پورسانت)</th>
+                        <th>هزینه ثابت</th>
+                        <th>سود خالص ماهانه</th>
+                        <th>سهم هر شریک (۵۰٪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ماه ۱</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۰</td>
+                        <td>۱۰۰ م</td>
+                        <td>۳۰ م (۲۰ پایه + ۱۰ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۵۸,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۲۹,۰۰۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۲</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۵۰ م</td>
+                        <td>۱۵۰ م</td>
+                        <td>۳۷.۵ م (۲۰ پایه + ۱۷.۵ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۱۰۰,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۵۰,۲۵۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۳</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۵۰ م</td>
+                        <td>۱۵۰ م</td>
+                        <td>۳۲.۵ م (۲۰ پایه + ۱۲.۵ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۱۰۵,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۵۲,۷۵۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۴</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۱۰۰ م</td>
+                        <td>۲۰۰ م</td>
+                        <td>۴۰ م (۲۰ پایه + ۲۰ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۱۴۸,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۷۴,۰۰۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۵</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۱۰۰ م</td>
+                        <td>۲۰۰ م</td>
+                        <td>۳۵ م (۲۰ پایه + ۱۵ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۱۵۳,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۷۶,۵۰۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۶</strong></td>
+                        <td>۱۰۰ م</td>
+                        <td>۱۵۰ م</td>
+                        <td>۲۵۰ م</td>
+                        <td>۴۲.۵ م (۲۰ پایه + ۲۲.۵ پورسانت)</td>
+                        <td>۳۲ م</td>
+                        <td>۱۹۵,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-green">۹۷,۷۵۰,۰۰۰</span></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><strong>مجموع</strong></td>
+                        <td><strong>۶۰۰ م</strong></td>
+                        <td><strong>۴۵۰ م</strong></td>
+                        <td><strong>۱,۰۵۰ م</strong></td>
+                        <td><strong>۲۱۷,۵۰۰,۰۰۰ تومان</strong></td>
+                        <td><strong>۱۹۲ م</strong></td>
+                        <td><strong>۷۶۰,۵۰۰,۰۰۰</strong></td>
+                        <td><strong>۳۸۰,۲۵۰,۰۰۰ تومان</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <h3 style="color: var(--gold-light); font-size: 1.15rem; margin: 34px 0 10px 0;">• سناریو ۳: هدف و واقع‌بینانه (Target Scenario - ۲ وب، ۱ سئوی ماهانه، ۲ دلاری)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 12px;">فرضیات: ماهانه ۲ پروژه وب (۲۰۰ م، کمیسیون ۱۵٪) + ۱ مشتری جدید سئو در هر ماه (رشد تصاعدی MRR) + ۱ پروژه دلاری ۱۵۰۰ دلاری (۴۰۵ م با کمیسیون ۲۰٪) در ماه‌های ۳ و ۵.</p>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ماه</th>
+                        <th>پروژه وب</th>
+                        <th>سئو (MRR)</th>
+                        <th>دلاری ($1,500)</th>
+                        <th>کل ناخالص</th>
+                        <th>دریافتی هانتر</th>
+                        <th>هزینه ثابت</th>
+                        <th>سود خالص ماهانه</th>
+                        <th>سهم هر شریک (۵۰٪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ماه ۱</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۵۰ م</td>
+                        <td>۰</td>
+                        <td>۲۵۰ م</td>
+                        <td>۵۷.۵ م</td>
+                        <td>۳۲ م</td>
+                        <td>۱۸۰,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold">۹۰,۲۵۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۲</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۱۰۰ م</td>
+                        <td>۰</td>
+                        <td>۳۰۰ م</td>
+                        <td>۶۰.۰ م</td>
+                        <td>۳۲ م</td>
+                        <td>۲۲۸,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold">۱۱۴,۰۰۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۳</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۱۵۰ م</td>
+                        <td>۴۰۵ م</td>
+                        <td>۷۵۵ م</td>
+                        <td>۱۴۳.۵ م</td>
+                        <td>۳۲ م</td>
+                        <td>۵۹۹,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold" style="font-size: 0.9rem;">۲۹۹,۷۵۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۴</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۲۰۰ م</td>
+                        <td>۰</td>
+                        <td>۴۰۰ م</td>
+                        <td>۶۵.۰ م</td>
+                        <td>۳۲ م</td>
+                        <td>۳۲۳,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold">۱۶۱,۵۰۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۵</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۲۵۰ م</td>
+                        <td>۴۰۵ م</td>
+                        <td>۸۵۵ م</td>
+                        <td>۱۴۸.۵ م</td>
+                        <td>۳۲ م</td>
+                        <td>۶۹۴,۵۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold" style="font-size: 0.9rem;">۳۴۷,۲۵۰,۰۰۰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ماه ۶</strong></td>
+                        <td>۲۰۰ م</td>
+                        <td>۳۰۰ م</td>
+                        <td>۰</td>
+                        <td>۵۰۰ م</td>
+                        <td>۷۰.۰ م</td>
+                        <td>۳۲ م</td>
+                        <td>۴۱۸,۰۰۰,۰۰۰</td>
+                        <td><span class="pill pill-gold">۲۰۹,۰۰۰,۰۰۰</span></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><strong>مجموع</strong></td>
+                        <td><strong>۱,۲۰۰ م</strong></td>
+                        <td><strong>۱,۰۵۰ م</strong></td>
+                        <td><strong>۸۱۰ م</strong></td>
+                        <td><strong>۳,۰۶۰ م</strong></td>
+                        <td><strong>۵۴۴,۵۰۰,۰۰۰ تومان</strong></td>
+                        <td><strong>۱۹۲ م</strong></td>
+                        <td><strong>۲,۴۴۳,۵۰۰,۰۰۰</strong></td>
+                        <td><strong>۱,۲۲۱,۷۵۰,۰۰۰ تومان</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="callout">
+            <div class="callout-title">دست‌آوردهای سناریوی هدف:</div>
+            <p>۱. سود خالص هر شریک در ۶ ماه از <strong>۱.۲۲ میلیارد تومان</strong> عبور می‌کند.<br>
+            ۲. دو پروژه دلاری با نرخ ۲۷۰ هزار تومانی، به تنهایی ۸۱۰ میلیون تومان ورودی ناخالص و ۱۶۲ میلیون تومان پورسانت نقد برای هانتر خلق می‌کنند.<br>
+            ۳. کف درآمد ماهانه مستمر (MRR) سئو در انتهای ماه ششم به <strong>۳۰۰ میلیون تومان در ماه</strong> می‌رسد که به تنهایی <strong>۹.۳ برابر کل هزینه‌های ثابت آژانس</strong> را پوشش می‌دهد!</p>
+        </div>
+
+        <h3 style="color: var(--emerald); font-size: 1.15rem; margin: 28px 0 10px 0;">• سناریو ۴: رویایی و جهشی (Dream Scenario)</h3>
+        <ul>
+            <li>۳ الی ۵ قرارداد وب در ماه (کمیسیون ۲۰٪) + ۲ مشتری سئوی سازمانی در ماه + ورودی مداوم دلاری (۲ پروژه در ماه معادل ۸۱۰ م).</li>
+            <li><strong>گردش مالی ۶ ماهه:</strong> بالای ۵ میلیارد تومان | <strong>دریافتی ماهانه هانتر:</strong> بالای ۱۵۰ الی ۲۰۰ میلیون تومان | <strong>سود خالص هر شریک:</strong> ۳۰۰ الی ۵۰۰ میلیون در ماه.</li>
+        </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۴</span>
+            جدول مقایسه‌ای پیش‌بینی درآمد خود لید هانتر (Lead Hunter Earnings)
+        </h2>
+        <p style="margin-bottom: 14px;">این جدول مستقیماً سطح درآمد، انگیزه و قدرت جذب موقعیت شغلی را برای کارشناس فروش شفاف می‌کند:</p>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>سناریوی عملکردی</th>
+                        <th>میانگین دریافتی ماهانه هانتر</th>
+                        <th>سقف دریافتی در یک ماه</th>
+                        <th>کل درآمد ۶ ماهه هانتر</th>
+                        <th>انگیزه و وضعیت روانی هانتر</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>۱. فاجعه‌بار (بدون قرارداد)</strong></td>
+                        <td>۱۵,۰۰۰,۰۰۰ تومان</td>
+                        <td>۱۵,۰۰۰,۰۰۰ تومان</td>
+                        <td>۹۰,۰۰۰,۰۰۰ تومان</td>
+                        <td><span class="pill" style="background: rgba(244, 63, 94, 0.15); color: var(--rose);">حقوق پایه صرف، قطع همکاری در ماه ۲</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>۲. محافظه‌کارانه (۱ وب + سئو آرام)</strong></td>
+                        <td>۳۶,۲۵۰,۰۰۰ تومان</td>
+                        <td>۴۲,۵۰۰,۰۰۰ تومان</td>
+                        <td>۲۱۷,۵۰۰,۰۰۰ تومان</td>
+                        <td><span class="pill pill-blue">درآمد ۲ برابر اداره کاری، ثبات نسبی</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>۳. هدف (۲ وب + ۱ سئو + ۲ دلاری)</strong></td>
+                        <td><strong style="color: var(--gold-light);">۹۰,۷۵۰,۰۰۰ تومان</strong></td>
+                        <td><strong>۱۴۸,۵۰۰,۰۰۰ تومان</strong></td>
+                        <td><strong style="color: var(--gold-light);">۵۴۴,۵۰۰,۰۰۰ تومان</strong></td>
+                        <td><span class="pill pill-gold">انفجار مالی، انگیزه و تعهد حداکثری</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>۴. رویایی (سازمانی و دلاری مداوم)</strong></td>
+                        <td>۱۵۰ تا ۲۰۰ میلیون</td>
+                        <td>۲۰۰,۰۰۰,۰۰۰+ تومان</td>
+                        <td>۱,۰۰۰,۰۰۰,۰۰۰+ تومان</td>
+                        <td><span class="pill pill-green">تبدیل به شریک ارشد فروش و برندینگ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۵</span>
+            تحلیل نقطه سر‌به‌سر (Break-Even) و تاب‌آوری مالی
+        </h2>
+        
+        <p>با توجه به هزینه ثابت <strong>۳۲ میلیون تومانی</strong> آژانس (در حالت بستن قرارداد با حقوق پایه ۲۰ م هانتر و ۶ م صندلی زی‌تک):</p>
+        
+        <ul style="margin: 16px 0;">
+            <li><strong>فروش تنها ۱ پروژه وب (۱۰۰ م):</strong> ۱۰ میلیون پورسانت کسر می‌شود؛ ۹۰ میلیون باقی می‌ماند. پس از کسر ۳۲ میلیون هزینه ثابت، <strong>۵۸ میلیون تومان سود خالص در همان ماه اول</strong> به دست می‌آید.</li>
+            <li><strong>یا جذب تنها ۱ قرارداد سئو (۵۰ م):</strong> در همان ماه اول ۷.۵ م پورسانت کسر می‌شود؛ ۴۲.۵ م باقی می‌ماند که با کسر ۳۲ م هزینه، <strong>۱۰.۵ میلیون تومان سود خالص مثبت در همان ماه اول</strong> به جا می‌گذارد.</li>
+            <li><strong>نتیجه قطعی:</strong> تنها با ۱ فروش در ماه، نه تنها ریسک کسب‌وکار صفر است، بلکه سوددهی نقدی فوری آغاز می‌شود.</li>
+            <li><strong>سرمایه اولیه مورد نیاز (Buffer):</strong> هر شریک <strong>۲۷ میلیون تومان</strong> برای پوشش ۲ ماه اول در حساب تنخواه قرار می‌دهد.</li>
+        </ul>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="number">۶</span>
+            نقشه راه عملیاتی ۲۴ تا ۴۸ ساعت آینده
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 14px;">
+            <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid var(--border-card-subtle); padding: 18px; border-radius: var(--radius-md);">
+                <div style="color: var(--gold-light); font-weight: 700; margin-bottom: 6px;">گام اول: تایید شرکا</div>
+                <p style="font-size: 0.9rem;">توافق بر سهم ۱۳.۵ تا ۱۶ میلیونی ماهانه و تزریق ۲۷ میلیون بافر اولیه به تنخواه مشترک.</p>
+            </div>
+            <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid var(--border-card-subtle); padding: 18px; border-radius: var(--radius-md);">
+                <div style="color: var(--gold-light); font-weight: 700; margin-bottom: 6px;">گام دوم: انتشار آگهی</div>
+                <p style="font-size: 0.9rem;">انتشار بنرهای طراحی‌شده در تلگرام/اینستاگرام و هدایت به لندینگ استخدام <code style="color: var(--gold);">hasanshah.ir/careers/</code>.</p>
+            </div>
+            <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid var(--border-card-subtle); padding: 18px; border-radius: var(--radius-md);">
+                <div style="color: var(--gold-light); font-weight: 700; margin-bottom: 6px;">گام سوم: غربالگری ویدیوها</div>
+                <p style="font-size: 0.9rem;">فیلتر ویدیوهای ۳۰ ثانیه‌ای ارسالی به <code style="color: var(--blue);">@shahbusinessman</code> و دعوت به مصاحبه در زی‌تک.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px 0;">
+        سند محرمانه داخلی هم‌بنیان‌گذاران — استودیو و آژانس مهندسی وب حسن شاهمرادی (واحد ۱۰۴ مرکز نوآوری زی‌تک)
+    </footer>
+
+</div>
+
+</body>
+</html>
