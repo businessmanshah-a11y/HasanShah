@@ -502,3 +502,4 @@ export default function LeadHunterModal({ isOpen, onClose }: LeadHunterModalProp
     </AnimatePresence>
   );
 }
+
