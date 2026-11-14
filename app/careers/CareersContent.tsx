@@ -19,6 +19,7 @@ import {
   ArrowLeft,
   XCircle,
   HelpCircle,
+  MapPin,
 } from "lucide-react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -67,8 +68,7 @@ export default function CareersContent() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
             >
-              ما به دنبال یک همکار خانم پرانرژی، خوش‌صحبت و پیگیر هستیم که حلقه اتصال استودیو به بازار باشد. 
-              ما در کارگاه به خلق سیستم‌ها و وایب‌کدینگ مشغولیم؛ شما لیدها را شکار می‌کنید، جلسات رسمی را می‌چینید و پس از قرارداد، مدیریت ارتباط با مشتریان را با وقار به دست می‌گیرید.
+              استخدام همکار خانم جهت حضور در دفتر کار، شکار لید، برگزاری جلسات رسمی فروش و مدیریت ارتباط با مشتریان؛ همراه با حقوق پایه ثابت و پورسانت‌های نقدی و ارزی.
             </motion.p>
 
             {/* Quick Badges */}
@@ -78,6 +78,10 @@ export default function CareersContent() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="pt-4 flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-bold"
             >
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1.5 text-gold">
+                <MapPin className="h-4 w-4" />
+                دفتر کار: تهران، مرکز نوآوری زی‌تک
+              </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-surface/70 px-3.5 py-1.5 text-gold">
                 <CheckCircle2 className="h-4 w-4" />
                 حقوق پایه ثابت تضمینی
@@ -201,7 +205,7 @@ export default function CareersContent() {
                   ۳. تصویربرداری با آیفون و استوری‌گذاری روزانه
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  تصویربرداری تمیز از استودیو و محیط کارگاه با آیفون، سناریونویسی استوری با کمک ChatGPT، انتشار استوری‌های روزمره و برنامه‌ریزی لایوها. 
+                  تصویربرداری تمیز از دفتر کار با آیفون، سناریونویسی استوری با کمک ChatGPT، انتشار استوری‌های روزمره و برنامه‌ریزی لایوها. 
                   <span className="block mt-1 text-gold font-semibold">
                     (شما ادیتور نیستید! ادیت پست‌های اصلی با خود بنیان‌گذار است؛ شما تصویربرداری و آپلود را انجام می‌دهید).
                   </span>
@@ -234,11 +238,11 @@ export default function CareersContent() {
             <div className="grid sm:grid-cols-2 gap-3.5">
               {[
                 { title: "جنسیت: خانم", desc: "به دلیل هوش اجتماعی، ارتباطات باوقار، مدیریت صبورانه مشتریان و هماهنگی تیمی." },
-                { title: "داشتن گوشی شخصی آیفون ۱۳ به بالا", desc: "با دوربین باکیفیت و سالم جهت ثبت تصاویر و استوری‌های باکیفیت استودیو." },
+                { title: "حضور در دفتر کار (تهران)", desc: "دفتر کار: تهران، بلوار پژوهش، ساختمان رویش، مرکز نوآوری زی‌تک (ZTech)، واحد ۱۰۴" },
+                { title: "داشتن گوشی شخصی آیفون ۱۳ به بالا", desc: "با دوربین باکیفیت و سالم جهت ثبت تصاویر و استوری‌های باکیفیت دفتر کار." },
                 { title: "تسلط بر کار با ChatGPT و ابزارهای AI", desc: "جهت سناریونویسی استوری‌ها، ریسرچ سریع و سرعت بخشیدن به امور روزمره." },
                 { title: "فن بیان قوی و جسارت در پیگیری", desc: "نترسیدن از چت، تماس و پیگیری کارفرمایان؛ پیگیری محترمانه اما خستگی‌ناپذیر." },
-                { title: "زبان انگلیسی کاربردی", desc: "در حد درک پروژه‌های بین‌المللی، نوشتن پروپوزال متنی و چت با کارفرماهای خارجی." },
-                { title: "روحیه خودران و کاشف", desc: "اگر چیزی را بلد نیستید، در یوتیوب و گوگل سرچ کنید و راهش را پیدا کنید." },
+                { title: "روحیه خودران و کاشف", desc: "اگر چیزی را بلد نیستید، در یوتیوب و گوگل سرچ کنید و راهش را پیدا کنید («نشد» نداریم)." },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-surface/40 p-4">
                   <div className="h-5 w-5 rounded-full bg-gold/15 text-gold flex items-center justify-center shrink-0 mt-0.5">
