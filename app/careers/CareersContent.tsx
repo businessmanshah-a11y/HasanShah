@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -20,11 +22,15 @@ import {
   XCircle,
   HelpCircle,
   MapPin,
+  Eye,
 } from "lucide-react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import LeadHunterModal from "./LeadHunterModal";
 
 export default function CareersContent() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-gold/20 selection:text-gold">
       <Nav />
@@ -84,19 +90,19 @@ export default function CareersContent() {
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-surface/70 px-3.5 py-1.5 text-gold">
                 <CheckCircle2 className="h-4 w-4" />
-                حقوق پایه ثابت تضمینی
+                حقوق پایه ۱۵ تا ۲۰ م تضمینی
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-surface/70 px-3.5 py-1.5 text-gold">
                 <Flame className="h-4 w-4 text-amber-400" />
-                پورسانت ۱۰ تا ۱۵٪ نقدی
+                پورسانت ۱۰ تا ۲۰٪ نقدی وب
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-emerald-400">
                 <TrendingUp className="h-4 w-4" />
-                درصد ماهانه مستمر از سئو
+                درآمد سئو (۱۵٪ سپس ۵٪ مستمر)
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1.5 text-blue-400">
                 <Globe2 className="h-4 w-4" />
-                پورسانت ۱۵ تا ۲۰٪ دلاری
+                پورسانت ۲۰ تا ۳۰٪ دلاری
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-3.5 py-1.5 text-purple-300">
                 <Smartphone className="h-4 w-4" />
@@ -273,34 +279,74 @@ export default function CareersContent() {
             <div className="grid sm:grid-cols-4 gap-3 text-center">
               <div className="rounded-2xl border border-white/10 bg-surface/40 p-5 space-y-2">
                 <span className="text-xs font-bold text-muted-foreground">امنیت پایه</span>
-                <p className="text-lg font-black text-foreground">حقوق پایه ثابت</p>
+                <p className="text-lg font-black text-foreground">۱۵ الی ۲۰ م ثابت</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  تضمین هزینه‌های تردد و تعهد حضور ماهانه
+                  ۱۵ م تضمینی؛ پرش فوری به ۲۰ م با بستن حتی ۱ قرارداد
                 </p>
               </div>
 
               <div className="rounded-2xl border border-gold/40 bg-gold/5 p-5 space-y-2">
-                <span className="text-xs font-bold text-gold">پروژه‌های وب و سیستم</span>
-                <p className="text-lg font-black text-gold">۱۰٪ الی ۱۵٪ نقد</p>
+                <span className="text-xs font-bold text-gold">پروژه‌های وب (میانگین ۱۰۰ م)</span>
+                <p className="text-lg font-black text-gold">۱۰٪ الی ۲۰٪ نقد</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   تسویه فوری به محض واریز پیش‌پرداخت کارفرما
                 </p>
               </div>
 
               <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5 space-y-2">
-                <span className="text-xs font-bold text-emerald-400">قراردادهای سئو</span>
-                <p className="text-lg font-black text-emerald-400">۱۰٪ الی ۱۵٪ ماهانه</p>
+                <span className="text-xs font-bold text-emerald-400">قراردادهای سئو (تعرفه ۵۰ م)</span>
+                <p className="text-lg font-black text-emerald-400">۱۵٪ سپس ۵٪ مستمر</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  درآمد مستمر هر ماه مادامی که مشتری با ماست
+                  ماه اول ۱۵٪؛ ماه‌های بعد ۵٪ مستمر تا زمان تمدید
                 </p>
               </div>
 
               <div className="rounded-2xl border border-blue-500/40 bg-blue-500/5 p-5 space-y-2">
-                <span className="text-xs font-bold text-blue-400">پروژه‌های بین‌المللی</span>
-                <p className="text-lg font-black text-blue-400">۱۵٪ الی ۲۰٪ دلاری</p>
+                <span className="text-xs font-bold text-blue-400">پروژه‌های بین‌المللی ($1,500)</span>
+                <p className="text-lg font-black text-blue-400">۲۰٪ الی ۳۰٪ دلاری</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  تسویه دلاری یا به ریال روز به انتخاب شما
+                  ۸۱ تا ۱۲۱.۵ میلیون پورسانت نقدی از هر قرارداد
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 5.5 Detailed Persona Trigger Box (ویژگی‌های دقیق کسی که می‌خواهیم) ── */}
+        <section className="py-8 px-4">
+          <div className="container mx-auto max-w-4xl">
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="group relative cursor-pointer overflow-hidden rounded-3xl border-2 border-gold/40 bg-gradient-to-r from-gold/15 via-surface/85 to-surface/95 p-6 sm:p-8 shadow-2xl hover:border-gold hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-300"
+            >
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-right">
+                  <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 rounded-2xl overflow-hidden border-2 border-gold/50 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <Image
+                      src="/images/careers/lead-hunter-persona.jpg"
+                      alt="همکار ایده‌آل ما - شکارچی لید"
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 text-xs font-bold text-gold">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      <span>ماتریس جامع شایستگی و شناسنامه رسمی نقش</span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-gold transition-colors">
+                      ویژگی‌های دقیق کسی که می‌خواهیم (کلیک کنید)
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground max-w-xl leading-relaxed">
+                      مشاهده پروفایل شخصیتی (MBTI)، هوش هیجانی (EQ)، مهارت‌های سخت و نرم، اسکریپت‌های مکالمه تلگرام، جدول کمیسیون پلکانی و مدل پیش‌بینی درآمد در پاپ‌آپ جامع.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="shrink-0 flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-xs sm:text-sm font-black text-gold-foreground shadow-gold group-hover:scale-105 transition-transform">
+                  <span>مشاهده شناسنامه کامل</span>
+                  <ArrowLeft className="h-4 w-4" />
+                </div>
               </div>
             </div>
           </div>
@@ -362,6 +408,9 @@ export default function CareersContent() {
           </div>
         </section>
       </div>
+
+      {/* ── Detailed Lead Hunter Persona Modal ── */}
+      <LeadHunterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <Footer />
     </main>
