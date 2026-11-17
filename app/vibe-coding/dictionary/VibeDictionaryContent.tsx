@@ -77,6 +77,7 @@ import VibeSkillPassportModal from "./components/VibeSkillPassportModal";
 import SpeedDebugChallengeModal from "./components/SpeedDebugChallengeModal";
 import ZeroToHeroGuideModal from "./components/ZeroToHeroGuideModal";
 import FirstRealProjectBuilderModal from "./components/FirstRealProjectBuilderModal";
+import QualityGuaranteeSealSection from "./components/QualityGuaranteeSealSection";
 import { questStages, calculateUserLevel } from "./data/quest-stages";
 import { EncyclopediaTerm, QuestStage, UserGamificationProfile } from "./data/types";
 import { playClickSound, playSuccessChime, playLevelUpFanfare } from "./utils/soundEffects";
@@ -221,12 +222,36 @@ export default function VibeDictionaryContent() {
     }
   }, []);
 
-  // Keyboard shortcut Cmd+K or Ctrl+K
+  // Keyboard shortcut Cmd+K, Ctrl+K, /, and Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         searchInputRef.current?.focus();
+      }
+      if (e.key === "/" && document.activeElement !== searchInputRef.current) {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+      if (e.key === "Escape") {
+        setIsSandboxOpen(false);
+        setIsStudioDrawerOpen(false);
+        setIsLinterOpen(false);
+        setIsPassportOpen(false);
+        setIsSpeedChallengeOpen(false);
+        setIsZeroToHeroOpen(false);
+        setIsFirstProjectOpen(false);
+        setIsPromptBuilderOpen(false);
+        setIsConfusingPairsOpen(false);
+        setIsQuizOpen(false);
+        setIsCheatSheetOpen(false);
+        setIsCalculatorOpen(false);
+        setIsCursorRulesOpen(false);
+        setIsCertificateOpen(false);
+        setActiveCheckpointStage(null);
+        setZenModeTermId(null);
+        setSelectedShareTerm(null);
+        setIsSuggestOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -1335,6 +1360,9 @@ export default function VibeDictionaryContent() {
       </section>
         </>
       )}
+
+      {/* ── Quality Guarantee Seal Section (Step 6) ── */}
+      <QualityGuaranteeSealSection />
 
       {/* ── The Vibe Coder's Manifesto Section (Item 50) ── */}
       <section className="container mx-auto px-4">

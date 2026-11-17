@@ -133,6 +133,8 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
       code: "add_filter( 'the_content', function( $content ) {\n    if ( is_singular( 'post' ) ) {\n        $cta = '<div class=\"my-8 p-6 rounded-2xl bg-gold/10 border border-gold/30 text-gold font-bold\">برای یادگیری وایب‌کدینگ به دوره‌های حسن شاهمرادی بپیوندید.</div>';\n        return $content . $cta;\n    }\n    return $content;\n});"
     },
     prerequisiteTermIds: ['action-hooks'],
+    seriesEpisodeUrl: '/vibe-coding/series/faktor-dadash',
+    seriesEpisodeLabel: 'قسمت ۱ سریال وایب‌کدینگ (فاکتور داداش) - دقیقه ۳۴:۱۰',
     relatedTermIds: ['action-hooks', 'custom-post-types'],
     seoKeywords: ['فیلتر هوک', 'filter hooks', 'add_filter در وردپرس', 'تغییر خروجی با فیلتر']
   },
@@ -262,6 +264,8 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
       code: "/*\n Theme Name:   HasanShah Child Theme\n Theme URI:    https://hasanshah.ir\n Description:  پوسته فرزند اختصاصی برای کدهای وایب‌کدینگ\n Template:     parent-theme-folder-name\n Version:      1.0.0\n*/"
     },
     prerequisiteTermIds: ['theme-hierarchy'],
+    seriesEpisodeUrl: '/vibe-coding/series/faktor-dadash',
+    seriesEpisodeLabel: 'قسمت ۲ سریال وایب‌کدینگ (فاکتور داداش) - ساخت CPT فاکتور',
     relatedTermIds: ['theme-hierarchy', 'action-hooks'],
     seoKeywords: ['چایلد تم', 'child theme', 'پوسته فرزند وردپرس', 'ساخت چایلد تم']
   },
@@ -326,6 +330,8 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
       code: "add_action( 'init', function() {\n    register_post_type( 'hs_portfolio', [\n        'labels'      => [ 'name' => 'نمونه‌کارها', 'singular_name' => 'نمونه‌کار' ],\n        'public'      => true,\n        'has_archive' => true,\n        'menu_icon'   => 'dashicons-portfolio',\n        'supports'    => [ 'title', 'editor', 'thumbnail', 'excerpt' ],\n        'show_in_rest'=> true,\n    ]);\n});"
     },
     prerequisiteTermIds: ['theme-hierarchy'],
+    seriesEpisodeUrl: '/vibe-coding/series/faktor-dadash',
+    seriesEpisodeLabel: 'قسمت ۲ سریال وایب‌کدینگ (فاکتور داداش) - ساخت CPT فاکتور',
     relatedTermIds: ['theme-hierarchy', 'action-hooks'],
     seoKeywords: ['کاستوم پست تایپ', 'cpt وردپرس', 'register_post_type', 'انواع پست اختصاصی']
   },
@@ -392,6 +398,8 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
       code: "add_action( 'wp_ajax_hs_save_lead', function() {\n    check_ajax_referer( 'hs_lead_security_nonce', 'security' );\n    wp_send_json_success( [ 'message' => 'اطلاعات با موفقیت ثبت شد' ] );\n});"
     },
     prerequisiteTermIds: ['action-hooks'],
+    seriesEpisodeUrl: '/vibe-coding/series/faktor-dadash',
+    seriesEpisodeLabel: 'قسمت ۳ سریال وایب‌کدینگ (فاکتور داداش) - امنیت و اعتبارسنجی نانس',
     relatedTermIds: ['action-hooks', 'transients-api'],
     seoKeywords: ['نانس وردپرس', 'nonces security', 'امنیت فرم های وردپرس', 'مقابله با csrf']
   },

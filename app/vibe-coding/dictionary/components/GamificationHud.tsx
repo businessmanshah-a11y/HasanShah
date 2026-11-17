@@ -398,9 +398,30 @@ export default function GamificationHud({
 
             {/* Footer Summary */}
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
-              <span className="text-xs text-muted-foreground">
-                مجموع امتیاز جاری: <strong className="text-amber-400">{profile.xp.toLocaleString("fa-IR")} XP</strong>
-              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-xs text-muted-foreground">
+                  مجموع امتیاز جاری: <strong className="text-amber-400">{profile.xp.toLocaleString("fa-IR")} XP</strong>
+                </span>
+                <span className="text-white/20 hidden sm:inline">•</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (
+                      typeof window !== "undefined" &&
+                      window.confirm("آیا مطمئن هستید که می‌خواهید پیشرفت مأموریت‌ها، امتیازات و نشان‌ها را پاک کرده و از مرحله ۱ شروع کنید؟")
+                    ) {
+                      try {
+                        localStorage.removeItem("vibe_gamification_profile");
+                        localStorage.removeItem("vibe_dict_read_terms");
+                        window.location.reload();
+                      } catch {}
+                    }
+                  }}
+                  className="text-[11px] text-rose-400/90 hover:text-rose-300 underline underline-offset-4 transition-colors"
+                >
+                  شروع مجدد مأموریت از صفر
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={() => setIsBadgesModalOpen(false)}
