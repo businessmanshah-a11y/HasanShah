@@ -36,6 +36,8 @@ import {
   Wrench,
   Code2,
   Play,
+  Compass,
+  Rocket,
 } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -73,9 +75,11 @@ import StudioToolsDrawerModal from "./components/StudioToolsDrawerModal";
 import PromptLinterModal from "./components/PromptLinterModal";
 import VibeSkillPassportModal from "./components/VibeSkillPassportModal";
 import SpeedDebugChallengeModal from "./components/SpeedDebugChallengeModal";
+import ZeroToHeroGuideModal from "./components/ZeroToHeroGuideModal";
+import FirstRealProjectBuilderModal from "./components/FirstRealProjectBuilderModal";
 import { questStages, calculateUserLevel } from "./data/quest-stages";
 import { EncyclopediaTerm, QuestStage, UserGamificationProfile } from "./data/types";
-import { playClickSound, playSuccessChime } from "./utils/soundEffects";
+import { playClickSound, playSuccessChime, playLevelUpFanfare } from "./utils/soundEffects";
 
 // Emergency tools for Section 0 (Humanized & Reformulated per Item 45 & AGENTS.md)
 const emergencyRescueTools = [
@@ -159,6 +163,8 @@ export default function VibeDictionaryContent() {
   const [isLinterOpen, setIsLinterOpen] = useState(false);
   const [isPassportOpen, setIsPassportOpen] = useState(false);
   const [isSpeedChallengeOpen, setIsSpeedChallengeOpen] = useState(false);
+  const [isZeroToHeroOpen, setIsZeroToHeroOpen] = useState(false);
+  const [isFirstProjectOpen, setIsFirstProjectOpen] = useState(false);
   const [zenModeTermId, setZenModeTermId] = useState<string | null>(null);
   const [selectedShareTerm, setSelectedShareTerm] = useState<EncyclopediaTerm | null>(null);
 
@@ -325,6 +331,32 @@ export default function VibeDictionaryContent() {
     });
   };
 
+  const handleFirstProjectComplete = (earnedXp: number, badgeId: string) => {
+    playLevelUpFanfare();
+    setGamificationProfile((prev) => {
+      const newBadges = !prev.unlockedBadgeIds.includes(badgeId)
+        ? [...prev.unlockedBadgeIds, badgeId]
+        : prev.unlockedBadgeIds;
+
+      const newXp = prev.xp + earnedXp;
+      const lvl = calculateUserLevel(newXp);
+
+      const updated: UserGamificationProfile = {
+        ...prev,
+        xp: newXp,
+        level: lvl.level,
+        rankTitle: lvl.rankTitle,
+        unlockedBadgeIds: newBadges,
+      };
+
+      try {
+        localStorage.setItem("vibe_gamification_profile", JSON.stringify(updated));
+      } catch {}
+
+      return updated;
+    });
+  };
+
   const handleSpeedChallengeComplete = (earnedXp: number, badgeId?: string) => {
     playSuccessChime();
     setGamificationProfile((prev) => {
@@ -448,6 +480,19 @@ export default function VibeDictionaryContent() {
         onOpenLinter={() => setIsLinterOpen(true)}
         onOpenPassport={() => setIsPassportOpen(true)}
         onOpenSpeedChallenge={() => setIsSpeedChallengeOpen(true)}
+        onOpenZeroToHero={() => setIsZeroToHeroOpen(true)}
+        onOpenFirstProject={() => setIsFirstProjectOpen(true)}
+      />
+      <ZeroToHeroGuideModal
+        isOpen={isZeroToHeroOpen}
+        onClose={() => setIsZeroToHeroOpen(false)}
+        onStartFirstProject={() => setIsFirstProjectOpen(true)}
+        onOpenRulesDownload={() => setIsCursorRulesOpen(true)}
+      />
+      <FirstRealProjectBuilderModal
+        isOpen={isFirstProjectOpen}
+        onClose={() => setIsFirstProjectOpen(false)}
+        onProjectComplete={handleFirstProjectComplete}
       />
       <InteractivePromptBuilderModal
         isOpen={isPromptBuilderOpen}
@@ -571,6 +616,15 @@ export default function VibeDictionaryContent() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
             <button
               type="button"
+              onClick={() => setIsZeroToHeroOpen(true)}
+              className="inline-flex items-center gap-2 rounded-2xl border border-emerald-400/60 bg-emerald-500/15 px-6 py-3.5 text-xs md:text-sm font-black text-emerald-300 hover:bg-emerald-500/25 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20"
+            >
+              <Compass className="h-4 w-4 text-emerald-400" />
+              <span>🌱 صفرِ صفری؟ از اینجا شروع کن (نقشه ورود به کار)</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => {
                 handleToggleLearningView("quest");
                 const el = document.getElementById("active-mission-spotlight");
@@ -613,6 +667,8 @@ export default function VibeDictionaryContent() {
         onOpenCertificate={() => setIsCertificateOpen(true)}
         onOpenPassport={() => setIsPassportOpen(true)}
         onOpenSpeedChallenge={() => setIsSpeedChallengeOpen(true)}
+        onOpenZeroToHero={() => setIsZeroToHeroOpen(true)}
+        onOpenFirstProject={() => setIsFirstProjectOpen(true)}
         completedStagesCount={gamificationProfile.completedStageNumbers.length}
         totalStagesCount={questStages.length}
         readTermsCount={readTerms.length}
@@ -697,6 +753,7 @@ export default function VibeDictionaryContent() {
               setZenModeTermId(termId);
             }}
             onOpenCertificate={() => setIsCertificateOpen(true)}
+            onOpenFirstProject={() => setIsFirstProjectOpen(true)}
           />
         </section>
       ) : (

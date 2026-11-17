@@ -14,6 +14,7 @@ import {
   Wrench,
   Compass,
   Cpu,
+  Rocket,
 } from "lucide-react";
 
 interface StudioToolsDrawerModalProps {
@@ -30,6 +31,8 @@ interface StudioToolsDrawerModalProps {
   onOpenLinter: () => void;
   onOpenPassport: () => void;
   onOpenSpeedChallenge: () => void;
+  onOpenZeroToHero?: () => void;
+  onOpenFirstProject?: () => void;
 }
 
 export default function StudioToolsDrawerModal({
@@ -46,6 +49,8 @@ export default function StudioToolsDrawerModal({
   onOpenLinter,
   onOpenPassport,
   onOpenSpeedChallenge,
+  onOpenZeroToHero,
+  onOpenFirstProject,
 }: StudioToolsDrawerModalProps) {
   if (!isOpen) return null;
 
@@ -100,6 +105,63 @@ export default function StudioToolsDrawerModal({
 
         {/* Content Body */}
         <div className="p-5 md:p-7 space-y-6 max-h-[75vh] overflow-y-auto">
+          {/* Section 0: Zero-to-Hero & First Project (Step 5) */}
+          {(onOpenZeroToHero || onOpenFirstProject) && (
+            <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
+                <Compass className="h-4 w-4" />
+                <span>نقشه ورود صفرِ صفر و کارگاه ساخت محصول</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {onOpenZeroToHero && (
+                  <button
+                    type="button"
+                    onClick={() => triggerAndClose(onOpenZeroToHero)}
+                    className="group flex items-start gap-3 rounded-xl border border-emerald-500/40 bg-emerald-500/15 p-3 text-right hover:border-emerald-400 hover:bg-emerald-500/25 transition-all"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-400 text-black font-black">
+                      <Compass className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-bold text-xs md:text-sm text-foreground group-hover:text-emerald-300 transition-colors">
+                          راهنمای افراد صفرِ صفر
+                        </h4>
+                        <ChevronLeft className="h-4 w-4 text-emerald-400" />
+                      </div>
+                      <p className="mt-0.5 text-[11px] text-muted-foreground line-clamp-1">
+                        ستاپ ۵ دقیقه‌ای LocalWP و ادیتور بدون هاست و دامنه.
+                      </p>
+                    </div>
+                  </button>
+                )}
+
+                {onOpenFirstProject && (
+                  <button
+                    type="button"
+                    onClick={() => triggerAndClose(onOpenFirstProject)}
+                    className="group flex items-start gap-3 rounded-xl border border-amber-400/40 bg-amber-400/15 p-3 text-right hover:border-amber-400 hover:bg-amber-400/25 transition-all"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-400 text-black font-black">
+                      <Rocket className="h-4 w-4 fill-black" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-bold text-xs md:text-sm text-foreground group-hover:text-amber-300 transition-colors">
+                          کارگاه ساخت اولین افزونه (۱۰ دقیقه)
+                        </h4>
+                        <ChevronLeft className="h-4 w-4 text-amber-400" />
+                      </div>
+                      <p className="mt-0.5 text-[11px] text-muted-foreground line-clamp-1">
+                        «آقا یاد گرفتی برو انجام بده!» + کیت فریلنسری.
+                      </p>
+                    </div>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* Section 1: Prompt & Code Engineering */}
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-amber-400 mb-3">

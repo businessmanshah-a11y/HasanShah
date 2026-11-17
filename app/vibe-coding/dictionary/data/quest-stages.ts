@@ -55,6 +55,24 @@ export const gamificationBadges: GamificationBadge[] = [
     gradientColor: 'from-amber-300 via-yellow-400 to-amber-600',
     stageRequired: 12,
   },
+  {
+    id: 'badge-speed-reflex-master',
+    titleFa: 'نشان رفلکس سریع در بحران',
+    titleEn: 'Speed Reflex Master',
+    description: 'مهار ۵ بحران سرور و وردپرس در چالش سرعتی ۶۰ ثانیه‌ای',
+    iconName: 'Zap',
+    gradientColor: 'from-orange-400 to-amber-500',
+    stageRequired: 0,
+  },
+  {
+    id: 'badge-autonomous-builder',
+    titleFa: 'نشان معمار خودکفا و ورود به بازار کار',
+    titleEn: 'Autonomous Builder',
+    description: 'ساخت اولین افزونه واقعی وردپرس در mu-plugins و تسلط بر پرامپت ۵ لایه‌ای',
+    iconName: 'Crown',
+    gradientColor: 'from-emerald-400 via-teal-500 to-amber-400',
+    stageRequired: 13,
+  },
 ];
 
 export const questStages: QuestStage[] = [

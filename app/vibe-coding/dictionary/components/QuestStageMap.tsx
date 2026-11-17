@@ -16,6 +16,7 @@ import {
   Layers,
   ChevronDown,
   ChevronUp,
+  Rocket,
 } from "lucide-react";
 import { QuestStage } from "../data/types";
 import { allDictionaryTerms, categoriesMeta } from "../data";
@@ -27,6 +28,7 @@ interface QuestStageMapProps {
   onStartCheckpoint: (stage: QuestStage) => void;
   onSelectTerm: (termId: string) => void;
   onOpenCertificate: () => void;
+  onOpenFirstProject?: () => void;
 }
 
 interface QuestChapter {
@@ -85,6 +87,7 @@ export default function QuestStageMap({
   onStartCheckpoint,
   onSelectTerm,
   onOpenCertificate,
+  onOpenFirstProject,
 }: QuestStageMapProps) {
   const [selectedChapterTab, setSelectedChapterTab] = useState<number | "all">("all");
   const [collapsedChapters, setCollapsedChapters] = useState<Record<number, boolean>>({});
@@ -431,6 +434,35 @@ export default function QuestStageMap({
           );
         })}
       </div>
+
+      {/* ── Capstone Milestone Banner: Go Build Your First Real Project ── */}
+      {onOpenFirstProject && (
+        <div className="mt-8 rounded-3xl border border-amber-400/50 bg-gradient-to-r from-amber-400/20 via-surface-elevated/90 to-yellow-500/20 p-6 md:p-8 backdrop-blur shadow-gold relative overflow-hidden">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-right">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/20 px-3.5 py-1 text-xs font-bold text-amber-300">
+                <Crown className="h-3.5 w-3.5" />
+                <span>پروژه عملی فارغ‌التحصیلی • ورود به بازار کار</span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-black text-foreground">
+                «آقا یاد گرفتی! حالا وقتشه بری انجام بدی و شروع کنی به کار کردن.»
+              </h3>
+              <p className="text-xs md:text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                همین الان در کارگاه تعاملی ۱۰ دقیقه‌ای، اولین افزونه تجاری واقعی خودت رو در پوشه mu-plugins بساز و کیت تحویل پروژه به کارفرما (+۳۰۰ XP) رو باز کن!
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={onOpenFirstProject}
+              className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 px-6 py-3.5 text-xs md:text-sm font-black text-black hover:opacity-95 shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95 shrink-0"
+            >
+              <Rocket className="h-4 w-4 fill-black" />
+              <span>شروع کارگاه ساخت اولین پروژه عملی 🚀</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

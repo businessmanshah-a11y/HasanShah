@@ -34,6 +34,8 @@ interface GamificationHudProps {
   onOpenCertificate: () => void;
   onOpenPassport: () => void;
   onOpenSpeedChallenge: () => void;
+  onOpenZeroToHero?: () => void;
+  onOpenFirstProject?: () => void;
   completedStagesCount: number;
   totalStagesCount: number;
   readTermsCount?: number;
@@ -47,6 +49,8 @@ export default function GamificationHud({
   onOpenCertificate,
   onOpenPassport,
   onOpenSpeedChallenge,
+  onOpenZeroToHero,
+  onOpenFirstProject,
   completedStagesCount,
   totalStagesCount,
   readTermsCount,
@@ -187,6 +191,22 @@ export default function GamificationHud({
 
             {/* Right/End: Quick Tools, Sound Toggle, Mode Switcher */}
             <div className="flex flex-wrap items-center justify-end gap-2 border-t border-white/10 pt-2 md:border-t-0 md:pt-0">
+              {/* Zero to Hero Guide Button */}
+              {onOpenZeroToHero && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    onOpenZeroToHero();
+                  }}
+                  className="inline-flex items-center gap-1 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/20 transition-all"
+                  title="راهنمای شروع سریع افراد صفرِ صفر"
+                >
+                  <Compass className="h-3.5 w-3.5 text-emerald-400" />
+                  <span className="hidden sm:inline">شروع از صفر</span>
+                </button>
+              )}
+
               {/* Speed Challenge Button */}
               <button
                 type="button"
