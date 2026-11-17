@@ -60,7 +60,12 @@ import ContextWindowCalculatorModal from "./components/ContextWindowCalculatorMo
 import CursorRulesDownloadModal from "./components/CursorRulesDownloadModal";
 import ZenModeModal from "./components/ZenModeModal";
 import VibeManifestoSection from "./components/VibeManifestoSection";
-import { EncyclopediaTerm } from "./data/types";
+import GamificationHud from "./components/GamificationHud";
+import QuestStageMap from "./components/QuestStageMap";
+import StageCheckpointModal from "./components/StageCheckpointModal";
+import DigitalCertificateModal from "./components/DigitalCertificateModal";
+import { questStages, calculateUserLevel } from "./data/quest-stages";
+import { EncyclopediaTerm, QuestStage, UserGamificationProfile } from "./data/types";
 
 // Emergency tools for Section 0 (Humanized & Reformulated per Item 45 & AGENTS.md)
 const emergencyRescueTools = [
@@ -116,6 +121,21 @@ export default function VibeDictionaryContent() {
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
+  // Gamification & Quest State (Step 2)
+  const [activeLearningView, setActiveLearningView] = useState<"quest" | "reference">("quest");
+  const [gamificationProfile, setGamificationProfile] = useState<UserGamificationProfile>({
+    xp: 0,
+    level: 1,
+    rankTitle: "شاگرد صفر کیلومتر",
+    streakDays: 1,
+    completedTermIds: [],
+    completedStageNumbers: [],
+    unlockedBadgeIds: [],
+    quizAttempts: {},
+  });
+  const [activeCheckpointStage, setActiveCheckpointStage] = useState<QuestStage | null>(null);
+  const [isCertificateOpen, setIsCertificateOpen] = useState(false);
+
   // Modals States
   const [isPromptBuilderOpen, setIsPromptBuilderOpen] = useState(false);
   const [isConfusingPairsOpen, setIsConfusingPairsOpen] = useState(false);
@@ -141,6 +161,40 @@ export default function VibeDictionaryContent() {
 
       const savedRead = localStorage.getItem("vibe_dict_read_terms");
       if (savedRead) setReadTerms(JSON.parse(savedRead));
+
+      const savedView = localStorage.getItem("vibe_dict_learning_view");
+      if (savedView === "quest" || savedView === "reference") {
+        setActiveLearningView(savedView);
+      }
+
+      const savedProfile = localStorage.getItem("vibe_gamification_profile");
+      if (savedProfile) {
+        const parsed: UserGamificationProfile = JSON.parse(savedProfile);
+        
+        // Calculate daily streak
+        const todayStr = new Date().toISOString().split("T")[0];
+        const lastActiveDate = localStorage.getItem("vibe_last_active_date");
+        let streak = parsed.streakDays || 1;
+        if (lastActiveDate) {
+          const diffDays = Math.round(
+            (new Date(todayStr).getTime() - new Date(lastActiveDate).getTime()) / (1000 * 60 * 60 * 24)
+          );
+          if (diffDays === 1) {
+            streak = streak + 1;
+          } else if (diffDays > 1) {
+            streak = 1;
+          }
+        }
+        localStorage.setItem("vibe_last_active_date", todayStr);
+
+        const lvl = calculateUserLevel(parsed.xp || 0);
+        setGamificationProfile({
+          ...parsed,
+          level: lvl.level,
+          rankTitle: lvl.rankTitle,
+          streakDays: streak,
+        });
+      }
     } catch {
       // Ignore localStorage errors
     }
@@ -176,6 +230,13 @@ export default function VibeDictionaryContent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleToggleLearningView = (mode: "quest" | "reference") => {
+    setActiveLearningView(mode);
+    try {
+      localStorage.setItem("vibe_dict_learning_view", mode);
+    } catch {}
+  };
+
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => {
       const updated = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
@@ -187,12 +248,62 @@ export default function VibeDictionaryContent() {
   };
 
   const markAsRead = (id: string) => {
-    if (readTerms.includes(id)) return;
-    setReadTerms((prev) => {
-      const updated = [...prev, id];
+    let updatedReadTerms = readTerms;
+    if (!readTerms.includes(id)) {
+      updatedReadTerms = [...readTerms, id];
+      setReadTerms(updatedReadTerms);
       try {
-        localStorage.setItem("vibe_dict_read_terms", JSON.stringify(updated));
+        localStorage.setItem("vibe_dict_read_terms", JSON.stringify(updatedReadTerms));
       } catch {}
+    }
+
+    // Award +30 XP for reading/exploring a term
+    setGamificationProfile((prev) => {
+      if (prev.completedTermIds.includes(id)) return prev;
+      const newXp = prev.xp + 30;
+      const lvl = calculateUserLevel(newXp);
+      const updated: UserGamificationProfile = {
+        ...prev,
+        xp: newXp,
+        level: lvl.level,
+        rankTitle: lvl.rankTitle,
+        completedTermIds: [...prev.completedTermIds, id],
+      };
+      try {
+        localStorage.setItem("vibe_gamification_profile", JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  };
+
+  const handleStagePassed = (stageNumber: number, earnedXp: number, badgeId?: string) => {
+    setGamificationProfile((prev) => {
+      const isAlreadyCompleted = prev.completedStageNumbers.includes(stageNumber);
+      const newStages = isAlreadyCompleted
+        ? prev.completedStageNumbers
+        : [...prev.completedStageNumbers, stageNumber];
+
+      const newBadges =
+        badgeId && !prev.unlockedBadgeIds.includes(badgeId)
+          ? [...prev.unlockedBadgeIds, badgeId]
+          : prev.unlockedBadgeIds;
+
+      const newXp = prev.xp + earnedXp;
+      const lvl = calculateUserLevel(newXp);
+
+      const updated: UserGamificationProfile = {
+        ...prev,
+        xp: newXp,
+        level: lvl.level,
+        rankTitle: lvl.rankTitle,
+        completedStageNumbers: newStages,
+        unlockedBadgeIds: newBadges,
+      };
+
+      try {
+        localStorage.setItem("vibe_gamification_profile", JSON.stringify(updated));
+      } catch {}
+
       return updated;
     });
   };
@@ -247,6 +358,19 @@ export default function VibeDictionaryContent() {
       <Nav />
 
       {/* ── Modals Hub ── */}
+      <StageCheckpointModal
+        stage={activeCheckpointStage}
+        isOpen={!!activeCheckpointStage}
+        onClose={() => setActiveCheckpointStage(null)}
+        onStagePassed={handleStagePassed}
+        onOpenCertificate={() => setIsCertificateOpen(true)}
+      />
+      <DigitalCertificateModal
+        isOpen={isCertificateOpen}
+        onClose={() => setIsCertificateOpen(false)}
+        userXp={gamificationProfile.xp}
+        completedStagesCount={gamificationProfile.completedStageNumbers.length}
+      />
       <InteractivePromptBuilderModal
         isOpen={isPromptBuilderOpen}
         onClose={() => setIsPromptBuilderOpen(false)}
@@ -450,13 +574,14 @@ export default function VibeDictionaryContent() {
         </div>
       </section>
 
-      {/* ── Start Here Wizard Component (Items 1, 5, 6) ── */}
-      <StartHereWizard
-        onSelectPreset={(preset) => {
-          setSelectedPreset(preset);
-          setSelectedCategory("all");
-          setSelectedStation("all");
-        }}
+      {/* ── Player Gamification HUD Bar (Step 2) ── */}
+      <GamificationHud
+        profile={gamificationProfile}
+        activeView={activeLearningView}
+        onToggleView={handleToggleLearningView}
+        onOpenCertificate={() => setIsCertificateOpen(true)}
+        completedStagesCount={gamificationProfile.completedStageNumbers.length}
+        totalStagesCount={questStages.length}
       />
 
       {/* ── Section 0: Emergency Rescue Tools (Item 45 & AGENTS.md) ── */}
@@ -509,8 +634,34 @@ export default function VibeDictionaryContent() {
         </div>
       </section>
 
-      {/* ── Learning Stations & Presets (Pillar 2) ── */}
-      <section className="container mx-auto px-4 pb-8">
+      {/* ── View Switch: Gamified Quest Map (Step 2) vs Encyclopedia Reference ── */}
+      {activeLearningView === "quest" ? (
+        <section className="container mx-auto px-4 pb-16">
+          <QuestStageMap
+            stages={questStages}
+            completedStageNumbers={gamificationProfile.completedStageNumbers}
+            readTermIds={readTerms}
+            onStartCheckpoint={(stage) => setActiveCheckpointStage(stage)}
+            onSelectTerm={(termId) => {
+              markAsRead(termId);
+              setZenModeTermId(termId);
+            }}
+            onOpenCertificate={() => setIsCertificateOpen(true)}
+          />
+        </section>
+      ) : (
+        <>
+          {/* ── Start Here Wizard Component (Items 1, 5, 6) ── */}
+          <StartHereWizard
+            onSelectPreset={(preset) => {
+              setSelectedPreset(preset);
+              setSelectedCategory("all");
+              setSelectedStation("all");
+            }}
+          />
+
+          {/* ── Learning Stations & Presets (Pillar 2) ── */}
+          <section className="container mx-auto px-4 pb-8">
         <div className="rounded-3xl border border-white/10 bg-surface/50 p-6 md:p-8 backdrop-blur space-y-6">
           {/* Persona Switcher */}
           <PersonaRoleSelector
@@ -1075,6 +1226,8 @@ export default function VibeDictionaryContent() {
           </div>
         )}
       </section>
+        </>
+      )}
 
       {/* ── The Vibe Coder's Manifesto Section (Item 50) ── */}
       <section className="container mx-auto px-4">

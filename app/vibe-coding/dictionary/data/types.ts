@@ -44,7 +44,7 @@ export interface EncyclopediaTerm {
   humanQuestion: string;          // این به چه دردی می‌خوره به زبان کاربر
   realPain: string;               // اگر ندانی چه فاجعه‌ای رخ میده (سناریوی تلخ واقعی)
   readingTimeMinutes: number;     // زمان تخمینی مطالعه (۱ الی ۲ دقیقه)
-  sequenceOrder: number;          // شماره ترتیب یادگیری منطقی (۱ تا ۳۶)
+  sequenceOrder: number;          // شماره ترتیب یادگیری منطقی (۱ تا ۳۷)
   learningStation: LearningStation; // ایستگاه ۴ گانه مسیر آموزشی
   targetPersonas: UserPersona[];  // پرسوناهای مخاطب هدف
   isNoCodeFriendly: boolean;      // آیا برای فرد بدون دانش کدنویسی هم کاربردی است؟
@@ -88,4 +88,48 @@ export interface CategoryMeta {
   description: string;
   iconName: string;
   badgeColor: string;
+}
+
+// ── تعاریف سامانه گیمیفیکیشن و مأموریت یادگیری (گام دوم) ──
+
+export interface QuizQuestion {
+  id: string;
+  termId: string;
+  scenarioText: string;           // صورت مسئله سناریومحور در پروژه واقعی وردپرس
+  codeSnippetPreview?: string;    // پیش‌نمایش کد برای دیباگ یا تشخیص خطا
+  options: string[];              // ۴ گزینه پاسخ
+  correctIndex: number;           // ایندکس پاسخ صحیح (۰ تا ۳)
+  explanation: string;            // تحلیل خطای ادراکی و توضیح چرایی پاسخ درست
+  remediationHint: string;        // راهنمایی فوری و تمثیل برای کسی که پاسخ غلط داد
+}
+
+export interface GamificationBadge {
+  id: string;
+  titleFa: string;
+  titleEn: string;
+  description: string;
+  iconName: string;               // Sparkles | Shield | Zap | Crown | Terminal | Palette
+  gradientColor: string;
+  stageRequired: number;
+}
+
+export interface QuestStage {
+  stageNumber: number;            // شماره مرحله ۱ تا ۱۲
+  titleFa: string;                // عنوان ماجراجویانه مرحله
+  subtitle: string;               // توضیح کوتاه ماموریت مرحله
+  category: TermCategory;         // حوزه تخصصی
+  termIds: string[];              // شناسه‌های اصطلاحات این مرحله
+  checkpointQuiz: QuizQuestion[]; // ۲ سوال سناریومحور پایان مرحله
+  badgeUnlocked?: GamificationBadge; // مدال پاداش پایان مرحله
+}
+
+export interface UserGamificationProfile {
+  xp: number;
+  level: number;
+  rankTitle: string;
+  streakDays: number;
+  completedTermIds: string[];
+  completedStageNumbers: number[];
+  unlockedBadgeIds: string[];
+  quizAttempts: Record<string, { attempts: number; passed: boolean }>;
 }
