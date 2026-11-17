@@ -389,5 +389,252 @@ export const databaseApiTerms: EncyclopediaTerm[] = [
     prerequisiteTermIds: ['custom-endpoints'],
     relatedTermIds: ['custom-endpoints', 'wp-rest-api'],
     seoKeywords: ['jwt در وردپرس', 'احراز هویت توکن وردپرس', 'ورود بدون کوکی', 'امنیت rest api']
+  },
+  {
+    id: 'custom-database-tables',
+    termEn: 'Custom Database Tables & dbDelta',
+    termFa: 'ساخت جداول اختصاصی در دیتابیس با متد dbDelta',
+    category: 'database-api',
+    level: 'advanced',
+    phonetic: 'کاستوم دیتابیس تیبلز اند دی‌بی‌دلتا',
+    tags: ['database', 'mysql', 'dbDelta', 'custom-tables', 'big-data'],
+    sequenceOrder: 38,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: false,
+    elevatorPitch: 'وقتی اطلاعات شما مثل تراکنش‌های مالی یا لاگ‌های میلیونی است، نباید آن‌ها را در جدول شلوغ wp_postmeta بریزید؛ با یک جدول مستقل اختصاصی سرعت سرور تا ۲۰ برابر افزایش می‌یابد!',
+    beginnerTrap: 'استفاده از جدول wp_postmeta برای ثبت صدها هزار رکورد لاگ یا پیامک؛ که دیتابیس را به یک کوه آوار تبدیل کرده و جستجوها را چند ثانیه معطل می‌کند!',
+    analogy: 'مثل داشتن یک زونکن اختصاصی بایگانی برای فاکتورهای رسمی در برابر ریختن همه فاکتورها در کشوی جوراب‌ها است!',
+    humanQuestion: 'چه زمانی باید به جای پست‌متا، برای داده‌هایم جدول اختصاصی بسازم؟',
+    realPain: 'جدول postmeta وردپرس ساختار کلید-مقداری (EAV) دارد و برای گزارش‌گیری‌های سنگین طراحی نشده است؛ کوئری زدن به ۱۰ میلیون پست‌متا سایت را درجا قفل می‌کند!',
+    commonAiError: {
+      errorSnippet: 'dbDelta syntax error: missing two spaces after PRIMARY KEY',
+      explanationFa: 'هوش مصنوعی قواعد سخت‌گیرانه فاصله‌گذاری تابع dbDelta را رعایت نکرده و جدول ساخته نشده!'
+    },
+    freelanceTip: 'به کارفرما نشان بده با طراحی جدول اختصاصی برای سیستم سفارشات یا گزارش‌های مالی، دیتابیس سایت او توانایی پردازش ۱۰ میلیون تراکنش بدون حتی یک میلی‌ثانیه تاخیر را دارد.',
+    asciiDiagram: `[روش اشتباه: ریختن ۵ میلیون رکورد لاگ در wp_postmeta] ──> 🐌 کرش سرور
+[روش استاندارد: ساخت جدول اختصاصی wp_hs_logs با dbDelta] ──> ⚡ سرعت ۱ میلی‌ثانیه‌ای`,
+    injectionTarget: 'هوک register_activation_hook یا فایل مایگریشن افزونه',
+    universalPrompt: `[ROLE]: Senior MySQL & WordPress Database Architect.
+[TASK]: Create a high-performance custom table named "wp_hs_transactions" using dbDelta().
+[NEGATIVE CONSTRAINTS]:
+- Strict adherence to dbDelta formatting rules: exactly two spaces after PRIMARY KEY, uppercase SQL keywords, and explicit table collation.
+- Include proper indexes on foreign keys and created_at timestamps.
+[OUTPUT]: Robust, migration-safe table creation function.`,
+    agentsMdRule: `# استانداردهای دیتابیس در AGENTS.md:
+برای داده‌های پرتراکنش (بیش از ۵۰ هزار رکورد در سال)، ایجاد جدول اختصاصی با تابع dbDelta الزامی است و استفاده از postmeta ممنوع می‌باشد.`,
+    cursorPrompt: `Generate the dbDelta SQL schema for an audit log table with indexed timestamp columns.`,
+    claudePrompt: `Write the complete activation hook using dbDelta to safely install and upgrade custom database tables in WordPress.`,
+    debugPrompt: `تابع dbDelta جدول را نمی‌سازد. فاصله‌گذاری دوگانه بعد از PRIMARY KEY و تعاریف ایندکس را بررسی و اصلاح کن.`,
+    howToTest: {
+      steps: [
+        'افزونه را در سایت تستی فعال کنید.',
+        'ابزار phpMyAdmin یا Adminer را باز کنید و جداول دیتابیس را بررسی نمایید.',
+        'مطمئن شوید جدول جدید با پیشوند wp_ و ایندکس‌های مربوطه ساخته شده است.'
+      ],
+      expectedResult: 'ایجاد تمیز جدول با کالکشن utf8mb4_unicode_ci.',
+      redFlags: ['تولید کوئری‌های خام CREATE TABLE بدون dbDelta']
+    },
+    shortDefinition: 'روش استاندارد هسته وردپرس برای ایجاد و ارتقای ایمن ساختار جداول اختصاصی در پایگاه داده MySQL.',
+    deepExplanation: 'تابع dbDelta تفاوت ساختار جدول موجود را با ساختار جدید مقایسه کرده و ستون‌های مفقود را بدون حذف اطلاعات قبلی به جدول اضافه می‌کند.',
+    vibeCodingImpact: 'قابلیت ساخت نرم‌افزارهای تجاری با مقیاس میلیون رکورد بر بستر وردپرس.',
+    goldenPrompt: 'یک تابع با dbDelta بنویس که یک جدول اختصاصی به نام wp_hs_leads با ایندکس روی شماره موبایل ایجاد کند.',
+    codeSnippet: {
+      language: 'php',
+      description: 'الگوی ساخت جدول اختصاصی با قواعد نگارشی dbDelta',
+      runContext: 'activation.php',
+      code: "require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );\nglobal $wpdb;\n$table_name = $wpdb->prefix . 'hs_transactions';\n$charset_collate = $wpdb->get_charset_collate();\n\n$sql = \"CREATE TABLE $table_name (\n    id bigint(20) NOT NULL AUTO_INCREMENT,\n    user_id bigint(20) NOT NULL,\n    amount decimal(10,2) NOT NULL,\n    created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,\n    PRIMARY KEY  (id),\n    KEY user_id (user_id)\n) $charset_collate;\";\n\ndbDelta( $sql );"
+    },
+    prerequisiteTermIds: ['wpdb-class'],
+    relatedTermIds: ['wpdb-class', 'prepared-statements'],
+    seoKeywords: ['dbdelta', 'جداول اختصاصی وردپرس', 'ساخت جدول در وردپرس', 'بهینه سازی دیتابیس وردپرس']
+  },
+  {
+    id: 'database-indexing',
+    termEn: 'Database Indexing & Query Speed',
+    termFa: 'ایندکس‌گذاری ستون‌های پرمصرف پایگاه داده (Indexing)',
+    category: 'database-api',
+    level: 'advanced',
+    phonetic: 'دیتابیس ایندکسینگ',
+    tags: ['indexing', 'mysql', 'database-performance', 'slow-query'],
+    sequenceOrder: 39,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'فهرست الفبایی در انتهای کتاب قطور! بدون ایندکس، دیتابیس باید تمام ۱ میلیون سطر را یک‌به‌یک بخواند تا شماره سفارش شما را پیدا کند (Full Table Scan). با ایندکس در ۱ میلی‌ثانیه مستقیماً به همان سطر پرش می‌کند!',
+    beginnerTrap: 'جستجو در ستونی که ایندکس ندارد (مثلاً جستجو روی فیلد شماره ملی در یک جدول با ۱۰۰ هزار کاربر)؛ سرور در هر جستجو هنگ می‌کند!',
+    analogy: 'مثل این است که در یک کتابخانه بدون قفسه‌بندی و دفترچه راهنما، دنبال یک کتاب بگردی و مجبور باشی تک‌تک کتاب‌های کتابخانه را ورق بزنی!',
+    humanQuestion: 'چرا وقتی فیلتر محصولات یا جستجوی سایتم را می‌زنم، سرور ۵ ثانیه لودینگ نشان می‌دهد؟',
+    realPain: 'کوئری‌های سنگین بدون ایندکس، کل صف دیتابیس را قفل می‌کنند و کاربران دیگر هم با خطای دیتابیس (Error establishing a database connection) روبرو می‌شوند!',
+    commonAiError: {
+      errorSnippet: 'Slow query logged / Full table scan on unindexed WHERE clause',
+      explanationFa: 'هوش مصنوعی روی ستونی شرط WHERE گذاشته که ایندکس ندارد و دیتابیس باید کل رکوردهای جدول را بخواند!'
+    },
+    freelanceTip: 'تنها با اضافه کردن یک ایندکس صحیح به جدول‌های کند سایت کارفرما، سرعت جستجو و فیلترها را از ۵ ثانیه به ۵۰ میلی‌ثانیه می‌رسانی.',
+    asciiDiagram: `[جستجو در جدول بدون ایندکس] ──> بررسی ۱,۰۰۰,۰۰۰ سطر ──> 🐌 ۴,۵۰۰ میلی‌ثانیه
+[جستجو در جدول با ایندکس]   ──> پرش مستقیم به رکورد با B-Tree ──> ⚡ ۲ میلی‌ثانیه`,
+    injectionTarget: 'تعاریف ساختار جداول اختصاصی در dbDelta یا دستور خط فرمان دیتابیس',
+    universalPrompt: `[ROLE]: Senior MySQL Performance Tuning Engineer.
+[TASK]: Analyze the query conditions for table "wp_hs_leads" and add compound indexes for (status, created_at).
+[NEGATIVE CONSTRAINTS]:
+- Avoid over-indexing (do not index columns with high write-frequency and low read-frequency).
+- Check index cardinality.
+[OUTPUT]: Optimal ALTER TABLE SQL statement.`,
+    agentsMdRule: `# استانداردهای ایندکس در AGENTS.md:
+تمامی ستون‌هایی که در بخش‌های WHERE، ORDER BY، یا JOIN کوئری‌ها استفاده می‌شوند، باید دارای ایندکس مناسب در دیتابیس باشند.`,
+    cursorPrompt: `Suggest optimal MySQL indexes for these slow queries reported in Query Monitor.`,
+    claudePrompt: `Explain how adding an index to this custom postmeta key eliminates the full table scan bottleneck.`,
+    debugPrompt: `این کوئری در لاگ کدهای کند (Slow Query Log) ثبت شده است. ایندکس مناسب برای حل این مشکل را معرفی کن.`,
+    howToTest: {
+      steps: [
+        'دستور EXPLAIN را قبل از کوئری خود در تب دیتابیس بنویسید.',
+        'ستون type و rows را بررسی کنید.',
+        'اگر type برابر با ALL بود، یعنی ایندکس وجود ندارد؛ پس از افزودن ایندکس، type باید به ref یا range تغییر یابد.'
+      ],
+      expectedResult: 'تغییر نوع جستجو از Full Table Scan به ایندکس مستقیم و لود میلی‌ثانیه‌ای.',
+      redFlags: ['کوئری‌هایی که بیش از ۱۰۰ هزار سطر را برای بازگرداندن ۱۰ نتیجه اسکن می‌کنند']
+    },
+    shortDefinition: 'ساختار داده‌ای در موتور MySQL برای دسترسی فوق‌سریع به رکوردهای مشخص بدون اسکن کل جدول.',
+    deepExplanation: 'ایندکس‌ها با الگوریتم B-Tree پیاده‌سازی می‌شوند و کلید طلایی عبور از افت سرعت در پروژه‌های بزرگ وردپرس هستند.',
+    vibeCodingImpact: 'توانایی بهینه‌سازی دیتابیس‌های حجیم و کاهش ۹۵ درصدی زمان پاسخگویی سرور.',
+    goldenPrompt: 'یک دستور SQL بنویس که روی ستون phone_number جدول سرنخ‌ها یک ایندکس اضافه کند تا سرعت سرچ بالا برود.',
+    codeSnippet: {
+      language: 'sql',
+      description: 'افزودن ایندکس اختصاصی به جدول برای تسریع جستجو',
+      runContext: 'MySQL Query',
+      code: "ALTER TABLE wp_hs_leads ADD INDEX idx_phone (phone_number);"
+    },
+    prerequisiteTermIds: ['custom-database-tables'],
+    relatedTermIds: ['custom-database-tables', 'wpdb-class'],
+    seoKeywords: ['indexing mysql', 'ایندکس دیتابیس وردپرس', 'بهینه سازی کوئری کند', 'افزایش سرعت دیتابیس']
+  },
+  {
+    id: 'rest-api-permissions-callback',
+    termEn: 'REST API permission_callback Security',
+    termFa: 'کنترل دقیق صلاحیت دسترسی در وب‌سرویس‌ها (permission_callback)',
+    category: 'database-api',
+    level: 'intermediate',
+    phonetic: 'پر-میشن کال-بک',
+    tags: ['rest-api', 'security', 'permission_callback', 'rbac', 'authorization'],
+    sequenceOrder: 40,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    elevatorPitch: 'نگهبان دم در اندپوینت‌های API سایت! پارامتری حیاتی و اجباری در ثبت هر وب‌سرویس که چک می‌کند آیا کاربر اجازه دارد این اطلاعات محرمانه را ببیند یا این عملیات را انجام دهد یا خیر.',
+    beginnerTrap: 'استفاده از __return_true برای تمام اندپوینت‌ها؛ با این کار کل اینترنت می‌توانند بدون ورود، دیتای کاربران را ویرایش یا حذف کنند!',
+    analogy: 'مثل کارت ورود پرسنلی شرکت است؛ هر کسی کارت نداشته باشد بوق قرمز به صدا درمی‌آید و در قفل می‌ماند.',
+    humanQuestion: 'چطور مطمئن شوم که فقط ادمین یا خریدار واقعی می‌تواند اطلاعات سفارش را از طریق API دریافت کند؟',
+    realPain: 'بیشتر از ۶۰ درصد باگ‌های امنیتی افزونه‌های وردپرس ناشی از فراموش کردن permission_callback است که باعث نشت دیتابیس کاربران می‌شود!',
+    commonAiError: {
+      errorSnippet: 'REST route registered without permission_callback / missing capability check',
+      explanationFa: 'هوش مصنوعی اندپوینت را بدون نگهبان امنیتی ثبت کرده و هر کسی با مرورگر می‌تواند دیتای کاربران را بدزدد!'
+    },
+    freelanceTip: 'به کارفرما اطمینان بده که تمامی وب‌سرویس‌های اختصاصی با نقش‌های کاربری (RBAC) و احراز هویت توکن محافظت شده‌اند.',
+    asciiDiagram: `[درخواست به /wp-json/hs/v1/orders]
+                    │
+                    ▼
+          [permission_callback]
+        ├── کاربر دسترسی دارد (current_user_can) ──> اجرای تابع و تحویل سفارشات
+        └── دسترسی ندارد ──> خطای ۴۰۳ Forbidden 🚫`,
+    injectionTarget: 'آرایه پارامترهای register_rest_route',
+    universalPrompt: `[ROLE]: WordPress REST API Security Architect.
+[TASK]: Register a private endpoint "/wp-json/hs/v1/user-data" using "register_rest_route".
+[NEGATIVE CONSTRAINTS]:
+- NEVER use "__return_true" on mutation (POST/PUT/DELETE) routes.
+- Implement a rigorous "permission_callback" verifying "current_user_can('edit_posts')" or user ownership.
+- Return a 403 WP_Error on unauthorized requests.
+[OUTPUT]: Secure endpoint registration.`,
+    agentsMdRule: `# امنیت REST API در AGENTS.md:
+تمامی مسیرهای وب‌سرویس باید دارای یک تابع permission_callback سخت‌گیرانه باشند. استفاده از __return_true روی مسیرهای حاوی داده‌های حساس اکیداً ممنوع است.`,
+    cursorPrompt: `Audit this REST route and ensure permission_callback strictly checks user capabilities.`,
+    claudePrompt: `Rewrite this REST registration with a robust permission_callback checking custom user caps and nonces.`,
+    debugPrompt: `این اندپوینت بدون احراز هویت دیتای مشتریان را لو می‌دهد. یک تابع permission_callback با بررسی صلاحیت اضافه کن.`,
+    howToTest: {
+      steps: [
+        'در مرورگر در حالت ناشناس (Incognito) آدرس اندپوینت را باز کنید.',
+        'آیا خطای ۴۰۱ یا ۴۰۳ با پیام «دسترسی غیرمجاز» دریافت کردید؟',
+        'سپس به عنوان ادمین لاگین کرده و دسترسی صحیح را تایید نمایید.'
+      ],
+      expectedResult: 'مسدودسازی دسترسی‌های غیرمجاز و تحویل اطلاعات فقط به کاربران دارای صلاحیت.',
+      redFlags: ['باز شدن اطلاعات محرمانه در حالت لاگ‌اوت و بدون توکن']
+    },
+    shortDefinition: 'پارامتر اجباری در وب‌سرویس‌های وردپرس برای اعتبارسنجی سطح دسترسی و احراز هویت کاربر قبل از اجرای منطق اصلی.',
+    deepExplanation: 'از نسخه وردپرس ۵.۵، حذف این پارامتر منجر به صدور خطای Notice در هسته می‌شود. این تابع سد اول دفاع در برابر نشت اطلاعات است.',
+    vibeCodingImpact: 'تضمین نفوذناپذیری وب‌سرویس‌ها در اپلیکیشن‌های فرانت جداگانه و موبایل.',
+    goldenPrompt: 'یک اندپوینت REST بنویس که فقط به کاربرانی که دسترسی manage_options دارند اجازه دریافت گزارش بدهد.',
+    codeSnippet: {
+      language: 'php',
+      description: 'ثبت امن اندپوینت با کنترل دسترسی سطح ادمین',
+      runContext: 'rest-routes.php',
+      code: "register_rest_route( 'hs/v1', '/reports', [\n    'methods'             => 'GET',\n    'callback'            => 'hs_get_reports_data',\n    'permission_callback' => function() {\n        return current_user_can( 'manage_options' );\n    }\n]);"
+    },
+    prerequisiteTermIds: ['rest-api-endpoints'],
+    relatedTermIds: ['rest-api-endpoints', 'nonces'],
+    seoKeywords: ['permission_callback', 'امنیت rest api وردپرس', 'register_rest_route', 'احراز هویت وب سرویس وردپرس']
+  },
+  {
+    id: 'object-caching-redis',
+    termEn: 'Persistent Object Caching (Redis / Memcached)',
+    termFa: 'کش ماندگار اشیاء دیتابیس با ردیس (Object Cache)',
+    category: 'database-api',
+    level: 'advanced',
+    phonetic: 'آبجکت کشینگ ردیس',
+    tags: ['redis', 'object-cache', 'performance', 'database-scale'],
+    sequenceOrder: 41,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'انتقال دیتابیس از روی هارد دیسک کند سرور به داخل چیپ‌های فوق‌سریع رم (RAM)! با فعال‌سازی ردیس، وردپرس به جای کوئری زدن به هارد، نتایج را از حافظه رم در ۱ میلی‌ثانیه می‌خواند.',
+    beginnerTrap: 'اشتباه گرفتن کش صفحه (Page Cache مثل WP Rocket) با کش شیء (Object Cache)؛ کش صفحه فقط به کاربران مهمان کمک می‌کند، اما ردیس سرعت پیشخوان و کاربران لاگین کرده را هم موشکی می‌کند!',
+    analogy: 'کش صفحه مثل عکس گرفتن از یک ویترین است، اما ردیس مثل آوردن کل انبار فروشگاه به یک متری پیشخوان مغازه است!',
+    humanQuestion: 'چرا پیشخوان ووکامرس من وقتی کاربران لاگین می‌کنند کند می‌شود و افزونه‌های کش تاثیری ندارند؟',
+    realPain: 'کاربران لاگین کرده در فروشگاه‌های ووکامرسی نمی‌توانند از کش صفحه استفاده کنند؛ بدون ردیس، با هر کلیک صدها کوئری سنگین به دیتابیس اصابت می‌کند و سرور می‌خوابد!',
+    commonAiError: {
+      errorSnippet: 'Object cache collision / cache invalidation failure on custom post types',
+      explanationFa: 'هوش مصنوعی کلید کش ردیس را هنگام ویرایش محصول باطل نکرده و اطلاعات قدیمی نمایش داده می‌شود!'
+    },
+    freelanceTip: 'با راه‌اندازی Redis Object Cache روی هاست کارفرما، سرعت بارگذاری سبد خرید و پیشخوان مدیریت ووکامرس ۵ برابر می‌شود.',
+    asciiDiagram: `[درخواست کاربر لاگین‌کرده] ──> آیا کوئری در حافظه رم هست؟ (Redis)
+                               ├── بله ──> ⚡ تحویل در ۱ میلی‌ثانیه از RAM
+                               └── خیر ──> خواندن از هارد MySQL + ذخیره در ردیس`,
+    injectionTarget: 'فایل wp-content/object-cache.php و تنظیمات Redis در wp-config.php',
+    universalPrompt: `[ROLE]: High-Traffic WordPress Infrastructure Engineer.
+[TASK]: Configure Redis Object Cache for WooCommerce and ensure proper cache group invalidation on product updates.
+[NEGATIVE CONSTRAINTS]:
+- Avoid caching dynamic cart sessions in persistent object cache groups.
+- Use "wp_cache_delete()" hooks upon post status transitions.
+[OUTPUT]: Robust caching configuration.`,
+    agentsMdRule: `# کش ماندگار اشیاء در AGENTS.md:
+توابع سفارشی دیتابیس باید به جای کوئری مستقیم، ابتدا از توابع wp_cache_get و wp_cache_set استفاده کنند تا از ردیس به بهترین نحو بهره‌برداری شود.`,
+    cursorPrompt: `Implement wp_cache_get and wp_cache_set around this heavy analytical calculation.`,
+    claudePrompt: `Explain how to integrate Redis Object Caching into this high-traffic membership site architecture.`,
+    debugPrompt: `اطلاعات در ردیس کش شده و تغییرات جدید دیده نمی‌شود. هوک wp_cache_delete را برای کلید مربوطه اضافه کن.`,
+    howToTest: {
+      steps: [
+        'افزونه Redis Object Cache را در وردپرس نصب و فعال کنید.',
+        'روی دکمه Enable Object Cache کلیک کنید و اتصال به پورت ۶۳۷۹ ردیس را تایید نمایید.',
+        'افزونه Query Monitor را باز کنید؛ مشاهده می‌کنید که شاخص Object Cache Hit Ratio به بالای ۹۰٪ رسیده است.'
+      ],
+      expectedResult: 'کاهش شدید کوئری‌های MySQL و لود فوری پیشخوان.',
+      redFlags: ['نرخ Hit Ratio زیر ۵۰ درصد یا خطای قطع ارتباط با ردیس']
+    },
+    shortDefinition: 'سازوکار ذخیره‌سازی اشیاء و کوئری‌های وردپرس در حافظه رم با ابزارهایی مانند Redis برای افزایش سرعت پاسخگویی دیتابیس.',
+    deepExplanation: 'کش اشیاء هسته وردپرس (WP_Object_Cache) به صورت پیش‌فرض غیرماندگار است. با نصب کلاینت Redis، این کش بین درخواست‌های مختلف ماندگار شده و بار سرور را به صفر نزدیک می‌کند.',
+    vibeCodingImpact: 'پایدار نگه داشتن فروشگاه‌های بزرگ ووکامرس در جشنواره‌های فروش و بلک‌فرایدی.',
+    goldenPrompt: 'یک الگو بنویس که قبل از اجرای کوئری با wpdb، دیتای کش‌شده را از wp_cache_get بخواند و در صورت نبودن، کش کند.',
+    codeSnippet: {
+      language: 'php',
+      description: 'استفاده بهینه از توابع Object Cache در کدهای PHP',
+      runContext: 'cache-helper.php',
+      code: "$cache_key = 'hs_user_points_' . $user_id;\n$points = wp_cache_get( $cache_key, 'hs_points_group' );\n\nif ( false === $points ) {\n    $points = $wpdb->get_var( $wpdb->prepare( \"SELECT points FROM wp_hs_points WHERE user_id = %d\", $user_id ) );\n    wp_cache_set( $cache_key, $points, 'hs_points_group', 3600 );\n}"
+    },
+    prerequisiteTermIds: ['transients-api'],
+    relatedTermIds: ['transients-api', 'wpdb-class'],
+    seoKeywords: ['redis وردپرس', 'object cache وردپرس', 'ردیس آبجکت کش', 'افزایش سرعت ووکامرس با ردیس']
   }
 ];

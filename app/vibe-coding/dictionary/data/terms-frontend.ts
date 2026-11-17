@@ -388,5 +388,187 @@ export const frontendTerms: EncyclopediaTerm[] = [
     prerequisiteTermIds: ['tailwind-jit'],
     relatedTermIds: ['tailwind-jit', 'design-tokens'],
     seoKeywords: ['تایپوگرافی شناور', 'fluid typography', 'تابع clamp در css', 'فونت واکنشگرا']
+  },
+  {
+    id: 'headless-wordpress-nextjs',
+    termEn: 'Headless WordPress & Next.js Architecture',
+    termFa: 'معماری هدلس وردپرس با Next.js در فرانت‌اند',
+    category: 'frontend',
+    level: 'advanced',
+    phonetic: 'هد-لس وردپرس اند نکست-جی‌اس',
+    tags: ['headless', 'nextjs', 'react', 'graphql', 'modern-frontend'],
+    sequenceOrder: 19,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'جداسازی سر از بدن! وردپرس فقط به عنوان سیستم مدیریت محتوا و دیتابیس در پشت صحنه کار می‌کند، و ظاهر فوق‌سریع سایت با فریم‌ورک مدرن Next.js یا React با سرعت لود صدم‌ثانیه‌ای نمایش داده می‌شود.',
+    beginnerTrap: 'فکر کردن به اینکه با هدلس شدن، پنل پیشخوان وردپرس عوض می‌شود؛ کارفرما دقیقاً همان پیشخوان ساده و راحت وردپرس را برای ثبت نوشته‌ها می‌بیند، اما ظاهر سایت ۱۰ برابر سریع‌تر و امن‌تر می‌شود!',
+    analogy: 'مثل جدا کردن موتور سوپراسپرت تسلا از بدنه یک ماشین سنتی است؛ شما بدنه لوکس فیبر کربن (Next.js) را روی موتور پرقدرت (هسته محتوای وردپرس) سوار می‌کنید.',
+    humanQuestion: 'چرا برندهای بین‌المللی ظاهر سایتشان را از وردپرس جدا می‌کنند و با Next.js می‌سازند؟',
+    realPain: 'در تم‌های کلاسیک PHP، هر بازدید یعنی اجرای کدهای سنگین سرور و ارسال HTML حجیم؛ در معماری هدلس، فرانت‌اند به صورت Static Generation در CDN جهانی کش می‌شود و لود درجا اتفاق می‌افتد.',
+    commonAiError: {
+      errorSnippet: 'CORS policy blocked REST API call / hydration mismatch in Next.js',
+      explanationFa: 'هوش مصنوعی هدرهای CORS را در وردپرس تنظیم نکرده و فرانت‌اند نمی‌تواند محتوا را بخواند!'
+    },
+    freelanceTip: 'پروژه‌های هدلس وردپرس با Next.js بالاترین درآمد فریلنسری را دارند؛ چون برندها برای سرعت لایت‌هاوس ۱۰۰ و امنیت نفوذناپذیر پول خوبی می‌دهند.',
+    asciiDiagram: `[پیشخوان وردپرس: ورود محتوا توسط کارفرما] ──> دیتابیس MySQL
+                         │
+                         ▼ (REST API / GraphQL)
+[فرانت‌اند Next.js: رندر استاتیک روی سرور] ──> ⚡ تحویل به کاربر در ۵۰ میلی‌ثانیه`,
+    injectionTarget: 'فایل wp-config.php برای CORS و پروژه مستقل Next.js',
+    universalPrompt: `[ROLE]: Senior Fullstack Architect (WordPress + Next.js).
+[TASK]: Create a secure data-fetching utility in Next.js (App Router) to retrieve posts from WordPress REST API with Incremental Static Regeneration (ISR).
+[NEGATIVE CONSTRAINTS]:
+- Enable proper revalidation intervals (revalidate: 60).
+- Sanitize rendered HTML with DOMPurify.
+[OUTPUT]: Production-ready React Server Component.`,
+    agentsMdRule: `# معماری هدلس در AGENTS.md:
+تمامی ارتباطات بین فرانت‌اند Next.js و هسته وردپرس باید از طریق اندپوینت‌های استاندارد REST API یا WPGraphQL صورت گیرد و هدرهای امنیتی CORS رعایت شوند.`,
+    cursorPrompt: `Write a Next.js Server Component that fetches WordPress posts and handles loading skeletons.`,
+    claudePrompt: `Architect the authentication flow between Next.js frontend and WordPress REST API using JWT.`,
+    debugPrompt: `خطای CORS مانع از دریافت مقالات در فرانت می‌شود. هدرهای Access-Control-Allow-Origin را در وردپرس اصلاح کن.`,
+    howToTest: {
+      steps: [
+        'یک پروژه کوچک Next.js با نودجی‌اس بسازید.',
+        'با دستور fetch مقالات را از /wp-json/wp/v2/posts بخوانید.',
+        'مشاهده کنید که مقالات سایت وردپرس شما با ظاهر ری‌اکتی و سرعت آنی در لوکال‌هاست ۳۰۰۰ نمایش داده می‌شوند.'
+      ],
+      expectedResult: 'رندر لحظه‌ای محتوا بدون لودینگ‌های سنتی PHP.',
+      redFlags: ['خطای مسدود شدن CORS در کنسول مرورگر']
+    },
+    shortDefinition: 'جداسازی لایه نمایش فرانت‌اند (Next.js) از موتور مدیریت محتوای بک‌اند (WordPress) برای دستیابی به حداکثر سرعت و امنیت.',
+    deepExplanation: 'معماری هدلس به وب‌سایت اجازه می‌دهد تا از مزایای سئوی استاتیک، رندر سمت سرور (SSR) و رابط‌های کاربری مدرن بهره‌مند شود بدون اینکه ادمین‌ها آموزش کار با CMS جدیدی ببینند.',
+    vibeCodingImpact: 'توانایی اجرای پروژه‌های فوق‌مدرن شرکتی و لوکس با ترکیب قدرت وردپرس و هوش مصنوعی در فرانت‌اند.',
+    goldenPrompt: 'یک کامپوننت سروری در Next.js بنویس که با fetch و متد ISR پست‌های وبلاگ را از وردپرس دریافت و رندر کند.',
+    codeSnippet: {
+      language: 'typescript',
+      description: 'فراخوانی داده‌های وردپرس در Next.js با کش هوشمند ISR',
+      runContext: 'app/blog/page.tsx',
+      code: "export default async function BlogPage() {\n  const res = await fetch('https://hasanshah.ir/wp-json/wp/v2/posts', {\n    next: { revalidate: 3600 }\n  });\n  const posts = await res.json();\n  return <div>{posts.map((p: any) => <h2 key={p.id}>{p.title.rendered}</h2>)}</div>;\n}"
+    },
+    prerequisiteTermIds: ['rest-api-endpoints'],
+    relatedTermIds: ['rest-api-endpoints', 'jwt-authentication'],
+    seoKeywords: ['هدلس وردپرس', 'headless wordpress', 'وردپرس با nextjs', 'وردپرس با ری اکت']
+  },
+  {
+    id: 'critical-css-rendering',
+    termEn: 'Critical CSS & Above-the-Fold Optimization',
+    termFa: 'استخراج استایل‌های حیاتی بالای صفحه (Critical CSS)',
+    category: 'frontend',
+    level: 'intermediate',
+    phonetic: 'کریتیکال سی-اس-اس',
+    tags: ['performance', 'css', 'fcp', 'core-web-vitals'],
+    sequenceOrder: 20,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'designer'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'تکنیک شارژ سریع استایل‌ها! به جای اینکه کاربر منتظر دانلود یک فایل غول‌پیکر ۲ مگابایتی CSS بماند، فقط استایل‌های همان بخشی که اول صفحه دیده می‌شود (هدر و هیرو) مستقیماً داخل HTML تزریق می‌شود تا صفحه در صدم ثانیه به زیبایی ظاهر شود.',
+    beginnerTrap: 'لود کردن ۵ فایل CSS حجیم در تگ <head> بدون هیچ تمهیدی؛ مرورگر تا این فایل‌ها را کامل دانلود نکند، صفحه را کاملاً سفید نگه می‌دارد (Render-Blocking)!',
+    analogy: 'مثل این است که وقتی وارد رستوران می‌شوی، اول یک پیش‌غذای داغ روی میزت بگذارند تا در آرامش منتظر آماده شدن غذای اصلی بمانی!',
+    humanQuestion: 'چرا با اینکه هاست گران خریدم، کاربر ۲ ثانیه صفحه سفید می‌بیند تا سایت بالا بیاید؟',
+    realPain: 'فایل‌های CSS مسدودکننده رندر، شاخص First Contentful Paint (FCP) را نابود می‌کنند و امتیاز لایت‌هاوس موبایل را از ۹۰ به ۴۰ کاهش می‌دهند.',
+    commonAiError: {
+      errorSnippet: 'Render-blocking stylesheet: style.css delayed FCP by 1.8s',
+      explanationFa: 'هوش مصنوعی تمام استایل‌ها را در یک فایل سنگین قرار داده و بالای صفحه سفید مانده!'
+    },
+    freelanceTip: 'با تزریق Critical CSS در پروژه‌های مشتری، نمره FCP در گزارش گوگل پیج‌اسپید از قرمز به سبز تبدیل می‌شود.',
+    asciiDiagram: `[روش سنتی] ──> دانلود ۵۰۰ کیلوبایت CSS ──> [۲ ثانیه صفحه سفید] ──> نمایش صفحه
+[روش وایب‌کدینگ] ──> تزریق ۲۰ کیلوبایت Critical CSS در <head> ──> ⚡ نمایش در ۳۰۰ میلی‌ثانیه`,
+    injectionTarget: 'تگ <style> مستقیم در هدر صفحه قبل از لود استایل‌های تکمیلی',
+    universalPrompt: `[ROLE]: Senior Web Performance & CSS Optimization Engineer.
+[TASK]: Extract the critical above-the-fold CSS for this hero section and inline it inside a <style> block, while deferring the remaining non-critical styles using "rel=preload".
+[NEGATIVE CONSTRAINTS]:
+- Zero layout shift when the full stylesheet loads.
+- Keep critical CSS under 25KB.
+[OUTPUT]: Minified critical inline styles and deferred loader.`,
+    agentsMdRule: `# پرفورمنس فرانت‌اند در AGENTS.md:
+برای دستیابی به لود زیر ۱ ثانیه، استایل‌های بخش بالای صفحه (Above the Fold) باید به صورت اینلاین در هدر تزریق شده و سایر فایل‌های استایل با خصوصیت defer بارگذاری گردند.`,
+    cursorPrompt: `Inline the critical hero CSS directly in the header template to eliminate render-blocking warnings.`,
+    claudePrompt: `Explain how to automate Critical CSS extraction in WordPress using modern build tooling.`,
+    debugPrompt: `فایل استایل باعث مسدود شدن رندر شده است. آن را با ویژگی media=print onload=this.media=all به صورت غیرهمگام بارگذاری کن.`,
+    howToTest: {
+      steps: [
+        'آدرس صفحه را در Google PageSpeed Insights وارد کنید.',
+        'بخش Eliminate render-blocking resources را چک کنید.',
+        'مطمئن شوید استایل‌های حیاتی صفحه بلافاصله لود شده و هیچ هشداری وجود ندارد.'
+      ],
+      expectedResult: 'شاخص FCP زیر ۱ ثانیه و حذف منابع مسدودکننده رندر.',
+      redFlags: ['تأخیر بیش از ۱ ثانیه‌ای برای اولین رنگ‌آمیزی صفحه']
+    },
+    shortDefinition: 'روش استخراج و تزریق مستقیم حداقل کدهای CSS مورد نیاز برای رندر فوری نیمه بالایی صفحه در مرورگر کاربر.',
+    deepExplanation: 'با قرار دادن کدهای حیاتی در تگ استایل بالای صفحه و به تعویق انداختن بقیه کدها، سرعت بارگذاری ادراکی کاربر به شدت افزایش می‌یابد.',
+    vibeCodingImpact: 'رساندن امتیاز پرفورمنس لایت‌هاوس به بالای ۹۵ حتی روی هاست‌های معمولی.',
+    goldenPrompt: 'کدهای ضروری استایل بخش هیرو را به صورت یک تگ سبک inline در <head> بنویس و فایل اصلی را به صورت غیراصطکاکی لود کن.',
+    codeSnippet: {
+      language: 'html',
+      description: 'بارگذاری بهینه استایل با اولویت‌بندی Critical CSS',
+      runContext: 'header.php',
+      code: "<style>/* استایل های حیاتی بالای صفحه */ .hero{min-height:80vh;background:#070A12;color:#fff;}</style>\n<link rel=\"preload\" href=\"full-style.css\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">"
+    },
+    prerequisiteTermIds: ['cumulative-layout-shift'],
+    relatedTermIds: ['cumulative-layout-shift', 'fluid-typography'],
+    seoKeywords: ['critical css', 'استایل های حیاتی وردپرس', 'حذف render blocking', 'افزایش سرعت fcp']
+  },
+  {
+    id: 'asset-minification-defer',
+    termEn: 'Script Deferring & Asset Minification',
+    termFa: 'بهینه‌سازی لود اسکریپت‌ها با ویژگی‌های async و defer',
+    category: 'frontend',
+    level: 'beginner',
+    phonetic: 'اَسِت مینیفیکیشن اند دیفر',
+    tags: ['performance', 'javascript', 'defer', 'async', 'wp_enqueue_script'],
+    sequenceOrder: 21,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'beginner'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'اجازه بده اول متن و تصویر سایت باز شود، بعد جاوااسکریپت‌ها در پس‌زمینه دانلود شوند! ویژگی defer مانع از متوقف شدن رندر صفحه توسط فایل‌های جاوااسکریپت می‌شود.',
+    beginnerTrap: 'لود کردن جاوااسکریپت‌ها در بالای صفحه بدون صف‌بندی استاندارد؛ مرورگر با دیدن هر فایل js اجرای کل صفحه را متوقف می‌کند تا فایل دانلود و اجرا شود!',
+    analogy: 'مثل این است که اول غذای گرم را جلوی مشتری بگذاری تا شروع به خوردن کند، و همزمان دستمال سفره و قبض را آماده کنی؛ نه اینکه تا قبض صادر نشده به او اجازه غذا خوردن ندهی!',
+    humanQuestion: 'چطور اسکریپت‌های سنگین جاوااسکریپت را بدون خراب شدن قابلیت‌های تعاملی لود کنم؟',
+    realPain: 'اگر اسکریپت‌ها را اشتباه دیفر کنی، منوی موبایل یا اسلایدر در ثانیه‌های اول کار نمی‌کند؛ اگر هم دیفر نکنی، سایت در تست سرعت گوگل نمره قرمز می‌گیرد!',
+    commonAiError: {
+      errorSnippet: 'Uncaught ReferenceError: jQuery is not defined due to premature defer',
+      explanationFa: 'هوش مصنوعی اسکریپت وابسته را قبل از هسته جی‌کوئری اجرا کرده و باگ جاوااسکریپت ایجاد شده!'
+    },
+    freelanceTip: 'از هوک مدرن wp_script_add_data یا پارامتر جدید در wp_enqueue_script وردپرس ۶.۳+ برای افزودن خودکار استراتژی defer استفاده کن.',
+    asciiDiagram: `[اسکریپت معمولی] ──> توقف دانلود HTML ──> دانلود JS ──> اجرای JS ──> ادامه HTML
+[اسکریپت Defer]  ──> دانلود موازی JS در پس‌زمینه + رندر بدون توقف HTML ──> اجرا پس از پایان لود`,
+    injectionTarget: 'فایل functions.php یا کنترلر دارایی‌ها با wp_enqueue_script',
+    universalPrompt: `[ROLE]: WordPress Performance Engineer.
+[TASK]: Enqueue a custom script "hs-interactions.js" using modern WordPress 6.3+ strategies.
+[NEGATIVE CONSTRAINTS]:
+- Use the modern array syntax for $args with "'strategy' => 'defer'".
+- Ensure dependencies are respected to prevent "undefined" console errors.
+[OUTPUT]: Standards-compliant script registration.`,
+    agentsMdRule: `# لود بهینه دارایی‌ها در AGENTS.md:
+تمامی فایل‌های جاوااسکریپت غیربحرانی باید با استراتژی defer در هوک wp_enqueue_script بارگذاری شوند تا از مسدود شدن رندر جلوگیری گردد.`,
+    cursorPrompt: `Update this script enqueue to use the modern defer strategy introduced in WordPress 6.3.`,
+    claudePrompt: `Explain how the wp_enqueue_script strategy parameter eliminates render-blocking JavaScript.`,
+    debugPrompt: `کنسول خطای عدم تعریف متغیر می‌دهد چون ترتیب اجرای اسکریپت‌ها به هم خورده است. آرایه dependencies را در wp_enqueue_script اضافه کن.`,
+    howToTest: {
+      steps: [
+        'کد ثبت اسکریپت با ویژگی defer را ذخیره کنید.',
+        'منبع صفحه (View Source) را در مرورگر ببینید.',
+        'مطمئن شوید در تگ <script> عبارت defer درج شده است و کنسول مرورگر کاملاً بدون ارور است.'
+      ],
+      expectedResult: 'لود سریع فرانت‌اند بدون کوچک‌ترین ارور در تب Console.',
+      redFlags: ['خطای ReferenceError یا مسدود شدن منوی سایت']
+    },
+    shortDefinition: 'تکنیک بارگذاری غیرهمگام کدهای جاوااسکریپت در پس‌زمینه بدون مسدود کردن جریان رندر صفحات وب.',
+    deepExplanation: 'از نسخه وردپرس ۶.۳، پارامتر strategy به تابع wp_enqueue_script اضافه شد که به توسعه‌دهندگان اجازه می‌دهد بدون فیلترهای هک دستی، اسکریپت‌ها را به صورت رسمی defer کنند.',
+    vibeCodingImpact: 'تحویل سایت‌های سبک با تجربه کاربری روان و نمره سبز در گزارش سرعت.',
+    goldenPrompt: 'یک اسکریپت جاوااسکریپت را با تابع رسمی wp_enqueue_script در وردپرس ۶.۳+ با استراتژی defer بارگذاری کن.',
+    codeSnippet: {
+      language: 'php',
+      description: 'ثبت مدرن اسکریپت با استراتژی defer در وردپرس ۶.۳ به بالا',
+      runContext: 'assets.php',
+      code: "add_action( 'wp_enqueue_scripts', function() {\n    wp_enqueue_script(\n        'hs-smooth-scroll',\n        get_theme_file_uri( '/js/scroll.js' ),\n        [],\n        '1.0.0',\n        [ 'strategy' => 'defer', 'in_footer' => true ]\n    );\n});"
+    },
+    prerequisiteTermIds: ['theme-hierarchy'],
+    relatedTermIds: ['critical-css-rendering', 'tailwind-jit'],
+    seoKeywords: ['defer در وردپرس', 'wp_enqueue_script defer', 'بهینه سازی جاوااسکریپت وردپرس', 'افزایش سرعت سایت']
   }
 ];

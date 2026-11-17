@@ -22,6 +22,7 @@ import {
   VolumeX,
   Compass,
   Timer,
+  Wrench,
 } from "lucide-react";
 import { UserGamificationProfile, GamificationBadge } from "../data/types";
 import { gamificationBadges, calculateUserLevel } from "../data/quest-stages";
@@ -32,10 +33,11 @@ interface GamificationHudProps {
   activeView: "quest" | "reference";
   onToggleView: (view: "quest" | "reference") => void;
   onOpenCertificate: () => void;
-  onOpenPassport: () => void;
-  onOpenSpeedChallenge: () => void;
+  onOpenPassport?: () => void;
+  onOpenSpeedChallenge?: () => void;
   onOpenZeroToHero?: () => void;
   onOpenFirstProject?: () => void;
+  onOpenStudioDrawer?: () => void;
   completedStagesCount: number;
   totalStagesCount: number;
   readTermsCount?: number;
@@ -51,6 +53,7 @@ export default function GamificationHud({
   onOpenSpeedChallenge,
   onOpenZeroToHero,
   onOpenFirstProject,
+  onOpenStudioDrawer,
   completedStagesCount,
   totalStagesCount,
   readTermsCount,
@@ -189,51 +192,64 @@ export default function GamificationHud({
               </button>
             </div>
 
-            {/* Right/End: Quick Tools, Sound Toggle, Mode Switcher */}
+            {/* Right/End: Mode Switcher, Studio Drawer Trigger, Sound Mute */}
             <div className="flex flex-wrap items-center justify-end gap-2 border-t border-white/10 pt-2 md:border-t-0 md:pt-0">
-              {/* Zero to Hero Guide Button */}
-              {onOpenZeroToHero && (
+              {/* Mode Toggle Switch */}
+              <div className="flex items-center rounded-xl border border-white/10 bg-black/40 p-1">
+                <button
+                  type="button"
+                  onClick={() => onToggleView("reference")}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
+                    activeView === "reference"
+                      ? "bg-amber-400 text-black shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <BookOpen className="h-3.5 w-3.5" />
+                  <span>مرجع اصطلاحات (۶۰)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onToggleView("quest")}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
+                    activeView === "quest"
+                      ? "bg-amber-400 text-black shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <Gamepad2 className="h-3.5 w-3.5" />
+                  <span>نقشه مأموریت</span>
+                </button>
+              </div>
+
+              {/* Master Studio Drawer Trigger Button */}
+              {onOpenStudioDrawer && (
                 <button
                   type="button"
                   onClick={() => {
                     playClickSound();
-                    onOpenZeroToHero();
+                    onOpenStudioDrawer();
                   }}
-                  className="inline-flex items-center gap-1 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/20 transition-all"
-                  title="راهنمای شروع سریع افراد صفرِ صفر"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-amber-400/40 bg-amber-400/10 px-3 py-1.5 text-xs font-bold text-amber-300 hover:bg-amber-400/20 hover:border-amber-400/60 transition-all shadow-sm"
+                  title="باز کردن جعبه‌ابزار هوشمند، سندباکس پرامپت، چالش ۶۰ ثانیه‌ای و پاسپورت"
                 >
-                  <Compass className="h-3.5 w-3.5 text-emerald-400" />
-                  <span className="hidden sm:inline">شروع از صفر</span>
+                  <Wrench className="h-3.5 w-3.5 text-amber-400" />
+                  <span>استودیو و ابزارها</span>
                 </button>
               )}
 
-              {/* Speed Challenge Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  onOpenSpeedChallenge();
-                }}
-                className="inline-flex items-center gap-1 rounded-xl border border-orange-500/40 bg-orange-500/10 px-2.5 py-1.5 text-xs font-bold text-orange-400 hover:bg-orange-500/20 transition-all"
-                title="شروع چالش ۶۰ ثانیه‌ای عیب‌یابی بحران‌های وردپرس"
-              >
-                <Timer className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">چالش ۶۰s</span>
-              </button>
-
-              {/* Passport Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  onOpenPassport();
-                }}
-                className="inline-flex items-center gap-1 rounded-xl border border-amber-400/30 bg-amber-400/10 px-2.5 py-1.5 text-xs font-bold text-amber-300 hover:bg-amber-400/20 transition-all"
-                title="مشاهده شناسنامه و پاسپورت مهارتی"
-              >
-                <Compass className="h-3.5 w-3.5 text-amber-400" />
-                <span className="hidden sm:inline">پاسپورت</span>
-              </button>
+              {/* Master Vibe Coder Official Certificate Award Button */}
+              {isMasterVibeCoder && (
+                <button
+                  type="button"
+                  onClick={onOpenCertificate}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-1.5 text-xs font-black text-black hover:opacity-95 shadow-md shadow-amber-500/30 animate-pulse transition-all"
+                  title="مأموریت کامل شد! دریافت گواهینامه معتبر"
+                >
+                  <Award className="h-4 w-4" />
+                  <span>مدرک رسمی 🎓</span>
+                </button>
+              )}
 
               {/* Sound Mute/Unmute Toggle */}
               <button
@@ -249,57 +265,6 @@ export default function GamificationHud({
                   <Volume2 className="h-4 w-4 text-amber-400" />
                 )}
               </button>
-
-              {/* Certificate Button (Available if Completed or to Preview) */}
-              {isMasterVibeCoder ? (
-                <button
-                  type="button"
-                  onClick={onOpenCertificate}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-3 py-2 text-xs font-black text-black hover:opacity-95 shadow-md shadow-amber-500/30 animate-bounce transition-all"
-                  title="مأموریت کامل شد! دریافت گواهینامه معتبر"
-                >
-                  <Award className="h-4 w-4" />
-                  <span>دریافت مدرک رسمی 🎓</span>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={onOpenCertificate}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-2.5 py-1.5 text-[11px] font-bold text-amber-300 hover:bg-amber-400/15 transition-all"
-                  title="پیش‌نمایش گواهی پایان دوره وایب‌کدینگ"
-                >
-                  <Award className="h-3.5 w-3.5 text-amber-400" />
-                  <span className="hidden sm:inline">پیش‌نمایش مدرک</span>
-                </button>
-              )}
-
-              {/* Mode Toggle Switch */}
-              <div className="flex items-center rounded-xl border border-white/10 bg-black/40 p-1">
-                <button
-                  type="button"
-                  onClick={() => onToggleView("quest")}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
-                    activeView === "quest"
-                      ? "bg-amber-400 text-black shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Gamepad2 className="h-3.5 w-3.5" />
-                  <span>نقشه مأموریت</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onToggleView("reference")}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
-                    activeView === "reference"
-                      ? "bg-amber-400 text-black shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  <span>مرجع اصطلاحات</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>

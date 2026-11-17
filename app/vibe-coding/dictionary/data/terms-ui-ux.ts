@@ -397,5 +397,131 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     prerequisiteTermIds: ['cls-prevention'],
     relatedTermIds: ['cls-prevention', 'micro-interactions'],
     seoKeywords: ['اسکلتون لودینگ', 'skeleton loading', 'انیمیشن لود صفحه', 'تجربه کاربری بارگذاری']
+  },
+  {
+    id: 'interaction-to-next-paint',
+    termEn: 'INP (Interaction to Next Paint)',
+    termFa: 'شاخص پاسخگویی آنی رابط کاربری به کلیک (INP)',
+    category: 'ui-ux',
+    level: 'intermediate',
+    phonetic: 'آی-اِن-پی (INP)',
+    tags: ['core-web-vitals', 'performance', 'inp', 'responsiveness', 'javascript'],
+    sequenceOrder: 17,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'designer'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'آزمون اعصاب کاربر! وقتی روی دکمه «افزودن به سبد خرید» یا منو کلیک می‌کنید، چقدر طول می‌کشد تا صفحه تکان بخورد و واکنش نشان دهد؟ شاخص رسمی گوگل برای جریمه کردن سایت‌های بی‌حس و فریز شده!',
+    beginnerTrap: 'اجرای کارهای سنگین جاوااسکریپت مستقیماً روی رویداد onClick بدون دادن فیدبک بصری فوری؛ کاربر فکر می‌کند دکمه خراب است و ۵ بار پشت هم کلیک می‌کند!',
+    analogy: 'مثل زدن زنگ در یک خانه است؛ اگر زنگ صدا ندهد، شما مدام دکمه را فشار می‌دهید. یک رابط خوب بلافاصله صدای دینگ (اسپینر یا انیمیشن کلیک) می‌دهد.',
+    humanQuestion: 'چرا با اینکه سایتم سریع لود می‌شود، گوگل خطای پرفورمنس INP می‌دهد؟',
+    realPain: 'گوگل در سال ۲۰۲۴ شاخص FID را با INP جایگزین کرد؛ سایت‌هایی که به کلیک کاربران دیرتر از ۲۰۰ میلی‌ثانیه واکنش نشان دهند، رتبه سئوی خود را از دست می‌دهند.',
+    commonAiError: {
+      errorSnippet: 'Long task blocked main thread for 340ms on click event',
+      explanationFa: 'هوش مصنوعی عملیات سنگین را بدون requestAnimationFrame اجرا کرده و صفحه ۲۰۰ میلی‌ثانیه قفل شده!'
+    },
+    freelanceTip: 'به کارفرما بگو سایت او برای استاندارد رسمی Core Web Vitals سال ۲۰۲۴ گوگل (زیر ۲۰۰ میلی‌ثانیه) بهینه‌سازی شده است.',
+    asciiDiagram: `[کاربر کلیک می‌کند]
+        │
+        ▼
+[تغییر فوری ظاهر دکمه: حالت لودینگ در ۱۰ میلی‌ثانیه]  <── (پاسخگویی سبز INP < 200ms)
+        │
+        ▼
+[انجام محاسبات در پس‌زمینه با setTimeout یا Worker]`,
+    injectionTarget: 'رویدادهای کلیک، فرم‌ها و انیمیشن‌های تعاملی در جاوااسکریپت',
+    universalPrompt: `[ROLE]: Google Core Web Vitals & INP Specialist.
+[TASK]: Optimize this button click interaction to guarantee INP under 100ms.
+[NEGATIVE CONSTRAINTS]:
+- Do not block the main thread with synchronous loops.
+- Yield execution using "setTimeout()" or "requestIdleCallback()" for non-critical logging.
+- Show immediate visual feedback (active state or spinner) before firing network requests.
+[OUTPUT]: High-responsiveness event handler.`,
+    agentsMdRule: `# شاخص INP در AGENTS.md:
+تمامی اکشن‌های کلیک، بستن مودال‌ها و ارسال فرم‌ها باید در کمتر از ۵۰ میلی‌ثانیه بازخورد بصری داشته باشند و ترید اصلی مرورگر نباید با تسک‌های طولانی مسدود شود.`,
+    cursorPrompt: `Refactor this click handler to yield to the main thread and keep INP green.`,
+    claudePrompt: `Explain how to diagnose and fix INP bottlenecks on this WooCommerce interactive cart drawer.`,
+    debugPrompt: `شاخص INP در گزارش لایت‌هاوس قرمز است. توابع مسدودکننده داخل رویداد کلیک را به صورت غیرهمگام بازنویسی کن.`,
+    howToTest: {
+      steps: [
+        'تب Performance را در ابزار DevTools مرورگر باز کنید.',
+        'روی دکمه کلیک کنید و شاخص Interactions را بررسی نمایید.',
+        'مدت زمان تاخیر باید حتماً زیر ۲۰۰ میلی‌ثانیه (حالت بهینه زیر ۱۰۰ میلی‌ثانیه) باشد.'
+      ],
+      expectedResult: 'واکنش فوق‌سریع و بدون فریز به کلیک کاربر.',
+      redFlags: ['قفل شدن نشانگر ماوس یا تاخیر طولانی پس از کلیک']
+    },
+    shortDefinition: 'شاخص رسمی Core Web Vitals گوگل برای سنجش میزان تاخیر پاسخگویی رابط کاربری به کلیک‌ها و لمس‌های کاربر در کل طول حضور در صفحه.',
+    deepExplanation: 'شاخص INP طولانی‌ترین تاخیر تعاملی در تمام مدت حضور کاربر در سایت را می‌سنجد و برخلاف FID، کل تعاملات صفحه را مانیتور می‌کند.',
+    vibeCodingImpact: 'کسب اطمینان از سئوی عالی و حفظ رتبه‌های اول گوگل در به‌روزرسانی‌های جدید الگوریتم رتبه‌بندی.',
+    goldenPrompt: 'یک دکمه تعاملی با جاوااسکریپت بنویس که بلافاصله با کلیک تغییر وضعیت دهد و درخواست سرور را در پس‌زمینه بدون مسدودسازی ترید اصلی بفرستد.',
+    codeSnippet: {
+      language: 'javascript',
+      description: 'واکنش فوری به کلیک برای حفظ شاخص سبز INP',
+      runContext: 'interactions.js',
+      code: "btn.addEventListener('click', (e) => {\n  // بازخورد بصری آنی در ۵ میلی‌ثانیه\n  btn.classList.add('opacity-75', 'cursor-wait');\n  // واگذاری کار سنگین به ترید آزاد مرورگر\n  setTimeout(() => { processHeavyTask(); }, 0);\n});"
+    },
+    prerequisiteTermIds: ['cls-prevention'],
+    relatedTermIds: ['cls-prevention', 'skeleton-loading'],
+    seoKeywords: ['inp وردپرس', 'interaction to next paint', 'بهینه سازی core web vitals', 'رفع تاخیر کلیک']
+  },
+  {
+    id: 'touch-target-mobile',
+    termEn: 'Mobile Touch Targets (48x48px Standard)',
+    termFa: 'استاندارد المان‌های لمسی در موبایل (حداقل ۴۸×۴۸ پیکسل)',
+    category: 'ui-ux',
+    level: 'beginner',
+    phonetic: 'تاچ تارگت موبایل',
+    tags: ['mobile-ux', 'touch-target', 'ergonomics', 'accessibility', 'wcag'],
+    sequenceOrder: 18,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['designer', 'developer', 'beginner'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'طراحی برای شست انسان، نه سوزن خیاطی! تمام دکمه‌ها و لینک‌های موبایل باید حداقل ابعاد ۴۸×۴۸ پیکسل داشته باشند تا کاربر بدون اعصاب‌خردی و اشتباهی لمس کردن دکمه بغلی، بتواند خرید کند.',
+    beginnerTrap: 'گذاشتن دکمه‌های کوچک ۱۰ پیکسلی در کنار هم در فوتر یا منو؛ کاربر می‌خواهد روی سبد خرید بزند اما اشتباهی روی دکمه خروج کلیک می‌کند!',
+    analogy: 'مثل کلیدهای آسانسور است؛ کلیدها باید آنقدر بزرگ باشند که حتی با دستکش هم به راحتی فشرده شوند، نه اینکه مثل شماره‌گیر ساعت مچی کوچک باشند!',
+    humanQuestion: 'چرا نرخ تبدیل خریداران موبایلی سایت من پایین است و سبد را رها می‌کنند؟',
+    realPain: 'بیش از ۷۰ درصد ترافیک وب موبایلی است؛ اگر انگشت شست کاربر نتواند دکمه نهایی پرداخت را راحت لمس کند، صفحه را می‌بندد و از رقیب خرید می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Google Lighthouse audit failed: Tap targets are not sized appropriately',
+      explanationFa: 'هوش مصنوعی دکمه‌ها را برای دسکتاپ کوچک طراحی کرده و در موبایل به سختی لمس می‌شوند!'
+    },
+    freelanceTip: 'به کارفرما گزارش بده که با اصلاح تاچ‌تارگت‌های موبایل، نرخ سبد خریدهای تکمیل‌شده تا ۲۵ درصد رشد می‌کند.',
+    asciiDiagram: `[روش اشتباه: دکمه ۲۰ پیکسلی] ──> کلیک اشتباه روی لینک کناری ──> عصبانیت کاربر ❌
+[استاندارد طلایی: ۴۸×۴۸ پیکسل] ──> لمس نرم و مقتدرانه با شست دست ──> تکمیل خرید ✓`,
+    injectionTarget: 'استایل‌های کلاس‌های دکمه و لینک در فایل‌های CSS یا Tailwind',
+    universalPrompt: `[ROLE]: Mobile UX Ergonomics & Accessibility Specialist.
+[TASK]: Audit and style all interactive mobile controls (buttons, inputs, hamburger menu) to guarantee a minimum bounding box of 48x48px touch target.
+[NEGATIVE CONSTRAINTS]:
+- Maintain proper visual padding without disrupting the compact design.
+- Comply strictly with WCAG 2.1 AAA touch target guidelines.
+[OUTPUT]: Mobile-first ergonomic CSS classes.`,
+    agentsMdRule: `# ارگونومی موبایل در AGENTS.md:
+تمامی عناصر قابل کلیک و تعاملی در صفحات زیر ۷۶۸ پیکسل، باید دارای حداقل ابعاد ۴۴ تا ۴۸ پیکسل برای ناحیه لمس (Touch Target) باشند.`,
+    cursorPrompt: `Ensure all icon buttons have an invisible padding or min-h-[48px] min-w-[48px] touch area in mobile view.`,
+    claudePrompt: `Review this mobile navigation bar for WCAG touch target spacing compliance.`,
+    debugPrompt: `گوگل هشدار تاچ‌تارگت کوچک داده است. ناحیه کلیک‌پذیر لینک‌ها را با padding یا pseudo-elements به ۴۸ پیکسل ارتقا بده.`,
+    howToTest: {
+      steps: [
+        'سایت را در گوشی هوشمند واقعی باز کنید.',
+        'سعی کنید با انگشت شست دست راست، روی منو و دکمه‌ها کلیک کنید.',
+        'آیا بدون کوچک‌ترین زحمت و بدون لمس اشتباهی المان کناری، اکشن‌ها انجام می‌شوند؟'
+      ],
+      expectedResult: 'تجربه کاربری فوق‌العاده راحت با ارگونومی استاندارد موبایل.',
+      redFlags: ['دکمه‌های فشرده و چسبیده به هم در رزولوشن‌های موبایل']
+    },
+    shortDefinition: 'استاندارد ارگونومی رابط کاربری برای تضمین اندازه مناسب المان‌های کلیک‌پذیر در نمایشگرهای لمسی.',
+    deepExplanation: 'میانگین عرض نوک انگشت انسان بین ۱۰ تا ۱۴ میلی‌متر است. استاندارد ۴۸ پیکسلی این اطمینان را می‌دهد که لمس بدون خطای بصری ثبت می‌شود.',
+    vibeCodingImpact: 'افزایش چشمگیر نرخ فروش و رضایت کاربران در پلتفرم‌های موبایلی.',
+    goldenPrompt: 'کلاس‌های تیل‌ویند این دکمه را به نحوی بنویس که در موبایل حداقل اندازه ۴۸×۴۸ پیکسل با حاشیه کافی داشته باشد.',
+    codeSnippet: {
+      language: 'html',
+      description: 'کلاس استاندارد تیل‌ویند برای تاچ‌تارگت ارگونومیک موبایل',
+      runContext: 'button.html',
+      code: "<button class=\"min-h-[48px] min-w-[48px] px-5 py-3 rounded-2xl bg-gradient-gold text-black font-bold flex items-center justify-center\">\n  <span>افزودن به سبد خرید</span>\n</button>"
+    },
+    prerequisiteTermIds: ['design-tokens'],
+    relatedTermIds: ['design-tokens', 'fitts-law-cta'],
+    seoKeywords: ['touch target mobile', 'ابعاد استاندارد دکمه در موبایل', 'ارگونومی طراحی سایت', 'سئو موبایل وردپرس']
   }
 ];

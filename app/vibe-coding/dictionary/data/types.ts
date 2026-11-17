@@ -13,7 +13,7 @@ export type UserPersona = 'beginner' | 'designer' | 'founder' | 'developer';
 export type LearningStation = 'station-1' | 'station-2' | 'station-3' | 'station-4';
 
 export interface CodeSnippet {
-  language: 'php' | 'javascript' | 'typescript' | 'bash' | 'json' | 'css' | 'html' | 'sql';
+  language: 'php' | 'javascript' | 'typescript' | 'bash' | 'json' | 'css' | 'html' | 'sql' | 'yaml';
   code: string;
   description: string;
   runContext?: string;
@@ -61,6 +61,8 @@ export interface EncyclopediaTerm {
   goldenPrompt: string;           // پرامپت جامع پیش‌فرض
   cursorPrompt: string;           // پرامپت ۵ لایه‌ای مخصوص Cursor Composer با ارجاعات @file
   claudePrompt: string;           // پرامپت ۵ لایه‌ای مخصوص Claude / Web ChatGPT
+  universalPrompt?: string;       // پرامپت ۵ لایه‌ای عمومی سازگار با تمام هوش‌های مصنوعی (Universal)
+  agentsMdRule?: string;          // بند اختصاصی و آماده جهت الصاق به فایل AGENTS.md پروژه
   debugPrompt: string;            // پرامپت نجات عیب‌یابی (اگر هوش مصنوعی ارور داد چی بگم؟)
   injectionTarget: string;        // محل دقیق قرارگیری کد (مثال: functions.php یا mu-plugins)
   

@@ -468,5 +468,385 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     prerequisiteTermIds: ['nonces'],
     relatedTermIds: ['nonces', 'action-hooks'],
     seoKeywords: ['ترنزینت وردپرس', 'transients api', 'کش دیتابیس وردپرس', 'بهینه سازی کوئری های سنگین']
+  },
+  {
+    id: 'must-use-plugins',
+    termEn: 'Must-Use Plugins (mu-plugins)',
+    termFa: 'افزونه‌های ضروری و همیشه فعال (mu-plugins)',
+    category: 'wp-core',
+    level: 'intermediate',
+    phonetic: 'ماست-یوز پلاگینز (mu-plugins)',
+    tags: ['mu-plugins', 'architecture', 'stability', 'core-safety'],
+    sequenceOrder: 26,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    elevatorPitch: 'پوشه مخفی و جادویی وردپرس در wp-content/mu-plugins/ که کدهای داخل آن قبل از تمام افزونه‌ها لود می‌شوند، هرگز با تغییر قالب پاک نمی‌شوند و هیچ ادمینی نمی‌تواند تصادفاً آن‌ها را غیرفعال کند!',
+    beginnerTrap: 'ریختن تمام کدهای سفارشی در فایل functions.php قالب؛ که با یک آپدیت یا تغییر قالب توسط کارفرما تمام زحمات شما در یک لحظه دود می‌شود!',
+    analogy: 'مثل ستون‌های بتنی فونداسیون ساختمان است؛ شما می‌توانید رنگ دیوارها (قالب) را عوض کنید، اما ستون‌ها دست‌نخورده و استوار سر جایشان می‌مانند.',
+    humanQuestion: 'کجا کدهای PHP سفارشم را بگذارم که حتی با پاک شدن قالب سایت هم کار کنند و از بین نروند؟',
+    realPain: 'کارفرما قالب سایت را عوض می‌کند یا دکمه آپدیت را می‌زند؛ ناگهان تمام قابلیت‌های اختصاصی، فرم‌ها و وب‌سرویس‌هایی که ساختی پاک می‌شوند و سایت می‌خوابد!',
+    commonAiError: {
+      errorSnippet: 'Custom logic disappeared after theme switch / update',
+      explanationFa: 'هوش مصنوعی کدها را در functions.php گذاشته بود و با تغییر قالب همه چیز پاک شده!'
+    },
+    freelanceTip: 'به کارفرما بگو قابلیت‌های کلیدی بیزنس او را در mu-plugins قرار داده‌ای تا هیچ ادمین یا طراح دیگری نتواند کدهای حیاتی سایت را غیرفعال یا حذف کند.',
+    asciiDiagram: `[چرخه لود وردپرس]
+       │
+       ▼
+[۱. بارگذاری خودکار فایلهای wp-content/mu-plugins/] ──> 🛡️ پایدار و غیرقابل حذف
+       │
+       ▼
+[۲. بارگذاری افزونه‌های عادی]
+       │
+       ▼
+[۳. بارگذاری functions.php قالب] (با آپدیت قالب ممکنه پاک بشه ⚠️)`,
+    injectionTarget: 'مسیر /wp-content/mu-plugins/hs-features.php',
+    universalPrompt: `[ROLE]: Senior WordPress Core Architect.
+[CONTEXT]: All custom business logic must be encapsulated inside a single file in "wp-content/mu-plugins/hs-core-system.php".
+[TASK]: Implement the required hook logic for [FEATURE NAME].
+[NEGATIVE CONSTRAINTS]:
+- Do NOT place this code inside functions.php.
+- Wrap all functions in "if (!function_exists('...'))".
+- Use safe hooks (plugins_loaded or init).
+[OUTPUT]: Production-ready standalone mu-plugin file.`,
+    agentsMdRule: `# قانون پوشه mu-plugins در AGENTS.md:
+تمامی منطق‌های حیاتی، اندپوینت‌های REST اختصاصی و قابلیت‌های بیزنس مشتری باید حتماً در مسیر wp-content/mu-plugins/ ایجاد شوند تا با تغییر یا آپدیت پوسته حذف نشوند.`,
+    cursorPrompt: `Generate this feature as a standalone mu-plugin in @wp-content/mu-plugins/hs-feature.php with proper namespace checks.`,
+    claudePrompt: `Package this logic strictly as a Must-Use Plugin (mu-plugin). Explain why this protects the client's business logic from theme updates.`,
+    debugPrompt: `کدی که نوشتی در فایل قالب قرار گرفته است. آن را به یک افزونه مستقل mu-plugins با ساختار امنیتی استاندارد تبدیل کن.`,
+    howToTest: {
+      steps: [
+        'فایل خود را در پوشه wp-content/mu-plugins/ قرار دهید.',
+        'به بخش «افزونه‌ها» در پیشخوان وردپرس بروید؛ تب جدیدی به نام «ضروری» (Must-Use) ظاهر می‌شود.',
+        'قالب فعال سایت را عوض کنید؛ مشاهده می‌کنید که قابلیت شما همچنان بدون هیچ نقصی فعال است.'
+      ],
+      expectedResult: 'فعالیت مداوم و بدون وابستگی به قالب.',
+      redFlags: ['امکان غیرفعال کردن افزونه توسط دکمه Deactivate در پیشخوان']
+    },
+    shortDefinition: 'پوشه‌ای در وردپرس برای افزونه‌های همیشه فعال که توسط هسته به صورت خودکار اجرا شده و قابلیت غیرفعال‌سازی دستی ندارند.',
+    deepExplanation: 'افزونه‌های ضروری (Must-Use Plugins) امن‌ترین روش برای پیاده‌سازی لاجیک‌های سازمانی و کدهای سفارشی در وردپرس هستند و چرخه عمر مستقل از قالب دارند.',
+    vibeCodingImpact: 'وایب‌کدر حرفه‌ای هرگز کدهای اختصاصی بیزنس را در قالب رها نمی‌کند؛ همه چیز در mu-plugins سازمان‌دهی می‌شود.',
+    goldenPrompt: 'این قابلیت را در قالب یک فایل افزونه مستقل در پوشه mu-plugins بنویس تا با تغییر پوسته از بین نرود.',
+    codeSnippet: {
+      language: 'php',
+      description: 'هدر استاندارد یک افزونه ضروری در پوشه mu-plugins',
+      runContext: 'wp-content/mu-plugins/hs-banner.php',
+      code: "<?php\n/**\n * Plugin Name: HS Enterprise Core Logic\n * Description: ماژول‌های حیاتی بیزنس با لود در لایه mu-plugins\n * Version: 1.0.0\n */\nif ( ! defined( 'ABSPATH' ) ) exit;\n// کدهای شما با خیال آسوده در اینجا قرار می‌گیرند"
+    },
+    prerequisiteTermIds: ['child-theme'],
+    relatedTermIds: ['child-theme', 'action-hooks'],
+    seoKeywords: ['mu-plugins', 'must use plugins', 'افزونه های ضروری وردپرس', 'کدهای پایدار وردپرس']
+  },
+  {
+    id: 'wp-cron-scheduler',
+    termEn: 'WP-Cron & Task Scheduling',
+    termFa: 'زمان‌بندی و وظایف خودکار پس‌زمینه (WP-Cron)',
+    category: 'wp-core',
+    level: 'intermediate',
+    phonetic: 'دابلیو-پی کران اِسکجولر',
+    tags: ['cron', 'automation', 'background-tasks', 'performance'],
+    sequenceOrder: 27,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'سیستم ساعت کوکی وردپرس برای اجرای اتوماتیک کارهای سنگین (مثل ارسال ایمیل‌های دوره‌ای، به‌روزرسانی قیمت‌ها، و پاکسازی دیتابیس) در نیمه‌شب بدون اینکه سرعت بازدید کاربران کند شود.',
+    beginnerTrap: 'اجرای کارهای سنگین (مثل همگام‌سازی ۱۰۰۰ محصول) مستقیماً هنگام باز کردن صفحه توسط کاربر؛ که باعث لود ۱۰ ثانیه‌ای و پرش بازدیدکننده می‌شود!',
+    analogy: 'مثل نظافتچی شبانه فروشگاه است؛ وقتی مشتری‌ها رفتند و فروشگاه بسته شد، او می‌آید و کارها را در سکوت انجام می‌دهد.',
+    humanQuestion: 'چطور کارهای سنگین را بدون کند شدن سرعت سایت به صورت خودکار در زمان مشخص اجرا کنم؟',
+    realPain: 'اگر یک کرون‌جاب خراب بسازی، با هر بازدید از سایت، وردپرس دوباره آن کار سنگین را اجرا می‌کند و مصرف CPU سرور به ۱۰۰٪ می‌رسد و هاست قفل می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Cron task ran repeatedly on every request / wp_schedule_event loop',
+      explanationFa: 'هوش مصنوعی فراموش کرده بررسی کند آیا تسک قبلاً ثبت شده یا نه، و با هر لود یک کرون جدید ساخته!'
+    },
+    freelanceTip: 'با غیرفعال‌سازی WP-Cron مجازی و اتصال آن به Crontab واقعی لینوکس، سرعت سایت کارفرما تا ۳۰ درصد بالاتر می‌رود.',
+    asciiDiagram: `[ثبت وظیفه با wp_schedule_event] ──> آیا قبلاً ثبت شده؟ (wp_next_scheduled)
+                                            ├── بله ──> دست نزن ✓
+                                            └── خیر ──> زمان‌بندی کن برای نیمه‌شب ⏰`,
+    injectionTarget: 'فایل mu-plugins برای ثبت زمان‌بندی و هوک بازگشتی',
+    universalPrompt: `[ROLE]: Senior WordPress Systems Engineer.
+[TASK]: Schedule a recurring daily cron task to prune old transients using "wp_schedule_event".
+[NEGATIVE CONSTRAINTS]:
+- Always check "!wp_next_scheduled()" before scheduling to avoid duplicate cron loops.
+- Do NOT perform intensive queries inside user-facing hooks.
+[OUTPUT]: Safe, self-registering cron hook.`,
+    agentsMdRule: `# زمان‌بندی تسک‌ها در AGENTS.md:
+قبل از اجرای هرگونه wp_schedule_event، حتماً بررسی وجود با wp_next_scheduled الزامی است تا از حلقه‌های تکراری خطرناک جلوگیری شود.`,
+    cursorPrompt: `Write a robust WP-Cron task to sync external inventory every hour, checking for prior registration first.`,
+    claudePrompt: `Implement a background cleanup cron in WordPress. Include the custom schedule interval definition via cron_schedules filter.`,
+    debugPrompt: `این تسک با هر رفرش صفحه تکرار می‌شود. شرط wp_next_scheduled را به کد اضافه کن تا فقط یک بار زمان‌بندی گردد.`,
+    howToTest: {
+      steps: [
+        'کد ثبت کرون را در سایت تست کنید.',
+        'افزونه رایگان WP Crontrol را نصب کنید و لیست تسک‌های زمان‌بندی‌شده را ببینید.',
+        'روی Run Now کلیک کنید و فایل debug.log را چک کنید تا اجرای صحیح را تایید نمایید.'
+      ],
+      expectedResult: 'اجرای دقیق در فواصل زمانی مشخص بدون تکرار بی‌رویه.',
+      redFlags: ['تکثیر ده‌ها تسک هم‌نام در لیست کرون‌ها']
+    },
+    shortDefinition: 'مکانیزم زمان‌بندی وظایف دوره‌ای در وردپرس برای انجام خودکار عملیات در پس‌زمینه.',
+    deepExplanation: 'کرون وردپرس به صورت پیش‌فرض با ورود کاربر تریگر می‌شود (Pseudo-Cron). در پروژه‌های حرفه‌ای با DISABLE_WP_CRON و اتصال به کرون سیستم‌عامل، پرفورمنس به حداکثر می‌رسد.',
+    vibeCodingImpact: 'انتقال کارهای سنگین به پس‌زمینه و حفظ تجربه کاربری روان با سرعت لود لحظه‌ای.',
+    goldenPrompt: 'یک تسک زمان‌بندی روزانه با WP-Cron بنویس که فایل‌های کش منقضی‌شده را پاکسازی کند. حتماً شرط جلوگیری از تکرار را بگذار.',
+    codeSnippet: {
+      language: 'php',
+      description: 'الگوی استاندارد ثبت تسک زمان‌بندی‌شده در وردپرس',
+      runContext: 'cron-task.php',
+      code: "if ( ! wp_next_scheduled( 'hs_daily_cleanup_event' ) ) {\n    wp_schedule_event( time(), 'daily', 'hs_daily_cleanup_event' );\n}\nadd_action( 'hs_daily_cleanup_event', function() {\n    // اجرای عملیات سنگین در آرامش شبانه\n});"
+    },
+    prerequisiteTermIds: ['action-hooks'],
+    relatedTermIds: ['action-hooks', 'transients-api'],
+    seoKeywords: ['wp-cron', 'کرون وردپرس', 'زمان بندی وظایف در وردپرس', 'wp_schedule_event']
+  },
+  {
+    id: 'wp-options-autoload',
+    termEn: 'wp_options & Autoload Optimization',
+    termFa: 'بهینه‌سازی دیتای سراسری جدول آپشن‌ها (Autoload)',
+    category: 'wp-core',
+    level: 'advanced',
+    phonetic: 'آپشنز اند اتولود',
+    tags: ['database', 'performance', 'wp_options', 'autoload-size'],
+    sequenceOrder: 28,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'کوله پشتی وردپرس! تمام اطلاعاتی که با تگ autoload=yes ذخیره می‌شوند، در هر بار باز شدن هر صفحه از سایت مستقیماً در حافظه رم لود می‌شوند؛ اگر این کوله‌پشتی سنگین شود، کل سایت به گل می‌نشیند!',
+    beginnerTrap: 'استفاده از add_option بدون مشخص کردن آرگومان چهارم (autoload = no)؛ وردپرس به صورت پیش‌فرض تمام داده‌ها را autoload می‌کند و حجم دیتابیس در هر ریکوئست سر به فلک می‌کشد!',
+    analogy: 'مثل این است که برای رفتن به نانوایی سر کوچه، چادر مسافرتی و جعبه ابزارت را هم توی کوله‌پشتی بگذاری و با خودت حمل کنی!',
+    humanQuestion: 'چرا سایتم با اینکه بازدید کمی دارد، مدام خطای Memory Exhausted می‌دهد؟',
+    realPain: 'اگر حجم دیتای autoload از ۱ مگابایت بیشتر شود، زمان پاسخ اولیه سرور (TTFB) به بالای ۳ ثانیه می‌رسد و لایت‌هاوس قرمز می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Option added with default autoload=yes, bloating server RAM',
+      explanationFa: 'هوش مصنوعی داده‌های چند مگابایتی را به اشتباه به صورت اتولود ذخیره کرده و رم سرور را ترکانده!'
+    },
+    freelanceTip: 'با پاکسازی دیتای اتولود افزونه‌های حذف‌شده در جدول wp_options، زمان TTFB سایت کارفرما را از ۲ ثانیه به ۳۰۰ میلی‌ثانیه می‌رسانی.',
+    asciiDiagram: `[هر درخواست کاربر به هر صفحه سایت]
+                 │
+                 ▼
+[سلکت خودکار کل رکوردهای autoload='yes' از جدول wp_options]
+  ├── زیر ۵۰۰ کیلوبایت ──> ⚡ سرعت موشکی
+  └── بالای ۲ مگابایت   ──> 🐌 کرش سرور و خطای ۵۰۴ Timeout`,
+    injectionTarget: 'هنگام ذخیره تنظیمات سنگین یا دیتای وب‌سرویس‌ها با update_option',
+    universalPrompt: `[ROLE]: WordPress Database Performance Specialist.
+[TASK]: Save a large configuration array to "wp_options".
+[NEGATIVE CONSTRAINTS]:
+- Explicitly set "autoload = 'no'" (or false) in add_option() to avoid bloating server memory on global page requests.
+- Never store session payloads or temporary cache in options; use Transients instead.
+[OUTPUT]: Memory-conscious option storage.`,
+    agentsMdRule: `# قانون Autoload در AGENTS.md:
+داده‌های ذخیره‌شده در جدول wp_options که در تمامی صفحات مورد نیاز نیستند، باید الزاماً با مقدار autoload='no' ایجاد شوند تا از مصرف بیهوده حافظه رم جلوگیری گردد.`,
+    cursorPrompt: `Store this large plugin config in wp_options ensuring autoload is strictly disabled.`,
+    claudePrompt: `Review option storage in this snippet. Ensure no transient-like payloads pollute the autoloaded options footprint.`,
+    debugPrompt: `حجم دیتای اتولود این آپشن بیش از حد مجاز است. کوئری تغییر وضعیت autoload آن به no را بنویس.`,
+    howToTest: {
+      steps: [
+        'افزونه Query Monitor را نصب کنید و تب Database Queries را باز نمایید.',
+        'کوئری SELECT ... WHERE autoload = \'yes\' را پیدا کنید.',
+        'حجم کل دیتای بارگذاری شده را بررسی کنید؛ باید حتماً زیر ۱ مگابایت باشد.'
+      ],
+      expectedResult: 'حجم اتولود بهینه و لود سریع تمام صفحات سایت.',
+      redFlags: ['حجم اتولود بالای ۲ مگابایت در پیشخوان']
+    },
+    shortDefinition: 'سازوکار لود خودکار تنظیمات جدول wp_options در تمامی درخواست‌های سایت و کنترل حجم آن برای پیشگیری از کندی سرور.',
+    deepExplanation: 'هر بار که وردپرس لود می‌شود، رکوردهای اتولود در یک کوئری خوانده می‌شوند. مهار این حجم مهم‌ترین فاکتور کاهش TTFB در سایت‌های بزرگ است.',
+    vibeCodingImpact: 'جلوگیری از خطاهای پر شدن حافظه رم و تضمین سرعت زیر ۱ ثانیه برای لود صفحات.',
+    goldenPrompt: 'تنظیمات این ماژول را در wp_options ذخیره کن، اما حتماً پارامتر autoload را روی no بگذار تا در همه صفحات لود نشود.',
+    codeSnippet: {
+      language: 'php',
+      description: 'ذخیره اصولی داده سنگین با غیرفعال کردن Autoload',
+      runContext: 'options-handler.php',
+      code: "// ذخیره داده حجیم بدون بارگذاری در تمام صفحات سایت\nadd_option( 'hs_heavy_plugin_settings', $large_data, '', 'no' );"
+    },
+    prerequisiteTermIds: ['wpdb-class'],
+    relatedTermIds: ['wpdb-class', 'transients-api'],
+    seoKeywords: ['autoload وردپرس', 'wp_options autoload', 'کاهش ttfb وردپرس', 'بهینه سازی دیتابیس wp_options']
+  },
+  {
+    id: 'wp-error-handling',
+    termEn: 'WP_Error Class & Defensive Coding',
+    termFa: 'مدیریت استاندارد خطاها با کلاس WP_Error',
+    category: 'wp-core',
+    level: 'intermediate',
+    phonetic: 'دابلیو-پی ارور کلس',
+    tags: ['error-handling', 'defensive-programming', 'wp_error', 'php-standards'],
+    sequenceOrder: 29,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'کیسه هوای وردپرس! کلاسی استاندارد برای بسته‌بندی پیام‌های خطا و ارسال محترمانه آن‌ها به کاربر، به جای اینکه سایت با خطای ۵۰۰ یا صفحه سفید کرش کند.',
+    beginnerTrap: 'استفاده از die() یا exit() در وسط توابع پردازش داده؛ که خروجی سایت را ناگهان قطع کرده و صفحه ناقص و وحشتناک به کاربر نشان می‌دهد!',
+    analogy: 'مثل چراغ چک خودرو است؛ به جای اینکه ماشین وسط بزرگراه ناگهان خاموش شود، چراغ زرد روشن می‌شود و به راننده می‌گوید چه مشکلی پیش آمده است.',
+    humanQuestion: 'چطور کدهایی بنویسم که اگر ورودی اشتباه بود، سایت کرش نکند و پیام مودبانه بدهد؟',
+    realPain: 'وقتی هوش مصنوعی کدی بدون WP_Error می‌نویسد، با اولین ورودی نامعتبر کاربر، یک استک‌تریس زشت و خطای ۵۰۰ روی سایت مشتری نمایش داده می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Fatal error: Uncaught Exception / used die() inside REST callback',
+      explanationFa: 'هوش مصنوعی به جای برگرداندن WP_Error، تابع die اجرا کرده و فرانت‌اند ارور ۵۰۰ خورده!'
+    },
+    freelanceTip: 'کدهای دارای کلاس WP_Error به راحتی به REST API وصل می‌شوند و اپلیکیشن موبایل یا فرانت نکست‌جی‌اس پیام خطای شفاف به فارسی دریافت می‌کند.',
+    asciiDiagram: `[دریافت داده از کاربر]
+           │
+           ▼
+     آیا داده معتبر است؟
+    ├── بله ──> ادامه پردازش و خروجی موفقیت
+    └── خیر ──> return new WP_Error( 'hs_invalid_phone', 'شماره موبایل اشتباه است.' )`,
+    injectionTarget: 'توابع اعتبارسنجی فرم‌ها، وب‌سرویس‌ها و کنترلرهای ماژول‌ها',
+    universalPrompt: `[ROLE]: Senior Defensive WordPress Developer.
+[TASK]: Validate an incoming user payment payload.
+[NEGATIVE CONSTRAINTS]:
+- Never use die() or exit().
+- Return a "new WP_Error(code, message, data)" on any validation failure.
+- Always check "is_wp_error($result)" before proceeding with business logic.
+[OUTPUT]: Production-grade defensive error handling.`,
+    agentsMdRule: `# مدیریت خطا در AGENTS.md:
+هیچ تابعی نباید از die() یا exit() استفاده کند. تمامی خطاهای بیزنس و اعتبارسنجی باید در قالب شیء رسمی WP_Error بازگردانده شوند.`,
+    cursorPrompt: `Refactor this validation routine to return structured WP_Error objects with status codes.`,
+    claudePrompt: `Ensure full defensive coding using is_wp_error() checks after remote HTTP and database operations.`,
+    debugPrompt: `این کد با ورودی خالی کرش می‌کند. یک بررسی WP_Error دفاعی به ابتدای تابع اضافه کن.`,
+    howToTest: {
+      steps: [
+        'یک ورودی نامعتبر (مثلاً ایمیل اشتباه) به تابع بفرستید.',
+        'بررسی کنید که آیا خروجی با تابع is_wp_error() قابل شناسایی است یا خیر.',
+        'آیا پیام خطای تمیز فارسی به کاربر نمایش داده شد بدون اینکه صفحه سفید شود؟'
+      ],
+      expectedResult: 'مدیریت متمدنانه خطا بدون خطای ۵۰۰ یا کرش سرور.',
+      redFlags: ['استفاده از exit() یا echo ارور وسط منطق بک‌اند']
+    },
+    shortDefinition: 'کلاس استاندارد هسته وردپرس برای مدیریت، ردیابی و بازگرداندن خطاهای منطقی بدون توقف اجرای سیستم.',
+    deepExplanation: 'کلاس WP_Error امکان ذخیره کدهای خطای یکتا و دیتای خطا را فراهم کرده و هسته وردپرس به صورت پیش‌فرض در تمام توابع رسمی از آن استفاده می‌کند.',
+    vibeCodingImpact: 'خلق سیستم‌های مقاوم و دفاعی که در برابر ورودی‌های نامعتبر کاربران، باوقار رفتار می‌کنند.',
+    goldenPrompt: 'یک تابع ثبت سفارش بنویس که در صورت نبود موجودی، به جای کرش یک آبجکت استاندارد WP_Error با پیام واضح فارسی برگرداند.',
+    codeSnippet: {
+      language: 'php',
+      description: 'الگوی تولید و بررسی شیء استاندارد WP_Error',
+      runContext: 'validator.php',
+      code: "function hs_verify_coupon( $code ) {\n    if ( empty( $code ) ) {\n        return new WP_Error( 'empty_coupon', 'کد تخفیف نمی‌تواند خالی باشد.', ['status' => 400] );\n    }\n    return true;\n}\n\n$check = hs_verify_coupon( '' );\nif ( is_wp_error( $check ) ) {\n    echo esc_html( $check->get_error_message() );\n}"
+    },
+    prerequisiteTermIds: ['action-hooks'],
+    relatedTermIds: ['rest-api-endpoints', 'action-hooks'],
+    seoKeywords: ['wp_error', 'کلاس wp_error', 'مدیریت خطا در وردپرس', 'کدنویسی دفاعی در وردپرس']
+  },
+  {
+    id: 'shortcodes-vs-blocks',
+    termEn: 'Shortcodes vs Modern Gutenberg Blocks',
+    termFa: 'شورت‌کدها در برابر بلاک‌های نوین گوتنبرگ',
+    category: 'wp-core',
+    level: 'beginner',
+    phonetic: 'شورت-کدز ورسز بلاکس',
+    tags: ['shortcode', 'gutenberg', 'blocks', 'modernization'],
+    sequenceOrder: 30,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'designer', 'beginner'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'شورت‌کدها ([my_form]) مثل پیامک‌های متنی قدیمی هستند؛ کار می‌کنند اما پیش‌نمایش ندارند. در مقابل، بلاک‌های گوتنبرگ مثل برنامه‌های لمسی هستند که کاربر درجا تغییرات را روی صفحه می‌بیند.',
+    beginnerTrap: 'استفاده از شورت‌کد برای ساخت صفحات لندینگ پیچیده؛ کارفرما در پیشخوان فقط یک کد عجیب داخل براکت می‌بیند و نمی‌تواند استایل‌ها را بصری ویرایش کند!',
+    analogy: 'شورت‌کد مثل کارت‌پستال متنی است؛ بلاک گوتنبرگ مثل تماس تصویری زنده با کیفیت 4K است!',
+    humanQuestion: 'کجا باید از شورت‌کد استفاده کنم و کجا باید بلاک اختصاصی بسازم؟',
+    realPain: 'اگر برای فیچرهای تعاملی شورت‌کد بسازی، کاربر نمی‌تواند رنگ‌ها و متن‌ها را به راحتی عوض کند و مدام برای کوچک‌ترین تغییر با شما تماس می‌گیرد.',
+    commonAiError: {
+      errorSnippet: 'Used add_shortcode for full page layout instead of Block API',
+      explanationFa: 'هوش مصنوعی برای تنبلی به جای بلاک مدرن، شورت‌کد قدیمی نوشته!'
+    },
+    freelanceTip: 'وقتی به کارفرما بلاک بومی با سایدبار تنظیمات زنده تحویل می‌دهی، ارزش پروژه شما ۳ برابر یک شورت‌کد خشک قدیمی قیمت‌گذاری می‌شود.',
+    asciiDiagram: `[روش سنتی] ──> add_shortcode() ──> [hs_button] در پیشخوان بدون پیش‌نمایش
+[روش مدرن]  ──> register_block_type() ──> ویرایش بصری زنده با تنظیمات طلایی در گوتنبرگ`,
+    injectionTarget: 'فایل functions.php یا پوشه اختصاصی بلاک‌ها در بلوک‌های بومی',
+    universalPrompt: `[ROLE]: Modern WordPress Full-Site Editing Specialist.
+[TASK]: When creating content modules, prefer Native Gutenberg Blocks (Block API v3) with block.json. Only fallback to add_shortcode() if legacy compatibility is strictly requested.
+[OUTPUT]: Modern block architecture with clean attributes.`,
+    agentsMdRule: `# اولویت بلاک‌های مدرن در AGENTS.md:
+برای المان‌های بصری جدید، اولویت مطلق با بلاک‌های استاندارد گوتنبرگ است. شورت‌کدها صرفاً در صورت نیاز به تزریق سریع درون متون مقالات مجاز هستند.`,
+    cursorPrompt: `Convert this legacy shortcode into a clean Block Pattern or modern Gutenberg block.`,
+    claudePrompt: `Explain the migration path from this add_shortcode implementation to a server-side rendered Gutenberg block.`,
+    debugPrompt: `شورت‌کد خروجی را در بالای صفحه می‌اندازد چون از echo استفاده شده. با ob_start() و ob_get_clean() آن را تصحیح کن.`,
+    howToTest: {
+      steps: [
+        'شورت‌کد را در یک نوشته پیست کنید.',
+        'مطمئن شوید خروجی در محل قرارگیری تگ چاپ می‌شود و به بالای سایت نمی‌پرد (رعایت return به جای echo).',
+        'سپس معادل بلاک آن را در ویرایشگر گوتنبرگ بررسی کنید.'
+      ],
+      expectedResult: 'رندر دقیق بدون شکستن صفحه و تداخل با محتوای اطراف.',
+      redFlags: ['چاپ مستقیم با echo درون تابع شورت‌کد']
+    },
+    shortDefinition: 'مقایسه سازوکار سنتی شورت‌کدها با معماری نوین بلاک‌های گوتنبرگ و انتخاب الگوی صحیح برای پروژه.',
+    deepExplanation: 'شورت‌کدها ابزاری سریع برای تزریق محتوا هستند اما فاقد ادیتور بصری‌اند. بلاک‌های گوتنبرگ استاندارد آینده وردپرس برای طراحی بصری و FSE هستند.',
+    vibeCodingImpact: 'توانایی انتخاب ابزار مناسب: شورت‌کد برای ویجت‌های سریع، بلاک برای تجربه کاربری خیره‌کننده مشتری.',
+    goldenPrompt: 'یک تابع شورت‌کد بنویس که بافر خروجی را با ob_start مدیریت کرده و حتماً با return تحویل دهد نه با echo.',
+    codeSnippet: {
+      language: 'php',
+      description: 'الگوی صحیح نوشتن شورت‌کد با بافر خروجی',
+      runContext: 'shortcode.php',
+      code: "add_shortcode( 'hs_cta_button', function( $atts ) {\n    $args = shortcode_atts( ['text' => 'ثبت‌نام', 'url' => '#'], $atts );\n    ob_start(); ?>\n    <a href=\"<?php echo esc_url( $args['url'] ); ?>\" class=\"hs-gold-btn\">\n        <?php echo esc_html( $args['text'] ); ?>\n    </a>\n    <?php return ob_get_clean();\n});"
+    },
+    prerequisiteTermIds: ['theme-hierarchy'],
+    relatedTermIds: ['gutenberg-blocks', 'theme-json'],
+    seoKeywords: ['شورت کد وردپرس', 'شورتکد یا بلاک', 'add_shortcode', 'بلاک گوتنبرگ']
+  },
+  {
+    id: 'plugin-lifecycle-cleanup',
+    termEn: 'Plugin Lifecycle & Uninstall Cleanup',
+    termFa: 'چرخه عمر افزونه و هوک‌های پاکسازی دیتابیس (uninstall.php)',
+    category: 'wp-core',
+    level: 'intermediate',
+    phonetic: 'پلاگین لایف-سایکل اند آن-اینستال',
+    tags: ['plugin-lifecycle', 'uninstall', 'cleanup', 'clean-code'],
+    sequenceOrder: 31,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'ادب مهندسی افزونه! وقتی کارفرما افزونه شما را حذف می‌کند، تمام جدول‌ها و آپشن‌های اضافه را از دیتابیس پاک کند تا زباله الکترونیکی روی هاست باقی نماند.',
+    beginnerTrap: 'پاک کردن دیتای دیتابیس هنگام Deactivate شدن افزونه! با غیرفعال‌سازی موقت نباید داده‌ها پاک شوند، بلکه فقط هنگام Delete نهایی در فایل uninstall.php باید پاکسازی انجام شود.',
+    analogy: 'مثل مستأجری است که هنگام تخلیه نهایی خانه، تمام زباله‌ها را با خود بیرون می‌برد و خانه را تمیز تحویل می‌دهد، نه اینکه با هر بار بیرون رفتن از خانه وسایل را دور بریزد!',
+    humanQuestion: 'چطور افزونه‌ای بسازم که اگر مشتری آن را پاک کرد، دیتابیس را شلوغ و کند رها نکند؟',
+    realPain: 'بیشتر از ۸۰ درصد افزونه‌های غیرحرفه‌ای بعد از حذف، ده‌ها مگابایت دیتای زباله در جدول wp_options جا می‌گذارند که تا ابد سرعت سایت را کم می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Deleted database tables on register_deactivation_hook instead of uninstall.php',
+      explanationFa: 'هوش مصنوعی داده‌های مشتری را با یک خاموش و روشن کردن ساده افزونه نابود کرده است!'
+    },
+    freelanceTip: 'به کارفرما بگو افزونه اختصاصی شما دارای پاک‌کننده هوشمند است و در صورت عدم نیاز، بدون کوچک‌ترین اثری از دیتابیس محو می‌شود.',
+    asciiDiagram: `[فعال‌سازی: register_activation_hook] ──> ساخت جدول و آپشن‌ها
+[غیرفعال‌سازی: register_deactivation_hook] ──> توقف کرون‌ها (داده‌ها حفظ شوند!)
+[حذف نهایی: uninstall.php] ──> 🧹 پاکسازی کامل دیتابیس`,
+    injectionTarget: 'فایل مجزای /uninstall.php در ریشه پوشه افزونه',
+    universalPrompt: `[ROLE]: Senior WordPress Plugin Architect.
+[TASK]: Create a secure "uninstall.php" file.
+[NEGATIVE CONSTRAINTS]:
+- Check "defined('WP_UNINSTALL_PLUGIN')" at the very top.
+- Do NOT delete user data on deactivation. Only delete on final uninstall.
+- Clean up custom tables using $wpdb and drop transients.
+[OUTPUT]: Safe uninstall routine.`,
+    agentsMdRule: `# چرخه عمر افزونه در AGENTS.md:
+حذف جداول سفارشی و آپشن‌ها فقط و فقط در فایل uninstall.php مجاز است و در هوک register_deactivation_hook اکیداً ممنوع می‌باشد.`,
+    cursorPrompt: `Write a clean uninstall.php file that removes the hs_smart_banner options and custom tables safely.`,
+    claudePrompt: `Review this plugin lifecycle logic to ensure it complies with WordPress.org guidelines for data cleanup.`,
+    debugPrompt: `بررسی WP_UNINSTALL_PLUGIN در ابتدای فایل جا افتاده است. این خط امنیتی حیاتی را اضافه کن.`,
+    howToTest: {
+      steps: [
+        'افزونه را نصب و فعال کنید؛ دیتای تستی در wp_options ذخیره شود.',
+        'افزونه را غیرفعال کنید؛ مطمئن شوید داده‌ها هنوز در دیتابیس هستند.',
+        'افزونه را پاک (Delete) کنید؛ مطمئن شوید رکوردها کاملاً از جدول حذف شده‌اند.'
+      ],
+      expectedResult: 'دیتابیس کاملاً تمیز پس از حذف افزونه.',
+      redFlags: ['پاک شدن داده‌ها با غیرفعال‌سازی موقت افزونه']
+    },
+    shortDefinition: 'مدیریت استاندارد ۳ مرحله فعال‌سازی، غیرفعال‌سازی و حذف نهایی افزونه همراه با نظافت دیتابیس.',
+    deepExplanation: 'استفاده از فایل uninstall.php روش رسمی و استاندارد مخزن وردپرس است که بدون لود شدن خود افزونه، عملیات پاکسازی را انجام می‌دهد.',
+    vibeCodingImpact: 'ارائه محصولات حرفه‌ای و پاکیزه که اعتبار تیم فنی شما را تضمین می‌کنند.',
+    goldenPrompt: 'یک فایل استاندارد uninstall.php بنویس که بررسی امنیتی WP_UNINSTALL_PLUGIN را داشته باشد و آپشن‌های این پلاگین را پاک کند.',
+    codeSnippet: {
+      language: 'php',
+      description: 'ساختار استاندارد فایل uninstall.php در افزونه وردپرس',
+      runContext: 'uninstall.php',
+      code: "<?php\n// اگر از طریق خود وردپرس فراخوانی نشده باشد، خارج شو\nif ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {\n    exit;\n}\n\ndelete_option( 'hs_smart_banner_settings' );\ndelete_transient( 'hs_cached_banner_data' );"
+    },
+    prerequisiteTermIds: ['must-use-plugins'],
+    relatedTermIds: ['must-use-plugins', 'wp-options-autoload'],
+    seoKeywords: ['uninstall.php', 'چرخه عمر افزونه وردپرس', 'پاکسازی دیتابیس افزونه', 'register_activation_hook']
   }
 ];

@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Flame,
   ArrowUpRight,
+  Shield,
   ShieldAlert,
   Lightbulb,
   Award,
@@ -127,7 +128,7 @@ export default function VibeDictionaryContent() {
 
   // Card Tab States (termId -> "concept" | "prompt" | "test" | "code")
   const [cardActiveTab, setCardActiveTab] = useState<Record<string, "concept" | "prompt" | "test" | "code">>({});
-  const [promptEditorMode, setPromptEditorMode] = useState<Record<string, "cursor" | "claude">>({});
+  const [promptEditorMode, setPromptEditorMode] = useState<Record<string, "universal" | "cursor" | "claude">>({});
 
   // UI Modes
   const [viewMode, setViewMode] = useState<"detailed" | "compact">("detailed");
@@ -137,7 +138,7 @@ export default function VibeDictionaryContent() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
   // Gamification & Quest State (Step 2)
-  const [activeLearningView, setActiveLearningView] = useState<"quest" | "reference">("quest");
+  const [activeLearningView, setActiveLearningView] = useState<"quest" | "reference">("reference");
   const [gamificationProfile, setGamificationProfile] = useState<UserGamificationProfile>({
     xp: 0,
     level: 1,
@@ -422,7 +423,7 @@ export default function VibeDictionaryContent() {
     setCardActiveTab((prev) => ({ ...prev, [termId]: tab }));
   };
 
-  const togglePromptEditor = (termId: string, mode: "cursor" | "claude") => {
+  const togglePromptEditor = (termId: string, mode: "universal" | "cursor" | "claude") => {
     setPromptEditorMode((prev) => ({ ...prev, [termId]: mode }));
   };
 
@@ -626,65 +627,92 @@ export default function VibeDictionaryContent() {
 
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold text-amber-300">
             <Sparkles className="h-3.5 w-3.5" />
-            نسخه ارتقایافته ۲.۰ • مجهز به پرامپت‌های ۵ لایه‌ای و راهنمای تست
+            نسخه ۳.۰ • مجهز به ۶۰ اصطلاح حیاتی، استاندارد جهانی AGENTS.md و پرامپت‌های ۵ لایه‌ای
           </div>
 
           <h1 className="text-3xl font-black leading-tight md:text-5xl lg:text-6xl text-foreground">
             دانشنامه مهندسی <span className="text-gradient-gold">وایب‌کدینگ وردپرس</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            هوش مصنوعی کد را تولید می‌کند، اما معماری را شما دیکته می‌کنید. مرجع ۳۷ اصطلاح حیاتی با تمثیل‌های روزمره، پرامپت‌های ۵ لایه‌ای آماده کپی، و راه‌حل تست در ۳۰ ثانیه برای کسانی که می‌خواهند بدون باگ محصول خلق کنند.
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            هوش مصنوعی کد را تولید می‌کند، اما معماری را شما دیکته می‌کنید. مرجع ۶۰ اصطلاح حیاتی وردپرس با قوانین استاندارد <code className="text-emerald-400 font-mono text-sm px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30">AGENTS.md</code> برای همه مدل‌های هوش مصنوعی (Cursor, Claude, Copilot, ChatGPT, Antigravity)، تمثیل‌های ملموس، پرامپت‌های ۵ لایه‌ای و راه‌حل تست ۳۰ ثانیه‌ای.
           </p>
 
-          {/* ── Elevated Clean Action Bar (Step 3: High UX Standard) ── */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
+          {/* ── Central Hero Search Box (Instant Access to 60 Terms) ── */}
+          <div className="mt-8 max-w-2xl mx-auto space-y-3">
+            <div className="relative">
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-amber-400/80" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="جستجو در ۶۰ اصطلاح یا ارور (مثلاً: AGENTS.md، transients، هوک، دیتابیس، کش، هاست)..."
+                className="w-full rounded-2xl border border-amber-400/30 bg-[#090D16]/90 py-4 pr-12 pl-28 text-sm md:text-base text-foreground placeholder:text-muted-foreground focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20 shadow-2xl backdrop-blur-xl transition-all"
+              />
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="p-1 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+                <kbd className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-white/15 bg-white/5 px-2 py-1 text-[11px] font-mono text-muted-foreground">
+                  <span className="text-xs">⌘</span>K
+                </kbd>
+              </div>
+            </div>
+
+            {/* Quick intent keywords pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
+              <span className="text-muted-foreground font-semibold">🔍 کلمات پرتکرار:</span>
+              {[
+                { label: "AGENTS.md", query: "AGENTS.md" },
+                { label: "سایتم کند شده (کش)", query: "کش" },
+                { label: "ارور و باگ", query: "ارور" },
+                { label: "امنیت و نانس", query: "امنیت" },
+                { label: "دیتابیس و ایندکس", query: "دیتابیس" },
+                { label: "REST API", query: "REST" },
+              ].map((pill) => (
+                <button
+                  key={pill.label}
+                  type="button"
+                  onClick={() => setSearchQuery(pill.query)}
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-muted-foreground hover:border-amber-400/40 hover:text-amber-300 transition-colors"
+                >
+                  {pill.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Elevated Clean Action Bar: Just 2 Refined Actions ── */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 max-w-xl mx-auto">
             <button
               type="button"
               onClick={() => setIsZeroToHeroOpen(true)}
-              className="inline-flex items-center gap-2 rounded-2xl border border-emerald-400/60 bg-emerald-500/15 px-6 py-3.5 text-xs md:text-sm font-black text-emerald-300 hover:bg-emerald-500/25 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20"
+              className="inline-flex items-center gap-2 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-5 py-2.5 text-xs md:text-sm font-bold text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all shadow-sm hover:scale-105 active:scale-95"
             >
               <Compass className="h-4 w-4 text-emerald-400" />
-              <span>🌱 صفرِ صفری؟ از اینجا شروع کن (نقشه ورود به کار)</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                handleToggleLearningView("quest");
-                const el = document.getElementById("active-mission-spotlight");
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-              className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 px-6 py-3.5 text-xs md:text-sm font-black text-black hover:opacity-95 shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95"
-            >
-              <Play className="h-4 w-4 fill-black" />
-              <span>ادامه مأموریت یادگیری 🚀</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsSandboxOpen(true)}
-              className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/50 bg-amber-400/10 px-5 py-3.5 text-xs md:text-sm font-bold text-amber-300 hover:bg-amber-400/20 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-500/10"
-            >
-              <Code2 className="h-4 w-4 text-amber-400" />
-              <span>سندباکس تست پرامپت ⚡</span>
+              <span>🌱 راهنمای شروع سریع (صفر تا صد)</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsStudioDrawerOpen(true)}
-              className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs md:text-sm font-bold text-foreground hover:bg-white/10 transition-all hover:border-white/30"
+              className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/40 bg-amber-400/10 px-5 py-2.5 text-xs md:text-sm font-bold text-amber-300 hover:bg-amber-400/20 hover:border-amber-400 transition-all shadow-sm hover:scale-105 active:scale-95"
             >
               <Wrench className="h-4 w-4 text-amber-400" />
-              <span>استودیو و ابزارهای هوشمند (۷ ابزار) 🧰</span>
+              <span>🧰 استودیو و جعبه‌ابزار هوشمند</span>
             </button>
           </div>
         </div>
       </section>
 
-      {/* ── Player Gamification HUD Bar (Step 2 & 3) ── */}
+      {/* ── Player Gamification HUD Bar (Step 2 & 3: Decluttered Luxury) ── */}
       <GamificationHud
         profile={gamificationProfile}
         activeView={activeLearningView}
@@ -694,6 +722,7 @@ export default function VibeDictionaryContent() {
         onOpenSpeedChallenge={() => setIsSpeedChallengeOpen(true)}
         onOpenZeroToHero={() => setIsZeroToHeroOpen(true)}
         onOpenFirstProject={() => setIsFirstProjectOpen(true)}
+        onOpenStudioDrawer={() => setIsStudioDrawerOpen(true)}
         completedStagesCount={gamificationProfile.completedStageNumbers.length}
         totalStagesCount={questStages.length}
         readTermsCount={readTerms.length}
@@ -940,9 +969,15 @@ export default function VibeDictionaryContent() {
               const isFavorite = favorites.includes(term.id);
               const isRead = readTerms.includes(term.id);
               const activeTab = cardActiveTab[term.id] || "concept";
-              const currentEditorMode = promptEditorMode[term.id] || "cursor";
+              const currentEditorMode = promptEditorMode[term.id] || "universal";
               const isPromptCopied = copiedItem === `prompt-${term.id}`;
               const isDebugCopied = copiedItem === `debug-${term.id}`;
+              const currentPromptText =
+                currentEditorMode === "universal"
+                  ? term.universalPrompt || term.goldenPrompt
+                  : currentEditorMode === "cursor"
+                  ? term.cursorPrompt || term.goldenPrompt
+                  : term.claudePrompt || term.goldenPrompt;
 
               return (
                 <article
@@ -958,7 +993,7 @@ export default function VibeDictionaryContent() {
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="flex items-center gap-1 text-[11px] font-bold text-amber-300 bg-amber-400/10 border border-amber-400/30 rounded-full px-2.5 py-0.5">
-                          قدم {term.sequenceOrder} از ۳۷
+                          قدم {term.sequenceOrder} از {allDictionaryTerms.length}
                         </span>
                         <span className="text-[11px] text-muted-foreground bg-white/5 rounded-full px-2 py-0.5">
                           ⏱️ {term.readingTimeMinutes} دقیقه مطالعه
@@ -1174,106 +1209,152 @@ export default function VibeDictionaryContent() {
                       </div>
                     )}
 
-                    {/* Tab 2: 5-Layer Battle-Tested Prompt */}
+                    {/* Tab 2: 5-Layer Battle-Tested Prompt & Universal AGENTS.md */}
                     {activeTab === "prompt" && (
-                      <div className="space-y-3 pt-1">
-                        <div className="flex items-center justify-between text-xs">
-                          {/* Mode switcher: Cursor vs Claude */}
-                          <div className="flex items-center gap-1 p-0.5 rounded-lg bg-white/5 border border-white/10">
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                togglePromptEditor(term.id, "cursor");
-                              }}
-                              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
-                                currentEditorMode === "cursor"
-                                  ? "bg-amber-400 text-black"
-                                  : "text-muted-foreground hover:text-foreground"
-                              }`}
-                            >
-                              حالت Cursor (@file)
-                            </button>
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                togglePromptEditor(term.id, "claude");
-                              }}
-                              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
-                                currentEditorMode === "claude"
-                                  ? "bg-amber-400 text-black"
-                                  : "text-muted-foreground hover:text-foreground"
-                              }`}
-                            >
-                              حالت Claude / وب
-                            </button>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              const promptText =
-                                currentEditorMode === "cursor"
-                                  ? term.cursorPrompt || term.goldenPrompt
-                                  : term.claudePrompt || term.goldenPrompt;
-                              handleCopy(promptText, `prompt-${term.id}`);
-                            }}
-                            className="inline-flex items-center gap-1 rounded-lg border border-amber-400/40 bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 hover:bg-amber-400/25 transition-all shadow-sm"
-                          >
-                            {isPromptCopied ? (
-                              <>
-                                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                                <span className="text-emerald-400">کپی شد!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="h-3.5 w-3.5" />
-                                <span>کپی پرامپت</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-
-                        {/* Injection Target Location */}
-                        <div className="text-[11px] text-muted-foreground bg-white/[0.02] p-2.5 rounded-xl border border-white/5 font-mono">
-                          <strong className="font-sans text-amber-400">📁 محل قرارگیری کد:</strong>{" "}
-                          <span>{term.injectionTarget}</span>
-                        </div>
-
-                        {/* Prompt Body */}
-                        <div className="rounded-2xl border border-white/10 bg-black/70 p-4 font-mono text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed max-h-56 overflow-y-auto text-right font-sans select-all" dir="rtl">
-                          {currentEditorMode === "cursor"
-                            ? term.cursorPrompt || term.goldenPrompt
-                            : term.claudePrompt || term.goldenPrompt}
-                        </div>
-
-                        {/* Emergency Debug Prompt */}
-                        {term.debugPrompt && (
-                          <div className="rounded-2xl border border-purple-400/20 bg-purple-400/5 p-3 text-xs space-y-1.5">
-                            <div className="flex items-center justify-between">
-                              <span className="font-bold text-purple-300">
-                                🛠️ اگر هوش مصنوعی ارور داد چی بگم؟
-                              </span>
+                      <div className="space-y-3.5 pt-1">
+                        <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                            {/* Mode switcher: Universal vs Cursor vs Web LLM */}
+                            <div className="flex items-center gap-1 p-0.5 rounded-xl bg-white/5 border border-white/10">
                               <button
                                 type="button"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleCopy(term.debugPrompt, `debug-${term.id}`);
+                                  togglePromptEditor(term.id, "universal");
                                 }}
-                                className="text-[10px] text-purple-300 hover:text-white"
+                                className={`px-2.5 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
+                                  currentEditorMode === "universal"
+                                    ? "bg-amber-400 text-black shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
+                                }`}
                               >
-                                {isDebugCopied ? "کپی شد!" : "کپی پرامپت نجات"}
+                                🌐 استاندارد عمومی (AGENTS.md)
+                              </button>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  togglePromptEditor(term.id, "cursor");
+                                }}
+                                className={`px-2 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
+                                  currentEditorMode === "cursor"
+                                    ? "bg-amber-400 text-black shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                💻 ادیتور (IDE / @file)
+                              </button>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  togglePromptEditor(term.id, "claude");
+                                }}
+                                className={`px-2 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
+                                  currentEditorMode === "claude"
+                                    ? "bg-amber-400 text-black shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                💬 وب (Claude / ChatGPT)
                               </button>
                             </div>
-                            <p className="text-muted-foreground font-sans leading-relaxed text-[11px]">
-                              {term.debugPrompt}
-                            </p>
+
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCopy(currentPromptText, `prompt-${term.id}`);
+                              }}
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 hover:bg-amber-400/25 transition-all shadow-sm"
+                            >
+                              {isPromptCopied ? (
+                                <>
+                                  <Check className="h-3.5 w-3.5 text-emerald-400" />
+                                  <span className="text-emerald-400">کپی شد!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="h-3.5 w-3.5" />
+                                  <span>کپی پرامپت</span>
+                                </>
+                              )}
+                            </button>
                           </div>
-                        )}
-                      </div>
-                    )}
+
+                          {/* Injection Target Location */}
+                          <div className="text-[11px] text-muted-foreground bg-white/[0.02] p-2.5 rounded-xl border border-white/5 font-mono">
+                            <strong className="font-sans text-amber-400">📁 محل قرارگیری کد:</strong>{" "}
+                            <span>{term.injectionTarget}</span>
+                          </div>
+
+                          {/* Prompt Body */}
+                          <div className="rounded-2xl border border-white/10 bg-black/70 p-4 font-mono text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed max-h-56 overflow-y-auto text-right font-sans select-all" dir="rtl">
+                            {currentPromptText}
+                          </div>
+
+                          {/* Dedicated AGENTS.md Rule Box */}
+                          {term.agentsMdRule && (
+                            <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-3.5 space-y-2">
+                              <div className="flex items-center justify-between gap-2">
+                                <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                                  <Shield className="h-4 w-4 shrink-0" />
+                                  <span>بند استاندارد برای AGENTS.md (پشتیبانی‌شده در همه هوش‌های مصنوعی):</span>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleCopy(term.agentsMdRule!, `agents-rule-${term.id}`);
+                                  }}
+                                  className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/40 bg-emerald-500/20 px-2.5 py-1 text-[11px] font-bold text-emerald-300 hover:bg-emerald-500/30 transition-all shrink-0"
+                                >
+                                  {copiedItem === `agents-rule-${term.id}` ? (
+                                    <>
+                                      <Check className="h-3 w-3 text-emerald-400" />
+                                      <span>کپی شد!</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Copy className="h-3 w-3" />
+                                      <span>کپی در AGENTS.md</span>
+                                    </>
+                                  )}
+                                </button>
+                              </div>
+                              <pre className="p-3 rounded-xl bg-black/80 font-mono text-[11px] text-emerald-300/95 leading-relaxed text-left overflow-x-auto whitespace-pre-wrap select-all border border-emerald-500/20" dir="ltr">
+                                {term.agentsMdRule}
+                              </pre>
+                              <p className="text-[10px] text-emerald-200/70 font-sans leading-relaxed">
+                                💡 این بند را در فایل <code className="text-emerald-400 font-mono">AGENTS.md</code> در ریشه پروژه‌تان قرار دهید تا تمام مدل‌ها (Cursor, Claude Code, GitHub Copilot, Windsurf, Antigravity, ChatGPT) این استاندارد را رعایت کنند.
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Emergency Debug Prompt */}
+                          {term.debugPrompt && (
+                            <div className="rounded-2xl border border-purple-400/20 bg-purple-400/5 p-3 text-xs space-y-1.5">
+                              <div className="flex items-center justify-between">
+                                <span className="font-bold text-purple-300">
+                                  🛠️ اگر هوش مصنوعی ارور داد چی بگم؟
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleCopy(term.debugPrompt, `debug-${term.id}`);
+                                  }}
+                                  className="text-[10px] text-purple-300 hover:text-white"
+                                >
+                                  {isDebugCopied ? "کپی شد!" : "کپی پرامپت نجات"}
+                                </button>
+                              </div>
+                              <p className="text-muted-foreground font-sans leading-relaxed text-[11px]">
+                                {term.debugPrompt}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
 
                     {/* Tab 3: 30-Second Verification Guide */}
                     {activeTab === "test" && (

@@ -20,9 +20,9 @@ export const allDictionaryTerms: EncyclopediaTerm[] = [
 export const categoriesMeta: CategoryMeta[] = [
   {
     id: 'vibe-ai',
-    titleFa: 'وایب‌کدینگ و تعامل با هوش مصنوعی',
-    titleEn: 'AI & Vibe Coding Core',
-    description: 'اصول تعامل مهندسی با ادیتورهای Cursor، Claude و پرامپت‌نویسی بدون باگ و توهم',
+    titleFa: 'وایب‌کدینگ، ایجنت‌ها و AGENTS.md',
+    titleEn: 'AI Agents & AGENTS.md Standard',
+    description: 'اصول تعامل مهندسی با تمام هوش‌های مصنوعی (ChatGPT, Claude, Cursor, Copilot) بر پایه استاندارد AGENTS.md',
     iconName: 'Sparkles',
     badgeColor: 'border-amber-400/30 bg-amber-400/10 text-amber-300',
   },

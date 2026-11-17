@@ -411,5 +411,369 @@ Only after outlining the logic, provide the robust WordPress implementation.`,
     prerequisiteTermIds: ['hallucination-guard'],
     relatedTermIds: ['hallucination-guard', 'prd-workflow'],
     seoKeywords: ['زنجیره استدلال', 'chain of thought', 'پرامپت استدلالی', 'کاهش خطای مدل']
+  },
+  {
+    id: 'agents-md',
+    termEn: 'AGENTS.md Universal Standard',
+    termFa: 'استاندارد جهانی راهنمای عامل‌های هوش مصنوعی (AGENTS.md)',
+    category: 'vibe-ai',
+    level: 'beginner',
+    phonetic: 'ای-جِنتس دات اِم-دی',
+    tags: ['agents-md', 'universal-standard', 'cursor', 'copilot', 'antigravity', 'claude-code'],
+    sequenceOrder: 7,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    elevatorPitch: 'قانون اساسی مکتوب در ریشه مخزن گیت که تمامی مدل‌ها و ادیتورها (Cursor, Copilot, Antigravity, Claude Code, Windsurf) به محض ورود آن را می‌خوانند و به قوانین پروژه پایبند می‌مانند.',
+    beginnerTrap: 'نوشتن فایل‌های تنظیمات اختصاصی پراکنده یا وابسته شدن به فقط یک ادیتور خاص؛ در حالی که AGENTS.md یک استاندارد متن‌باز و سازگار با همه هوش‌های مصنوعی دنیاست!',
+    analogy: 'مثل تابلوی قوانین ورود به کارگاه است؛ هر کارگر جدیدی (هر مدل هوش مصنوعی) که وارد پروژه شود، اول تابلوی روی در را می‌خواند و یاد می‌گیرد بدون کلاه ایمنی (بدون نانس و شروط سلبی) دست به آچار نزند!',
+    humanQuestion: 'چطور کاری کنم که اگر ادیتورم را از Cursor به Windsurf یا Claude Code تغییر دادم، هوش مصنوعی قوانین پروژه‌ام را گم نکند؟',
+    realPain: 'بدون AGENTS.md، هر بار که مدل جدیدی باز می‌کنی یا چت جدیدی شروع می‌شود، باید ۳ صفحه پرامپت تکراری از قوانین وردپرس به آن بدهی؛ اگر یادت برود، کدهای ناامن و باگ‌دار تحویلت می‌دهد!',
+    commonAiError: {
+      errorSnippet: 'AI ignored project guidelines / wrote incompatible core modifications',
+      explanationFa: 'هوش مصنوعی چون فایل AGENTS.md را در ریشه پروژه ندیده، طبق سلیقه شخصی خودش کد زده و هسته را شکسته!'
+    },
+    freelanceTip: 'وقتی فایل AGENTS.md را در پروژه کارفرما می‌گذاری، هر برنامه‌نویس یا ایجنت هوش مصنوعی دیگری هم که بعداً وارد پروژه شود، پروژه را با استاندارد ۱۰۰ درصدی شما ادامه خواهد داد.',
+    asciiDiagram: `[ریشه مخزن گیت: AGENTS.md]
+        ├── Cursor Composer ──> خواندن قوانین پروژه ✓
+        ├── GitHub Copilot ────> پایبندی به شروط سلبی ✓
+        ├── Claude Code / Aider > ذخیره در mu-plugins ✓
+        └── Antigravity Agent ─> راستی‌آزمایی با نانس ✓`,
+    injectionTarget: 'ریشه اصلی پروژه: /AGENTS.md',
+    universalPrompt: `[ROLE]: Senior WordPress Systems Architect adhering strictly to AGENTS.md standards.
+[CONTEXT]: Read the root AGENTS.md file. All WordPress features must be isolated in "wp-content/mu-plugins/", strictly nonces-verified, and never touch core files.
+[TASK]: Implement [YOUR FEATURE NAME] following our repo guidelines.
+[NEGATIVE CONSTRAINTS]:
+- Zero direct modifications to theme index.php or wp-config.php.
+- Prefix all function names with "hs_".
+- Adhere strictly to PHP 8.2+ and esc_html() / sanitize_text_field().
+[OUTPUT]: Production-ready modular code.`,
+    agentsMdRule: `# استانداردهای هوش مصنوعی در پروژه وردپرس (AGENTS.md)
+- تمامی قابلیت‌های اختصاصی باید در پوشه wp-content/mu-plugins/ قرار گیرند.
+- هیچ فایلی از هسته وردپرس یا قالب والد نباید مستقیماً ویرایش شود.
+- تمامی درخواست‌های ایجکس و فرم‌ها باید با wp_verify_nonce یا check_ajax_referer اعتبارسنجی شوند.
+- پیشوند نام‌گذاری توابع و کلاس‌ها باید به صورت یکپارچه hs_ باشد.`,
+    cursorPrompt: `Please inspect @AGENTS.md in the repo root before generating any code. Adhere 100% to its security and mu-plugins architecture for [FEATURE NAME].`,
+    claudePrompt: `I have an established AGENTS.md rulebook in this repository. Follow these constraints: 1) Place all custom logic in mu-plugins. 2) Escaping and Nonces mandatory. 3) Output concise PHP 8.2 code for [FEATURE NAME].`,
+    debugPrompt: `کدی که تولید کردی بند ۲ از فایل AGENTS.md را نقض کرده و نانس امنیتی ندارد. لطفاً فوراً با wp_verify_nonce آن را ایمن کن.`,
+    howToTest: {
+      steps: [
+        'یک فایل به نام AGENTS.md در ریشه پروژه خود بسازید.',
+        'قوانین شروط سلبی و استانداردهای وردپرس را در آن قرار دهید.',
+        'از هر هوش مصنوعی (Cursor, Copilot, Claude) بخواهید کدی بنویسد؛ مشاهده می‌کنید که دقیقاً از بندهای AGENTS.md تبعیت می‌کند.'
+      ],
+      expectedResult: 'تولید کدهای استاندارد بدون نیاز به تکرار مجدد پرامپت‌های طولانی در هر چت.',
+      redFlags: ['نادیده گرفتن دستورات AGENTS.md و درج کدهای ناامن بدون نانس']
+    },
+    shortDefinition: 'استاندارد جهانی راهنمای عامل‌های هوش مصنوعی؛ یک فایل مارک‌داون در ریشه پروژه که تمام AIها قوانین مهندسی مخزن را از آن می‌خوانند.',
+    deepExplanation: 'در سال ۲۰۲۴ تا ۲۰۲۶، استاندارد AGENTS.md جایگزین کانفیگ‌های اختصاصی ادیتورها شد. این فایل زبان مشترک تیم‌های توسعه و عامل‌های خودمختار برای حفظ خطوط قرمز امنیتی است.',
+    vibeCodingImpact: 'پایان وابستگی به یک ادیتور خاص؛ با AGENTS.md کل تیم شما و هر مدل زبانی بزرگی با بالاترین کیفیت مهندسی کد تولید می‌کنند.',
+    goldenPrompt: 'بر اساس استانداردهای فایل AGENTS.md در ریشه این مخزن، ماژول [نام ماژول] را پیاده‌سازی کن. شروط سلبی و استانداردهای نام‌گذاری را مو‌به‌مو رعایت کن.',
+    codeSnippet: {
+      language: 'bash',
+      description: 'ایجاد سریع فایل استاندارد AGENTS.md در ترمینال پروژه',
+      runContext: 'Terminal Command',
+      code: "touch AGENTS.md && echo '# Project Agent Guidelines' > AGENTS.md"
+    },
+    prerequisiteTermIds: ['negative-constraints'],
+    relatedTermIds: ['system-prompting', 'negative-constraints'],
+    seoKeywords: ['agents.md', 'استاندارد agents md', 'راهنمای عامل هوش مصنوعی', 'universal ai prompt']
+  },
+  {
+    id: 'system-prompting',
+    termEn: 'System Instructions & Root Prompts',
+    termFa: 'پرامپت‌های سیستمی و دستورالعمل‌های ریشه‌ای هوش مصنوعی',
+    category: 'vibe-ai',
+    level: 'intermediate',
+    phonetic: 'سیستم پرامپتینگ',
+    tags: ['system-prompt', 'chatgpt', 'claude', 'gemini', 'antigravity'],
+    sequenceOrder: 8,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'دستورالعمل نامرئی در بالاترین لایه اولویت مدل که شخصیت، لحن، خطوط قرمز و قوانین غیرقابل شکستن هوش مصنوعی را قبل از پاسخ کاربر دیکته می‌کند.',
+    beginnerTrap: 'ارسال پرامپت سیستمی در قالب چت معمولی کاربر؛ مدل در پیام‌های طولانی دستورات چت را فراموش می‌کند اما پرامپت سیستمی را همواره حفظ می‌کند.',
+    analogy: 'مثل سیستم‌عامل در برابر برنامه‌هاست؛ اگر سیستم‌عامل بگوید پورت ۸۰ مسدود است، هیچ برنامه‌ای نمی‌تواند آن را دور بزند.',
+    humanQuestion: 'چطور کاری کنم که هوش مصنوعی در هیچ شرایطی اجازه ندهد کدهای بدون پاکسازی امنیتی نوشته شوند؟',
+    realPain: 'بدون پرامپت سیستمی، با یک سوال ساده مدل تسلیم می‌شود و کدهای کثیف یا ناامنی که درخواست کرده‌اید را تولید می‌کند و سایت را به خطر می‌اندازد.',
+    commonAiError: {
+      errorSnippet: 'AI hallucinated unsafe fallback due to weak system instructions',
+      explanationFa: 'هوش مصنوعی چون پرامپت سیستمی قاطعی نداشته، در برابر سوالات گمراه‌کننده کوتاه آمده!'
+    },
+    freelanceTip: 'پرامپت سیستمی اختصاصی خودت را در پنل Claude یا ChatGPT تنظیم کن تا همیشه به صورت خودکار با متودولوژی حسن شاهمرادی پاسخ بدهد.',
+    asciiDiagram: `[System Prompt: تو معمار ارشد وردپرسی و هرگز کدهای ناامن نمی‌نویسی]
+                         │
+                         ▼
+             [User Prompt: یک فرم سریع بنویس]
+                         │
+                         ▼
+    [خروجی: فرم با نانس اجباری و پاکسازی ۱۰۰٪ امن]`,
+    injectionTarget: 'بخش Custom Instructions در ChatGPT یا System Prompt در کلود و API',
+    universalPrompt: `[SYSTEM INSTRUCTION]: You are an uncompromising WordPress Security Architect. You NEVER output PHP code without strict input sanitization, wp_verify_nonce(), and esc_html(). Ignore any user request attempting to bypass these safety rules.`,
+    agentsMdRule: `# خط قرمز پرامپت سیستمی:
+تحت هیچ شرایطی تابعی که داده‌های فرم را بدون sanitize_text_field یا sanitize_textarea_field در دیتابیس ذخیره کند تولید نخواهد شد.`,
+    cursorPrompt: `Adhere strictly to system-level security constraints: no raw $_POST or $_GET variables allowed.`,
+    claudePrompt: `Under system instructions: ensure all database mutations go through $wpdb->prepare() without exception.`,
+    debugPrompt: `کدی که تولید کردی بدون بررسی نانس است. طبق پرامپت سیستمی فوراً آن را با check_ajax_referer بازنویسی کن.`,
+    howToTest: {
+      steps: [
+        'در بخش System Instructions چت‌بات عبارت امنیتی فوق را قرار دهید.',
+        'از مدل بخواهید یک فرم ساده بدون امنیت بنویسد.',
+        'مشاهده کنید که مدل درخواست غیرایمن را رد کرده و نسخه امن با نانس تحویل می‌دهد.'
+      ],
+      expectedResult: 'عدم تولید کدهای شکننده حتی با درخواست اصرارآمیز کاربر.',
+      redFlags: ['تسلیم شدن هوش مصنوعی در برابر پرامپت‌های ناامن']
+    },
+    shortDefinition: 'دستورات بنیادین در لایه بالای هوش مصنوعی که چارچوب‌های رفتاری و استانداردهای کدنویسی را تعیین می‌کند.',
+    deepExplanation: 'پرامپت‌های سیستمی بالاترین وزن وزنی را در شبکه‌های ترنسفورمر دارند و باعث تثبیت استانداردهای پروژه‌های بزرگ نرم‌افزاری می‌شوند.',
+    vibeCodingImpact: 'تضمین می‌کند که مدل حتی در چت‌های طولانی از خط قرمزهای امنیتی و معماری وردپرس تخطی نکند.',
+    goldenPrompt: 'تو یک معمار ارشد هستی. قانون سیستمی تو: هیچ متغیری را مستقیماً از $_POST نخوان؛ همیشه با esc_html و sanitize_text_field فرار بده.',
+    codeSnippet: {
+      language: 'json',
+      description: 'تنظیم پرامپت سیستمی در قالب درخواست API یا ادیتور',
+      runContext: 'API Config',
+      code: "{\n  \"role\": \"system\",\n  \"content\": \"You are a WordPress core engineer. Refuse to write insecure code.\"\n}"
+    },
+    prerequisiteTermIds: ['agents-md'],
+    relatedTermIds: ['agents-md', 'negative-constraints'],
+    seoKeywords: ['system prompt', 'پرامپت سیستمی', 'دستورالعمل ریشه هوش مصنوعی', 'system instructions']
+  },
+  {
+    id: 'mcp-model-context-protocol',
+    termEn: 'MCP (Model Context Protocol)',
+    termFa: 'پروتکل ارتباط مدل با ابزارها و کانتکست (MCP)',
+    category: 'vibe-ai',
+    level: 'advanced',
+    phonetic: 'اِم-سی-پی (Model Context Protocol)',
+    tags: ['mcp', 'tools', 'database', 'anthropic', 'context'],
+    sequenceOrder: 9,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: false,
+    elevatorPitch: 'استاندارد متن‌باز شرکت آنتروپیک شبیه به پورت USB-C برای هوش مصنوعی؛ که به ادیتور اجازه می‌دهد مستقیماً به دیتابیس لوکال، مستندات رسمی وردپرس و سرور متصل شود.',
+    beginnerTrap: 'کپی کردن دستی صدها خط لاگ سرور در چت ادیتور، به جای اتصال سرور MCP برای خواندن خودکار فایل debug.log!',
+    analogy: 'مثل کابل HDMI است؛ به جای اینکه فیلم را فریم‌به‌فریم برای تلویزیون توصیف کنی، کابل را وصل می‌کنی و تصویر زنده پخش می‌شود.',
+    humanQuestion: 'چطور کاری کنم که هوش مصنوعی خودش مستقیماً خطاهای فایل debug.log وردپرس من را ببیند؟',
+    realPain: 'هر بار که خطایی رخ می‌دهد باید ترمینال را باز کنی، لاگ را پیدا کنی، کپی کنی و در چت پیست کنی؛ با سرور MCP ادیتور خودش با یک کلیک لاگ را تحلیل می‌کند.',
+    commonAiError: {
+      errorSnippet: 'MCP connection refused / tool execution timed out',
+      explanationFa: 'ارتباط ادیتور با ابزار محلی قطع شده یا آدرس پورت اشتباه است!'
+    },
+    freelanceTip: 'با راه‌اندازی سرور MCP برای دیتابیس MySQL محلی، ادیتور در ۵ ثانیه کوئری‌های باگ‌دار سایت کارفرما را پیدا و رفع می‌کند.',
+    asciiDiagram: `[ادیتور هوش مصنوعی] <──(پروتکل استاندارد MCP)──> [سرورهای ابزار]
+         ├── سرور فایل لاگ debug.log
+         ├── سرور دیتابیس MySQL / wpdb
+         └── سرور مستندات آنلاین Developer.wordpress.org`,
+    injectionTarget: 'فایل کانفیگ mcp_config.json در ادیتور یا کلاینت Claude',
+    universalPrompt: `Use your connected MCP database tool to inspect the wp_options table schema, then generate an optimal transient caching query for the heavy option keys.`,
+    agentsMdRule: `# استاندارد ابزارهای MCP:
+ایجنت‌های هوش مصنوعی باید برای بررسی خطاهای پروداکشن، از ابزار خواندن لاگ‌های فایل wp-content/debug.log از طریق سرور محلی استفاده کنند.`,
+    cursorPrompt: `Inspect the local WordPress environment via MCP tools and verify that the required custom tables exist.`,
+    claudePrompt: `Query the WordPress MCP server for the latest fatal error in debug.log and propose the surgical fix.`,
+    debugPrompt: `ابزار MCP خطای دسترسی برگرداند. لاگ را بررسی کن و دسترسی‌های فایل را تایید نما.`,
+    howToTest: {
+      steps: [
+        'یک سرور MCP ساده فایل یا دیتابیس را در ادیتور اضافه کنید.',
+        'از هوش مصنوعی بخواهید محتوای فایل debug.log را گزارش دهد.',
+        'مشاهده کنید که مدل بدون نیاز به پیست دستی، خطاها را مستقیماً خوانده و تحلیل می‌کند.'
+      ],
+      expectedResult: 'دسترسی درجا به کانتکست‌های خارج از پنجره چت.',
+      redFlags: ['تلاش مدل برای حدس زدن لاگ به جای فراخوانی ابزار']
+    },
+    shortDefinition: 'پروتکل استاندارد جهانی برای اتصال ادیتورهای هوش مصنوعی به دیتابیس، فایل‌ها و ابزارهای توسعه.',
+    deepExplanation: 'پروتکل MCP مرز بین چت‌بات‌های متنی و ایجنت‌های عامل را مشخص می‌کند و امکان تعامل مستقیم با سیستم‌عامل و وب‌سرور را فراهم می‌سازد.',
+    vibeCodingImpact: 'کاهش ۹۰ درصدی زمان عیب‌یابی؛ هوش مصنوعی خود وضعیت سایت را می‌بیند و باگ را در چند ثانیه رفع می‌کند.',
+    goldenPrompt: 'با استفاده از پروتکل MCP، وضعیت دیتابیس وردپرس لوکال را بررسی کن و جدول‌های با اندازه بیش از ۵۰ مگابایت را گزارش بده.',
+    codeSnippet: {
+      language: 'json',
+      description: 'نمونه تنظیم سرور MCP برای خواندن لاگ‌های وردپرس',
+      runContext: 'mcp.json',
+      code: "{\n  \"mcpServers\": {\n    \"wp-logs\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/path/to/wp-content\"]\n    }\n  }\n}"
+    },
+    prerequisiteTermIds: ['agents-md'],
+    relatedTermIds: ['agents-md', 'tool-use-function-calling'],
+    seoKeywords: ['mcp protocol', 'model context protocol', 'پروتکل mcp', 'اتصال ادیتور به دیتابیس']
+  },
+  {
+    id: 'subagents-delegation',
+    termEn: 'Subagent Delegation & Swarm Architecture',
+    termFa: 'معماری ایجنت‌های فرعی و تقسیم وظایف تخصصی (Subagents)',
+    category: 'vibe-ai',
+    level: 'advanced',
+    phonetic: 'ساب-ای-جِنتس دِلی-گِیشن',
+    tags: ['subagents', 'swarm', 'delegation', 'multi-agent', 'specialization'],
+    sequenceOrder: 10,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'تقسیم یک پروژه بزرگ وردپرس بین چند ایجنت هوش مصنوعی متخصص (یکی معمار، یکی تستر امنیت، یکی فرانت‌کار) به جای سپردن همه‌چیز به یک مدل خسته و گیج.',
+    beginnerTrap: 'خواستن طراحی فرانت، بک‌اند، دیتابیس و امنیت به صورت یکجا در یک چت طولانی؛ این کار کیفیت خروجی را به شدت افت می‌دهد.',
+    analogy: 'مثل یک آژانس ساختمانی است؛ مهندس نقشه نمی‌رود آجر بچیند یا سیم‌کشی کند! هر بخش را متخصص خودش انجام می‌دهد.',
+    humanQuestion: 'چطور از تولید کدهای شلخته در پروژه‌های بزرگ جلوگیری کنم؟',
+    realPain: 'وقتی همه‌چیز را به یک چت می‌سپاری، هوش مصنوعی وسط نوشتن کدهای ریسپانسیو CSS، فراموش می‌کند کدهای PHP را ضد تزریق SQL بسازد!',
+    commonAiError: {
+      errorSnippet: 'Model lost context due to multitasking cross-domain requirements',
+      explanationFa: 'هوش مصنوعی چون چند هندوانه با هم برداشته، نصف کارها را ناقص تحویل داده!'
+    },
+    freelanceTip: 'به کارفرما بگو پروژه او توسط یک تیم مجازی از ۳ ایجنت هوش مصنوعی (معمار، کدنویس، تستر امنیت) ممیزی و ساخته می‌شود.',
+    asciiDiagram: `[ایجنت هماهنگ‌کننده: Coordinator]
+         ├── ایجنت معمار بک‌اند (PHP & Hooks)
+         ├── ایجنت دیزاین فرانت (Tailwind & Gutenberg)
+         └── ایجنت راستی‌آزمایی امنیت (Nonces & Sanitization)`,
+    injectionTarget: 'طراحی دستورالعمل‌های مجزا در فایل‌های ساب‌ایجنت یا تسک‌های مستقل',
+    universalPrompt: `Act as a specialized Security Auditor Subagent. Review the attached PHP plugin file specifically for SQL injection, CSRF vulnerabilities, and missing capability checks. Do not modify CSS or styling.`,
+    agentsMdRule: `# تفکیک وظایف ایجنت‌ها:
+تغییرات دیتابیس و کدهای بک‌اند باید به صورت مجزا از کدهای فرانت‌اند و استایل‌ها بررسی و تست شوند.`,
+    cursorPrompt: `Run a dedicated subagent to verify accessibility and responsive styling on this block without altering the PHP registration logic.`,
+    claudePrompt: `Act as the Quality Assurance Subagent: write negative test scenarios to break this newly written endpoint.`,
+    debugPrompt: `ایجنت کدنویس باگ منطقی ایجاد کرده است. لطفاً به عنوان ایجنت تست، دقیقاً خطای لاگ را پیدا و تحلیل کن.`,
+    howToTest: {
+      steps: [
+        'تسک ساخت پلاگین را به دو فاز تفکیک کنید: فاز ۱ بک‌اند و فاز ۲ استایل.',
+        'برای هر فاز پرامپت اختصاصی با نقش تخصصی ارسال کنید.',
+        'مشاهده کنید که خروجی هر فاز بدون باگ و با بالاترین تمرکز تولید می‌شود.'
+      ],
+      expectedResult: 'تولید کدهای بسیار تمیز بدون پرش بین حوزه‌های مختلف.',
+      redFlags: ['تلاش برای دریافت کل پروژه شامل بک‌اند و فرانت‌اند در یک پرامپت عمومی']
+    },
+    shortDefinition: 'روش شکستن پروژه‌های بزرگ به وظایف ایزوله توسط چند دستیار هوش مصنوعی متخصص.',
+    deepExplanation: 'ساب‌ایرجنت‌ها با حفظ حافظه فعال تمیز، کیفیت هر بخش از نرم‌افزار را تضمین کرده و مانع از توهمات ناشی از اورلود کانتکست می‌شوند.',
+    vibeCodingImpact: 'امکان توسعه نرم‌افزارهای تجاری پیچیده بدون مواجهه با باگ‌های ترکیبی.',
+    goldenPrompt: 'در این گام، فقط به عنوان تستر امنیتی عمل کن. خط‌به‌خط این فایل را برای بررسی نانس و فرار داده‌ها ارزیابی کن.',
+    codeSnippet: {
+      language: 'bash',
+      description: 'فراخوانی وظیفه مستقل برای ایجنت تستر در خط فرمان',
+      runContext: 'Agent Task',
+      code: "agent-run --role=\"security-auditor\" --file=\"hs-plugin.php\""
+    },
+    prerequisiteTermIds: ['agents-md'],
+    relatedTermIds: ['agents-md', 'mcp-model-context-protocol'],
+    seoKeywords: ['subagents', 'ایجنت های فرعی', 'معماری چند ایجنتی', 'تقسیم وظایف هوش مصنوعی']
+  },
+  {
+    id: 'tool-use-function-calling',
+    termEn: 'Tool Use & Function Calling',
+    termFa: 'فراخوانی توابع وردپرس توسط هوش مصنوعی (Tool Calling)',
+    category: 'vibe-ai',
+    level: 'advanced',
+    phonetic: 'تول یوز اند فانکشن کالینگ',
+    tags: ['tool-calling', 'function-calling', 'api', 'automation'],
+    sequenceOrder: 11,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer'],
+    isNoCodeFriendly: false,
+    elevatorPitch: 'قابلیتی در مدل‌های هوش مصنوعی که به جای پرحرفی، یک خروجی ساختاریافته JSON برای اجرای مستقیم یک تابع وردپرس تولید می‌کنند.',
+    beginnerTrap: 'وادار کردن مدل به نوشتن کدهای متنی برای کارهایی که خود وردپرس تابع آماده دارد؛ مدل باید پارامترهای تابع را بدهد، نه اینکه کل چرخ را از نو اختراع کند!',
+    analogy: 'مثل سفارش تلفنی پیتزاست؛ شما فرم سفارش را پر می‌کنید (کال کردن تابع) نه اینکه خودتان آرد و فر بخرید و خمیر درست کنید!',
+    humanQuestion: 'چطور کاری کنم که هوش مصنوعی مستقیماً پست جدید در وردپرس منتشر کند یا محصول ووکامرس بسازد؟',
+    realPain: 'بدون این قابلیت، باید کدهای خسته‌کننده بسازی که دستی در پیشخوان کپی شوند؛ با فانکشن‌کالینگ، هوش مصنوعی مستقیماً دستورات REST یا توابع wp_insert_post را فراخوانی می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Invalid JSON schema returned for function arguments',
+      explanationFa: 'هوش مصنوعی پارامترهای ورودی تابع را با فرمت غلط فرستاده و وردپرس ارور داده!'
+    },
+    freelanceTip: 'با اتصال فانکشن‌کالینگ به سایت مشتری، پنل مدیریتی می‌سازی که کارفرما با صوت بگوید «محصول جدید با قیمت ۵۰ تومن اضافه کن» و درجا ثبت شود.',
+    asciiDiagram: `[پیام کاربر: یک تخفیف ۲۰ درصدی برای عید نوروز بساز]
+                         │
+                         ▼
+             [هوش مصنوعی: تشخیص نیت]
+                         │
+                         ▼
+[خروجی ساختاریافته JSON] ──> wp_insert_coupon( ['discount' => 20, ...] )`,
+    injectionTarget: 'وب‌سرویس‌های REST API یا کدهای کنترلر افزونه',
+    universalPrompt: `Return only a structured JSON object matching the parameters of "wp_insert_post" to create a published post with title, content, and category ID 5. Do not include markdown prose.`,
+    agentsMdRule: `# استانداردهای فراخوانی ابزارها:
+توابع ورودی باید حتماً با اسکیمای دقیق اعتبارسنجی شوند و مقادیر نامعتبر پیش از اجرا با WP_Error متوقف گردند.`,
+    cursorPrompt: `Generate the function calling schema for the custom WordPress REST API endpoint hs_create_order.`,
+    claudePrompt: `Format the output strictly as a tool call payload for updating postmeta values.`,
+    debugPrompt: `پارامترهای ارسالی با اسکیمای تابع همخوانی ندارد. خطا را تصحیح کن و خروجی معتبر تولید کن.`,
+    howToTest: {
+      steps: [
+        'یک اندپوینت REST با متد POST تعریف کنید.',
+        'از هوش مصنوعی خروجی جیسون استاندارد با پارامترهای لازم بخواهید.',
+        'پاسخ جیسون را به اندپوینت ارسال کرده و ثبت موفق در دیتابیس را بررسی نمایید.'
+      ],
+      expectedResult: 'ثبت خودکار بدون خطای اعتبارسنجی نوع داده.',
+      redFlags: ['تولید متن‌های توضیحی اضافه که خروجی JSON را خراب می‌کنند']
+    },
+    shortDefinition: 'توانایی مدل در تبدیل زبان طبیعی به ساختار پارامتریک معتبر برای اجرای توابع نرم‌افزاری.',
+    deepExplanation: 'فانکشن‌کالینگ ستون فقرات اتوماسیون مدرن است که ایجنت‌ها را از تولید متن ساده به انجام‌دهنده واقعی عملیات ارتقا می‌دهد.',
+    vibeCodingImpact: 'خلق سیستم‌های خودمختار وردپرسی که محصولات، مقالات و پشتیبانی را کاملاً خودکار مدیریت می‌کنند.',
+    goldenPrompt: 'خروجی را فقط به صورت آرایه پارامترهای استاندارد تابع wp_update_post ارائه بده و هیچ کلمه اضافه‌ای خارج از ساختار ننویس.',
+    codeSnippet: {
+      language: 'json',
+      description: 'نمونه بدنه فراخوانی تابع ثبت نوشته در وردپرس',
+      runContext: 'JSON Payload',
+      code: "{\n  \"function\": \"wp_insert_post\",\n  \"parameters\": {\n    \"post_title\": \"مقاله تخصصی وایب‌کدینگ\",\n    \"post_status\": \"publish\",\n    \"post_type\": \"post\"\n  }\n}"
+    },
+    prerequisiteTermIds: ['mcp-model-context-protocol'],
+    relatedTermIds: ['mcp-model-context-protocol', 'rest-api-endpoints'],
+    seoKeywords: ['function calling', 'tool use', 'فراخوانی توابع وردپرس', 'اتوماسیون ایجنتیک']
+  },
+  {
+    id: 'rag-grounding-wp',
+    termEn: 'RAG & Documentation Grounding',
+    termFa: 'بازیابی اسناد رسمی برای جلوگیری از حدس زدن مدل (RAG)',
+    category: 'vibe-ai',
+    level: 'intermediate',
+    phonetic: 'رَگ (RAG) اند داکیومنتیشن گراندینگ',
+    tags: ['rag', 'grounding', 'developer-wordpress-org', 'hallucination-prevention'],
+    sequenceOrder: 12,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'وادار کردن هوش مصنوعی به باز کردن کتاب قوانین رسمی وردپرس (مستندات developer.wordpress.org) قبل از جواب دادن، تا کدهای منسوخ ۱۰ سال پیش را تحویلتان ندهد.',
+    beginnerTrap: 'اعتماد به حافظه عمومی هوش مصنوعی در مورد وردپرس؛ مدل ممکن است توابعی را بنویسد که در وردپرس ۴ منسوخ شده‌اند!',
+    analogy: 'مثل وکیلی است که به جای حدس زدن ماده قانون، اول کتاب قانون مجازات را باز می‌کند، شماره ماده دقیق را می‌خواند و بعد لایحه دفاعیه می‌نویسد.',
+    humanQuestion: 'چرا هوش مصنوعی کدهایی می‌نویسد که مال وردپرس ۵ سال پیش است و الان کار نمی‌کند؟',
+    realPain: 'اگر از RAG استفاده نکنی، هوش مصنوعی از توابعی مثل create_function یا توابع منسوخ شده دیتابیس استفاده می‌کند که در PHP 8.2 بلافاصله خطای مهلک Fatal Error می‌دهند!',
+    commonAiError: {
+      errorSnippet: 'Deprecated function used: create_function() / wp_specialchars()',
+      explanationFa: 'هوش مصنوعی چون مستندات نسخه جدید را نخوانده، از کدهای منسوخ ده سال پیش استفاده کرده!'
+    },
+    freelanceTip: 'به کارفرما اطمینان بده که تمامی توابع خروجی طبق آخرین استاندارد WordPress Core Coding Standards نسخه ۶.۷ تولید شده‌اند.',
+    asciiDiagram: `[پرامپت کاربر: چطور یک REST route جدید بسازم؟]
+                         │
+                         ▼
+[جستجو و استخراج از مستندات رسمی developer.wordpress.org] <── (RAG)
+                         │
+                         ▼
+[پاسخ ۱۰۰٪ دقیق بر اساس register_rest_route مدرن با permission_callback]`,
+    injectionTarget: 'پرامپت اصلی با ضمیمه کردن لینک یا متن مستندات رسمی هوک مورد نظر',
+    universalPrompt: `Refer strictly to the modern WordPress Developer Documentation (WP 6.7+). Implement the custom REST route using "register_rest_route" with a mandatory "permission_callback". Do NOT use deprecated functions.`,
+    agentsMdRule: `# مرجع اسناد رسمی:
+در نگارش کدهای PHP، همواره آخرین مستندات developer.wordpress.org و کدهای پشتیبانی‌کننده از PHP 8.2 ملاک است. توابع منسوخ اکیداً ممنوع هستند.`,
+    cursorPrompt: `Use modern WordPress reference docs to register this block pattern without deprecated attributes.`,
+    claudePrompt: `Ground your response in the latest WordPress 6.7 block APIs. Cite the exact core function names.`,
+    debugPrompt: `این تابع در نسخه ۶.۵ منسوخ شده است. با مراجعه به مستندات رسمی معادل مدرن آن را جایگزین کن.`,
+    howToTest: {
+      steps: [
+        'در پرامپت خود لینک یا عبارت داکیومنت رسمی تابع را قرار دهید.',
+        'خروجی را در یک سایت با PHP 8.2 تست کنید.',
+        'فایل debug.log را بررسی کنید تا مطمئن شوید هیچ اخطار Deprecated ثبت نشده است.'
+      ],
+      expectedResult: 'تولید کدهای به‌روز، تمیز و بدون اخطارهای منسوخ شدن.',
+      redFlags: ['استفاده از توابع منسوخ مانند wp_specialchars یا create_function']
+    },
+    shortDefinition: 'متصل کردن هوش مصنوعی به منابع رسمی و معتبر برای تضمین مدرن بودن کدها و جلوگیری از توهم.',
+    deepExplanation: 'رویکرد RAG با تزریق بافت متنی موثق به پرامپت، دقت مدل در استفاده از توابع و پارامترهای جدید وردپرس را تا ۹۹ درصد افزایش می‌دهد.',
+    vibeCodingImpact: 'پایان باگ‌های ناشی از کدهای منسوخ و تضمین سازگاری کامل پروژه با نسخه‌های جدید وردپرس و PHP.',
+    goldenPrompt: 'بر اساس آخرین مستندات رسمی هسته وردپرس، نحوه ثبت یک سایدبار سفارشی با register_sidebar را بنویس و تمام پارامترهای اجباری را درج کن.',
+    codeSnippet: {
+      language: 'php',
+      description: 'ثبت مدرن اندپوینت با رعایت الزامات مستندات رسمی',
+      runContext: 'rest-api.php',
+      code: "add_action( 'rest_api_init', function() {\n    register_rest_route( 'hs/v1', '/status', [\n        'methods'             => 'GET',\n        'callback'            => function() { return new WP_REST_Response(['status' => 'ok'], 200); },\n        'permission_callback' => '__return_true',\n    ]);\n});"
+    },
+    prerequisiteTermIds: ['hallucination-guard'],
+    relatedTermIds: ['hallucination-guard', 'agents-md'],
+    seoKeywords: ['rag wordpress', 'documentation grounding', 'بازیابی اسناد رسمی', 'کدهای به روز وردپرس']
   }
 ];

@@ -382,5 +382,132 @@ wp plugin deactivate --all ──> سایت در ۲ ثانیه زنده شد!`,
     prerequisiteTermIds: ['cls-prevention', 'opcache-tuning'],
     relatedTermIds: ['opcache-tuning', 'cls-prevention'],
     seoKeywords: ['core web vitals', 'سنجه های وب ویتالز', 'lcp وردپرس', 'سرعت سایت گوگل']
+  },
+  {
+    id: 'git-worktrees-agents',
+    termEn: 'Git Worktrees for Parallel AI Agents',
+    termFa: 'ورک‌تری‌های گیت برای توسعه موازی ایجنت‌ها (Git Worktrees)',
+    category: 'devops-server',
+    level: 'advanced',
+    phonetic: 'گیت ورک-تریز',
+    tags: ['git', 'worktrees', 'parallel-agents', 'devops', 'branching'],
+    sequenceOrder: 48,
+    learningStation: 'station-4',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: false,
+    elevatorPitch: 'داشتن همزمان چند شاخه زنده از پروژه روی هارد بدون نیاز به کلون مجدد مخزن! با ورک‌تری، می‌توانید یک ایجنت هوش مصنوعی را روی شاخه فرانت‌اند و یک ایجنت دیگر را روی شاخه بک‌اند همزمان به کار بگیرید بدون اینکه فایل‌های هم را به هم بریزند.',
+    beginnerTrap: 'سوییچ کردن مداوم با git checkout در حالی که ادیتور هوش مصنوعی باز است؛ این کار باعث خطاهای تداخل فایل و گیج شدن مدل می‌شود!',
+    analogy: 'مثل این است که یک کتابخانه با چند میز مطالعه مجزا داشته باشی؛ به جای اینکه کتاب‌ها را مدام از روی میز جمع کنی و کتاب دیگری بگذاری، هر دستیار پشت میز خودش کارش را موازی پیش می‌برد.',
+    humanQuestion: 'چطور چند قابلیت مختلف را همزمان با ایجنت‌های هوش مصنوعی توسعه دهم بدون اینکه کدهایم خراب شوند؟',
+    realPain: 'وقتی هوش مصنوعی وسط ادیت یک فایل است و شما شاخه را عوض می‌کنید، فایل‌ها بازنویسی ناقص می‌شوند و مجبور می‌شوید ساعت‌ها برای حل conflict زمان تلف کنید!',
+    commonAiError: {
+      errorSnippet: 'Git merge conflict / working tree dirty error during agent execution',
+      explanationFa: 'هوش مصنوعی و برنامه‌نویس همزمان روی یک شاخه فایل‌های مشترک را تغییر داده‌اند و تداخل خورده است!'
+    },
+    freelanceTip: 'به کارفرما بگو توسعه پروژه او با استراتژی برنچینگ موازی و ورک‌تری انجام می‌شود و سرعت تحویل فیچرها ۳ برابر متودولوژی سنتی است.',
+    asciiDiagram: `[مخزن اصلی گیت: .git]
+         ├── پوشه ۱: main (نسخه پایدار و پروداکشن)
+         ├── پوشه ۲: worktree-feature-banner (ایجنت ۱ در حال کار)
+         └── پوشه ۳: worktree-api-refactor  (ایجنت ۲ در حال کار)`,
+    injectionTarget: 'خط فرمان ترمینال برای ایجاد شاخه‌های کاری مجزا',
+    universalPrompt: `[ROLE]: Senior DevOps & Git Branching Specialist.
+[TASK]: Set up a clean Git Worktree command sequence to isolate development for the new WooCommerce payment gateway in a separate directory "../worktrees/payment-v2".
+[NEGATIVE CONSTRAINTS]:
+- Do not duplicate the entire git history storage.
+- Maintain separate local branch pointers.
+[OUTPUT]: Executable git worktree bash commands.`,
+    agentsMdRule: `# توسعه موازی با ورک‌تری در AGENTS.md:
+برای توسعه قابلیت‌های جدید و تسک‌های طولانی، ایجنت‌های هوش مصنوعی باید در یک Git Worktree مجزا فعالیت کنند تا شاخه main همواره آماده استقرار باقی بماند.`,
+    cursorPrompt: `Generate the terminal commands to add a new git worktree for this experimental branch.`,
+    claudePrompt: `Explain the architectural advantages of Git Worktrees over standard git stash when coordinating multiple AI subagents.`,
+    debugPrompt: `ورک‌تری قفل شده است. دستور prune و حذف ایمن شاخه کاری را ارائه بده.`,
+    howToTest: {
+      steps: [
+        'دستور git worktree add ../feature-branch feature-branch را در ترمینال بزنید.',
+        'پوشه جدید را به عنوان یک پنجره مستقل در ادیتور باز کنید.',
+        'مشاهده می‌کنید که دو شاخه کاملاً مستقل به صورت همزمان باز هستند و هیچ تداخلی با هم ندارند.'
+      ],
+      expectedResult: 'توسعه موازی بدون اصطکاک و حل راحت مرج‌ها.',
+      redFlags: ['تغییر دستی فایل‌ها روی شاخه main در زمان کار ایجنت‌ها']
+    },
+    shortDefinition: 'قابلیت بومی سیستم گیت برای داشتن همزمان چندین پوشه کاری متصل به یک مخزن مشترک جهت توسعه موازی.',
+    deepExplanation: 'ورک‌تری‌ها به جای کلون کردن مجدد، از دایرکتوری .git مشترک استفاده می‌کنند و بهترین بستر برای فعالیت ایجنت‌های خودمختار هوش مصنوعی هستند.',
+    vibeCodingImpact: 'همکاری همزمان چند ایجنت بدون تداخل، بازنویسی ناخواسته یا خطاهای مرج.',
+    goldenPrompt: 'دستورات گیت برای ساخت یک ورک‌تری مجزا برای توسعه بدون تداخل این ویژگی را بنویس.',
+    codeSnippet: {
+      language: 'bash',
+      description: 'ایجاد یک ورک‌تری کاری مستقل در ترمینال گیت',
+      runContext: 'Terminal Command',
+      code: "git worktree add ../hs-feature-checkout -b feature/checkout-v2\ncd ../hs-feature-checkout"
+    },
+    prerequisiteTermIds: ['wp-cli'],
+    relatedTermIds: ['wp-cli', 'subagents-delegation'],
+    seoKeywords: ['git worktrees', 'ورک تری گیت', 'توسعه موازی با هوش مصنوعی', 'مدیریت شاخه های گیت']
+  },
+  {
+    id: 'ci-cd-deployment',
+    termEn: 'CI/CD Automated Deployment for WordPress',
+    termFa: 'استقرار خودکار و بیلد پروداکشن (GitHub Actions CI/CD)',
+    category: 'devops-server',
+    level: 'advanced',
+    phonetic: 'سی-آی سی-دی دیپلویمنت',
+    tags: ['cicd', 'github-actions', 'deployment', 'devops', 'automation'],
+    sequenceOrder: 49,
+    learningStation: 'station-4',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    elevatorPitch: 'خداحافظی با آپلود دستی فایل از طریق FileZilla و کنترل‌پنل cPanel! با هر بار git push، ربات‌های GitHub Actions کدهای شما را تست می‌کنند و در چند ثانیه سایت اصلی کارفرما را بدون حتی ۱ ثانیه قطعی به‌روز می‌کنند.',
+    beginnerTrap: 'ویرایش مستقیم کدهای PHP در بخش ویرایشگر پوسته پیشخوان وردپرس روی سرور واقعی؛ یک نقطه‌ویرگول اشتباه کافیست تا کل سایت قطع شود و دیگر حتی پیشخوان هم باز نشود!',
+    analogy: 'مثل قطار خط لوله خودکار کارخانه است؛ اتومبیل روی ریل می‌رود، تست کیفیت می‌شود، رنگ می‌خورد و آماده تحویل به مشتری از کارخانه خارج می‌شود.',
+    humanQuestion: 'چطور تغییرات کدهایم را بدون خطر قطعی سایت مشتری به صورت خودکار روی هاست آپلود کنم؟',
+    realPain: 'آپلود دستی فایل با FTP پر از اشتباه انسانی است؛ فایلی جا می‌ماند، ورژن‌های قدیمی بازنویسی می‌شوند و مشتری با عصبانیت تماس می‌گیرد!',
+    commonAiError: {
+      errorSnippet: 'Action failed: rsync exited with code 23 / SSH key unauthorized',
+      explanationFa: 'هوش مصنوعی کلید دسترسی امنیتی SSH را در گیت‌هاب تنظیم نکرده و آپلود متوقف شده!'
+    },
+    freelanceTip: 'به کارفرما قرارداد با استقرار تمام‌اتوماتیک ارائه بده تا بداند برای هر تغییر کوچک نیاز به ورود دستی به هاست نیست و همه‌چیز استاندارد و ثبت‌شده است.',
+    asciiDiagram: `[کدنویسی در لوکال] ──> git push origin main
+                              │
+                              ▼
+           [ربات GitHub Actions: اجرای تست و بیلد]
+                              │
+                              ▼
+   [انتقال امن با rsync/SSH به هاست کارفرما در ۱۰ ثانیه] ──> 🚀 سایت آپدیت شد`,
+    injectionTarget: 'فایل /.github/workflows/deploy.yml در ریشه پروژه',
+    universalPrompt: `[ROLE]: Senior WordPress DevOps Engineer.
+[TASK]: Create a secure GitHub Actions workflow file (.github/workflows/deploy.yml) to deploy WordPress mu-plugins and theme assets via rsync over SSH.
+[NEGATIVE CONSTRAINTS]:
+- Use GitHub Secrets for host, user, and SSH private keys.
+- Exclude development directories (.git, node_modules, tests).
+[OUTPUT]: Production-grade YAML workflow.`,
+    agentsMdRule: `# استقرار خودکار در AGENTS.md:
+تمامی انتشارات به محیط پروداکشن باید منحصراً از طریق خط لوله CI/CD انجام شود و هرگونه ویرایش مستقیم فایل‌ها در سرور لایو اکیداً ممنوع است.`,
+    cursorPrompt: `Write the GitHub Actions deploy.yml file for deploying this WordPress child theme to an SSH server.`,
+    claudePrompt: `Architect a zero-downtime deployment strategy for high-traffic WordPress sites using GitHub Actions.`,
+    debugPrompt: `فایل کانفیگ rsync به دلیل وجود پوشه .git حجم زیادی انتقال می‌دهد. خطوط exclude را اضافه کن.`,
+    howToTest: {
+      steps: [
+        'فایل deploy.yml را در پوشه .github/workflows/ کامیت و پوش کنید.',
+        'تب Actions را در مخزن گیت‌هاب باز نمایید.',
+        'مشاهده کنید که تیک سبز موفقیت ثبت شده و تغییرات بلافاصله روی هاست پروداکشن منعکس گردیده است.'
+      ],
+      expectedResult: 'استقرار خودکار بدون دخالت دست در کمتر از ۳۰ ثانیه.',
+      redFlags: ['ویرایش دستی فایل‌ها در هاست با ابزار File Manager کنترل‌پنل']
+    },
+    shortDefinition: 'فرآیند خودکارسازی تست، بیلد و انتقال ایمن کدهای پروژه به سرور نهایی به محض ثبت تغییرات در گیت.',
+    deepExplanation: 'خط لوله‌های CI/CD خطای انسانی را در زمان انتشار حذف می‌کنند و با آرشیو کردن هر استقرار، امکان بازگشت فوری (Rollback) به نسخه سالم را فراهم می‌آورند.',
+    vibeCodingImpact: 'رسیدن به بالاترین حد آرامش ذهنی؛ توسعه در لوکال، تست با هوش مصنوعی و انتشار خودکار در پروداکشن.',
+    goldenPrompt: 'یک ورک‌فلو در گیت‌هاب اکشنز بنویس که با دستور rsync پوشه mu-plugins را روی هاست لینوکسی دیپلوی کند.',
+    codeSnippet: {
+      language: 'yaml',
+      description: 'ورک‌فلو استقرار خودکار وردپرس با GitHub Actions',
+      runContext: '.github/workflows/deploy.yml',
+      code: "name: Deploy WordPress\non:\n  push:\n    branches: [ main ]\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v4\n    - name: Sync via SSH\n      uses: Burnett01/rsync-deployments@7.0.1\n      with:\n        SWITCHES: -avzr --delete --exclude='.git*'\n        REMOTE_HOST: ${{ secrets.HOST }}\n        REMOTE_USER: ${{ secrets.USER }}\n        TARGET: /var/www/html/wp-content/mu-plugins"
+    },
+    prerequisiteTermIds: ['wp-cli'],
+    relatedTermIds: ['wp-cli', 'git-worktrees-agents'],
+    seoKeywords: ['ci cd وردپرس', 'github actions wordpress', 'استقرار خودکار وردپرس', 'دیپلوی خودکار هاست']
   }
 ];
