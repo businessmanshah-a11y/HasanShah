@@ -24,16 +24,22 @@ export interface AiErrorTranslation {
   explanationFa: string;      // ترجمه روان به زبان ساده که قضیه چیه
 }
 
+export interface HowToTestGuide {
+  steps: string[];            // مراحل تست گام‌به‌گام در ۳۰ ثانیه
+  expectedResult: string;     // نتیجه مورد انتظار در صورت کارکرد صحیح
+  redFlags: string[];         // علائم تقلب یا توهم هوش مصنوعی (پرچم‌های قرمز)
+}
+
 export interface EncyclopediaTerm {
   id: string;                     // شناسه یکتای لاتین برای URL و انکر (مثال: 'transients-api')
   termEn: string;                 // عنوان استاندارد انگلیسی
   termFa: string;                 // عنوان یا ترجمه مصطلح فارسی
   category: TermCategory;         // حوزه تخصصی ۶ گانه
   level: DifficultyLevel;         // سطح سختی مفهوم
-  phonetic?: string;              // راهنمای تلفظ انگلیسی با خط فارسی
+  phonetic: string;               // راهنمای تلفظ دقیق انگلیسی با خط فارسی
   tags: string[];                 // برچسب‌های ارتباطی و خوشه‌بندی
   
-  // لایه‌های انسانی و استعاری جدید
+  // لایه‌های انسانی و استعاری و تفهیم سریع
   analogy: string;                // استعاره دنیای واقعی به زبان عامیانه (به زبان آدمیزاد)
   humanQuestion: string;          // این به چه دردی می‌خوره به زبان کاربر
   realPain: string;               // اگر ندانی چه فاجعه‌ای رخ میده (سناریوی تلخ واقعی)
@@ -47,15 +53,30 @@ export interface EncyclopediaTerm {
   isEcommerceEssential?: boolean; // آیا جزو مسیر فروشگاهی است؟
   commonAiError?: AiErrorTranslation; // ارور رایج هوش مصنوعی و ترجمه روان آن
   freelanceTip?: string;          // فوت کوزه‌گری فریلنسرها در مذاکره با کارفرما
+  elevatorPitch: string;          // خلاصه طلایی تک‌جمله‌ای برای درک ۱۰ ثانیه‌ای
+  beginnerTrap: string;           // تله مرگبار ۹۰ درصد تازه‌کارها
+  asciiDiagram?: string;          // مینی‌دیاگرام متنی برای تجسم روند کار
+
+  // لایه‌های پرامپت مهندسی‌شده ۵ لایه‌ای و دیباگ
+  goldenPrompt: string;           // پرامپت جامع پیش‌فرض
+  cursorPrompt: string;           // پرامپت ۵ لایه‌ای مخصوص Cursor Composer با ارجاعات @file
+  claudePrompt: string;           // پرامپت ۵ لایه‌ای مخصوص Claude / Web ChatGPT
+  debugPrompt: string;            // پرامپت نجات عیب‌یابی (اگر هوش مصنوعی ارور داد چی بگم؟)
+  injectionTarget: string;        // محل دقیق قرارگیری کد (مثال: functions.php یا mu-plugins)
+  
+  // راستی‌آزمایی و تست
+  howToTest: HowToTestGuide;      // راهنمای راستی‌آزمایی در ۳۰ ثانیه
 
   // لایه‌های محتوایی فنی
   shortDefinition: string;        // تعریف سریع و روشن در ۱ یا ۲ جمله
   deepExplanation: string;        // تحلیل عمیق سازوکار در وردپرس و سناریوهای واقعی
   vibeCodingImpact: string;       // نگاه اختصاصی وایب‌کدینگ: خطاهای رایج AI و عواقب ندانستن
-  goldenPrompt: string;           // پرامپت مهندسی‌شده و آماده کپی برای Cursor یا Claude
   codeSnippet?: CodeSnippet;      // نمونه کد اعتبارسنجی‌شده یا دستور خط فرمان
   
-  // روابط و سئو
+  // روابط، پیش‌نیازها و سریال
+  prerequisiteTermIds?: string[]; // شناسه‌های اصطلاحات پیش‌نیاز برای درک بهتر
+  seriesEpisodeUrl?: string;      // لینک مستقیم به قسمت متناظر در سریال فاکتور داداش
+  seriesEpisodeLabel?: string;    // عنوان بخش یا تایم‌استمپ ویدیو در سریال
   relatedTermIds: string[];       // شناسه‌های اصطلاحات هم‌خانواده
   seoKeywords: string[];          // واژگان جستجوی داخلی و مترادف‌ها
 }

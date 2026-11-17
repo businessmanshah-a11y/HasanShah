@@ -3,37 +3,36 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
-  Sparkles,
   Search,
-  Copy,
-  Check,
-  Share2,
-  ArrowUpRight,
-  Code2,
-  Terminal,
-  Database,
-  Layers,
-  Layout,
-  Brain,
-  ShieldAlert,
-  Lightbulb,
-  BookOpen,
-  Filter,
-  ArrowLeft,
-  X,
-  ExternalLink,
+  Sparkles,
   ChevronRight,
+  ChevronUp,
   Bookmark,
   BookmarkCheck,
-  HelpCircle,
-  Download,
+  Copy,
+  Check,
+  ExternalLink,
+  Flame,
+  ArrowUpRight,
+  ShieldAlert,
+  Lightbulb,
   Award,
-  Zap,
+  ArrowLeftRight,
+  MessageSquarePlus,
+  Share2,
+  Brain,
+  X,
+  Printer,
+  Gauge,
+  FileCode2,
+  BookOpen,
+  Terminal,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowLeft,
   Eye,
   EyeOff,
-  Flame,
-  MessageSquarePlus,
-  ArrowLeftRight,
+  SlidersHorizontal,
 } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -56,44 +55,44 @@ import FlashcardQuizModal from "./components/FlashcardQuizModal";
 import StoryCardShareModal from "./components/StoryCardShareModal";
 import FloatingSosHelp from "./components/FloatingSosHelp";
 import CommunitySuggestModal from "./components/CommunitySuggestModal";
+import PrintableCheatSheetModal from "./components/PrintableCheatSheetModal";
+import ContextWindowCalculatorModal from "./components/ContextWindowCalculatorModal";
+import CursorRulesDownloadModal from "./components/CursorRulesDownloadModal";
+import ZenModeModal from "./components/ZenModeModal";
+import VibeManifestoSection from "./components/VibeManifestoSection";
 import { EncyclopediaTerm } from "./data/types";
 
-// Emergency tools for Section 0 (Humanized & Reformulated per Item 45)
+// Emergency tools for Section 0 (Humanized & Reformulated per Item 45 & AGENTS.md)
 const emergencyRescueTools = [
   {
     title: "مستندات و پریزهای اتصال هسته (Hooks Reference)",
     url: "https://developer.wordpress.org/reference/hooks/",
     description: "اگر خواستی بدون شکستن قالب وردپرس، فیچر جدیدی به هدر یا فوتر اضافه کنی.",
     badge: "پریزهای اتصال هسته",
-    icon: "layers",
   },
   {
     title: "ژنراتور شناسنامه بلاک (block.json Builder)",
     url: "https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/",
     description: "اگر خواستی بدون المنتور بلاک اختصاصی بسازی که در آپدیت‌های آینده خراب نشود.",
     badge: "بلاک ضد خرابی",
-    icon: "code",
   },
   {
     title: "کاوشگر روت‌های REST API وردپرس",
     url: "https://developer.wordpress.org/rest-api/reference/",
     description: "اگر خواستی اپ موبایل یا سایت ری‌اکت را به پیشخوان وردپرس متصل کنی.",
     badge: "اتصال به اپلیکیشن",
-    icon: "database",
   },
   {
     title: "ابزار نجات دیتابیس در زمان انتقال هاست (Search-Replace)",
     url: "https://interconnectit.com/search-and-replace-for-wordpress-databases/",
     description: "اگر دامنه سایتت رو عوض کردی و تنظیمات و فونت‌ها ناپدید شدند، این ابزار نجاتت می‌دهد.",
     badge: "تعمیر دیتابیس آسیب‌دیده",
-    icon: "terminal",
   },
   {
     title: "سنجشگر زنده سرعت گوگل (PageSpeed Insights)",
     url: "https://pagespeed.web.dev/",
     description: "اگر می‌خواهی بدانی پرش صفحه (CLS) و سرعت لود سایتت از نظر گوگل سبزه یا قرمز.",
     badge: "چکاپ نبض لایت‌هاوس",
-    icon: "sparkles",
   },
 ];
 
@@ -106,9 +105,12 @@ export default function VibeDictionaryContent() {
   const [selectedPreset, setSelectedPreset] = useState<'landing24h' | 'ecommerce' | 'critical5' | 'nocode' | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Card Tab States (termId -> "concept" | "prompt" | "test" | "code")
+  const [cardActiveTab, setCardActiveTab] = useState<Record<string, "concept" | "prompt" | "test" | "code">>({});
+  const [promptEditorMode, setPromptEditorMode] = useState<Record<string, "cursor" | "claude">>({});
+
   // UI Modes
   const [viewMode, setViewMode] = useState<"detailed" | "compact">("detailed");
-  const [revealedCodeTerms, setRevealedCodeTerms] = useState<string[]>([]);
   const [readTerms, setReadTerms] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
@@ -119,7 +121,15 @@ export default function VibeDictionaryContent() {
   const [isConfusingPairsOpen, setIsConfusingPairsOpen] = useState(false);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isSuggestOpen, setIsSuggestOpen] = useState(false);
+  const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const [isCursorRulesOpen, setIsCursorRulesOpen] = useState(false);
+  const [zenModeTermId, setZenModeTermId] = useState<string | null>(null);
   const [selectedShareTerm, setSelectedShareTerm] = useState<EncyclopediaTerm | null>(null);
+
+  // Scroll Progress
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -136,7 +146,7 @@ export default function VibeDictionaryContent() {
     }
   }, []);
 
-  // Keyboard shortcut Cmd+K or Ctrl+K to focus search
+  // Keyboard shortcut Cmd+K or Ctrl+K
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -147,6 +157,24 @@ export default function VibeDictionaryContent() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Track scroll for Back-to-Top and Progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const currentProgress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
+      }
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => {
@@ -169,12 +197,6 @@ export default function VibeDictionaryContent() {
     });
   };
 
-  const toggleCodeReveal = (id: string) => {
-    setRevealedCodeTerms((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
-
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopiedItem(id);
@@ -183,27 +205,12 @@ export default function VibeDictionaryContent() {
     }, 2000);
   };
 
-  const handleDownloadRules = () => {
-    const content = `# قوانین و چیت‌شیت جامع وایب‌کدینگ وردپرس (HasanShah.ir)
-# این فایل را در ریشه پروژه خود با نام .cursorrules یا CHEATSHEET.md ذخیره کنید.
+  const setTermTab = (termId: string, tab: "concept" | "prompt" | "test" | "code") => {
+    setCardActiveTab((prev) => ({ ...prev, [termId]: tab }));
+  };
 
-${allDictionaryTerms.map((t) => `## ${t.termEn} (${t.termFa})
-- به زبان ساده: ${t.analogy}
-- چرا مهم است؟ ${t.realPain}
-- پرامپت طلایی:
-\`\`\`
-${t.goldenPrompt}
-\`\`\`
-`).join('\n\n')}`;
-
-    const blob = new Blob([content], { type: "text/markdown;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "cursorrules-vibe-wordpress.md");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const togglePromptEditor = (termId: string, mode: "cursor" | "claude") => {
+    setPromptEditorMode((prev) => ({ ...prev, [termId]: mode }));
   };
 
   // Filtered terms calculation
@@ -239,7 +246,7 @@ ${t.goldenPrompt}
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground" dir="rtl">
       <Nav />
 
-      {/* ── Modals ── */}
+      {/* ── Modals Hub ── */}
       <InteractivePromptBuilderModal
         isOpen={isPromptBuilderOpen}
         onClose={() => setIsPromptBuilderOpen(false)}
@@ -260,6 +267,23 @@ ${t.goldenPrompt}
         isOpen={isSuggestOpen}
         onClose={() => setIsSuggestOpen(false)}
       />
+      <PrintableCheatSheetModal
+        isOpen={isCheatSheetOpen}
+        onClose={() => setIsCheatSheetOpen(false)}
+      />
+      <ContextWindowCalculatorModal
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+      />
+      <CursorRulesDownloadModal
+        isOpen={isCursorRulesOpen}
+        onClose={() => setIsCursorRulesOpen(false)}
+      />
+      <ZenModeModal
+        initialTermId={zenModeTermId || undefined}
+        isOpen={!!zenModeTermId}
+        onClose={() => setZenModeTermId(null)}
+      />
       <FloatingSosHelp
         onTriggerPreset={(preset) => {
           setSelectedPreset(preset);
@@ -267,6 +291,41 @@ ${t.goldenPrompt}
           setSelectedStation("all");
         }}
       />
+
+      {/* ── Back to Top Button with Circular Progress (Item 48) ── */}
+      {showBackToTop && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="fixed bottom-6 left-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-amber-400/40 bg-[#090D16]/90 text-amber-300 shadow-2xl backdrop-blur-md hover:scale-105 hover:bg-amber-400/10 transition-all group"
+          title="بازگشت به ابتدای صفحه"
+        >
+          <svg className="absolute inset-0 h-full w-full -rotate-90">
+            <circle
+              cx="24"
+              cy="24"
+              r="20"
+              className="text-white/10"
+              strokeWidth="2.5"
+              stroke="currentColor"
+              fill="transparent"
+            />
+            <circle
+              cx="24"
+              cy="24"
+              r="20"
+              className="text-amber-400 transition-all duration-150"
+              strokeWidth="2.5"
+              strokeDasharray={125.6}
+              strokeDashoffset={125.6 - (125.6 * scrollProgress) / 100}
+              strokeLinecap="round"
+              stroke="currentColor"
+              fill="transparent"
+            />
+          </svg>
+          <ChevronUp className="h-5 w-5 text-amber-400 group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+      )}
 
       {/* ── Hero Section ── */}
       <section className="relative overflow-hidden pt-32 pb-10 md:pt-40 md:pb-14">
@@ -290,37 +349,64 @@ ${t.goldenPrompt}
               وایب‌کدینگ
             </Link>
             <ChevronRight className="h-3 w-3 rotate-180" />
-            <span className="text-gold font-semibold">دانشنامه تخصصی وردپرس</span>
+            <span className="text-gold font-semibold">دانشنامه و پرامپت‌های طلایی</span>
           </nav>
 
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold text-gold">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold text-amber-300">
             <Sparkles className="h-3.5 w-3.5" />
-            مرجع جامع و هدایت‌شده وایب‌کدینگ وردپرس
+            نسخه ارتقایافته ۲.۰ • مجهز به پرامپت‌های ۵ لایه‌ای و راهنمای تست
           </div>
 
           <h1 className="text-3xl font-black leading-tight md:text-5xl lg:text-6xl text-foreground">
-            الفبای مهندسی <span className="text-gradient-gold">وایب‌کدینگ</span> در وردپرس
+            دانشنامه مهندسی <span className="text-gradient-gold">وایب‌کدینگ وردپرس</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            هوش مصنوعی کد را تولید می‌کند، اما معماری را شما دیکته می‌کنید. مرجع اصطلاحات با استعاره‌های ملموس، پرامپت‌های ضد باگ و راهنمای گام‌به‌گام برای کسانی که می‌خواهند با AI سایت‌های واقعی بسازند.
+            هوش مصنوعی کد را تولید می‌کند، اما معماری را شما دیکته می‌کنید. مرجع ۳۷ اصطلاح حیاتی با تمثیل‌های روزمره، پرامپت‌های ۵ لایه‌ای آماده کپی، و راه‌حل تست در ۳۰ ثانیه برای کسانی که می‌خواهند بدون باگ محصول خلق کنند.
           </p>
 
-          {/* Quick Action Tools Hub */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
+          {/* ── Glassmorphism Studio Bar (Item 44) ── */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-5xl mx-auto p-2 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md">
             <button
               type="button"
               onClick={() => setIsPromptBuilderOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl bg-gold/15 border border-gold/40 px-4 py-2.5 text-xs font-bold text-gold hover:bg-gold/25 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-3.5 py-2 text-xs font-bold text-black hover:opacity-95 shadow-md shadow-amber-500/20 transition-all"
             >
               <Sparkles className="h-4 w-4" />
-              <span>شبیه‌ساز تولید پرامپت پویا</span>
+              <span>ژنراتور پرامپت ۵ لایه‌ای</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsCursorRulesOpen(true)}
+              className="inline-flex items-center gap-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3.5 py-2 text-xs font-bold text-amber-300 hover:bg-amber-400/20 transition-all"
+            >
+              <FileCode2 className="h-4 w-4" />
+              <span>دانلود .cursorrules وردپرس</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsCalculatorOpen(true)}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-foreground hover:bg-white/10 transition-all"
+            >
+              <Gauge className="h-4 w-4 text-amber-400" />
+              <span>محاسبه‌گر پنجره بافت</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsCheatSheetOpen(true)}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-foreground hover:bg-white/10 transition-all"
+            >
+              <Printer className="h-4 w-4 text-amber-400" />
+              <span>چیت‌شیت رومیزی (چاپ/PDF)</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsConfusingPairsOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-purple-400/30 bg-purple-400/10 px-4 py-2.5 text-xs font-bold text-purple-300 hover:bg-purple-400/20 transition-all"
+              className="inline-flex items-center gap-2 rounded-xl border border-purple-400/30 bg-purple-400/10 px-3.5 py-2 text-xs font-bold text-purple-300 hover:bg-purple-400/20 transition-all"
             >
               <ArrowLeftRight className="h-4 w-4" />
               <span>تفاوت مفاهیم گیج‌کننده</span>
@@ -329,28 +415,19 @@ ${t.goldenPrompt}
             <button
               type="button"
               onClick={() => setIsQuizOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-2.5 text-xs font-bold text-emerald-300 hover:bg-emerald-400/20 transition-all"
+              className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-2 text-xs font-bold text-emerald-300 hover:bg-emerald-400/20 transition-all"
             >
               <Award className="h-4 w-4" />
-              <span>کوییز تعیین سطح وایب‌کدینگ</span>
+              <span>کوییز سنجش سطح</span>
             </button>
 
             <button
               type="button"
-              onClick={handleDownloadRules}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-bold text-muted-foreground hover:text-foreground hover:border-white/20 transition-all"
+              onClick={() => setZenModeTermId(allDictionaryTerms[0].id)}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-muted-foreground hover:text-foreground transition-all"
             >
-              <Download className="h-4 w-4" />
-              <span>دانلود فایل .cursorrules</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsSuggestOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-bold text-muted-foreground hover:text-foreground hover:border-white/20 transition-all"
-            >
-              <MessageSquarePlus className="h-4 w-4" />
-              <span>پیشنهاد اصطلاح جدید</span>
+              <BookOpen className="h-4 w-4 text-amber-400" />
+              <span>حالت مطالعه Zen</span>
             </button>
           </div>
 
@@ -384,18 +461,18 @@ ${t.goldenPrompt}
 
       {/* ── Section 0: Emergency Rescue Tools (Item 45 & AGENTS.md) ── */}
       <section id="quick-access-tools" className="container mx-auto px-4 pb-8">
-        <div className="rounded-3xl border border-gold/30 bg-surface/80 p-6 md:p-8 backdrop-blur shadow-elegant">
+        <div className="rounded-3xl border border-amber-400/30 bg-surface/80 p-6 md:p-8 backdrop-blur shadow-elegant">
           <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
             <div>
-              <h2 className="text-lg md:text-xl font-black text-foreground border-r-4 border-gold pr-3">
+              <h2 className="text-lg md:text-xl font-black text-foreground border-r-4 border-amber-400 pr-3">
                 ۰. جعبه نجات اضطراری سایت در زمان بحران
               </h2>
               <p className="mt-1 text-xs text-muted-foreground pr-4">
                 منابع رسمی و تست‌کننده‌های زنده که در زمان قفل شدن پیشخوان، باگ‌های دیتابیس یا افت سرعت نجاتت می‌دهند
               </p>
             </div>
-            <span className="self-start sm:self-auto rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-bold text-gold">
-              ابزارهای ضروری
+            <span className="self-start sm:self-auto rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-bold text-amber-300">
+              ابزارهای الزامی
             </span>
           </div>
 
@@ -413,16 +490,16 @@ ${t.goldenPrompt}
                     <span className="text-[11px] font-bold text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-2.5 py-0.5">
                       {tool.badge}
                     </span>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-gold transition-colors" />
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-amber-400 transition-colors" />
                   </div>
-                  <h3 className="font-bold text-sm text-foreground group-hover:text-gold transition-colors">
+                  <h3 className="font-bold text-sm text-foreground group-hover:text-amber-400 transition-colors">
                     {tool.title}
                   </h3>
                   <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2">
                     {tool.description}
                   </p>
                 </div>
-                <div className="mt-3 pt-2 border-t border-white/5 flex items-center gap-1.5 text-[11px] text-gold/80 font-mono">
+                <div className="mt-3 pt-2 border-t border-white/5 flex items-center gap-1.5 text-[11px] text-amber-400/80 font-mono">
                   <span>باز کردن ابزار</span>
                   <ExternalLink className="h-3 w-3" />
                 </div>
@@ -435,13 +512,13 @@ ${t.goldenPrompt}
       {/* ── Learning Stations & Presets (Pillar 2) ── */}
       <section className="container mx-auto px-4 pb-8">
         <div className="rounded-3xl border border-white/10 bg-surface/50 p-6 md:p-8 backdrop-blur space-y-6">
-          {/* Persona Switcher (Pillar 6) */}
+          {/* Persona Switcher */}
           <PersonaRoleSelector
             activePersona={selectedPersona}
             onSelectPersona={(persona) => setSelectedPersona(persona)}
           />
 
-          {/* Curriculum Stations (Pillar 2) */}
+          {/* Curriculum Stations */}
           <div className="border-t border-white/10 pt-5">
             <CurriculumRoadmapBar
               activeStation={selectedStation}
@@ -451,8 +528,8 @@ ${t.goldenPrompt}
             />
           </div>
 
-          {/* Search Box & Controls */}
-          <div className="border-t border-white/10 pt-5 space-y-4">
+          {/* Search Box & Quick Intent Pills (Item 31) */}
+          <div className="border-t border-white/10 pt-5 space-y-3">
             <div className="relative">
               <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
@@ -461,7 +538,7 @@ ${t.goldenPrompt}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="جستجو بر اساس نیاز (مثلاً: سایتم کند شده، هک نشم، لندینگ، رنگ، یا نام انگلیسی)..."
-                className="w-full rounded-2xl border border-white/15 bg-background/80 py-4 pr-12 pl-28 text-sm md:text-base text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-all"
+                className="w-full rounded-2xl border border-white/15 bg-background/80 py-4 pr-12 pl-28 text-sm md:text-base text-foreground placeholder:text-muted-foreground focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition-all"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
                 {searchQuery && (
@@ -479,8 +556,30 @@ ${t.goldenPrompt}
               </div>
             </div>
 
+            {/* Quick intent keywords pills (Item 31) */}
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+              <span className="text-muted-foreground font-semibold">🔍 امتحان کنید:</span>
+              {[
+                { label: "سایتم کند شده", query: "سایتم کند شده" },
+                { label: "هک نشم (امنیت)", query: "هک" },
+                { label: "صفحه سفید مرگ", query: "ارور" },
+                { label: "فروشگاه آنلاین", query: "فروشگاه" },
+                { label: "انتقال هاست", query: "انتقال" },
+                { label: "بلاک گوتنبرگ", query: "بلاک" },
+              ].map((pill) => (
+                <button
+                  key={pill.label}
+                  type="button"
+                  onClick={() => setSearchQuery(pill.query)}
+                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-muted-foreground hover:border-amber-400/40 hover:text-amber-300 transition-colors"
+                >
+                  {pill.label}
+                </button>
+              ))}
+            </div>
+
             {/* View Mode & Filter Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-xs pt-2">
               <div className="flex items-center gap-3">
                 <span className="font-bold text-muted-foreground">
                   {filteredTerms.length} اصطلاح متناسب با فیلتر شما یافت شد
@@ -501,13 +600,13 @@ ${t.goldenPrompt}
                 )}
               </div>
 
-              {/* View Mode Toggle (Item 27) */}
+              {/* View Mode Toggle */}
               <div className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 p-1">
                 <button
                   type="button"
                   onClick={() => setViewMode("detailed")}
                   className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                    viewMode === "detailed" ? "bg-gold text-gold-foreground font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    viewMode === "detailed" ? "bg-amber-400 text-black font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   نمای تشریحی کامل
@@ -516,7 +615,7 @@ ${t.goldenPrompt}
                   type="button"
                   onClick={() => setViewMode("compact")}
                   className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                    viewMode === "compact" ? "bg-gold text-gold-foreground font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    viewMode === "compact" ? "bg-amber-400 text-black font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   نمای فشرده بنتو
@@ -528,7 +627,7 @@ ${t.goldenPrompt}
       </section>
 
       {/* ── Terms Grid Section ── */}
-      <section className="container mx-auto px-4 pb-20">
+      <section className="container mx-auto px-4 pb-12">
         {filteredTerms.length === 0 ? (
           <div className="rounded-3xl border border-white/10 bg-surface/40 p-12 text-center space-y-3">
             <Brain className="mx-auto h-12 w-12 text-muted-foreground/50" />
@@ -547,7 +646,7 @@ ${t.goldenPrompt}
                 setSelectedPreset("all");
                 setShowOnlyFavorites(false);
               }}
-              className="mt-2 rounded-xl border border-gold/30 bg-gold/10 px-5 py-2 text-xs font-bold text-gold hover:bg-gold/20 transition-all"
+              className="mt-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-5 py-2 text-xs font-bold text-amber-300 hover:bg-amber-400/20 transition-all"
             >
               پاک کردن همه فیلترها
             </button>
@@ -557,24 +656,26 @@ ${t.goldenPrompt}
             {filteredTerms.map((term) => {
               const isFavorite = favorites.includes(term.id);
               const isRead = readTerms.includes(term.id);
+              const activeTab = cardActiveTab[term.id] || "concept";
+              const currentEditorMode = promptEditorMode[term.id] || "cursor";
               const isPromptCopied = copiedItem === `prompt-${term.id}`;
-              const isCodeRevealed = revealedCodeTerms.includes(term.id);
+              const isDebugCopied = copiedItem === `debug-${term.id}`;
 
               return (
                 <article
                   key={term.id}
                   id={term.id}
                   onClick={() => markAsRead(term.id)}
-                  className={`scroll-mt-32 rounded-3xl border bg-surface/75 backdrop-blur transition-all duration-300 flex flex-col justify-between ${
-                    isRead ? "border-white/10" : "border-gold/30 shadow-sm"
-                  } hover:border-gold/50 hover:shadow-elegant ${viewMode === "detailed" ? "p-6 md:p-7" : "p-5"}`}
+                  className={`scroll-mt-32 rounded-3xl border bg-surface/85 backdrop-blur transition-all duration-300 flex flex-col justify-between ${
+                    isRead ? "border-white/10" : "border-amber-400/30 shadow-sm"
+                  } hover:border-amber-400/50 hover:shadow-2xl ${viewMode === "detailed" ? "p-6 md:p-7" : "p-5"}`}
                 >
                   <div className="space-y-4">
                     {/* Header Badges */}
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="flex items-center gap-1 text-[11px] font-bold text-gold bg-gold/10 border border-gold/30 rounded-full px-2.5 py-0.5">
-                          قدم {term.sequenceOrder} از ۳۶
+                        <span className="flex items-center gap-1 text-[11px] font-bold text-amber-300 bg-amber-400/10 border border-amber-400/30 rounded-full px-2.5 py-0.5">
+                          قدم {term.sequenceOrder} از ۳۷
                         </span>
                         <span className="text-[11px] text-muted-foreground bg-white/5 rounded-full px-2 py-0.5">
                           ⏱️ {term.readingTimeMinutes} دقیقه مطالعه
@@ -584,6 +685,15 @@ ${t.goldenPrompt}
                             بدون نیاز به کد
                           </span>
                         )}
+                        {term.seriesEpisodeUrl && (
+                          <Link
+                            href={term.seriesEpisodeUrl}
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-[10px] font-bold text-amber-300 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 hover:bg-amber-400/20 transition-colors inline-flex items-center gap-1"
+                          >
+                            <span>🎬 {term.seriesEpisodeLabel}</span>
+                          </Link>
+                        )}
                       </div>
 
                       {/* Action Icons */}
@@ -592,14 +702,24 @@ ${t.goldenPrompt}
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
+                            setZenModeTermId(term.id);
+                          }}
+                          className="p-1.5 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-amber-300 transition-colors"
+                          title="مطالعه تمام‌صفحه و متمرکز (Zen Mode)"
+                        >
+                          <BookOpen className="h-4 w-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
                             setSelectedShareTerm(term);
                           }}
-                          className="p-1.5 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-gold transition-colors"
-                          title="اشتراک‌گذاری در استوری"
+                          className="p-1.5 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-amber-300 transition-colors"
+                          title="اشتراک‌گذاری کارت در استوری"
                         >
                           <Share2 className="h-4 w-4" />
                         </button>
-
                         <button
                           type="button"
                           onClick={(e) => {
@@ -618,147 +738,317 @@ ${t.goldenPrompt}
                       </div>
                     </div>
 
-                    {/* Titles */}
+                    {/* Titles & Pronunciation */}
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h2 className="text-xl md:text-2xl font-black text-foreground">
                           {term.termEn}
                         </h2>
                         {term.phonetic && (
-                          <span className="text-[11px] font-mono text-muted-foreground bg-white/5 rounded-md px-2 py-0.5">
+                          <span className="text-[11px] font-mono text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-md px-2 py-0.5">
                             {term.phonetic}
                           </span>
                         )}
                       </div>
-                      <h3 className="text-sm md:text-base font-bold text-gold">
+                      <h3 className="text-sm md:text-base font-bold text-amber-400">
                         {term.termFa}
                       </h3>
                     </div>
 
-                    {/* Human Question Subtitle (Item 20) */}
-                    <div className="text-xs md:text-sm font-bold text-foreground/90 bg-white/[0.03] border-r-2 border-gold pr-3 py-1">
+                    {/* Human Question Subtitle */}
+                    <div className="text-xs md:text-sm font-bold text-foreground/90 bg-white/[0.03] border-r-2 border-amber-400 pr-3 py-1">
                       ❓ {term.humanQuestion}
                     </div>
 
-                    {/* Everyday Analogy Callout (Item 19 - به زبان آدمیزاد) */}
-                    <div className="rounded-2xl border border-amber-400/35 bg-gradient-to-r from-amber-400/15 to-amber-400/5 p-4 text-amber-100 leading-relaxed text-xs md:text-sm shadow-sm">
-                      <div className="flex items-center gap-1.5 font-black text-amber-300 text-xs md:text-sm mb-1">
-                        <Lightbulb className="h-4 w-4 shrink-0 text-amber-400" />
-                        <span>به زبان آدمیزاد (استعاره روزمره):</span>
-                      </div>
-                      <p className="leading-loose text-amber-100/95 font-medium">
-                        {term.analogy}
-                      </p>
+                    {/* ── 4-Tabs Switcher for each card ── */}
+                    <div className="flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/10 text-xs">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTermTab(term.id, "concept");
+                        }}
+                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
+                          activeTab === "concept"
+                            ? "bg-amber-400 text-black shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        مفهوم و تمثیل
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTermTab(term.id, "prompt");
+                        }}
+                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
+                          activeTab === "prompt"
+                            ? "bg-amber-400 text-black shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        پرامپت ۵ لایه‌ای
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTermTab(term.id, "test");
+                        }}
+                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
+                          activeTab === "test"
+                            ? "bg-amber-400 text-black shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        تست ۳۰ ثانیه‌ای
+                      </button>
+                      {term.codeSnippet && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setTermTab(term.id, "code");
+                          }}
+                          className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
+                            activeTab === "code"
+                              ? "bg-amber-400 text-black shadow-sm"
+                              : "text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          کد فنی
+                        </button>
+                      )}
                     </div>
 
-                    {/* Detailed View Exclusive Content */}
-                    {viewMode === "detailed" && (
+                    {/* Tab 1: Concept & Analogy */}
+                    {activeTab === "concept" && (
                       <div className="space-y-3 pt-1">
-                        {/* Real Pain Alert (Item 21) */}
-                        <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs text-rose-200 leading-relaxed">
-                          <div className="flex items-center gap-1.5 font-bold text-rose-300 mb-1">
-                            <ShieldAlert className="h-4 w-4 shrink-0" />
-                            <span>اگر ندانی چه فاجعه‌ای رخ میده؟</span>
+                        {/* Everyday Analogy */}
+                        <div className="rounded-2xl border border-amber-400/35 bg-gradient-to-r from-amber-400/15 to-amber-400/5 p-4 text-amber-100 leading-relaxed text-xs md:text-sm shadow-sm">
+                          <div className="flex items-center gap-1.5 font-black text-amber-300 text-xs md:text-sm mb-1">
+                            <Lightbulb className="h-4 w-4 shrink-0 text-amber-400" />
+                            <span>به زبان آدمیزاد (استعاره روزمره):</span>
                           </div>
-                          <p className="leading-relaxed">{term.realPain}</p>
+                          <p className="leading-loose text-amber-100/95 font-medium">
+                            {term.analogy}
+                          </p>
                         </div>
 
-                        {/* AI Common Error Box (Item 22) */}
-                        {term.commonAiError && (
-                          <div className="rounded-2xl border border-white/10 bg-black/40 p-3.5 space-y-1.5 text-xs">
-                            <div className="text-muted-foreground font-semibold flex items-center gap-1">
-                              <span>🤖 خطای متداول هوش مصنوعی در ادیتور:</span>
-                            </div>
-                            <code className="block font-mono text-[11px] text-rose-300/90 bg-rose-950/40 p-2 rounded-xl truncate" dir="ltr">
-                              {term.commonAiError.errorSnippet}
-                            </code>
-                            <div className="text-muted-foreground text-[11px] pt-1 leading-relaxed">
-                              <strong>مفهوم به فارسی:</strong> {term.commonAiError.explanationFa}
-                            </div>
+                        {/* Beginner Trap & Real Pain */}
+                        <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs text-rose-200 leading-relaxed">
+                          <div className="flex items-center gap-1.5 font-bold text-rose-300 mb-1">
+                            <AlertTriangle className="h-4 w-4 shrink-0" />
+                            <span>تله مرگبار ۹۰ درصد تازه‌کارها:</span>
                           </div>
-                        )}
+                          <p className="leading-relaxed">{term.beginnerTrap}</p>
+                        </div>
 
-                        {/* Freelance Tip (Item 43) */}
-                        {term.freelanceTip && (
-                          <div className="rounded-2xl border border-purple-500/25 bg-purple-500/10 p-3 text-xs text-purple-200 leading-relaxed">
-                            <strong>💼 فوت کوزه‌گری برای فریلنسرها:</strong> {term.freelanceTip}
+                        {viewMode === "detailed" && (
+                          <div className="space-y-3">
+                            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 text-xs text-muted-foreground leading-relaxed">
+                              <span className="font-bold text-foreground block mb-1">
+                                اگر ندانی چه فاجعه‌ای رخ می‌دهد؟
+                              </span>
+                              <p>{term.realPain}</p>
+                            </div>
+
+                            {/* ASCII Diagram if available */}
+                            {term.asciiDiagram && (
+                              <div className="rounded-2xl border border-white/10 bg-black/60 p-3 text-xs space-y-1.5">
+                                <span className="font-bold text-muted-foreground flex items-center gap-1">
+                                  <Terminal className="h-3.5 w-3.5 text-amber-400" />
+                                  <span>دیاگرام سازوکار:</span>
+                                </span>
+                                <pre className="p-2.5 rounded-xl bg-black font-mono text-[10px] text-amber-300 leading-relaxed text-left overflow-x-auto" dir="ltr">
+                                  {term.asciiDiagram}
+                                </pre>
+                              </div>
+                            )}
+
+                            {term.commonAiError && (
+                              <div className="rounded-2xl border border-white/10 bg-black/40 p-3.5 space-y-1.5 text-xs">
+                                <div className="text-muted-foreground font-semibold flex items-center gap-1">
+                                  <span>🤖 خطای متداول هوش مصنوعی در ادیتور:</span>
+                                </div>
+                                <code className="block font-mono text-[11px] text-rose-300/90 bg-rose-950/40 p-2 rounded-xl truncate" dir="ltr">
+                                  {term.commonAiError.errorSnippet}
+                                </code>
+                                <div className="text-muted-foreground text-[11px] pt-1 leading-relaxed">
+                                  <strong>مفهوم به فارسی:</strong> {term.commonAiError.explanationFa}
+                                </div>
+                              </div>
+                            )}
+
+                            {term.freelanceTip && (
+                              <div className="rounded-2xl border border-purple-500/25 bg-purple-500/10 p-3 text-xs text-purple-200 leading-relaxed">
+                                <strong>💼 فوت کوزه‌گری برای فریلنسرها:</strong> {term.freelanceTip}
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
                     )}
 
-                    {/* Golden Prompt Box (Always Visible) */}
-                    <div className="rounded-2xl border border-white/10 bg-black/60 p-4 space-y-2">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-bold text-gold flex items-center gap-1">
-                          <Sparkles className="h-3.5 w-3.5" />
-                          پرامپت طلایی برای تحویل به هوش مصنوعی:
-                        </span>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleCopy(term.goldenPrompt, `prompt-${term.id}`);
-                          }}
-                          className="inline-flex items-center gap-1 rounded-lg border border-gold/40 bg-gold/15 px-3 py-1 text-xs font-bold text-gold hover:bg-gold/25 transition-all shadow-sm"
-                        >
-                          {isPromptCopied ? (
-                            <>
-                              <Check className="h-3.5 w-3.5 text-emerald-400" />
-                              <span className="text-emerald-400">کپی شد!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="h-3.5 w-3.5" />
-                              <span>کپی پرامپت</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
+                    {/* Tab 2: 5-Layer Battle-Tested Prompt */}
+                    {activeTab === "prompt" && (
+                      <div className="space-y-3 pt-1">
+                        <div className="flex items-center justify-between text-xs">
+                          {/* Mode switcher: Cursor vs Claude */}
+                          <div className="flex items-center gap-1 p-0.5 rounded-lg bg-white/5 border border-white/10">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                togglePromptEditor(term.id, "cursor");
+                              }}
+                              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+                                currentEditorMode === "cursor"
+                                  ? "bg-amber-400 text-black"
+                                  : "text-muted-foreground hover:text-foreground"
+                              }`}
+                            >
+                              حالت Cursor (@file)
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                togglePromptEditor(term.id, "claude");
+                              }}
+                              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+                                currentEditorMode === "claude"
+                                  ? "bg-amber-400 text-black"
+                                  : "text-muted-foreground hover:text-foreground"
+                              }`}
+                            >
+                              حالت Claude / وب
+                            </button>
+                          </div>
 
-                      <div className="font-mono text-xs text-foreground/90 leading-relaxed line-clamp-3 select-all">
-                        {term.goldenPrompt}
-                      </div>
-                    </div>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const promptText =
+                                currentEditorMode === "cursor"
+                                  ? term.cursorPrompt || term.goldenPrompt
+                                  : term.claudePrompt || term.goldenPrompt;
+                              handleCopy(promptText, `prompt-${term.id}`);
+                            }}
+                            className="inline-flex items-center gap-1 rounded-lg border border-amber-400/40 bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 hover:bg-amber-400/25 transition-all shadow-sm"
+                          >
+                            {isPromptCopied ? (
+                              <>
+                                <Check className="h-3.5 w-3.5 text-emerald-400" />
+                                <span className="text-emerald-400">کپی شد!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3.5 w-3.5" />
+                                <span>کپی پرامپت</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
 
-                    {/* Hide Code by Default (Item 26) */}
-                    {term.codeSnippet && (
-                      <div className="pt-1">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleCodeReveal(term.id);
-                          }}
-                          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-gold transition-colors py-1"
-                        >
-                          {isCodeRevealed ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
-                          <span>{isCodeRevealed ? "مخفی کردن نمونه کد فنی" : "مشاهده نمونه کد (اختیاری برای برنامه‌نویسان)"}</span>
-                        </button>
+                        {/* Injection Target Location */}
+                        <div className="text-[11px] text-muted-foreground bg-white/[0.02] p-2.5 rounded-xl border border-white/5 font-mono">
+                          <strong className="font-sans text-amber-400">📁 محل قرارگیری کد:</strong>{" "}
+                          <span>{term.injectionTarget}</span>
+                        </div>
 
-                        {isCodeRevealed && (
-                          <div className="mt-2 rounded-2xl border border-white/10 bg-black/80 p-4 space-y-2 animate-in fade-in duration-200">
-                            <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                              <span className="uppercase text-gold font-mono font-bold">
-                                {term.codeSnippet.language} {term.codeSnippet.runContext ? `(${term.codeSnippet.runContext})` : ""}
+                        {/* Prompt Body */}
+                        <div className="rounded-2xl border border-white/10 bg-black/70 p-4 font-mono text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed max-h-56 overflow-y-auto text-right font-sans select-all" dir="rtl">
+                          {currentEditorMode === "cursor"
+                            ? term.cursorPrompt || term.goldenPrompt
+                            : term.claudePrompt || term.goldenPrompt}
+                        </div>
+
+                        {/* Emergency Debug Prompt */}
+                        {term.debugPrompt && (
+                          <div className="rounded-2xl border border-purple-400/20 bg-purple-400/5 p-3 text-xs space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-purple-300">
+                                🛠️ اگر هوش مصنوعی ارور داد چی بگم؟
                               </span>
                               <button
                                 type="button"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleCopy(term.codeSnippet!.code, `code-${term.id}`);
+                                  handleCopy(term.debugPrompt, `debug-${term.id}`);
                                 }}
-                                className="text-muted-foreground hover:text-gold transition-colors"
+                                className="text-[10px] text-purple-300 hover:text-white"
                               >
-                                {copiedItem === `code-${term.id}` ? "کپی شد!" : "کپی کد"}
+                                {isDebugCopied ? "کپی شد!" : "کپی پرامپت نجات"}
                               </button>
                             </div>
-                            <pre className="font-mono text-xs text-foreground/90 overflow-x-auto leading-relaxed" dir="ltr">
-                              <code>{term.codeSnippet.code}</code>
-                            </pre>
-                            <p className="text-[11px] text-muted-foreground">{term.codeSnippet.description}</p>
+                            <p className="text-muted-foreground font-sans leading-relaxed text-[11px]">
+                              {term.debugPrompt}
+                            </p>
                           </div>
                         )}
+                      </div>
+                    )}
+
+                    {/* Tab 3: 30-Second Verification Guide */}
+                    {activeTab === "test" && (
+                      <div className="space-y-3 pt-1">
+                        <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/5 p-4 space-y-2.5 text-xs">
+                          <span className="font-bold text-emerald-300 flex items-center gap-1.5">
+                            <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                            <span>چطور در ۳۰ ثانیه تست کنم که کار می‌کند؟</span>
+                          </span>
+                          <ol className="space-y-1.5 list-decimal list-inside text-muted-foreground font-sans pr-1">
+                            {term.howToTest.steps.map((st, sI) => (
+                              <li key={sI} className="leading-relaxed">
+                                {st}
+                              </li>
+                            ))}
+                          </ol>
+                          <div className="pt-2 border-t border-white/10 text-[11px] text-muted-foreground">
+                            🎯 <strong>خروجی تایید:</strong> {term.howToTest.expectedResult}
+                          </div>
+                        </div>
+
+                        {/* Red flags */}
+                        <div className="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-3.5 space-y-1.5 text-xs">
+                          <span className="font-bold text-rose-400 flex items-center gap-1.5">
+                            <AlertTriangle className="h-3.5 w-3.5" />
+                            <span>پرچم‌های قرمز (علائم تقلب یا توهم هوش مصنوعی):</span>
+                          </span>
+                          <ul className="space-y-1 list-disc list-inside text-muted-foreground font-sans text-[11px] pr-1">
+                            {term.howToTest.redFlags.map((fl, fI) => (
+                              <li key={fI}>{fl}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Tab 4: Code Snippet */}
+                    {activeTab === "code" && term.codeSnippet && (
+                      <div className="space-y-2 pt-1 animate-in fade-in duration-200">
+                        <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                          <span className="uppercase text-amber-400 font-mono font-bold">
+                            {term.codeSnippet.language} {term.codeSnippet.runContext ? `(${term.codeSnippet.runContext})` : ""}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(term.codeSnippet!.code, `code-${term.id}`);
+                            }}
+                            className="text-muted-foreground hover:text-amber-400 transition-colors"
+                          >
+                            {copiedItem === `code-${term.id}` ? "کپی شد!" : "کپی کد"}
+                          </button>
+                        </div>
+                        <pre className="font-mono text-xs text-foreground/90 overflow-x-auto leading-relaxed p-4 rounded-2xl bg-black/80 border border-white/10" dir="ltr">
+                          <code>{term.codeSnippet.code}</code>
+                        </pre>
+                        <p className="text-[11px] text-muted-foreground">{term.codeSnippet.description}</p>
                       </div>
                     )}
                   </div>
@@ -773,7 +1063,7 @@ ${t.goldenPrompt}
                           e.stopPropagation();
                           setSearchQuery(tag);
                         }}
-                        className="rounded-md border border-white/5 bg-white/[0.03] px-2 py-0.5 text-[10px] font-mono text-muted-foreground hover:border-gold/30 hover:text-gold transition-colors"
+                        className="rounded-md border border-white/5 bg-white/[0.03] px-2 py-0.5 text-[10px] font-mono text-muted-foreground hover:border-amber-400/30 hover:text-amber-400 transition-colors"
                       >
                         #{tag}
                       </button>
@@ -786,9 +1076,14 @@ ${t.goldenPrompt}
         )}
       </section>
 
+      {/* ── The Vibe Coder's Manifesto Section (Item 50) ── */}
+      <section className="container mx-auto px-4">
+        <VibeManifestoSection />
+      </section>
+
       {/* ── Bottom CTA / Funnel Section ── */}
       <section className="container mx-auto px-4 pb-24">
-        <div className="rounded-3xl border border-gold/30 bg-gradient-to-b from-surface/90 to-surface/40 p-8 md:p-12 text-center backdrop-blur shadow-elegant relative overflow-hidden">
+        <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-surface/90 to-surface/40 p-8 md:p-12 text-center backdrop-blur shadow-elegant relative overflow-hidden">
           <div
             className="absolute inset-0 -z-10 opacity-30 pointer-events-none"
             style={{
@@ -797,7 +1092,7 @@ ${t.goldenPrompt}
             }}
           />
 
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold text-gold">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold text-amber-300">
             <Sparkles className="h-3.5 w-3.5" />
             از دانشنامه تا ساخت محصول واقعی
           </div>
@@ -821,7 +1116,7 @@ ${t.goldenPrompt}
 
             <Link
               href="/vibe-coding/series"
-              className="inline-flex items-center gap-2 rounded-xl border border-gold/35 bg-gold/5 px-7 py-3.5 text-sm font-bold text-foreground transition hover:border-gold hover:bg-gold/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-amber-400/35 bg-amber-400/5 px-7 py-3.5 text-sm font-bold text-foreground transition hover:border-amber-400 hover:bg-amber-400/10"
             >
               مشاهده سریال رایگان وایب‌کدینگ
             </Link>
