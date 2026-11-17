@@ -9,6 +9,21 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'beginner',
     phonetic: 'کانتکست ویندو',
     tags: ['ai-core', 'cursor', 'claude', 'token-budget'],
+    sequenceOrder: 1,
+    learningStation: 'station-1',
+    readingTimeMinutes: 1,
+    targetPersonas: ['beginner', 'founder', 'designer', 'developer'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    analogy: 'مثل حافظه کوتاه‌مدت یا تخته‌وایت‌برد مغز انسانه؛ اگه یک کتاب ۵۰۰ صفحه‌ای رو یکجا بریزی روش، کلمات اولی رو پاک می‌کنه و یادش میره چی گفتی!',
+    humanQuestion: 'چرا هوش مصنوعی وسط کار گیج می‌شه و دستورات اولیه من رو فراموش می‌کنه؟',
+    realPain: 'اگر این مفهوم را ندانی، کل کدهای سایت وردپرست را به هوش مصنوعی می‌دهی. نتیجه؟ هوش مصنوعی وسط کار کدهای صفحه اصلی را به جای فوتر می‌گذارد و هر بار یک باگ جدید به پروژه اضافه می‌کند!',
+    commonAiError: {
+      errorSnippet: 'Context length exceeded / Model hallucinated earlier function',
+      explanationFa: 'هوش مصنوعی به سقف حافظه‌اش رسیده و برای اینکه کم نیاره، از خودش توابع الکی اختراع می‌کنه!'
+    },
+    freelanceTip: 'به کارفرما توضیح بده که با معماری ماژولار و مدیریت بافت، هزینه توکن‌های هوش مصنوعی تا ۸۰٪ کاهش پیدا کرده و کدهای تحویلی تمیزتر و سریع‌تر تولید می‌شن.',
     shortDefinition: 'حداکثر حجم متن (توکن) که یک مدل هوش مصنوعی می‌تواند در یک لحظه به عنوان حافظه ورودی و خروجی نگه دارد.',
     deepExplanation: 'در پروژه‌های وردپرس با صدها فایل PHP، استایل‌های تیل‌ویند و اسکریپت‌های جاوااسکریپت، اگر کل پروژه را بدون فیلتر به مدل پاس دهید، پنجره بافت پر شده و مدل کدهای ابتدایی یا دستورات ریشه‌ای را فراموش می‌کند. مدیریت بافت به معنای انتخاب دقیق فایل‌های مرتبط است.',
     vibeCodingImpact: 'اگر مفهوم پنجره بافت را ندانید، تمام فایل‌های تمپلیت را با @ به Cursor اضافه می‌کنید. نتیجه این کار این است که هوش مصنوعی خروجی‌های نصفه‌کاره می‌دهد، توابع را با اسامی اشتباه بازنویسی می‌کند و دقتش به شدت افت می‌کند.',
@@ -17,9 +32,9 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
       language: 'json',
       description: 'نحوه نادیده گرفتن فایل‌های سنگین وردپرس در Cursor برای محافظت از حافظه بافت',
       runContext: '.cursorignore',
-      code: `wp-admin/\nwp-includes/\nnode_modules/\n*.sql\n*.tar.gz\nvendor/`
+      code: "wp-admin/\nwp-includes/\nnode_modules/\n*.sql\n*.tar.gz\nvendor/"
     },
-    relatedTermIds: ['cursorrules-file', 'composer-mode', 'token-budget'],
+    relatedTermIds: ['cursorrules-file', 'composer-mode'],
     seoKeywords: ['کانتکست ویندو', 'context window', 'حافظه هوش مصنوعی', 'توکن در پرامپت']
   },
   {
@@ -30,15 +45,30 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'کرسر رولز',
     tags: ['cursor', 'system-prompt', 'standards', 'automation'],
+    sequenceOrder: 2,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['beginner', 'developer', 'designer'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    analogy: 'مثل یک تابلوی ورود ممنوع و اساسنامه است که به دیوار اتاق کار هوش مصنوعی می‌زنی تا هیچ‌وقت کدهای عهد بوق یا ناامن ننویسه.',
+    humanQuestion: 'چطور به ادیتور بفهمانم که هر بار از صفر برایش توضیح ندهم چه استانداردی می‌خواهم؟',
+    realPain: 'بدون این فایل، هوش مصنوعی فکر می‌کند سال ۲۰۱۲ است و به جای کدهای سبک مدرن، کدهای سنگین جی‌کوئری و استایل‌های زشت تولید می‌کند و سایت بعد از یک هفته به شدت کند می‌شود.',
+    commonAiError: {
+      errorSnippet: 'Deprecated: jQuery is not recommended in modern WordPress themes',
+      explanationFa: 'هوش مصنوعی چون قوانینی براش نذاشتی، رفته از کدهای عهد قجر وردپرس کپی کرده!'
+    },
+    freelanceTip: 'یک فایل .cursorrules اختصاصی برای خودت بساز؛ این همان راز تولید سایت در ۲۴ ساعت به جای ۳ هفته کدنویسی دستی است.',
     shortDefinition: 'یک فایل راهنما در ریشه پروژه که قوانین معماری، استانداردهای کدنویسی و خطوط قرمز شما را در هر پرامپت به هوش مصنوعی تحمیل می‌کند.',
-    deepExplanation: 'با قرار دادن یک فایل با نام `.cursorrules` (یا `AGENTS.md`) در ریشه پوشه قالب یا پلاگین، ادیتور پیش از پاسخ‌گویی به هر سوال، قوانین اختصاصی شما (مانند نسخه‌ استاندارد PHP 8.2، استفاده اجباری از Tailwind v4، عدم استفاده از jQuery و رعایت توابع امنیتی Nonce) را در پرامپت سیستمی مدل تزریق می‌کند.',
+    deepExplanation: 'با قرار دادن یک فایل با نام .cursorrules در ریشه پوشه قالب یا پلاگین، ادیتور پیش از پاسخ‌گویی به هر سوال، قوانین اختصاصی شما (مانند نسخه‌ استاندارد PHP 8.2، استفاده اجباری از Tailwind v4، عدم استفاده از jQuery و رعایت توابع امنیتی Nonce) را در پرامپت سیستمی مدل تزریق می‌کند.',
     vibeCodingImpact: 'بدون این فایل، هوش مصنوعی در هر پرامپت فرض می‌کند شما یک توسعه‌دهنده مبتدی هستید و ممکن است کدهای منسوخ‌شده وردپرس ۵ را با جی‌کوئری و استایل‌های درون‌خطی به شما تحویل دهد که اصلاح دستی آن‌ها ساعت‌ها وقت می‌گیرد.',
     goldenPrompt: 'یک فایل .cursorrules جامع برای یک قالب مدرن وردپرس بنویس. قوانین الزامی: 1) عدم استفاده از جی‌کوئری و فقط JS مدرن 2) استایل‌ها با Tailwind CSS 3) تمام توابع با پیشوند hs_ 4) رعایت اجباری sanitize و esc در تمام ورودی‌ها و خروجی‌ها 5) استفاده از هوک‌های استاندارد.',
     codeSnippet: {
       language: 'bash',
       description: 'نمونه ساختار فایل قوانین برای مهار هوش مصنوعی در توسعه وردپرس',
       runContext: '.cursorrules',
-      code: `# قوانین اختصاصی وایب‌کدینگ وردپرس\n- هر تابع جدید باید با پیشوند hs_ نام‌گذاری شود.\n- هیچ استایل درون‌خطی مجاز نیست؛ فقط کلاس‌های تیل‌ویند.\n- قبل از اجرای هر کوئری دیتابیس، استفاده از wpdb->prepare الزامی است.\n- برای ذخیره فرم‌ها توکن wp_create_nonce الزامی است.`
+      code: "# قوانین اختصاصی وایب‌کدینگ وردپرس\n- هر تابع جدید باید با پیشوند hs_ نام‌گذاری شود.\n- هیچ استایل درون‌خطی مجاز نیست؛ فقط کلاس‌های تیل‌ویند.\n- قبل از اجرای هر کوئری دیتابیس، استفاده از wpdb->prepare الزامی است.\n- برای ذخیره فرم‌ها توکن wp_create_nonce الزامی است."
     },
     relatedTermIds: ['context-window', 'hallucination-guard', 'prd-workflow'],
     seoKeywords: ['فایل cursorrules', 'cursorrules وردپرس', 'قوانین پرامپت ادیتور', 'تنظیمات cursor']
@@ -51,17 +81,32 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'کامپوزر مود',
     tags: ['cursor', 'agent', 'multi-file', 'automation'],
+    sequenceOrder: 3,
+    learningStation: 'station-1',
+    readingTimeMinutes: 1,
+    targetPersonas: ['developer', 'designer'],
+    isNoCodeFriendly: false,
+    isCritical5: false,
+    isLanding24h: true,
+    analogy: 'مثل یک دستیار ارشد است که دستش به تمام پوشه‌ها و کشوهای کامپیوترت می‌رسه و می‌تونه همزمان توی ۵ تا فایل مختلف تغییرات بده.',
+    humanQuestion: 'چطور به جای کپی‌پیست دستی، به هوش مصنوعی بگویم خودش فایل‌های قالب را بسازد و ویرایش کند؟',
+    realPain: 'اگر کلید Accept All را بدون چک کردن تفاوت خطوط (Diff) بزنی، کدهای حیاتی که هفته پیش نوشتی پاک می‌شوند و پروژه متوقف می‌شود.',
+    commonAiError: {
+      errorSnippet: 'Overwrote functions.php with empty template',
+      explanationFa: 'کامپوزر کل فایل قبلی رو پاک کرد چون کدهای قدیمی رو بهش معرفی نکرده بودی!'
+    },
+    freelanceTip: 'به کارفرما نگو با چت‌بات کار می‌کنی؛ بگو از محیط‌های توسعه عامل‌محور چندفایلی (Multi-file Agentic Pipeline) استفاده می‌کنی.',
     shortDefinition: 'محیط اجرای دستورات چندفایلی در ادیتور هوش مصنوعی که می‌تواند به صورت همزمان چندین فایل را ساخته، ویرایش و متصل کند.',
-    deepExplanation: 'برخلاف چت معمولی که فقط در یک پنجره متنی کد تولید می‌کند، Composer در ادیتورهایی مثل Cursor دسترسی مستقیم به سیستم فایل پروژه دارد. شما می‌توانید یک فیچر کامل (مثلاً ساخت یک Custom Post Type همراه با تمپلیت آرشیو و استایل‌های متناظر) را با یک فرمان پیاده‌سازی کنید.',
-    vibeCodingImpact: 'اگر ندانید کامپوزر چگونه فایل‌ها را تغییر می‌دهد، ممکن است با فشردن نسنجیده دکمه "Accept All"، کدهای حیاتی قبلی در `functions.php` یا فایل‌های تمپلیت را بازنویسی و پاک کند. کنترل Diff در کامپوزر حیاتی‌ترین مهارت یک وایب‌کدر است.',
-    goldenPrompt: 'با دسترسی به کامپوزر، یک پلاگین اختصاصی کوچک برای ثبت نظرات صوتی بساز. 1) فایل اصلی پلاگین با هدر استاندارد وردپرس 2) اسکریپت جاوااسکریپت برای ضبط صدا 3) روت REST API برای دریافت فایل صوتی در دایرکتوری wp-content/uploads/audio. هیچ فایل موجودی را ویرایش نکن، فقط فایل‌های جدید بساز.',
+    deepExplanation: 'برخلاف چت معمولی که فقط در یک پنجره متنی کد تولید می‌کند، Composer در ادیتورهایی مثل Cursor دسترسی مستقیم به سیستم فایل پروژه دارد. شما می‌توانید یک فیچر کامل را با یک فرمان پیاده‌سازی کنید.',
+    vibeCodingImpact: 'اگر ندانید کامپوزر چگونه فایل‌ها را تغییر می‌دهد، ممکن است با فشردن نسنجیده دکمه "Accept All"، کدهای حیاتی قبلی در functions.php یا فایل‌های تمپلیت را بازنویسی و پاک کند.',
+    goldenPrompt: 'با دسترسی به کامپوزر، یک پلاگین اختصاصی کوچک برای ثبت نظرات بساز. 1) فایل اصلی پلاگین با هدر استاندارد وردپرس 2) اسکریپت جاوااسکریپت 3) روت REST API برای دریافت داده‌ها. هیچ فایل موجودی را بازنویسی نکن، فقط فایل‌های جدید بساز.',
     codeSnippet: {
       language: 'bash',
       description: 'دستور باز کردن مستقیم محیط کامپوزر در ادیتور',
       runContext: 'شورتکات کیبورد',
-      code: `# در مک: Cmd + I\n# در ویندوز/لینوکس: Ctrl + I`
+      code: "# در مک: Cmd + I\n# در ویندوز/لینوکس: Ctrl + I"
     },
-    relatedTermIds: ['context-window', 'cursorrules-file', 'diff-review'],
+    relatedTermIds: ['context-window', 'cursorrules-file'],
     seoKeywords: ['کامپوزر کرسر', 'composer cursor', 'کدنویسی چندفایلی', 'عامل هوش مصنوعی']
   },
   {
@@ -72,17 +117,32 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'advanced',
     phonetic: 'هالوسینیشن گارد',
     tags: ['safety', 'prompt-engineering', 'debugging'],
+    sequenceOrder: 4,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: false,
+    analogy: 'مثل یک ترمز دستی است که جلوی خیال‌بافی و دروغ‌های مطمئن هوش مصنوعی رو می‌گیره.',
+    humanQuestion: 'چرا کدی که هوش مصنوعی داد خیلی قشنگه ولی وقتی توی سایت می‌ذارم کلاً بالا نمیاد؟',
+    realPain: 'هوش مصنوعی تابعی اختراع می‌کند که اصلاً در وردپرس وجود خارجی ندارد! سایت خطای مرگبار می‌دهد و تو ۳ روز دنبال باگ می‌گردی بدون اینکه بدانی این تابع یک توهم است.',
+    commonAiError: {
+      errorSnippet: 'Fatal error: Uncaught Error: Call to undefined function wp_get_current_user_avatar()',
+      explanationFa: 'هوش مصنوعی این تابع رو از خودش درآورده و وردپرس اصلاً چنین چیزی نداره!'
+    },
+    freelanceTip: 'همیشه در پرامپت‌هایت قید کن که مدل نام توابع را با مستندات رسمی بررسی کند؛ این سنجه تفاوت برنامه‌نویس جدی با آماتور است.',
     shortDefinition: 'مجموعه تدابیر مهندسی پرامپت برای جلوگیری از اختراع توابع غیرواقعی، هوک‌های ساختگی یا پارامترهای منسوخ‌شده توسط هوش مصنوعی.',
-    deepExplanation: 'مدل‌های زبان طبیعی تمایل دارند در صورت عدم اطمینان، نام توابع را حدس بزنند؛ مثلاً تابعی مثل `wp_get_current_user_avatar_url()` که اصلاً در وردپرس وجود ندارد! با تکنیک‌های گارد توهم، مدل را محدود می‌کنید که فقط از مستندات رسمی Developer.wordpress.org کد تولید کند.',
-    vibeCodingImpact: 'کدی که حاوی تابع توهمی است ممکن است ظاهراً بسیار تمیز به نظر برسد، اما به محض اجرا سایت را با خطای Fatal Error: Call to undefined function متوقف می‌کند. توسعه‌دهنده ناآگاه ساعت‌ها وقت صرف عیب‌یابی چنین خطای بی‌پایه‌ای می‌کند.',
-    goldenPrompt: 'قبل از نوشتن هر تابع در این قالب، صحت امضای تابع (Function Signature) و نام هوک را صرفاً بر اساس مستندات رسمی وردپرس ۶.۵+ تایید کن. اگر تابعی در هسته وردپرس وجود ندارد، صراحتاً اعلام کن و یک تابع کمکی سفارشی در کادر جداگانه برای آن تعریف کن.',
+    deepExplanation: 'مدل‌های زبان طبیعی تمایل دارند در صورت عدم اطمینان، نام توابع را حدس بزنند. با تکنیک‌های گارد توهم، مدل را محدود می‌کنید که فقط از مستندات رسمی Developer.wordpress.org کد تولید کند.',
+    vibeCodingImpact: 'کدی که حاوی تابع توهمی است ممکن است ظاهراً بسیار تمیز به نظر برسد، اما به محض اجرا سایت را با خطای Fatal Error متوقف می‌کند.',
+    goldenPrompt: 'قبل از نوشتن هر تابع در این قالب، صحت امضای تابع و نام هوک را صرفاً بر اساس مستندات رسمی وردپرس ۶.۵+ تایید کن. اگر تابعی در هسته وردپرس وجود ندارد، صراحتاً اعلام کن و یک تابع کمکی سفارشی برای آن بساز.',
     codeSnippet: {
       language: 'php',
       description: 'الگوی دفاعی در کدنویسی وردپرس جهت بررسی وجود توابع قبل از فراخوانی',
       runContext: 'functions.php',
-      code: `if ( function_exists( 'wp_get_theme' ) ) {\n    $theme_version = wp_get_theme()->get( 'Version' );\n} else {\n    $theme_version = '1.0.0';\n}`
+      code: "if ( function_exists( 'wp_get_theme' ) ) {\n    $theme_version = wp_get_theme()->get( 'Version' );\n} else {\n    $theme_version = '1.0.0';\n}"
     },
-    relatedTermIds: ['cursorrules-file', 'chain-of-thought', 'diff-review'],
+    relatedTermIds: ['cursorrules-file', 'chain-of-thought'],
     seoKeywords: ['توهم هوش مصنوعی', 'hallucination ai', 'توابع اشتباه وردپرس', 'پرامپت ضد خطا']
   },
   {
@@ -93,17 +153,32 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'پی آر دی ورک فلو',
     tags: ['planning', 'spec', 'software-engineering'],
+    sequenceOrder: 5,
+    learningStation: 'station-1',
+    readingTimeMinutes: 1,
+    targetPersonas: ['founder', 'designer', 'developer'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: true,
+    analogy: 'مثل نقشه مهندسی ساختمان است؛ قبل از اینکه آجر روی آجر بذاری، دقیقاً می‌دونی چند تا اتاق و پنجره می‌خوای.',
+    humanQuestion: 'چطور به جای دستورات پراکنده و گیج‌کننده، یک پروژه کامل را به هوش مصنوعی تحویل دهم؟',
+    realPain: 'وقتی بدون نقشه کار می‌کنی، در صفحه اول قیمت را price می‌گذاری و در صفحه دوم cost؛ در نتیجه کل فیلترهای سایت از کار می‌افتند!',
+    commonAiError: {
+      errorSnippet: 'Notice: Undefined index product_price in template-parts/card.php',
+      explanationFa: 'هوش مصنوعی اسامی فیلدها رو قاطی کرده چون از اول براش نقشه واحد نکشیدی!'
+    },
+    freelanceTip: 'قبل از شروع هر پروژه، یک فایل SPEC.md ۳ صفحه‌ای آماده کن و به کارفرما نشان بده؛ کارفرما شیفته نظم مهندسی تو می‌شود.',
     shortDefinition: 'نوشتن یک سند کامل الزامات قبل از پرامپت زدن، تا هوش مصنوعی بر اساس نقشه از پیش‌تعیین‌شده و بدون حدس و گمان کد بنویسد.',
-    deepExplanation: 'در متدولوژی وایب‌کدینگ حرفه‌ای، هرگز به هوش مصنوعی نمی‌گوییم «یک فروشگاه وردپرس بساز». ابتدا یک فایل `SPEC.md` یا `PRD.md` با جزئیات انواع پست‌ها، فیلدهای مورد نیاز، متدهای دیتابیس و اعتبارسنجی‌ها ایجاد می‌کنیم و از مدل می‌خواهیم تسک‌ها را گام‌به‌گام بر اساس آن پیاده کند.',
-    vibeCodingImpact: 'بدون PRD، هوش مصنوعی در هر مرحله تصمیمات متناقض می‌گیرد؛ یک بار نام فیلد قیمت را `product_price` می‌گذارد و در تمپلیت بعدی آن را `price` صدا می‌زند که منجر به باگ‌های پنهان داده می‌شود.',
-    goldenPrompt: 'من می‌خواهم یک ماژول دوره‌های آموزشی در قالب وردپرس بسازم. هنوز کدی ننویس. ابتدا یک فایل PRD کوتاه شامل: 1) نام CPT و تاکسونومی‌ها 2) فیلدهای مورد نیاز در postmeta 3) هوک‌های اکشن و فیلتر لازم 4) تمپلیت‌های مورد نیاز فایل‌های PHP برای من ترسیم کن تا تایید کنم.',
+    deepExplanation: 'در متدولوژی وایب‌کدینگ حرفه‌ای، ابتدا یک فایل الزامات با جزئیات فیلدها، هوک‌ها و دیتابیس می‌سازیم و از مدل می‌خواهیم تسک‌ها را گام‌به‌گام پیاده کند.',
+    vibeCodingImpact: 'بدون PRD، هوش مصنوعی در هر مرحله تصمیمات متناقض می‌گیرد که منجر به باگ‌های پنهان داده می‌شود.',
+    goldenPrompt: 'من می‌خواهم یک ماژول ثبت سفارش در قالب وردپرس بسازم. هنوز کدی ننویس. ابتدا یک سند PRD کوتاه شامل: 1) فیلدهای مورد نیاز 2) هوک‌های اکشن و فیلتر 3) نام تمپلیت‌ها برای من ترسیم کن تا تایید کنم.',
     codeSnippet: {
       language: 'json',
       description: 'نمونه ساختار فایل الزامات برای تحویل به هوش مصنوعی',
       runContext: 'spec.json',
-      code: `{\n  "feature": "Course Catalog",\n  "cpt": "hs_course",\n  "fields": ["duration", "instructor_id", "price"],\n  "templates": ["single-hs_course.php", "archive-hs_course.php"]\n}`
+      code: "{\n  \"feature\": \"Lead Capture\",\n  \"fields\": [\"full_name\", \"phone\", \"budget\"],\n  \"templates\": [\"parts/lead-form.php\"]\n}"
     },
-    relatedTermIds: ['cursorrules-file', 'composer-mode', 'chain-of-thought'],
+    relatedTermIds: ['cursorrules-file', 'composer-mode'],
     seoKeywords: ['سند prd', 'مشخصات محصول برای ai', 'پرامپت نویسی حرفه‌ای', 'مهندسی پرامپت']
   },
   {
@@ -114,17 +189,32 @@ export const vibeAiTerms: EncyclopediaTerm[] = [
     level: 'advanced',
     phonetic: 'چین آو ثات',
     tags: ['reasoning', 'complex-logic', 'queries'],
+    sequenceOrder: 6,
+    learningStation: 'station-1',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: false,
+    analogy: 'مثل دانش‌آموزی است که قبل از گفتن جواب نهایی معادله، فرمول و محاسبات چرک‌نویس رو روی کاغذ می‌نویسه تا اشتباه نکنه.',
+    humanQuestion: 'چطور هوش مصنوعی را مجبور کنم قبل از کدنویسی منطق کارش را توضیح دهد؟',
+    realPain: 'در فیلترهای چندگانه قیمت و رنگ، اگر هوش مصنوعی فکر نکرده کد بزند، شروط AND و OR را اشتباه چیده و محصولات اشتباه به مشتری نشان داده می‌شود.',
+    commonAiError: {
+      errorSnippet: 'SQL Syntax Error: unexpected OR condition in meta_query',
+      explanationFa: 'هوش مصنوعی هول شده و بدون تحلیل منطق شرط‌ها، کوئری غلط تولید کرده!'
+    },
+    freelanceTip: 'با پرامپت‌های استدلالی، کوئری‌هایی می‌نویسی که لود سایت را از ۵ ثانیه به ۵۰ میلی‌ثانیه می‌رسانند.',
     shortDefinition: 'واداشتن هوش مصنوعی به تشریح منطق قدم‌به‌قدم خود قبل از تولید کد واقعی، برای جلوگیری از خطاهای معماری در مسائل پیچیده.',
-    deepExplanation: 'وقتی با کوئری‌های چندجدولی دیتابیس وردپرس یا فیلترهای تودرتو روبه‌رو هستید، مدل‌های زبانی اگر مستقیماً شروع به کدنویسی کنند معمولاً شروط منطقی (مانند `meta_query` با عملگر `AND` و `OR`) را خراب می‌کنند. وادار کردن مدل به فکر کردن پیش از نوشتن، خطاهای محاسباتی را تا ۷۰ درصد کاهش می‌دهد.',
-    vibeCodingImpact: 'در تسک‌های پیچیده مثل مهاجرت داده‌های دیتابیس یا سیستم تخفیف ووکامرس، پاسخ فوری هوش مصنوعی مساوی با باگ است. استفاده از CoT کد باکیفیت و مهندسی‌شده تحویل می‌دهد.',
-    goldenPrompt: 'من نیاز به یک کوئری سفارشی با WP_Query دارم که پست‌های [نوع محتوا] را بر اساس دو فیلد متای مختلف و یک تاکسونومی فیلتر کند. قبل از اینکه کد PHP بنویسی، گام‌به‌گام منطق آرایه args، نحوه ارتباط شرط‌ها و نحوه جلوگیری از کندی دیتابیس را برایم توضیح بده. بعد از تایید من کد نهایی را بنویس.',
+    deepExplanation: 'وادار کردن مدل به فکر کردن پیش از نوشتن، خطاهای محاسباتی و خطاهای دیتابیس را تا ۷۰ درصد کاهش می‌دهد.',
+    vibeCodingImpact: 'در تسک‌های پیچیده مثل مهاجرت داده‌های دیتابیس، پاسخ فوری هوش مصنوعی مساوی با باگ است. استفاده از CoT کد باکیفیت و مهندسی‌شده تحویل می‌دهد.',
+    goldenPrompt: 'من نیاز به یک کوئری سفارشی دارم. قبل از اینکه کد PHP بنویسی، گام‌به‌گام منطق آرایه args، نحوه ارتباط شرط‌ها و نحوه جلوگیری از کندی دیتابیس را توضیح بده. بعد از تایید من کد نهایی را بنویس.',
     codeSnippet: {
       language: 'bash',
       description: 'عبارت کلیدی جادویی برای فعال‌سازی زنجیره استدلال در پرامپت',
       runContext: 'Prompt Keyword',
-      code: `"Think step by step and verify database index usage before generating the query."`
+      code: "\"Think step by step and verify database index usage before generating the query.\""
     },
-    relatedTermIds: ['hallucination-guard', 'prd-workflow', 'diff-review'],
+    relatedTermIds: ['hallucination-guard', 'prd-workflow'],
     seoKeywords: ['زنجیره استدلال', 'chain of thought', 'پرامپت استدلالی', 'کاهش خطای مدل']
   }
 ];

@@ -3,44 +3,76 @@ import { EncyclopediaTerm } from './types';
 export const wpCoreTerms: EncyclopediaTerm[] = [
   {
     id: 'action-hooks',
-    termEn: 'Action Hooks (`do_action` / `add_action`)',
+    termEn: 'Action Hooks (do_action / add_action)',
     termFa: 'قلاب‌های اکشن و چرخه حیات وردپرس',
     category: 'wp-core',
     level: 'intermediate',
     phonetic: 'اکشن هوکس',
     tags: ['php', 'hooks', 'architecture', 'lifecycle'],
+    sequenceOrder: 19,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'beginner', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: false,
+    isEcommerceEssential: true,
+    analogy: 'دقیقاً مثل پریز برقه! وردپرس در نقاط مختلف اجرای صفحه، پریزهایی تعبیه کرده تا تو بدون شکستن دیوارها، دوشاخه کد دلخواهت رو بزنی به پریز و چراغت روشن بشه!',
+    humanQuestion: 'چطور بدون اینکه به کدهای اصلی وردپرس دست بزنیم، امکانات و رفتارهای دلخواه را به سایت اضافه کنیم؟',
+    realPain: 'اگر کدت را مستقیم بدون هوک در فایل functions.php رها کنی، کدهایت قبل از اینکه سیستم کاربران وردپرس لود شود اجرا شده و کل سایت با صفحه سفید مرگبار قفل می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Fatal error: Call to undefined function wp_get_current_user() in functions.php:4',
+      explanationFa: 'هوش مصنوعی کد رو مستقیم گذاشته توی فایل بدون اینکه داخل اکشن هوک مناسب مثل init قرار بده!'
+    },
+    freelanceTip: 'به کارفرما اطمینان بده که هیچ فایل اصلی وردپرس ویرایش نشده و تمام امکانات با هوک‌های استاندارد پیاده‌سازی شدن تا سایت امن و آپدیت‌پذیر بمونه.',
     shortDefinition: 'نقاط تزریق مشخص در چرخه اجرای وردپرس که به شما اجازه می‌دهند بدون تغییر فایل‌های هسته، کدهای اختصاصی خود را در لحظه مشخص اجرا کنید.',
-    deepExplanation: 'هنگام بارگذاری هر صفحه در وردپرس، صدها قلاب اکشن به ترتیب زمانی صدا زده می‌شوند (مثلاً `init`, `wp_loaded`, `template_redirect`, `wp_head`, `wp_footer`). شما با تابع `add_action()` مشخص می‌کنید که تابع شما دقیقاً در کدام مرحله از پردازش وارد عمل شود.',
-    vibeCodingImpact: 'هوش مصنوعی اغلب تمایل دارد کدهای شما را مستقیماً در `functions.php` بدون هوک قرار دهد. این کار باعث می‌شود کدهایی که نیاز به توابع کاربری دارند، قبل از لود سیستم احراز هویت اجرا شده و ارور Fatal Error دهند.',
-    goldenPrompt: 'قابلیت [نام قابلیت] را در قالب وردپرس بنویس. حتماً از یک اکشن هوک مناسب با چرخه حیات وردپرس (مثل wp_enqueue_scripts یا init) استفاده کن. تابع باید دارای پیشوند اختصاصی hs_ بوده و به درستی با add_action ثبت شود.',
+    deepExplanation: 'هنگام بارگذاری هر صفحه در وردپرس، صدها قلاب اکشن به ترتیب زمانی صدا زده می‌شوند. با تابع add_action مشخص می‌کنید کد شما دقیقاً در کدام مرحله وارد عمل شود.',
+    vibeCodingImpact: 'هوش مصنوعی اغلب کدهای شما را مستقیماً در functions.php بدون هوک قرار می‌دهد که باعث ارورهای مهلک زمان لود می‌شود.',
+    goldenPrompt: 'قابلیت [نام قابلیت] را در قالب وردپرس بنویس. حتماً از یک اکشن هوک مناسب با چرخه حیات وردپرس (مثل wp_enqueue_scripts یا init) استفاده کن. تابع باید دارای پیشوند اختصاصی hs_ باشد.',
     codeSnippet: {
       language: 'php',
       description: 'ثبت اصولی اکشن هوک برای اضافه کردن متاتگ اختصاصی به هدر وردپرس',
       runContext: 'functions.php',
-      code: `function hs_add_custom_meta_tags() {\n    echo '<meta name="theme-creator" content="Hasan Shah">';\n}\nadd_action( 'wp_head', 'hs_add_custom_meta_tags', 5 );`
+      code: "function hs_add_custom_meta_tags() {\n    echo '<meta name=\"theme-creator\" content=\"Hasan Shah\">';\n}\nadd_action( 'wp_head', 'hs_add_custom_meta_tags', 5 );"
     },
-    relatedTermIds: ['filter-hooks', 'child-theme', 'theme-hierarchy'],
+    relatedTermIds: ['filter-hooks', 'child-theme'],
     seoKeywords: ['اکشن هوک', 'action hooks', 'add_action در وردپرس', 'هوک های وردپرس']
   },
   {
     id: 'filter-hooks',
-    termEn: 'Filter Hooks (`apply_filters` / `add_filter`)',
+    termEn: 'Filter Hooks (apply_filters / add_filter)',
     termFa: 'قلاب‌های فیلتر و اصلاح خروجی داده‌ها',
     category: 'wp-core',
     level: 'intermediate',
     phonetic: 'فیلتر هوکس',
     tags: ['php', 'hooks', 'data-manipulation', 'filters'],
+    sequenceOrder: 20,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: false,
+    isEcommerceEssential: true,
+    analogy: 'مثل دستگاه تصفیه آبه؛ آب (متن یا دیتا) از یک لوله رد میشه، تو سر راهش یک فیلتر می‌ذاری تا مواد مورد نظرت رو بهش اضافه یا کم کنی و آب تمیزتر رو پس بدی!',
+    humanQuestion: 'چطور متن نوشته‌ها، قیمت محصولات، یا خروجی افزونه‌ها را قبل از نمایش دستکاری کنم؟',
+    realPain: 'بزرگ‌ترین سوتی هوش مصنوعی این است که داخل فیلتر فراموش می‌کند متغیر را return کند؛ نتیجه؟ کل متن مقاله در سایت غیب می‌شود و یک صفحه خالی نشان داده می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Warning: the_content filter must return a string value, none returned',
+      explanationFa: 'هوش مصنوعی یادش رفته دستور return $content رو در انتهای تابع بنویسه و کل متن پاک شده!'
+    },
+    freelanceTip: 'تفاوت کلیدی اکشن و فیلتر را یاد بگیر: اکشن کار انجام می‌دهد (فعل است)، اما فیلتر دیتا را دستکاری کرده و برمی‌گرداند.',
     shortDefinition: 'توابعی که مقادیر خروجی متون، محتوا یا آرایه‌ها را دریافت کرده، آن‌ها را ویرایش می‌کنند و مقدار اصلاح‌شده را بازمی‌گردانند.',
-    deepExplanation: 'تفاوت کلیدی اکشن و فیلتر این است: اکشن «کاری را انجام می‌دهد»، اما فیلتر «داده‌ای را دریافت کرده، تغییر می‌دهد و باید حتماً آن را return کند». معروف‌ترین فیلتر وردپرس `the_content` است که محتوای نوشته را قبل از چاپ در مرورگر اصلاح می‌کند.',
-    vibeCodingImpact: 'یکی از متداول‌ترین خطاهای هوش مصنوعی این است که داخل تابع متصل به فیلتر، فراموش می‌کند مقدار متغیر را `return` کند یا به جای `return` از `echo` استفاده می‌کند که باعث خالی شدن کل محتوای صفحه می‌شود!',
-    goldenPrompt: 'یک فیلتر وردپرس با add_filter برای the_content بنویس که در انتهای هر مقاله، یک باکس فراخوان به اقدام (CTA) لوکس با کلاس‌های تیل‌ویند درج کند. حتماً مقدار $content ویرایش‌شده را در پایان تابع return کن.',
+    deepExplanation: 'معروف‌ترین فیلتر وردپرس the_content است که محتوای نوشته را قبل از چاپ در مرورگر اصلاح می‌کند.',
+    vibeCodingImpact: 'یکی از متداول‌ترین خطاهای هوش مصنوعی این است که داخل تابع متصل به فیلتر، فراموش می‌کند مقدار متغیر را return کند.',
+    goldenPrompt: 'یک فیلتر وردپرس با add_filter برای the_content بنویس که در انتهای هر مقاله یک باکس CTA درج کند. حتماً مقدار $content ویرایش‌شده را در پایان return کن.',
     codeSnippet: {
       language: 'php',
       description: 'فیلتر کردن محتوای پست وردپرس برای تزریق کادر دعوت اختصاصی',
       runContext: 'functions.php',
-      code: `add_filter( 'the_content', function( $content ) {\n    if ( is_singular( 'post' ) ) {\n        $cta = '<div class="my-8 p-6 rounded-2xl bg-gold/10 border border-gold/30 text-gold font-bold">برای یادگیری وایب‌کدینگ به دوره‌های حسن شاهمرادی بپیوندید.</div>';\n        return $content . $cta;\n    }\n    return $content;\n});`
+      code: "add_filter( 'the_content', function( $content ) {\n    if ( is_singular( 'post' ) ) {\n        $cta = '<div class=\"my-8 p-6 rounded-2xl bg-gold/10 border border-gold/30 text-gold font-bold\">برای یادگیری وایب‌کدینگ به دوره‌های حسن شاهمرادی بپیوندید.</div>';\n        return $content . $cta;\n    }\n    return $content;\n});"
     },
-    relatedTermIds: ['action-hooks', 'custom-post-types', 'theme-hierarchy'],
+    relatedTermIds: ['action-hooks', 'custom-post-types'],
     seoKeywords: ['فیلتر هوک', 'filter hooks', 'add_filter در وردپرس', 'تغییر خروجی با فیلتر']
   },
   {
@@ -51,17 +83,32 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     level: 'beginner',
     phonetic: 'تم هایررکی',
     tags: ['templates', 'php', 'hierarchy', 'routing'],
-    shortDefinition: 'قانون رسمی وردپرس که مشخص می‌کند برای نمایش هر صفحه (تک‌پست، برگه، آرشیو، نویسنده)، کدام فایل تمپلیت تقدم بالاتر دارد.',
-    deepExplanation: 'اگر کاربری صفحه محصول با شناسه `portfolio` را باز کند، وردپرس ابتدا دنبال فایل `single-portfolio.php` می‌گردد؛ اگر نبود به سراغ `single.php` و در نهایت به سراغ `index.php` می‌رود. درک این درخت وراثت مانع از ایجاد فایل‌های اضافه در پوسته می‌شود.',
-    vibeCodingImpact: 'اگر به هوش مصنوعی نام صفحه را نگویید، تمایل دارد کل سایت را در یک فایل شلوغ `index.php` با ده‌ها دستور `if/else` بسازد که نگه‌داری قالب را بعداً غیرممکن می‌کند.',
-    goldenPrompt: 'من یک CPT به نام hs_project دارم. با رعایت قوانین Theme Hierarchy وردپرس، نام دقیق تمپلیت برای صفحه تکی (Single) و صفحه آرشیو (Archive) را مشخص کرده و ساختار تمپلیت اختصاصی آن را با کدهای تمیز بنویس.',
+    sequenceOrder: 21,
+    learningStation: 'station-3',
+    readingTimeMinutes: 1,
+    targetPersonas: ['developer', 'designer', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: true,
+    analogy: 'مثل یک بازرس وظیفه‌شناس است؛ وقتی کاربر صفحه یک نمونه‌کار رو باز می‌کنه، اول پوشه single-portfolio رو چک می‌کنه، اگر نبود میره سراغ single، و آخر سر index رو نشون میده.',
+    humanQuestion: 'وردپرس از کجا می‌فهمد برای نمایش صفحه یک محصول خاص، باید کدام فایل PHP را اجرا کند؟',
+    realPain: 'اگر این درخت را نشناسی، هوش مصنوعی کل کدهای سایت را در یک فایل شلوغ index.php می‌ریزد و ۳ ماه بعد هیچ‌کس نمی‌تواند آن را ویرایش کند!',
+    commonAiError: {
+      errorSnippet: 'Putting 15 different if(is_page()) conditions inside single index.php file',
+      explanationFa: 'هوش مصنوعی تنبلی کرده و به جای ساخت فایل اختصاصی، کل سایت رو ریخته تو index.php!'
+    },
+    freelanceTip: 'تسلط بر نام‌گذاری فایل‌ها بر اساس چارت رسمی وراثت قالب، نشانه اصلی یک توسعه‌دهنده با تجربه وردپرس است.',
+    shortDefinition: 'قانون رسمی وردپرس که مشخص می‌کند برای نمایش هر صفحه کدام فایل تمپلیت تقدم بالاتر دارد.',
+    deepExplanation: 'درک این درخت وراثت مانع از ایجاد فایل‌های اضافه و بی‌نظمی در پوسته می‌شود.',
+    vibeCodingImpact: 'اگر به هوش مصنوعی نام صفحه را نگویید، تمایل دارد کل سایت را در یک فایل شلوغ با ده‌ها دستور شرطی بسازد.',
+    goldenPrompt: 'من یک CPT به نام hs_project دارم. با رعایت قوانین Theme Hierarchy وردپرس، نام دقیق تمپلیت برای صفحه تکی و صفحه آرشیو را مشخص کن.',
     codeSnippet: {
       language: 'bash',
       description: 'نام‌گذاری استاندارد فایل‌های پوسته برای Custom Post Type اختصاصی',
       runContext: 'Theme Directory',
-      code: `# برای صفحه نمایش تک‌پروژه:\nsingle-hs_project.php\n\n# برای صفحه آرشیو و لیست کل پروژه‌ها:\narchive-hs_project.php`
+      code: "# برای صفحه نمایش تک‌پروژه:\nsingle-hs_project.php\n\n# برای صفحه آرشیو و لیست کل پروژه‌ها:\narchive-hs_project.php"
     },
-    relatedTermIds: ['child-theme', 'action-hooks', 'custom-post-types'],
+    relatedTermIds: ['child-theme', 'action-hooks'],
     seoKeywords: ['سلسله مراتب قالب وردپرس', 'theme hierarchy', 'ساختار فایل های پوسته', 'تمپلیت های وردپرس']
   },
   {
@@ -72,17 +119,32 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     level: 'beginner',
     phonetic: 'چایلد تم',
     tags: ['theme', 'updates', 'stability', 'best-practices'],
+    sequenceOrder: 22,
+    learningStation: 'station-3',
+    readingTimeMinutes: 1,
+    targetPersonas: ['beginner', 'founder', 'developer'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    analogy: 'مثل یک نایلون محافظ روی فرش گرون‌قیمته؛ هر چی روش بنویسی یا رنگ بریزی به فرش اصلی آسیب نمی‌زنه و با شستن از بین نمیره!',
+    humanQuestion: 'چرا وقتی قالب وردپرس را آپدیت کردم، تمام تغییرات و کدهایی که نوشته بودم پاک شدند؟',
+    realPain: 'تغییر دادن مستقیم فایل‌های قالب والد، بزرگ‌ترین اشتباهی است که باعث پاک شدن صدها ساعت زحمت پس از زدن یک دکمه آپدیت می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Editing parent style.css directly without creating child theme structure',
+      explanationFa: 'هوش مصنوعی کدهای سفارشی رو مستقیم ریخته تو قالب اصلی و با آپدیت بعدی همه چی پاک میشه!'
+    },
+    freelanceTip: 'همیشه تحویل پروژه با چایلدتم را در پیش‌فاکتور قید کن؛ این نشانه وجدان کاری و حرفه‌ای بودن شماست.',
     shortDefinition: 'پوسته‌ای که تمام امکانات پوسته والد را به ارث می‌برد و تغییرات سفارشی شما را بعد از آپدیت پوسته اصلی محفوظ نگه می‌دارد.',
-    deepExplanation: 'اگر تغییرات یا کدهای سفارشی را در پوسته اصلی بنویسید، با آمدن اولین آپدیت امنیتی از طرف توسعه‌دهنده قالب، تمام فایل‌ها جایگزین شده و صدها ساعت زحمت شما از بین می‌رود! پوسته فرزند با فقط یک فایل `style.css` و `functions.php` فعال می‌شود.',
-    vibeCodingImpact: 'هوش مصنوعی همیشه سریع‌ترین راه را انتخاب می‌کند و مستقیماً فایل‌های تم والد را دستکاری می‌کند. یک وایب‌کدر حرفه‌ای همیشه از مدل می‌خواهد کدهای جدید را در Child Theme پیاده کند.',
-    goldenPrompt: 'یک پوسته فرزند استاندارد برای قالب [نام قالب] ایجاد کن. هدر فایل style.css باید Template را به درستی به والد ارجاع دهد و functions.php استایل والد را به صورت اصولی ان‌کیو کند.',
+    deepExplanation: 'پوسته فرزند فقط با داشتن یک فایل style.css و functions.php به سادگی فعال می‌شود.',
+    vibeCodingImpact: 'هوش مصنوعی همیشه سریع‌ترین راه را انتخاب می‌کند و مستقیماً فایل‌های تم والد را دستکاری می‌کند مگر اینکه از او چایلدتم بخواهید.',
+    goldenPrompt: 'یک پوسته فرزند استاندارد برای قالب [نام قالب] ایجاد کن. هدر فایل style.css باید Template را به درستی به والد ارجاع دهد.',
     codeSnippet: {
       language: 'css',
       description: 'هدر استاندارد فایل style.css برای ساخت پوسته فرزند',
       runContext: 'child-theme/style.css',
-      code: `/*\n Theme Name:   HasanShah Child Theme\n Theme URI:    https://hasanshah.ir\n Description:  پوسته فرزند اختصاصی برای کدهای وایب‌کدینگ\n Template:     parent-theme-folder-name\n Version:      1.0.0\n*/`
+      code: "/*\n Theme Name:   HasanShah Child Theme\n Theme URI:    https://hasanshah.ir\n Description:  پوسته فرزند اختصاصی برای کدهای وایب‌کدینگ\n Template:     parent-theme-folder-name\n Version:      1.0.0\n*/"
     },
-    relatedTermIds: ['theme-hierarchy', 'action-hooks', 'asset-enqueue'],
+    relatedTermIds: ['theme-hierarchy', 'action-hooks'],
     seoKeywords: ['چایلد تم', 'child theme', 'پوسته فرزند وردپرس', 'ساخت چایلد تم']
   },
   {
@@ -93,17 +155,33 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'کاستوم پست تایپ',
     tags: ['cpt', 'data-modeling', 'backend', 'cms'],
-    shortDefinition: 'ساختار محتوایی جدید فراتر از نوشته‌ها و برگه‌های پیش‌فرض وردپرس؛ مانند ساخت بخش پروژه‌ها، فیلم‌ها، دوره‌ها یا پزشکان.',
-    deepExplanation: 'با تابع `register_post_type` به وردپرس اعلام می‌کنید که یک نوع دیتای جدید با منوی مستقل در پنل ادمین، فیلدهای خاص و سیستم آدرس‌دهی اختصاصی برای شما بسازد. این قابلیت هسته، وردپرس را به یک فریم‌ورک اپلیکیشن کامل تبدیل می‌کند.',
-    vibeCodingImpact: 'اگر آرگومان‌های CPT (به خصوص `has_archive`, `public`, `show_in_rest`) را دقیق به هوش مصنوعی ندهید، محتوا در پنل گوتنبرگ لود نمی‌شود یا پیوندهای یکتا خطای ۴۰۴ می‌دهند.',
-    goldenPrompt: 'یک Custom Post Type با نام hs_portfolio بساز: 1) قابلیت show_in_rest: true برای گوتنبرگ 2) پشتیبانی از عنوان، ادیتور، تصویر شاخص و متادیتا 3) اسلاگ آرشیو portfolio 4) آیکون مناسب Dashicons.',
+    sequenceOrder: 23,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder', 'designer'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: false,
+    isEcommerceEssential: true,
+    analogy: 'مثل اینه که علاوه بر پرونده مشتریان عادی در یک شرکت، کشوهای بایگانی مخصوص پروژه‌ها، قراردادها و اساتید هم اضافه کنی!',
+    humanQuestion: 'چطور بخش‌هایی مثل دوره‌ها، نمونه‌کارها یا املاک را بدون مخلوط شدن با نوشته‌های وبلاگ بسازیم؟',
+    realPain: 'اگر CPT نسازی، مجبوری نمونه‌کارها را لابلای مقالات وبلاگ بگذاری که پنل ادمین را شلوغ و غیرقابل مدیریت می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Custom Post Type registered but returns 404 on single post URL',
+      explanationFa: 'هوش مصنوعی CPT رو ساخته ولی یادش رفته بگه پیوندهای یکتا (Permalinks) رو بازنشانی کنی!'
+    },
+    freelanceTip: 'با ساخت CPTهای اختصاصی، سایت کارفرما را از یک وبلاگ ساده به یک نرم‌افزار تحت وب حرفه‌ای تبدیل می‌کنی.',
+    shortDefinition: 'ساختار محتوایی جدید فراتر از نوشته‌ها و برگه‌های پیش‌فرض وردپرس؛ مانند ساخت بخش پروژه‌ها یا دوره‌ها.',
+    deepExplanation: 'با تابع register_post_type به وردپرس اعلام می‌کنید که یک نوع دیتای جدید با منوی مستقل در پنل ادمین برای شما بسازد.',
+    vibeCodingImpact: 'اگر آرگومان‌های CPT (به خصوص show_in_rest) را به هوش مصنوعی ندهید، محتوا در پنل گوتنبرگ لود نمی‌شود.',
+    goldenPrompt: 'یک Custom Post Type با نام hs_portfolio بساز: قابلیت show_in_rest: true، پشتیبانی از تصویر شاخص و اسلاگ آرشیو portfolio.',
     codeSnippet: {
       language: 'php',
       description: 'ثبت اصولی یک CPT مدرن با پشتیبانی کامل از گوتنبرگ و REST API',
       runContext: 'functions.php',
-      code: `add_action( 'init', function() {\n    register_post_type( 'hs_portfolio', [\n        'labels'      => [ 'name' => 'نمونه‌کارها', 'singular_name' => 'نمونه‌کار' ],\n        'public'      => true,\n        'has_archive' => true,\n        'menu_icon'   => 'dashicons-portfolio',\n        'supports'    => [ 'title', 'editor', 'thumbnail', 'excerpt' ],\n        'show_in_rest'=> true,\n    ]);\n});`
+      code: "add_action( 'init', function() {\n    register_post_type( 'hs_portfolio', [\n        'labels'      => [ 'name' => 'نمونه‌کارها', 'singular_name' => 'نمونه‌کار' ],\n        'public'      => true,\n        'has_archive' => true,\n        'menu_icon'   => 'dashicons-portfolio',\n        'supports'    => [ 'title', 'editor', 'thumbnail', 'excerpt' ],\n        'show_in_rest'=> true,\n    ]);\n});"
     },
-    relatedTermIds: ['theme-hierarchy', 'action-hooks', 'filter-hooks'],
+    relatedTermIds: ['theme-hierarchy', 'action-hooks'],
     seoKeywords: ['کاستوم پست تایپ', 'cpt وردپرس', 'register_post_type', 'انواع پست اختصاصی']
   },
   {
@@ -114,17 +192,33 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     level: 'advanced',
     phonetic: 'نانسز',
     tags: ['security', 'csrf', 'forms', 'validation'],
-    shortDefinition: 'رشته‌های رمزنگاری‌شده موقت برای اعتبارسنجی اینکه آیا درخواستی که به سرور ارسال شده، توسط همان کاربر و از همان فرم معتبر سایت صادر شده است یا خیر.',
-    deepExplanation: 'نانس‌ها سلاح اصلی وردپرس برای خنثی‌سازی حملات خطرناک CSRF (جعل درخواست میان‌سایتی) هستند. با توابع `wp_create_nonce()` توکن تولید شده و در سرور با `wp_verify_nonce()` یا `check_ajax_referer()` صحت آن سنجیده می‌شود.',
-    vibeCodingImpact: 'هوش مصنوعی برای ساده کردن کار، فرم‌ها و درخواست‌های Ajax را اغلب بدون نانس تولید می‌کند. چنین کدهایی به شدت آسیب‌پذیر بوده و هر هکری می‌تواند به راحتی با لینک مخرب، به جای ادمین اطلاعات را تغییر دهد.',
-    goldenPrompt: 'یک فرم تماس سریع ایجکس با PHP و جاوااسکریپت بساز. الزامات امنیتی سفت‌وسخت: 1) حتماً در فرم یک نانس با wp_create_nonce تعبیه کن 2) در سمت سرور با check_ajax_referer صحت توکن را بسنج و در صورت نامعتبر بودن بلافاصله با wp_send_json_error متوقف کن.',
+    sequenceOrder: 24,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: false,
+    isEcommerceEssential: true,
+    analogy: 'مثل رمز پویای پیامکی بانکه؛ فقط برای همین یک درخواست و برای همین چند دقیقه معتبره تا دزد نتونه از روی لینک جعلی پول برداشت کنه!',
+    humanQuestion: 'چطور مطمئن شوم فرم‌هایی که در سایتم پر می‌شوند از سایت خودمان ارسال شده‌اند نه از طریق ربات‌های هکر؟',
+    realPain: 'اگر فرم‌هایت نانس نداشته باشند، یک هکر می‌تواند با ارسال یک لینک مخرب، تنظیمات سایت یا قیمت محصولات را به راحتی عوض کند!',
+    commonAiError: {
+      errorSnippet: 'Form processing without wp_verify_nonce or check_ajax_referer',
+      explanationFa: 'هوش مصنوعی فرم رو ساخته اما هیچ توکن امنیتی نذاشته و فرم در برابر حملات جعل هویت بی دفاعه!'
+    },
+    freelanceTip: 'به کارفرما اثبات کن که تمام فرم‌های سایت دارای لایه امنیتی Nonce هستند تا دغدغه هک شدن نداشته باشد.',
+    shortDefinition: 'رشته‌های رمزنگاری‌شده موقت برای اعتبارسنجی اینکه آیا درخواستی توسط همان کاربر و از همان فرم معتبر سایت صادر شده است.',
+    deepExplanation: 'نانس‌ها سلاح اصلی وردپرس برای خنثی‌سازی حملات خطرناک CSRF هستند.',
+    vibeCodingImpact: 'هوش مصنوعی برای ساده کردن کار، فرم‌ها را اغلب بدون نانس تولید می‌کند. چنین کدهایی به شدت آسیب‌پذیرند.',
+    goldenPrompt: 'یک فرم تماس سریع ایجکس با PHP بنویس. الزامات امنیتی: حتماً از wp_create_nonce استفاده کن و در سرور با check_ajax_referer صحت توکن را بسنج.',
     codeSnippet: {
       language: 'php',
       description: 'بررسی صحت نانس در زمان دریافت اطلاعات ایجکس فرم',
       runContext: 'Ajax Handler',
-      code: `add_action( 'wp_ajax_hs_save_lead', function() {\n    check_ajax_referer( 'hs_lead_security_nonce', 'security' );\n    // ادامه پردازش امن داده‌ها...\n    wp_send_json_success( [ 'message' => 'اطلاعات با موفقیت ثبت شد' ] );\n});`
+      code: "add_action( 'wp_ajax_hs_save_lead', function() {\n    check_ajax_referer( 'hs_lead_security_nonce', 'security' );\n    wp_send_json_success( [ 'message' => 'اطلاعات با موفقیت ثبت شد' ] );\n});"
     },
-    relatedTermIds: ['action-hooks', 'transients-api', 'filter-hooks'],
+    relatedTermIds: ['action-hooks', 'transients-api'],
     seoKeywords: ['نانس وردپرس', 'nonces security', 'امنیت فرم های وردپرس', 'مقابله با csrf']
   },
   {
@@ -135,17 +229,33 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     level: 'advanced',
     phonetic: 'ترنزینت ای پی آی',
     tags: ['caching', 'performance', 'database', 'optimization'],
-    shortDefinition: 'مکانیزم رسمی کش داده‌های سنگین، پاسخ‌های وب‌سرویس و کوئری‌های پرمصرف در دیتابیس وردپرس به همراه تعیین دقیق زمان انقضا.',
-    deepExplanation: 'اگر هر بار که کاربر صفحه‌ای را باز می‌کند، یک کوئری سنگین دیتابیس یا یک درخواست به API اینستاگرام بفرستید، سرور ظرف چند دقیقه از پا درمی‌آید. با توابع `set_transient()` و `get_transient()` داده را مثلاً به مدت ۶ ساعت ذخیره می‌کنید تا درخواست بعدی از دیتابیس لحظه‌ای خوانده شود.',
-    vibeCodingImpact: 'هوش مصنوعی وقتی کدی برای دریافت اطلاعات آب‌وهوا، نرخ ارز یا پست‌های خاص می‌نویسد، ترنزینت نمی‌گذارد. وایب‌کدر هوشمند با اضافه کردن کلمه Transient، سرعت لود را تا ۱۰ برابر افزایش می‌دهد.',
-    goldenPrompt: 'یک تابع در functions.php بنویس که داده‌های یک وب‌سرویس خارجی را دریافت کند و با استفاده از Transients API وردپرس به مدت ۴ ساعت (HOUR_IN_SECONDS * 4) در دیتابیس کش کند تا در درخواست‌های بعدی به سرور خارجی فشار نیاید.',
+    sequenceOrder: 25,
+    learningStation: 'station-3',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: false,
+    isEcommerceEssential: true,
+    analogy: 'مثل چرک‌نویس روی میزه؛ نتیجه محاسبات سخت رو می‌نویسی جلو چشمت تا هر بار که مشتری قیمت رو خواست، دوباره از اول ماشین‌حساب نزنی!',
+    humanQuestion: 'چرا سایتم با افزایش تعداد بازدیدکنندگان به شدت کند می‌شود و خطای Database Error می‌دهد؟',
+    realPain: 'بدون ترنزینت، با ورود ۵۰ کاربر همزمان، سرور در ثانیه ۵۰۰ کوئری تکراری اجرا می‌کند و رم سرور پر شده و سایت خاموش می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Executing heavy external API call on every single page load',
+      explanationFa: 'هوش مصنوعی هر بار که کاربر صفحه رو باز می‌کنه، یه درخواست سنگین به اینترنت می‌فرسته و سایت معطل می‌مونه!'
+    },
+    freelanceTip: 'با استفاده از ترنزینت، سرعت پاسخ‌دهی بخش‌های سنگین سایت کارفرما را تا ۱۰ برابر افزایش می‌دهی.',
+    shortDefinition: 'مکانیزم رسمی کش داده‌های سنگین و کوئری‌های پرمصرف در دیتابیس وردپرس به همراه تعیین دقیق زمان انقضا.',
+    deepExplanation: 'با توابع set_transient و get_transient داده را مثلاً به مدت ۴ ساعت ذخیره می‌کنید تا درخواست بعدی لحظه‌ای خوانده شود.',
+    vibeCodingImpact: 'وایب‌کدر هوشمند با اضافه کردن کلمه Transient، سرعت لود بخش‌های سنگین را به شکل چشمگیری ارتقا می‌دهد.',
+    goldenPrompt: 'یک تابع بنویس که داده‌ها را با استفاده از Transients API وردپرس به مدت ۴ ساعت کش کند تا به سرور فشار نیاید.',
     codeSnippet: {
       language: 'php',
       description: 'الگوی بهینه کش موقت با Transients API وردپرس',
       runContext: 'functions.php',
-      code: `$cached_data = get_transient( 'hs_cached_weather' );\nif ( false === $cached_data ) {\n    $response = wp_remote_get( 'https://api.example.com/weather' );\n    $cached_data = wp_remote_retrieve_body( $response );\n    set_transient( 'hs_cached_weather', $cached_data, 4 * HOUR_IN_SECONDS );\n}`
+      code: "$cached_data = get_transient( 'hs_cached_weather' );\nif ( false === $cached_data ) {\n    $response = wp_remote_get( 'https://api.example.com/weather' );\n    $cached_data = wp_remote_retrieve_body( $response );\n    set_transient( 'hs_cached_weather', $cached_data, 4 * HOUR_IN_SECONDS );\n}"
     },
-    relatedTermIds: ['nonces', 'action-hooks', 'theme-hierarchy'],
+    relatedTermIds: ['nonces', 'action-hooks'],
     seoKeywords: ['ترنزینت وردپرس', 'transients api', 'کش دیتابیس وردپرس', 'بهینه سازی کوئری های سنگین']
   }
 ];

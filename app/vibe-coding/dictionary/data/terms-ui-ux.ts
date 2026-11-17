@@ -9,17 +9,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'beginner',
     phonetic: 'دیزاین توکنز',
     tags: ['figma', 'tailwind', 'design-system', 'variables'],
-    shortDefinition: 'کوچک‌ترین واحدهای تصمیم‌گیری در طراحی (رنگ، سایز، فونت، سایه) که در قالب متغیر تعریف شده و بین ابزار دیزاین و کد مشترک هستند.',
-    deepExplanation: 'به جای نوشتن رنگ‌های هگزادسیمال متفرقه (مانند `#d4af37` یا `#1a1a2e`) در سراسر کدهای قالب وردپرس، آن‌ها را در قالب توکن‌های معنادار (مانند `--color-gold` یا `--color-surface`) در CSS تعریف می‌کنیم تا تغییر هویت بصری سایت با یک خط کد در کل پروژه اعمال شود.',
-    vibeCodingImpact: 'هنگام وایب‌کدینگ با هوش مصنوعی، اگر توکن‌های دیزاین را مشخص نکنید، AI برای هر کامپوننت یک رنگ یا سایز جدید با مقادیر هاردکد (Hardcoded) اختراع می‌کند که ظاهر سایت را بسیار شلخته و آماتور می‌کند.',
-    goldenPrompt: 'من برای این قالب وردپرس یک دیزاین سیستم مشخص دارم. در تمامی فایل‌های CSS و کلاس‌های Tailwind فقط از توکن‌های موجود در متغیرهای CSS ریشه (مانند var(--color-gold) و var(--color-background)) استفاده کن و هرگز رنگ هگزادسیمال تصادفی تولید نکن.',
+    sequenceOrder: 7,
+    learningStation: 'station-2',
+    readingTimeMinutes: 1,
+    targetPersonas: ['designer', 'beginner', 'founder', 'developer'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    analogy: 'مثل سطل رنگ و قوطی‌های ادویه است؛ هر بار که آشپزی می‌کنی نمی‌ری از سر کوچه ادویه بخری، از همین قوطی‌های برچسب‌خورده مشخص استفاده می‌کنی!',
+    humanQuestion: 'چطور رنگ‌ها و فونت‌های سایتم را یکجا تعریف کنم تا اگر فردا خواستم تغییر دهم، در یک ثانیه عوض شود؟',
+    realPain: 'اگر توکن نسازی، باید در ۲۰۰ جای مختلف کدها رنگ طلایی را دانه دانه عوض کنی؛ اگر یکی جا بماند سایتت شبیه دفتر نقاشی مهدکودک می‌شود!',
+    commonAiError: {
+      errorSnippet: 'Hardcoded arbitrary hex colors: #d4af37, #1a1a2e everywhere in template',
+      explanationFa: 'هوش مصنوعی تنبلی کرده و به جای استفاده از متغیر، رنگ‌های متفرقه تو کد ریخته!'
+    },
+    freelanceTip: 'به کارفرما بگو سایتت سیستم طراحی (Design System) اختصاصی دارد؛ این توجیه اصلی پروژه‌های لوکس با قیمت بالاست.',
+    shortDefinition: 'کوچک‌ترین واحدهای تصمیم‌گیری در طراحی که در قالب متغیر تعریف شده و بین فیگما و کد مشترک هستند.',
+    deepExplanation: 'به جای نوشتن رنگ‌های هگزادسیمال متفرقه در سراسر کدهای قالب وردپرس، آن‌ها را در قالب توکن‌های معنادار مانند var(--color-gold) تعریف می‌کنیم.',
+    vibeCodingImpact: 'هنگام وایب‌کدینگ با هوش مصنوعی، اگر توکن‌های دیزاین را مشخص نکنید، AI برای هر کامپوننت یک رنگ یا سایز جدید اختراع می‌کند.',
+    goldenPrompt: 'در تمامی فایل‌های CSS و کلاس‌های Tailwind فقط از توکن‌های موجود در متغیرهای CSS ریشه (مانند var(--color-gold)) استفاده کن و هرگز رنگ هگزادسیمال تصادفی تولید نکن.',
     codeSnippet: {
       language: 'css',
       description: 'تعریف توکن‌های پایه دیزاین در متغیرهای CSS سراسری',
       runContext: 'globals.css',
-      code: `:root {\n  --color-gold: oklch(0.83 0.105 72);\n  --color-surface: oklch(0.18 0.025 270);\n  --color-background: oklch(0.13 0.022 272);\n  --radius-card: 1rem;\n}`
+      code: ":root {\n  --color-gold: oklch(0.83 0.105 72);\n  --color-surface: oklch(0.18 0.025 270);\n  --color-background: oklch(0.13 0.022 272);\n  --radius-card: 1rem;\n}"
     },
-    relatedTermIds: ['visual-hierarchy', 'wcag-contrast', 'cls-prevention'],
+    relatedTermIds: ['visual-hierarchy', 'wcag-contrast'],
     seoKeywords: ['دیزاین توکن', 'design tokens', 'طراحی سیستم وردپرس', 'متغیرهای استایل']
   },
   {
@@ -30,17 +45,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'beginner',
     phonetic: 'ویژوال هایررکی',
     tags: ['typography', 'layout', 'landing-page', 'ui'],
-    shortDefinition: 'تنظیم اندازه، وزن فونت، رنگ و موقعیت المان‌ها به گونه‌ای که چشم مخاطب ناخودآگاه مهم‌ترین اطلاعات را اول بخواند.',
-    deepExplanation: 'در صفحات فرود وردپرسی، چشم کاربر نباید در صفحه سرگردان شود. یک سلسله‌مراتب بصری استاندارد با عنوان اصلی بزرگ (H1 پررنگ)، توضیح کوتاه با کنتراست ملایم، و دکمه اقدام به عمل (CTA) طلایی با کنتراست قوی شروع می‌شود.',
-    vibeCodingImpact: 'هوش مصنوعی به طور پیش‌فرض تمایل دارد تیترها و متون را در اندازه‌های یکدست و خاکستری رها کند. یک وایب‌کدر باید در پرامپت خود با واژگان مقیاس تایپوگرافی (Display, H1, Body, Caption) تعادل بصری را دیکته کند.',
-    goldenPrompt: 'برای این بخش هدر لندینگ، سلسله‌مراتب بصری شفاف ایجاد کن: تیتر H1 فوق‌العاده بزرگ و بولد (text-4xl تا text-6xl)، پاراگراف توضیحی خوانا با فاصله خطوط باز (leading-relaxed)، و یک دکمه CTA اصلی با گرادیان طلایی درخشان که کانون توجه صفحه باشد.',
+    sequenceOrder: 8,
+    learningStation: 'station-2',
+    readingTimeMinutes: 1,
+    targetPersonas: ['designer', 'founder', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: true,
+    analogy: 'مثل تیتر روزنامه‌ست؛ تیتر یک باید بزرگ‌ترین باشه تا از ده متری بخونیش، نه اینکه کل روزنامه با یک فونت یکنواخت چاپ بشه!',
+    humanQuestion: 'چرا وقتی مشتری وارد سایتم می‌شود نمی‌داند اول باید به کجای صفحه نگاه کند و دکمه خرید کجاست؟',
+    realPain: 'سایتی که سلسله‌مراتب بصری ندارد، نرخ تبدیل (Conversion Rate) نزدیک به صفر دارد؛ چون کاربر سرگیجه می‌گیرد و بدون کلیک صفحه را می‌بندد.',
+    commonAiError: {
+      errorSnippet: 'All text nodes have uniform font-size and color: text-base text-gray-400',
+      explanationFa: 'هوش مصنوعی همه تیترها و متون رو یکدست و خاکستری رها کرده و هیچ کانون توجهی نساخته!'
+    },
+    freelanceTip: 'به کارفرما اثبات کن که با چیدمان F-Shape و دکمه CTA کانون توجه، فروش لندینگ تا ۳ برابر رشد می‌کند.',
+    shortDefinition: 'تنظیم اندازه، وزن فونت، رنگ و موقعیت المان‌ها به گونه‌ای که چشم مخاطب مهم‌ترین اطلاعات را اول بخواند.',
+    deepExplanation: 'در صفحات فرود وردپرسی، چشم کاربر با یک سلسله‌مراتب استاندارد از تیتر اصلی به توضیح کوتاه و سپس به دکمه طلایی هدایت می‌شود.',
+    vibeCodingImpact: 'هوش مصنوعی به طور پیش‌فرض تیترها و متون را در اندازه‌های یکدست رها می‌کند. وایب‌کدر با دیکته کردن مقیاس تایپوگرافی تعادل بصری می‌سازد.',
+    goldenPrompt: 'سلسله‌مراتب بصری شفاف ایجاد کن: تیتر H1 فوق‌العاده بزرگ و بولد (text-4xl تا text-6xl)، پاراگراف توضیحی خوانا، و دکمه CTA اصلی با گرادیان طلایی درخشان.',
     codeSnippet: {
       language: 'html',
       description: 'ساختار استاندارد سلسله‌مراتب بصری با کلاس‌های تیل‌ویند',
       runContext: 'Header Component',
-      code: `<div class="space-y-4 text-center">\n  <span class="text-xs font-semibold uppercase tracking-wider text-gold">نسل جدید</span>\n  <h1 class="text-4xl font-black text-foreground md:text-6xl">عنوان اصلی کانون توجه</h1>\n  <p class="text-lg text-muted-foreground max-w-xl mx-auto">توضیح ثانویه با فونت سبک‌تر</p>\n</div>`
+      code: "<div class=\"space-y-4 text-center\">\n  <span class=\"text-xs font-semibold text-gold uppercase\">نسل جدید</span>\n  <h1 class=\"text-4xl md:text-6xl font-black text-foreground\">عنوان اصلی کانون توجه</h1>\n  <p class=\"text-lg text-muted-foreground max-w-xl mx-auto\">توضیح ثانویه</p>\n</div>"
     },
-    relatedTermIds: ['design-tokens', 'micro-interactions', 'wcag-contrast'],
+    relatedTermIds: ['design-tokens', 'micro-interactions'],
     seoKeywords: ['سلسله مراتب بصری', 'visual hierarchy', 'طراحی لندینگ پیج', 'چیدمان صفحات وب']
   },
   {
@@ -51,17 +81,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'مایکرو اینتراکشنز',
     tags: ['animation', 'delight', 'framer-motion', 'css-transitions'],
-    shortDefinition: 'انیمیشن‌ها و بازخوردهای حرکتی بسیار ظریف در زمان هاور، کلیک، اسکرول یا کپی که به رابط کاربری حس زنده و ارزشمند بودن می‌بخشند.',
-    deepExplanation: 'تفاوت یک سایت معمولی با یک وب‌سایت پرمیوم چندصد میلیونی در ریزتعاملات است: تغییر نرم موقعیت دکمه در زمان هاور (-translate-y-0.5)، درخشش کادرها (Glow Effect)، بازخورد تیک سبز در زمان کپی کردن لینک، و انیمیشن ورود آرام کارت‌ها (Fade-in).',
-    vibeCodingImpact: 'هوش مصنوعی اگر به حال خود رها شود، دکمه‌های خشک و بدون ترنزیشن تحویل می‌دهد. وایب‌کدر با درخواست کلاس‌های `transition-all duration-300` و افکت‌های هاور اختصاصی، محصول را در سطح لوکس آماده می‌کند.',
-    goldenPrompt: 'به تمامی دکمه‌ها و کارت‌های این صفحه ریزتعاملات ظریف و لوکس اضافه کن: در زمان هاور ۳ پیکسل به بالا حرکت کنند (hover:-translate-y-1)، سایه طلایی ملایم پیدا کنند، و ترنزیشن حرکت آن با easing طبیعی در ۳۰۰ میلی‌ثانیه باشد.',
+    sequenceOrder: 9,
+    learningStation: 'station-2',
+    readingTimeMinutes: 1,
+    targetPersonas: ['designer', 'developer'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: true,
+    analogy: 'مثل دست دادن محکم و لبخند زدن یک فروشنده خوش‌برخورد است؛ وقتی دکمه رو لمس می‌کنی، بهت حس زنده بودن میده!',
+    humanQuestion: 'چرا سایتم خشک، مرده و شبیه وبلاگ‌های قدیمی به نظر می‌رسد؟',
+    realPain: 'تفاوت یک سایت معمولی با یک وب‌سایت پرمیوم صد میلیون تومانی در همین انیمیشن‌های چند میلی‌ثانیه‌ای است؛ بدون این‌ها سایت ارزان به نظر می‌رسد.',
+    commonAiError: {
+      errorSnippet: 'Instant jumpy hover without transition: hover:bg-gold',
+      explanationFa: 'هوش مصنوعی ترنزیشن نرم نذاشته و دکمه با هاور موس چشمک وحشتناک می‌زنه!'
+    },
+    freelanceTip: 'ریزتعاملات روان و هاورهای طلایی همان چیزی است که مشتری بلافاصله می‌بیند و با اشتیاق پول پرداخت می‌کند.',
+    shortDefinition: 'انیمیشن‌ها و بازخوردهای حرکتی ظریف در زمان هاور، کلیک یا کپی که به رابط کاربری حس زنده بودن می‌بخشند.',
+    deepExplanation: 'تغییر نرم موقعیت دکمه در زمان هاور (-translate-y-0.5)، درخشش کادرها، و بازخورد تیک سبز حس محصول لوکس را ایجاد می‌کنند.',
+    vibeCodingImpact: 'هوش مصنوعی اگر به حال خود رها شود، دکمه‌های خشک و بدون ترنزیشن تحویل می‌دهد. وایب‌کدر با درخواست کلاس‌های transition محصول را لوکس می‌کند.',
+    goldenPrompt: 'به تمامی دکمه‌ها و کارت‌ها ریزتعاملات ظریف اضافه کن: در هاور ۳ پیکسل بالا بروند، سایه طلایی ملایم پیدا کنند و ترنزیشن در ۳۰۰ میلی‌ثانیه باشد.',
     codeSnippet: {
       language: 'css',
       description: 'کلاس‌های کاربردی تیل‌ویند برای ساخت هاور و انیمیشن روان',
       runContext: 'Tailwind classes',
-      code: `transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(212,175,55,0.3)]`
+      code: "transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(212,175,55,0.3)]"
     },
-    relatedTermIds: ['visual-hierarchy', 'design-tokens', 'cls-prevention'],
+    relatedTermIds: ['visual-hierarchy', 'design-tokens'],
     seoKeywords: ['ریزتعاملات', 'micro interactions', 'انیمیشن هاور', 'طراحی رابط کاربری لوکس']
   },
   {
@@ -72,17 +117,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'دبلیو سی ای جی کنتراست',
     tags: ['accessibility', 'a11y', 'compliance', 'readability'],
-    shortDefinition: 'نسبت تضاد روشنایی میان رنگ متن و پس‌زمینه بر اساس دستورالعمل بین‌المللی WCAG برای خوانایی کامل روی همه نمایشگرها.',
-    deepExplanation: 'بر اساس سطح AA استاندارد WCAG 2.1، حداقل نسبت کنتراست برای متون عادی باید ۴.۵ به ۱ و برای متون درشت ۳ به ۱ باشد. در تم‌های تاریک (Dark Mode)، استفاده از خاکستری‌های بسیار تیره روی پس‌زمینه سیاه باعث خستگی چشم و عدم خوانایی در نور خورشید می‌شود.',
-    vibeCodingImpact: 'هوش مصنوعی علاقه زیادی به استفاده از متون خاکستری بسیار کم‌رنگ (مثل text-gray-500 روی بک‌گراند مشکی) دارد که توسط ابزارهای Lighthouse به عنوان باگ سئو و دسترسی‌پذیری جریمه می‌شود.',
-    goldenPrompt: 'رنگ‌های استفاده‌شده در این کامپوننت را مطابق استاندارد WCAG 2.1 AA بررسی کن. کنتراست متن اصلی و رنگ طلایی با پس‌زمینه تاریک باید حداقل ۵ به ۱ باشد تا امتیاز کامل Accessibility در لایت‌هاوس گوگل تضمین شود.',
+    sequenceOrder: 10,
+    learningStation: 'station-2',
+    readingTimeMinutes: 1,
+    targetPersonas: ['designer', 'founder', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: false,
+    analogy: 'مثل نوشتن با گچ سفید روی تخته سیاهه؛ اگر با گچ خاکستری روی دیوار طوسی بنویسی هیچ‌کس نمی‌تونه متنت رو بخونه!',
+    humanQuestion: 'چرا نوشته‌های سایتم روی گوشی و زیر نور آفتاب خوانده نمی‌شوند و چشم را اذیت می‌کنند؟',
+    realPain: 'گوگل سایت‌هایی که متون ناخوانا و خاکستری کم‌رنگ دارند را جریمه می‌کند و رتبه سئوی شما در صفحه نتایج سقوط می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Lighthouse Accessibility Audit: Elements must have sufficient color contrast (ratio < 4.5:1)',
+      explanationFa: 'هوش مصنوعی از رنگ خاکستری فوق‌العاده کم‌رنگ استفاده کرده که خوانایی نداره و لایت‌هاوس قرمز شده!'
+    },
+    freelanceTip: 'نمره ۱۰۰ دسترسی‌پذیری (Accessibility) در گزارش لایت‌هاوس، برگ برنده شما در دفاع از کیفیت فنی در برابر کارفرماست.',
+    shortDefinition: 'نسبت تضاد روشنایی میان رنگ متن و پس‌زمینه بر اساس استاندارد بین‌المللی برای خوانایی کامل روی همه نمایشگرها.',
+    deepExplanation: 'بر اساس سطح AA استاندارد WCAG، حداقل نسبت کنتراست برای متون عادی باید ۴.۵ به ۱ باشد.',
+    vibeCodingImpact: 'هوش مصنوعی علاقه زیادی به متون خاکستری کم‌رنگ دارد که توسط گوگل جریمه می‌شود.',
+    goldenPrompt: 'رنگ‌های کامپوننت را مطابق استاندارد WCAG 2.1 AA بررسی کن. کنتراست متن اصلی و رنگ طلایی با پس‌زمینه تاریک باید حداقل ۵ به ۱ باشد.',
     codeSnippet: {
       language: 'css',
       description: 'استفاده از مقادیر رنگی با تضاد نوری تضمین‌شده در فضای oklch',
       runContext: 'colors.css',
-      code: `/* متن روشن روی پس‌زمینه فوق‌تیره */\n--bg-dark: oklch(0.12 0.02 270);\n--text-bright: oklch(0.96 0.01 70); /* نسبت کنتراست بالاتر از 12:1 */`
+      code: "/* متن روشن روی پس‌زمینه فوق‌تیره */\n--bg-dark: oklch(0.12 0.02 270);\n--text-bright: oklch(0.96 0.01 70);"
     },
-    relatedTermIds: ['design-tokens', 'cls-prevention', 'skeleton-loading'],
+    relatedTermIds: ['design-tokens', 'cls-prevention'],
     seoKeywords: ['کنتراست رنگی', 'wcag contrast', 'دسترسی پذیری وب', 'a11y وردپرس']
   },
   {
@@ -93,17 +153,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'advanced',
     phonetic: 'سی ال اس پریونشن',
     tags: ['performance', 'core-web-vitals', 'layout', 'seo'],
-    shortDefinition: 'تکنیک‌های جلوگیری از جابه‌جایی ناگهانی و پرش المان‌های صفحه هنگام لود شدن تصاویر، فونت‌ها و بنرها.',
-    deepExplanation: 'حتماً تجربه کرده‌اید که می‌خواهید روی لینکی کلیک کنید، اما با لود شدن یک تصویر ناگهان صفحه به پایین پرش می‌کند و اشتباهی روی تبلیغات کلیک می‌کنید! این پرش CLS نام دارد. با تعریف مقادیر دقیق `width` و `height` برای تصاویر و استفاده از `aspect-ratio` از این خطا جلوگیری می‌شود.',
-    vibeCodingImpact: 'هوش مصنوعی تگ‌های `<img>` را معمولاً بدون ابعاد عرض و ارتفاع تولید می‌کند. این موضوع مستقیماً امتیاز Core Web Vitals سایت را در سرچ کنسول قرمز می‌کند.',
-    goldenPrompt: 'برای تمام تصاویر و باکس‌های محتوایی در این تمپلیت وردپرس، نسبت ابعاد دقیق (aspect-ratio) و رزرو فضا تعیین کن تا از هرگونه Cumulative Layout Shift در زمان لود محتوا جلوگیری شود و مقدار CLS سایت در لایت‌هاوس روی عدد صفر باقی بماند.',
+    sequenceOrder: 11,
+    learningStation: 'station-2',
+    readingTimeMinutes: 2,
+    targetPersonas: ['developer', 'designer', 'founder'],
+    isNoCodeFriendly: true,
+    isCritical5: true,
+    isLanding24h: true,
+    analogy: 'حتماً برات پیش اومده که خواستی روی یک دکمه کلیک کنی، یهو عکس لود شده صفحه پریده پایین و دستت خورده به تبلیغ! به این پرش اعصاب‌خردکن میگن CLS.',
+    humanQuestion: 'چرا وقتی صفحه لود می‌شود، المان‌ها بالا و پایین می‌پرند و گوگل امتیازم را قرمز می‌کند؟',
+    realPain: 'پرش صفحه باعث عصبانیت کاربر می‌شود و گوگل سایت‌هایی با CLS بالای ۰.۱ را به راحتی از رتبه‌های اول حذف می‌کند.',
+    commonAiError: {
+      errorSnippet: 'Cumulative Layout Shift: 0.35 (Poor) due to unsized images and dynamic banners',
+      explanationFa: 'هوش مصنوعی تگ عکس رو بدون اندازه گذاشته و وقتی عکس لود میشه، کل صفحه رو هل میده پایین!'
+    },
+    freelanceTip: 'به کارفرما بگو تضمین می‌کنی CLS سایت روی عدد صفر بماند؛ این یک امتیاز رقابتی است که ۹۰٪ طراحان وردپرس بلد نیستند.',
+    shortDefinition: 'تکنیک‌های جلوگیری از جابه‌جایی ناگهانی المان‌های صفحه هنگام لود شدن تصاویر و فونت‌ها.',
+    deepExplanation: 'با تعریف مقادیر دقیق width و height برای تصاویر و استفاده از aspect-ratio در CSS از این خطا به طور کامل جلوگیری می‌شود.',
+    vibeCodingImpact: 'هوش مصنوعی تگ‌های img را معمولاً بدون ابعاد تولید می‌کند که مستقیماً وب‌ویتالز را خراب می‌کند.',
+    goldenPrompt: 'برای تمام تصاویر و باکس‌های محتوایی، نسبت ابعاد دقیق (aspect-ratio) رزرو کن تا مقدار CLS سایت در لایت‌هاوس روی عدد صفر باقی بماند.',
     codeSnippet: {
       language: 'html',
       description: 'رزرو فضای تصویر با aspect-ratio در تیل‌ویند',
       runContext: 'Image wrapper',
-      code: `<div class="relative w-full aspect-video overflow-hidden rounded-2xl bg-surface">\n  <img src="banner.webp" width="1280" height="720" alt="..." class="object-cover w-full h-full" loading="lazy" />\n</div>`
+      code: "<div class=\"relative w-full aspect-video overflow-hidden rounded-2xl bg-surface\">\n  <img src=\"banner.webp\" width=\"1280\" height=\"720\" alt=\"...\" class=\"object-cover w-full h-full\" loading=\"lazy\" />\n</div>"
     },
-    relatedTermIds: ['skeleton-loading', 'wcag-contrast', 'visual-hierarchy'],
+    relatedTermIds: ['skeleton-loading', 'wcag-contrast'],
     seoKeywords: ['پرش چیدمان', 'cls وردپرس', 'core web vitals cls', 'بهینه سازی لایت هاوس']
   },
   {
@@ -114,17 +189,32 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     level: 'intermediate',
     phonetic: 'اسکلتون لودینگ',
     tags: ['ux', 'perceived-performance', 'animation', 'async'],
-    shortDefinition: 'نمایش جعبه‌های توخالی خاکستری با انیمیشن پالس نوری در محل قرارگیری محتوا، تا زمان دریافت داده‌ها از سرور یا API.',
-    deepExplanation: 'اسکلتون اسکرین حس معطلی کاربر را تا ۵۰ درصد نسبت به اسپینرهای چرخان کاهش می‌دهد. کاربر دقیقاً متوجه می‌شود که چه نوع محتوایی (عنوان، عکس، کارت پست) در شرف بارگذاری است و ساختار صفحه را پیش از لود حس می‌کند.',
-    vibeCodingImpact: 'در سایت‌های وایب‌کدینگ متصل به REST API، هوش مصنوعی معمولاً یک دایره لودینگ زشت در وسط صفحه می‌گذارد. پیاده‌سازی اسکلتون تمیز، سایت شما را به کلاس شرکت‌هایی مانند یوتیوب و لینکدین ارتقا می‌دهد.',
-    goldenPrompt: 'یک کامپوننت Skeleton Loading با افکت پالس نوری (animate-pulse) برای کارت‌های پست وبلاگ با کلاس‌های Tailwind طراحی کن که شامل جایگاه تصویر، ۲ خط برای تیتر و یک دکمه خاکستری باشد.',
+    sequenceOrder: 12,
+    learningStation: 'station-2',
+    readingTimeMinutes: 1,
+    targetPersonas: ['designer', 'developer', 'beginner'],
+    isNoCodeFriendly: true,
+    isCritical5: false,
+    isLanding24h: false,
+    analogy: 'مثل مانکن پشت ویترین مغازه‌ست که فرم لباس رو نشون میده تا متوجه بشی قراره چه محصولی روی اون قرار بگیره، نه اینکه یک دایره چرخان خسته‌کننده بذاری وسط صفحه!',
+    humanQuestion: 'چطور به جای لودینگ‌های چرخان خسته‌کننده، حس سرعت بالا به کاربر منتقل کنم؟',
+    realPain: 'اسپینرهای دایره‌ای حس معطلی را ۲ برابر می‌کنند و باعث خروج کاربران کم‌حوصله از سایت می‌شوند.',
+    commonAiError: {
+      errorSnippet: 'Using full-screen spinner overlay blocking entire interaction',
+      explanationFa: 'هوش مصنوعی کل صفحه رو قفل کرده و یه لودینگ قدیمی گذاشته که حوصله کاربر سر میره!'
+    },
+    freelanceTip: 'طراحی اسکلتون اختصاصی، سایت وردپرسی شما را هم‌سطح محصولاتی مثل یوتیوب و لینکدین جلوه می‌دهد.',
+    shortDefinition: 'نمایش جعبه‌های خاکستری با انیمیشن پالس نوری در محل محتوا تا زمان دریافت کامل اطلاعات از سرور.',
+    deepExplanation: 'اسکلتون حس معطلی کاربر را تا ۵۰ درصد کاهش می‌دهد و کاربر ساختار صفحه را پیش از لود حس می‌کند.',
+    vibeCodingImpact: 'در سایت‌های متصل به API، پیاده‌سازی اسکلتون تمیز سایت شما را به کلاس شرکت‌های مطرح ارتقا می‌دهد.',
+    goldenPrompt: 'یک کامپوننت Skeleton Loading با افکت پالس نوری (animate-pulse) برای کارت‌های پست با کلاس‌های Tailwind طراحی کن.',
     codeSnippet: {
       language: 'html',
       description: 'کامپوننت اسکلتون تمیز با انیمیشن پالس بومی تیل‌ویند',
       runContext: 'SkeletonCard.tsx',
-      code: `<div class="p-6 rounded-2xl border border-white/10 bg-surface/50 animate-pulse space-y-4">\n  <div class="h-44 bg-white/10 rounded-xl w-full"></div>\n  <div class="h-6 bg-white/10 rounded w-3/4"></div>\n  <div class="h-4 bg-white/10 rounded w-1/2"></div>\n</div>`
+      code: "<div class=\"p-6 rounded-2xl border border-white/10 bg-surface/50 animate-pulse space-y-4\">\n  <div class=\"h-44 bg-white/10 rounded-xl w-full\"></div>\n  <div class=\"h-6 bg-white/10 rounded w-3/4\"></div>\n  <div class=\"h-4 bg-white/10 rounded w-1/2\"></div>\n</div>"
     },
-    relatedTermIds: ['cls-prevention', 'micro-interactions', 'design-tokens'],
+    relatedTermIds: ['cls-prevention', 'micro-interactions'],
     seoKeywords: ['اسکلتون لودینگ', 'skeleton loading', 'انیمیشن لود صفحه', 'تجربه کاربری بارگذاری']
   }
 ];
