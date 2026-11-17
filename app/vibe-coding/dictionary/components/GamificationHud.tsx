@@ -29,6 +29,8 @@ interface GamificationHudProps {
   onOpenCertificate: () => void;
   completedStagesCount: number;
   totalStagesCount: number;
+  readTermsCount?: number;
+  totalTermsCount?: number;
 }
 
 export default function GamificationHud({
@@ -38,6 +40,8 @@ export default function GamificationHud({
   onOpenCertificate,
   completedStagesCount,
   totalStagesCount,
+  readTermsCount,
+  totalTermsCount,
 }: GamificationHudProps) {
   const [isBadgesModalOpen, setIsBadgesModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -131,6 +135,19 @@ export default function GamificationHud({
                   {completedStagesCount} از {totalStagesCount} مرحله
                 </span>
               </div>
+
+              {/* Reading Progress Pill */}
+              {readTermsCount !== undefined && totalTermsCount !== undefined && (
+                <div
+                  className="hidden lg:flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold text-muted-foreground"
+                  title="میزان مطالعه کل دانشنامه"
+                >
+                  <BookOpen className="h-4 w-4 text-amber-400" />
+                  <span>
+                    {readTermsCount}/{totalTermsCount} اصطلاح
+                  </span>
+                </div>
+              )}
 
               {/* Badges Modal Trigger */}
               <button

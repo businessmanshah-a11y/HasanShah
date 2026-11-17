@@ -33,6 +33,9 @@ import {
   Eye,
   EyeOff,
   SlidersHorizontal,
+  Wrench,
+  Code2,
+  Play,
 } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -64,6 +67,9 @@ import GamificationHud from "./components/GamificationHud";
 import QuestStageMap from "./components/QuestStageMap";
 import StageCheckpointModal from "./components/StageCheckpointModal";
 import DigitalCertificateModal from "./components/DigitalCertificateModal";
+import ActiveStageSpotlightCard from "./components/ActiveStageSpotlightCard";
+import InteractivePromptSandboxModal from "./components/InteractivePromptSandboxModal";
+import StudioToolsDrawerModal from "./components/StudioToolsDrawerModal";
 import { questStages, calculateUserLevel } from "./data/quest-stages";
 import { EncyclopediaTerm, QuestStage, UserGamificationProfile } from "./data/types";
 
@@ -144,6 +150,8 @@ export default function VibeDictionaryContent() {
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isCursorRulesOpen, setIsCursorRulesOpen] = useState(false);
+  const [isSandboxOpen, setIsSandboxOpen] = useState(false);
+  const [isStudioDrawerOpen, setIsStudioDrawerOpen] = useState(false);
   const [zenModeTermId, setZenModeTermId] = useState<string | null>(null);
   const [selectedShareTerm, setSelectedShareTerm] = useState<EncyclopediaTerm | null>(null);
 
@@ -371,6 +379,22 @@ export default function VibeDictionaryContent() {
         userXp={gamificationProfile.xp}
         completedStagesCount={gamificationProfile.completedStageNumbers.length}
       />
+      <InteractivePromptSandboxModal
+        isOpen={isSandboxOpen}
+        onClose={() => setIsSandboxOpen(false)}
+      />
+      <StudioToolsDrawerModal
+        isOpen={isStudioDrawerOpen}
+        onClose={() => setIsStudioDrawerOpen(false)}
+        onOpenPromptBuilder={() => setIsPromptBuilderOpen(true)}
+        onOpenCursorRules={() => setIsCursorRulesOpen(true)}
+        onOpenCalculator={() => setIsCalculatorOpen(true)}
+        onOpenCheatSheet={() => setIsCheatSheetOpen(true)}
+        onOpenConfusingPairs={() => setIsConfusingPairsOpen(true)}
+        onOpenQuiz={() => setIsQuizOpen(true)}
+        onOpenZenMode={() => setZenModeTermId(allDictionaryTerms[0].id)}
+        onOpenSandbox={() => setIsSandboxOpen(true)}
+      />
       <InteractivePromptBuilderModal
         isOpen={isPromptBuilderOpen}
         onClose={() => setIsPromptBuilderOpen(false)}
@@ -489,92 +513,45 @@ export default function VibeDictionaryContent() {
             هوش مصنوعی کد را تولید می‌کند، اما معماری را شما دیکته می‌کنید. مرجع ۳۷ اصطلاح حیاتی با تمثیل‌های روزمره، پرامپت‌های ۵ لایه‌ای آماده کپی، و راه‌حل تست در ۳۰ ثانیه برای کسانی که می‌خواهند بدون باگ محصول خلق کنند.
           </p>
 
-          {/* ── Glassmorphism Studio Bar (Item 44) ── */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-5xl mx-auto p-2 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md">
+          {/* ── Elevated Clean Action Bar (Step 3: High UX Standard) ── */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
             <button
               type="button"
-              onClick={() => setIsPromptBuilderOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-3.5 py-2 text-xs font-bold text-black hover:opacity-95 shadow-md shadow-amber-500/20 transition-all"
+              onClick={() => {
+                handleToggleLearningView("quest");
+                const el = document.getElementById("active-mission-spotlight");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 px-6 py-3.5 text-xs md:text-sm font-black text-black hover:opacity-95 shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95"
             >
-              <Sparkles className="h-4 w-4" />
-              <span>ژنراتور پرامپت ۵ لایه‌ای</span>
+              <Play className="h-4 w-4 fill-black" />
+              <span>ادامه مأموریت یادگیری 🚀</span>
             </button>
 
             <button
               type="button"
-              onClick={() => setIsCursorRulesOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3.5 py-2 text-xs font-bold text-amber-300 hover:bg-amber-400/20 transition-all"
+              onClick={() => setIsSandboxOpen(true)}
+              className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/50 bg-amber-400/10 px-5 py-3.5 text-xs md:text-sm font-bold text-amber-300 hover:bg-amber-400/20 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-500/10"
             >
-              <FileCode2 className="h-4 w-4" />
-              <span>دانلود .cursorrules وردپرس</span>
+              <Code2 className="h-4 w-4 text-amber-400" />
+              <span>سندباکس تست پرامپت ⚡</span>
             </button>
 
             <button
               type="button"
-              onClick={() => setIsCalculatorOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-foreground hover:bg-white/10 transition-all"
+              onClick={() => setIsStudioDrawerOpen(true)}
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs md:text-sm font-bold text-foreground hover:bg-white/10 transition-all hover:border-white/30"
             >
-              <Gauge className="h-4 w-4 text-amber-400" />
-              <span>محاسبه‌گر پنجره بافت</span>
+              <Wrench className="h-4 w-4 text-amber-400" />
+              <span>استودیو و ابزارهای هوشمند (۷ ابزار) 🧰</span>
             </button>
-
-            <button
-              type="button"
-              onClick={() => setIsCheatSheetOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-foreground hover:bg-white/10 transition-all"
-            >
-              <Printer className="h-4 w-4 text-amber-400" />
-              <span>چیت‌شیت رومیزی (چاپ/PDF)</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsConfusingPairsOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-purple-400/30 bg-purple-400/10 px-3.5 py-2 text-xs font-bold text-purple-300 hover:bg-purple-400/20 transition-all"
-            >
-              <ArrowLeftRight className="h-4 w-4" />
-              <span>تفاوت مفاهیم گیج‌کننده</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsQuizOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-2 text-xs font-bold text-emerald-300 hover:bg-emerald-400/20 transition-all"
-            >
-              <Award className="h-4 w-4" />
-              <span>کوییز سنجش سطح</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setZenModeTermId(allDictionaryTerms[0].id)}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-muted-foreground hover:text-foreground transition-all"
-            >
-              <BookOpen className="h-4 w-4 text-amber-400" />
-              <span>حالت مطالعه Zen</span>
-            </button>
-          </div>
-
-          {/* Reading Progress Tracker (Item 7) */}
-          <div className="mx-auto mt-8 max-w-md rounded-2xl border border-white/10 bg-surface/70 p-4 backdrop-blur">
-            <div className="flex items-center justify-between text-xs font-bold text-muted-foreground mb-2">
-              <span className="flex items-center gap-1.5 text-foreground">
-                <Flame className="h-4 w-4 text-gold" />
-                میزان پیشرفت یادگیری شما:
-              </span>
-              <span className="text-gold font-mono">{readTerms.length} از {allDictionaryTerms.length} ({readPercentage}٪)</span>
-            </div>
-            <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
-              <div
-                className="h-full bg-gradient-gold transition-all duration-500 rounded-full"
-                style={{ width: `${Math.max(readPercentage, 3)}%` }}
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Player Gamification HUD Bar (Step 2) ── */}
+      {/* ── Player Gamification HUD Bar (Step 2 & 3) ── */}
       <GamificationHud
         profile={gamificationProfile}
         activeView={activeLearningView}
@@ -582,6 +559,8 @@ export default function VibeDictionaryContent() {
         onOpenCertificate={() => setIsCertificateOpen(true)}
         completedStagesCount={gamificationProfile.completedStageNumbers.length}
         totalStagesCount={questStages.length}
+        readTermsCount={readTerms.length}
+        totalTermsCount={allDictionaryTerms.length}
       />
 
       {/* ── Section 0: Emergency Rescue Tools (Item 45 & AGENTS.md) ── */}
@@ -634,9 +613,24 @@ export default function VibeDictionaryContent() {
         </div>
       </section>
 
-      {/* ── View Switch: Gamified Quest Map (Step 2) vs Encyclopedia Reference ── */}
+      {/* ── View Switch: Gamified Quest Map (Step 3: Odyssey Track) vs Encyclopedia Reference ── */}
       {activeLearningView === "quest" ? (
-        <section className="container mx-auto px-4 pb-16">
+        <section className="container mx-auto px-4 pb-16 space-y-10">
+          <div id="active-mission-spotlight">
+            <ActiveStageSpotlightCard
+              stages={questStages}
+              completedStageNumbers={gamificationProfile.completedStageNumbers}
+              readTermIds={readTerms}
+              onStartCheckpoint={(stage) => setActiveCheckpointStage(stage)}
+              onSelectTerm={(termId) => {
+                markAsRead(termId);
+                setZenModeTermId(termId);
+              }}
+              onOpenCertificate={() => setIsCertificateOpen(true)}
+              onOpenSandbox={() => setIsSandboxOpen(true)}
+            />
+          </div>
+
           <QuestStageMap
             stages={questStages}
             completedStageNumbers={gamificationProfile.completedStageNumbers}
