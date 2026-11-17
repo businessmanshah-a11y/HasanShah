@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Trophy,
   Flame,
@@ -18,15 +18,22 @@ import {
   Gamepad2,
   BookOpen,
   Share2,
+  Volume2,
+  VolumeX,
+  Compass,
+  Timer,
 } from "lucide-react";
 import { UserGamificationProfile, GamificationBadge } from "../data/types";
 import { gamificationBadges, calculateUserLevel } from "../data/quest-stages";
+import { isSoundMuted, toggleSoundMute, playClickSound } from "../utils/soundEffects";
 
 interface GamificationHudProps {
   profile: UserGamificationProfile;
   activeView: "quest" | "reference";
   onToggleView: (view: "quest" | "reference") => void;
   onOpenCertificate: () => void;
+  onOpenPassport: () => void;
+  onOpenSpeedChallenge: () => void;
   completedStagesCount: number;
   totalStagesCount: number;
   readTermsCount?: number;
@@ -38,6 +45,8 @@ export default function GamificationHud({
   activeView,
   onToggleView,
   onOpenCertificate,
+  onOpenPassport,
+  onOpenSpeedChallenge,
   completedStagesCount,
   totalStagesCount,
   readTermsCount,
@@ -45,6 +54,19 @@ export default function GamificationHud({
 }: GamificationHudProps) {
   const [isBadgesModalOpen, setIsBadgesModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    setMuted(isSoundMuted());
+  }, []);
+
+  const handleToggleSound = () => {
+    const newState = toggleSoundMute();
+    setMuted(newState);
+    if (!newState) {
+      playClickSound();
+    }
+  };
 
   const levelInfo = calculateUserLevel(profile.xp);
   const isMasterVibeCoder = completedStagesCount >= totalStagesCount;
@@ -163,8 +185,51 @@ export default function GamificationHud({
               </button>
             </div>
 
-            {/* Right/End: View Mode Switcher & Certificate Trigger */}
-            <div className="flex items-center justify-end gap-2 border-t border-white/10 pt-2 md:border-t-0 md:pt-0">
+            {/* Right/End: Quick Tools, Sound Toggle, Mode Switcher */}
+            <div className="flex flex-wrap items-center justify-end gap-2 border-t border-white/10 pt-2 md:border-t-0 md:pt-0">
+              {/* Speed Challenge Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onOpenSpeedChallenge();
+                }}
+                className="inline-flex items-center gap-1 rounded-xl border border-orange-500/40 bg-orange-500/10 px-2.5 py-1.5 text-xs font-bold text-orange-400 hover:bg-orange-500/20 transition-all"
+                title="شروع چالش ۶۰ ثانیه‌ای عیب‌یابی بحران‌های وردپرس"
+              >
+                <Timer className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">چالش ۶۰s</span>
+              </button>
+
+              {/* Passport Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onOpenPassport();
+                }}
+                className="inline-flex items-center gap-1 rounded-xl border border-amber-400/30 bg-amber-400/10 px-2.5 py-1.5 text-xs font-bold text-amber-300 hover:bg-amber-400/20 transition-all"
+                title="مشاهده شناسنامه و پاسپورت مهارتی"
+              >
+                <Compass className="h-3.5 w-3.5 text-amber-400" />
+                <span className="hidden sm:inline">پاسپورت</span>
+              </button>
+
+              {/* Sound Mute/Unmute Toggle */}
+              <button
+                type="button"
+                onClick={handleToggleSound}
+                className="p-1.5 rounded-xl border border-white/10 bg-white/5 text-muted-foreground hover:text-amber-300 transition-colors"
+                title={muted ? "فعال‌سازی افکت‌های صوتی" : "بی‌صدا کردن (Mute)"}
+                aria-label={muted ? "فعال‌سازی افکت‌های صوتی" : "بی‌صدا کردن"}
+              >
+                {muted ? (
+                  <VolumeX className="h-4 w-4 text-rose-400" />
+                ) : (
+                  <Volume2 className="h-4 w-4 text-amber-400" />
+                )}
+              </button>
+
               {/* Certificate Button (Available if Completed or to Preview) */}
               {isMasterVibeCoder ? (
                 <button

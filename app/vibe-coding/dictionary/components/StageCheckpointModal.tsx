@@ -17,6 +17,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import { QuestStage, QuizQuestion } from "../data/types";
+import { playSuccessChime, playErrorSound, playLevelUpFanfare, playClickSound } from "../utils/soundEffects";
 
 interface StageCheckpointModalProps {
   stage: QuestStage | null;
@@ -52,19 +53,24 @@ export default function StageCheckpointModal({
     setHasAnswered(true);
 
     if (idx === currentQuestion.correctIndex) {
+      playSuccessChime();
       // Award XP: 100 XP on first try, 50 XP on retry
       const questionXp = retryCount === 0 ? 100 : 50;
       setEarnedTotalXp((prev) => prev + questionXp);
+    } else {
+      playErrorSound();
     }
   };
 
   const handleRetry = () => {
+    playClickSound();
     setSelectedOption(null);
     setHasAnswered(false);
     setRetryCount((prev) => prev + 1);
   };
 
   const handleNextQuestion = () => {
+    playClickSound();
     if (!isLastQuestion) {
       setCurrentQuestionIndex((prev) => prev + 1);
       setSelectedOption(null);
@@ -72,6 +78,7 @@ export default function StageCheckpointModal({
       setRetryCount(0);
     } else {
       // Completed both questions!
+      playLevelUpFanfare();
       setStageCompleted(true);
       onStagePassed(
         stage.stageNumber,

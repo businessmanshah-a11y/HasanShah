@@ -70,8 +70,12 @@ import DigitalCertificateModal from "./components/DigitalCertificateModal";
 import ActiveStageSpotlightCard from "./components/ActiveStageSpotlightCard";
 import InteractivePromptSandboxModal from "./components/InteractivePromptSandboxModal";
 import StudioToolsDrawerModal from "./components/StudioToolsDrawerModal";
+import PromptLinterModal from "./components/PromptLinterModal";
+import VibeSkillPassportModal from "./components/VibeSkillPassportModal";
+import SpeedDebugChallengeModal from "./components/SpeedDebugChallengeModal";
 import { questStages, calculateUserLevel } from "./data/quest-stages";
 import { EncyclopediaTerm, QuestStage, UserGamificationProfile } from "./data/types";
+import { playClickSound, playSuccessChime } from "./utils/soundEffects";
 
 // Emergency tools for Section 0 (Humanized & Reformulated per Item 45 & AGENTS.md)
 const emergencyRescueTools = [
@@ -152,6 +156,9 @@ export default function VibeDictionaryContent() {
   const [isCursorRulesOpen, setIsCursorRulesOpen] = useState(false);
   const [isSandboxOpen, setIsSandboxOpen] = useState(false);
   const [isStudioDrawerOpen, setIsStudioDrawerOpen] = useState(false);
+  const [isLinterOpen, setIsLinterOpen] = useState(false);
+  const [isPassportOpen, setIsPassportOpen] = useState(false);
+  const [isSpeedChallengeOpen, setIsSpeedChallengeOpen] = useState(false);
   const [zenModeTermId, setZenModeTermId] = useState<string | null>(null);
   const [selectedShareTerm, setSelectedShareTerm] = useState<EncyclopediaTerm | null>(null);
 
@@ -268,6 +275,7 @@ export default function VibeDictionaryContent() {
     // Award +30 XP for reading/exploring a term
     setGamificationProfile((prev) => {
       if (prev.completedTermIds.includes(id)) return prev;
+      playSuccessChime();
       const newXp = prev.xp + 30;
       const lvl = calculateUserLevel(newXp);
       const updated: UserGamificationProfile = {
@@ -285,6 +293,7 @@ export default function VibeDictionaryContent() {
   };
 
   const handleStagePassed = (stageNumber: number, earnedXp: number, badgeId?: string) => {
+    playSuccessChime();
     setGamificationProfile((prev) => {
       const isAlreadyCompleted = prev.completedStageNumbers.includes(stageNumber);
       const newStages = isAlreadyCompleted
@@ -316,9 +325,37 @@ export default function VibeDictionaryContent() {
     });
   };
 
+  const handleSpeedChallengeComplete = (earnedXp: number, badgeId?: string) => {
+    playSuccessChime();
+    setGamificationProfile((prev) => {
+      const newBadges =
+        badgeId && !prev.unlockedBadgeIds.includes(badgeId)
+          ? [...prev.unlockedBadgeIds, badgeId]
+          : prev.unlockedBadgeIds;
+
+      const newXp = prev.xp + earnedXp;
+      const lvl = calculateUserLevel(newXp);
+
+      const updated: UserGamificationProfile = {
+        ...prev,
+        xp: newXp,
+        level: lvl.level,
+        rankTitle: lvl.rankTitle,
+        unlockedBadgeIds: newBadges,
+      };
+
+      try {
+        localStorage.setItem("vibe_gamification_profile", JSON.stringify(updated));
+      } catch {}
+
+      return updated;
+    });
+  };
+
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopiedItem(id);
+    playClickSound();
     setTimeout(() => {
       setCopiedItem((curr) => (curr === id ? null : curr));
     }, 2000);
@@ -383,6 +420,20 @@ export default function VibeDictionaryContent() {
         isOpen={isSandboxOpen}
         onClose={() => setIsSandboxOpen(false)}
       />
+      <PromptLinterModal
+        isOpen={isLinterOpen}
+        onClose={() => setIsLinterOpen(false)}
+      />
+      <VibeSkillPassportModal
+        isOpen={isPassportOpen}
+        onClose={() => setIsPassportOpen(false)}
+        profile={gamificationProfile}
+      />
+      <SpeedDebugChallengeModal
+        isOpen={isSpeedChallengeOpen}
+        onClose={() => setIsSpeedChallengeOpen(false)}
+        onChallengeComplete={handleSpeedChallengeComplete}
+      />
       <StudioToolsDrawerModal
         isOpen={isStudioDrawerOpen}
         onClose={() => setIsStudioDrawerOpen(false)}
@@ -394,6 +445,9 @@ export default function VibeDictionaryContent() {
         onOpenQuiz={() => setIsQuizOpen(true)}
         onOpenZenMode={() => setZenModeTermId(allDictionaryTerms[0].id)}
         onOpenSandbox={() => setIsSandboxOpen(true)}
+        onOpenLinter={() => setIsLinterOpen(true)}
+        onOpenPassport={() => setIsPassportOpen(true)}
+        onOpenSpeedChallenge={() => setIsSpeedChallengeOpen(true)}
       />
       <InteractivePromptBuilderModal
         isOpen={isPromptBuilderOpen}
@@ -557,6 +611,8 @@ export default function VibeDictionaryContent() {
         activeView={activeLearningView}
         onToggleView={handleToggleLearningView}
         onOpenCertificate={() => setIsCertificateOpen(true)}
+        onOpenPassport={() => setIsPassportOpen(true)}
+        onOpenSpeedChallenge={() => setIsSpeedChallengeOpen(true)}
         completedStagesCount={gamificationProfile.completedStageNumbers.length}
         totalStagesCount={questStages.length}
         readTermsCount={readTerms.length}

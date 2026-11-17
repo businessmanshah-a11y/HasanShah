@@ -27,6 +27,9 @@ interface StudioToolsDrawerModalProps {
   onOpenQuiz: () => void;
   onOpenZenMode: () => void;
   onOpenSandbox: () => void;
+  onOpenLinter: () => void;
+  onOpenPassport: () => void;
+  onOpenSpeedChallenge: () => void;
 }
 
 export default function StudioToolsDrawerModal({
@@ -40,6 +43,9 @@ export default function StudioToolsDrawerModal({
   onOpenQuiz,
   onOpenZenMode,
   onOpenSandbox,
+  onOpenLinter,
+  onOpenPassport,
+  onOpenSpeedChallenge,
 }: StudioToolsDrawerModalProps) {
   if (!isOpen) return null;
 
@@ -146,6 +152,33 @@ export default function StudioToolsDrawerModal({
                 </div>
               </button>
 
+              {/* Prompt Linter */}
+              <button
+                type="button"
+                onClick={() => triggerAndClose(onOpenLinter)}
+                className="group flex items-start gap-3.5 rounded-2xl border border-emerald-400/40 bg-emerald-400/5 p-4 text-right hover:border-emerald-400/70 hover:bg-emerald-400/10 transition-all sm:col-span-2"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400 text-black font-black shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-bold text-sm text-foreground group-hover:text-emerald-300 transition-colors">
+                        عیب‌یاب و ارتقادهنده هوشمند پرامپت کاربر (Prompt Linter)
+                      </h4>
+                      <span className="rounded bg-emerald-400/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+                        هوشمند
+                      </span>
+                    </div>
+                    <ChevronLeft className="h-4 w-4 text-muted-foreground group-hover:text-emerald-400 group-hover:-translate-x-0.5 transition-all" />
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                    پرامپت خام خود را پیست کنید؛ سیستم ۵ لایه را می‌سنجد و با یک کلیک آن را به پرامپت استاندارد ضدخرابی ارتقا می‌دهد.
+                  </p>
+                </div>
+              </button>
+
               {/* Prompt Sandbox */}
               <button
                 type="button"
@@ -236,7 +269,55 @@ export default function StudioToolsDrawerModal({
               <span>تفهیم مفهومی و یادگیری عمیق</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {/* Speed Challenge */}
+              <button
+                type="button"
+                onClick={() => triggerAndClose(onOpenSpeedChallenge)}
+                className="group flex flex-col justify-between rounded-2xl border border-orange-500/40 bg-orange-500/10 p-4 text-right hover:border-orange-500/70 hover:bg-orange-500/15 transition-all"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500/20 text-orange-400 border border-orange-500/30 mb-3">
+                  <Compass className="h-4 w-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <h4 className="font-bold text-xs md:text-sm text-foreground group-hover:text-orange-300 transition-colors">
+                      چالش ۶۰ ثانیه‌ای
+                    </h4>
+                    <span className="rounded bg-orange-500/20 px-1.5 py-0.5 text-[9px] font-bold text-orange-400">
+                      سرعتی
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[11px] text-muted-foreground line-clamp-2">
+                    مهار ۵ بحران سرور در ۶۰ ثانیه و کسب نشان رفلکس.
+                  </p>
+                </div>
+              </button>
+
+              {/* Skill Passport */}
+              <button
+                type="button"
+                onClick={() => triggerAndClose(onOpenPassport)}
+                className="group flex flex-col justify-between rounded-2xl border border-amber-400/40 bg-amber-400/10 p-4 text-right hover:border-amber-400/70 hover:bg-amber-400/15 transition-all"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-400/20 text-amber-400 border border-amber-400/30 mb-3">
+                  <Compass className="h-4 w-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <h4 className="font-bold text-xs md:text-sm text-foreground group-hover:text-amber-300 transition-colors">
+                      پاسپورت مهارتی
+                    </h4>
+                    <span className="rounded bg-amber-400/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-300">
+                      اشتراک
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[11px] text-muted-foreground line-clamp-2">
+                    کارت پرسونال‌برندینگ جهت اشتراک در لینکدین.
+                  </p>
+                </div>
+              </button>
+
               {/* Confusing Pairs */}
               <button
                 type="button"
