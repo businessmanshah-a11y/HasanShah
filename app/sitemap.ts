@@ -57,6 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: alternates(`${base}/vibe-coding/`),
     },
     {
+      url: `${base}/vibe-coding/dictionary/`,
+      lastModified: new Date("2026-11-17"),
+      changeFrequency: "weekly",
+      priority: 0.92,
+      alternates: alternates(`${base}/vibe-coding/dictionary/`),
+    },
+    {
       url: `${base}/blog/`,
       lastModified: LAST_MODIFIED.blogArchive,
       changeFrequency: "daily",

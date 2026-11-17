@@ -74,6 +74,13 @@ export default function VibeCodingPageContent() {
               >
                 {vc.heroCtaCurriculum}
               </a>
+              <Link
+                href="/vibe-coding/dictionary/"
+                className="inline-flex items-center gap-2 rounded-xl border border-amber-400/40 bg-amber-400/10 px-6 py-3.5 text-sm font-bold text-amber-300 transition hover:border-amber-400 hover:bg-amber-400/20"
+              >
+                <BookOpen className="h-4 w-4 text-amber-400" />
+                دانشنامه تخصصی وردپرس
+              </Link>
             </div>
           </div>
 
@@ -89,6 +96,31 @@ export default function VibeCodingPageContent() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Dictionary & Encyclopedia Promo ── */}
+      <section className="container mx-auto px-4 pb-12">
+        <div className="rounded-3xl border border-gold/30 bg-gradient-to-r from-surface/90 via-surface-elevated/80 to-surface/90 p-6 md:p-8 backdrop-blur shadow-elegant flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-start">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-bold text-gold">
+              <Sparkles className="h-3.5 w-3.5" />
+              مرجع تعاملی توسعه‌دهندگان
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-foreground">
+              دانشنامه و دیکشنری تخصصی وایب‌کدینگ وردپرس
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+              الفبای فول‌استک ساخت سایت‌های وردپرسی با هوش مصنوعی؛ ۳۶+ مدخل جامع، پرامپت‌های طلایی و هشدارهای دام‌های هوش مصنوعی.
+            </p>
+          </div>
+          <Link
+            href="/vibe-coding/dictionary/"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-6 py-3.5 text-sm font-black text-gold-foreground shadow-gold transition hover:-translate-y-0.5"
+          >
+            ورود به دانشنامه
+            <ArrowLeft className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
