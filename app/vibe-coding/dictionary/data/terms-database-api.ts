@@ -416,16 +416,18 @@ export const databaseApiTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[روش اشتباه: ریختن ۵ میلیون رکورد لاگ در wp_postmeta] ──> 🐌 کرش سرور
 [روش استاندارد: ساخت جدول اختصاصی wp_hs_logs با dbDelta] ──> ⚡ سرعت ۱ میلی‌ثانیه‌ای`,
     injectionTarget: 'هوک register_activation_hook یا فایل مایگریشن افزونه',
-    universalPrompt: `[ROLE]: Senior MySQL & WordPress Database Architect.
-[TASK]: Create a high-performance custom table named "wp_hs_transactions" using dbDelta().
-[NEGATIVE CONSTRAINTS]:
-- Strict adherence to dbDelta formatting rules: exactly two spaces after PRIMARY KEY, uppercase SQL keywords, and explicit table collation.
-- Include proper indexes on foreign keys and created_at timestamps.
-[OUTPUT]: Robust, migration-safe table creation function.`,
+    universalPrompt: `[نقش]: معمار دیتابیس MySQL و سیستم‌های پرتراکنش وردپرس.
+[زمینه]: ما به یک جدول اختصاصی در دیتابیس با نام "wp_hs_transactions" برای ذخیره تراکنش‌های مالی و لاگ‌های سنگین با استفاده از تابع رسمی dbDelta() نیاز داریم.
+[وظیفه]: تابع استاندارد ساخت جدول را با در نظر گرفتن کالکشن استاندارد دیتابیس ($wpdb->get_charset_collate()) بنویس.
+[شروط سلبی]:
+- قواعد سفت‌وسخت dbDelta را نشکن (دقیقاً دو فاصله بعد از PRIMARY KEY، حروف بزرگ برای کلیدواژه‌های SQL، و درج نوع فیلدها).
+- از ایندکس مناسب روی کلیدهای خارجی و ستون‌های تاریخ (created_at) استفاده کن.
+- هرگز کوئری مستقیم CREATE TABLE بدون dbDelta اجرا نکن.
+[خروجی]: تابع استاندارد و امن ساخت و ارتقای جدول.`,
     agentsMdRule: `# استانداردهای دیتابیس در AGENTS.md:
 برای داده‌های پرتراکنش (بیش از ۵۰ هزار رکورد در سال)، ایجاد جدول اختصاصی با تابع dbDelta الزامی است و استفاده از postmeta ممنوع می‌باشد.`,
-    cursorPrompt: `Generate the dbDelta SQL schema for an audit log table with indexed timestamp columns.`,
-    claudePrompt: `Write the complete activation hook using dbDelta to safely install and upgrade custom database tables in WordPress.`,
+    cursorPrompt: `ساختار اسکیمای SQL تابع dbDelta را برای یک جدول اختصاصی ثبت لاگ‌ها همراه با ایندکس ستون‌های زمانی تولید کن.`,
+    claudePrompt: `هوک کامل فعال‌سازی افزونه با متد dbDelta را برای نصب و ارتقای ایمن جداول اختصاصی وردپرس پیاده‌سازی کن.`,
     debugPrompt: `تابع dbDelta جدول را نمی‌سازد. فاصله‌گذاری دوگانه بعد از PRIMARY KEY و تعاریف ایندکس را بررسی و اصلاح کن.`,
     howToTest: {
       steps: [
@@ -476,16 +478,17 @@ export const databaseApiTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[جستجو در جدول بدون ایندکس] ──> بررسی ۱,۰۰۰,۰۰۰ سطر ──> 🐌 ۴,۵۰۰ میلی‌ثانیه
 [جستجو در جدول با ایندکس]   ──> پرش مستقیم به رکورد با B-Tree ──> ⚡ ۲ میلی‌ثانیه`,
     injectionTarget: 'تعاریف ساختار جداول اختصاصی در dbDelta یا دستور خط فرمان دیتابیس',
-    universalPrompt: `[ROLE]: Senior MySQL Performance Tuning Engineer.
-[TASK]: Analyze the query conditions for table "wp_hs_leads" and add compound indexes for (status, created_at).
-[NEGATIVE CONSTRAINTS]:
-- Avoid over-indexing (do not index columns with high write-frequency and low read-frequency).
-- Check index cardinality.
-[OUTPUT]: Optimal ALTER TABLE SQL statement.`,
+    universalPrompt: `[نقش]: مهندس ارشد تیونینگ و بهینه‌سازی دیتابیس MySQL وردپرس.
+[زمینه]: شرایط جستجو و فیلترهای جدول "wp_hs_leads" کند شده‌اند و نیاز به ایندکس ترکیبی روی (status, created_at) داریم.
+[وظیفه]: دستور استاندارد ایجاد ایندکس را بهینه‌سازی کن تا کوئری‌ها بدون نیاز به فول تیبل اسکن (Full Table Scan) در کسری از میلی‌ثانیه اجرا شوند.
+[شروط سلبی]:
+- از ایندکس‌گذاری افراطی روی ستون‌هایی که به ندرت خوانده می‌شوند پرهیز کن.
+- ترتیب ستون‌ها در ایندکس ترکیبی را بر اساس بیشترین کاردینالیتی رعایت کن.
+[خروجی]: دستور بهینه و استاندارد ALTER TABLE.`,
     agentsMdRule: `# استانداردهای ایندکس در AGENTS.md:
 تمامی ستون‌هایی که در بخش‌های WHERE، ORDER BY، یا JOIN کوئری‌ها استفاده می‌شوند، باید دارای ایندکس مناسب در دیتابیس باشند.`,
-    cursorPrompt: `Suggest optimal MySQL indexes for these slow queries reported in Query Monitor.`,
-    claudePrompt: `Explain how adding an index to this custom postmeta key eliminates the full table scan bottleneck.`,
+    cursorPrompt: `برای کوئری‌های کند ثبت‌شده در لاگ وردپرس و ابزار Query Monitor، ایندکس‌های بهینه مای‌اس‌کیوال را پیشنهاد بده.`,
+    claudePrompt: `توضیح بده چطور اضافه کردن ایندکس به کلیدهای پرکاربرد پست‌متا، گلوگاه اسکن کامل جدول را مرتفع می‌کند و کد آن را بنویس.`,
     debugPrompt: `این کوئری در لاگ کدهای کند (Slow Query Log) ثبت شده است. ایندکس مناسب برای حل این مشکل را معرفی کن.`,
     howToTest: {
       steps: [
@@ -541,17 +544,17 @@ export const databaseApiTerms: EncyclopediaTerm[] = [
         ├── کاربر دسترسی دارد (current_user_can) ──> اجرای تابع و تحویل سفارشات
         └── دسترسی ندارد ──> خطای ۴۰۳ Forbidden 🚫`,
     injectionTarget: 'آرایه پارامترهای register_rest_route',
-    universalPrompt: `[ROLE]: WordPress REST API Security Architect.
-[TASK]: Register a private endpoint "/wp-json/hs/v1/user-data" using "register_rest_route".
-[NEGATIVE CONSTRAINTS]:
-- NEVER use "__return_true" on mutation (POST/PUT/DELETE) routes.
-- Implement a rigorous "permission_callback" verifying "current_user_can('edit_posts')" or user ownership.
-- Return a 403 WP_Error on unauthorized requests.
-[OUTPUT]: Secure endpoint registration.`,
+    universalPrompt: `[نقش]: معمار امنیت وب‌سرویس‌های REST وردپرس.
+[زمینه]: ما در حال ثبت یک اندپوینت خصوصی در مسیر "/wp-json/hs/v1/user-data" با استفاده از تابع register_rest_route هستیم.
+[وظیفه]: یک تابع permission_callback سخت‌گیرانه پیاده‌سازی کن که صلاحیت کاربر را با current_user_can یا مالکیت رکورد بسنجد.
+[شروط سلبی]:
+- هرگز روی روت‌های تغییردهنده دیتا (POST/PUT/DELETE) از '__return_true' استفاده نکن.
+- در صورت عدم احراز صلاحیت، شیء رسمی WP_Error با کد وضعیت ۴۰۳ Forbidden برگردان.
+[خروجی]: ثبت کامل و امن روت وب‌سرویس.`,
     agentsMdRule: `# امنیت REST API در AGENTS.md:
 تمامی مسیرهای وب‌سرویس باید دارای یک تابع permission_callback سخت‌گیرانه باشند. استفاده از __return_true روی مسیرهای حاوی داده‌های حساس اکیداً ممنوع است.`,
-    cursorPrompt: `Audit this REST route and ensure permission_callback strictly checks user capabilities.`,
-    claudePrompt: `Rewrite this REST registration with a robust permission_callback checking custom user caps and nonces.`,
+    cursorPrompt: `این روت REST را بررسی کن و مطمئن شو تابع permission_callback به درستی سطح دسترسی کاربر را ارزیابی می‌کند.`,
+    claudePrompt: `این ثبت وب‌سرویس را با یک permission_callback قدرتمند که دسترسی‌های سفارشی و توکن کاربر را می‌سنجد بازنویسی کن.`,
     debugPrompt: `این اندپوینت بدون احراز هویت دیتای مشتریان را لو می‌دهد. یک تابع permission_callback با بررسی صلاحیت اضافه کن.`,
     howToTest: {
       steps: [
@@ -603,16 +606,17 @@ export const databaseApiTerms: EncyclopediaTerm[] = [
                                ├── بله ──> ⚡ تحویل در ۱ میلی‌ثانیه از RAM
                                └── خیر ──> خواندن از هارد MySQL + ذخیره در ردیس`,
     injectionTarget: 'فایل wp-content/object-cache.php و تنظیمات Redis در wp-config.php',
-    universalPrompt: `[ROLE]: High-Traffic WordPress Infrastructure Engineer.
-[TASK]: Configure Redis Object Cache for WooCommerce and ensure proper cache group invalidation on product updates.
-[NEGATIVE CONSTRAINTS]:
-- Avoid caching dynamic cart sessions in persistent object cache groups.
-- Use "wp_cache_delete()" hooks upon post status transitions.
-[OUTPUT]: Robust caching configuration.`,
+    universalPrompt: `[نقش]: مهندس زیرساخت و پرفورمنس سایت‌های پرترافیک وردپرس.
+[زمینه]: ما در حال فعال‌سازی کش ماندگار اشیاء (Redis Object Cache) برای فروشگاه هستیم و باید ابطال کش (Cache Invalidation) در زمان به‌روزرسانی محصولات به درستی انجام شود.
+[وظیفه]: یک ساختار بهینه کش بنویس که محاسبات سنگین را با wp_cache_get و wp_cache_set مدیریت کند.
+[شروط سلبی]:
+- سشن‌های پویا و سبد خرید را در گروه‌های کش ماندگار قرار نده.
+- در زمان تغییر وضعیت یا ویرایش پست‌ها، ابطال کش را با هوک wp_cache_delete حتماً رعایت کن.
+[خروجی]: کانفیگ و کدهای اصولی کش ماندگار با ردیس.`,
     agentsMdRule: `# کش ماندگار اشیاء در AGENTS.md:
 توابع سفارشی دیتابیس باید به جای کوئری مستقیم، ابتدا از توابع wp_cache_get و wp_cache_set استفاده کنند تا از ردیس به بهترین نحو بهره‌برداری شود.`,
-    cursorPrompt: `Implement wp_cache_get and wp_cache_set around this heavy analytical calculation.`,
-    claudePrompt: `Explain how to integrate Redis Object Caching into this high-traffic membership site architecture.`,
+    cursorPrompt: `توابع wp_cache_get و wp_cache_set را در اطراف این محاسبه سنگین پیاده‌سازی کن تا بار دیتابیس کاهش یابد.`,
+    claudePrompt: `توضیح بده چطور کش اشیاء ردیس را در معماری این سایت پرترافیک پیاده‌سازی کنیم تا در زمان فروش ویژه با افت سرعت مواجه نشود.`,
     debugPrompt: `اطلاعات در ردیس کش شده و تغییرات جدید دیده نمی‌شود. هوک wp_cache_delete را برای کلید مربوطه اضافه کن.`,
     howToTest: {
       steps: [

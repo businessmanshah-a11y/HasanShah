@@ -504,18 +504,19 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
        ▼
 [۳. بارگذاری functions.php قالب] (با آپدیت قالب ممکنه پاک بشه ⚠️)`,
     injectionTarget: 'مسیر /wp-content/mu-plugins/hs-features.php',
-    universalPrompt: `[ROLE]: Senior WordPress Core Architect.
-[CONTEXT]: All custom business logic must be encapsulated inside a single file in "wp-content/mu-plugins/hs-core-system.php".
-[TASK]: Implement the required hook logic for [FEATURE NAME].
-[NEGATIVE CONSTRAINTS]:
-- Do NOT place this code inside functions.php.
-- Wrap all functions in "if (!function_exists('...'))".
-- Use safe hooks (plugins_loaded or init).
-[OUTPUT]: Production-ready standalone mu-plugin file.`,
+    universalPrompt: `[نقش]: معمار ارشد هسته وردپرس.
+[زمینه]: تمام کدهای اختصاصی و منطق بیزنس باید در قالب یک افزونه مستقل در پوشه wp-content/mu-plugins/ قرار گیرند تا هیچ تغییری در قالب یا فایل‌های دیگر باعث حذف آن‌ها نشود.
+[وظیفه]: منطق هوک‌های مربوط به [نام قابلیت] را پیاده‌سازی کن.
+[شروط سلبی]:
+- هرگز این کد را داخل فایل functions.php قالب قرار نده.
+- همه توابع را داخل شرط if (!function_exists('...')) قرار بده.
+- از هوک‌های استاندارد plugins_loaded یا init استفاده کن.
+- پیشوند hs_ برای تمامی توابع الزامی است.
+[خروجی]: یک فایل کامل mu-plugin مستقل و آماده اجرا.`,
     agentsMdRule: `# قانون پوشه mu-plugins در AGENTS.md:
 تمامی منطق‌های حیاتی، اندپوینت‌های REST اختصاصی و قابلیت‌های بیزنس مشتری باید حتماً در مسیر wp-content/mu-plugins/ ایجاد شوند تا با تغییر یا آپدیت پوسته حذف نشوند.`,
-    cursorPrompt: `Generate this feature as a standalone mu-plugin in @wp-content/mu-plugins/hs-feature.php with proper namespace checks.`,
-    claudePrompt: `Package this logic strictly as a Must-Use Plugin (mu-plugin). Explain why this protects the client's business logic from theme updates.`,
+    cursorPrompt: `این قابلیت را به صورت یک افزونه خودکار در @wp-content/mu-plugins/hs-feature.php همراه با بررسی شرط عدم تداخل توابع پیاده‌سازی کن.`,
+    claudePrompt: `این منطق را در قالب یک Must-Use Plugin (mu-plugin) بنویس و توضیح بده چرا این رویکرد کدها را از تغییرات و آپدیت‌های قالب حفظ می‌کند.`,
     debugPrompt: `کدی که نوشتی در فایل قالب قرار گرفته است. آن را به یک افزونه مستقل mu-plugins با ساختار امنیتی استاندارد تبدیل کن.`,
     howToTest: {
       steps: [
@@ -567,16 +568,18 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
                                             ├── بله ──> دست نزن ✓
                                             └── خیر ──> زمان‌بندی کن برای نیمه‌شب ⏰`,
     injectionTarget: 'فایل mu-plugins برای ثبت زمان‌بندی و هوک بازگشتی',
-    universalPrompt: `[ROLE]: Senior WordPress Systems Engineer.
-[TASK]: Schedule a recurring daily cron task to prune old transients using "wp_schedule_event".
-[NEGATIVE CONSTRAINTS]:
-- Always check "!wp_next_scheduled()" before scheduling to avoid duplicate cron loops.
-- Do NOT perform intensive queries inside user-facing hooks.
-[OUTPUT]: Safe, self-registering cron hook.`,
+    universalPrompt: `[نقش]: مهندس بهینه‌سازی پردازش‌های پس‌زمینه وردپرس.
+[زمینه]: ما می‌خواهیم عملیات سنگین [نام عملیات مثلاً پاکسازی کش یا همگام‌سازی] را در پس‌زمینه انجام دهیم بدون اینکه کاربر معطل شود.
+[وظیفه]: یک تسک زمان‌بندی‌شده با wp_schedule_event بنویس که بررسی کند اگر تسک از قبل ست نشده بود (با wp_next_scheduled)، آن را به صف اضافه کند.
+[شروط سلبی]:
+- تسک سنگین را به طور مستقیم در هوک init بدون زمان‌بندی اجرا نکن.
+- هوک سفارشی را بدون فیلتر اینتروال سفارشی رها نکن.
+- از شروط دفاعی غافل نشو.
+[خروجی]: کد کامل زمان‌بندی به همراه تابع بازنویسی فاصله زمانی (cron_schedules).`,
     agentsMdRule: `# زمان‌بندی تسک‌ها در AGENTS.md:
 قبل از اجرای هرگونه wp_schedule_event، حتماً بررسی وجود با wp_next_scheduled الزامی است تا از حلقه‌های تکراری خطرناک جلوگیری شود.`,
-    cursorPrompt: `Write a robust WP-Cron task to sync external inventory every hour, checking for prior registration first.`,
-    claudePrompt: `Implement a background cleanup cron in WordPress. Include the custom schedule interval definition via cron_schedules filter.`,
+    cursorPrompt: `یک تسک زمان‌بندی WP-Cron مقاوم برای همگام‌سازی کارهای پس‌زمینه بنویس و بررسی وجود قبلی با wp_next_scheduled را حتماً درج کن.`,
+    claudePrompt: `منطق پاکسازی پس‌زمینه با کرون وردپرس را پیاده کن. فیلتر اینتروال سفارشی را نیز با فیلتر cron_schedules اضافه نما.`,
     debugPrompt: `این تسک با هر رفرش صفحه تکرار می‌شود. شرط wp_next_scheduled را به کد اضافه کن تا فقط یک بار زمان‌بندی گردد.`,
     howToTest: {
       steps: [
@@ -631,16 +634,17 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
   ├── زیر ۵۰۰ کیلوبایت ──> ⚡ سرعت موشکی
   └── بالای ۲ مگابایت   ──> 🐌 کرش سرور و خطای ۵۰۴ Timeout`,
     injectionTarget: 'هنگام ذخیره تنظیمات سنگین یا دیتای وب‌سرویس‌ها با update_option',
-    universalPrompt: `[ROLE]: WordPress Database Performance Specialist.
-[TASK]: Save a large configuration array to "wp_options".
-[NEGATIVE CONSTRAINTS]:
-- Explicitly set "autoload = 'no'" (or false) in add_option() to avoid bloating server memory on global page requests.
-- Never store session payloads or temporary cache in options; use Transients instead.
-[OUTPUT]: Memory-conscious option storage.`,
+    universalPrompt: `[نقش]: متخصص دیتابیس و بهینه‌سازی سرعت وردپرس.
+[زمینه]: جدول wp_options به خاطر لود خودکار آپشن‌های سنگین (autoload=yes) حافظه رم سرور را پر کرده است.
+[وظیفه]: کدی برای ثبت آپشن جدید بنویس که صراحتاً پارامتر autoload را روی 'no' تنظیم کند (با استفاده از add_option($key, $val, '', 'no')).
+[شروط سلبی]:
+- داده‌های حجیم آرایه‌ای یا کش‌ها را هرگز با autoload='yes' ذخیره نکن.
+- برای داده‌های موقت حتماً از Transients API به جای wp_options استفاده نما.
+[خروجی]: کد ایمن و توضیحی کوتاه درباره کاهش فشار به حافظه RAM سرور.`,
     agentsMdRule: `# قانون Autoload در AGENTS.md:
 داده‌های ذخیره‌شده در جدول wp_options که در تمامی صفحات مورد نیاز نیستند، باید الزاماً با مقدار autoload='no' ایجاد شوند تا از مصرف بیهوده حافظه رم جلوگیری گردد.`,
-    cursorPrompt: `Store this large plugin config in wp_options ensuring autoload is strictly disabled.`,
-    claudePrompt: `Review option storage in this snippet. Ensure no transient-like payloads pollute the autoloaded options footprint.`,
+    cursorPrompt: `این تنظیمات افزونه را در جدول wp_options به نحوی ذخیره کن که قابلیت لود خودکار سراسری (Autoload) آن اکیداً غیرفعال باشد.`,
+    claudePrompt: `کدهای ذخیره آپشن در این قطعه کد را بازبینی کن. مطمئن شو دیتای کش بدون دلیل بار حافظه سراسری لود وردپرس را سنگین نکنند.`,
     debugPrompt: `حجم دیتای اتولود این آپشن بیش از حد مجاز است. کوئری تغییر وضعیت autoload آن به no را بنویس.`,
     howToTest: {
       steps: [
@@ -695,17 +699,18 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     ├── بله ──> ادامه پردازش و خروجی موفقیت
     └── خیر ──> return new WP_Error( 'hs_invalid_phone', 'شماره موبایل اشتباه است.' )`,
     injectionTarget: 'توابع اعتبارسنجی فرم‌ها، وب‌سرویس‌ها و کنترلرهای ماژول‌ها',
-    universalPrompt: `[ROLE]: Senior Defensive WordPress Developer.
-[TASK]: Validate an incoming user payment payload.
-[NEGATIVE CONSTRAINTS]:
-- Never use die() or exit().
-- Return a "new WP_Error(code, message, data)" on any validation failure.
-- Always check "is_wp_error($result)" before proceeding with business logic.
-[OUTPUT]: Production-grade defensive error handling.`,
+    universalPrompt: `[نقش]: برنامه‌نویس ارشد وردپرس پایبند به معماری دفاعی.
+[زمینه]: در این تابع که با API خارجی ارتباط برقرار می‌کند یا عملیات حساسی دارد، باید از کلاس WP_Error برای مدیریت حرفه‌ای خطاها استفاده شود.
+[وظیفه]: خروجی تابع را به گونه‌ای طراحی کن که در صورت بروز خطا، یک نمونه از new WP_Error('hs_error_code', 'پیام خطای فارسی') برگرداند و مصرف‌کننده با is_wp_error آن را بسنجد.
+[شروط سلبی]:
+- هرگز در صورت بروز خطا صفحه را با die() یا exit() سفید نکن.
+- خروجی را با مقادیر مبهم مثل false بدون پیام خطا رها نکن.
+- از شروط دفاعی برای اعتبارسنجی ورودی‌ها استفاده کن.
+[خروجی]: کد اصولی با مدیریت خطای تمیز و خوانا برای کاربر.`,
     agentsMdRule: `# مدیریت خطا در AGENTS.md:
 هیچ تابعی نباید از die() یا exit() استفاده کند. تمامی خطاهای بیزنس و اعتبارسنجی باید در قالب شیء رسمی WP_Error بازگردانده شوند.`,
-    cursorPrompt: `Refactor this validation routine to return structured WP_Error objects with status codes.`,
-    claudePrompt: `Ensure full defensive coding using is_wp_error() checks after remote HTTP and database operations.`,
+    cursorPrompt: `این روتین اعتبارسنجی را بازنویسی کن تا شیء ساختاریافته WP_Error را به همراه کد وضعیت HTTP مناسب بازگرداند.`,
+    claudePrompt: `کدنویسی دفاعی کامل را با بررسی is_wp_error() پس از درخواست‌های HTTP خارجی و عملیات دیتابیس تضمین نما.`,
     debugPrompt: `این کد با ورودی خالی کرش می‌کند. یک بررسی WP_Error دفاعی به ابتدای تابع اضافه کن.`,
     howToTest: {
       steps: [
@@ -756,13 +761,17 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[روش سنتی] ──> add_shortcode() ──> [hs_button] در پیشخوان بدون پیش‌نمایش
 [روش مدرن]  ──> register_block_type() ──> ویرایش بصری زنده با تنظیمات طلایی در گوتنبرگ`,
     injectionTarget: 'فایل functions.php یا پوشه اختصاصی بلاک‌ها در بلوک‌های بومی',
-    universalPrompt: `[ROLE]: Modern WordPress Full-Site Editing Specialist.
-[TASK]: When creating content modules, prefer Native Gutenberg Blocks (Block API v3) with block.json. Only fallback to add_shortcode() if legacy compatibility is strictly requested.
-[OUTPUT]: Modern block architecture with clean attributes.`,
+    universalPrompt: `[نقش]: توسعه‌دهنده فرانت‌اند و بلاک ادیتور مدرن وردپرس.
+[زمینه]: ما در حال جایگزینی شورت‌کدهای قدیمی با بلاک‌های بومی گوتنبرگ هستیم.
+[وظیفه]: ماژول محتوایی [نام قابلیت مثلاً جدول قیمت‌گذاری یا کارت محصول] را با استفاده از فایل استاندارد block.json و تابع register_block_type تعریف کن.
+[شروط سلبی]:
+- اولویت قطعی با بلاک‌های بومی گوتنبرگ (Block API v3) است؛ شورت‌کد فقط در صورت الزام صریح پروژه مجاز است.
+- استایل‌های بلاک را به صورت اینلاین ننویس و در فایل استایل مجزا رجیستر کن.
+[خروجی]: ساختار استاندارد بلاک مدرن به همراه رندر سمت سرور.`,
     agentsMdRule: `# اولویت بلاک‌های مدرن در AGENTS.md:
 برای المان‌های بصری جدید، اولویت مطلق با بلاک‌های استاندارد گوتنبرگ است. شورت‌کدها صرفاً در صورت نیاز به تزریق سریع درون متون مقالات مجاز هستند.`,
-    cursorPrompt: `Convert this legacy shortcode into a clean Block Pattern or modern Gutenberg block.`,
-    claudePrompt: `Explain the migration path from this add_shortcode implementation to a server-side rendered Gutenberg block.`,
+    cursorPrompt: `این شورت‌کد قدیمی را به یک الگوی بلاک گوتنبرگ (Block Pattern) یا بلاک بومی مدرن تبدیل کن.`,
+    claudePrompt: `مسیر مهاجرت از این پیاده‌سازی add_shortcode به یک بلاک رندرشونده سمت سرور (Server-Side Rendered Block) را تشریح و کد آن را بنویس.`,
     debugPrompt: `شورت‌کد خروجی را در بالای صفحه می‌اندازد چون از echo استفاده شده. با ob_start() و ob_get_clean() آن را تصحیح کن.`,
     howToTest: {
       steps: [
@@ -814,17 +823,18 @@ export const wpCoreTerms: EncyclopediaTerm[] = [
 [غیرفعال‌سازی: register_deactivation_hook] ──> توقف کرون‌ها (داده‌ها حفظ شوند!)
 [حذف نهایی: uninstall.php] ──> 🧹 پاکسازی کامل دیتابیس`,
     injectionTarget: 'فایل مجزای /uninstall.php در ریشه پوشه افزونه',
-    universalPrompt: `[ROLE]: Senior WordPress Plugin Architect.
-[TASK]: Create a secure "uninstall.php" file.
-[NEGATIVE CONSTRAINTS]:
-- Check "defined('WP_UNINSTALL_PLUGIN')" at the very top.
-- Do NOT delete user data on deactivation. Only delete on final uninstall.
-- Clean up custom tables using $wpdb and drop transients.
-[OUTPUT]: Safe uninstall routine.`,
+    universalPrompt: `[نقش]: معمار استاندارد پلاگین‌نویسی وردپرس.
+[زمینه]: برای جلوگیری از تبدیل دیتابیس سایت به زباله‌دانی پس از حذف افزونه، نیاز به فایل پاکسازی استاندارد uninstall.php داریم.
+[وظیفه]: یک فایل امن uninstall.php بساز که در صورت حذف نهایی، تمام جداول سفارشی و آپشن‌های با پیشوند hs_ را پاک کند.
+[شروط سلبی]:
+- در اولین خط فایل، بررسی شرط امنیتی "defined('WP_UNINSTALL_PLUGIN')" الزامی است.
+- هرگز داده‌های کاربر را هنگام غیرفعال‌سازی (Deactivation) پاک نکن؛ پاکسازی صرفاً هنگام Uninstall نهایی است.
+- جداول و ترنزینت‌های اضافه را با $wpdb به طور کامل دور بریز.
+[خروجی]: روتین پاکسازی امن و استاندارد.`,
     agentsMdRule: `# چرخه عمر افزونه در AGENTS.md:
 حذف جداول سفارشی و آپشن‌ها فقط و فقط در فایل uninstall.php مجاز است و در هوک register_deactivation_hook اکیداً ممنوع می‌باشد.`,
-    cursorPrompt: `Write a clean uninstall.php file that removes the hs_smart_banner options and custom tables safely.`,
-    claudePrompt: `Review this plugin lifecycle logic to ensure it complies with WordPress.org guidelines for data cleanup.`,
+    cursorPrompt: `یک فایل پاکیزه uninstall.php بنویس که تنظیمات hs_smart_banner و جداول سفارشی را به طور ایمن حذف نماید.`,
+    claudePrompt: `منطق چرخه عمر این افزونه را بازبینی کن تا مطابق با دستورالعمل‌های رسمی WordPress.org داده‌ها را در زمان حذف پاک کند.`,
     debugPrompt: `بررسی WP_UNINSTALL_PLUGIN در ابتدای فایل جا افتاده است. این خط امنیتی حیاتی را اضافه کن.`,
     howToTest: {
       steps: [

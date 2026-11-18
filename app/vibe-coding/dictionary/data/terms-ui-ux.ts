@@ -429,17 +429,17 @@ export const uiUxTerms: EncyclopediaTerm[] = [
         ▼
 [انجام محاسبات در پس‌زمینه با setTimeout یا Worker]`,
     injectionTarget: 'رویدادهای کلیک، فرم‌ها و انیمیشن‌های تعاملی در جاوااسکریپت',
-    universalPrompt: `[ROLE]: Google Core Web Vitals & INP Specialist.
-[TASK]: Optimize this button click interaction to guarantee INP under 100ms.
-[NEGATIVE CONSTRAINTS]:
-- Do not block the main thread with synchronous loops.
-- Yield execution using "setTimeout()" or "requestIdleCallback()" for non-critical logging.
-- Show immediate visual feedback (active state or spinner) before firing network requests.
-[OUTPUT]: High-responsiveness event handler.`,
+    universalPrompt: `[نقش]: متخصص سرعت تعاملات و شاخص‌های Core Web Vitals گوگل (معیار INP).
+[زمینه]: هنگام کلیک کاربر روی دکمه‌های آکاردئون، سبد خرید یا منوی سایت، نباید ترد اصلی مرورگر مسدود شود و معیار INP باید زیر ۱۰۰ میلی‌ثانیه بماند.
+[وظیفه]: رویداد کلیک این کامپوننت را بهینه‌سازی کن به نحوی که بلافاصله بازخورد بصری لمس (حالت اکتیو یا لودینگ در ۱۰ میلی‌ثانیه) نمایش داده شود و کارهای سنگین با setTimeout یا requestIdleCallback واگذار شوند.
+[شروط سلبی]:
+- ترد اصلی مرورگر را با حلقه‌های سنگین همگام قفل نکن.
+- قبل از ارسال درخواست به سرور، حتماً فیدبک بصری فوری به کاربر نشان بده.
+[خروجی]: کدهای وانیلا جاوااسکریپت روان، سریع و با بالاترین امتیاز پاسخگویی.`,
     agentsMdRule: `# شاخص INP در AGENTS.md:
 تمامی اکشن‌های کلیک، بستن مودال‌ها و ارسال فرم‌ها باید در کمتر از ۵۰ میلی‌ثانیه بازخورد بصری داشته باشند و ترید اصلی مرورگر نباید با تسک‌های طولانی مسدود شود.`,
-    cursorPrompt: `Refactor this click handler to yield to the main thread and keep INP green.`,
-    claudePrompt: `Explain how to diagnose and fix INP bottlenecks on this WooCommerce interactive cart drawer.`,
+    cursorPrompt: `این تابع رویداد کلیک را بازنویسی کن تا اجرای محاسبات به ترد آزاد مرورگر منتقل شود و شاخص INP کاملاً سبز بماند.`,
+    claudePrompt: `روش شناسایی و برطرف کردن گلوگاه‌های شاخص INP در این سبد خرید ایجکسی ووکامرس را تشریح کن و کد بهینه را بنویس.`,
     debugPrompt: `شاخص INP در گزارش لایت‌هاوس قرمز است. توابع مسدودکننده داخل رویداد کلیک را به صورت غیرهمگام بازنویسی کن.`,
     howToTest: {
       steps: [
@@ -490,16 +490,17 @@ export const uiUxTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[روش اشتباه: دکمه ۲۰ پیکسلی] ──> کلیک اشتباه روی لینک کناری ──> عصبانیت کاربر ❌
 [استاندارد طلایی: ۴۸×۴۸ پیکسل] ──> لمس نرم و مقتدرانه با شست دست ──> تکمیل خرید ✓`,
     injectionTarget: 'استایل‌های کلاس‌های دکمه و لینک در فایل‌های CSS یا Tailwind',
-    universalPrompt: `[ROLE]: Mobile UX Ergonomics & Accessibility Specialist.
-[TASK]: Audit and style all interactive mobile controls (buttons, inputs, hamburger menu) to guarantee a minimum bounding box of 48x48px touch target.
-[NEGATIVE CONSTRAINTS]:
-- Maintain proper visual padding without disrupting the compact design.
-- Comply strictly with WCAG 2.1 AAA touch target guidelines.
-[OUTPUT]: Mobile-first ergonomic CSS classes.`,
+    universalPrompt: `[نقش]: متخصص ارگونومی تجربه کاربری موبایل و دسترسی‌پذیری (Mobile UX & WCAG).
+[زمینه]: در صفحات موبایل (رزولوشن زیر ۷۶۸ پیکسل)، تمام دکمه‌ها، آیکون‌ها و لینک‌های تعاملی باید ارگونومیک باشند.
+[وظیفه]: کلاس‌های این کامپوننت را با Tailwind CSS به نحوی بنویس که حداقل کادر لمسی ۴۸×۴۸ پیکسل (Touch Target) بدون به هم ریختن طراحی ظریف رعایت شود.
+[شروط سلبی]:
+- دکمه‌ها را به هم نچسبان؛ حداقل ۸ پیکسل فاصله امن بین المان‌های لمسی قرار بده.
+- مطابق با استانداردهای رسمی WCAG 2.1 عمل کن.
+[خروجی]: کلاس‌های ارگونومیک تیل‌ویند متناسب با شست دست در موبایل.`,
     agentsMdRule: `# ارگونومی موبایل در AGENTS.md:
 تمامی عناصر قابل کلیک و تعاملی در صفحات زیر ۷۶۸ پیکسل، باید دارای حداقل ابعاد ۴۴ تا ۴۸ پیکسل برای ناحیه لمس (Touch Target) باشند.`,
-    cursorPrompt: `Ensure all icon buttons have an invisible padding or min-h-[48px] min-w-[48px] touch area in mobile view.`,
-    claudePrompt: `Review this mobile navigation bar for WCAG touch target spacing compliance.`,
+    cursorPrompt: `اطمینان حاصل کن تمام دکمه‌های آیکونی در نمای موبایل دارای پدینگ نامرئی با کلاس‌های min-h-[48px] و min-w-[48px] هستند.`,
+    claudePrompt: `این نوار ناوبری موبایل را برای تطابق با استانداردهای فاصله لمسی ارگونومیک WCAG بررسی کن و کلاس‌های اصلاحی را ارائه بده.`,
     debugPrompt: `گوگل هشدار تاچ‌تارگت کوچک داده است. ناحیه کلیک‌پذیر لینک‌ها را با padding یا pseudo-elements به ۴۸ پیکسل ارتقا بده.`,
     howToTest: {
       steps: [

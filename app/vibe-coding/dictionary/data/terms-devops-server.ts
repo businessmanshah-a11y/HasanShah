@@ -411,16 +411,17 @@ wp plugin deactivate --all ──> سایت در ۲ ثانیه زنده شد!`,
          ├── پوشه ۲: worktree-feature-banner (ایجنت ۱ در حال کار)
          └── پوشه ۳: worktree-api-refactor  (ایجنت ۲ در حال کار)`,
     injectionTarget: 'خط فرمان ترمینال برای ایجاد شاخه‌های کاری مجزا',
-    universalPrompt: `[ROLE]: Senior DevOps & Git Branching Specialist.
-[TASK]: Set up a clean Git Worktree command sequence to isolate development for the new WooCommerce payment gateway in a separate directory "../worktrees/payment-v2".
-[NEGATIVE CONSTRAINTS]:
-- Do not duplicate the entire git history storage.
-- Maintain separate local branch pointers.
-[OUTPUT]: Executable git worktree bash commands.`,
+    universalPrompt: `[نقش]: مهندس ارشد دواپس و استراتژی شاخه‌بندی گیت (Git Branching & Worktree).
+[زمینه]: می‌خواهیم توسعه درگاه پرداخت جدید را در یک شاخه و پوشه کاری مجزا در مسیر "../worktrees/payment-v2" ایزوله کنیم تا با شاخه اصلی main تداخل نخورد.
+[وظیفه]: توالی دستورات خط فرمان Git Worktree را برای ساخت، سوئیچ و مدیریت این ورک‌تری بنویس.
+[شروط سلبی]:
+- کل تاریخچه مخزن گیت را کپی نکن؛ از هسته مشترک .git استفاده کن.
+- شاخه‌ها را مستقل نگه دار تا امکان دیپلوی سریع نسخه اصلی محفوظ باشد.
+[خروجی]: دستورات اجرایی خط فرمان بش (Bash) آماده اجرا در ترمینال.`,
     agentsMdRule: `# توسعه موازی با ورک‌تری در AGENTS.md:
 برای توسعه قابلیت‌های جدید و تسک‌های طولانی، ایجنت‌های هوش مصنوعی باید در یک Git Worktree مجزا فعالیت کنند تا شاخه main همواره آماده استقرار باقی بماند.`,
-    cursorPrompt: `Generate the terminal commands to add a new git worktree for this experimental branch.`,
-    claudePrompt: `Explain the architectural advantages of Git Worktrees over standard git stash when coordinating multiple AI subagents.`,
+    cursorPrompt: `دستورات ترمینال برای افزودن یک ورک‌تری کاری جدید با گیت برای این شاخه آزمایشی را تولید کن.`,
+    claudePrompt: `مزایای معماری استفاده از Git Worktree در برابر git stash سنتی را هنگام هماهنگی بین چند ایجنت هوش مصنوعی تشریح و کد آن را بنویس.`,
     debugPrompt: `ورک‌تری قفل شده است. دستور prune و حذف ایمن شاخه کاری را ارائه بده.`,
     howToTest: {
       steps: [
@@ -476,16 +477,17 @@ wp plugin deactivate --all ──> سایت در ۲ ثانیه زنده شد!`,
                               ▼
    [انتقال امن با rsync/SSH به هاست کارفرما در ۱۰ ثانیه] ──> 🚀 سایت آپدیت شد`,
     injectionTarget: 'فایل /.github/workflows/deploy.yml در ریشه پروژه',
-    universalPrompt: `[ROLE]: Senior WordPress DevOps Engineer.
-[TASK]: Create a secure GitHub Actions workflow file (.github/workflows/deploy.yml) to deploy WordPress mu-plugins and theme assets via rsync over SSH.
-[NEGATIVE CONSTRAINTS]:
-- Use GitHub Secrets for host, user, and SSH private keys.
-- Exclude development directories (.git, node_modules, tests).
-[OUTPUT]: Production-grade YAML workflow.`,
+    universalPrompt: `[نقش]: مهندس ارشد استقرار خودکار و دواپس وردپرس (CI/CD Specialist).
+[زمینه]: می‌خواهیم افزونه‌های ضروری پوشه mu-plugins و دارایی‌های قالب را با استفاده از GitHub Actions و پروتکل امن rsync روی هاست سرور منتشر کنیم.
+[وظیفه]: فایل ورک‌فلو کامل و امن گیت‌هاب اکشنز (.github/workflows/deploy.yml) را بنویس.
+[شروط سلبی]:
+- اطلاعات حساس (هاست، یوزرنیم، پورت و کلید خصوصی SSH) را هرگز داخل فایل یمل قرار نده؛ از متغیرهای امن GitHub Secrets استفاده کن.
+- دایرکتوری‌های توسعه شامل .git، node_modules و پوشه‌های تست را در زمان rsync مستثنی (exclude) نما.
+[خروجی]: فایل پیکربندی کامل، امن و معتبر YAML آماده اجرا.`,
     agentsMdRule: `# استقرار خودکار در AGENTS.md:
 تمامی انتشارات به محیط پروداکشن باید منحصراً از طریق خط لوله CI/CD انجام شود و هرگونه ویرایش مستقیم فایل‌ها در سرور لایو اکیداً ممنوع است.`,
-    cursorPrompt: `Write the GitHub Actions deploy.yml file for deploying this WordPress child theme to an SSH server.`,
-    claudePrompt: `Architect a zero-downtime deployment strategy for high-traffic WordPress sites using GitHub Actions.`,
+    cursorPrompt: `فایل گردش‌کار استقرار deploy.yml در گیت‌هاب اکشنز را برای دیپلوی افزونه‌های این پروژه روی سرور SSH تولید کن.`,
+    claudePrompt: `معماری استقرار بدون قطعی (Zero-Downtime Deployment) برای یک سایت پرترافیک وردپرسی با استفاده از GitHub Actions را طراحی و کد یمل آن را بنویس.`,
     debugPrompt: `فایل کانفیگ rsync به دلیل وجود پوشه .git حجم زیادی انتقال می‌دهد. خطوط exclude را اضافه کن.`,
     howToTest: {
       steps: [

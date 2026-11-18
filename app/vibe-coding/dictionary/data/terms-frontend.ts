@@ -417,16 +417,17 @@ export const frontendTerms: EncyclopediaTerm[] = [
                          ▼ (REST API / GraphQL)
 [فرانت‌اند Next.js: رندر استاتیک روی سرور] ──> ⚡ تحویل به کاربر در ۵۰ میلی‌ثانیه`,
     injectionTarget: 'فایل wp-config.php برای CORS و پروژه مستقل Next.js',
-    universalPrompt: `[ROLE]: Senior Fullstack Architect (WordPress + Next.js).
-[TASK]: Create a secure data-fetching utility in Next.js (App Router) to retrieve posts from WordPress REST API with Incremental Static Regeneration (ISR).
-[NEGATIVE CONSTRAINTS]:
-- Enable proper revalidation intervals (revalidate: 60).
-- Sanitize rendered HTML with DOMPurify.
-[OUTPUT]: Production-ready React Server Component.`,
+    universalPrompt: `[نقش]: معمار ارشد فول‌استک (ترکیب وردپرس و Next.js).
+[زمینه]: وردپرس به عنوان پنل مدیریت محتوا و Next.js (App Router) به عنوان فرانت‌اند عمل می‌کند.
+[وظیفه]: یک ماژول بهینه فچ داده در Next.js بساز که مقالات را از وب‌سرویس REST وردپرس با استراتژی تولید مجدد استاتیک تدریجی (ISR با revalidate: 60) بخواند.
+[شروط سلبی]:
+- خطاهای احتمالی قطعی موقت وردپرس را با اسکلت‌های لودینگ (Skeletons) مدیریت کن.
+- محتوای HTML دریافتی را قبل از رندر پاکسازی (Sanitize) کن.
+[خروجی]: کامپوننت سروری مدرن ری‌اکت (React Server Component) و آماده پروداکشن.`,
     agentsMdRule: `# معماری هدلس در AGENTS.md:
 تمامی ارتباطات بین فرانت‌اند Next.js و هسته وردپرس باید از طریق اندپوینت‌های استاندارد REST API یا WPGraphQL صورت گیرد و هدرهای امنیتی CORS رعایت شوند.`,
-    cursorPrompt: `Write a Next.js Server Component that fetches WordPress posts and handles loading skeletons.`,
-    claudePrompt: `Architect the authentication flow between Next.js frontend and WordPress REST API using JWT.`,
+    cursorPrompt: `یک کامپوننت سروری Next.js بنویس که مقالات وردپرس را دریافت کرده و حالت‌های لودینگ را پوشش دهد.`,
+    claudePrompt: `جریان احراز هویت بین فرانت‌اند Next.js و REST API وردپرس را با توکن‌های JWT معماری و کد آن را تولید کن.`,
     debugPrompt: `خطای CORS مانع از دریافت مقالات در فرانت می‌شود. هدرهای Access-Control-Allow-Origin را در وردپرس اصلاح کن.`,
     howToTest: {
       steps: [
@@ -477,16 +478,17 @@ export const frontendTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[روش سنتی] ──> دانلود ۵۰۰ کیلوبایت CSS ──> [۲ ثانیه صفحه سفید] ──> نمایش صفحه
 [روش وایب‌کدینگ] ──> تزریق ۲۰ کیلوبایت Critical CSS در <head> ──> ⚡ نمایش در ۳۰۰ میلی‌ثانیه`,
     injectionTarget: 'تگ <style> مستقیم در هدر صفحه قبل از لود استایل‌های تکمیلی',
-    universalPrompt: `[ROLE]: Senior Web Performance & CSS Optimization Engineer.
-[TASK]: Extract the critical above-the-fold CSS for this hero section and inline it inside a <style> block, while deferring the remaining non-critical styles using "rel=preload".
-[NEGATIVE CONSTRAINTS]:
-- Zero layout shift when the full stylesheet loads.
-- Keep critical CSS under 25KB.
-[OUTPUT]: Minified critical inline styles and deferred loader.`,
+    universalPrompt: `[نقش]: مهندس پرفورمنس وب و بهینه‌سازی کدهای CSS.
+[زمینه]: فایل‌های حجیم CSS مانع از لود سریع بالای صفحه (Above-the-Fold) شده‌اند.
+[وظیفه]: استایل‌های حیاتی بخش هیرو را استخراج کرده و درون تگ <style> در هدر اینلاین کن، و سایر استایل‌های غیراضطراری را با preload به تعویق بینداز.
+[شروط سلبی]:
+- با لود شدن استایل‌های تکمیلی نباید پرش چیدمان (Layout Shift) رخ دهد.
+- حجم کدهای Critical CSS اینلاین نباید از ۲۵ کیلوبایت بیشتر شود.
+[خروجی]: کدهای بهینه استایل اینلاین به همراه لودر ناهمگام استایل اصلی.`,
     agentsMdRule: `# پرفورمنس فرانت‌اند در AGENTS.md:
 برای دستیابی به لود زیر ۱ ثانیه، استایل‌های بخش بالای صفحه (Above the Fold) باید به صورت اینلاین در هدر تزریق شده و سایر فایل‌های استایل با خصوصیت defer بارگذاری گردند.`,
-    cursorPrompt: `Inline the critical hero CSS directly in the header template to eliminate render-blocking warnings.`,
-    claudePrompt: `Explain how to automate Critical CSS extraction in WordPress using modern build tooling.`,
+    cursorPrompt: `استایل‌های ضروری بخش هیرو را مستقیماً در تمپلیت هدر اینلاین کن تا خطای Render-Blocking در گزارش لایت‌هاوس برطرف شود.`,
+    claudePrompt: `روش خودکارسازی استخراج استایل‌های حیاتی (Critical CSS) را در وردپرس با ابزارهای بیلد مدرن تشریح و کد آن را پیاده‌سازی کن.`,
     debugPrompt: `فایل استایل باعث مسدود شدن رندر شده است. آن را با ویژگی media=print onload=this.media=all به صورت غیرهمگام بارگذاری کن.`,
     howToTest: {
       steps: [
@@ -537,16 +539,17 @@ export const frontendTerms: EncyclopediaTerm[] = [
     asciiDiagram: `[اسکریپت معمولی] ──> توقف دانلود HTML ──> دانلود JS ──> اجرای JS ──> ادامه HTML
 [اسکریپت Defer]  ──> دانلود موازی JS در پس‌زمینه + رندر بدون توقف HTML ──> اجرا پس از پایان لود`,
     injectionTarget: 'فایل functions.php یا کنترلر دارایی‌ها با wp_enqueue_script',
-    universalPrompt: `[ROLE]: WordPress Performance Engineer.
-[TASK]: Enqueue a custom script "hs-interactions.js" using modern WordPress 6.3+ strategies.
-[NEGATIVE CONSTRAINTS]:
-- Use the modern array syntax for $args with "'strategy' => 'defer'".
-- Ensure dependencies are respected to prevent "undefined" console errors.
-[OUTPUT]: Standards-compliant script registration.`,
+    universalPrompt: `[نقش]: مهندس پرفورمنس و لود بهینه دارایی‌های وردپرس.
+[زمینه]: اسکریپت سفارشی "hs-interactions.js" باید با استفاده از استراتژی مدرن وردپرس ۶.۳ به بالا بارگذاری شود.
+[وظیفه]: این فایل را با آرایه تنظیمات جدید (['strategy' => 'defer', 'in_footer' => true]) رجیستر کن تا مانع از مسدود شدن رندر نشود.
+[شروط سلبی]:
+- وابستگی‌های اسکریپت را رعایت کن تا خطای عدم تعریف متغیر پیش نیاید.
+- از شیوه‌های سنتی هک تگ دستی اجتناب کن و از متد رسمی wp_enqueue_script استفاده کن.
+[خروجی]: کد استاندارد و مدرن ثبت اسکریپت در هوک wp_enqueue_scripts.`,
     agentsMdRule: `# لود بهینه دارایی‌ها در AGENTS.md:
 تمامی فایل‌های جاوااسکریپت غیربحرانی باید با استراتژی defer در هوک wp_enqueue_script بارگذاری شوند تا از مسدود شدن رندر جلوگیری گردد.`,
-    cursorPrompt: `Update this script enqueue to use the modern defer strategy introduced in WordPress 6.3.`,
-    claudePrompt: `Explain how the wp_enqueue_script strategy parameter eliminates render-blocking JavaScript.`,
+    cursorPrompt: `این ثبت اسکریپت را به استراتژی مدرن defer که در وردپرس ۶.۳ معرفی شد ارتقا بده.`,
+    claudePrompt: `تشریح کن چطور پارامتر strategy در تابع wp_enqueue_script مسدودسازی رندر توسط جاوااسکریپت را از بین می‌برد.`,
     debugPrompt: `کنسول خطای عدم تعریف متغیر می‌دهد چون ترتیب اجرای اسکریپت‌ها به هم خورده است. آرایه dependencies را در wp_enqueue_script اضافه کن.`,
     howToTest: {
       steps: [

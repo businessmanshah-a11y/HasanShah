@@ -129,6 +129,7 @@ export default function VibeDictionaryContent() {
   // Card Tab States (termId -> "concept" | "prompt" | "test" | "code")
   const [cardActiveTab, setCardActiveTab] = useState<Record<string, "concept" | "prompt" | "test" | "code">>({});
   const [promptEditorMode, setPromptEditorMode] = useState<Record<string, "universal" | "cursor" | "claude">>({});
+  const [expandedCardDetails, setExpandedCardDetails] = useState<Record<string, boolean>>({});
 
   // UI Modes
   const [viewMode, setViewMode] = useState<"detailed" | "compact">("detailed");
@@ -812,131 +813,59 @@ export default function VibeDictionaryContent() {
         </section>
       ) : (
         <>
-          {/* ── Start Here Wizard Component (Items 1, 5, 6) ── */}
-          <StartHereWizard
-            onSelectPreset={(preset) => {
-              setSelectedPreset(preset);
-              setSelectedCategory("all");
-              setSelectedStation("all");
-            }}
-          />
-
-          {/* ── Learning Stations & Presets (Pillar 2) ── */}
+          {/* ── Category Filter Bar (Clean, Minimal & Decluttered) ── */}
           <section className="container mx-auto px-4 pb-8">
-        <div className="rounded-3xl border border-white/10 bg-surface/50 p-6 md:p-8 backdrop-blur space-y-6">
-          {/* Persona Switcher */}
-          <PersonaRoleSelector
-            activePersona={selectedPersona}
-            onSelectPersona={(persona) => setSelectedPersona(persona)}
-          />
-
-          {/* Curriculum Stations */}
-          <div className="border-t border-white/10 pt-5">
-            <CurriculumRoadmapBar
-              activeStation={selectedStation}
-              onSelectStation={(st) => setSelectedStation(st)}
-              activePreset={selectedPreset}
-              onSelectPreset={(pr) => setSelectedPreset(pr)}
-            />
-          </div>
-
-          {/* Search Box & Quick Intent Pills (Item 31) */}
-          <div className="border-t border-white/10 pt-5 space-y-3">
-            <div className="relative">
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="جستجو بر اساس نیاز (مثلاً: سایتم کند شده، هک نشم، لندینگ، رنگ، یا نام انگلیسی)..."
-                className="w-full rounded-2xl border border-white/15 bg-background/80 py-4 pr-12 pl-28 text-sm md:text-base text-foreground placeholder:text-muted-foreground focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition-all"
-              />
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery("")}
-                    className="p-1 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                )}
-                <kbd className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-white/15 bg-white/5 px-2 py-1 text-[11px] font-mono text-muted-foreground">
-                  <span className="text-xs">⌘</span>K
-                </kbd>
-              </div>
-            </div>
-
-            {/* Quick intent keywords pills (Item 31) */}
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-              <span className="text-muted-foreground font-semibold">🔍 امتحان کنید:</span>
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {[
-                { label: "سایتم کند شده", query: "سایتم کند شده" },
-                { label: "هک نشم (امنیت)", query: "هک" },
-                { label: "صفحه سفید مرگ", query: "ارور" },
-                { label: "فروشگاه آنلاین", query: "فروشگاه" },
-                { label: "انتقال هاست", query: "انتقال" },
-                { label: "بلاک گوتنبرگ", query: "بلاک" },
-              ].map((pill) => (
+                { id: "all", label: "همه اصطلاحات (۶۰)" },
+                { id: "vibe-ai", label: "🤖 هوش مصنوعی و AGENTS.md (۱۲)" },
+                { id: "wp-core", label: "⚡ هسته وردپرس و PHP (۱۳)" },
+                { id: "database-api", label: "🗄️ دیتابیس و وب‌سرویس (۱۰)" },
+                { id: "frontend", label: "🎨 فرانت‌اند و سرعت (۹)" },
+                { id: "ui-ux", label: "📱 طراحی و UX (۸)" },
+                { id: "devops-server", label: "🛠️ سرور و دِواپس (۸)" },
+              ].map((cat) => (
                 <button
-                  key={pill.label}
+                  key={cat.id}
                   type="button"
-                  onClick={() => setSearchQuery(pill.query)}
-                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-muted-foreground hover:border-amber-400/40 hover:text-amber-300 transition-colors"
+                  onClick={() => {
+                    setSelectedCategory(cat.id as any);
+                    setSelectedStation("all");
+                    setSelectedPreset("all");
+                  }}
+                  className={`rounded-2xl px-4 py-2.5 text-xs md:text-sm font-bold transition-all ${
+                    selectedCategory === cat.id
+                      ? "bg-amber-400 text-black shadow-lg shadow-amber-500/25 scale-105"
+                      : "border border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                  }`}
                 >
-                  {pill.label}
+                  <span>{cat.label}</span>
                 </button>
               ))}
             </div>
 
-            {/* View Mode & Filter Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 text-xs pt-2">
-              <div className="flex items-center gap-3">
-                <span className="font-bold text-muted-foreground">
-                  {filteredTerms.length} اصطلاح متناسب با فیلتر شما یافت شد
-                </span>
-                {favorites.length > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
-                    className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold border ${
-                      showOnlyFavorites
-                        ? "border-amber-400 bg-amber-400/20 text-amber-300"
-                        : "border-white/10 bg-white/5 text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <BookmarkCheck className="h-3.5 w-3.5" />
-                    <span>برگزیده‌های من ({favorites.length})</span>
-                  </button>
-                )}
-              </div>
-
-              {/* View Mode Toggle */}
-              <div className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 p-1">
+            {/* Quick Filter Info & Favorites */}
+            <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground max-w-5xl mx-auto px-2">
+              <span className="font-medium">
+                نمایش <strong>{filteredTerms.length}</strong> اصطلاح تخصصی
+                {searchQuery ? ` برای «${searchQuery}»` : ""}
+              </span>
+              {favorites.length > 0 && (
                 <button
                   type="button"
-                  onClick={() => setViewMode("detailed")}
-                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                    viewMode === "detailed" ? "bg-amber-400 text-black font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
+                  onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold border ${
+                    showOnlyFavorites
+                      ? "border-amber-400 bg-amber-400/20 text-amber-300"
+                      : "border-white/10 bg-white/5 text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  نمای تشریحی کامل
+                  <BookmarkCheck className="h-3.5 w-3.5" />
+                  <span>برگزیده‌ها ({favorites.length})</span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setViewMode("compact")}
-                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                    viewMode === "compact" ? "bg-amber-400 text-black font-bold shadow-sm" : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  نمای فشرده بنتو
-                </button>
-              </div>
+              )}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
       {/* ── Terms Grid Section ── */}
       <section className="container mx-auto px-4 pb-12">
@@ -972,12 +901,9 @@ export default function VibeDictionaryContent() {
               const currentEditorMode = promptEditorMode[term.id] || "universal";
               const isPromptCopied = copiedItem === `prompt-${term.id}`;
               const isDebugCopied = copiedItem === `debug-${term.id}`;
+              const isExpanded = !!expandedCardDetails[term.id];
               const currentPromptText =
-                currentEditorMode === "universal"
-                  ? term.universalPrompt || term.goldenPrompt
-                  : currentEditorMode === "cursor"
-                  ? term.cursorPrompt || term.goldenPrompt
-                  : term.claudePrompt || term.goldenPrompt;
+                term.universalPrompt || term.goldenPrompt || term.cursorPrompt || term.claudePrompt;
 
               return (
                 <article
@@ -1078,255 +1004,182 @@ export default function VibeDictionaryContent() {
                       ❓ {term.humanQuestion}
                     </div>
 
-                    {/* ── 4-Tabs Switcher for each card ── */}
-                    <div className="flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/10 text-xs">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setTermTab(term.id, "concept");
-                        }}
-                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
-                          activeTab === "concept"
-                            ? "bg-amber-400 text-black shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        مفهوم و تمثیل
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setTermTab(term.id, "prompt");
-                        }}
-                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
-                          activeTab === "prompt"
-                            ? "bg-amber-400 text-black shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        پرامپت ۵ لایه‌ای
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setTermTab(term.id, "test");
-                        }}
-                        className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
-                          activeTab === "test"
-                            ? "bg-amber-400 text-black shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        تست ۳۰ ثانیه‌ای
-                      </button>
-                      {term.codeSnippet && (
+                    {/* 1. Everyday Analogy */}
+                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/[0.08] p-3.5 md:p-4 text-xs md:text-sm leading-relaxed">
+                      <div className="flex items-center gap-1.5 font-bold text-amber-300 text-xs md:text-sm mb-1">
+                        <Lightbulb className="h-4 w-4 shrink-0 text-amber-400" />
+                        <span>به زبان آدمیزاد:</span>
+                      </div>
+                      <p className="leading-relaxed text-amber-100/90 font-medium">
+                        {term.analogy}
+                      </p>
+                    </div>
+
+                    {/* 2. Beginner Trap */}
+                    <div className="rounded-2xl border border-rose-500/25 bg-rose-500/10 p-3 text-xs text-rose-200 leading-relaxed">
+                      <div className="flex items-center gap-1.5 font-bold text-rose-300 mb-0.5">
+                        <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+                        <span>تله مرگبار:</span>
+                      </div>
+                      <p className="leading-relaxed">{term.beginnerTrap}</p>
+                    </div>
+
+                    {/* 3. Golden Persian Prompt (Ready for Copying) */}
+                    <div className="space-y-2 rounded-2xl border border-white/10 bg-black/60 p-3.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                          <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                          <span>پرامپت طلایی فارسی (کپی مستقیم در AI):</span>
+                        </div>
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setTermTab(term.id, "code");
+                            handleCopy(currentPromptText, `prompt-${term.id}`);
                           }}
-                          className={`flex-1 py-1.5 rounded-lg font-bold transition-all ${
-                            activeTab === "code"
-                              ? "bg-amber-400 text-black shadow-sm"
-                              : "text-muted-foreground hover:text-foreground"
-                          }`}
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 hover:bg-amber-400/25 transition-all shadow-sm shrink-0"
                         >
-                          کد فنی
+                          {isPromptCopied ? (
+                            <>
+                              <Check className="h-3.5 w-3.5 text-emerald-400" />
+                              <span className="text-emerald-400">کپی شد!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="h-3.5 w-3.5" />
+                              <span>کپی پرامپت</span>
+                            </>
+                          )}
                         </button>
-                      )}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground font-mono bg-white/[0.02] px-2.5 py-1 rounded-lg border border-white/5">
+                        <span className="text-amber-400 font-sans font-bold">📁 محل اجرا: </span>
+                        <span>{term.injectionTarget}</span>
+                      </div>
+                      <div
+                        className="rounded-xl border border-white/5 bg-black/80 p-3 font-sans text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto text-right select-all"
+                        dir="rtl"
+                      >
+                        {currentPromptText}
+                      </div>
                     </div>
 
-                    {/* Tab 1: Concept & Analogy */}
-                    {activeTab === "concept" && (
-                      <div className="space-y-3 pt-1">
-                        {/* Everyday Analogy */}
-                        <div className="rounded-2xl border border-amber-400/35 bg-gradient-to-r from-amber-400/15 to-amber-400/5 p-4 text-amber-100 leading-relaxed text-xs md:text-sm shadow-sm">
-                          <div className="flex items-center gap-1.5 font-black text-amber-300 text-xs md:text-sm mb-1">
-                            <Lightbulb className="h-4 w-4 shrink-0 text-amber-400" />
-                            <span>به زبان آدمیزاد (استعاره روزمره):</span>
+                    {/* 4. Universal AGENTS.md Rule */}
+                    {term.agentsMdRule && (
+                      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-3 space-y-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                            <Shield className="h-3.5 w-3.5 shrink-0" />
+                            <span>بند استاندارد برای AGENTS.md (مشترک در همه AIها):</span>
                           </div>
-                          <p className="leading-loose text-amber-100/95 font-medium">
-                            {term.analogy}
-                          </p>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(term.agentsMdRule!, `agents-rule-${term.id}`);
+                            }}
+                            className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/40 bg-emerald-500/20 px-2.5 py-1 text-[11px] font-bold text-emerald-300 hover:bg-emerald-500/30 transition-all shrink-0"
+                          >
+                            {copiedItem === `agents-rule-${term.id}` ? (
+                              <>
+                                <Check className="h-3 w-3 text-emerald-400" />
+                                <span>کپی شد!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3 w-3" />
+                                <span>کپی بند</span>
+                              </>
+                            )}
+                          </button>
                         </div>
-
-                        {/* Beginner Trap & Real Pain */}
-                        <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs text-rose-200 leading-relaxed">
-                          <div className="flex items-center gap-1.5 font-bold text-rose-300 mb-1">
-                            <AlertTriangle className="h-4 w-4 shrink-0" />
-                            <span>تله مرگبار ۹۰ درصد تازه‌کارها:</span>
-                          </div>
-                          <p className="leading-relaxed">{term.beginnerTrap}</p>
-                        </div>
-
-                        {viewMode === "detailed" && (
-                          <div className="space-y-3">
-                            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 text-xs text-muted-foreground leading-relaxed">
-                              <span className="font-bold text-foreground block mb-1">
-                                اگر ندانی چه فاجعه‌ای رخ می‌دهد؟
-                              </span>
-                              <p>{term.realPain}</p>
-                            </div>
-
-                            {/* ASCII Diagram if available */}
-                            {term.asciiDiagram && (
-                              <div className="rounded-2xl border border-white/10 bg-black/60 p-3 text-xs space-y-1.5">
-                                <span className="font-bold text-muted-foreground flex items-center gap-1">
-                                  <Terminal className="h-3.5 w-3.5 text-amber-400" />
-                                  <span>دیاگرام سازوکار:</span>
-                                </span>
-                                <pre className="p-2.5 rounded-xl bg-black font-mono text-[10px] text-amber-300 leading-relaxed text-left overflow-x-auto" dir="ltr">
-                                  {term.asciiDiagram}
-                                </pre>
-                              </div>
-                            )}
-
-                            {term.commonAiError && (
-                              <div className="rounded-2xl border border-white/10 bg-black/40 p-3.5 space-y-1.5 text-xs">
-                                <div className="text-muted-foreground font-semibold flex items-center gap-1">
-                                  <span>🤖 خطای متداول هوش مصنوعی در ادیتور:</span>
-                                </div>
-                                <code className="block font-mono text-[11px] text-rose-300/90 bg-rose-950/40 p-2 rounded-xl truncate" dir="ltr">
-                                  {term.commonAiError.errorSnippet}
-                                </code>
-                                <div className="text-muted-foreground text-[11px] pt-1 leading-relaxed">
-                                  <strong>مفهوم به فارسی:</strong> {term.commonAiError.explanationFa}
-                                </div>
-                              </div>
-                            )}
-
-                            {term.freelanceTip && (
-                              <div className="rounded-2xl border border-purple-500/25 bg-purple-500/10 p-3 text-xs text-purple-200 leading-relaxed">
-                                <strong>💼 فوت کوزه‌گری برای فریلنسرها:</strong> {term.freelanceTip}
-                              </div>
-                            )}
-                          </div>
-                        )}
+                        <pre
+                          className="p-2.5 rounded-xl bg-black/80 font-mono text-[11px] text-emerald-300/95 leading-relaxed text-left overflow-x-auto whitespace-pre-wrap select-all border border-emerald-500/20"
+                          dir="ltr"
+                        >
+                          {term.agentsMdRule}
+                        </pre>
                       </div>
                     )}
 
-                    {/* Tab 2: 5-Layer Battle-Tested Prompt & Universal AGENTS.md */}
-                    {activeTab === "prompt" && (
-                      <div className="space-y-3.5 pt-1">
-                        <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                            {/* Mode switcher: Universal vs Cursor vs Web LLM */}
-                            <div className="flex items-center gap-1 p-0.5 rounded-xl bg-white/5 border border-white/10">
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  togglePromptEditor(term.id, "universal");
-                                }}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
-                                  currentEditorMode === "universal"
-                                    ? "bg-amber-400 text-black shadow-sm"
-                                    : "text-muted-foreground hover:text-foreground"
-                                }`}
-                              >
-                                🌐 استاندارد عمومی (AGENTS.md)
-                              </button>
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  togglePromptEditor(term.id, "cursor");
-                                }}
-                                className={`px-2 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
-                                  currentEditorMode === "cursor"
-                                    ? "bg-amber-400 text-black shadow-sm"
-                                    : "text-muted-foreground hover:text-foreground"
-                                }`}
-                              >
-                                💻 ادیتور (IDE / @file)
-                              </button>
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  togglePromptEditor(term.id, "claude");
-                                }}
-                                className={`px-2 py-1 rounded-lg text-[10px] md:text-xs font-bold transition-all ${
-                                  currentEditorMode === "claude"
-                                    ? "bg-amber-400 text-black shadow-sm"
-                                    : "text-muted-foreground hover:text-foreground"
-                                }`}
-                              >
-                                💬 وب (Claude / ChatGPT)
-                              </button>
+                    {/* 5. Collapsible Deep Technical Details */}
+                    <div className="pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedCardDetails((prev) => ({
+                            ...prev,
+                            [term.id]: !prev[term.id],
+                          }));
+                        }}
+                        className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 hover:border-amber-400/30 text-xs text-muted-foreground hover:text-amber-300 transition-all"
+                      >
+                        <span className="font-bold">
+                          {isExpanded
+                            ? "▲ بستن جزئیات فنی"
+                            : "▼ مشاهده تست ۳۰ ثانیه‌ای، دیاگرام و نمونه کد فنی"}
+                        </span>
+                        <span className="text-[10px] text-muted-foreground/70">
+                          {isExpanded ? "خلاصه‌سازی" : "تست و کد"}
+                        </span>
+                      </button>
+
+                      {isExpanded && (
+                        <div className="mt-3 space-y-3 pt-2 border-t border-white/10 animate-in fade-in duration-200">
+                          {/* 30-Second Verification Guide */}
+                          <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/5 p-3.5 space-y-2 text-xs">
+                            <span className="font-bold text-emerald-300 flex items-center gap-1.5">
+                              <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                              <span>تست ۳۰ ثانیه‌ای صحت کارکرد:</span>
+                            </span>
+                            <ol className="space-y-1 list-decimal list-inside text-muted-foreground font-sans pr-1">
+                              {term.howToTest.steps.map((st, sI) => (
+                                <li key={sI} className="leading-relaxed">
+                                  {st}
+                                </li>
+                              ))}
+                            </ol>
+                            <div className="pt-1.5 border-t border-white/10 text-[11px] text-muted-foreground">
+                              🎯 <strong>نتیجه مورد انتظار:</strong> {term.howToTest.expectedResult}
                             </div>
-
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleCopy(currentPromptText, `prompt-${term.id}`);
-                              }}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 hover:bg-amber-400/25 transition-all shadow-sm"
-                            >
-                              {isPromptCopied ? (
-                                <>
-                                  <Check className="h-3.5 w-3.5 text-emerald-400" />
-                                  <span className="text-emerald-400">کپی شد!</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Copy className="h-3.5 w-3.5" />
-                                  <span>کپی پرامپت</span>
-                                </>
-                              )}
-                            </button>
                           </div>
 
-                          {/* Injection Target Location */}
-                          <div className="text-[11px] text-muted-foreground bg-white/[0.02] p-2.5 rounded-xl border border-white/5 font-mono">
-                            <strong className="font-sans text-amber-400">📁 محل قرارگیری کد:</strong>{" "}
-                            <span>{term.injectionTarget}</span>
-                          </div>
-
-                          {/* Prompt Body */}
-                          <div className="rounded-2xl border border-white/10 bg-black/70 p-4 font-mono text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed max-h-56 overflow-y-auto text-right font-sans select-all" dir="rtl">
-                            {currentPromptText}
-                          </div>
-
-                          {/* Dedicated AGENTS.md Rule Box */}
-                          {term.agentsMdRule && (
-                            <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-3.5 space-y-2">
-                              <div className="flex items-center justify-between gap-2">
-                                <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
-                                  <Shield className="h-4 w-4 shrink-0" />
-                                  <span>بند استاندارد برای AGENTS.md (پشتیبانی‌شده در همه هوش‌های مصنوعی):</span>
-                                </div>
+                          {/* Code Snippet if available */}
+                          {term.codeSnippet && (
+                            <div className="space-y-1.5">
+                              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                                <span className="uppercase text-amber-400 font-mono font-bold">
+                                  {term.codeSnippet.language} {term.codeSnippet.runContext ? `(${term.codeSnippet.runContext})` : ""}
+                                </span>
                                 <button
                                   type="button"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    handleCopy(term.agentsMdRule!, `agents-rule-${term.id}`);
+                                    handleCopy(term.codeSnippet!.code, `code-${term.id}`);
                                   }}
-                                  className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/40 bg-emerald-500/20 px-2.5 py-1 text-[11px] font-bold text-emerald-300 hover:bg-emerald-500/30 transition-all shrink-0"
+                                  className="text-muted-foreground hover:text-amber-400 transition-colors"
                                 >
-                                  {copiedItem === `agents-rule-${term.id}` ? (
-                                    <>
-                                      <Check className="h-3 w-3 text-emerald-400" />
-                                      <span>کپی شد!</span>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="h-3 w-3" />
-                                      <span>کپی در AGENTS.md</span>
-                                    </>
-                                  )}
+                                  {copiedItem === `code-${term.id}` ? "کپی شد!" : "کپی کد"}
                                 </button>
                               </div>
-                              <pre className="p-3 rounded-xl bg-black/80 font-mono text-[11px] text-emerald-300/95 leading-relaxed text-left overflow-x-auto whitespace-pre-wrap select-all border border-emerald-500/20" dir="ltr">
-                                {term.agentsMdRule}
+                              <pre className="font-mono text-xs text-foreground/90 overflow-x-auto leading-relaxed p-3.5 rounded-2xl bg-black/80 border border-white/10" dir="ltr">
+                                <code>{term.codeSnippet.code}</code>
                               </pre>
-                              <p className="text-[10px] text-emerald-200/70 font-sans leading-relaxed">
-                                💡 این بند را در فایل <code className="text-emerald-400 font-mono">AGENTS.md</code> در ریشه پروژه‌تان قرار دهید تا تمام مدل‌ها (Cursor, Claude Code, GitHub Copilot, Windsurf, Antigravity, ChatGPT) این استاندارد را رعایت کنند.
-                              </p>
+                              <p className="text-[11px] text-muted-foreground">{term.codeSnippet.description}</p>
+                            </div>
+                          )}
+
+                          {/* ASCII Diagram if available */}
+                          {term.asciiDiagram && (
+                            <div className="rounded-2xl border border-white/10 bg-black/60 p-3 text-xs space-y-1.5">
+                              <span className="font-bold text-muted-foreground flex items-center gap-1">
+                                <Terminal className="h-3.5 w-3.5 text-amber-400" />
+                                <span>دیاگرام سازوکار:</span>
+                              </span>
+                              <pre className="p-2.5 rounded-xl bg-black font-mono text-[10px] text-amber-300 leading-relaxed text-left overflow-x-auto" dir="ltr">
+                                {term.asciiDiagram}
+                              </pre>
                             </div>
                           )}
 
@@ -1341,7 +1194,7 @@ export default function VibeDictionaryContent() {
                                   type="button"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    handleCopy(term.debugPrompt, `debug-${term.id}`);
+                                    handleCopy(term.debugPrompt!, `debug-${term.id}`);
                                   }}
                                   className="text-[10px] text-purple-300 hover:text-white"
                                 >
@@ -1355,66 +1208,7 @@ export default function VibeDictionaryContent() {
                           )}
                         </div>
                       )}
-
-                    {/* Tab 3: 30-Second Verification Guide */}
-                    {activeTab === "test" && (
-                      <div className="space-y-3 pt-1">
-                        <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/5 p-4 space-y-2.5 text-xs">
-                          <span className="font-bold text-emerald-300 flex items-center gap-1.5">
-                            <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                            <span>چطور در ۳۰ ثانیه تست کنم که کار می‌کند؟</span>
-                          </span>
-                          <ol className="space-y-1.5 list-decimal list-inside text-muted-foreground font-sans pr-1">
-                            {term.howToTest.steps.map((st, sI) => (
-                              <li key={sI} className="leading-relaxed">
-                                {st}
-                              </li>
-                            ))}
-                          </ol>
-                          <div className="pt-2 border-t border-white/10 text-[11px] text-muted-foreground">
-                            🎯 <strong>خروجی تایید:</strong> {term.howToTest.expectedResult}
-                          </div>
-                        </div>
-
-                        {/* Red flags */}
-                        <div className="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-3.5 space-y-1.5 text-xs">
-                          <span className="font-bold text-rose-400 flex items-center gap-1.5">
-                            <AlertTriangle className="h-3.5 w-3.5" />
-                            <span>پرچم‌های قرمز (علائم تقلب یا توهم هوش مصنوعی):</span>
-                          </span>
-                          <ul className="space-y-1 list-disc list-inside text-muted-foreground font-sans text-[11px] pr-1">
-                            {term.howToTest.redFlags.map((fl, fI) => (
-                              <li key={fI}>{fl}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Tab 4: Code Snippet */}
-                    {activeTab === "code" && term.codeSnippet && (
-                      <div className="space-y-2 pt-1 animate-in fade-in duration-200">
-                        <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                          <span className="uppercase text-amber-400 font-mono font-bold">
-                            {term.codeSnippet.language} {term.codeSnippet.runContext ? `(${term.codeSnippet.runContext})` : ""}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleCopy(term.codeSnippet!.code, `code-${term.id}`);
-                            }}
-                            className="text-muted-foreground hover:text-amber-400 transition-colors"
-                          >
-                            {copiedItem === `code-${term.id}` ? "کپی شد!" : "کپی کد"}
-                          </button>
-                        </div>
-                        <pre className="font-mono text-xs text-foreground/90 overflow-x-auto leading-relaxed p-4 rounded-2xl bg-black/80 border border-white/10" dir="ltr">
-                          <code>{term.codeSnippet.code}</code>
-                        </pre>
-                        <p className="text-[11px] text-muted-foreground">{term.codeSnippet.description}</p>
-                      </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* Card Footer: Tags */}

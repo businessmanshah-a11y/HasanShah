@@ -100,7 +100,7 @@ export default function GamificationHud({
   return (
     <>
       {/* ── Persistent HUD Bar ── */}
-      <aside aria-label="پنل امتیازات و مأموریت" className="sticky top-20 z-30 mx-auto mb-8 max-w-6xl px-4">
+      <aside aria-label="پنل امتیازات و مأموریت" className="relative z-10 mx-auto mb-8 max-w-6xl px-4">
         <div className="relative overflow-hidden rounded-2xl border border-amber-400/30 bg-[#0B0F19]/90 p-3 md:p-4 backdrop-blur-xl shadow-2xl transition-all">
           {/* Subtle gold ambient glow */}
           <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-amber-500/10 blur-3xl" />
